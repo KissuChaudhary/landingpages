@@ -1,8 +1,0 @@
-{
-  "/api/download/[slug]/route": "app/api/download/[slug]/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/demo/[slug]/page": "app/demo/[slug]/page.js",
-  "/page": "app/page.js",
-  "/template/[slug]/page": "app/template/[slug]/page.js",
-  "/preview/[slug]/page": "app/preview/[slug]/page.js"
-}
