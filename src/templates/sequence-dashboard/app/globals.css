@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page-background: #A9AAAA;
+  --color-app-background: #F7F7F5;
+  --color-sidebar-background: #F8F8F6;
+  --color-panel-background: #FBFBFA;
+  --color-card-background: #FDFDFC;
+  --color-muted-panel: #F1F1EF;
+  --color-border-main: #E7E7E3;
+  --color-border-soft: #EEEEEA;
+
+  --color-text-primary: #121212;
+  --color-text-secondary: #5F5F5A;
+  --color-text-muted: #9A9A94;
+  --color-text-faint: #B8B8B2;
+
+  --color-orange-main: #FF7A1A;
+  --color-orange-soft: #FFF1E7;
+  --color-red-main: #D95C4F;
+  --color-green-main: #68B66A;
+  --color-purple-main: #7E5BEF;
+  --color-blue-linkedin: #1F6EAE;
+  --color-teal-main: #35BFD0;
+
+  --radius-app-shell: 24px;
+  --radius-card-large: 24px;
+  --radius-card-inner: 18px;
+  --radius-nav-item: 8px;
+  --radius-button: 9px;
+
+  --spacing-page-padding: 54px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-page-background);
+    color: var(--color-text-primary);
+    font-family: Inter, SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.inset-glass-shadow {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}

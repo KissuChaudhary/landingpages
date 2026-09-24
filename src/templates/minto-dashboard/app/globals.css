@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mint: #71D45B;
+  --color-soft-green: #DDF3D8;
+  --color-soft-orange: #FBE4D4;
+  --color-soft-blue: #DDEFFC;
+  --color-bg-app: #F5F5F5;
+  --color-bg-sidebar: #F7F7F7;
+  --color-bg-card: #FFFFFF;
+  --color-border-soft: #EAEAEA;
+  --radius-card: 28px;
+}
+
+body {
+  background-color: var(--color-bg-app);
+  color: #111;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}

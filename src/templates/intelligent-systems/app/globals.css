@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+  background-color: #161618;
+  color: white;
+  font-family: var(--font-sans);
+}
+
+.noise-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.inner-shadow-orange {
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 -4px 8px rgba(0, 0, 0, 0.4), 
+    0 4px 20px rgba(255, 107, 0, 0.3);
+  background: linear-gradient(180deg, #ff8a00 0%, #e55d00 100%);
+}
+
+.inner-shadow-dark {
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.1), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.8), 
+    0 4px 10px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, #2a2a2c 0%, #161618 100%);
+}
+
+.node-panel {
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15), 
+    inset 0 -1px 2px rgba(0, 0, 0, 0.8), 
+    0 15px 25px rgba(0,0,0,0.8),
+    0 5px 10px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, #2a2a2c 0%, #1a1a1c 100%);
+  border: 1px solid #0a0a0a;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes scan {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(96px); }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% 0;
+  }
+}

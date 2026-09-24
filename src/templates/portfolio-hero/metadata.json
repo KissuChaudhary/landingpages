@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio Hero",
+  "description": "Portfolio hero with scroll-driven stacking neo-brutalist project deck system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

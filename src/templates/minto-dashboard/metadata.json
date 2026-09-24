@@ -1,0 +1,8 @@
+{
+  "name": "Minto Dashboard",
+  "description": "Financial dashboard overview mimicking the premium Minto ui/ux.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

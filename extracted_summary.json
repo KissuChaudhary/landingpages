@@ -1,0 +1,610 @@
+[
+  {
+    "slug": "agenwrite-geo",
+    "title": "AgenWrite - GEO Infrastructure",
+    "description": "The first Agentic Writer designed for Generative Engine Optimization (GEO). Research, draft, and refine articles that rank in AI search engines.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "recharts",
+      "lucide-react",
+      "react-dom",
+      "@google/genai",
+      "react"
+    ]
+  },
+  {
+    "slug": "ai-agency",
+    "title": "AI Web Design Agency",
+    "description": "A premium, dark-themed landing page for an AI-powered web design agency featuring liquid glass morphism and HLS video backgrounds.",
+    "category": "Landing Pages",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "hls.js",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "magnetic-grid",
+    "title": "Magnetic Grid Background",
+    "description": "A hyper-clean, physics-based grid pattern featuring elastic micro-interactions and premium noise textures.",
+    "category": "Hero & Motion",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "clearnotes-hero",
+    "title": "ClearNotes Hero",
+    "description": "A playful SaaS landing page hero section with modern apple-style design.",
+    "category": "Hero & Motion",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "agentwrite-growth",
+    "title": "Copy of AgentWrite",
+    "description": "The answer-engine optimization writing tool. Join the waitlist for answer-based content strategy.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "react-dom",
+      "lucide-react"
+    ]
+  },
+  {
+    "slug": "agenwrite-enterprise",
+    "title": "Copy of AgenWrite - GEO Infrastructure",
+    "description": "The first Agentic Writer designed for Generative Engine Optimization (GEO). Research, draft, and refine articles that rank in AI search engines.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "recharts",
+      "lucide-react",
+      "react-dom",
+      "@google/genai",
+      "react"
+    ]
+  },
+  {
+    "slug": "create-studio",
+    "title": "Create Studio Landing Page",
+    "description": "A next-level stylish hero section for a design studio landing page with dynamic scroll animations.",
+    "category": "Hero & Motion",
+    "entry_file": "src\\App.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@tailwindcss/vite",
+      "@vitejs/plugin-react",
+      "lucide-react",
+      "react",
+      "react-dom",
+      "vite",
+      "express",
+      "dotenv",
+      "better-sqlite3",
+      "motion"
+    ]
+  },
+  {
+    "slug": "creatorflow",
+    "title": "CreatorFlow Redesign",
+    "description": "A high-fidelity recreation of the CreatorFlow hero section with premium responsiveness and interactions.",
+    "category": "Hero & Motion",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "react-dom",
+      "lucide-react",
+      "tailwind-merge",
+      "clsx"
+    ]
+  },
+  {
+    "slug": "drawgle",
+    "title": "Drawgle",
+    "description": "Design mobile apps in minutes.",
+    "category": "Landing Pages",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "ecompin",
+    "title": "EcomPin - Aesthetic Publishing Engine",
+    "description": "Premium Pinterest publishing platform that transforms product catalogs into high-end lifestyle assets.",
+    "category": "Landing Pages",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "aligno-landing",
+    "title": "Final Aligno Landing Page",
+    "description": "A pixel-perfect recreation of the Aligno hero section with sophisticated grid layouts and lighting effects.",
+    "category": "Hero & Motion",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "react-dom",
+      "cobe",
+      "clsx",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "founder-pricing",
+    "title": "Founder Pricing Page",
+    "description": "A high-fidelity recreation of a modern, typographic pricing section with retro-industrial aesthetics.",
+    "category": "Pricing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "react-dom"
+    ]
+  },
+  {
+    "slug": "fundora-dashboard",
+    "title": "Fundora Dashboard",
+    "description": "Premium financial dashboard cloned from reference image.",
+    "category": "Dashboards",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "recharts",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "agenwrite-growth-engine",
+    "title": "Good copy of AgenWrite",
+    "description": "High-conversion waitlist page for AgenWrite, an answer-focused content strategy service.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "react-dom",
+      "lucide-react"
+    ]
+  },
+  {
+    "slug": "influence-hero",
+    "title": "Influence Hero Section",
+    "description": "A pixel-perfect recreation of a premium landing page hero section featuring a modern aesthetic, responsive layout, and sophisticated UI elements.",
+    "category": "Hero & Motion",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "react-dom"
+    ]
+  },
+  {
+    "slug": "intelligent-systems",
+    "title": "Intelligent Systems Landing Page",
+    "description": "A dark-themed, sci-fi inspired hero section with custom SVG background patterns, modular data pipeline diagrams, and inner-shadow buttons.",
+    "category": "Hero & Motion",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "kinetik",
+    "title": "Kinetik Landing Page",
+    "description": "A pixel-perfect, responsive recreation of the Kinetik Framer template landing page featuring floating UI elements, glassmorphism, and modern typography.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react-dom",
+      "lucide-react",
+      "react",
+      "recharts"
+    ]
+  },
+  {
+    "slug": "loomauth",
+    "title": "LoomAuth",
+    "description": "The open-source authentication layer designed for modern frameworks. Drop in 5 lines of code and secure your app instantly.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "react-dom",
+      "uuid",
+      "lucide-react",
+      "three",
+      "@react-three/drei",
+      "@react-three/fiber"
+    ]
+  },
+  {
+    "slug": "lucid-ledger",
+    "title": "Lucid Ledger",
+    "description": "A premium personal & SMB financial management dashboard with high-fidelity data visualizations.",
+    "category": "Dashboards",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "recharts",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "minto-dashboard",
+    "title": "Minto Dashboard",
+    "description": "Financial dashboard overview mimicking the premium Minto ui/ux.",
+    "category": "Dashboards",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "stripdo",
+    "title": "New stripdo",
+    "description": "A high-fidelity recreation of the CreatorFlow hero section with premium responsiveness and interactions.",
+    "category": "Hero & Motion",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "react",
+      "react-dom",
+      "lucide-react"
+    ]
+  },
+  {
+    "slug": "nousu-saas",
+    "title": "Nousu SaaS Landing Page",
+    "description": "A soft, airy, and modern SaaS hero section featuring a giant pink gradient container, 3D typography styling, and an overlapping chat UI mockup.",
+    "category": "Hero & Motion",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "portfolio-hero",
+    "title": "Portfolio Hero",
+    "description": "Portfolio hero with scroll-driven stacking neo-brutalist project deck system.",
+    "category": "Hero & Motion",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "premium-bento",
+    "title": "Premium Bento Grid",
+    "description": "A modern, Apple-esque bento grid with complex Framer Motion micro-interactions.",
+    "category": "Bento Grids",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "apex-dashboard",
+    "title": "Apex Analytics Dashboard",
+    "description": "A high-performance modern SaaS metrics dashboard with interactive revenue charts, user conversion funnels, and system performance widgets.",
+    "category": "Dashboards",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "recharts",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "motion-bento",
+    "title": "Premium Motion Bento Grid",
+    "description": "A high-end bento grid with complex motion graphics and animations, built with React and Framer Motion.",
+    "category": "Bento Grids",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "quick-14-studio",
+    "title": "Quick 14 Studio",
+    "description": "A premium, high-fidelity landing page for a web design agency specializing in conversion optimization.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "lucide-react",
+      "react-dom",
+      "react"
+    ]
+  },
+  {
+    "slug": "refind-ai",
+    "title": "refind copy",
+    "description": "d",
+    "category": "Landing Pages",
+    "entry_file": "src\\App.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@tailwindcss/vite",
+      "@vitejs/plugin-react",
+      "lucide-react",
+      "react",
+      "react-dom",
+      "vite",
+      "express",
+      "dotenv",
+      "motion"
+    ]
+  },
+  {
+    "slug": "pfp-ai",
+    "title": "Remix: PFPfor.me",
+    "description": "A modern, AI-powered passport photo maker tool.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "@google/genai",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ]
+  },
+  {
+    "slug": "scale-ai-hero",
+    "title": "Scale AI Hero UI",
+    "description": "Modern hero section with smooth scroll, minimal animations, and interactive typography.",
+    "category": "Hero & Motion",
+    "entry_file": "src\\App.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@tailwindcss/vite",
+      "@vitejs/plugin-react",
+      "lucide-react",
+      "react",
+      "react-dom",
+      "vite",
+      "express",
+      "dotenv",
+      "motion"
+    ]
+  },
+  {
+    "slug": "sequence-dashboard",
+    "title": "Outreach Sequence Dashboard",
+    "description": "A soft, minimal SaaS dashboard for managing outreach sequences with a calm, matte design.",
+    "category": "Dashboards",
+    "entry_file": "app\\page.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@hookform/resolvers",
+      "autoprefixer",
+      "class-variance-authority",
+      "clsx",
+      "framer-motion",
+      "lucide-react",
+      "motion",
+      "next",
+      "postcss",
+      "react",
+      "react-dom",
+      "tailwind-merge"
+    ]
+  },
+  {
+    "slug": "skywrite-ai",
+    "title": "SkyWrite AI",
+    "description": "An AI-powered blog writer that creates human-like, SEO-ready content optimized for modern search engines like Google, Perplexity, and Gemini.",
+    "category": "Landing Pages",
+    "entry_file": "App.tsx",
+    "dependencies": [
+      "lucide-react",
+      "@google/genai",
+      "react-dom",
+      "react"
+    ]
+  },
+  {
+    "slug": "thinking-orbs",
+    "title": "Thinking Orbs",
+    "description": "Animated thinking orb loading indicators for AI and agent UIs with multiple hand-tuned states, sizes, and theme support.",
+    "category": "Hero & Motion",
+    "entry_file": "demo\\App.tsx",
+    "dependencies": []
+  },
+  {
+    "slug": "retro-camera",
+    "title": "Retro Polaroid AI Studio",
+    "description": "A playful, vintage-inspired AI camera experience with skeuomorphic polaroids, tape effects, and photo transformations.",
+    "category": "Landing Pages",
+    "entry_file": "src\\App.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@tailwindcss/vite",
+      "@vitejs/plugin-react",
+      "lucide-react",
+      "react",
+      "react-dom",
+      "vite",
+      "express",
+      "dotenv",
+      "motion"
+    ]
+  },
+  {
+    "slug": "vertical-motion",
+    "title": "vertical motion landing page",
+    "description": "vertical motion landing page",
+    "category": "Landing Pages",
+    "entry_file": "src\\App.tsx",
+    "dependencies": [
+      "@google/genai",
+      "@tailwindcss/vite",
+      "@vitejs/plugin-react",
+      "lucide-react",
+      "react",
+      "react-dom",
+      "vite",
+      "express",
+      "dotenv",
+      "better-sqlite3",
+      "motion"
+    ]
+  }
+]

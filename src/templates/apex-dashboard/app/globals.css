@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-accent-orange: #FF8A00;
+  --color-accent-green: #22C55E;
+  --color-accent-red: #EF4444;
+  --color-bg-canvas: #0D0D0E;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background-color: var(--color-bg-canvas);
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Helper text colors */
+.text-primary { color: rgba(255, 255, 255, 0.95); }
+.text-secondary { color: rgba(255, 255, 255, 0.68); }
+.text-muted { color: rgba(255, 255, 255, 0.45); }
+.text-disabled { color: rgba(255, 255, 255, 0.28); }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

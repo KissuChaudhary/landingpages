@@ -1,0 +1,8 @@
+{
+  "/api/download/[slug]/route": "/api/download/[slug]",
+  "/_not-found/page": "/_not-found",
+  "/demo/[slug]/page": "/demo/[slug]",
+  "/page": "/",
+  "/template/[slug]/page": "/template/[slug]",
+  "/preview/[slug]/page": "/preview/[slug]"
+}
