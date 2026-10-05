@@ -102,29 +102,29 @@ export const TEMPLATES: TemplateItem[] = [
       "detailUrl": "/template/create-studio"
     },
     {
-      "slug": "creatorflow",
-      "title": "CreatorFlow Studio Platform",
+      "slug": "cutroom",
+      "title": "Cutroom: Video Editing Studio Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
-      "badge": "Workflow",
-      "description": "Streamlined creator automation workflow landing page with dynamic timeline previews and multi-channel sync.",
+      "badge": "Creator Studio",
+      "description": "A landing page for video editing studios and creator agencies. Timeline-style hero, service selector, retention chart, edit-decision-list process, pricing calculator and pinned comments, all driven from one config file.",
       "tags": [
-        "Automation",
-        "Workflow",
-        "Creator Economy",
-        "SaaS"
+        "Video Studio",
+        "Creator Agency",
+        "Tailwind v4",
+        "Next.js 15"
       ],
       "features": [
-        "Timeline Automation Flow",
-        "Channel Sync Metrics",
-        "Integrations Grid",
-        "Dark Neumorphism"
+        "Editor-style hero with timeline and playhead",
+        "Retention chart with numbered markers",
+        "Pricing calculator with volume discounts",
+        "One config file and one colour palette"
       ],
-      "accentColor": "from-blue-600 to-cyan-500",
-      "downloadUrl": "/downloads/creatorflow.zip",
-      "previewUrl": "/preview/creatorflow",
-      "demoUrl": "/demo/creatorflow",
-      "detailUrl": "/template/creatorflow"
+      "accentColor": "from-orange-500 to-red-500",
+      "downloadUrl": "",
+      "previewUrl": "/preview/cutroom",
+      "demoUrl": "/demo/cutroom",
+      "detailUrl": "/template/cutroom"
     },
     {
       "slug": "drawgle",
