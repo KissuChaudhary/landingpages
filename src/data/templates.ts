@@ -255,25 +255,25 @@ export const TEMPLATES: TemplateItem[] = [
     },
     {
       "slug": "influence-hero",
-      "title": "Influence Brand Ambassador Hero",
-      "category": "Hero & Motion",
+      "title": "Influence: Short-Form Video Studio Landing Page",
+      "category": "Landing Pages",
       "defaultTheme": "light",
-      "badge": "Hero",
-      "description": "High-energy influencer marketing hero section with floating social metric bubbles and creator verification pills.",
+      "badge": "Creator Agency",
+      "description": "A high-energy landing page for short-form video studios and creator agencies. Platform badges in the headline, a phone with floating metrics, drawn video thumbnails with a working filter, case-study charts, a dark process timeline and a comparison-table price with a billing switch. No photos to license.",
       "tags": [
-        "Influencer",
-        "Social Media",
-        "Hero UI",
-        "Motion"
+        "Creator Agency",
+        "Short-Form Video",
+        "Tailwind v4",
+        "Next.js 15"
       ],
       "features": [
-        "Floating Follower Badges",
-        "Dynamic Brand Counter",
-        "Micro-Interactions",
-        "Mobile Stack Layout"
+        "Phone hero with floating, counting metrics",
+        "Filterable wall of drawn video thumbnails",
+        "Case-study charts drawn from your numbers",
+        "Comparison pricing with a billing switch"
       ],
-      "accentColor": "from-purple-500 to-pink-500",
-      "downloadUrl": "/downloads/influence-hero.zip",
+      "accentColor": "from-orange-400 to-amber-500",
+      "downloadUrl": "",
       "previewUrl": "/preview/influence-hero",
       "demoUrl": "/demo/influence-hero",
       "detailUrl": "/template/influence-hero"
