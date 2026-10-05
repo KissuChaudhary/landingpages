@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Eye, ArrowRight, Download, Sparkles } from 'lucide-react';
+import { Eye, ArrowRight, Sparkles } from 'lucide-react';
 import type { TemplateItem } from '@/data/templates';
 
 interface TemplateCardProps {
@@ -105,14 +105,6 @@ export default function TemplateCard({ template }: TemplateCardProps) {
           </Link>
 
           <div className="flex items-center gap-2">
-            <a
-              href={template.downloadUrl}
-              download
-              title="Download Template Zip"
-              className="flex size-7 items-center justify-center rounded-lg border border-black/[0.08] bg-white text-[#777] hover:text-[#181925] hover:border-black/20 transition-colors"
-            >
-              <Download className="size-3.5" />
-            </a>
 
             <Link
               href={template.detailUrl}

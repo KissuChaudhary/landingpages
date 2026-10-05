@@ -1,6 +1,0 @@
-{
-  "name": "Outreach Sequence Dashboard",
-  "description": "A soft, minimal SaaS dashboard for managing outreach sequences with a calm, matte design.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

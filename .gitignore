@@ -41,3 +41,9 @@ Thumbs.db
 .vscode/
 *.sw?
 
+
+# second dev server build dir (see next.config.ts)
+.next-hv/
+
+# Template zips are no longer offered for download
+public/downloads/

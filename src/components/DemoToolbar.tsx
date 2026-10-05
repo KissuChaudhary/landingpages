@@ -10,7 +10,6 @@ import {
   Smartphone,
   ExternalLink,
   RotateCw,
-  Download,
   ArrowRight
 } from 'lucide-react';
 import type { TemplateItem } from '@/data/templates';
@@ -148,14 +147,6 @@ export default function DemoToolbar({
           <ExternalLink className="size-3.5" />
         </Link>
 
-        <a
-          href={template.downloadUrl}
-          download
-          className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-black/[0.08] bg-white px-3.5 py-1.5 text-xs font-medium text-[#181925] hover:bg-neutral-50 transition-colors shadow-2xs"
-        >
-          <Download className="size-3.5 text-[#777]" />
-          <span>Download Zip</span>
-        </a>
 
         <Link
           href="/#pricing"

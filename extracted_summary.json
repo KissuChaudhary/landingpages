@@ -561,33 +561,6 @@
     ]
   },
   {
-    "slug": "thinking-orbs",
-    "title": "Thinking Orbs",
-    "description": "Animated thinking orb loading indicators for AI and agent UIs with multiple hand-tuned states, sizes, and theme support.",
-    "category": "Hero & Motion",
-    "entry_file": "demo\\App.tsx",
-    "dependencies": []
-  },
-  {
-    "slug": "retro-camera",
-    "title": "Retro Polaroid AI Studio",
-    "description": "A playful, vintage-inspired AI camera experience with skeuomorphic polaroids, tape effects, and photo transformations.",
-    "category": "Landing Pages",
-    "entry_file": "src\\App.tsx",
-    "dependencies": [
-      "@google/genai",
-      "@tailwindcss/vite",
-      "@vitejs/plugin-react",
-      "lucide-react",
-      "react",
-      "react-dom",
-      "vite",
-      "express",
-      "dotenv",
-      "motion"
-    ]
-  },
-  {
     "slug": "vertical-motion",
     "title": "vertical motion landing page",
     "description": "vertical motion landing page",

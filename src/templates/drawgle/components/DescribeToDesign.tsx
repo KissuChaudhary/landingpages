@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 import React, { useState, useEffect } from 'react';
 import { Settings, ArrowRight, Check, Activity, Flame, ChevronRight, MapPin, Trophy, ChevronLeft, ShoppingBag, Home, Search, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function DescribeToDesign() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -471,3 +471,4 @@ export default function DescribeToDesign() {
     </section>
   );
 }
+

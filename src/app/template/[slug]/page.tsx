@@ -9,7 +9,6 @@ import TemplateCard from '@/components/TemplateCard';
 import { getTemplateBySlug, TEMPLATES } from '@/data/templates';
 import {
   Eye,
-  Download,
   CheckCircle2,
   Sparkles,
   ArrowRight
@@ -93,14 +92,6 @@ export default function TemplateDetailPage({ params }: TemplateDetailPageProps) 
                   <span>Launch Live Demo</span>
                 </Link>
 
-                <a
-                  href={template.downloadUrl}
-                  download
-                  className="inline-flex items-center gap-1.5 rounded-full border border-black/[0.1] bg-white px-5 py-2.5 text-sm font-medium text-[#181925] hover:bg-neutral-50 transition-colors shadow-2xs"
-                >
-                  <Download className="size-4 text-[#777]" />
-                  <span>Download Zip</span>
-                </a>
               </div>
 
               <div className="mt-6 flex items-center gap-6 text-xs text-[#777]">

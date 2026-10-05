@@ -1,8 +1,0 @@
-{
-  "name": "Thinking Orbs",
-  "description": "Animated thinking orb loading indicators for AI and agent UIs with multiple hand-tuned states, sizes, and theme support.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}

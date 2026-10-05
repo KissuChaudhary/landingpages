@@ -26,881 +26,691 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
-  {
-    "slug": "agenwrite-geo",
-    "title": "AgenWrite GEO Infrastructure",
-    "category": "Landing Pages",
-    "defaultTheme": "dark",
-    "badge": "Infrastructure",
-    "description": "High-tech terminal & bento infrastructure landing page engineered for AI devtools and distributed cloud platforms.",
-    "tags": [
-      "DevTools",
-      "Bento Grid",
-      "Terminal UI",
-      "Dark Mode"
-    ],
-    "features": [
-      "Live Terminal Emulation",
-      "Interactive Bento Grid",
-      "Comparison Matrix",
-      "Performance Charts"
-    ],
-    "accentColor": "from-emerald-500 to-cyan-500",
-    "downloadUrl": "/downloads/agenwrite-geo.zip",
-    "previewUrl": "/preview/agenwrite-geo",
-    "demoUrl": "/demo/agenwrite-geo",
-    "detailUrl": "/template/agenwrite-geo"
-  },
-  {
-    "slug": "ai-agency",
-    "title": "Aura AI Web Design Agency",
-    "category": "Landing Pages",
-    "defaultTheme": "dark",
-    "badge": "Agency",
-    "description": "Sleek creative agency showcase with dark mode aesthetic, smooth case study carousels, and conversion funnel.",
-    "tags": [
-      "Creative Agency",
-      "Portfolio",
-      "Next.js 15",
-      "Tailwind v4"
-    ],
-    "features": [
-      "Case Study Showcase",
-      "Service Offerings",
-      "Interactive Testimonials",
-      "Lead Capture Form"
-    ],
-    "accentColor": "from-purple-500 to-indigo-500",
-    "downloadUrl": "/downloads/ai-agency.zip",
-    "previewUrl": "/preview/ai-agency",
-    "demoUrl": "/demo/ai-agency",
-    "detailUrl": "/template/ai-agency"
-  },
-  {
-    "slug": "magnetic-grid",
-    "title": "Magnetic Grid Interactive Hero",
-    "category": "Hero & Motion",
-    "defaultTheme": "dark",
-    "badge": "Component",
-    "description": "Mesmerizing interactive background grid with cursor-tracking magnetic physics and dynamic ambient illumination.",
-    "tags": [
-      "Hero Component",
-      "Interactive Canvas",
-      "Motion",
-      "Tailwind"
-    ],
-    "features": [
-      "Cursor Magnetic Physics",
-      "Dynamic Ambient Lighting",
-      "Zero-Lag Frameloop",
-      "Responsive Breakpoints"
-    ],
-    "accentColor": "from-blue-500 to-indigo-600",
-    "downloadUrl": "/downloads/magnetic-grid.zip",
-    "previewUrl": "/preview/magnetic-grid",
-    "demoUrl": "/demo/magnetic-grid",
-    "detailUrl": "/template/magnetic-grid"
-  },
-  {
-    "slug": "clearnotes-hero",
-    "title": "ClearNotes Minimalist Hero",
-    "category": "Hero & Motion",
-    "defaultTheme": "light",
-    "badge": "Hero",
-    "description": "Refined distraction-free hero section for modern productivity apps, note taking tools, and AI copilot software.",
-    "tags": [
-      "Productivity",
-      "Minimalist",
-      "Hero Section",
-      "Next.js"
-    ],
-    "features": [
-      "Clean Typography Hierarchy",
-      "Subtle Border Shimmers",
-      "Floating Floating UI Badges",
-      "Mobile Optimized"
-    ],
-    "accentColor": "from-amber-500 to-orange-500",
-    "downloadUrl": "/downloads/clearnotes-hero.zip",
-    "previewUrl": "/preview/clearnotes-hero",
-    "demoUrl": "/demo/clearnotes-hero",
-    "detailUrl": "/template/clearnotes-hero"
-  },
-  {
-    "slug": "agentwrite-growth",
-    "title": "AgentWrite Conversion Engine",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "High-Converting",
-    "description": "Persuasive sales copywriting SaaS landing page featuring pain-point breakdowns and sniffing test comparisons.",
-    "tags": [
-      "Marketing SaaS",
-      "Copywriting",
-      "Sales Funnel",
-      "Conversion"
-    ],
-    "features": [
-      "Pain Point Highlighter",
-      "Sniff Test Engine",
-      "Feature Deep Dive",
-      "Trust Metrics"
-    ],
-    "accentColor": "from-rose-500 to-pink-500",
-    "downloadUrl": "/downloads/agentwrite-growth.zip",
-    "previewUrl": "/preview/agentwrite-growth",
-    "demoUrl": "/demo/agentwrite-growth",
-    "detailUrl": "/template/agentwrite-growth"
-  },
-  {
-    "slug": "agenwrite-enterprise",
-    "title": "AgenWrite Enterprise GEO",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Enterprise",
-    "description": "Enterprise-grade landing page with virtual team collaboration views, SEO architecture graphs, and scaling benchmarks.",
-    "tags": [
-      "Enterprise",
-      "B2B SaaS",
-      "Scalability",
-      "Architecture"
-    ],
-    "features": [
-      "Virtual Team Topology",
-      "SEO Engine Visualizer",
-      "Global Scale Metrics",
-      "Interactive Architecture"
-    ],
-    "accentColor": "from-teal-500 to-emerald-600",
-    "downloadUrl": "/downloads/agenwrite-enterprise.zip",
-    "previewUrl": "/preview/agenwrite-enterprise",
-    "demoUrl": "/demo/agenwrite-enterprise",
-    "detailUrl": "/template/agenwrite-enterprise"
-  },
-  {
-    "slug": "create-studio",
-    "title": "Create Studio Media Landing",
-    "category": "Landing Pages",
-    "defaultTheme": "dark",
-    "badge": "Creative",
-    "description": "Vibrant and punchy landing page built for digital creators, podcasters, and video production studios.",
-    "tags": [
-      "Media",
-      "Creators",
-      "Video Studio",
-      "Modern"
-    ],
-    "features": [
-      "Creator Portfolio Grid",
-      "Audio/Video Showreel",
-      "Tiered Membership",
-      "Social Integrations"
-    ],
-    "accentColor": "from-violet-500 to-fuchsia-500",
-    "downloadUrl": "/downloads/create-studio.zip",
-    "previewUrl": "/preview/create-studio",
-    "demoUrl": "/demo/create-studio",
-    "detailUrl": "/template/create-studio"
-  },
-  {
-    "slug": "creatorflow",
-    "title": "CreatorFlow Studio Platform",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Workflow",
-    "description": "Streamlined creator automation workflow landing page with dynamic timeline previews and multi-channel sync.",
-    "tags": [
-      "Automation",
-      "Workflow",
-      "Creator Economy",
-      "SaaS"
-    ],
-    "features": [
-      "Timeline Automation Flow",
-      "Channel Sync Metrics",
-      "Integrations Grid",
-      "Dark Neumorphism"
-    ],
-    "accentColor": "from-blue-600 to-cyan-500",
-    "downloadUrl": "/downloads/creatorflow.zip",
-    "previewUrl": "/preview/creatorflow",
-    "demoUrl": "/demo/creatorflow",
-    "detailUrl": "/template/creatorflow"
-  },
-  {
-    "slug": "drawgle",
-    "title": "Drawgle Infinite Canvas",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Collaborative",
-    "description": "Collaborative digital whiteboard SaaS landing page with floating navigation, glassmorphic menus, and feature pins.",
-    "tags": [
-      "Whiteboard",
-      "Collaboration",
-      "Canvas",
-      "Next.js"
-    ],
-    "features": [
-      "Floating Pill Navigation",
-      "Interactive Canvas Preview",
-      "Pain Point Comparison",
-      "Realtime Sync Badges"
-    ],
-    "accentColor": "from-yellow-400 to-orange-500",
-    "downloadUrl": "/downloads/drawgle.zip",
-    "previewUrl": "/preview/drawgle",
-    "demoUrl": "/demo/drawgle",
-    "detailUrl": "/template/drawgle"
-  },
-  {
-    "slug": "ecompin",
-    "title": "EcomPin Publishing Engine",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "E-Commerce",
-    "description": "Aesthetic automated publishing engine for modern DTC brands, shopify stores, and visual merchandising teams.",
-    "tags": [
-      "E-Commerce",
-      "Publishing",
-      "Visual Merch",
-      "Next.js 15"
-    ],
-    "features": [
-      "Automated Pin Scheduler",
-      "Visual Catalog Generator",
-      "Conversion Attribution",
-      "Brand Presets"
-    ],
-    "accentColor": "from-pink-500 to-rose-600",
-    "downloadUrl": "/downloads/ecompin.zip",
-    "previewUrl": "/preview/ecompin",
-    "demoUrl": "/demo/ecompin",
-    "detailUrl": "/template/ecompin"
-  },
-  {
-    "slug": "aligno-landing",
-    "title": "Aligno Team Alignment SaaS",
-    "category": "Landing Pages",
-    "defaultTheme": "dark",
-    "badge": "Teamwork",
-    "description": "Executive team alignment and OKR tracking platform with glowing cards, timeline milestones, and team pulse checks.",
-    "tags": [
-      "B2B SaaS",
-      "OKRs",
-      "Leadership",
-      "Alignment"
-    ],
-    "features": [
-      "OKR Milestone Tracker",
-      "Team Pulse Visualizer",
-      "Executive Dashboard Preview",
-      "Integration Matrix"
-    ],
-    "accentColor": "from-indigo-500 to-violet-600",
-    "downloadUrl": "/downloads/aligno-landing.zip",
-    "previewUrl": "/preview/aligno-landing",
-    "demoUrl": "/demo/aligno-landing",
-    "detailUrl": "/template/aligno-landing"
-  },
-  {
-    "slug": "founder-pricing",
-    "title": "Metallic Founder Pricing Page",
-    "category": "Pricing Pages",
-    "defaultTheme": "light",
-    "badge": "Luxury UI",
-    "description": "Stunning brushed-metal and iridescent luxury pricing cards with interactive billing toggles and tier comparisons.",
-    "tags": [
-      "Pricing Table",
-      "Luxury Aesthetics",
-      "Skeuomorphism",
-      "Motion"
-    ],
-    "features": [
-      "Brushed Metal Gradient Cards",
-      "Annual/Monthly Switcher",
-      "Feature Comparison Matrix",
-      "Interactive CTAs"
-    ],
-    "accentColor": "from-slate-400 to-zinc-600",
-    "downloadUrl": "/downloads/founder-pricing.zip",
-    "previewUrl": "/preview/founder-pricing",
-    "demoUrl": "/demo/founder-pricing",
-    "detailUrl": "/template/founder-pricing"
-  },
-  {
-    "slug": "fundora-dashboard",
-    "title": "Fundora Investment Dashboard",
-    "category": "Dashboards",
-    "defaultTheme": "light",
-    "badge": "Fintech",
-    "description": "Complete investment management dashboard with portfolio allocation graphs, dividend tracking, and asset breakdown.",
-    "tags": [
-      "Fintech",
-      "Analytics",
-      "Recharts",
-      "Next.js 15"
-    ],
-    "features": [
-      "Interactive Portfolio Graphs",
-      "Asset Allocation Donut",
-      "Transaction History Table",
-      "Quick Deposit Flow"
-    ],
-    "accentColor": "from-emerald-500 to-teal-600",
-    "downloadUrl": "/downloads/fundora-dashboard.zip",
-    "previewUrl": "/preview/fundora-dashboard",
-    "demoUrl": "/demo/fundora-dashboard",
-    "detailUrl": "/template/fundora-dashboard"
-  },
-  {
-    "slug": "agenwrite-growth-engine",
-    "title": "AgenWrite Growth Engine",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Growth SaaS",
-    "description": "Comprehensive SaaS growth platform featuring ticker feeds, product showcase tabs, live examples, and winning systems.",
-    "tags": [
-      "Growth",
-      "Viral Waitlist",
-      "Showcase Tabs",
-      "Interactive"
-    ],
-    "features": [
-      "Winning System Engine",
-      "Live Customer Ticker",
-      "Tabbed Product Walkthrough",
-      "Viral Waitlist Component"
-    ],
-    "accentColor": "from-blue-500 to-cyan-500",
-    "downloadUrl": "/downloads/agenwrite-growth-engine.zip",
-    "previewUrl": "/preview/agenwrite-growth-engine",
-    "demoUrl": "/demo/agenwrite-growth-engine",
-    "detailUrl": "/template/agenwrite-growth-engine"
-  },
-  {
-    "slug": "influence-hero",
-    "title": "Influence Brand Ambassador Hero",
-    "category": "Hero & Motion",
-    "defaultTheme": "light",
-    "badge": "Hero",
-    "description": "High-energy influencer marketing hero section with floating social metric bubbles and creator verification pills.",
-    "tags": [
-      "Influencer",
-      "Social Media",
-      "Hero UI",
-      "Motion"
-    ],
-    "features": [
-      "Floating Follower Badges",
-      "Dynamic Brand Counter",
-      "Micro-Interactions",
-      "Mobile Stack Layout"
-    ],
-    "accentColor": "from-purple-500 to-pink-500",
-    "downloadUrl": "/downloads/influence-hero.zip",
-    "previewUrl": "/preview/influence-hero",
-    "demoUrl": "/demo/influence-hero",
-    "detailUrl": "/template/influence-hero"
-  },
-  {
-    "slug": "intelligent-systems",
-    "title": "Intelligent Systems Autonomous AI",
-    "category": "Landing Pages",
-    "defaultTheme": "dark",
-    "badge": "Autonomous AI",
-    "description": "Cutting-edge autonomous agent infrastructure landing page with reactive neural nodes and real-time processing cards.",
-    "tags": [
-      "AI Agents",
-      "Deep Tech",
-      "Next.js 15",
-      "Futuristic"
-    ],
-    "features": [
-      "Neural Node Grid",
-      "Autonomous Execution Steps",
-      "Telemetry Monitoring",
-      "API Docs Snippet"
-    ],
-    "accentColor": "from-cyan-400 to-blue-600",
-    "downloadUrl": "/downloads/intelligent-systems.zip",
-    "previewUrl": "/preview/intelligent-systems",
-    "demoUrl": "/demo/intelligent-systems",
-    "detailUrl": "/template/intelligent-systems"
-  },
-  {
-    "slug": "kinetik",
-    "title": "Kinetik Motion Typography SaaS",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Design Tool",
-    "description": "Dynamic landing page for web typography and kinetic animation software with bold type effects and sound-wave cues.",
-    "tags": [
-      "Typography",
-      "Motion Design",
-      "Creative SaaS",
-      "Animation"
-    ],
-    "features": [
-      "Kinetic Type Effects",
-      "Animation Presets Showcase",
-      "Realtime Keyframe Timeline",
-      "Export Options"
-    ],
-    "accentColor": "from-red-500 to-rose-600",
-    "downloadUrl": "/downloads/kinetik.zip",
-    "previewUrl": "/preview/kinetik",
-    "demoUrl": "/demo/kinetik",
-    "detailUrl": "/template/kinetik"
-  },
-  {
-    "slug": "loomauth",
-    "title": "LoomAuth Next-Gen Auth Platform",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Security",
-    "description": "Developer-first authentication infrastructure landing page with biometric login previews, passkey flows, and SDK tabs.",
-    "tags": [
-      "Auth",
-      "Cybersecurity",
-      "Developer Tools",
-      "Passkeys"
-    ],
-    "features": [
-      "Biometric Passkey Demo",
-      "Multi-Language SDK Tabs",
-      "Session Token Inspector",
-      "Security Compliance Badges"
-    ],
-    "accentColor": "from-emerald-400 to-green-600",
-    "downloadUrl": "/downloads/loomauth.zip",
-    "previewUrl": "/preview/loomauth",
-    "demoUrl": "/demo/loomauth",
-    "detailUrl": "/template/loomauth"
-  },
-  {
-    "slug": "lucid-ledger",
-    "title": "Lucid Ledger Crypto & Asset Dashboard",
-    "category": "Dashboards",
-    "defaultTheme": "light",
-    "badge": "Web3 / Finance",
-    "description": "Minimalist decentralized asset intelligence dashboard with live candlestick charts, liquidity metrics, and balance heatmaps.",
-    "tags": [
-      "Crypto",
-      "DeFi Dashboard",
-      "Recharts",
-      "Next.js 15"
-    ],
-    "features": [
-      "Multi-Chain Liquidity Map",
-      "Interactive Candlestick Chart",
-      "Yield Aggregation Card",
-      "Gas Tracker Widget"
-    ],
-    "accentColor": "from-purple-500 to-cyan-500",
-    "downloadUrl": "/downloads/lucid-ledger.zip",
-    "previewUrl": "/preview/lucid-ledger",
-    "demoUrl": "/demo/lucid-ledger",
-    "detailUrl": "/template/lucid-ledger"
-  },
-  {
-    "slug": "minto-dashboard",
-    "title": "Minto Financial Ledger",
-    "category": "Dashboards",
-    "defaultTheme": "light",
-    "badge": "Fintech",
-    "description": "Minimalist Scandinavian fintech dashboard with monthly spending projections, revenue run-rates, and invoice managers.",
-    "tags": [
-      "Fintech",
-      "Expense Management",
-      "Next.js",
-      "Clean UI"
-    ],
-    "features": [
-      "Run-Rate Analytics",
-      "Invoice Tracker Table",
-      "Cash Flow Projections",
-      "Clean Minimalist Theme"
-    ],
-    "accentColor": "from-sky-500 to-blue-600",
-    "downloadUrl": "/downloads/minto-dashboard.zip",
-    "previewUrl": "/preview/minto-dashboard",
-    "demoUrl": "/demo/minto-dashboard",
-    "detailUrl": "/template/minto-dashboard"
-  },
-  {
-    "slug": "stripdo",
-    "title": "Stripdo Developer Payments Platform",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Payments",
-    "description": "Stripe-inspired developer billing and checkout orchestration platform with floating payment cards and code snippets.",
-    "tags": [
-      "Payments",
-      "API Platform",
-      "Fintech",
-      "SaaS"
-    ],
-    "features": [
-      "Floating Credit Card Previews",
-      "Interactive Terminal API",
-      "Multi-Currency Matrix",
-      "Fraud Shield Section"
-    ],
-    "accentColor": "from-indigo-600 to-purple-600",
-    "downloadUrl": "/downloads/stripdo.zip",
-    "previewUrl": "/preview/stripdo",
-    "demoUrl": "/demo/stripdo",
-    "detailUrl": "/template/stripdo"
-  },
-  {
-    "slug": "nousu-saas",
-    "title": "Nousu Soft Gradient SaaS",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Modern SaaS",
-    "description": "Airy, soft aesthetic SaaS hero and features section with giant pink gradient containers and 3D typography styling.",
-    "tags": [
-      "SaaS Landing",
-      "Soft Gradient",
-      "3D Typography",
-      "Next.js 15"
-    ],
-    "features": [
-      "Giant Gradient Card Container",
-      "Overlapping Chat Mockup",
-      "3D Typography Ribbon Logo",
-      "Customer Social Proof"
-    ],
-    "accentColor": "from-pink-400 to-rose-400",
-    "downloadUrl": "/downloads/nousu-saas.zip",
-    "previewUrl": "/preview/nousu-saas",
-    "demoUrl": "/demo/nousu-saas",
-    "detailUrl": "/template/nousu-saas"
-  },
-  {
-    "slug": "portfolio-hero",
-    "title": "Dynamic Developer Portfolio Hero",
-    "category": "Hero & Motion",
-    "defaultTheme": "light",
-    "badge": "Portfolio",
-    "description": "Interactive personal portfolio hero with live digital clock, floating project card deck, and ambient lighting.",
-    "tags": [
-      "Portfolio",
-      "Project Deck",
-      "Motion",
-      "Next.js 15"
-    ],
-    "features": [
-      "Live Local Time Clock",
-      "3D Project Deck Card Flip",
-      "Status Pill Indicators",
-      "Keyboard Shortcuts"
-    ],
-    "accentColor": "from-amber-400 to-orange-600",
-    "downloadUrl": "/downloads/portfolio-hero.zip",
-    "previewUrl": "/preview/portfolio-hero",
-    "demoUrl": "/demo/portfolio-hero",
-    "detailUrl": "/template/portfolio-hero"
-  },
-  {
-    "slug": "premium-bento",
-    "title": "Aura Premium Bento Grid",
-    "category": "Bento Grids",
-    "defaultTheme": "light",
-    "badge": "Bento Grid",
-    "description": "Modern bento grid showcase with dynamic hover cards, glow borders, and integrated analytics micro-widgets.",
-    "tags": [
-      "Bento Grid",
-      "UI Components",
-      "Next.js 15",
-      "Light Mode"
-    ],
-    "features": [
-      "Responsive Bento Layout",
-      "Glow-on-Hover Borders",
-      "Embedded Micro-Charts",
-      "Custom Icon Badges"
-    ],
-    "accentColor": "from-violet-500 to-indigo-600",
-    "downloadUrl": "/downloads/premium-bento.zip",
-    "previewUrl": "/preview/premium-bento",
-    "demoUrl": "/demo/premium-bento",
-    "detailUrl": "/template/premium-bento"
-  },
-  {
-    "slug": "apex-dashboard",
-    "title": "Apex Analytics Command Center",
-    "category": "Dashboards",
-    "defaultTheme": "dark",
-    "badge": "Analytics",
-    "description": "High-performance enterprise analytics command center with interactive revenue charts, conversion funnels, and system telemetry.",
-    "tags": [
-      "Enterprise",
-      "Analytics",
-      "Command Center",
-      "Next.js 15"
-    ],
-    "features": [
-      "Top Metrics KPI Strip",
-      "Multi-Series Performance Chart",
-      "Realtime Conversion Funnel",
-      "User Activity Feed"
-    ],
-    "accentColor": "from-blue-500 to-indigo-700",
-    "downloadUrl": "/downloads/apex-dashboard.zip",
-    "previewUrl": "/preview/apex-dashboard",
-    "demoUrl": "/demo/apex-dashboard",
-    "detailUrl": "/template/apex-dashboard"
-  },
-  {
-    "slug": "motion-bento",
-    "title": "HyperMotion Bento Grid Showcase",
-    "category": "Bento Grids",
-    "defaultTheme": "light",
-    "badge": "Motion",
-    "description": "High-end bento grid featuring fluid Framer Motion animations, expanding modal cards, and interactive sliders.",
-    "tags": [
-      "Motion Bento",
-      "Framer Motion",
-      "Interactive",
-      "Next.js 15"
-    ],
-    "features": [
-      "Fluid Card Stagger Transitions",
-      "Expanding Detail Drawers",
-      "Micro-Interactions",
-      "Subtle Grain Texture"
-    ],
-    "accentColor": "from-fuchsia-500 to-purple-600",
-    "downloadUrl": "/downloads/motion-bento.zip",
-    "previewUrl": "/preview/motion-bento",
-    "demoUrl": "/demo/motion-bento",
-    "detailUrl": "/template/motion-bento"
-  },
-  {
-    "slug": "quick-14-studio",
-    "title": "Quick 14 High-Converting Studio",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Full Kit",
-    "description": "Complete agency landing page with grid background, problem-solution sections, tiered pricing, and FAQ accordion.",
-    "tags": [
-      "Agency",
-      "Full Landing",
-      "Conversion Focused",
-      "Tailwind"
-    ],
-    "features": [
-      "Geometric Grid Background",
-      "Problem vs Solution Section",
-      "Comprehensive Pricing Tiers",
-      "Collapsible FAQ"
-    ],
-    "accentColor": "from-emerald-500 to-green-600",
-    "downloadUrl": "/downloads/quick-14-studio.zip",
-    "previewUrl": "/preview/quick-14-studio",
-    "demoUrl": "/demo/quick-14-studio",
-    "detailUrl": "/template/quick-14-studio"
-  },
-  {
-    "slug": "refind-ai",
-    "title": "Refind Document AI Copilot",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "AI Copilot",
-    "description": "Smart document workspace and AI reading copilot landing page with rich text highlights, markdown preview, and chat sidebar.",
-    "tags": [
-      "Document AI",
-      "Knowledge Base",
-      "Motion",
-      "Productivity"
-    ],
-    "features": [
-      "Interactive Document Editor",
-      "Live AI Summary Sidebar",
-      "Format Toolbar Controls",
-      "Speed Reading Metrics"
-    ],
-    "accentColor": "from-blue-400 to-cyan-500",
-    "downloadUrl": "/downloads/refind-ai.zip",
-    "previewUrl": "/preview/refind-ai",
-    "demoUrl": "/demo/refind-ai",
-    "detailUrl": "/template/refind-ai"
-  },
-  {
-    "slug": "pfp-ai",
-    "title": "PFP AI Studio & Avatar Engine",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Consumer AI",
-    "description": "Modern photo generator and AI avatar maker landing page with before-and-after photo comparisons and prompt pills.",
-    "tags": [
-      "Avatar AI",
-      "Photo Studio",
-      "Consumer App",
-      "React"
-    ],
-    "features": [
-      "Before / After Photo Slider",
-      "Style Preset Selector",
-      "One-Click Generation Demo",
-      "High-Resolution Export"
-    ],
-    "accentColor": "from-purple-500 to-pink-500",
-    "downloadUrl": "/downloads/pfp-ai.zip",
-    "previewUrl": "/preview/pfp-ai",
-    "demoUrl": "/demo/pfp-ai",
-    "detailUrl": "/template/pfp-ai"
-  },
-  {
-    "slug": "scale-ai-hero",
-    "title": "Scale AI Foundation Hero UI",
-    "category": "Hero & Motion",
-    "defaultTheme": "dark",
-    "badge": "Enterprise AI",
-    "description": "Grand enterprise hero section featuring smooth parallax scrolling, high-fidelity imagery, and interactive mobile drawer.",
-    "tags": [
-      "Enterprise AI",
-      "Hero Section",
-      "Smooth Scroll",
-      "Vite"
-    ],
-    "features": [
-      "High-Res Hero Mockup",
-      "Slide-in Mobile Navigation",
-      "Interactive Callout Badges",
-      "Custom Typography"
-    ],
-    "accentColor": "from-blue-600 to-indigo-700",
-    "downloadUrl": "/downloads/scale-ai-hero.zip",
-    "previewUrl": "/preview/scale-ai-hero",
-    "demoUrl": "/demo/scale-ai-hero",
-    "detailUrl": "/template/scale-ai-hero"
-  },
-  {
-    "slug": "sequence-dashboard",
-    "title": "Sequence Studio Outreach Dashboard",
-    "category": "Dashboards",
-    "defaultTheme": "light",
-    "badge": "Sales SaaS",
-    "description": "Calm, matte-designed sales outreach dashboard for managing automated email cadences, reply tracking, and lead stages.",
-    "tags": [
-      "Sales SaaS",
-      "Outreach",
-      "Email Sequences",
-      "Next.js 15"
-    ],
-    "features": [
-      "Cadence Pipeline Stages",
-      "Open & Reply Rate Tracker",
-      "Matte Glassmorphic Cards",
-      "Quick Lead Action Bar"
-    ],
-    "accentColor": "from-amber-500 to-yellow-600",
-    "downloadUrl": "/downloads/sequence-dashboard.zip",
-    "previewUrl": "/preview/sequence-dashboard",
-    "demoUrl": "/demo/sequence-dashboard",
-    "detailUrl": "/template/sequence-dashboard"
-  },
-  {
-    "slug": "skywrite-ai",
-    "title": "SkyWrite AI SEO Copywriter",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Content AI",
-    "description": "AI-powered blog & article writer landing page optimized for search engines with live generation sandbox and process stepper.",
-    "tags": [
-      "SEO Content",
-      "Copywriting",
-      "AI Generator",
-      "SaaS"
-    ],
-    "features": [
-      "Live Prompt Sandbox Demo",
-      "3-Step Workflow Stepper",
-      "SEO Readiness Checklist",
-      "Transparent Pricing"
-    ],
-    "accentColor": "from-sky-400 to-indigo-600",
-    "downloadUrl": "/downloads/skywrite-ai.zip",
-    "previewUrl": "/preview/skywrite-ai",
-    "demoUrl": "/demo/skywrite-ai",
-    "detailUrl": "/template/skywrite-ai"
-  },
-  {
-    "slug": "thinking-orbs",
-    "title": "Thinking Orbs AI State Visualizer",
-    "category": "Hero & Motion",
-    "defaultTheme": "dark",
-    "badge": "Interactive",
-    "description": "Animated thinking orb loading indicators and agent states with multiple hand-tuned orbits, sizes, and theme toggles.",
-    "tags": [
-      "AI Visualizer",
-      "Canvas Animation",
-      "Orb Physics",
-      "Component"
-    ],
-    "features": [
-      "Working / Searching / Solving States",
-      "Dynamic Orb Physics",
-      "Dark & Light Theme Support",
-      "Custom Size Controls"
-    ],
-    "accentColor": "from-cyan-400 to-fuchsia-500",
-    "downloadUrl": "/downloads/thinking-orbs.zip",
-    "previewUrl": "/preview/thinking-orbs",
-    "demoUrl": "/demo/thinking-orbs",
-    "detailUrl": "/template/thinking-orbs"
-  },
-  {
-    "slug": "retro-camera",
-    "title": "Polaroid Retro AI Studio",
-    "category": "Landing Pages",
-    "defaultTheme": "light",
-    "badge": "Creative AI",
-    "description": "Playful vintage AI camera landing page with Polaroid frames, masking tape skeuomorphism, and retro photo effects.",
-    "tags": [
-      "Retro Skeuomorphism",
-      "Polaroid",
-      "Photography",
-      "Creative"
-    ],
-    "features": [
-      "Skeuomorphic Tape & Polaroid",
-      "Retro Filter Presets",
-      "Photo Transformation Showcase",
-      "Playful Audio Cues"
-    ],
-    "accentColor": "from-amber-600 to-rose-600",
-    "downloadUrl": "/downloads/retro-camera.zip",
-    "previewUrl": "/preview/retro-camera",
-    "demoUrl": "/demo/retro-camera",
-    "detailUrl": "/template/retro-camera"
-  },
-  {
-    "slug": "vertical-motion",
-    "title": "Velocity Vertical Parallax SaaS",
-    "category": "Landing Pages",
-    "defaultTheme": "dark",
-    "badge": "Parallax",
-    "description": "Immersive vertical scroll landing page with multi-layer parallax depths, sticky feature cards, and motion reveals.",
-    "tags": [
-      "Parallax Motion",
-      "Sticky Scroll",
-      "Animation",
-      "Modern"
-    ],
-    "features": [
-      "Vertical Parallax Sections",
-      "Sticky Scroll Container",
-      "Smooth Spring Transitions",
-      "Performance Optimized"
-    ],
-    "accentColor": "from-violet-600 to-purple-800",
-    "downloadUrl": "/downloads/vertical-motion.zip",
-    "previewUrl": "/preview/vertical-motion",
-    "demoUrl": "/demo/vertical-motion",
-    "detailUrl": "/template/vertical-motion"
-  }
+    {
+      "slug": "agenwrite-geo",
+      "title": "AgenWrite GEO Infrastructure",
+      "category": "Landing Pages",
+      "defaultTheme": "dark",
+      "badge": "Infrastructure",
+      "description": "High-tech terminal & bento infrastructure landing page engineered for AI devtools and distributed cloud platforms.",
+      "tags": [
+        "DevTools",
+        "Bento Grid",
+        "Terminal UI",
+        "Dark Mode"
+      ],
+      "features": [
+        "Live Terminal Emulation",
+        "Interactive Bento Grid",
+        "Comparison Matrix",
+        "Performance Charts"
+      ],
+      "accentColor": "from-emerald-500 to-cyan-500",
+      "downloadUrl": "/downloads/agenwrite-geo.zip",
+      "previewUrl": "/preview/agenwrite-geo",
+      "demoUrl": "/demo/agenwrite-geo",
+      "detailUrl": "/template/agenwrite-geo"
+    },
+    {
+      "slug": "clearnotes-hero",
+      "title": "ClearNotes Minimalist Hero",
+      "category": "Hero & Motion",
+      "defaultTheme": "light",
+      "badge": "Hero",
+      "description": "Refined distraction-free hero section for modern productivity apps, note taking tools, and AI copilot software.",
+      "tags": [
+        "Productivity",
+        "Minimalist",
+        "Hero Section",
+        "Next.js"
+      ],
+      "features": [
+        "Clean Typography Hierarchy",
+        "Subtle Border Shimmers",
+        "Floating Floating UI Badges",
+        "Mobile Optimized"
+      ],
+      "accentColor": "from-amber-500 to-orange-500",
+      "downloadUrl": "/downloads/clearnotes-hero.zip",
+      "previewUrl": "/preview/clearnotes-hero",
+      "demoUrl": "/demo/clearnotes-hero",
+      "detailUrl": "/template/clearnotes-hero"
+    },
+    {
+      "slug": "create-studio",
+      "title": "Create Studio Media Landing",
+      "category": "Landing Pages",
+      "defaultTheme": "dark",
+      "badge": "Creative",
+      "description": "Vibrant and punchy landing page built for digital creators, podcasters, and video production studios.",
+      "tags": [
+        "Media",
+        "Creators",
+        "Video Studio",
+        "Modern"
+      ],
+      "features": [
+        "Creator Portfolio Grid",
+        "Audio/Video Showreel",
+        "Tiered Membership",
+        "Social Integrations"
+      ],
+      "accentColor": "from-violet-500 to-fuchsia-500",
+      "downloadUrl": "/downloads/create-studio.zip",
+      "previewUrl": "/preview/create-studio",
+      "demoUrl": "/demo/create-studio",
+      "detailUrl": "/template/create-studio"
+    },
+    {
+      "slug": "creatorflow",
+      "title": "CreatorFlow Studio Platform",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Workflow",
+      "description": "Streamlined creator automation workflow landing page with dynamic timeline previews and multi-channel sync.",
+      "tags": [
+        "Automation",
+        "Workflow",
+        "Creator Economy",
+        "SaaS"
+      ],
+      "features": [
+        "Timeline Automation Flow",
+        "Channel Sync Metrics",
+        "Integrations Grid",
+        "Dark Neumorphism"
+      ],
+      "accentColor": "from-blue-600 to-cyan-500",
+      "downloadUrl": "/downloads/creatorflow.zip",
+      "previewUrl": "/preview/creatorflow",
+      "demoUrl": "/demo/creatorflow",
+      "detailUrl": "/template/creatorflow"
+    },
+    {
+      "slug": "drawgle",
+      "title": "Drawgle - AI Mobile App UI Designer",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "AI Design",
+      "description": "Design editable mobile app UI from plain text prompts or screenshots. Features live prompt composer, feature showcase films, and design token exports.",
+      "tags": [
+        "AI Mobile UI",
+        "App Designer",
+        "Tailwind HTML",
+        "Agent Handoff",
+        "Light Mode"
+      ],
+      "features": [
+        "Prompt to Mobile UI Composer",
+        "Screenshot Reconstruction Stage",
+        "Design System Token Engine",
+        "Interactive Flow Showcase"
+      ],
+      "accentColor": "from-blue-600 to-indigo-600",
+      "downloadUrl": "/downloads/drawgle.zip",
+      "previewUrl": "/preview/drawgle",
+      "demoUrl": "/demo/drawgle",
+      "detailUrl": "/template/drawgle"
+    },
+    {
+      "slug": "ecompin",
+      "title": "FIXTHIS - Software Problem Marketplace",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Marketplace",
+      "description": "Editorial serif-and-mono community board where software users call out pain points, vote ME TOO, and SaaS alternatives answer.",
+      "tags": [
+        "Marketplace",
+        "Editorial",
+        "Serif & Mono",
+        "Community Board",
+        "Light Mode"
+      ],
+      "features": [
+        "Public Problem Board",
+        "Interactive ME TOO Upvoting",
+        "Competitor Solution Matcher",
+        "Curated Category Shelves"
+      ],
+      "accentColor": "from-red-500 to-orange-600",
+      "downloadUrl": "/downloads/ecompin.zip",
+      "previewUrl": "/preview/ecompin",
+      "demoUrl": "/demo/ecompin",
+      "detailUrl": "/template/ecompin"
+    },
+    {
+      "slug": "emberline",
+      "title": "Emberline: AI SaaS Landing Page",
+      "category": "Landing Pages",
+      "defaultTheme": "dark",
+      "badge": "Next.js 15",
+      "description": "A dark, grid-framed landing page for AI and SaaS products. Hero, bento features, comparison table, pricing toggle, FAQ and footer, all driven from one config file.",
+      "tags": [
+        "AI SaaS",
+        "Dark Mode",
+        "Tailwind v4",
+        "Next.js 15"
+      ],
+      "features": [
+        "Grid-framed hero with animated energy lines",
+        "Bento features with inline illustrations",
+        "Monthly and yearly pricing toggle",
+        "One config file and one colour ramp"
+      ],
+      "accentColor": "from-orange-300 to-orange-500",
+      "downloadUrl": "",
+      "previewUrl": "/preview/emberline",
+      "demoUrl": "/demo/emberline",
+      "detailUrl": "/template/emberline"
+    },
+    {
+      "slug": "founder-pricing",
+      "title": "Metallic Founder Pricing Page",
+      "category": "Pricing Pages",
+      "defaultTheme": "light",
+      "badge": "Luxury UI",
+      "description": "Stunning brushed-metal and iridescent luxury pricing cards with interactive billing toggles and tier comparisons.",
+      "tags": [
+        "Pricing Table",
+        "Luxury Aesthetics",
+        "Skeuomorphism",
+        "Motion"
+      ],
+      "features": [
+        "Brushed Metal Gradient Cards",
+        "Annual/Monthly Switcher",
+        "Feature Comparison Matrix",
+        "Interactive CTAs"
+      ],
+      "accentColor": "from-slate-400 to-zinc-600",
+      "downloadUrl": "/downloads/founder-pricing.zip",
+      "previewUrl": "/preview/founder-pricing",
+      "demoUrl": "/demo/founder-pricing",
+      "detailUrl": "/template/founder-pricing"
+    },
+    {
+      "slug": "agenwrite-growth-engine",
+      "title": "AgenWrite Growth Engine",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Growth SaaS",
+      "description": "Comprehensive SaaS growth platform featuring ticker feeds, product showcase tabs, live examples, and winning systems.",
+      "tags": [
+        "Growth",
+        "Viral Waitlist",
+        "Showcase Tabs",
+        "Interactive"
+      ],
+      "features": [
+        "Winning System Engine",
+        "Live Customer Ticker",
+        "Tabbed Product Walkthrough",
+        "Viral Waitlist Component"
+      ],
+      "accentColor": "from-blue-500 to-cyan-500",
+      "downloadUrl": "/downloads/agenwrite-growth-engine.zip",
+      "previewUrl": "/preview/agenwrite-growth-engine",
+      "demoUrl": "/demo/agenwrite-growth-engine",
+      "detailUrl": "/template/agenwrite-growth-engine"
+    },
+    {
+      "slug": "influence-hero",
+      "title": "Influence Brand Ambassador Hero",
+      "category": "Hero & Motion",
+      "defaultTheme": "light",
+      "badge": "Hero",
+      "description": "High-energy influencer marketing hero section with floating social metric bubbles and creator verification pills.",
+      "tags": [
+        "Influencer",
+        "Social Media",
+        "Hero UI",
+        "Motion"
+      ],
+      "features": [
+        "Floating Follower Badges",
+        "Dynamic Brand Counter",
+        "Micro-Interactions",
+        "Mobile Stack Layout"
+      ],
+      "accentColor": "from-purple-500 to-pink-500",
+      "downloadUrl": "/downloads/influence-hero.zip",
+      "previewUrl": "/preview/influence-hero",
+      "demoUrl": "/demo/influence-hero",
+      "detailUrl": "/template/influence-hero"
+    },
+    {
+      "slug": "intelligent-systems",
+      "title": "Intelligent Systems Autonomous AI",
+      "category": "Landing Pages",
+      "defaultTheme": "dark",
+      "badge": "Autonomous AI",
+      "description": "Cutting-edge autonomous agent infrastructure landing page with reactive neural nodes and real-time processing cards.",
+      "tags": [
+        "AI Agents",
+        "Deep Tech",
+        "Next.js 15",
+        "Futuristic"
+      ],
+      "features": [
+        "Neural Node Grid",
+        "Autonomous Execution Steps",
+        "Telemetry Monitoring",
+        "API Docs Snippet"
+      ],
+      "accentColor": "from-cyan-400 to-blue-600",
+      "downloadUrl": "/downloads/intelligent-systems.zip",
+      "previewUrl": "/preview/intelligent-systems",
+      "demoUrl": "/demo/intelligent-systems",
+      "detailUrl": "/template/intelligent-systems"
+    },
+    {
+      "slug": "kinetik",
+      "title": "Kinetik Motion Typography SaaS",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Design Tool",
+      "description": "Dynamic landing page for web typography and kinetic animation software with bold type effects and sound-wave cues.",
+      "tags": [
+        "Typography",
+        "Motion Design",
+        "Creative SaaS",
+        "Animation"
+      ],
+      "features": [
+        "Kinetic Type Effects",
+        "Animation Presets Showcase",
+        "Realtime Keyframe Timeline",
+        "Export Options"
+      ],
+      "accentColor": "from-red-500 to-rose-600",
+      "downloadUrl": "/downloads/kinetik.zip",
+      "previewUrl": "/preview/kinetik",
+      "demoUrl": "/demo/kinetik",
+      "detailUrl": "/template/kinetik"
+    },
+    {
+      "slug": "stripdo",
+      "title": "Stripdo Developer Payments Platform",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Payments",
+      "description": "Stripe-inspired developer billing and checkout orchestration platform with floating payment cards and code snippets.",
+      "tags": [
+        "Payments",
+        "API Platform",
+        "Fintech",
+        "SaaS"
+      ],
+      "features": [
+        "Floating Credit Card Previews",
+        "Interactive Terminal API",
+        "Multi-Currency Matrix",
+        "Fraud Shield Section"
+      ],
+      "accentColor": "from-indigo-600 to-purple-600",
+      "downloadUrl": "/downloads/stripdo.zip",
+      "previewUrl": "/preview/stripdo",
+      "demoUrl": "/demo/stripdo",
+      "detailUrl": "/template/stripdo"
+    },
+    {
+      "slug": "nousu-saas",
+      "title": "Nousu Soft Gradient SaaS",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Modern SaaS",
+      "description": "Airy, soft aesthetic SaaS hero and features section with giant pink gradient containers and 3D typography styling.",
+      "tags": [
+        "SaaS Landing",
+        "Soft Gradient",
+        "3D Typography",
+        "Next.js 15"
+      ],
+      "features": [
+        "Giant Gradient Card Container",
+        "Overlapping Chat Mockup",
+        "3D Typography Ribbon Logo",
+        "Customer Social Proof"
+      ],
+      "accentColor": "from-pink-400 to-rose-400",
+      "downloadUrl": "/downloads/nousu-saas.zip",
+      "previewUrl": "/preview/nousu-saas",
+      "demoUrl": "/demo/nousu-saas",
+      "detailUrl": "/template/nousu-saas"
+    },
+    {
+      "slug": "quick-14-studio",
+      "title": "Quick 14 High-Converting Studio",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Full Kit",
+      "description": "Complete agency landing page with grid background, problem-solution sections, tiered pricing, and FAQ accordion.",
+      "tags": [
+        "Agency",
+        "Full Landing",
+        "Conversion Focused",
+        "Tailwind"
+      ],
+      "features": [
+        "Geometric Grid Background",
+        "Problem vs Solution Section",
+        "Comprehensive Pricing Tiers",
+        "Collapsible FAQ"
+      ],
+      "accentColor": "from-emerald-500 to-green-600",
+      "downloadUrl": "/downloads/quick-14-studio.zip",
+      "previewUrl": "/preview/quick-14-studio",
+      "demoUrl": "/demo/quick-14-studio",
+      "detailUrl": "/template/quick-14-studio"
+    },
+    {
+      "slug": "refind-ai",
+      "title": "Refind Document AI Copilot",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "AI Copilot",
+      "description": "Smart document workspace and AI reading copilot landing page with rich text highlights, markdown preview, and chat sidebar.",
+      "tags": [
+        "Document AI",
+        "Knowledge Base",
+        "Motion",
+        "Productivity"
+      ],
+      "features": [
+        "Interactive Document Editor",
+        "Live AI Summary Sidebar",
+        "Format Toolbar Controls",
+        "Speed Reading Metrics"
+      ],
+      "accentColor": "from-blue-400 to-cyan-500",
+      "downloadUrl": "/downloads/refind-ai.zip",
+      "previewUrl": "/preview/refind-ai",
+      "demoUrl": "/demo/refind-ai",
+      "detailUrl": "/template/refind-ai"
+    },
+    {
+      "slug": "pfp-ai",
+      "title": "PFP AI Studio & Avatar Engine",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Consumer AI",
+      "description": "Modern photo generator and AI avatar maker landing page with before-and-after photo comparisons and prompt pills.",
+      "tags": [
+        "Avatar AI",
+        "Photo Studio",
+        "Consumer App",
+        "React"
+      ],
+      "features": [
+        "Before / After Photo Slider",
+        "Style Preset Selector",
+        "One-Click Generation Demo",
+        "High-Resolution Export"
+      ],
+      "accentColor": "from-purple-500 to-pink-500",
+      "downloadUrl": "/downloads/pfp-ai.zip",
+      "previewUrl": "/preview/pfp-ai",
+      "demoUrl": "/demo/pfp-ai",
+      "detailUrl": "/template/pfp-ai"
+    },
+    {
+      "slug": "scale-ai-hero",
+      "title": "Scale AI Foundation Hero UI",
+      "category": "Hero & Motion",
+      "defaultTheme": "dark",
+      "badge": "Enterprise AI",
+      "description": "Grand enterprise hero section featuring smooth parallax scrolling, high-fidelity imagery, and interactive mobile drawer.",
+      "tags": [
+        "Enterprise AI",
+        "Hero Section",
+        "Smooth Scroll",
+        "Vite"
+      ],
+      "features": [
+        "High-Res Hero Mockup",
+        "Slide-in Mobile Navigation",
+        "Interactive Callout Badges",
+        "Custom Typography"
+      ],
+      "accentColor": "from-blue-600 to-indigo-700",
+      "downloadUrl": "/downloads/scale-ai-hero.zip",
+      "previewUrl": "/preview/scale-ai-hero",
+      "demoUrl": "/demo/scale-ai-hero",
+      "detailUrl": "/template/scale-ai-hero"
+    },
+    {
+      "slug": "skywrite-ai",
+      "title": "SkyWrite AI SEO Copywriter",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Content AI",
+      "description": "AI-powered blog & article writer landing page optimized for search engines with live generation sandbox and process stepper.",
+      "tags": [
+        "SEO Content",
+        "Copywriting",
+        "AI Generator",
+        "SaaS"
+      ],
+      "features": [
+        "Live Prompt Sandbox Demo",
+        "3-Step Workflow Stepper",
+        "SEO Readiness Checklist",
+        "Transparent Pricing"
+      ],
+      "accentColor": "from-sky-400 to-indigo-600",
+      "downloadUrl": "/downloads/skywrite-ai.zip",
+      "previewUrl": "/preview/skywrite-ai",
+      "demoUrl": "/demo/skywrite-ai",
+      "detailUrl": "/template/skywrite-ai"
+    },
+    {
+      "slug": "theirs-saas",
+      "title": "Theirs - Digital Memorials SaaS",
+      "category": "Landing Pages",
+      "defaultTheme": "dark",
+      "badge": "Memorial Tech",
+      "description": "Quiet, dignified digital memorial and obituary SaaS landing page with grain gradients, stone typography, and serene masonry.",
+      "tags": [
+        "Memorial",
+        "SaaS",
+        "Dignified",
+        "Minimalist",
+        "Dark Mode"
+      ],
+      "features": [
+        "Horizon Monolith Header",
+        "Bottom-Up Dissolve Animation",
+        "Sample Memorials Showcase",
+        "Pricing & Story Vault"
+      ],
+      "accentColor": "from-stone-700 to-zinc-900",
+      "downloadUrl": "/downloads/theirs-saas.zip",
+      "previewUrl": "/preview/theirs-saas",
+      "demoUrl": "/demo/theirs-saas",
+      "detailUrl": "/template/theirs-saas"
+    },
+    {
+      "slug": "dating-pfp",
+      "title": "DatingPFP - AI Dating Photoshoot SaaS",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "AI Photoshoot",
+      "description": "High-converting brutalist photo generation landing page with bold typography, live proof galleries, and before/after comparisons.",
+      "tags": [
+        "AI Avatars",
+        "Dating Photos",
+        "Neo-Brutalism",
+        "High Conversion",
+        "Light Mode"
+      ],
+      "features": [
+        "Before & After Photo Slider",
+        "Social Proof Wall",
+        "Comparison Matrix",
+        "Pill CTA Funnel"
+      ],
+      "accentColor": "from-rose-500 to-pink-600",
+      "downloadUrl": "/downloads/dating-pfp.zip",
+      "previewUrl": "/preview/dating-pfp",
+      "demoUrl": "/demo/dating-pfp",
+      "detailUrl": "/template/dating-pfp"
+    },
+    {
+      "slug": "seo-writer",
+      "title": "BringBack SEO - Organic AI Engine",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Organic Growth",
+      "description": "Technical editorial landing page featuring geometric grid lines, corner squares, live ranking proof counters, and citations grid.",
+      "tags": [
+        "SEO SaaS",
+        "Editorial",
+        "Technical Grid",
+        "Organic Growth",
+        "Light Mode"
+      ],
+      "features": [
+        "Real-time Google Ranking Proof",
+        "AI Citation Metrics",
+        "Grid Pattern Boundary Accents",
+        "Editorial Content Showcase"
+      ],
+      "accentColor": "from-emerald-600 to-teal-700",
+      "downloadUrl": "/downloads/seo-writer.zip",
+      "previewUrl": "/preview/seo-writer",
+      "demoUrl": "/demo/seo-writer",
+      "detailUrl": "/template/seo-writer"
+    },
+    {
+      "slug": "passport-studio",
+      "title": "PassportStudio - Biometric ID Photo Maker",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Biometric AI",
+      "description": "Strict compliance biometric photo creator with country passport guideline selector, instant preview stage, and satisfaction guarantees.",
+      "tags": [
+        "Passport Photo",
+        "Biometric AI",
+        "Clean Light",
+        "Compliance",
+        "Light Mode"
+      ],
+      "features": [
+        "Multi-Country Compliance Picker",
+        "Photo Upload & Crop Preview",
+        "Requirements Checklist",
+        "Print & Digital Deliverables"
+      ],
+      "accentColor": "from-blue-600 to-indigo-700",
+      "downloadUrl": "/downloads/passport-studio.zip",
+      "previewUrl": "/preview/passport-studio",
+      "demoUrl": "/demo/passport-studio",
+      "detailUrl": "/template/passport-studio"
+    },
+    {
+      "slug": "unreal-shot",
+      "title": "UnrealShot AI - Studio Headshots & Portraits",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "AI Studio",
+      "description": "Ultra-sleek photo studio landing page featuring dynamic gallery carousels, pack tier comparisons, and professional headshot styles.",
+      "tags": [
+        "Headshots",
+        "Studio Photography",
+        "Framer Motion",
+        "Modern UI",
+        "Light Mode"
+      ],
+      "features": [
+        "Infinite Carousel Gallery",
+        "Style Archetype Selectors",
+        "Interactive Price Toggle",
+        "High-Resolution Output Previews"
+      ],
+      "accentColor": "from-purple-600 to-pink-600",
+      "downloadUrl": "/downloads/unreal-shot.zip",
+      "previewUrl": "/preview/unreal-shot",
+      "demoUrl": "/demo/unreal-shot",
+      "detailUrl": "/template/unreal-shot"
+    },
+    {
+      "slug": "ai-imagetools",
+      "title": "PicShot - Complete AI Image Editing Suite",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Creative Suite",
+      "description": "Multi-tool creative landing page showcasing background removal, image upscaling, object eraser, and prompt-to-image capabilities.",
+      "tags": [
+        "Image Editor",
+        "AI Tools",
+        "Multi-Feature",
+        "Product Suite",
+        "Light Mode"
+      ],
+      "features": [
+        "Tool Switcher Grid",
+        "Interactive Comparison Viewer",
+        "Client-Side Localization Hook",
+        "Feature Deep Dives"
+      ],
+      "accentColor": "from-cyan-500 to-blue-600",
+      "downloadUrl": "/downloads/ai-imagetools.zip",
+      "previewUrl": "/preview/ai-imagetools",
+      "demoUrl": "/demo/ai-imagetools",
+      "detailUrl": "/template/ai-imagetools"
+    },
+    {
+      "slug": "cvfolio",
+      "title": "CVFolio - Interactive Resume & Career Portfolio",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Portfolio & Resume",
+      "description": "Polished personal branding and executive resume landing page with interactive timeline, achievement metrics, and project showcases.",
+      "tags": [
+        "Resume",
+        "Portfolio",
+        "Career Branding",
+        "Minimalist Clean",
+        "Light Mode"
+      ],
+      "features": [
+        "Executive Hero Intro",
+        "Interactive Experience Timeline",
+        "Skills Radar & Tags",
+        "Live Contact & Calendly Modal"
+      ],
+      "accentColor": "from-blue-500 to-slate-800",
+      "downloadUrl": "/downloads/cvfolio.zip",
+      "previewUrl": "/preview/cvfolio",
+      "demoUrl": "/demo/cvfolio",
+      "detailUrl": "/template/cvfolio"
+    },
+    {
+      "slug": "coloring-app",
+      "title": "Coloring - Android Drawing & Art Studio",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Mobile App",
+      "description": "Mindful coloring book mobile app landing page featuring interactive browser canvas, smart fill showcase, and APK download.",
+      "tags": [
+        "Mobile App",
+        "Android",
+        "Interactive Canvas",
+        "Art & Drawing",
+        "Light Mode"
+      ],
+      "features": [
+        "Interactive SVG Color Palette",
+        "Smart Contour Flood Fill",
+        "Offline Mode Capability",
+        "Direct APK Download & QR Code"
+      ],
+      "accentColor": "from-rose-500 to-amber-500",
+      "downloadUrl": "/downloads/coloring-app.zip",
+      "previewUrl": "/preview/coloring-app",
+      "demoUrl": "/demo/coloring-app",
+      "detailUrl": "/template/coloring-app"
+    }
 ];
 
 export function getTemplateBySlug(slug: string): TemplateItem | undefined {

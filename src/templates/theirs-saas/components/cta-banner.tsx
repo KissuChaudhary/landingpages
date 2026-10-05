@@ -1,0 +1,146 @@
+"use client"
+
+import { useState, useRef } from "react"
+import { useScroll, useSpring } from "framer-motion"
+import { TheirsLogo } from "./theirs-logo"
+import { DitherGradient } from "./dither-gradient"
+import { SandDissolveWordmark } from "./sand-dissolve-wordmark"
+
+export function CtaBanner() {
+  const [name, setName] = useState("")
+  const sectionRef = useRef<HTMLElement>(null)
+
+  // Scroll-driven bottom-up assembly of the brand wordmark from behind the CTA card
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 85%", "center 35%"],
+  })
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 26,
+    restDelta: 0.001,
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+  }
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden"
+    >
+      <div className="max-w-5xl mx-auto relative">
+        {/* Horizon Monolith Wordmark with Bottom-Up Masonry Assembly */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 -top-12 sm:-top-20 md:-top-28 lg:-top-32 w-full flex items-end justify-center z-0"
+        >
+          <SandDissolveWordmark progress={smoothProgress} text="THEIRS.PAGE" />
+        </div>
+
+        {/* Dark CTA Card — sits in front (relative z-10) */}
+        <div className="relative z-10 overflow-hidden rounded-[28px] sm:rounded-[36px] bg-[#1a1a1f] p-10 sm:p-20 text-center text-white shadow-2xl flex flex-col items-center justify-center">
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute inset-0 bg-radial from-white/[0.04] via-transparent to-transparent pointer-events-none" />
+
+          {/* Dither Pattern Background Cover (Brand Primary #df702b at 60% Opacity) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden select-none opacity-50 z-0"
+          >
+            <DitherGradient from="#df702b" bloom="aura" direction="down" />
+          </div>
+
+          {/* Brand SVG Emblem in White Shades */}
+          <div className="relative z-10 flex items-center justify-center mb-6 select-none">
+            <div className="relative size-16 sm:size-20 flex items-center justify-center">
+              <TheirsLogo themeAware className="size-full text-white drop-shadow-[0_8px_24px_rgba(255,255,255,0.12)]" />
+            </div>
+          </div>
+
+          {/* Headline */}
+          <h2 className="relative z-10 text-balance text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-[1.15] max-w-3xl mx-auto mb-3.5">
+            Start with their name.{" "}
+            <span className="text-neutral-400 font-normal block mt-1 sm:mt-1.5">
+              The rest can come together over time.
+            </span>
+          </h2>
+
+          <p className="relative z-10 text-sm sm:text-base text-neutral-300 max-w-xl mx-auto mb-8 leading-relaxed">
+            You don’t need to have everything ready. Create their memorial now, then add photos, stories and tributes whenever you’re ready — with family and friends alongside you.
+          </p>
+
+          {/* High-Converting "Create their memorial" Input Box */}
+          <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-2.5">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2 sm:p-1.5 sm:rounded-full sm:bg-[#25252c] sm:border sm:border-white/30 sm:shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all sm:focus-within:border-white sm:focus-within:ring-2 sm:focus-within:ring-white/20"
+            >
+              {/* Standalone clean pill on mobile, seamless left cell on desktop */}
+              <div className="flex-1 flex items-center gap-2 px-4 py-2.5 sm:py-1.5 text-sm rounded-full bg-[#25252c] border border-white/30 sm:border-none sm:bg-transparent shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.15)] sm:shadow-none focus-within:border-white focus-within:ring-2 focus-within:ring-white/20 sm:focus-within:ring-0 transition-all">
+                <span className="text-xs sm:text-sm text-neutral-300 font-medium shrink-0 select-none">
+                  Their name
+                </span>
+                <input
+                  type="text"
+                  value={name}
+                  maxLength={100}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Robert Carter"
+                  className="w-full bg-transparent font-medium text-white outline-none placeholder:text-neutral-400 text-sm"
+                />
+              </div>
+
+              {/* High-contrast, confident action button */}
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer bg-white text-[#181925] hover:bg-neutral-100 active:scale-[0.98] h-11 sm:h-10 px-5 text-sm group shrink-0 select-none w-full sm:w-auto shadow-sm"
+              >
+                <span>Start their memorial</span>
+                <span className="relative size-3.5 overflow-hidden inline-flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="absolute inset-0 size-3.5 transition-transform duration-200 group-hover:translate-x-3 group-hover:opacity-0"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="absolute inset-0 size-3.5 -translate-x-3 opacity-0 transition-transform duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </span>
+              </button>
+            </form>
+
+            {/* Clean Trust Line */}
+            <span className="text-xs text-neutral-400 select-none">
+              Free to start · No credit card required
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

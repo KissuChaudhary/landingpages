@@ -1,0 +1,2310 @@
+{
+  "Header": {
+    "Home": "Home",
+    "Blog": "Blogs",
+    "title": "Lexistock AI",
+    "allTools": "All Tools",
+    "colorize": "AI Photo Colorizer",
+    "enhance": "AI Image Enhancer",
+    "removeBg": "AI Background Remover",
+    "AIimageGenerator": "AI Image Generator",
+    "upscaler": "AI Image Upscaler",
+    "restorer": "AI Photo Restorer",
+    "captionGenerator": "AI Image Caption Generator",
+    "imageToText": "AI Image to Text Converter",
+    "aiAcne": "AI Acne Remover",
+    "aiRetouch": "AI Photo Retoucher",
+    "aiBlemish": "AI Blemish Remover",
+    "aiUnblur": "Unblur Image AI"
+  },
+  "Footer": {
+    "title": "Lexistock AI",
+    "siteDescription": "Unleash your creativity with our AI-powered image tools. Transform, enhance, and create stunning visuals effortlessly.",
+    "AIimageGenerator": "AI Image Generator",
+    "removeBg": "AI Background Remover",
+    "upscaler": "AI Image Upscaler",
+    "colorize": "AI Photo Colorizer",
+    "restorer": "AI Photo Restorer",
+    "enhance": "AI Image Enhancer",
+    "aiUnblur": "Unblur Image AI",
+    "captionGenerator": "AI Image Caption Generator",
+    "aiAcne": "AI Acne Remover",
+    "aiRetouch": "AI Photo Retoucher",
+    "aiBlemish": "AI Blemish Remover",
+    "imageToText": "AI Image to Text Converter",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "© {year} Lexistock AI. All rights reserved.",
+    "madeInIndia": "#MadeInIndia"
+  },
+  "ImageCompareSlider": {
+    "beforeImageAlt": "Before image",
+    "afterImageAlt": "After image",
+    "sliderLabel": "Drag to compare before and after",
+    "beforeLabel": "Before",
+    "afterLabel": "After"
+  },
+
+  "Index": {
+    "hero": {
+      "newFeature": "Free AI Art Generator",
+      "titlePart1": "Let AI Take Your Photos to the",
+      "titleHighlight": "Next Level",
+      "description": "Create, edit, and transform your visuals effortlessly with our AI-powered tools. From removing backgrounds to enhancing image quality and generating stunning artwork, we provide everything you need to bring your creativity to life.",
+      "cta": "Create Your First AI Art"
+    },
+    "stats": {
+      "assetsCreated": "Assets Created",
+      "happyUsers": "Happy Users",
+      "topRated": "Top Rated",
+      "industryRecognition": "Industry Recognition",
+      "userSatisfaction": "User Satisfaction",
+      "assetsCount": "8k+",
+      "usersCount": "12k+",
+      "satisfactionPercentage": "100%"
+    },
+    "Layout": {
+      "metadata": {
+        "title": "Free AI Photo Editor | Automatically Edit Photos Online with AI in Seconds",
+        "description": "Edit photos with Lexistock AI. Use free AI-powered tools to enhance, retouch, and transform images online—quick and simple.",
+        "keywords": "AI image tools, background remover, image enhancer, photo colorizer, image upscaler, AI photo editor",
+        "siteName": "LexiStock AI",
+        "ogImageAlt": "LexiStock AI Image Tools Preview"
+      },
+      "schema": {
+        "name": "Free AI Photo Editor | Automatically Edit Photos Online with AI in Seconds",
+        "description": "Edit photos with Lexistock AI. Use free AI-powered tools to enhance, retouch, and transform images online—quick and simple."
+      }
+    },
+    "aiTool": {
+      "backgroundRemover": {
+        "category": "AI Background Remover",
+        "title": "Remove Background 🎯",
+        "subtitle": "Instantly Remove Background from Images",
+        "description": "Advanced AI technology that precisely removes backgrounds from any image in seconds",
+        "features": [
+          { "text": "Process images in bulk with one click" },
+          { "text": "Perfect for product photos & portraits" },
+          { "text": "Download in PNG with transparent background" }
+        ],
+        "button": "Remove Background"
+      },
+      "photoColorizer": {
+        "category": "AI Photo Colorizer",
+        "title": "Colorize Photos 🎨",
+        "subtitle": "Bring Black & White Photos to Life",
+        "description": "Transform your old black and white photos into vibrant, colorful memories",
+        "features": [
+          { "text": "Authentic & natural-looking colors" },
+          { "text": "Preserve original image quality" },
+          { "text": "Batch process multiple photos" }
+        ],
+        "button": "Colorize Photos"
+      },
+      "photoEnhancer": {
+        "category": "AI Photo Enhancer",
+        "title": "Enhance Photos ✨",
+        "subtitle": "Make Every Photo Perfect",
+        "description": "Automatically enhance your photos with AI-powered tools for professional results",
+        "features": [
+          { "text": "Improve clarity and sharpness" },
+          { "text": "Fix lighting and exposure" },
+          { "text": "Remove noise and artifacts" }
+        ],
+        "button": "Enhance Photos"
+      }
+    },
+    "whyChoose": {
+      "title": "Why Choose Lexistock AI",
+      "features": {
+        "fastImage": {
+          "title": "Instant AI-Powered Image Editing Tools",
+          "description": "Experience lightning-fast AI image generation, background removal, and upscaling without compromising on quality—all in a matter of seconds."
+        },
+        "quality": {
+          "title": "Superior Image Quality Enhancement",
+          "description": "Enhance resolution, restore old photos, and add vibrant colors to black-and-white images effortlessly with cutting-edge AI technology."
+        },
+        "language": {
+          "title": "Completely Free, No Limits",
+          "description": "Access all AI image editing tools at no cost, including our image caption generator and photo enhancer—no subscriptions or hidden fees."
+        },
+        "support": {
+          "title": "SEO-Friendly Image Captions and Text",
+          "description": "Boost your content strategy with AI-generated image captions and text extraction tools that improve search engine visibility."
+        }
+      }
+    },
+    "whoCanUse": {
+      "welcome": "WELCOME TO Lexistock AI",
+      "title": "Who Can Use",
+      "titleHighlight": "Lexistock AI",
+      "subtitle": "Transform your creative vision with AI-powered image enhancement",
+      "eCommerce": {
+        "title": "eCommerce",
+        "description": "Perfect for product photography and online stores"
+      },
+      "realEstate": {
+        "title": "Real Estate",
+        "description": "Enhance property photos for better listings"
+      },
+      "education": {
+        "title": "Education",
+        "description": "Create engaging visual content for learning"
+      },
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Stand out with professional-looking content"
+      }
+    },
+    "aiTools": {
+      "title": "AI-Powered ",
+      "titleHighlight1": "Tools",
+      "description": "Transform your creative workflow with our suite of AI-powered tools. Each tool is designed to help you achieve professional results in seconds.",
+      "exploreMore": "Explore More",
+      "tools": {
+        "image-generator": {
+          "title": "AI Image Generator",
+          "description": "Create stunning, unique images from text descriptions with advanced AI technology."
+        },
+        "background-remover": {
+          "title": "Background Remover",
+          "description": "Remove backgrounds from images instantly with precision and accuracy."
+        },
+        "image-upscaler": {
+          "title": "Image Upscaler",
+          "description": "Enhance image resolution without losing quality using AI technology."
+        },
+        "photo-colorizer": {
+          "title": "Photo Colorizer",
+          "description": "Bring black and white photos to life with AI-powered colorization."
+        },
+        "photo-restorer": {
+          "title": "Photo Restorer",
+          "description": "Restore old and damaged photos to their former glory."
+        },
+        "image-enhancer": {
+          "title": "Image Enhancer",
+          "description": "Automatically enhance your photos for professional-quality results."
+        },
+        "caption-generator": {
+          "title": "AI Image Caption Generator",
+          "description": "Create captions for your social media and business images."
+        },
+        "image-to-text": {
+          "title": "AI Image to Text Converter",
+          "description": "Best free OCR tool to extract text from your images."
+        },
+        "blemish-remover": {
+          "title": "AI Blemish Remover",
+          "description": "Remove blemishes and imperfections from your photos with our AI."
+        },
+        "acne-remover": {
+          "title": "AI Acne Remover",
+          "description": "Erase acne and blemishes from your photos with AI precision."
+        },
+        "photo-retoucher": {
+          "title": "AI Photo Retoucher",
+          "description": "Remove blemishes, smooth skin, and make your photos look clean."
+        },
+        "unblur-image": {
+          "title": "Unblur Image AI",
+          "description": "Enhance blurry photos, smooth out imperfections, and restore clarity."
+        }
+      }
+    },
+
+    "features": {
+      "title": "Our AI-Powered Tools",
+      "colorize": "Colorize",
+      "colorizeDesc": "Bring black and white photos to life with vibrant colors",
+      "enhance": "Enhance",
+      "enhanceDesc": "Improve image quality and resolution with AI",
+      "removeBg": "Remove Background",
+      "removeBgDesc": "Easily remove backgrounds from any image"
+    },
+    "cta": {
+      "headingPart1": "Transform",
+      "headingAIPowered": "AI-powered",
+      "headingPart2": "images",
+      "headingPart3": "in a",
+      "headingCreative": "creative",
+      "headingPart4": "and",
+      "headingEfficient": "efficient",
+      "headingPart5": "way",
+      "subtitle": "Join thousands of creators who are already using our platform to bring their ideas to life. Use everything for Free.",
+      "button": "Enhance Your Photos Now"
+    },
+    "amazingArt": {
+      "title": "100% Free Realistic AI Image Generator",
+      "subtitle": "Create stunning AI-generated images with simple text prompts. Control your output with negative prompts and choose from multiple size options.",
+      "features": {
+        "aiPoweredCreativity": "Turn text prompts into AI Art",
+        "customizableParameters": "Adjust prompts, size, and ratio",
+        "speedEfficiency": "Create images in seconds.",
+        "flexibleUsage": "Perfect for Everyone",
+        "costEfficiency": "Completely Free to use",
+        "userFriendly": "Easy for beginners and pros"
+      },
+      "button": "Start Creating"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about our AI-powered image tools.",
+      "categories": {
+        "general": {
+          "title": "General Questions",
+          "items": {
+            "what-is": {
+              "question": "What is Lexistock AI?",
+              "answer": "Lexistock AI is an online platform offering free AI-powered tools to edit, enhance, and create stunning images. From removing backgrounds to generating AI art, we simplify your creative workflow."
+            },
+            "free": {
+              "question": "Are Lexistock AI tools free to use?",
+              "answer": "Yes! Lexistock AI Free to use and you get three generations per day for each tool present on Lexistock AI."
+            },
+            "signup": {
+              "question": "Do I need to sign up to use the tools?",
+              "answer": "No, You don't need to sign up. Each tool is provided free of cost here, and you can use each tool 3 times a day only."
+            },
+            "tools": {
+              "question": "What kind of AI tools does Lexistock AI offer?",
+              "answer": {
+                "intro": "We provide:",
+                "items": {
+                  "bgRemover": "AI Background Remover",
+                  "enhancer": "Image Enhancer",
+                  "artGenerator": "AI Art Generator",
+                  "restorer": "Photo Restorer",
+                  "avatarGenerator": "Avatar Generator, and more"
+                }
+              }
+            }
+          }
+        },
+        "usage": {
+          "title": "Usage and Compatibility",
+          "items": {
+            "textToImage": {
+              "question": "Can I generate images from text?",
+              "answer": "Yes! Our AI Image Generator can create unique visuals based on text descriptions, perfect for creative projects or professional use."
+            },
+            "bgRemover": {
+              "question": "Does the Background Remover work on all images?",
+              "answer": "Yes, the Background Remover is designed to handle any image, delivering clean and precise results."
+            },
+            "mobile": {
+              "question": "Are Lexistock AI tools mobile-friendly?",
+              "answer": "Our platform works seamlessly on desktop and mobile devices."
+            },
+            "formats": {
+              "question": "What image formats are supported?",
+              "answer": "We support most common formats, including JPG, PNG, and BMP, for uploads and downloads."
+            }
+          }
+        },
+        "other": {
+          "title": "Other Questions",
+          "items": {
+            "speed": {
+              "question": "How quickly are the results generated?",
+              "answer": "Our AI tools deliver results within seconds, ensuring a fast and efficient editing process."
+            },
+            "security": {
+              "question": "Is my data secure with Lexistock AI?",
+              "answer": "Yes, we prioritize your privacy and use secure encryption to protect your data. Uploaded images are not stored anywhere on our servers."
+            },
+            "privacy": {
+              "question": "Will my images be used elsewhere?",
+              "answer": "No, your images are processed securely and we don't store any of your images."
+            },
+            "support": {
+              "question": "What should I do if the tool doesn't work as expected?",
+              "answer": "You can contact our support via email contact@lexistock.com. We'll help resolve your issue quickly."
+            }
+          }
+        }
+      }
+    },
+    "AIImageGenerator": {
+      "title": "100% Free Realistic AI Image Generator",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Enter your image description",
+      "negativePromptLabel": "Negative Prompt",
+      "negativePromptPlaceholder": "Specify things to not see in the output",
+      "imageSizeLabel": "Image Size",
+      "imageSizePlaceholder": "Select image size",
+      "portraitSize": "Portrait (512x768)",
+      "squareSize": "Square (512x512)",
+      "landscapeSize": "Landscape (768x512)",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "Congrats! You have officially hit your image generation limit for today. No more magic for you. Try again tomorrow, if you can wait that long!",
+      "errorTitle": "Error",
+      "promptError": "Please provide a prompt for image generation.",
+      "limitReachedError": "You have reached the daily limit for image generation.",
+      "generateError": "Failed to generate image",
+      "generatingButton": "Generating...",
+      "generateButton": "Generate Image",
+      "resetButton": "Reset",
+      "generating": "Generating",
+      "generatedImageAlt": "Generated image",
+      "downloadButton": "Download",
+      "imagePreviewPlaceholder": "Your Art Will Appear Here..."
+    },
+    "AIImageGeneratorPage": {
+      "metadata": {
+        "title": "AI Image Generator | Create Unique Images with AI",
+        "description": "Generate unique and creative images using our AI-powered image generator. Perfect for artists, designers, and content creators."
+      },
+      "schema": {
+        "name": "AI Image Generator",
+        "description": "Create unique and creative images using AI technology",
+        "applicationCategory": "PhotoEditingApplication",
+        "operatingSystem": "Any"
+      },
+      "whatIsTitle": "What is AI Image Generator?",
+      "whatIsDescription": "Our AI Image Generator is a cutting-edge tool that uses advanced artificial intelligence to create unique, high-quality images based on your text descriptions. It's perfect for artists, designers, marketers, and anyone looking to bring their ideas to life visually.",
+      "benefitsTitle": "Benefits of Using Our AI Image Generator",
+      "timeSavingTitle": "Time-Saving",
+      "timeSavingDescription": "Generate complex images in seconds, saving hours of manual design work.",
+      "creativeFreedomTitle": "Creative Freedom",
+      "creativeFreedomDescription": "Explore endless possibilities with AI-assisted image creation.",
+      "highQualityTitle": "High-Quality Output",
+      "highQualityDescription": "Produce professional-grade images suitable for various applications.",
+      "easyToUseTitle": "Easy to Use",
+      "easyToUseDescription": "No design skills required - just describe what you want to see.",
+      "versatileApplicationsTitle": "Versatile Applications",
+      "versatileApplicationsDescription": "Create images for social media, marketing, art projects, and more.",
+      "howToUseTitle": "How to Use Our AI Image Generator",
+      "step1Title": "Enter Your Prompt",
+      "step1Description": "Describe the image you want to create in detail. The more specific you are, the better the results.",
+      "step2Title": "Choose Image Size",
+      "step2Description": "Select from portrait, landscape, or square formats to suit your needs.",
+      "step3Title": "Generate Image",
+      "step3Description": "Click the 'Generate Image' button and wait for the AI to work its magic.",
+      "step4Title": "Download and Use",
+      "step4Description": "Once generated, you can download your image and use it for your projects."
+    },
+    "AIBackgroundRemover": {
+      "title": "AI Background Remover",
+      "description": "Remove backgrounds from your images with AI precision",
+      "removeBackgroundButton": "Remove Background",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "downloadButton": "Download",
+      "uploadPrompt": "Upload an image to remove its background",
+      "dragDropPrompt": "Drag and drop your image here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select an image file",
+      "processingError": "Error processing the image",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for background removal. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today"
+    },
+    "AIBackgroundRemoverPage": {
+      "metadata": {
+        "title": "Free AI Background Remover | Remove Image Backgrounds Instantly",
+        "description": "Remove backgrounds from images with AI. Get clean, transparent cutouts in seconds—perfect for e-commerce, graphic design, and more."
+      },
+      "schema": {
+        "name": "AI Background Remover",
+        "description": "Remove backgrounds from images with AI precision. Get clean, transparent cutouts in seconds.",
+        "applicationCategory": "ImageEditing",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIImageUpscaler": {
+      "title": "AI Image Upscaler",
+      "description": "Enhance your images with AI-powered upscaling",
+      "upscaleButton": "Upscale Image",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "downloadButton": "Download",
+      "uploadPrompt": "Upload an image to upscale",
+      "dragDropPrompt": "Drag and drop your image here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select an image file",
+      "processingError": "Error processing the image",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for image upscaling. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "scaleLabel": "Upscale Factor",
+      "selectScale": "Select scale factor",
+      "downloadError": "Error downloading the image"
+    },
+    "AIImageUpscalerPage": {
+      "metadata": {
+        "title": "AI Image Upscaler | Enhance Image Resolution",
+        "description": "Increase the resolution and quality of your images with our AI-powered image upscaling tool. Perfect for enlarging photos without losing quality."
+      },
+      "schema": {
+        "name": "AI Image Upscaler",
+        "description": "Increase the resolution and quality of your images with AI precision",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIPhotoUnblur": {
+      "title": "Unblur Image",
+      "description": "Remove blur from photos and sharpen images automatically using AI. Fix out-of-focus pictures, reduce motion blur, and enhance photo clarity for portraits, documents, and social media posts.",
+      "upscaleButton": "Unblur Image Now",
+      "processingButton": "Removing Blur...",
+      "resetButton": "Try Different Photo",
+      "downloadButton": "Download Clear Image",
+      "uploadPrompt": "Upload blurry image to fix",
+      "dragDropPrompt": "Drag & drop photo here to remove blur",
+      "selectFileButton": "Choose Blurry Photo",
+      "supportedFormats": "Supported formats: {formats} (Ideal for deblurring)",
+      "maxFileSize": "Max size: {size}MB (For quick processing)",
+      "noFileError": "Please select a JPG, PNG, or WebP image to unblur",
+      "processingError": "Our AI couldn't remove blur from this image - try another photo",
+      "limitReachedTitle": "Daily Free Uses Reached",
+      "limitReachedDescription": "You've reached the daily limit Unblurring Photos. Try again tomorrow!",
+      "errorTitle": "Deblurring Error",
+      "invalidFileType": "Unsupported format - we accept JPG/PNG/WebP for best deblur results",
+      "fileTooLarge": "File exceeds {maxSize}MB limit for AI processing",
+      "creditsUsed": "Blur Removal Credits Used",
+      "scaleLabel": "Sharpening Level",
+      "selectScale": "Choose enhancement strength",
+      "downloadError": "Failed to save clear image - try again"
+    },
+    "AIPhotoUnblurPage": {
+      "metadata": {
+        "title": "Unblur Image and Sharpen Image | Fix Blurry Photos Online for Free",
+        "description": "Automatically sharpen blurry photos and fix out-of-focus images with AI technology. Perfect for recovering details in portraits, enhancing document scans, and improving social media photo quality. Works on both JPEG and PNG files."
+      },
+      "schema": {
+        "name": "Unblur Image and Sharpen Image Tool",
+        "description": "Advanced AI-powered solution to remove blur from images and restore photo clarity using deep learning algorithms",
+        "applicationCategory": "ImageSharpening",
+        "operatingSystem": "Web-Based"
+      }
+    },
+
+    "AIPhotoColorizer": {
+      "title": "AI Photo Colorizer",
+      "description": "Bring your black and white photos to life with AI-powered colorization",
+      "colorizeButton": "Colorize Photo",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "downloadButton": "Download",
+      "uploadPrompt": "Upload a black and white photo to colorize",
+      "dragDropPrompt": "Drag and drop your photo here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select a photo file",
+      "processingError": "Error processing the photo",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for photo colorization. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "downloadError": "Error downloading the image"
+    },
+    "AIPhotoColorizerPage": {
+      "metadata": {
+        "title": "AI Photo Colorizer | Colorize Black and White Photos",
+        "description": "Transform your black and white photos into vibrant, colorful images with our AI-powered photo colorization tool. Bring your old memories to life."
+      },
+      "schema": {
+        "name": "AI Photo Colorizer",
+        "description": "Transform black and white photos into colorful images with AI precision",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIPhotoRestorer": {
+      "title": "AI Photo Restorer",
+      "description": "Restore and enhance old or damaged photos with AI",
+      "restoreButton": "Restore Photo",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "downloadButton": "Download",
+      "uploadPrompt": "Upload a photo to restore",
+      "dragDropPrompt": "Drag and drop your photo here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select a photo file",
+      "processingError": "Error processing the photo",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for photo restoration. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "downloadError": "Error downloading the image"
+    },
+    "AIPhotoRestorerPage": {
+      "metadata": {
+        "title": "Free AI Photo Restorer | Restore & Enhance Old Photos Instantly with AI Power",
+        "description": "Repair and enhance old or damaged photos with our AI-powered photo restoration tool. Restore faded memories and bring lost details back to life in seconds."
+      },
+      "schema": {
+        "name": "AI Photo Restorer",
+        "description": "Repair and enhance old or damaged photos with our AI-powered photo restoration tool. Restore faded memories and bring lost details back to life in seconds.",
+        "applicationCategory": "PhotoEditingApplication",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIImageEnhancer": {
+      "title": "AI Image Enhancer",
+      "description": "Enhance and improve the quality of your images with AI",
+      "enhanceButton": "Enhance Image",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "downloadButton": "Download",
+      "uploadPrompt": "Upload an image to enhance",
+      "dragDropPrompt": "Drag and drop your image here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select an image file",
+      "processingError": "Error processing the image",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for image enhancement. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "downloadError": "Error downloading the image"
+    },
+    "AIImageEnhancerPage": {
+      "metadata": {
+        "title": "Free AI Image Enhancer | Sharpen & Improve Image Quality Instantly",
+        "description": "Enhance image quality with AI. Sharpen, denoise, and upscale your photos effortlessly for a clearer, more detailed look."
+      },
+      "schema": {
+        "name": "AI Image Enhancer",
+        "description": "Enhance image quality with AI. Sharpen, denoise, and upscale your photos effortlessly for a clearer, more detailed look.",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIBlemishRemover": {
+      "title": "AI Blemish Remover",
+      "description": "Remove blemishes and imperfections from your photos with AI",
+      "removeBlemishesButton": "Remove Blemishes",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "downloadButton": "Download",
+      "uploadPrompt": "Upload a photo to remove blemishes",
+      "dragDropPrompt": "Drag and drop your photo here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select a photo file",
+      "processingError": "Error processing the photo",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for blemish removal. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "downloadError": "Error downloading the image"
+    },
+    "AIBlemishRemoverPage": {
+      "metadata": {
+        "title": "AI Blemish Remover | Remove Imperfections from Photos",
+        "description": "Remove blemishes and imperfections from your photos with our AI-powered blemish removal tool. Enhance your images effortlessly."
+      },
+      "schema": {
+        "name": "AI Blemish Remover",
+        "description": "Remove blemishes and imperfections from photos with AI precision",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIAcneRemover": {
+      "title": "AI Acne Remover",
+      "description": "Effortlessly erase acne and blemishes from your photos with AI precision.",
+      "removeBlemishesButton": "Erase Acne",
+      "processingButton": "Removing Blemishes...",
+      "resetButton": "Start Over",
+      "downloadButton": "Download Image",
+      "uploadPrompt": "Upload your photo to remove acne and blemishes instantly.",
+      "dragDropPrompt": "Drag and drop your photo here, or click to upload.",
+      "selectFileButton": "Upload Photo",
+      "supportedFormats": "Supported file formats: {formats}",
+      "maxFileSize": "Maximum file size allowed: {size}MB",
+      "noFileError": "No file selected. Please upload a valid photo.",
+      "processingError": "Oops! Something went wrong while processing the image.",
+      "limitReachedTitle": "Daily Usage Limit Reached",
+      "limitReachedDescription": "You've reached your daily limit for using the AI Acne Remover. Come back tomorrow to continue editing!",
+      "errorTitle": "Upload Error",
+      "invalidFileType": "Unsupported file format. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "The file size exceeds the limit. Please upload an image under {maxSize}MB.",
+      "creditsUsed": "Blemish Removals Today",
+      "downloadError": "Failed to download the edited image. Try again."
+    },
+    "AIAcneRemoverPage": {
+      "metadata": {
+        "title": "AI Acne Remover | Remove Acne & Blemishes from Photos",
+        "description": "Achieve flawless photos in seconds with our AI Acne Remover. Perfect for removing acne, blemishes, and skin imperfections easily and effectively."
+      },
+      "schema": {
+        "name": "AI Acne Remover",
+        "description": "Flawlessly remove acne, blemishes, and skin imperfections from photos using advanced AI technology.",
+        "applicationCategory": "Image Editing",
+        "operatingSystem": "Cross-platform"
+      }
+    },
+    "AIPhotoRetoucher": {
+      "title": "Free AI Photo Retoucher",
+      "description": "Remove blemishes, smooth skin, and make your images look clean and professional without any hassle.",
+      "removeBlemishesButton": "Retouch Photo",
+      "processingButton": "Enhancing Your Photo...",
+      "resetButton": "Start Over",
+      "downloadButton": "Download Retouched Image",
+      "uploadPrompt": "Upload your photo to retouch and enhance",
+      "dragDropPrompt": "Drag and drop your photo here, or click to upload.",
+      "selectFileButton": "Upload Photo",
+      "supportedFormats": "Supported file formats: {formats}",
+      "maxFileSize": "Maximum file size allowed: {size}MB",
+      "noFileError": "No file selected. Please upload a valid photo.",
+      "processingError": "Oops! Something went wrong while processing your photo.",
+      "limitReachedTitle": "Daily Usage Limit Reached",
+      "limitReachedDescription": "You've reached your daily limit for using the AI Photo Retoucher. Come back tomorrow to continue editing!",
+      "errorTitle": "Upload Error",
+      "invalidFileType": "Unsupported file format. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "The file size exceeds the limit. Please upload an image under {maxSize}MB.",
+      "creditsUsed": "Photos Retouched Today",
+      "downloadError": "Failed to download the retouched image. Please try again."
+    },
+    "AIPhotoRetoucherPage": {
+      "metadata": {
+        "title": "AI Photo Retoucher | Automatic photo face cleaner online free",
+        "description": "Transform your photos with the AI Photo Retoucher. Remove blemishes, smooth skin, and enhance images effortlessly using advanced AI technology."
+      },
+      "schema": {
+        "name": "AI Photo Retoucher",
+        "description": "Quickly improve your photos with Lexistock AI Photo Retouching Tool. Remove blemishes, smooth skin, and make your images look clean and professional without any hassle.",
+        "applicationCategory": "Image Editing",
+        "operatingSystem": "Web"
+      }
+    },
+
+    "AIImageToTextConverter": {
+      "title": "AI Image to Text Converter",
+      "description": "Extract text from images using AI-powered OCR",
+      "extractTextButton": "Extract Text",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "copyButton": "Copy Text",
+      "copiedButton": "Copied!",
+      "uploadPrompt": "Upload an image to extract text",
+      "dragDropPrompt": "Drag and drop your image here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select an image file",
+      "processingError": "Error processing the image",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for OCR. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "extractedTextTitle": "Extracted Text",
+      "extractedTextPlaceholder": "Extracted text will appear here",
+      "noTextDetected": "No text detected in the image. Please try a different image."
+    },
+    "AIImageToTextConverterPage": {
+      "metadata": {
+        "title": "AI Image to Text Converter | Extract Text from Images",
+        "description": "Convert images to text with our AI-powered OCR tool. Easily extract text from photos, screenshots, and documents."
+      },
+      "schema": {
+        "name": "AI Image to Text Converter",
+        "description": "Extract text from images with AI-powered OCR technology",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "Any"
+      }
+    },
+    "AIImageCaptionGenerator": {
+      "title": "AI Image Caption Generator",
+      "description": "Generate captions for images using AI",
+      "generateCaptionButton": "Generate Caption",
+      "processingButton": "Processing...",
+      "resetButton": "Reset",
+      "copyButton": "Copy Caption",
+      "copiedButton": "Copied!",
+      "uploadPrompt": "Upload an image to generate a caption",
+      "dragDropPrompt": "Drag and drop your image here, or click to select",
+      "selectFileButton": "Select File",
+      "supportedFormats": "Supported formats: {formats}",
+      "maxFileSize": "Max file size: {size}MB",
+      "noFileError": "Please select an image file",
+      "processingError": "Error processing the image",
+      "limitReachedTitle": "Daily Limit Reached",
+      "limitReachedDescription": "You've reached the daily limit for image captioning. Try again tomorrow!",
+      "errorTitle": "Error",
+      "invalidFileType": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "File is too large. Maximum size is {maxSize}MB.",
+      "creditsUsed": "Credits Used Today",
+      "generatedCaptionTitle": "Generated Caption",
+      "generatedCaptionPlaceholder": "Generated caption will appear here",
+      "noCaptionGenerated": "Unable to generate a caption for this image. Please try a different image."
+    },
+    "AIImageCaptionGeneratorPage": {
+      "metadata": {
+        "title": "AI Image Caption Generator | Generate Captions for Images",
+        "description": "Generate accurate and descriptive captions for your images using our AI-powered tool. Perfect for content creators, social media managers, and more."
+      },
+      "schema": {
+        "name": "AI Image Caption Generator",
+        "description": "Generate accurate and descriptive captions for your images using AI",
+        "applicationCategory": "ImageProcessing",
+        "operatingSystem": "Any"
+      }
+    },
+    "ImageComparisonSlider": {
+      "imageAltBefore": "Before: Low resolution image",
+      "imageAltAfter": "After: High resolution image",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Why Settle for Low-Resolution Images?",
+      "heroParagraph1": "In a world where visual content is king, image quality can make or break your first impression. Whether it's for social media, your online store, or a professional portfolio, crisp, high-resolution images capture attention and convey professionalism.",
+      "heroParagraph2": "With Lexistock AI, you don't have to compromise on quality. Our AI-driven image upscaler transforms your low-resolution photos into stunning, high-definition visuals in just a few clicks.",
+      "upscaleButton": "Upscale Your Image",
+      "featuresTitle": "Unlock the Power of AI Image Upscaling",
+      "features": {
+        "highResolution": {
+          "title": "High-Resolution Output",
+          "description": "Instantly upscale your images to 4K resolution, ensuring every detail shines."
+        },
+        "fastProcessing": {
+          "title": "Fast Processing",
+          "description": "Our AI works at lightning speed, delivering enhanced images in seconds."
+        },
+        "userFriendly": {
+          "title": "User-Friendly",
+          "description": "No technical skills needed. Simply drag, drop, and let our AI do the magic."
+        },
+        "freeToUse": {
+          "title": "Free to Use",
+          "description": "Enjoy top-tier image upscaling without spending a dime."
+        }
+      },
+      "stepsTitle": "Three Simple Steps to Upscale Your Images",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Image",
+          "description": "Drag and drop your photo into our uploader or select it from your device."
+        },
+        "chooseLevel": {
+          "title": "Choose Upscaling Level",
+          "description": "Select the enhancement level you need—2x or 4x—based on your project requirements."
+        },
+        "download": {
+          "title": "Download the Enhanced Image",
+          "description": "Instantly download your beautifully upscaled image and use it wherever you like."
+        }
+      },
+      "useCasesTitle": "Perfect for Every Need",
+      "useCases": {
+        "photography": {
+          "title": "Photography",
+          "description": "Give your portfolio the edge by showcasing every detail with high-resolution images."
+        },
+        "ecommerce": {
+          "title": "E-commerce",
+          "description": "Impress potential buyers with crystal-clear product images that stand out."
+        },
+        "personalUse": {
+          "title": "Personal Use",
+          "description": "Create eye-catching social media posts with enhanced visuals."
+        },
+        "businessPresentations": {
+          "title": "Business Presentations",
+          "description": "Make your presentations pop with high-quality visuals that grab attention."
+        }
+      },
+      "aiUpscalingTitle": "What is AI Image Upscaling and How Does It Work?",
+      "aiUpscalingParagraph1": "AI image upscaling refers to the process of increasing the resolution and quality of an image using artificial intelligence. Traditional upscaling methods often result in blurry or pixelated images, but AI-powered tools, like Lexistock AI, leverage machine learning algorithms to predict and enhance details in your photos. This means you get sharper, clearer images that look natural and professional.",
+      "aiUpscalingParagraph2": "AI image upscaling is particularly useful for photographers, graphic designers, e-commerce businesses, and anyone who needs high-quality visuals. By analyzing patterns and textures in your images, AI can fill in missing details, resulting in a crisper and more defined image.",
+      "benefitsTitle": "Benefits of Using AI for Image Enhancement",
+      "benefitsParagraph": "Why should you consider AI for your image upscaling needs? Here are some compelling reasons:",
+      "benefits": {
+        "benefit1": "Enhanced Detail and Clarity: AI technology improves image quality by refining edges, reducing noise, and bringing out hidden details.",
+        "benefit2": "Time-Saving: Forget manual editing! AI handles the heavy lifting, letting you focus on what matters most.",
+        "benefit3": "Cost-Efficiency: With free tools like Lexistock AI, you can achieve professional-quality results without investing in expensive software.",
+        "benefit4": "Versatility: Whether you're enhancing photos for social media, a website, or a print project, AI upscaling ensures your images look their best in any context."
+      },
+      "misconceptionsTitle": "Common Misconceptions About AI Image Upscaling",
+      "misconceptionsParagraph1": "Many people think AI image upscaling is only for tech-savvy users or professionals, but that's far from the truth. Lexistock AI is designed with simplicity in mind, making it accessible to everyone, regardless of their technical background.",
+      "misconceptionsParagraph2": "Another myth is that AI upscaling is only beneficial for low-resolution images. In reality, even high-quality images can benefit from AI enhancements, as the technology can refine and sharpen details that might not be visible at first glance.",
+      "whyChooseTitle": "Why Choose Lexistock AI for Your Image Upscaling Needs?",
+      "whyChooseParagraph1": "Lexistock AI stands out in the crowded market of image upscaling tools. Here's why:",
+      "whyChoose": {
+        "reason1": "Cutting-Edge AI Technology: Our tool uses the latest advancements in AI to deliver superior image quality.",
+        "reason2": "User-Centric Design: We believe in keeping things simple. Our interface is intuitive, ensuring a seamless experience for every user.",
+        "reason3": "Fast and Free: Get professional-grade image enhancements in seconds, all at no cost."
+      },
+      "whyChooseParagraph2": "Whether you're a business owner looking to enhance product images or a hobbyist wanting to improve personal photos, Lexistock AI offers a reliable and efficient solution.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the Lexistock AI Image Upscaler?",
+          "answer": "The Lexistock AI Image Upscaler is a free online tool that allows users to upscale images by 2x or 4x while maintaining high-quality precision. It utilizes advanced AI technology to enhance image resolution without compromising on detail."
+        },
+        {
+          "question": "How does the Lexistock AI Image Upscaler work?",
+          "answer": "Lexistock's upscaling tool employs sophisticated algorithms that analyze the original image and intelligently add pixels to increase its resolution. This process enhances clarity and detail, resulting in a sharper, high-resolution image."
+        },
+        {
+          "question": "What types of images can I upscale using Lexistock?",
+          "answer": "You can upscale various types of images using Lexistock, including photographs, digital art, and graphics. The tool is versatile and designed to handle different formats effectively."
+        },
+        {
+          "question": "Is there a limit to the size of images I can upload?",
+          "answer": "Lexistock typically allows users to upload images within standard file size limits. While specific limitations may vary, most common image formats like JPG and PNG are supported for upscaling."
+        },
+        {
+          "question": "How long does it take to upscale an image with Lexistock?",
+          "answer": "The upscaling process with Lexistock is usually quick, often taking just a few seconds to complete. Users can expect their high-resolution images to be ready almost immediately after uploading."
+        },
+        {
+          "question": "Can I upscale multiple images at once using Lexistock?",
+          "answer": "Yes, Lexistock offers batch processing capabilities that enable users to upscale multiple images simultaneously. This feature is particularly useful for photographers or designers working with large sets of images."
+        },
+        {
+          "question": "Will upscaling an image with Lexistock affect its quality?",
+          "answer": "No, the Lexistock AI Image Upscaler is designed to enhance image quality during the upscaling process. It aims to preserve original details and prevent pixelation, resulting in a clearer final product."
+        },
+        {
+          "question": "Do I need any special skills to use the Lexistock AI Image Upscaler?",
+          "answer": "No special skills are required to use Lexistock's upscaling tool. The interface is user-friendly, allowing anyone to easily upload images and initiate the upscaling process with just a few clicks."
+        },
+        {
+          "question": "Is there a cost associated with using the Lexistock AI Image Upscaler?",
+          "answer": "Lexistock offers its image upscaling service for free, making it accessible for anyone looking to enhance their images without incurring costs."
+        },
+        {
+          "question": "Can I download my upscaled images directly from Lexistock?",
+          "answer": "Yes, once the upscaling process is complete, users can easily download their enhanced images directly from the Lexistock platform for immediate use."
+        }
+      ]
+    },
+
+    "AIPhotoUnblurContent": {
+      "imageAltBefore": "Before: Blurry portrait",
+      "imageAltAfter": "After: AI-corrected clarity",
+      "beforeLabel": "Original Photo",
+      "afterLabel": "Enhanced Photo",
+      "heroTitle": "Rescue Your Precious Memories from Blur",
+      "heroParagraph1": "Blurry faces in photos can ruin cherished moments. Whether it's a family portrait, wedding photo, or childhood memory, our AI specializes in restoring clarity to people-focused images while preserving natural facial features.",
+      "heroParagraph2": "Lexistock AI's face-aware technology specifically targets blur in portraits and group photos. Fix out-of-focus faces, motion-blurred expressions, and low-light graininess while maintaining authentic skin textures and details.",
+      "upscaleButton": "Fix Blurry Faces Now",
+      "featuresTitle": "AI Portrait Correction Features",
+      "features": {
+        "highResolution": {
+          "title": "Face-Specific Enhancement",
+          "description": "Advanced facial recognition focuses on eyes, smiles, and facial contours"
+        },
+        "fastProcessing": {
+          "title": "Instant Portrait Fix",
+          "description": "See clear results faster than manual retouching - typically under 8 seconds"
+        },
+        "userFriendly": {
+          "title": "One-Tap Magic",
+          "description": "Mobile-optimized interface works on smartphone photos and selfies"
+        },
+        "freeToUse": {
+          "title": "Free for Personal Use",
+          "description": "Enhance family photos at no cost (premium for professional use)"
+        }
+      },
+      "stepsTitle": "3-Step Photo Rescue Process",
+      "steps": {
+        "upload": {
+          "title": "Upload Blurry Portrait",
+          "description": "Supports JPG/PNG from phones or cameras. Max 30MB"
+        },
+        "chooseLevel": {
+          "title": "Auto-Face Detection",
+          "description": "Our AI automatically identifies and prioritizes facial features"
+        },
+        "download": {
+          "title": "Save Clear Memory",
+          "description": "Download print-quality or social-media ready versions"
+        }
+      },
+      "useCasesTitle": "Perfect For These Photo Types",
+      "useCases": {
+        "photography": {
+          "title": "Family Portraits",
+          "description": "Recover details in group photos and generational pictures"
+        },
+        "ecommerce": {
+          "title": "Profile Pictures",
+          "description": "Create crisp headshots for LinkedIn or dating profiles"
+        },
+        "personalUse": {
+          "title": "Baby Photos",
+          "description": "Sharpen those precious first steps and smile moments"
+        },
+        "businessPresentations": {
+          "title": "Event Photography",
+          "description": "Salvage blurry shots from weddings and celebrations"
+        }
+      },
+      "aiUpscalingTitle": "How Our Face-Focused AI Works",
+      "aiUpscalingParagraph1": "Our neural networks are specifically trained on facial datasets to reverse common photo blur types. The AI understands human face geometry, distinguishing between intentional bokeh effects and unwanted blurring.",
+      "aiUpscalingParagraph2": "The technology excels at recovering fine details like eyelashes, hair strands, and smile lines while preventing artificial 'plastic skin' effects common in basic photo editors.",
+      "benefitsTitle": "Why Specialized Face Deblurring Matters",
+      "benefitsParagraph": "Key advantages for personal photo restoration:",
+      "benefits": {
+        "benefit1": "Expression Preservation: Maintain natural smiles and eye sparkle during correction",
+        "benefit2": "Age-Specific Handling: Different algorithms for children/adult facial features",
+        "benefit3": "Background Integrity: Keep background elements naturally blurred when desired",
+        "benefit4": "Skin Texture Guard: Prevent over-smoothing of pores and natural skin details"
+      },
+      "misconceptionsTitle": "Photo Correction Myths Debunked",
+      "misconceptionsParagraph1": "Many believe blurry faces can't be fixed without professional software. Our AI demonstrates even severely blurred portraits can regain recognizable facial features.",
+      "misconceptionsParagraph2": "Another myth suggests all deblurring creates artificial results. Lexistock AI prioritizes natural-looking enhancements that respect original photo character.",
+      "whyChooseTitle": "Why Our Photo-First Approach Wins",
+      "whyChooseParagraph1": "Key differentiators for personal photo enhancement:",
+      "whyChoose": {
+        "reason1": "Face Priority Algorithm: Focuses enhancement energy on facial regions first",
+        "reason2": "Emotion Preservation: Maintains original photo's emotional impact",
+        "reason3": "Generational Photo Support: Works well with both digital and scanned analog photos"
+      },
+      "whyChooseParagraph2": "From restoring faded childhood pictures to perfecting smartphone portraits, Lexistock AI brings faces back into focus with emotional authenticity.",
+      "faqTitle": "Portrait Deblurring FAQs",
+      "faq": [
+        {
+          "question": "Can this fix blurry baby photos?",
+          "answer": "Yes! Our special infant-face algorithm gently enhances details without altering proportions."
+        },
+        {
+          "question": "Does it work on old scanned photos?",
+          "answer": "Perfectly enhances film scans while preserving vintage photo character."
+        },
+        {
+          "question": "How many faces can it handle?",
+          "answer": "Group photos with 10+ people supported - each face gets individual attention."
+        },
+        {
+          "question": "Will it change facial features?",
+          "answer": "Never. We enhance existing details without altering proportions or expressions."
+        },
+        {
+          "question": "Can I preview before saving?",
+          "answer": "Yes! Zoomable before/after comparison ensures perfect results."
+        },
+        {
+          "question": "What about makeup/special effects?",
+          "answer": "Preserves cosmetic details and intentional artistic blur effects."
+        },
+        {
+          "question": "Is there an age limit for photos?",
+          "answer": "Works on photos from any era - 1970s film to latest smartphone selfies."
+        },
+        {
+          "question": "Can I edit wedding photos?",
+          "answer": "Ideal for salvaging slightly blurry ceremony shots and reception candids."
+        },
+        {
+          "question": "How many free fixes?",
+          "answer": "10 monthly enhancements for personal use - unlimited with premium."
+        },
+        {
+          "question": "Privacy for family photos?",
+          "answer": "Automatic deletion after 2 hours - we never store personal memories."
+        }
+      ]
+    },
+    "BackgroundRemoverContent": {
+      "imageAltBefore": "Before: Original image with background",
+      "imageAltAfter": "After: Image with background removed",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Transform Your Photos with a Click",
+      "heroParagraph1": "The right visuals can elevate your content, but distractions in the background can ruin the impact. Whether you're creating content for social media, e-commerce, or personal projects, a clean background makes all the difference.",
+      "heroParagraph2": "With our Instant Photo Background Remover Tool, you can effortlessly remove backgrounds from any image, leaving you with a clean and professional look in seconds.",
+      "removeBGButton": "Remove Background Now",
+      "featuresTitle": "Key Features of Our Background Remover",
+      "features": {
+        "precisionCut": {
+          "title": "Precision Cut",
+          "description": "Accurately removes backgrounds while keeping your subject intact."
+        },
+        "hdQuality": {
+          "title": "HD Quality",
+          "description": "Ensures high-definition output, perfect for any use."
+        },
+        "fastProcessing": {
+          "title": "Fast Processing",
+          "description": "Get your background-free image in seconds."
+        },
+        "freeToUse": {
+          "title": "Free to Use",
+          "description": "Enjoy top-notch background removal without any cost."
+        }
+      },
+      "stepsTitle": "Three Easy Steps to Remove Backgrounds",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Image",
+          "description": "Drag and drop your photo into our uploader or select it from your device."
+        },
+        "process": {
+          "title": "Remove Background",
+          "description": "Our tool automatically detects and removes the background."
+        },
+        "download": {
+          "title": "Download Your Image",
+          "description": "Save your background-free image and use it as needed."
+        }
+      },
+      "useCasesTitle": "Perfect for Various Needs",
+      "useCases": {
+        "socialMedia": {
+          "title": "Social Media",
+          "description": "Create clean, professional posts that stand out."
+        },
+        "ecommerce": {
+          "title": "E-commerce",
+          "description": "Enhance product images to boost sales."
+        },
+        "personalProjects": {
+          "title": "Personal Projects",
+          "description": "Make your personal photos look more polished."
+        },
+        "presentations": {
+          "title": "Presentations",
+          "description": "Elevate your business presentations with professional visuals."
+        }
+      },
+      "bgRemovalTitle": "What is Background Removal and How Does It Work?",
+      "bgRemovalParagraph1": "Background removal involves extracting the main subject from an image and eliminating the background. Our tool uses advanced algorithms to accurately detect and separate the subject, giving you a clean and sharp result.",
+      "bgRemovalParagraph2": "This tool is incredibly useful for anyone looking to enhance their visuals—whether it's for social media, e-commerce, or personal use. By removing distractions, you can focus the viewer’s attention on the subject of the image.",
+      "benefitsTitle": "Why Use Our Background Remover?",
+      "benefitsParagraph": "Here's why our tool is a must-have for your image editing needs:",
+      "benefits": {
+        "benefit1": "Clear Focus: Removing the background highlights the subject, making your images more impactful.",
+        "benefit2": "Time-Saving: Quickly get clean images without spending hours on manual editing.",
+        "benefit3": "Free and Easy: Enjoy professional-grade background removal without any cost or hassle.",
+        "benefit4": "Versatility: Ideal for various purposes like social media, e-commerce, and personal projects."
+      },
+      "misconceptionsTitle": "Common Misconceptions About Background Removal",
+      "misconceptionsParagraph1": "Many think background removal is a complex task requiring expensive software or technical skills. Our tool simplifies the process, making it accessible to everyone.",
+      "misconceptionsParagraph2": "Another misconception is that background removal is only for professional images. In reality, it can enhance any photo, making it more engaging and visually appealing.",
+      "whyChooseTitle": "Why Choose Our Background Remover?",
+      "whyChooseParagraph1": "Here's what sets our tool apart:",
+      "whyChoose": {
+        "reason1": "State-of-the-Art Technology: Our tool delivers accurate and high-quality results.",
+        "reason2": "User-Friendly Design: Simple and intuitive, no learning curve required.",
+        "reason3": "Quick and Free: Get your images ready in seconds, at no cost."
+      },
+      "whyChooseParagraph2": "Whether you're a professional looking to streamline your workflow or a casual user wanting better photos, our tool is the perfect solution.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the Instant Photo Background Remover Tool?",
+          "answer": "It's a free online tool that allows you to remove the background from any image quickly and easily."
+        },
+        {
+          "question": "How does the background remover work?",
+          "answer": "The tool uses advanced algorithms to detect and separate the main subject from the background, giving you a clean image."
+        },
+        {
+          "question": "Can I use the tool for any type of image?",
+          "answer": "Yes, our tool is versatile and works with various types of images, including photos, graphics, and illustrations."
+        },
+        {
+          "question": "Is there a limit to the number of images I can process?",
+          "answer": "Yes, you can only use the tool 3 times a day. We have implemented this limit so that everyone can use this service for free and is not limited to one person taking all the resources."
+        },
+        {
+          "question": "How long does it take to remove a background?",
+          "answer": "The process is usually completed in a few seconds, depending on the size and complexity of the image."
+        },
+        {
+          "question": "Do I need any special skills to use the tool?",
+          "answer": "No, the tool is designed for everyone, regardless of technical expertise. Simply upload your image, and the tool does the rest."
+        },
+        {
+          "question": "Is the background removal service really free?",
+          "answer": "Yes, our background remover is completely free to use."
+        },
+        {
+          "question": "Can I download the edited images?",
+          "answer": "Absolutely! Once the background is removed, you can download the clean image immediately."
+        },
+        {
+          "question": "Can I use the AI Background Remover for professional purposes?",
+          "answer": "Absolutely! The tool is perfect for personal and professional use, including e-commerce product images, social media posts, and professional portfolios."
+        },
+        {
+          "question": "Will the quality of my image be affected after removing the background?",
+          "answer": "No, the AI Background Remover ensures that your image remains high quality even after the background is removed. The output is clean and sharp."
+        }
+      ]
+    },
+    "AIBlemishContent": {
+      "imageAltBefore": "Before: Original image with blemishes and imperfections",
+      "imageAltAfter": "After: Flawless, blemish-free image",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Achieve Flawless Skin with AI-Powered Blemish Removal",
+      "heroParagraph1": "Imperfections like blemishes, acne, and spots can distract from your natural beauty. Whether it’s for professional portraits, social media, or personal use, flawless skin makes all the difference.",
+      "heroParagraph2": "Our Free AI Blemish Remover tool lets you effortlessly retouch your photos with just one click. Remove imperfections, smooth skin, and enhance your portraits in seconds.",
+      "enhanceImageButton": "Remove Blemishes Now",
+      "featuresTitle": "Key Features of Our AI Blemish Remover",
+      "features": {
+        "blemishRemoval": {
+          "title": "Blemish Removal",
+          "description": "Easily remove acne, spots, and imperfections for a flawless look."
+        },
+        "skinSmoothing": {
+          "title": "Skin Smoothing",
+          "description": "Achieve natural-looking, smooth skin without over-editing."
+        },
+        "detailPreservation": {
+          "title": "Detail Preservation",
+          "description": "Maintain natural textures and details while removing blemishes."
+        },
+        "freeToUse": {
+          "title": "Free to Use",
+          "description": "Enjoy unlimited blemish removal with no cost."
+        }
+      },
+      "stepsTitle": "Three Simple Steps to Flawless Skin",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Image",
+          "description": "Drag and drop your image or select it from your device."
+        },
+        "process": {
+          "title": "Remove Blemishes",
+          "description": "Let our AI analyze and remove imperfections automatically."
+        },
+        "download": {
+          "title": "Download Your Flawless Image",
+          "description": "Save the retouched image and use it as needed."
+        }
+      },
+      "useCasesTitle": "Perfect for Various Uses",
+      "useCases": {
+        "portraitPhotography": {
+          "title": "Portrait Photography",
+          "description": "Enhance portraits for a professional, polished look."
+        },
+        "socialMedia": {
+          "title": "Social Media",
+          "description": "Post flawless selfies and photos that stand out."
+        },
+        "modelingPortfolios": {
+          "title": "Modeling Portfolios",
+          "description": "Create stunning, blemish-free portfolio images."
+        },
+        "personalUse": {
+          "title": "Personal Use",
+          "description": "Retouch everyday photos for a more confident look."
+        }
+      },
+      "imageEnhancementTitle": "What is Blemish Removal and How Does It Work?",
+      "imageEnhancementParagraph1": "Blemish removal is the process of eliminating skin imperfections like acne, spots, and scars from photos. Our tool uses advanced AI technology to detect and remove blemishes while preserving natural skin texture and details.",
+      "imageEnhancementParagraph2": "This tool is perfect for anyone looking to enhance their portraits or personal photos. Say goodbye to imperfections and hello to flawless, natural-looking skin.",
+      "benefitsTitle": "Why Use Our AI Blemish Remover?",
+      "benefitsParagraph": "Here's why our tool is essential for flawless photos:",
+      "benefits": {
+        "benefit1": "Professional Results: Achieve studio-quality retouching in seconds.",
+        "benefit2": "Time-Saving: Skip manual editing and let AI do the work for you.",
+        "benefit3": "Free and Accessible: Enjoy professional-grade blemish removal without spending a dime.",
+        "benefit4": "Versatile: Ideal for portraits, social media, modeling, and personal use."
+      },
+      "misconceptionsTitle": "Common Misconceptions About Blemish Removal",
+      "misconceptionsParagraph1": "Many believe that removing blemishes requires expensive software or professional skills. Our AI tool simplifies the process, delivering flawless results instantly.",
+      "misconceptionsParagraph2": "Another misconception is that blemish removal makes photos look unnatural. Our tool ensures a balanced, natural look while enhancing your skin.",
+      "whyChooseTitle": "Why Choose Our AI Blemish Remover?",
+      "whyChooseParagraph1": "Here's what sets us apart:",
+      "whyChoose": {
+        "reason1": "AI-Powered Precision: Experience unparalleled blemish removal with cutting-edge AI technology.",
+        "reason2": "User-Friendly Interface: Simple and intuitive design for anyone to use.",
+        "reason3": "Fast and Free: Get flawless results in seconds, at no cost."
+      },
+      "whyChooseParagraph2": "Whether you're a photographer, model, or casual user, our AI Blemish Remover is the perfect tool for flawless photos.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Blemish Remover Tool?",
+          "answer": "It's a free online tool that removes blemishes and imperfections from photos using advanced AI technology."
+        },
+        {
+          "question": "How does the AI Blemish Remover work?",
+          "answer": "Our tool uses AI algorithms to detect and remove blemishes while preserving natural skin texture and details."
+        },
+        {
+          "question": "Can I use the tool on any type of image?",
+          "answer": "Yes, it works on various image formats like jpeg, png, and webp."
+        },
+        {
+          "question": "Is there a limit on how many images I can retouch?",
+          "answer": "Yes, you can retouch up to 3 images daily to ensure fair use for everyone."
+        },
+        {
+          "question": "How long does the blemish removal process take?",
+          "answer": "Typically, it only takes a few seconds depending on image size and complexity."
+        },
+        {
+          "question": "Do I need any special skills to use the tool?",
+          "answer": "No, our tool is designed for all users. Simply upload your image, and the AI does the rest."
+        },
+        {
+          "question": "Is the AI Blemish Remover really free?",
+          "answer": "Yes, the tool is completely free to use."
+        },
+        {
+          "question": "Can I download the retouched images?",
+          "answer": "Absolutely! You can download the flawless image instantly."
+        },
+        {
+          "question": "Is the tool suitable for professional purposes?",
+          "answer": "Yes, it's perfect for both personal and professional use, including portraits, modeling, and social media."
+        },
+        {
+          "question": "Will the retouched image look natural?",
+          "answer": "Yes, our AI ensures a natural look while removing imperfections, preserving skin texture and details."
+        }
+      ]
+    },
+
+    "ImageEnhancerContent": {
+      "imageAltBefore": "Before: Original low-quality image",
+      "imageAltAfter": "After: Enhanced high-quality image",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Bring Your Images to Life with Stunning Quality",
+      "heroParagraph1": "High-quality visuals are the key to making a strong impact, but blurry or low-resolution images can ruin your presentation. Whether it’s for social media, e-commerce, or personal use, clear and sharp images make a difference.",
+      "heroParagraph2": "Our Free AI Image Enhancer tool lets you upscale and enhance your photos with just one click. Improve resolution, boost details, and make your images shine effortlessly.",
+      "enhanceImageButton": "Enhance Image Now",
+      "featuresTitle": "Key Features of Our AI Image Enhancer",
+      "features": {
+        "upscaleResolution": {
+          "title": "Upscale Resolution",
+          "description": "Enhance image resolution up to 4X without losing quality."
+        },
+        "clarityBoost": {
+          "title": "Clarity Boost",
+          "description": "Automatically sharpen and refine details for crystal-clear results."
+        },
+        "hdOutput": {
+          "title": "HD Output",
+          "description": "Produce high-definition images suitable for professional use."
+        },
+        "freeToUse": {
+          "title": "Free to Use",
+          "description": "Enjoy unlimited enhancements with no cost."
+        }
+      },
+      "stepsTitle": "Three Simple Steps to Enhance Your Images",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Image",
+          "description": "Drag and drop your image or select it from your device."
+        },
+        "process": {
+          "title": "Enhance Image",
+          "description": "Let our AI analyze and enhance the image automatically."
+        },
+        "download": {
+          "title": "Download Your Enhanced Image",
+          "description": "Save the high-quality image and use it as needed."
+        }
+      },
+      "useCasesTitle": "Perfect for Various Uses",
+      "useCases": {
+        "socialMedia": {
+          "title": "Social Media",
+          "description": "Create captivating, high-quality posts that stand out."
+        },
+        "ecommerce": {
+          "title": "E-commerce",
+          "description": "Improve product photos to drive more sales."
+        },
+        "photography": {
+          "title": "Photography",
+          "description": "Enhance the resolution and details of your shots effortlessly."
+        },
+        "personalProjects": {
+          "title": "Personal Projects",
+          "description": "Turn everyday photos into professional-looking images."
+        }
+      },
+      "imageEnhancementTitle": "What is Image Enhancement and How Does It Work?",
+      "imageEnhancementParagraph1": "Image enhancement improves the quality and clarity of photos by upscaling resolution, refining details, and sharpening visuals. Our tool uses AI-driven technology to automatically analyze and enhance your images, producing sharp and vibrant results.",
+      "imageEnhancementParagraph2": "This tool is perfect for users who want to improve image quality for professional and personal use. Say goodbye to blurry photos and hello to crisp, high-resolution visuals.",
+      "benefitsTitle": "Why Use Our AI Image Enhancer?",
+      "benefitsParagraph": "Here's why our tool is essential for enhancing your images:",
+      "benefits": {
+        "benefit1": "Better Visual Impact: Clearer images grab more attention and leave a lasting impression.",
+        "benefit2": "Time-Saving: Achieve high-quality results in seconds without manual editing.",
+        "benefit3": "Free and Accessible: Enjoy professional-grade image enhancement without spending a dime.",
+        "benefit4": "Versatile: Ideal for social media, e-commerce, photography, and personal projects."
+      },
+      "misconceptionsTitle": "Common Misconceptions About Image Enhancement",
+      "misconceptionsParagraph1": "Many assume that enhancing image quality requires expensive software and technical know-how. Our AI tool simplifies the process, delivering outstanding results instantly.",
+      "misconceptionsParagraph2": "Another misconception is that image enhancement significantly alters the original content. In reality, our tool preserves the essence of your photo while improving its clarity and resolution.",
+      "whyChooseTitle": "Why Choose Our AI Image Enhancer?",
+      "whyChooseParagraph1": "Here's what sets us apart:",
+      "whyChoose": {
+        "reason1": "AI-Powered Precision: Experience unparalleled enhancement with our cutting-edge AI algorithms.",
+        "reason2": "User-Friendly Interface: Simple and intuitive design for anyone to use.",
+        "reason3": "Fast and Free: Get stunning image quality in seconds, at no cost."
+      },
+      "whyChooseParagraph2": "Whether you're a professional looking for efficient solutions or a casual user aiming for better photos, our AI Image Enhancer is the perfect tool for you.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Image Enhancer Tool?",
+          "answer": "It's a free online tool that improves image quality and resolution using advanced AI technology."
+        },
+        {
+          "question": "How does the AI Image Enhancer work?",
+          "answer": "Our tool uses sophisticated AI algorithms to analyze and enhance your image, boosting resolution and sharpening details."
+        },
+        {
+          "question": "Can I use the tool on any type of image?",
+          "answer": "Yes, it works on various image formats like jpeg, png, and webp."
+        },
+        {
+          "question": "Is there a limit on how many images I can enhance?",
+          "answer": "Yes, you can enhance up to 3 images daily to ensure fair use for everyone."
+        },
+        {
+          "question": "How long does the enhancement process take?",
+          "answer": "Typically, it only takes a few seconds depending on image size and complexity."
+        },
+        {
+          "question": "Do I need any special skills to use the tool?",
+          "answer": "No, our tool is designed for all users. Simply upload your image, and the AI does the rest."
+        },
+        {
+          "question": "Is the AI Image Enhancer really free?",
+          "answer": "Yes, the tool is completely free to use."
+        },
+        {
+          "question": "Can I download the enhanced images?",
+          "answer": "Absolutely! You can download the high-quality enhanced image instantly."
+        },
+        {
+          "question": "Is the tool suitable for professional purposes?",
+          "answer": "Yes, it's perfect for both personal and professional use, including social media, e-commerce, and photography."
+        },
+        {
+          "question": "Will the image quality be maintained after enhancement?",
+          "answer": "Yes, our AI ensures that the enhanced image retains superior quality with sharper and clearer visuals."
+        }
+      ]
+    },
+
+    "AIAcneContent": {
+      "imageAltBefore": "Before: Photo with visible acne and blemishes",
+      "imageAltAfter": "After: Smooth, acne-free skin in the photo",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Get Clear Skin with AI Acne Remover",
+      "heroParagraph1": "Acne, blemishes, and spots can take away from your confidence in photos. Whether for professional headshots, social media, or personal keepsakes, clear skin helps your photos shine.",
+      "heroParagraph2": "With our free AI Acne Remover, you can instantly erase acne, smooth your skin, and enhance your images in just one click. No editing skills needed!",
+      "enhanceImageButton": "Remove Acne Now",
+      "featuresTitle": "What Makes Our AI Acne Remover Special?",
+      "features": {
+        "blemishRemoval": {
+          "title": "Acne Removal",
+          "description": "Easily get rid of acne, pimples, and dark spots to reveal clear skin."
+        },
+        "skinSmoothing": {
+          "title": "Skin Smoothing",
+          "description": "Achieve smooth, natural-looking skin without losing texture."
+        },
+        "detailPreservation": {
+          "title": "Keep Natural Details",
+          "description": "Remove imperfections while keeping your photo's realistic look."
+        },
+        "freeToUse": {
+          "title": "100% Free",
+          "description": "Enjoy unlimited acne removal at no cost."
+        }
+      },
+      "stepsTitle": "How to Use the AI Acne Remover",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Photo",
+          "description": "Drag and drop or select an image from your device."
+        },
+        "process": {
+          "title": "Erase Acne",
+          "description": "Let our advanced AI remove blemishes in seconds."
+        },
+        "download": {
+          "title": "Save Your Edited Photo",
+          "description": "Download your flawless image with just one click."
+        }
+      },
+      "useCasesTitle": "Ideal Uses for Our Acne Remover",
+      "useCases": {
+        "portraitPhotography": {
+          "title": "Portraits and Headshots",
+          "description": "Enhance your portraits for a polished, professional touch."
+        },
+        "socialMedia": {
+          "title": "Social Media",
+          "description": "Post stunning, acne-free photos that stand out."
+        },
+        "modelingPortfolios": {
+          "title": "Modeling Portfolios",
+          "description": "Create flawless images for your modeling profile."
+        },
+        "personalUse": {
+          "title": "Everyday Photos",
+          "description": "Touch up your personal photos to look your best."
+        }
+      },
+      "imageEnhancementTitle": "How Does AI Acne Removal Work?",
+      "imageEnhancementParagraph1": "AI acne removal uses advanced technology to detect and erase skin imperfections like acne, pimples, and scars from photos. The tool ensures your skin looks natural by preserving its texture and details.",
+      "imageEnhancementParagraph2": "This tool is perfect for anyone wanting to improve their selfies, portraits, or everyday photos. Enjoy clear, beautiful skin in seconds!",
+      "benefitsTitle": "Why Choose Our AI Acne Remover?",
+      "benefitsParagraph": "Here’s why this tool is the best choice for photo touch-ups:",
+      "benefits": {
+        "benefit1": "Professional Results: Achieve high-quality, flawless skin in your photos.",
+        "benefit2": "Quick and Easy: Save time with instant blemish removal.",
+        "benefit3": "Completely Free: Enjoy professional editing without spending a penny.",
+        "benefit4": "Versatile Uses: Perfect for selfies, headshots, portfolios, and more."
+      },
+      "misconceptionsTitle": "Clearing Up Misconceptions About Acne Removal",
+      "misconceptionsParagraph1": "Some think you need expensive tools or skills for clear skin in photos. Our AI tool makes acne removal simple, fast, and effective.",
+      "misconceptionsParagraph2": "Others worry about photos looking over-edited. With our tool, your images remain natural while looking their best.",
+      "whyChooseTitle": "What Makes Our AI Acne Remover Stand Out?",
+      "whyChooseParagraph1": "Here’s why users love our tool:",
+      "whyChoose": {
+        "reason1": "Precision Editing: AI-powered technology delivers perfect results every time.",
+        "reason2": "Beginner-Friendly: No experience needed—just upload and enhance.",
+        "reason3": "Fast and Free: Get stunning photos in seconds at zero cost."
+      },
+      "whyChooseParagraph2": "Whether you're a casual user or a professional, our AI Acne Remover is designed to give you the best results with minimal effort.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Acne Remover Tool?",
+          "answer": "It’s a free online tool that removes acne and other skin imperfections from photos using AI."
+        },
+        {
+          "question": "How does the AI Acne Remover work?",
+          "answer": "The tool uses advanced AI to detect and remove blemishes while keeping your skin’s texture natural."
+        },
+        {
+          "question": "Can I use it for all types of photos?",
+          "answer": "Yes, it works with common formats like JPEG, PNG, and WebP."
+        },
+        {
+          "question": "Is there a daily usage limit?",
+          "answer": "Yes, you can retouch up to three images daily to ensure everyone can use the tool fairly."
+        },
+        {
+          "question": "How fast is the acne removal process?",
+          "answer": "It takes just a few seconds depending on the size of the image."
+        },
+        {
+          "question": "Do I need editing experience to use this tool?",
+          "answer": "Not at all! The tool is designed for everyone, regardless of experience."
+        },
+        {
+          "question": "Is the tool completely free?",
+          "answer": "Yes, you can use the AI Acne Remover at no cost."
+        },
+        {
+          "question": "Can I save the edited photo?",
+          "answer": "Yes, you can download the retouched photo immediately after processing."
+        },
+        {
+          "question": "Is it suitable for professional edits?",
+          "answer": "Absolutely! The tool delivers professional results ideal for portfolios, social media, and more."
+        },
+        {
+          "question": "Will the edited photo look natural?",
+          "answer": "Yes, the AI ensures a natural, balanced look while removing imperfections."
+        }
+      ]
+    },
+    "PhotoColorizerContent": {
+      "imageAltBefore": "Before: Black and white photo",
+      "imageAltAfter": "After: Colorized photo",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Bring Your Black and White Photos to Life",
+      "heroParagraph1": "Old memories captured in black and white deserve a touch of vibrant color. Whether you're restoring family heirlooms or adding depth to historical images, colorizing photos creates a fresh perspective.",
+      "heroParagraph2": "Our AI Photo Colorizer uses advanced machine learning to intelligently add color to black and white photos. Experience the magic of seeing your photos come to life in rich, realistic color.",
+      "colorizeButton": "Colorize Photo Now",
+      "featuresTitle": "Key Features of Our Photo Colorizer",
+      "features": {
+        "advancedAI": {
+          "title": "Advanced AI Technology",
+          "description": "Leverages deep learning to deliver realistic and natural colorization."
+        },
+        "highResolution": {
+          "title": "High-Resolution Output",
+          "description": "Colorize photos without compromising on quality."
+        },
+        "quickProcessing": {
+          "title": "Quick Processing",
+          "description": "Transform your images in just a few seconds."
+        },
+        "freeTool": {
+          "title": "Free to Use",
+          "description": "Enjoy professional-grade photo colorization without any cost."
+        }
+      },
+      "stepsTitle": "How to Colorize Photos in Three Simple Steps",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Photo",
+          "description": "Drag and drop your black and white image or choose a file from your device."
+        },
+        "process": {
+          "title": "Colorize Photo",
+          "description": "Our AI algorithm automatically adds vibrant color to your image."
+        },
+        "download": {
+          "title": "Download Your Colorized Image",
+          "description": "Save your beautifully colorized photo with one click."
+        }
+      },
+      "useCasesTitle": "Perfect for a Variety of Uses",
+      "useCases": {
+        "familyPhotos": {
+          "title": "Family Photos",
+          "description": "Bring old family pictures back to life with rich colors."
+        },
+        "historicalImages": {
+          "title": "Historical Images",
+          "description": "Enhance historical documents and photographs for educational purposes."
+        },
+        "artProjects": {
+          "title": "Art Projects",
+          "description": "Create artistic renditions by adding color to black and white images."
+        },
+        "socialMedia": {
+          "title": "Social Media",
+          "description": "Impress your followers by sharing stunning colorized photos."
+        }
+      },
+      "colorizationTitle": "What is Photo Colorization and How Does It Work?",
+      "colorizationParagraph1": "Photo colorization is the process of adding color to monochrome (black and white) images. It brings historical or personal photos into the modern age by recreating realistic hues and tones.",
+      "colorizationParagraph2": "Our AI Photo Colorizer uses deep learning to analyze textures, objects, and backgrounds, producing accurate and vibrant colorized images in just a few moments.",
+      "benefitsTitle": "Why Use Our AI Photo Colorizer?",
+      "benefitsParagraph": "Here are the key reasons to try our photo colorization tool:",
+      "benefits": {
+        "benefit1": "Enhanced Memories: Relive your treasured moments in full color.",
+        "benefit2": "Time-Saving: No need for manual editing—our tool automates the entire process.",
+        "benefit3": "Free and Easy: Get professional results without spending a dime.",
+        "benefit4": "Versatile Usage: Ideal for personal, educational, and creative projects."
+      },
+      "misconceptionsTitle": "Common Misconceptions About Photo Colorization",
+      "misconceptionsParagraph1": "Many believe that photo colorization requires artistic skills or expensive software. Our tool makes the process simple and accessible to everyone.",
+      "misconceptionsParagraph2": "Some think colorization is only useful for professionals. In reality, anyone can use it to transform old memories into vibrant images.",
+      "whyChooseTitle": "Why Choose Our AI Photo Colorizer?",
+      "whyChooseParagraph1": "Here’s why our tool stands out:",
+      "whyChoose": {
+        "reason1": "Cutting-Edge AI: Achieve realistic and vivid colorization effortlessly.",
+        "reason2": "User-Friendly Interface: No technical expertise required.",
+        "reason3": "Fast and Free: Get results in seconds at no cost."
+      },
+      "whyChooseParagraph2": "Whether you’re restoring family photos or working on creative projects, our tool is the ideal solution for adding life to black and white images.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Photo Colorizer Tool?",
+          "answer": "It's a free online tool that uses AI to colorize black and white photos quickly and easily."
+        },
+        {
+          "question": "How does the AI Photo Colorizer work?",
+          "answer": "Our tool analyzes the content of your image using deep learning to add realistic colors automatically."
+        },
+        {
+          "question": "Is the tool suitable for all types of photos?",
+          "answer": "Yes, it works with black and white photos of all kinds, including portraits, landscapes, and historical images."
+        },
+        {
+          "question": "Are there any usage limits?",
+          "answer": "Yes, you can process up to 3 images per day to keep it free and accessible for all users."
+        },
+        {
+          "question": "Do I need any special skills to use this tool?",
+          "answer": "No, our AI Photo Colorizer is easy to use and requires no prior experience."
+        },
+        {
+          "question": "Is the photo colorization service really free?",
+          "answer": "Yes, it is completely free to use with no hidden charges."
+        },
+        {
+          "question": "Can I download my colorized images?",
+          "answer": "Yes, once your photo is colorized, you can download it instantly."
+        },
+        {
+          "question": "Will my photos be stored after processing?",
+          "answer": "No, your photos are not stored. We prioritize your privacy and security."
+        },
+        {
+          "question": "Can I use the colorized images for commercial projects?",
+          "answer": "Yes, the tool is perfect for both personal and commercial use."
+        },
+        {
+          "question": "Does the AI Photo Colorizer affect image quality?",
+          "answer": "No, our tool enhances your images without compromising quality."
+        }
+      ]
+    },
+    "PhotoRestorerContent": {
+      "imageAltBefore": "Before: Faded and damaged old photo",
+      "imageAltAfter": "After: Restored and vibrant photo",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "heroTitle": "Bring Old Memories Back to Life",
+      "heroParagraph1": "Time may take a toll on your precious photos, fading colors and leaving cracks that obscure cherished memories. With our AI Photo Restorer, you can breathe new life into old, faded, and damaged images with just a few clicks.",
+      "heroParagraph2": "Experience the magic of AI-powered photo restoration that enhances and repairs your images, preserving your history with stunning results, all online and completely free.",
+      "restoreButton": "Restore Photos Now",
+      "featuresTitle": "Key Features of Our Photo Restorer",
+      "features": {
+        "restoreDamage": {
+          "title": "Restore Damaged Photos",
+          "description": "Repair cracks, scratches, and spots to bring your images back to their original glory."
+        },
+        "colorEnhancement": {
+          "title": "Color and Contrast Enhancement",
+          "description": "Boost the vibrance and contrast of faded photos for a refreshed and vivid appearance."
+        },
+        "automaticRestoration": {
+          "title": "Automatic Restoration",
+          "description": "No need for manual editing skills—our AI handles the restoration process automatically."
+        },
+        "freeToUse": {
+          "title": "Free and Easy to Use",
+          "description": "Enjoy top-tier photo restoration without any cost or complex software."
+        }
+      },
+      "stepsTitle": "How to Restore Photos in Three Simple Steps",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Old Photo",
+          "description": "Drag and drop your faded or damaged photo into the uploader or choose it from your device."
+        },
+        "process": {
+          "title": "Let AI Work Its Magic",
+          "description": "Our advanced AI algorithms analyze and repair damage automatically."
+        },
+        "download": {
+          "title": "Download Your Restored Image",
+          "description": "Save the newly enhanced photo and relive your memories in vibrant clarity."
+        }
+      },
+      "useCasesTitle": "Perfect for Various Restoration Needs",
+      "useCases": {
+        "familyMemories": {
+          "title": "Family Memories",
+          "description": "Preserve old family photos and pass them down for generations."
+        },
+        "historicalImages": {
+          "title": "Historical Photos",
+          "description": "Restore valuable historical photos for archives or personal collections."
+        },
+        "personalProjects": {
+          "title": "Personal Projects",
+          "description": "Use restored images for creative photo projects and scrapbooks."
+        },
+        "gifts": {
+          "title": "Memorable Gifts",
+          "description": "Give the gift of restored memories by enhancing old photos for loved ones."
+        }
+      },
+      "photoRestorationTitle": "What is Photo Restoration and Why is it Important?",
+      "photoRestorationParagraph1": "Photo restoration involves repairing and enhancing old or damaged photographs to bring back their original quality. From fixing tears and scratches to restoring faded colors, photo restoration allows you to preserve important moments and family history.",
+      "photoRestorationParagraph2": "Our AI Photo Restorer simplifies this traditionally complex process, using cutting-edge algorithms to automatically detect and repair photo imperfections, making your memories vivid and long-lasting.",
+      "benefitsTitle": "Why Use Our AI Photo Restorer?",
+      "benefitsParagraph": "Discover the advantages of restoring your photos with our AI tool:",
+      "benefits": {
+        "benefit1": "Preserve Precious Memories: Restore old photos to keep your family history alive.",
+        "benefit2": "Save Time and Effort: Let AI do the hard work instead of manual editing.",
+        "benefit3": "Free and User-Friendly: Enhance photos without any hidden fees or complex software.",
+        "benefit4": "High-Quality Restoration: Experience professional-level results with no technical skills required."
+      },
+      "misconceptionsTitle": "Common Misconceptions About Photo Restoration",
+      "misconceptionsParagraph1": "Many believe that restoring old photos requires expensive software and advanced technical skills. Our tool eliminates this barrier by offering an easy-to-use, automated solution.",
+      "misconceptionsParagraph2": "Another common misconception is that only professionals can restore photos effectively. With our AI-powered technology, anyone can achieve stunning results with minimal effort.",
+      "whyChooseTitle": "Why Choose Our AI Photo Restorer?",
+      "whyChooseParagraph1": "Here's what makes our tool stand out from the rest:",
+      "whyChoose": {
+        "reason1": "Advanced AI Technology: Our tool automatically restores images with impressive accuracy.",
+        "reason2": "No Expertise Needed: Enjoy an intuitive experience without the need for photo-editing skills.",
+        "reason3": "Fast, Free, and Online: Enhance your photos in seconds, all for free."
+      },
+      "whyChooseParagraph2": "Whether you're looking to restore sentimental family photos or historical images, our AI Photo Restorer offers a seamless and powerful solution.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Photo Restorer?",
+          "answer": "It's an online tool that uses artificial intelligence to repair and enhance old or damaged photos for free."
+        },
+        {
+          "question": "How does the photo restoration process work?",
+          "answer": "Our AI tool detects imperfections such as cracks, scratches, and faded colors, then automatically restores the photo."
+        },
+        {
+          "question": "Can I use the tool for any type of photo?",
+          "answer": "Yes, our tool works on various types of photos, from black-and-white images to color photographs."
+        },
+        {
+          "question": "Is there a limit to how many photos I can restore?",
+          "answer": "Yes, there's a daily limit of 3 photo restorations to ensure everyone can use the service for free."
+        },
+        {
+          "question": "How long does it take to restore a photo?",
+          "answer": "Most photos are restored in seconds, depending on the image size and complexity."
+        },
+        {
+          "question": "Do I need special skills to use the tool?",
+          "answer": "No, the tool is designed for users of all skill levels. Simply upload your image, and the tool does the rest."
+        },
+        {
+          "question": "Is the AI Photo Restorer really free?",
+          "answer": "Yes, the tool is completely free to use with no hidden charges."
+        },
+        {
+          "question": "Can I download my restored photo?",
+          "answer": "Yes, you can download your restored photo immediately after the process is complete."
+        },
+        {
+          "question": "Is the tool suitable for professional use?",
+          "answer": "Absolutely! Our AI Photo Restorer delivers high-quality results suitable for both personal and professional projects."
+        },
+        {
+          "question": "Will restoring my photo affect its resolution?",
+          "answer": "No, our tool enhances and restores your photo while preserving its original resolution and quality."
+        }
+      ]
+    },
+    "ImageCaptionGeneratorContent": {
+      "heroTitle": "Transform Your Images with AI-Powered Captions",
+      "heroParagraph1": "A compelling caption can make or break your social media post or presentation. Manually crafting perfect captions takes time and creativity. Why not let AI handle it for you?",
+      "heroParagraph2": "With our AI Image Caption Generator, creating descriptive and engaging captions is effortless. Upload your image and let AI analyze it to generate a captivating caption within seconds.",
+      "featuresTitle": "Key Features of Our AI Caption Generator",
+      "features": {
+        "smartRecognition": {
+          "title": "Smart Image Recognition",
+          "description": "Leverages advanced AI to analyze objects, emotions, and settings in your image."
+        },
+        "creativeCaptions": {
+          "title": "Creative and Engaging Captions",
+          "description": "Generates captions that are ready to use on Instagram, Facebook, and more."
+        },
+        "freeToUse": {
+          "title": "Completely Free",
+          "description": "No fees, no subscriptions—generate captions without limits."
+        },
+        "fastResults": {
+          "title": "Fast and Accurate",
+          "description": "Captions are generated instantly, saving you time and effort."
+        }
+      },
+      "stepsTitle": "How to Generate Captions in Three Simple Steps",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Image",
+          "description": "Drag and drop your image or select it from your device."
+        },
+        "generate": {
+          "title": "Generate Caption",
+          "description": "Click 'Generate Caption' and let the AI do its magic."
+        },
+        "copy": {
+          "title": "Copy and Use",
+          "description": "Copy the generated caption and use it wherever you like."
+        }
+      },
+      "useCasesTitle": "Perfect for Various Needs",
+      "useCases": {
+        "socialMedia": {
+          "title": "Social Media Posts",
+          "description": "Generate witty or descriptive captions for Instagram, Facebook, and more."
+        },
+        "contentCreation": {
+          "title": "Content Creation",
+          "description": "Save time on caption writing for blogs, articles, or graphic content."
+        },
+        "presentations": {
+          "title": "Professional Presentations",
+          "description": "Add context to your visuals with quick, accurate captions."
+        },
+        "marketing": {
+          "title": "Marketing Materials",
+          "description": "Create attention-grabbing captions for ads and promotional graphics."
+        }
+      },
+      "captionGenerationTitle": "What is Caption Generation and How Does It Work?",
+      "captionGenerationParagraph1": "Image caption generation is the process of creating text descriptions based on the content of an image. Our tool uses advanced AI to identify objects, activities, and context within your image to craft relevant captions.",
+      "captionGenerationParagraph2": "This technology is invaluable for anyone looking to enhance visual content, whether for social media, marketing, or personal projects. Letting AI handle the captions gives you more time to focus on creativity and engagement.",
+      "benefitsTitle": "Why Use Our AI Image Caption Generator?",
+      "benefitsParagraph": "Discover the benefits of using our tool:",
+      "benefits": {
+        "benefit1": "Save Time: No more brainstorming or struggling with caption ideas.",
+        "benefit2": "Engagement Boost: Catchy captions help increase likes, shares, and interactions.",
+        "benefit3": "Free and Unlimited: Generate as many captions as you need without any cost.",
+        "benefit4": "Versatile: Ideal for professional and personal use across various platforms."
+      },
+      "misconceptionsTitle": "Common Misconceptions About AI Caption Generators",
+      "misconceptionsParagraph1": "Many believe AI captions are generic or irrelevant. However, our tool uses smart algorithms that ensure creativity and context-appropriate captions.",
+      "misconceptionsParagraph2": "Some think caption generators are only for casual users. In reality, professionals in marketing, design, and content creation also benefit from AI-powered captioning.",
+      "whyChooseTitle": "Why Choose Our AI Image Caption Generator?",
+      "whyChooseParagraph1": "Here’s what makes our caption generator your go-to tool:",
+      "whyChoose": {
+        "reason1": "Advanced AI Technology: Generates accurate, context-aware captions.",
+        "reason2": "Ease of Use: No learning curve—just upload and generate.",
+        "reason3": "Free and Fast: No fees, instant results."
+      },
+      "whyChooseParagraph2": "Whether you're a social media influencer, marketer, or casual user, our tool delivers professional-grade captions effortlessly.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Image Caption Generator?",
+          "answer": "It's a free tool that generates captions for images using AI technology."
+        },
+        {
+          "question": "How does the caption generator work?",
+          "answer": "The tool uses advanced algorithms to analyze images and create relevant captions."
+        },
+        {
+          "question": "Can I use the tool for Instagram captions?",
+          "answer": "Yes, the tool is perfect for generating Instagram-ready captions."
+        },
+        {
+          "question": "Is the tool really free?",
+          "answer": "Yes, our AI Caption Generator is completely free to use."
+        },
+        {
+          "question": "Is there a limit to how many captions I can generate?",
+          "answer": "Currently, you can generate up to 3 captions per day for free."
+        },
+        {
+          "question": "Do I need to download software to use the tool?",
+          "answer": "No, the tool works directly in your browser—no downloads required."
+        },
+        {
+          "question": "Can the tool generate captions for professional content?",
+          "answer": "Absolutely! It's designed for both professional and personal use."
+        },
+        {
+          "question": "Will the captions be unique?",
+          "answer": "Yes, each caption is generated based on the specific content of your uploaded image."
+        },
+        {
+          "question": "What image formats are supported?",
+          "answer": "Our tool supports JPEG, PNG, and WEBP formats for uploading images."
+        },
+        {
+          "question": "Can I generate captions for multiple images at once?",
+          "answer": "Currently, the tool processes one image at a time to ensure precise caption generation."
+        }
+      ]
+    },
+    "ImageTextConverterContent": {
+      "heroTitle": "Convert Images to Text with AI Precision",
+      "heroParagraph1": "Extracting text from images has never been easier. Whether you need to copy text from a scanned document or capture information from a photo, doing it manually is tedious and time-consuming.",
+      "heroParagraph2": "Our AI Image to Text Converter simplifies the process. Upload your image, and let the tool quickly extract text with unparalleled accuracy—perfect for professional and personal use.",
+      "featuresTitle": "Key Features of Our AI Image to Text Converter",
+      "features": {
+        "smartRecognition": {
+          "title": "Advanced OCR Technology",
+          "description": "Leverages cutting-edge AI-powered Optical Character Recognition (OCR) to accurately detect and extract text from images."
+        },
+        "multiFormatSupport": {
+          "title": "Supports Multiple Image Formats",
+          "description": "Compatible with JPEG, PNG, and WEBP formats for seamless text extraction."
+        },
+        "freeToUse": {
+          "title": "Completely Free",
+          "description": "No charges, no subscriptions—extract text from images at no cost."
+        },
+        "fastResults": {
+          "title": "Instant Results",
+          "description": "Extract text within seconds, saving time and effort."
+        }
+      },
+      "stepsTitle": "How to Extract Text in Three Simple Steps",
+      "steps": {
+        "upload": {
+          "title": "Upload Your Image",
+          "description": "Drag and drop your image or select it from your device."
+        },
+        "generate": {
+          "title": "Extract Text",
+          "description": "Click 'Extract Text' and let the AI do its magic."
+        },
+        "copy": {
+          "title": "Copy and Use",
+          "description": "Copy the extracted text and use it wherever you like."
+        }
+      },
+      "useCasesTitle": "Versatile Use Cases for Text Extraction from Images",
+      "useCases": {
+        "documentScanning": {
+          "title": "Extract Text from Scanned Images",
+          "description": "Easily convert scanned images containing text into editable content."
+        },
+        "photoNotes": {
+          "title": "Copy Text from Photos",
+          "description": "Quickly capture text from pictures of notes, signs, and presentations without manual typing."
+        },
+        "handwrittenText": {
+          "title": "Convert Handwritten Text from Images",
+          "description": "Extract text from handwritten notes in images and make them editable or searchable."
+        },
+        "businessDataEntry": {
+          "title": "Streamline Data Entry from Images",
+          "description": "Convert printed or scanned forms in images into text for faster data entry and processing."
+        }
+      },
+      "captionGenerationTitle": "What is Text Extraction and How Does It Work?",
+      "captionGenerationParagraph1": "Text extraction refers to the process of pulling text from an image or scanned document using Optical Character Recognition (OCR) technology. Our AI Image to Text Converter identifies and converts characters into machine-encoded text for easy copying and editing.",
+      "captionGenerationParagraph2": "This technology is invaluable for students, professionals, and businesses seeking to digitize content, automate data entry, or enhance accessibility. AI-based OCR ensures high accuracy and saves valuable time.",
+      "benefitsTitle": "Why Use Our AI Image to Text Converter?",
+      "benefitsParagraph": "Discover the benefits of using our tool:",
+      "benefits": {
+        "benefit1": "Time-Saving: Extract text in seconds without retyping.",
+        "benefit2": "Accurate Results: Advanced AI ensures precise text recognition.",
+        "benefit3": "Free to Use: Enjoy unlimited text extraction at no cost.",
+        "benefit4": "Multiple Applications: Ideal for notes, documents, forms, and more."
+      },
+      "misconceptionsTitle": "Common Misconceptions About AI Text Extraction",
+      "misconceptionsParagraph1": "Some believe AI-based OCR tools are only for printed text. However, our tool handles both printed and handwritten text with high accuracy.",
+      "misconceptionsParagraph2": "Another misconception is that text extraction tools require expensive subscriptions. Our solution is entirely free to use, making it accessible to everyone.",
+      "whyChooseTitle": "Why Choose Our AI Image to Text Converter?",
+      "whyChooseParagraph1": "Here’s what sets our text extraction tool apart:",
+      "whyChoose": {
+        "reason1": "Cutting-Edge OCR: Extracts text with unmatched precision.",
+        "reason2": "User-Friendly Interface: Simple and intuitive for anyone.",
+        "reason3": "Fast and Free: Immediate results without any cost."
+      },
+      "whyChooseParagraph2": "Whether you’re a student, professional, or casual user, our AI Image to Text Converter offers seamless, reliable performance for all your text extraction needs.",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What is the AI Image to Text Converter?",
+          "answer": "It’s a free tool that extracts text from images using advanced OCR technology."
+        },
+        {
+          "question": "Is the tool free to use?",
+          "answer": "Yes, our AI Image to Text Converter is completely free with no hidden charges."
+        },
+        {
+          "question": "What image formats does the tool support?",
+          "answer": "The tool supports JPEG, PNG, and WEBP formats for uploading images."
+        },
+        {
+          "question": "Can it extract handwritten text?",
+          "answer": "Yes, our tool can recognize and extract text from handwritten notes as well."
+        },
+        {
+          "question": "Do I need to install software?",
+          "answer": "No installation is required. The tool works entirely online from your browser."
+        },
+        {
+          "question": "Is there a limit to how many images I can process?",
+          "answer": "Currently, you can process up to 3 images per day for free."
+        },
+        {
+          "question": "How accurate is the text extraction?",
+          "answer": "Our tool uses advanced AI algorithms to ensure highly accurate text recognition."
+        },
+        {
+          "question": "Can I extract text into a Word document?",
+          "answer": "Yes, you can copy the extracted text and paste it into Word or other text editors."
+        },
+        {
+          "question": "Is the tool suitable for professional use?",
+          "answer": "Absolutely. The tool is designed for both casual and professional applications."
+        },
+        {
+          "question": "What is OCR?",
+          "answer": "OCR stands for Optical Character Recognition, a technology that converts images of text into machine-readable content."
+        }
+      ]
+    },
+
+    "PhotoRetoucherContent": {
+      "imageAltBefore": "Before: Original photo showing visible skin imperfections, uneven tones, and distractions",
+      "imageAltAfter": "After: Professionally retouched image with flawless skin, balanced lighting, and natural texture preservation",
+      "beforeLabel": "Original",
+      "afterLabel": "AI-Enhanced",
+      "heroTitle": "Transform Your Photos with AI-Powered Professional Retouching",
+      "heroParagraph1": "Unwanted blemishes, shadows, and skin inconsistencies can undermine the impact of your photos. Whether you’re a photographer perfecting client portraits, a content creator curating social media feeds, or someone who wants to present their best self, our AI Photo Retoucher delivers studio-grade results in seconds—no technical expertise required.",
+      "heroParagraph2": "Powered by deep learning algorithms trained on millions of professional edits, our tool doesn’t just erase flaws—it intelligently enhances skin texture, balances lighting, and preserves facial details for results that look naturally perfect, not artificially overprocessed.",
+      "enhanceImageButton": "Start Retouching Now",
+      "featuresTitle": "Why Our AI Photo Retoucher Outperforms Manual Editing",
+      "features": {
+        "blemishRemoval": {
+          "title": "Precision Blemish & Imperfection Removal",
+          "description": "Targets acne, dark spots, redness, and even subtle distractions like stray hairs or temporary skin irritations. Unlike basic editors, our AI distinguishes between permanent features (e.g., beauty marks) and flaws, ensuring natural-looking results."
+        },
+        "skinSmoothing": {
+          "title": "Adaptive Skin Texture Enhancement",
+          "description": "Go beyond 'blurring': Our AI analyzes skin type (oily, dry, mature) and applies context-aware smoothing. Reduces pores and unevenness while retaining natural texture—ideal for professional headshots or casual selfies."
+        },
+        "detailPreservation": {
+          "title": "Smart Detail Recovery Technology",
+          "description": "Prevents the 'plastic skin' effect. The AI protects critical details like eyelashes, freckles (if desired), and facial contours while removing imperfections. Perfect for high-resolution edits where every pixel matters."
+        },
+        "freeToUse": {
+          "title": "Pro-Level Editing, Zero Cost",
+          "description": "Access the same AI retouching technology used by premium photo studios—without subscriptions, watermarks, or hidden fees. Ideal for freelancers, small businesses, and anyone prioritizing quality on a budget."
+        }
+      },
+      "stepsTitle": "How to Achieve Professional Retouching in 3 Clicks",
+      "steps": {
+        "upload": {
+          "title": "Upload or Drag-Drop Your Image",
+          "description": "Supports JPEG, PNG, and WebP formats (up to 25MB). Our secure servers process images in real-time—no storage, no data mining."
+        },
+        "process": {
+          "title": "AI Analyzes & Enhances Automatically",
+          "description": "Watch live previews as our neural networks detect skin tones, lighting conditions, and imperfections. Adjust intensity sliders for blemish removal, skin smoothing, and detail sharpening."
+        },
+        "download": {
+          "title": "Download HD Retouched Image",
+          "description": "Save in your preferred format and resolution. Use instantly for LinkedIn profiles, print portfolios, or Instagram—retouch unlimited images daily (up to 3 free/day)."
+        }
+      },
+      "useCasesTitle": "Who Uses AI Photo Retouching?",
+      "useCases": {
+        "portraitPhotography": {
+          "title": "Photographers & Studios",
+          "description": "Cut editing time by 70%. Batch-retouch wedding photos, corporate headshots, or family portraits while maintaining a natural aesthetic clients love."
+        },
+        "socialMedia": {
+          "title": "Influencers & Content Creators",
+          "description": "Eliminate bad lighting days or breakouts before posting. Maintain authenticity while ensuring your feed reflects your personal brand flawlessly."
+        },
+        "modelingPortfolios": {
+          "title": "Models & Agencies",
+          "description": "Highlight your features without over-editing. Retouch skin subtly for comp cards or digital portfolios that stand out to scouts and brands."
+        },
+        "personalUse": {
+          "title": "Everyday Perfection for Everyone",
+          "description": "From dating profile pics to vacation photos—look your best without spending hours on apps. Ideal for job seekers, graduates, or anyone wanting confidence in their digital presence."
+        }
+      },
+      "imageEnhancementTitle": "The Science Behind AI-Powered Photo Retouching",
+      "imageEnhancementParagraph1": "Modern AI uses generative adversarial networks (GANs) to learn from professional retouching workflows. Instead of uniformly blurring skin, the tool maps facial topography, isolates imperfections, and reconstructs healthy skin patterns pixel-by-pixel. This means redness is neutralized, shadows under eyes are brightened naturally, and texture is enhanced without loss of detail.",
+      "imageEnhancementParagraph2": "For advanced users, the AI even allows selective editing—like keeping intentional freckles while removing acne. This level of control, paired with automation, makes it a hybrid solution for novices and experts alike.",
+      "benefitsTitle": "Beyond Filters: Tangible Benefits for Real Users",
+      "benefitsParagraph": "Here’s how our tool solves common photo-editing frustrations:",
+      "benefits": {
+        "benefit1": "Time Efficiency: Retouch a photo in 10 seconds vs. 30 minutes in Photoshop. Redirect your energy to creativity, not repetitive editing.",
+        "benefit2": "Consistency: Achieve uniform results across batches of images—critical for weddings, product photography, or branding projects.",
+        "benefit3": "Cost Savings: No need for expensive software licenses or freelance editors. Retouch unlimited images for free, anytime.",
+        "benefit4": "Privacy First: All processing happens in your browser. Images are never stored, shared, or used for AI training."
+      },
+      "misconceptionsTitle": "Debunking Myths About AI Photo Editing",
+      "misconceptionsParagraph1": "**Myth**: 'AI retouching makes everyone look fake.' **Reality**: Our tool enhances, not replaces. It’s like having a professional editor subtly optimize lighting and skin—not applying cartoonish filters.",
+      "misconceptionsParagraph2": "**Myth**: 'Manual editing gives better control.' **Reality**: Advanced sliders let you adjust AI intensity (e.g., 20% blemish removal vs. 90%). Pair automation with precision for efficiency.",
+      "whyChooseTitle": "Why This Tool Beats Traditional Editing Software",
+      "whyChooseParagraph1": "Unlike clunky desktop apps, our AI Photo Retoucher offers:",
+      "whyChoose": {
+        "reason1": "Contextual Awareness: AI detects facial geometry, skin undertones, and ambient lighting for edits that look natural in any setting.",
+        "reason2": "No Learning Curve: Intuitive interface designed for mobile and desktop. No layers, masks, or complex tools—just instant results.",
+        "reason3": "Cross-Platform Accessibility: Use it on any device, anywhere. Retouch photos on your phone during a commute or on a desktop in-studio."
+      },
+      "whyChooseParagraph2": "From casual users to seasoned creatives, this tool adapts to your skill level while delivering premium results.",
+      "faqTitle": "Expert Answers to Your Retouching Questions",
+      "faq": [
+        {
+          "question": "Can the AI handle low-light or grainy photos?",
+          "answer": "Yes! The AI includes noise reduction and dynamic lighting correction. It brightens underexposed areas and reduces grain while retouching."
+        },
+        {
+          "question": "How does this differ from Instagram filters?",
+          "answer": "Filters apply blanket effects. Our AI makes localized, intelligent adjustments—like fixing a pimple without altering your eye color or background."
+        },
+        {
+          "question": "Is my data safe?",
+          "answer": "Absolutely. Images are processed in-memory (not stored), and we don’t collect personal data. Your privacy is non-negotiable."
+        },
+        {
+          "question": "Can I edit group photos or full-body shots?",
+          "answer": "Yes! The AI detects multiple faces and body skin areas, applying retouching contextually. Perfect for wedding parties or fitness photos."
+        },
+        {
+          "question": "Do you support RAW files?",
+          "answer": "Currently, we support JPEG, PNG, and WebP. Convert RAW to JPEG for best results (we recommend 85-90% quality to preserve detail)."
+        },
+        {
+          "question": "Can I undo specific edits?",
+          "answer": "Yes. After processing, use the 'Adjust Intensity' slider to reduce blemish removal or texture smoothing until satisfied."
+        },
+        {
+          "question": "Why a 3-image daily limit for free users?",
+          "answer": "To ensure server stability for all users. For unlimited access, explore our affordable Pro plan (coming soon)."
+        },
+        {
+          "question": "Does this work on animals or objects?",
+          "answer": "Currently optimized for human portraits. Pet/object retouching is in beta—stay tuned!"
+        },
+        {
+          "question": "Will retouching make my photo look unnatural?",
+          "answer": "No. Our AI is designed to enhance without over-smoothing. Use the 'Adjust Intensity' slider to control the level of retouching for a natural look."
+        },
+        {
+          "question": "Is there a file size limit?",
+          "answer": "Yes. Free users can upload images up to 5MB, while Pro users get an increased limit of 20MB for high-resolution editing."
+        }
+      ]
+    },
+
+    "TestimonialsSection": {
+      "title": "What Users Are Saying About Lexistock AI",
+      "averageRating": "4.5 average rating from 1200+ users worldwide.",
+      "testimonials": [
+        {
+          "name": "Pooja Vishwas",
+          "role": "E-commerce Entrepreneur",
+          "content": "The background remover is incredible. Quick and professional results every time!"
+        },
+        {
+          "name": "Jason M",
+          "role": "Social Media Influencer",
+          "content": "Super easy to enhance photos and make my feed pop. Love it!"
+        },
+        {
+          "name": "Olivia G",
+          "role": "Photographer",
+          "content": "The upscaler saved my blurry shots. So simple, so effective."
+        },
+        {
+          "name": "Laura S",
+          "role": "Digital Artist",
+          "content": "The tools are intuitive, and the results are always spot on. A must-have!"
+        },
+        {
+          "name": "Danny M",
+          "role": "Small Business Owner",
+          "content": "Fast and reliable. It's my go-to for image edits."
+        },
+        {
+          "name": "Rohit Chauhdary",
+          "role": "Content Creator",
+          "content": "Lexistock AI is the best platform I've used for quick and clean edits!"
+        }
+      ]
+    }
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "subtitle": "Simple, transparent terms for our free AI image tools",
+    "lastUpdated": "Last Updated: {date}",
+    "sections": {
+      "service": {
+        "title": "Service Usage",
+        "description": "Lexistock provides AI-powered image processing tools completely free of charge. Here's what you need to know:",
+        "items": {
+          "free": "All tools are free to use with no hidden costs or premium features",
+          "noAccount": "No account creation or registration required - just upload and process",
+          "fairUse": "Fair use policy applies to ensure service availability for everyone"
+        }
+      },
+      "privacy": {
+        "title": "Image Processing & Privacy",
+        "description": "We take your privacy seriously. Here's how we handle your images:",
+        "items": {
+          "retention": "Images are temporarily stored for processing (maximum 24 hours)",
+          "deletion": "All images are automatically and permanently deleted after 24 hours",
+          "noData": "We don't collect or store any personal data or usage information"
+        }
+      },
+      "guidelines": {
+        "title": "User Guidelines",
+        "description": "To maintain a safe and reliable service, please follow these guidelines:",
+        "items": {
+          "legal": "Only upload images you have the legal right to use and process",
+          "appropriate": "Use the service for its intended purpose of image enhancement and editing",
+          "safe": "Don't process or generate harmful, offensive, or inappropriate content"
+        }
+      },
+      "monetization": {
+        "title": "Site Monetization",
+        "description": "To keep our services free, we use advertising. Here's what you need to know:",
+        "items": {
+          "adSupported": "Lexistock is supported by advertisements provided by Google AdSense",
+          "userAgreement": "By using our service, you agree to view non-intrusive advertisements",
+          "optionalClicks": "Clicking on advertisements is entirely optional and at your discretion"
+        }
+      }
+    }
+  },
+  "Policy": {
+    "title": "Privacy & Usage Policy",
+    "subtitle": "Our commitment to your privacy and responsible AI use",
+    "lastUpdated": "Last Updated- {date}",
+    "sections": {
+      "privacy": {
+        "title": "Privacy Policy",
+        "description": "At Lexistock, we prioritize your privacy. Here's how we handle your information:",
+        "items": {
+          "noCollection": "We do not collect or store any personal information",
+          "tempStorage": "Uploaded images are temporarily stored for processing (max 24 hours)",
+          "noCookies": "We do not use cookies or tracking technologies"
+        }
+      },
+      "security": {
+        "title": "Data Security",
+        "description": "We take the security of your data seriously:",
+        "items": {
+          "encryption": "All data transmissions are encrypted using industry-standard protocols",
+          "deletion": "Automatic deletion of all processed images after 24 hours",
+          "noSharing": "We never share or sell any user data or processed images"
+        }
+      },
+      "usage": {
+        "title": "Acceptable Use Policy",
+        "description": "To ensure a safe and fair environment for all users:",
+        "items": {
+          "legalUse": "Only upload and process images you have the legal right to use",
+          "fairUse": "Respect our fair use policy to ensure service availability for everyone",
+          "noHarmful": "Do not use our tools to create or process harmful or inappropriate content"
+        }
+      },
+      "disclaimer": {
+        "title": "AI Disclaimer",
+        "description": "While we strive for accuracy, please be aware of the following:",
+        "items": {
+          "aiLimitations": "AI models have limitations and may produce unexpected results",
+          "noLiability": "We are not liable for any consequences arising from the use of our AI-generated content",
+          "userResponsibility": "Users are responsible for reviewing and validating AI-processed images"
+        }
+      },
+      "advertising": {
+        "title": "Advertising",
+        "description": "We use Google AdSense to display advertisements. Here's how it affects your privacy:",
+        "items": {
+          "thirdParty": "Third-party vendors, including Google, use cookies to serve ads based on your prior visits to our website or other websites",
+          "cookies": "Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet",
+          "optOut": "You may opt out of personalized advertising by visiting Ads Settings (https://www.google.com/settings/ads)"
+        }
+      }
+    }
+  }
+}

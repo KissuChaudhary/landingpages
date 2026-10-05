@@ -252,3 +252,70 @@
     0 18px 34px -14px rgba(71, 107, 118, .26),
     0 4px 10px -3px rgba(33, 62, 70, .14);
 }
+
+/* Dating PFP Brutalist Utilities */
+.stroke-text-lime {
+  -webkit-text-stroke: 1px #CCFF00;
+  color: transparent;
+}
+
+.stroke-text-white {
+  -webkit-text-stroke: 1px #FFFFFF;
+  color: transparent;
+}
+
+/* Drawgle Marketing Styles */
+:root {
+  --color-mk-accent: #305dde;
+  --color-mk-accent-strong: #254cc4;
+  --color-mk-ink: #141414;
+  --color-mk-heading: #1e1e1e;
+  --color-mk-body: #454545;
+  --color-mk-glass: rgb(237 237 237 / 0.64);
+}
+
+.mk-root {
+  min-height: 100vh;
+  background: #ffffff;
+  color: var(--color-mk-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mk-glass {
+  background-color: var(--color-mk-glass);
+  -webkit-backdrop-filter: blur(48px);
+  backdrop-filter: blur(48px);
+}
+
+.mk-surface {
+  background-color: var(--color-mk-glass);
+}
+
+@keyframes mk-marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes mk-marquee-y {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, -50%, 0); }
+}
+
+.mk-marquee-x {
+  animation: mk-marquee-x var(--mk-marquee-duration, 60s) linear infinite;
+}
+
+.mk-marquee-y {
+  animation: mk-marquee-y var(--mk-marquee-duration, 40s) linear infinite;
+}
+
+.mk-marquee-reverse {
+  animation-direction: reverse;
+}
+
+.mk-marquee-pause:hover .mk-marquee-x,
+.mk-marquee-pause:hover .mk-marquee-y {
+  animation-play-state: paused;
+}
+
+

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, use } from 'react';
+import React, { useEffect, useRef, useState, use } from 'react';
 import Link from 'next/link';
 import DemoToolbar, { type DeviceMode } from '@/components/DemoToolbar';
 import { getTemplateBySlug } from '@/data/templates';
@@ -19,6 +19,23 @@ export default function DemoPage({ params }: DemoPageProps) {
   const [device, setDevice] = useState<DeviceMode>('desktop');
   const [iframeKey, setIframeKey] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const frameRef = useRef<HTMLIFrameElement>(null);
+
+  // The preview frame can finish loading before React hydrates, and then its onLoad never reaches us and the
+  // loading overlay stays up forever. Check the frame once mounted, and clear the overlay after a few seconds
+  // regardless: a slow preview should still be visible.
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    try {
+      const doc = frame.contentDocument;
+      if (doc && doc.readyState === 'complete' && doc.location.href !== 'about:blank') setIsLoading(false);
+    } catch {
+      // Cross-origin frames cannot be inspected; the timer below covers them.
+    }
+    const timer = window.setTimeout(() => setIsLoading(false), 4000);
+    return () => window.clearTimeout(timer);
+  }, [iframeKey]);
 
   if (!template) {
     return (
@@ -67,7 +84,7 @@ export default function DemoPage({ params }: DemoPageProps) {
       />
 
       {/* Main Viewport Stage */}
-      <main className="relative flex flex-1 items-center justify-center overflow-auto bg-[#eef0f3] p-2 sm:p-4 md:p-6">
+      <main className="relative flex flex-1 items-center justify-center overflow-auto">
         {/* Loading Indicator */}
         {isLoading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-xs">
@@ -89,6 +106,7 @@ export default function DemoPage({ params }: DemoPageProps) {
 
           <iframe
             key={iframeKey}
+            ref={frameRef}
             src={`/preview/${template.slug}`}
             title={template.title}
             onLoad={() => setIsLoading(false)}
