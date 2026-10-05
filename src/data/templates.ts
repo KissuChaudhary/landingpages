@@ -355,25 +355,25 @@ export const TEMPLATES: TemplateItem[] = [
     },
     {
       "slug": "quick-14-studio",
-      "title": "Quick 14 High-Converting Studio",
+      "title": "Fourteen: Done-for-You Outbound Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
       "badge": "Full Kit",
-      "description": "Complete agency landing page with grid background, problem-solution sections, tiered pricing, and FAQ accordion.",
+      "description": "A complete, warm landing page for done-for-you services and productised B2B offers. Hatched page frame, peach-and-lilac ringed cards, a strip of sample emails, drawn feature illustrations, handwritten notes, one-plan pricing, FAQ and a founder's note, all driven from one config file.",
       "tags": [
         "Agency",
         "Full Landing",
         "Conversion Focused",
-        "Tailwind"
+        "Next.js 15"
       ],
       "features": [
-        "Geometric Grid Background",
-        "Problem vs Solution Section",
-        "Comprehensive Pricing Tiers",
-        "Collapsible FAQ"
+        "Hatched frame and ringed cards",
+        "Eight drawn feature illustrations",
+        "Problem, solution and three-step system",
+        "One-plan pricing and founder's note"
       ],
-      "accentColor": "from-emerald-500 to-green-600",
-      "downloadUrl": "/downloads/quick-14-studio.zip",
+      "accentColor": "from-orange-300 to-orange-500",
+      "downloadUrl": "",
       "previewUrl": "/preview/quick-14-studio",
       "demoUrl": "/demo/quick-14-studio",
       "detailUrl": "/template/quick-14-studio"
