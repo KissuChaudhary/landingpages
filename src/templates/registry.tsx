@@ -12,7 +12,7 @@ const Loading = () => (
 );
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
-  'agenwrite-geo': dynamic(() => import('@/templates/agenwrite-geo'), { ssr: false, loading: Loading }),
+  'footnote': dynamic(() => import('@/templates/footnote'), { ssr: false, loading: Loading }),
   'agenwrite-growth-engine': dynamic(() => import('@/templates/agenwrite-growth-engine'), { ssr: false, loading: Loading }),
   'ai-imagetools': dynamic(() => import('@/templates/ai-imagetools'), { ssr: false, loading: Loading }),
   'clearnotes-hero': dynamic(() => import('@/templates/clearnotes-hero'), { ssr: false, loading: Loading }),

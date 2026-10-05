@@ -27,29 +27,29 @@ export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
     {
-      "slug": "agenwrite-geo",
-      "title": "AgenWrite GEO Infrastructure",
+      "slug": "footnote",
+      "title": "Footnote: AI Writing Tool Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "dark",
-      "badge": "Infrastructure",
-      "description": "High-tech terminal & bento infrastructure landing page engineered for AI devtools and distributed cloud platforms.",
+      "badge": "AI Writing",
+      "description": "A dark, editorial landing page for AI writing and research products. A before-and-after draft with footnotes, an annotated method, three engine sections, a proof ledger and a plain-text FAQ, all driven from one config file.",
       "tags": [
-        "DevTools",
-        "Bento Grid",
-        "Terminal UI",
-        "Dark Mode"
+        "AI Writing",
+        "SaaS",
+        "Tailwind v4",
+        "Next.js 15"
       ],
       "features": [
-        "Live Terminal Emulation",
-        "Interactive Bento Grid",
-        "Comparison Matrix",
-        "Performance Charts"
+        "Before and after draft with real footnote markers",
+        "Annotated method with margin notes",
+        "Grid frame with + marks only where lines meet",
+        "One config file and one colour palette"
       ],
-      "accentColor": "from-emerald-500 to-cyan-500",
-      "downloadUrl": "/downloads/agenwrite-geo.zip",
-      "previewUrl": "/preview/agenwrite-geo",
-      "demoUrl": "/demo/agenwrite-geo",
-      "detailUrl": "/template/agenwrite-geo"
+      "accentColor": "from-blue-400 to-indigo-500",
+      "downloadUrl": "",
+      "previewUrl": "/preview/footnote",
+      "demoUrl": "/demo/footnote",
+      "detailUrl": "/template/footnote"
     },
     {
       "slug": "clearnotes-hero",
