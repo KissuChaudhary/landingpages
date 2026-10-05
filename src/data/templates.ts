@@ -479,30 +479,29 @@ export const TEMPLATES: TemplateItem[] = [
       "detailUrl": "/template/skywrite-ai"
     },
     {
-      "slug": "theirs-saas",
-      "title": "Theirs - Digital Memorials SaaS",
+      "slug": "kept",
+      "title": "Kept: Freelancer Invoicing Landing Page",
       "category": "Landing Pages",
-      "defaultTheme": "dark",
-      "badge": "Memorial Tech",
-      "description": "Quiet, dignified digital memorial and obituary SaaS landing page with grain gradients, stone typography, and serene masonry.",
+      "defaultTheme": "light",
+      "badge": "Fintech",
+      "description": "A calm, statement-style landing page for invoicing and tax tools for freelancers. A paid-invoice hero, a twelve-month chart that draws itself from your numbers, a dotted-leader feature ledger, a receipt-style price and native FAQ rows, all driven from one config file.",
       "tags": [
-        "Memorial",
-        "SaaS",
-        "Dignified",
-        "Minimalist",
-        "Dark Mode"
+        "Fintech",
+        "Invoicing",
+        "Tailwind v4",
+        "Next.js 15"
       ],
       "features": [
-        "Horizon Monolith Header",
-        "Bottom-Up Dissolve Animation",
-        "Sample Memorials Showcase",
-        "Pricing & Story Vault"
+        "Hero built as an invoice that was just paid",
+        "Year chart calculated from your own figures",
+        "Dotted-leader ledger and receipt-style pricing",
+        "One config file and one colour palette"
       ],
-      "accentColor": "from-stone-700 to-zinc-900",
-      "downloadUrl": "/downloads/theirs-saas.zip",
-      "previewUrl": "/preview/theirs-saas",
-      "demoUrl": "/demo/theirs-saas",
-      "detailUrl": "/template/theirs-saas"
+      "accentColor": "from-lime-300 to-emerald-700",
+      "downloadUrl": "",
+      "previewUrl": "/preview/kept",
+      "demoUrl": "/demo/kept",
+      "detailUrl": "/template/kept"
     },
     {
       "slug": "dating-pfp",

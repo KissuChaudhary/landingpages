@@ -36,7 +36,7 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'scale-ai-hero': dynamic(() => import('@/templates/scale-ai-hero'), { ssr: false, loading: Loading }),
   'seo-writer': dynamic(() => import('@/templates/seo-writer'), { ssr: false, loading: Loading }),
   'skywrite-ai': dynamic(() => import('@/templates/skywrite-ai'), { ssr: false, loading: Loading }),
-  'theirs-saas': dynamic(() => import('@/templates/theirs-saas'), { ssr: false, loading: Loading }),
+  'kept': dynamic(() => import('@/templates/kept'), { ssr: false, loading: Loading }),
   'unreal-shot': dynamic(() => import('@/templates/unreal-shot'), { ssr: false, loading: Loading }),
 };
 
