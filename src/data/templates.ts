@@ -304,29 +304,29 @@ export const TEMPLATES: TemplateItem[] = [
       "detailUrl": "/template/intelligent-systems"
     },
     {
-      "slug": "kinetik",
-      "title": "Kinetik Motion Typography SaaS",
+      "slug": "marlow",
+      "title": "Marlow: Studio & Consultancy Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
-      "badge": "Design Tool",
-      "description": "Dynamic landing page for web typography and kinetic animation software with bold type effects and sound-wave cues.",
+      "badge": "Editorial",
+      "description": "A warm, editorial landing page for studios, consultancies and agencies. Serif display type, highlighter manifesto, services index, result tiles, Gantt process, rate card and FAQ, all driven from one config file.",
       "tags": [
-        "Typography",
-        "Motion Design",
-        "Creative SaaS",
-        "Animation"
+        "Studio",
+        "Consultancy",
+        "Editorial",
+        "Next.js 15"
       ],
       "features": [
-        "Kinetic Type Effects",
-        "Animation Presets Showcase",
-        "Realtime Keyframe Timeline",
-        "Export Options"
+        "Manifesto with highlighter marks",
+        "Services index and result tiles",
+        "Six-week Gantt process chart",
+        "One config file and one colour palette"
       ],
-      "accentColor": "from-red-500 to-rose-600",
-      "downloadUrl": "/downloads/kinetik.zip",
-      "previewUrl": "/preview/kinetik",
-      "demoUrl": "/demo/kinetik",
-      "detailUrl": "/template/kinetik"
+      "accentColor": "from-amber-200 to-orange-300",
+      "downloadUrl": "",
+      "previewUrl": "/preview/marlow",
+      "demoUrl": "/demo/marlow",
+      "detailUrl": "/template/marlow"
     },
     {
       "slug": "stripdo",
