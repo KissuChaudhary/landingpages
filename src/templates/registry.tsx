@@ -28,7 +28,7 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'influence-hero': dynamic(() => import('@/templates/influence-hero'), { ssr: false, loading: Loading }),
   'intelligent-systems': dynamic(() => import('@/templates/intelligent-systems'), { ssr: false, loading: Loading }),
   'marlow': dynamic(() => import('@/templates/marlow'), { ssr: false, loading: Loading }),
-  'nousu-saas': dynamic(() => import('@/templates/nousu-saas'), { ssr: false, loading: Loading }),
+  'parley': dynamic(() => import('@/templates/parley'), { ssr: false, loading: Loading }),
   'passport-studio': dynamic(() => import('@/templates/passport-studio'), { ssr: false, loading: Loading }),
   'pfp-ai': dynamic(() => import('@/templates/pfp-ai'), { ssr: false, loading: Loading }),
   'quick-14-studio': dynamic(() => import('@/templates/quick-14-studio'), { ssr: false, loading: Loading }),
@@ -36,7 +36,6 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'scale-ai-hero': dynamic(() => import('@/templates/scale-ai-hero'), { ssr: false, loading: Loading }),
   'seo-writer': dynamic(() => import('@/templates/seo-writer'), { ssr: false, loading: Loading }),
   'skywrite-ai': dynamic(() => import('@/templates/skywrite-ai'), { ssr: false, loading: Loading }),
-  'stripdo': dynamic(() => import('@/templates/stripdo'), { ssr: false, loading: Loading }),
   'theirs-saas': dynamic(() => import('@/templates/theirs-saas'), { ssr: false, loading: Loading }),
   'unreal-shot': dynamic(() => import('@/templates/unreal-shot'), { ssr: false, loading: Loading }),
 };

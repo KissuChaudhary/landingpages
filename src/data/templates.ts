@@ -329,54 +329,29 @@ export const TEMPLATES: TemplateItem[] = [
       "detailUrl": "/template/marlow"
     },
     {
-      "slug": "stripdo",
-      "title": "Stripdo Developer Payments Platform",
+      "slug": "parley",
+      "title": "Parley: AI Support Agent Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
-      "badge": "Payments",
-      "description": "Stripe-inspired developer billing and checkout orchestration platform with floating payment cards and code snippets.",
+      "badge": "AI Support",
+      "description": "A warm, conversational landing page for AI support agents and chatbots. A hero chat, a switchable chatbot comparison, an action log, a results band, row-style pricing and an FAQ written as a conversation, all driven from one config file.",
       "tags": [
-        "Payments",
-        "API Platform",
-        "Fintech",
-        "SaaS"
-      ],
-      "features": [
-        "Floating Credit Card Previews",
-        "Interactive Terminal API",
-        "Multi-Currency Matrix",
-        "Fraud Shield Section"
-      ],
-      "accentColor": "from-indigo-600 to-purple-600",
-      "downloadUrl": "/downloads/stripdo.zip",
-      "previewUrl": "/preview/stripdo",
-      "demoUrl": "/demo/stripdo",
-      "detailUrl": "/template/stripdo"
-    },
-    {
-      "slug": "nousu-saas",
-      "title": "Nousu Soft Gradient SaaS",
-      "category": "Landing Pages",
-      "defaultTheme": "light",
-      "badge": "Modern SaaS",
-      "description": "Airy, soft aesthetic SaaS hero and features section with giant pink gradient containers and 3D typography styling.",
-      "tags": [
-        "SaaS Landing",
-        "Soft Gradient",
-        "3D Typography",
+        "AI Support",
+        "Chatbot",
+        "Tailwind v4",
         "Next.js 15"
       ],
       "features": [
-        "Giant Gradient Card Container",
-        "Overlapping Chat Mockup",
-        "3D Typography Ribbon Logo",
-        "Customer Social Proof"
+        "Hero built as a live-looking support chat",
+        "Switchable transcript: classic bot vs your product",
+        "Action log timeline and plum results band",
+        "One config file and one colour palette"
       ],
-      "accentColor": "from-pink-400 to-rose-400",
-      "downloadUrl": "/downloads/nousu-saas.zip",
-      "previewUrl": "/preview/nousu-saas",
-      "demoUrl": "/demo/nousu-saas",
-      "detailUrl": "/template/nousu-saas"
+      "accentColor": "from-pink-400 to-rose-500",
+      "downloadUrl": "",
+      "previewUrl": "/preview/parley",
+      "demoUrl": "/demo/parley",
+      "detailUrl": "/template/parley"
     },
     {
       "slug": "quick-14-studio",
