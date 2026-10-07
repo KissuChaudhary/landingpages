@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/*
+  Fourteen design tokens.
+
+  Warm paper with a fine grain, stone neutrals and one orange. Panels are cream, and the signature detail is a
+  two-tone ring (peach inside, lilac outside) around the cards that matter. There are no blurred drop shadows:
+  depth comes from hairlines, rings and a one-pixel bottom edge on buttons.
+  To re-theme, change the values here. Nothing else hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-paper: #fbfaf8;
+  --color-card: #ffffff;
+  --color-cream: #fef1e2;
+  --color-wash: #f7f5f2;
+
+  /* Text, measured on paper: ink 16.8:1, ink-mid 7.0:1, ink-low 4.9:1 (small labels only). */
+  --color-ink: #1c1917;
+  --color-ink-mid: #57534e;
+  --color-ink-low: #6e6862;
+
+  /* Hairlines */
+  --color-line: #e7e5e4;
+  --color-line-strong: #d6d3d1;
+
+  /* The accent. `flame` is a fill; `flame-text` is the darker shade for small text on paper and cream. */
+  --color-flame: #ff7a00;
+  --color-flame-soft: #fff0dc;
+  --color-flame-text: #b34600;
+  --color-peach: #ffd7aa;
+  --color-lilac: #d9c9f3;
+  --color-good: #17803d;
+  --color-bad: #c62828;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-face), ui-serif, Georgia, serif;
+  --font-hand: var(--font-hand-face), "Segoe Script", cursive;
+}
+
+html {
+  background: var(--color-paper);
+  scroll-behavior: smooth;
+}
+
+/* A fine grain over the whole page, drawn in the browser so there is no image to host. */
+body {
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-peach);
+  color: var(--color-ink);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Diagonal hatching for the two side rails of the page frame. */
+@utility rail {
+  background-image: repeating-linear-gradient(135deg, var(--color-line) 0 1px, transparent 1px 7px);
+}
+
+/* The slow strip of sample emails under the hero. */
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* The native FAQ marker is replaced by our own icon. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

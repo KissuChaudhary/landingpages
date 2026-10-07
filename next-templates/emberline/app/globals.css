@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+  Emberline design tokens.
+
+  To re-theme the whole template, replace the --color-ember-* ramp below. Nothing else in the project
+  hardcodes the accent colour: buttons, glow, rails, chart and shadows all read from this ramp.
+  Ready-made teal and violet ramps are in the README.
+*/
+@theme {
+  /* Surfaces: a warm black, so the ember glow never turns muddy. */
+  --color-bg: #060504;
+  --color-bg-raised: #0d0b09;
+  --color-bg-sunken: #030302;
+
+  /* Ember ramp: the one accent colour. */
+  --color-ember-50: #fff4ec;
+  --color-ember-100: #ffe6d5;
+  --color-ember-200: #ffd0b3;
+  --color-ember-300: #ffb98f;
+  --color-ember-400: #ff9d63;
+  --color-ember-500: #f5833f;
+  --color-ember-700: #8a4220;
+  --color-ember-900: #2a150a;
+  /* Text that sits on a filled ember surface (primary button, badge). Keep it dark and warm. */
+  --color-on-ember: #1b0f08;
+
+  /* Text, tuned for contrast on --color-bg (AA or better at every size used). */
+  --color-ink: #fbf3ee;
+  --color-ink-mid: #b9aea6;
+  --color-ink-low: #8a7f78;
+
+  /* Hairlines are warm, not grey, so the grid belongs to the palette. */
+  --color-line: color-mix(in srgb, var(--color-ember-200) 13%, transparent);
+  --color-line-strong: color-mix(in srgb, var(--color-ember-200) 30%, transparent);
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-face), ui-serif, Georgia, serif;
+
+  --animate-pulse-line: pulse-line 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+  @keyframes pulse-line {
+    0% { stroke-dashoffset: 260; opacity: 0; }
+    12% { opacity: 1; }
+    88% { opacity: 1; }
+    100% { stroke-dashoffset: -40; opacity: 0; }
+  }
+}
+
+/*
+  Hero grid geometry. Every row height is a multiple of 32px, and the mockup is exactly as wide as the
+  outer rails, so the vertical lines land on the mockup's edges instead of passing it by.
+*/
+:root {
+  --rail-inner: min(720px, calc(100vw - 48px));
+  --rail-outer: min(1040px, calc(100vw - 16px));
+  /* Width of every section below the hero. Equal to --rail-outer on desktop, with a 16px margin on phones. */
+  --content: min(1040px, calc(100vw - 32px));
+  --row: 32px;
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ember-300);
+  color: var(--color-on-ember);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* A hairline that fades out at both ends, used for every full-bleed row border. */
+@utility hairline-x {
+  background: linear-gradient(to right, transparent, var(--color-line-strong) 18%, var(--color-line-strong) 82%, transparent);
+  height: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The hero frame starts laid back and tilts upright on scroll; with reduced motion it simply sits upright. */
+  [data-tilt] {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "founderdada-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "node_modules/next/dist/bin/next",
+        "dev",
+        "-p",
+        "3000"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "harvansh-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/harva/AppData/Local/Temp/claude/E--tutorial-founderdada/fd869b52-51df-4fbf-a2bc-b7d1cd997163/scratchpad/dev-hv.js"
+      ],
+      "port": 3100
+    }
+  ]
+}

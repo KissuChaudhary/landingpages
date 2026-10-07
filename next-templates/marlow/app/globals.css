@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+  Marlow design tokens.
+
+  Warm paper, near-black ink, one clay accent, and five pastel tints used as small accents (tags, bars, avatars,
+  highlighter marks). To re-theme, change the values here. Nothing else in the project hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-paper: #f6f2ea;
+  --color-paper-raised: #fbf9f4;
+  --color-sand: #ece5d8;
+  --color-sand-deep: #ddd3c1;
+
+  /* Text, measured on paper: ink 16.4:1, ink-mid 7.0:1, ink-low 4.9:1 (small labels only). */
+  --color-ink: #17140f;
+  --color-ink-mid: #57514a;
+  --color-ink-low: #6f685c;
+  --color-on-ink: #f6f2ea;
+  --color-on-ink-mid: #b9b2a5;
+
+  /* Hairlines */
+  --color-line: rgb(23 20 15 / 0.12);
+  --color-line-strong: rgb(23 20 15 / 0.24);
+  --color-line-on-ink: rgb(246 242 234 / 0.16);
+
+  /* The one accent */
+  --color-clay: #a63f27;
+  --color-clay-soft: #f1d6cc;
+
+  /* Pastel tints: a solid for fills and bars, a soft for backgrounds. */
+  --color-butter: #f2d98c;
+  --color-butter-soft: #f9edc4;
+  --color-peach: #f4c3a1;
+  --color-peach-soft: #fadfcc;
+  --color-mint: #b6dfc8;
+  --color-mint-soft: #dbefe3;
+  --color-sky: #bad4ec;
+  --color-sky-soft: #dbe9f6;
+  --color-rose: #eebcbc;
+  --color-rose-soft: #f7dfdf;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --shadow-soft: 0 24px 48px -24px rgb(23 20 15 / 0.2), 0 2px 6px -2px rgb(23 20 15 / 0.06);
+  --shadow-lift: 0 32px 64px -28px rgb(23 20 15 / 0.28), 0 2px 8px -2px rgb(23 20 15 / 0.08);
+}
+
+:root {
+  /* Width of every section's content. */
+  --content: min(1160px, calc(100vw - 40px));
+}
+
+html {
+  background: var(--color-paper);
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  /* The template's signature: a faint vertical rule every 140px, like ruled stationery. */
+  background-image: linear-gradient(90deg, transparent 0, transparent 140px, rgb(23 20 15 / 0.032) 140px, rgb(23 20 15 / 0.032) 141px);
+  background-size: 141px 100%;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-butter);
+  color: var(--color-ink);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Large serif type: tighten tracking and let the optical size axis do its work. */
+@utility display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 380;
+  letter-spacing: -0.03em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

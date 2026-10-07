@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/*
+  Parley design tokens.
+
+  Warm paper, a plum-brown ink and one rose accent. There are no shadows anywhere: depth comes from soft
+  tints and spacing. To re-theme, change the values here. Nothing else hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-paper: #fffaf8;
+  --color-blush: #fbece9;
+  --color-blush-deep: #f5d8d6;
+  --color-plum: #36192a;
+
+  /* Text, measured on paper: ink 15.9:1, ink-mid 7.0:1, ink-low 4.8:1 (small labels on paper only, not on blush). */
+  --color-ink: #2b1b1f;
+  --color-ink-mid: #66515a;
+  --color-ink-low: #7f6a72;
+
+  /* Hairlines */
+  --color-line: rgb(43 27 31 / 0.12);
+  --color-line-strong: rgb(43 27 31 / 0.22);
+
+  /* The accent. `rose` is for fills and large type, `rose-text` is the darker shade for small text on paper. */
+  --color-rose: #e0526f;
+  --color-rose-text: #b52b4f;
+  --color-rose-soft: #f9d5da;
+  --color-good: #1f7a55;
+
+  /* Text on the plum band, measured on plum: on-plum 14.0:1, on-plum-mid 8.3:1. */
+  --color-on-plum: #fbeeee;
+  --color-on-plum-mid: #d3b3c0;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-hand: var(--font-hand-face), "Segoe Script", cursive;
+}
+
+html {
+  background: var(--color-paper);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-rose);
+  color: #fff;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Soft serif display type: round terminals, and the optical size doing the work. */
+@utility display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 100;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+/* The typing dots in the hero chat. */
+@keyframes parley-dot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

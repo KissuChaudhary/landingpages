@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/*
+  Influence design tokens.
+
+  Soft off-white, near-black ink and one orange. A single dark "night" band carries the process. There are no
+  drop shadows: depth comes from hairlines, white surfaces and spacing.
+  To re-theme, change the values here. Nothing else hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-paper: #fcfcfa;
+  --color-sheet: #ffffff;
+  --color-night: #121212;
+  --color-night-lift: #1b1b1b;
+
+  /* Text, measured on paper: ink 17.9:1, ink-mid 6.7:1, ink-low 4.7:1 (small labels only). */
+  --color-ink: #141414;
+  --color-ink-mid: #5a5a54;
+  --color-ink-low: #727269;
+
+  /* Hairlines */
+  --color-line: rgb(20 20 20 / 0.1);
+  --color-line-strong: rgb(20 20 20 / 0.2);
+
+  /* The accent. `orange` is a fill; `orange-text` is the darker shade for small text on paper. */
+  --color-orange: #ff8a00;
+  --color-orange-deep: #e67a00;
+  --color-orange-text: #b04f00;
+  --color-orange-soft: #fff0dc;
+  --color-pink: #ff3d81;
+  --color-good: #1a7f4b;
+
+  /* Text on the night band, measured on night: on-night 16.5:1, on-night-mid 7.9:1. */
+  --color-on-night: #f5f5f2;
+  --color-on-night-mid: #a9a9a1;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-face), ui-serif, Georgia, serif;
+}
+
+html {
+  background: var(--color-paper);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: var(--color-ink);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Headlines: Inter Tight, heavy and tight. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+}
+
+/* The italic serif word inside a headline. */
+@utility accent-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@utility money {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The native FAQ marker is replaced by our own icon. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Floating metric chips around the phone. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

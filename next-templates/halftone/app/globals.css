@@ -1,0 +1,200 @@
+/* Scan this project for classes no matter which directory the dev server is started from. */
+@import "tailwindcss" source("..");
+
+/*
+ * Halftone design tokens.
+ * Change the accent here and every button, kicker, highlight, chart line and focus ring follows.
+ * The code colours below reuse the six dither colours from site.config.ts, so the page reads as one palette.
+ */
+@theme {
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-accent: #305dde;
+  --color-accent-strong: #254cc4;
+  --color-accent-soft: #8fb0ff;
+  --color-ink: #141414;
+  --color-heading: #1e1e1e;
+  --color-body: #454545;
+  --color-glass: rgb(237 237 237 / 0.64);
+  --color-ok: #10b981;
+  --color-warn: #f97316;
+
+  /* Dark panels: code, terminals and the signing demo. */
+  --color-night: #15171c;
+  --color-night-raised: #1d2027;
+  --color-code: #e6e8ee;
+  --color-code-muted: #6f7787;
+  --color-code-keyword: #8fb0ff;
+  --color-code-string: #8fe3bd;
+  --color-code-function: #ffd28a;
+  --color-code-number: #ffb199;
+  --color-code-variable: #f5a3cf;
+
+  --ease-mk: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(48 93 222 / 0.16);
+}
+
+/* Frosted pill used by the navigation and the hero badge. */
+.glass {
+  background-color: var(--color-glass);
+  -webkit-backdrop-filter: blur(48px);
+  backdrop-filter: blur(48px);
+}
+
+/* The quiet grey surface every card sits on. */
+.surface {
+  background-color: var(--color-glass);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-x {
+  animation: marquee-x var(--marquee-duration, 70s) linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee-pause:hover .marquee-x {
+  animation-play-state: paused;
+}
+
+/* A soft ring that pulses out from a live dot. */
+@keyframes live-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.live-ping {
+  animation: live-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* The pricing slider. --fill is set inline to the thumb's position. */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.range:focus {
+  outline: none;
+}
+
+.range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-accent) var(--fill, 50%), rgb(0 0 0 / 0.08) var(--fill, 50%));
+}
+
+.range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.08);
+}
+
+.range::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  margin-top: -9px;
+  border-radius: 999px;
+  background: #fff;
+  border: 0;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08), 0 6px 16px -6px rgb(15 23 42 / 0.45);
+  transition: transform 150ms ease;
+}
+
+.range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #fff;
+  border: 0;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08), 0 6px 16px -6px rgb(15 23 42 / 0.45);
+}
+
+.range:active::-webkit-slider-thumb {
+  transform: scale(1.08);
+}
+
+.range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgb(48 93 222 / 0.25), 0 6px 16px -6px rgb(15 23 42 / 0.45);
+}
+
+.range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px rgb(48 93 222 / 0.25), 0 6px 16px -6px rgb(15 23 42 / 0.45);
+}
+
+@keyframes spin-soft {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-soft {
+  animation: spin-soft 0.9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-x,
+  .live-ping,
+  .spin-soft {
+    animation: none;
+  }
+}

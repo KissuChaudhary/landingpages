@@ -1,0 +1,328 @@
+/**
+ * Everything you are likely to change lives in this file: your name, copy, numbers, price and links.
+ * Colours are in app/globals.css. Fonts are in app/layout.tsx.
+ *
+ * "Fourteen", its clients, numbers, quotes and price are made up. Replace them with your own.
+ * TypeScript will tell you if you leave out a field or misspell one.
+ */
+
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
+/** A headline in two parts. `accent` is set in the italic serif. */
+export interface Accented {
+  before: string;
+  accent: string;
+}
+
+export interface SectionHead {
+  title: Accented;
+  description: string;
+}
+
+/** A card with a small drawing. `visual` picks which drawing, from components/visuals. */
+export interface VisualCard {
+  title: string;
+  text: string;
+  visual: string;
+}
+
+export interface SiteConfig {
+  name: string;
+  title: string;
+  description: string;
+
+  nav: { links: NavLink[]; login: NavLink; cta: NavLink; availability: string };
+
+  hero: {
+    badge: string;
+    /** Two lines at about 96px. The second is set in the italic serif. */
+    headline: { line1: string; line2: string };
+    description: { plain: string; strong: string };
+    cta: NavLink;
+    note: string;
+    testimonial: { quote: string; name: string; role: string };
+    /** The slow strip of sample emails. Six reads best. */
+    emails: { tag: string; metric: string; subject: string; from: string; to: string; time: string; lines: string[] }[];
+  };
+
+  problem: SectionHead & { items: { title: string; text: string }[] };
+
+  solution: SectionHead & {
+    label: string;
+    /** Six cards, laid out as wide-narrow, narrow-wide, narrow-wide. */
+    cards: { label: string; title: Accented; text: string; visual: string }[];
+    cta: NavLink;
+  };
+
+  how: SectionHead & {
+    steps: { chip: string; title: string; text: string; visual: string }[];
+    quote: Accented;
+  };
+
+  features: SectionHead & { items: VisualCard[] };
+
+  examples: SectionHead & {
+    items: { icon: "rocket" | "building" | "camera" | "bolt"; client: string; subject: string; reply: string; meetings: string }[];
+    cta: NavLink;
+  };
+
+  pricing: SectionHead & {
+    tab: string;
+    badge: string;
+    audience: string;
+    was: string;
+    price: string;
+    per: string;
+    note: string;
+    cta: NavLink;
+    guarantee: string;
+    includedLabel: string;
+    included: { icon: "mail" | "target" | "plug" | "shield" | "chart"; title: string; text: string }[];
+  };
+
+  faq: { lead: string; tail: string; description: string; items: { question: string; answer: string }[] };
+
+  founder: {
+    badge: string;
+    label: string;
+    quote: string;
+    sub: string;
+    name: string;
+    role: string;
+    signature: string;
+    cta: NavLink;
+    note: string;
+  };
+
+  cta: {
+    title: Accented;
+    description: string;
+    button: NavLink;
+    ticks: string[];
+    note: string;
+    calendar: {
+      month: string;
+      caption: string;
+      /** Days 1 to 14, shown as a two-week grid. */
+      booked: { day: number; label: string }[];
+      summary: string;
+    };
+  };
+
+  footer: {
+    blurb: string;
+    status: string;
+    columns: { title: string; links: NavLink[] }[];
+    legal: string;
+  };
+}
+
+export const siteConfig: SiteConfig = {
+  name: "Fourteen",
+  title: "Fourteen: qualified meetings booked in 14 days",
+  description:
+    "Fourteen is a done-for-you outbound engine for B2B teams. We build your list, write the emails, warm the domains and book qualified calls into your calendar.",
+
+  nav: {
+    links: [
+      { label: "How it works", href: "#how" },
+      { label: "Results", href: "#results" },
+      { label: "Features", href: "#features" },
+      { label: "Pricing", href: "#pricing" },
+    ],
+    login: { label: "Log in", href: "#" },
+    cta: { label: "Book a call", href: "#start" },
+    availability: "3 spots left in June",
+  },
+
+  hero: {
+    badge: "DONE-FOR-YOU OUTBOUND",
+    headline: { line1: "Stop waiting for referrals", line2: "Book meetings in 14 days" },
+    description: {
+      plain: "Fourteen is the done-for-you outbound engine for B2B teams. We build your list, write the emails and warm the domains,",
+      strong: " so qualified buyers land on your calendar.",
+    },
+    cta: { label: "Book My First 14 Days", href: "#start" },
+    note: "See what a founder says about us!",
+    testimonial: {
+      quote: "Fourteen filled our calendar in two weeks. Twelve calls, four deals, after a year of living on referrals.",
+      name: "Dana Reyes",
+      role: "Founder at Brightloop",
+    },
+    emails: [
+      { tag: "SaaS", metric: "11.4% replied", subject: "Quick question about your onboarding", from: "Maya Ortiz", to: "sam@northwind.example", time: "9:41", lines: ["Saw your team opened a second office last month. Teams at that stage often lose a week to onboarding."] },
+      { tag: "Agency", metric: "9.8% replied", subject: "Your last three case studies", from: "Maya Ortiz", to: "ines@kiln.example", time: "10:05", lines: ["Loved the Lumen rebrand. We help studios like yours book two intro calls a week, without a sales hire."] },
+      { tag: "Fintech", metric: "12.1% replied", subject: "Closing the books in 2 days, not 9", from: "Jon Pike", to: "jo@ledgerly.example", time: "8:12", lines: ["Finance teams your size close in nine days. Here is how three of them got it down to two."] },
+      { tag: "Logistics", metric: "8.6% replied", subject: "A faster way to quote freight", from: "Jon Pike", to: "ray@haulr.example", time: "11:30", lines: ["Quoting by email costs your team hours a day. We built a short checklist that cuts it in half."] },
+      { tag: "HR tech", metric: "10.3% replied", subject: "Hiring 20 engineers this year?", from: "Maya Ortiz", to: "amy@tidewell.example", time: "9:02", lines: ["Your careers page lists 14 open roles. Here is how Loomhouse filled eleven of theirs in a quarter."] },
+      { tag: "Security", metric: "9.2% replied", subject: "SOC 2 without the six-month wait", from: "Jon Pike", to: "lee@paperkite.example", time: "2:15", lines: ["Enterprise buyers keep asking for SOC 2. Two founders just got theirs in 40 days. Worth a look?"] },
+    ],
+  },
+
+  problem: {
+    title: { before: "Mass cold email is", accent: "burning your domain" },
+    description: "You are sending more than ever, yet the calendar stays empty. Inboxes and buyers can both tell the difference between a real note and a blast.",
+    items: [
+      { title: "Your emails land in spam", text: "Send too much from a cold domain and providers stop delivering. Your best prospects never see a word, and the damage lasts for months." },
+      { title: "You sound like everyone else", text: "Templates and tokens read like a template within a line. There is no research, no reason to write today, and no reason to reply." },
+      { title: "Replies? Zero meetings", text: "Even a good reply dies in an inbox nobody owns. Without someone handling objections and booking time, interest quietly goes cold." },
+    ],
+  },
+
+  solution: {
+    label: "THE SOLUTION",
+    title: { before: "We reach inboxes and", accent: "real buyers." },
+    description: "Fourteen does not just send email. We study who actually buys from you, then build the list, the message and the calendar around them.",
+    cards: [
+      { label: "Analysis", title: { before: "A clear map of", accent: "who will buy" }, text: "We study your best customers and find the companies that look like them, so every email goes to someone with a reason to answer.", visual: "match" },
+      { label: "Strategy", title: { before: "Precision Targeting", accent: "" }, text: "Smaller, sharper lists beat big blasts. We write to the few accounts that matter and skip the rest.", visual: "ring" },
+      { label: "Structure", title: { before: "Sequences That Build", accent: "" }, text: "Every email has a job. The first opens the door, the second adds proof and the third makes it easy to say no.", visual: "nodes" },
+      { label: "Quality", title: { before: "Emails that", accent: "actually get answered" }, text: "Each message is researched by a person and written to sound like you, with one clear question and nothing to click.", visual: "email" },
+      { label: "Growth", title: { before: "Real Pipeline ROI", accent: "" }, text: "Opens do not pay the bills. We report on replies, meetings held and deals opened.", visual: "bars" },
+      { label: "Velocity", title: { before: "Sending that doesn't", accent: "stop" }, text: "Campaigns run every day while we handle replies and book the calls. You only show up to the meeting.", visual: "queue" },
+    ],
+    cta: { label: "Plan My Campaign", href: "#start" },
+  },
+
+  how: {
+    title: { before: "A Proven System for", accent: "Compounding Pipeline" },
+    description: "Clear targeting, real research and a calendar that fills itself, built for the way buyers read email now.",
+    steps: [
+      { chip: "STEP 1", title: "We map the buyers that matter", text: "We learn who already buys from you and why. Then we build a list of companies that match, checked by hand and verified for delivery.", visual: "map" },
+      { chip: "STEP 2", title: "We build a sequence that earns replies", text: "Three short emails, written for each segment. Research goes in the first line, proof in the second, and a plain question in the third.", visual: "tree" },
+      { chip: "STEP 3", title: "We book the meetings for you", text: "We send, read every reply and handle the back and forth. Interested buyers get a time in your calendar without you lifting a finger.", visual: "chat" },
+    ],
+    quote: { before: "This is not blast-and-pray outreach. It is a system designed to earn", accent: "replies, trust and booked calls." },
+  },
+
+  features: {
+    title: { before: "Engineered for", accent: "Reply Rates" },
+    description: "The specific capabilities that let Fourteen outperform cold-email tools and expensive agencies.",
+    items: [
+      { title: "Ideal Customer Mapping", text: "We score every account on fit and timing, so you only ever write to companies that look like your best customers.", visual: "score" },
+      { title: "Your Voice, Not a Template", text: "Tone, wording and positioning stay consistent across every email. No generic opener, no reset every month.", visual: "sliders" },
+      { title: "Multi-Stage Prospect Research", text: "We do not guess. We read each company's site, news and hiring page, then write the one line only they would recognise.", visual: "terminal" },
+      { title: "Smart Sequencing", text: "Follow-ups are timed to behaviour, not a calendar. Every message knows what came before it and what comes next.", visual: "timeline" },
+      { title: "Inbox-First Deliverability", text: "Dedicated domains, slow warm-up and daily health checks keep your emails out of spam and your main domain safe.", visual: "health" },
+      { title: "14-Day Launch Plan", text: "We do not ask what to send this month. Domains, list, copy and first sends are scheduled from day one.", visual: "roadmap" },
+      { title: "Reply Handling", text: "Every reply is read by a person, tagged and answered fast. Objections get a real answer and interest gets a time.", visual: "inbox" },
+      { title: "Calendar and CRM Sync", text: "Booked calls land in your calendar and your CRM with the full thread attached. No copy and paste, no lost context.", visual: "sync" },
+    ],
+  },
+
+  examples: {
+    title: { before: "See real campaigns", accent: "written by our team" },
+    description: "A few of the campaigns we run. Real subjects, real reply rates, written and sent by us.",
+    items: [
+      { icon: "rocket", client: "BRIGHTLOOP.EXAMPLE", subject: "Quick question about your onboarding", reply: "11.4% replies", meetings: "12 meetings" },
+      { icon: "building", client: "KILNSTUDIO.EXAMPLE", subject: "Your last three case studies", reply: "9.8% replies", meetings: "9 meetings" },
+      { icon: "bolt", client: "LEDGERLY.EXAMPLE", subject: "Closing the books in 2 days, not 9", reply: "12.1% replies", meetings: "14 meetings" },
+      { icon: "camera", client: "PAPERKITE.EXAMPLE", subject: "SOC 2 without the six-month wait", reply: "9.2% replies", meetings: "8 meetings" },
+    ],
+    cta: { label: "Plan A Campaign Like This", href: "#start" },
+  },
+
+  pricing: {
+    title: { before: "One Plan.", accent: "Predictable Pipeline." },
+    description: "Everything you need to turn outbound into a steady source of meetings. No setup fees. No contracts. Just calls.",
+    tab: "LAUNCH OFFER",
+    badge: "ALL IN ONE",
+    audience: "For ambitious founders",
+    was: "$1,990",
+    price: "$1,490",
+    per: "per month",
+    note: "Save $6,000 a year",
+    cta: { label: "Start My 14 Days", href: "#start" },
+    guarantee: "No meetings in 14 days? Month one is free.",
+    includedLabel: "INCLUDED, ALL OF IT",
+    included: [
+      { icon: "mail", title: "2,000 Researched Emails a Month", text: "Written one at a time for your best accounts, never mass-produced." },
+      { icon: "target", title: "Ideal Customer Mapping", text: "A scored, verified list of companies that look like your best customers." },
+      { icon: "plug", title: "Calendar and CRM Sync", text: "Meetings appear in your calendar and CRM with the whole thread attached." },
+      { icon: "shield", title: "Dedicated Sending Setup", text: "Fresh domains, warm-up and daily health checks that protect your brand." },
+      { icon: "chart", title: "Weekly Pipeline Report", text: "Replies, meetings held and deals opened, with notes on what to change." },
+    ],
+  },
+
+  faq: {
+    lead: "Questions?",
+    tail: "Answers",
+    description: "Everything you need to know about the service and billing.",
+    items: [
+      { question: "Will this hurt my domain?", answer: "No. We never send from your main domain. We set up separate, warmed domains and monitor their health every day, so your brand stays clean." },
+      { question: "How is this different from a cold email tool?", answer: "A tool sends what you give it. We do the research, write each email, read every reply and book the call. You get meetings, not a dashboard." },
+      { question: "Why do the emails feel so human?", answer: "Because a person researches each account and writes to it. Short, specific and with a single clear question." },
+      { question: "Do I need to approve every email?", answer: "Only the first sequence. After you sign off on the voice and the offer, we send and report. You can review anything at any time." },
+      { question: "Does it work with my CRM and calendar?", answer: "Yes. HubSpot, Salesforce, Pipedrive, Google Calendar and Calendly, with the full email thread attached to every meeting." },
+      { question: "Can I cancel if it is not for me?", answer: "Any time, with no contract. And if we do not book a qualified meeting in your first 14 days, your first month is free." },
+      { question: "Is the list compliant?", answer: "We only contact business addresses, honour every opt-out immediately and follow the rules in each country we send to." },
+    ],
+  },
+
+  founder: {
+    badge: "Founder's guarantee",
+    label: "A personal note",
+    quote: "Your first 14 days are on me. If no qualified meeting lands in your calendar, you do not pay for the month.",
+    sub: "If they do, we can talk about month two.",
+    name: "Marcus Hale",
+    role: "Founder of Fourteen",
+    signature: "Marcus H.",
+    cta: { label: "Claim My 14-Day Start", href: "#start" },
+    note: "No contract. Cancel any time.",
+  },
+
+  cta: {
+    title: { before: "Your calendar,", accent: "full by day 14." },
+    description: "Tell us who you sell to. We build the list, write the emails and warm the domains, and the first meetings appear in your calendar within two weeks.",
+    button: { label: "Book My First 14 Days", href: "#" },
+    ticks: ["No contract", "Month one free if no meetings", "3 spots left in June"],
+    note: "your calendar by day 14",
+    calendar: {
+      month: "June",
+      caption: "Your first 14 days",
+      booked: [
+        { day: 3, label: "Intro call, Northwind" },
+        { day: 6, label: "Demo, Kiln Studio" },
+        { day: 9, label: "Intro call, Ledgerly" },
+        { day: 12, label: "Demo, Paperkite" },
+      ],
+      summary: "4 meetings booked",
+    },
+  },
+
+  footer: {
+    blurb: "The done-for-you outbound engine that books qualified meetings in 14 days.",
+    status: "SENDING NORMALLY",
+    columns: [
+      {
+        title: "Product",
+        links: [
+          { label: "How it Works", href: "#how" },
+          { label: "Features", href: "#features" },
+          { label: "Pricing", href: "#pricing" },
+        ],
+      },
+      {
+        title: "Company",
+        links: [
+          { label: "About Us", href: "#" },
+          { label: "Playbook", href: "#" },
+          { label: "Careers", href: "#" },
+          { label: "Contact", href: "#" },
+        ],
+      },
+      {
+        title: "Legal",
+        links: [
+          { label: "Privacy Policy", href: "#" },
+          { label: "Terms of Service", href: "#" },
+          { label: "Opt-out", href: "#" },
+        ],
+      },
+    ],
+    legal: "Fourteen Inc. All rights reserved.",
+  },
+};
