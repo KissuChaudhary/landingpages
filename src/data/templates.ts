@@ -127,30 +127,30 @@ export const TEMPLATES: TemplateItem[] = [
       "detailUrl": "/template/cutroom"
     },
     {
-      "slug": "drawgle",
-      "title": "Drawgle - AI Mobile App UI Designer",
+      "slug": "halftone",
+      "title": "Halftone: Developer API Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
-      "badge": "AI Design",
-      "description": "Design editable mobile app UI from plain text prompts or screenshots. Features live prompt composer, feature showcase films, and design token exports.",
+      "badge": "Dev Tools",
+      "description": "A clean, light landing page for developer tools and API products. Live delivery log hero, animated pipeline, six product panels, tabbed code samples and a usage-based pricing calculator, all driven from one config file.",
       "tags": [
-        "AI Mobile UI",
-        "App Designer",
-        "Tailwind HTML",
-        "Agent Handoff",
-        "Light Mode"
+        "Developer Tools",
+        "API Product",
+        "Light Mode",
+        "Tailwind v4",
+        "Next.js 15"
       ],
       "features": [
-        "Prompt to Mobile UI Composer",
-        "Screenshot Reconstruction Stage",
-        "Design System Token Engine",
-        "Interactive Flow Showcase"
+        "Live delivery log hero with a retry that recovers",
+        "Animated pipeline and six coded product panels",
+        "Code window with language tabs and step highlights",
+        "Usage-based pricing slider that prices every plan"
       ],
       "accentColor": "from-blue-600 to-indigo-600",
-      "downloadUrl": "/downloads/drawgle.zip",
-      "previewUrl": "/preview/drawgle",
-      "demoUrl": "/demo/drawgle",
-      "detailUrl": "/template/drawgle"
+      "downloadUrl": "",
+      "previewUrl": "/preview/halftone",
+      "demoUrl": "/demo/halftone",
+      "detailUrl": "/template/halftone"
     },
     {
       "slug": "ecompin",
