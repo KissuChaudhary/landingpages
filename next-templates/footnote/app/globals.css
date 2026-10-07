@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/*
+  Footnote design tokens.
+
+  Dark graphite, warm-white text, and one cool blue accent. There are no shadows anywhere: depth comes from
+  hairlines and spacing. To re-theme, change the values here. Nothing else hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-bg: #0b0b0d;
+  --color-bg-lift: #111115;
+
+  /* Text, measured on bg: text 17.7:1, text-mid 7.9:1, text-low 4.6:1 (small labels only). */
+  --color-text: #f3f3f1;
+  --color-text-mid: #a3a3ad;
+  --color-text-low: #7a7a85;
+
+  /* Hairlines */
+  --color-line: rgb(255 255 255 / 0.1);
+  --color-line-strong: rgb(255 255 255 / 0.2);
+  --color-mark: rgb(255 255 255 / 0.4);
+
+  /* The accent: footnote markers, highlights, links. One colour only. */
+  --color-accent: #8ab4ff;
+  --color-accent-deep: #5b8def;
+  --color-accent-soft: rgb(138 180 255 / 0.14);
+  /* Used only for the "uncited" marks in the before and after. */
+  --color-warn: #f0997b;
+  --color-good: #7fd6a8;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  /* The page frame: two thin vertical rules at its edges. Every section sits between them. */
+  --frame: min(1240px, calc(100vw - 32px));
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Serif display type: light, tight, with the optical size doing the work. */
+@utility display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 340;
+  letter-spacing: -0.025em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

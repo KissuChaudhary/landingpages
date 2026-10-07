@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/*
+  Kept design tokens.
+
+  Warm paper, a deep pine ink and one fresh lime. Money pages should feel calm, so there are no shadows and no
+  gradients: depth comes from hairlines, a slightly lighter "sheet" colour and spacing.
+  To re-theme, change the values here. Nothing else hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-paper: #f4f3ec;
+  --color-sheet: #fbfaf5;
+  --color-pine: #0f2a21;
+
+  /* Text, measured on paper: ink 14.7:1, ink-mid 6.5:1, ink-low 5.2:1. */
+  --color-ink: #13231d;
+  --color-ink-mid: #4c5b53;
+  --color-ink-low: #5f6d65;
+
+  /* Hairlines */
+  --color-line: rgb(19 35 29 / 0.12);
+  --color-line-strong: rgb(19 35 29 / 0.24);
+
+  /* Accents. `lime` is a fill (highlights, chart, button on pine). `moss` is the darker green for small text on paper. */
+  --color-lime: #cdee8a;
+  --color-lime-deep: #b6dc6a;
+  --color-moss: #2d6a4d;
+  --color-sage: #9db8a4;
+  --color-good: #1d7a4f;
+
+  /* Text on the pine band, measured on pine: on-pine 13.9:1, on-pine-mid 7.9:1. */
+  --color-on-pine: #f2f5ea;
+  --color-on-pine-mid: #aebfb3;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  background: var(--color-paper);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Condensed display serif, light and tight. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+/* Money is always set in tabular figures so columns line up. */
+@utility money {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* The native FAQ marker is replaced by our own icon. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

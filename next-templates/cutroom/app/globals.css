@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/*
+  Cutroom design tokens.
+
+  Clean paper, near-black ink, one signal orange, and small pops of timeline blue and retention green.
+  To re-theme, change the values here. Nothing else in the project hardcodes a colour.
+*/
+@theme {
+  /* Surfaces */
+  --color-paper: #ffffff;
+  --color-wash: #f5f4f0;
+  --color-wash-deep: #ebe9e3;
+
+  /* Dark "monitor" surfaces, for the editor panels, the process list and the footer */
+  --color-ink: #0d0d12;
+  --color-ink-raised: #17171e;
+  --color-ink-line: rgb(255 255 255 / 0.1);
+
+  /* Text. Measured on paper: ink 19.1:1, ink-mid 7.6:1, ink-low 4.9:1 (small labels only). */
+  --color-text: #0d0d12;
+  --color-text-mid: #4d4d57;
+  --color-text-low: #6b6b76;
+  --color-on-ink: #f4f4f1;
+  --color-on-ink-mid: #a6a6b2;
+
+  /* Hairlines on paper */
+  --color-line: rgb(13 13 18 / 0.1);
+  --color-line-strong: rgb(13 13 18 / 0.2);
+
+  /* Signal orange. flame fills; flame-text is the darker shade that is safe for small text on white. */
+  --color-flame: #ff4d00;
+  --color-flame-deep: #e03f00;
+  --color-flame-text: #b83400;
+  --color-flame-soft: #ffe9df;
+
+  /* Timeline and data accents */
+  --color-blue: #3d5afe;
+  --color-blue-soft: #e4e9ff;
+  --color-green: #12a05c;
+  --color-green-soft: #dcf4e7;
+  --color-rec: #ff3b3b;
+
+  /* Used only to paint the video thumbnails */
+  --color-plum: #5b2a86;
+
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Depth comes from hairline borders, tints and contrast. The only shadow is a barely-there hairline. */
+  --shadow-hairline: 0 1px 2px rgb(13 13 18 / 0.05);
+
+  --animate-playhead: playhead 7s linear infinite;
+  --animate-rec: rec 1.6s ease-in-out infinite;
+
+  @keyframes playhead {
+    0% { left: 4%; }
+    100% { left: 96%; }
+  }
+
+  @keyframes rec {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+}
+
+:root {
+  /* Width of every section's content. */
+  --content: min(1200px, calc(100vw - 40px));
+}
+
+html {
+  background: var(--color-paper);
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-flame);
+  color: var(--color-ink);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Headlines: tight, heavy, confident. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+/* Small mono labels: timecodes, scene numbers, tags. */
+@utility timecode {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A ruler: tick marks every 8px, taller every 40px, drawn as a background. */
+@utility ruler {
+  background-image:
+    linear-gradient(to right, var(--color-line-strong) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px);
+  background-size: 40px 55%, 8px 30%;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
+
+@utility ruler-on-ink {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.28) 1px, transparent 1px),
+    linear-gradient(to right, rgb(255 255 255 / 0.12) 1px, transparent 1px);
+  background-size: 40px 55%, 8px 30%;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
