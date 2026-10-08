@@ -1,6 +1,6 @@
 # Stillform license
 
-Copyright (c) FounderDada. All rights reserved.
+Copyright (c) Hairline UI. All rights reserved.
 
 When you buy Stillform you get a license to:
 

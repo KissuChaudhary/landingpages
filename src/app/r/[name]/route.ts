@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { UI_CSS, UI_ITEMS, UI_NAME, UI_REGISTRY_NAME } from '@/ui-library/registry';
+import { UI_ITEMS, UI_NAME, UI_REGISTRY_NAME, cssFor } from '@/ui-library/registry';
 import { absoluteUrl } from '@/data/site';
 
 /**
@@ -33,7 +33,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ nam
         description: item.description,
         dependencies: item.dependencies,
         files: [{ path: `registry/${item.file}`, type: 'registry:component' }],
-        css: UI_CSS,
+        css: cssFor(item),
       })),
     });
   }
@@ -50,7 +50,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ nam
     author: UI_NAME,
     dependencies: item.dependencies,
     files: [{ path: `registry/${item.file}`, type: 'registry:component', content: source(item.file) }],
-    css: UI_CSS,
+    css: cssFor(item),
     docs: `Docs and live preview: ${absoluteUrl(`/ui/${item.name}`)}`,
   });
 }

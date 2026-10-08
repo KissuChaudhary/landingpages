@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ComponentPreview from '@/components/ui-site/ComponentPreview';
-import { UI_ITEMS, UI_NAME } from '@/ui-library/registry';
+import { UI_GROUPS, UI_ITEMS, UI_NAME } from '@/ui-library/registry';
 import { SITE_NAME, absoluteUrl } from '@/data/site';
 
 const title = `${UI_NAME}: React components for AI interfaces`;
@@ -27,7 +27,7 @@ export default function UiIndexPage() {
       <main>
         <section className="mx-auto max-w-6xl px-5 pb-14 pt-14 sm:px-6 sm:pb-16 sm:pt-20">
           <span className="flex h-[24px] w-fit select-none items-center whitespace-nowrap rounded-md bg-neutral-100 px-2.5 text-xs font-medium text-[#666]">
-            Free · shadcn/ui registry
+            Free components · shadcn/ui registry
           </span>
           <h1 className="mt-6 text-[44px] font-medium leading-[0.95] tracking-[-0.05em] text-[#181925] sm:text-[72px] lg:text-[88px]">
             The moments between <br className="hidden sm:block" />
@@ -53,35 +53,48 @@ export default function UiIndexPage() {
             </a>
           </div>
 
-          <div className="mt-10 flex flex-col gap-16 sm:gap-20">
-            {UI_ITEMS.map((item, i) => (
-              <article key={item.name} aria-labelledby={`${item.name}-title`}>
-                <div className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
-                  <div>
-                    <h3 id={`${item.name}-title`} className="flex items-baseline gap-2.5 text-[17px] font-medium tracking-[-0.01em] text-[#181925]">
-                      <span className="text-sm tabular-nums text-[#aaa]">{String(i + 1).padStart(2, '0')}</span>
-                      <Link href={`/ui/${item.name}`} className="transition-colors hover:text-primary">
-                        {item.title}
-                      </Link>
-                    </h3>
-                    <p className="mt-1 text-sm text-[#888]">{item.description}</p>
-                  </div>
-                  <Link
-                    href={`/ui/${item.name}`}
-                    className="inline-flex items-center gap-1 text-sm text-[#666] transition-colors hover:text-[#181925]"
-                  >
-                    Docs and code
-                    <ArrowRight className="size-3.5" aria-hidden="true" />
-                  </Link>
+          {UI_GROUPS.map((group) => {
+            const groupItems = UI_ITEMS.filter((item) => item.group === group.id);
+            if (groupItems.length === 0) return null;
+            return (
+              <div key={group.id} className="mt-14 first:mt-10">
+                <div className="mb-10 max-w-xl">
+                  <h3 className="text-2xl font-medium tracking-[-0.03em] text-[#181925]">{group.title}</h3>
+                  <p className="mt-1.5 text-[15px] text-[#888]">{group.description}</p>
                 </div>
-                <ComponentPreview
-                  name={item.name}
-                  variants={item.variants}
-                  installCommand={`npx shadcn@latest add ${absoluteUrl(`/r/${item.name}.json`)}`}
-                />
-              </article>
-            ))}
-          </div>
+                <div className="flex flex-col gap-16 sm:gap-20">
+                  {groupItems.map((item) => (
+                    <article key={item.name} aria-labelledby={`${item.name}-title`}>
+                      <div className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+                        <div>
+                          <h4 id={`${item.name}-title`} className="flex items-baseline gap-2.5 text-[17px] font-medium tracking-[-0.01em] text-[#181925]">
+                            <span className="text-sm tabular-nums text-[#aaa]">{String(UI_ITEMS.indexOf(item) + 1).padStart(2, '0')}</span>
+                            <Link href={`/ui/${item.name}`} className="transition-colors hover:text-primary">
+                              {item.title}
+                            </Link>
+                          </h4>
+                          <p className="mt-1 text-sm text-[#888]">{item.description}</p>
+                        </div>
+                        <Link
+                          href={`/ui/${item.name}`}
+                          className="inline-flex items-center gap-1 text-sm text-[#666] transition-colors hover:text-[#181925]"
+                        >
+                          Docs and code
+                          <ArrowRight className="size-3.5" aria-hidden="true" />
+                        </Link>
+                      </div>
+                      <ComponentPreview
+                        name={item.name}
+                        tabs={item.tabs}
+                        tabsLabel={item.tabsLabel}
+                        installCommand={`npx shadcn@latest add ${absoluteUrl(`/r/${item.name}.json`)}`}
+                      />
+                    </article>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </section>
 
         <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-6">

@@ -1,0 +1,249 @@
+.membership-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.membership-heading > .section-intro {
+  max-width: 570px;
+}
+.membership-heading > div:last-child {
+  margin-bottom: 5px;
+}
+.billing-toggle {
+  display: flex;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #f1f1e8;
+}
+.billing-toggle button {
+  min-width: 89px;
+  padding: 9px 16px;
+  background: transparent;
+  border-radius: 4px;
+  color: #637255;
+  font-size: 11px;
+}
+.billing-toggle button[aria-pressed="true"] {
+  background: var(--white);
+  color: var(--forest);
+  box-shadow: 0 1px 3px #31402c15;
+}
+.billing-saving {
+  font-size: 9px;
+  color: #60754c;
+  margin-top: 10px;
+  text-align: right;
+}
+.membership-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 43px;
+}
+.membership-card {
+  padding: 35px 38px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.free-card {
+  background: #fdfcf7;
+}
+.plus-card {
+  background: var(--forest-deep);
+  color: #f3f5e9;
+  border-color: var(--forest-deep);
+}
+.plan-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.plan-heading h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.6px;
+}
+.plan-heading .mono {
+  font-size: 7px;
+  color: #657252;
+}
+.plus-card .plan-heading .mono {
+  color: #ccddb4;
+}
+.plan-description {
+  margin-top: 11px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.plus-card .plan-description {
+  color: #d2ddc5;
+}
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 28px;
+}
+.plan-price > span:first-child {
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -4px;
+  font-weight: 400;
+}
+.plan-price > span:last-child {
+  font-size: 12px;
+  color: #68765b;
+}
+.plus-card .plan-price > span:last-child {
+  color: #ccdabd;
+}
+.plan-billing {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #68765b;
+}
+.plus-card .plan-billing {
+  color: #ccdabd;
+}
+.membership-card > .button {
+  margin-top: 27px;
+  width: 100%;
+  min-height: 44px;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+.membership-card ul {
+  list-style: none;
+  margin: 27px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--line);
+}
+.plus-card ul {
+  border-color: #c7d7ad30;
+}
+.membership-card li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 11px;
+  margin-top: 13px;
+}
+.membership-card li:first-child {
+  margin-top: 0;
+}
+.membership-card li svg {
+  color: #6d8455;
+}
+.plus-card li svg {
+  color: #c9dda7;
+}
+.plan-flower {
+  position: absolute;
+  right: 34px;
+  top: 116px;
+  font-size: 88px;
+  color: #e7eddd;
+  line-height: 1;
+}
+.plus-card .plan-flower {
+  color: #a9c58830;
+}
+.faq-section {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 100px;
+  padding-top: 27px;
+  border-top: 1px solid var(--line);
+}
+.faq-section .section-intro {
+  padding-top: 18px;
+}
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+.faq-list summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.faq-list summary svg {
+  color: #637853;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-list details[open] summary svg {
+  transform: rotate(45deg);
+}
+.faq-list details > p {
+  padding: 0 25px 25px 0;
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+@media (max-width: 1000px) {
+  .membership-card {
+    padding: 30px;
+  }
+  .plan-heading .mono {
+    font-size: 6px;
+  }
+  .faq-section {
+    gap: 50px;
+  }
+}
+@media (max-width: 680px) {
+  .membership-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .membership-heading > .section-intro {
+    max-width: 100%;
+  }
+  .billing-saving {
+    text-align: left;
+  }
+  .membership-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+    margin-top: 27px;
+  }
+  .membership-card {
+    padding: 28px;
+  }
+  .plan-heading .mono {
+    font-size: 6px;
+  }
+  .plan-heading h3 {
+    font-size: 23px;
+  }
+  .plan-price > span:first-child {
+    font-size: 61px;
+  }
+  .faq-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 28px;
+  }
+  .faq-section .section-intro {
+    padding-top: 15px;
+  }
+  .faq-list summary {
+    font-size: 12px;
+    padding-block: 23px;
+  }
+}

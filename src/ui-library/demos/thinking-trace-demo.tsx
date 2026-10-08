@@ -1,14 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { ThinkingTrace, type ThinkingStep, type ThinkingVariant } from '../registry/thinking-trace';
+import { ThinkingTrace, type ThinkingStatus, type ThinkingStep, type ThinkingVariant } from '../registry/thinking-trace';
 
-type Script = { variant: ThinkingVariant; doneLabel?: string; query?: string; more?: number; steps: ThinkingStep[] };
+type Script = { variant: ThinkingVariant; query?: string; more?: number; failAt?: number; steps: ThinkingStep[] };
 
 const SCRIPTS: Record<string, Script> = {
   Steps: {
     variant: 'steps',
-    doneLabel: 'Thought for 4 seconds',
     steps: [
       { label: 'Reading flavor briefs' },
       { label: 'Scanning supplier lists' },
@@ -18,7 +17,6 @@ const SCRIPTS: Record<string, Script> = {
   },
   Reasoning: {
     variant: 'reasoning',
-    doneLabel: 'Thought for 4 seconds',
     steps: [
       { label: 'Summer demand spikes for stone-fruit flavors, with peach and apricot in the lead.' },
       { label: 'I should check cone inventory before promoting a waffle-bowl special.' },
@@ -36,38 +34,52 @@ const SCRIPTS: Record<string, Script> = {
   },
   Tools: {
     variant: 'tools',
-    doneLabel: 'Ran 3 tools',
     steps: [
-      { label: 'Read', detail: 'flavors.ts' },
-      { label: 'Edit', detail: 'ChurnSchedule.tsx', additions: 74, deletions: 41 },
+      { label: 'Read', detail: 'src/data/flavors.ts' },
+      { label: 'Edit', detail: 'src/components/ChurnSchedule.tsx', additions: 74, deletions: 41 },
+      { label: 'Run', detail: 'npm run freeze' },
+    ],
+  },
+  Error: {
+    variant: 'tools',
+    failAt: 2,
+    steps: [
+      { label: 'Read', detail: 'src/data/flavors.ts' },
+      { label: 'Edit', detail: 'src/components/ChurnSchedule.tsx', additions: 12, deletions: 3 },
       { label: 'Run', detail: 'npm run freeze' },
     ],
   },
 };
 
 const START = 700;
-const STEP = 750;
+const STEP = 800;
 
-export default function ThinkingTraceDemo({ variant = 'Steps' }: { variant?: string }) {
-  const script = SCRIPTS[variant] ?? SCRIPTS.Steps;
+export default function ThinkingTraceDemo({ tab = 'Steps' }: { tab?: string }) {
+  const script = SCRIPTS[tab] ?? SCRIPTS.Steps;
+  const [startedAt] = useState(() => Date.now());
   const [count, setCount] = useState(0);
-  const [done, setDone] = useState(false);
+  const [status, setStatus] = useState<ThinkingStatus>('running');
 
   useEffect(() => {
-    const timers = script.steps.map((_, i) => window.setTimeout(() => setCount(i + 1), START + i * STEP));
-    timers.push(window.setTimeout(() => setDone(true), START + script.steps.length * STEP + 500));
+    const total = script.failAt !== undefined ? script.failAt + 1 : script.steps.length;
+    const timers = Array.from({ length: total }, (_, i) => window.setTimeout(() => setCount(i + 1), START + i * STEP));
+    timers.push(window.setTimeout(() => setStatus(script.failAt !== undefined ? 'error' : 'done'), START + total * STEP + 700));
     return () => timers.forEach((t) => window.clearTimeout(t));
   }, [script]);
 
+  const steps = script.steps.slice(0, count).map((step, i) =>
+    script.failAt === i && status === 'error' ? { ...step, status: 'error' as const } : step
+  );
+
   return (
-    <div className="flex min-h-[188px] w-full max-w-[380px] flex-col justify-start">
+    <div className="flex min-h-[196px] w-full max-w-[400px] flex-col justify-start">
       <ThinkingTrace
         variant={script.variant}
-        status={done ? 'done' : 'running'}
-        steps={script.steps.slice(0, count)}
+        status={status}
+        startedAt={startedAt}
+        steps={steps}
         query={script.query}
-        more={done ? script.more : undefined}
-        doneLabel={script.doneLabel}
+        more={status === 'done' ? script.more : undefined}
       />
     </div>
   );

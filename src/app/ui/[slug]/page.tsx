@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 import Row from '@/components/Row';
 import CopyCommand from '@/components/template/CopyCommand';
 import ComponentPreview from '@/components/ui-site/ComponentPreview';
-import { UI_ITEMS, UI_NAME, getUiItem } from '@/ui-library/registry';
+import { UI_ITEMS, UI_NAME, UI_REQUIREMENTS, getUiItem } from '@/ui-library/registry';
 import { SITE_NAME, absoluteUrl } from '@/data/site';
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -98,11 +98,22 @@ export default async function UiComponentPage({ params }: PageProps) {
           </div>
 
           <div className="mt-12">
-            <ComponentPreview name={item.name} variants={item.variants} installCommand={install} />
+            <ComponentPreview name={item.name} tabs={item.tabs} tabsLabel={item.tabsLabel} installCommand={install} />
           </div>
         </section>
 
         <div className="mt-16 sm:mt-24" />
+
+        <Row id="states" label="States">
+          <dl>
+            {item.states.map((st) => (
+              <div key={st.name} className="grid gap-1 border-b border-black/[0.06] py-3 first:pt-0 sm:grid-cols-[240px_1fr] sm:gap-6">
+                <dt className="font-mono text-[12.5px] text-[#181925]">{st.name}</dt>
+                <dd className="text-[15px] leading-relaxed text-[#444]">{st.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </Row>
 
         <Row id="usage" label="Usage">
           <pre className={CODE}>
@@ -114,6 +125,17 @@ export default async function UiComponentPage({ params }: PageProps) {
             </p>
           )}
         </Row>
+
+        {item.recipe && (
+          <Row id="ai-sdk" label="With the AI SDK">
+            <p className="mb-4 max-w-2xl text-[15px] leading-relaxed text-[#444]">
+              Map the Vercel AI SDK’s message parts and chat status onto the component’s props.
+            </p>
+            <pre className={CODE}>
+              <code>{item.recipe}</code>
+            </pre>
+          </Row>
+        )}
 
         <Row id="props" label="Props">
           <div className="overflow-x-auto">
@@ -147,6 +169,10 @@ export default async function UiComponentPage({ params }: PageProps) {
               <li key={n}>{n}</li>
             ))}
           </ul>
+        </Row>
+
+        <Row id="requirements" label="Requirements">
+          <p className="max-w-2xl text-[15px] leading-relaxed text-[#444]">{UI_REQUIREMENTS}</p>
         </Row>
 
         <Row id="source" label="Source">

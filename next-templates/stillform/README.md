@@ -92,7 +92,7 @@ The page includes a skip link, visible focus rings, labelled form controls, fiel
 
 ## Marketplace export
 
-When this project is inside the FounderDada repository:
+When this project is inside the Hairline UI repository:
 
 ```sh
 npm run export:demo

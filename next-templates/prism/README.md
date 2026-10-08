@@ -72,7 +72,7 @@ Six original artworks ship with matching 480px thumbnails and 1200px main images
 
 The default build works on a Next.js host such as Vercel or a Node server. For a static host, build with `PRISM_EXPORT=1`. Set `NEXT_PUBLIC_BASE_PATH` at build time only when hosting below a subdirectory. The `asset()` helper prefixes local images consistently; fonts and Next.js assets use the framework’s base path.
 
-Inside the FounderDada repository only:
+Inside the Hairline UI repository only:
 
 ```bash
 npm run export:demo

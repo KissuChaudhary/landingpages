@@ -1,0 +1,184 @@
+.modal {
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid #d9dfcf;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 35px 100px #19362430;
+  overflow: auto;
+}
+.modal::backdrop {
+  background: #1c332458;
+  backdrop-filter: blur(5px);
+}
+.modal-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+.modal-heading .eyebrow {
+  font-size: 10px;
+}
+.app-dialog,
+.plan-summary {
+  padding: 27px 10px 8px;
+  text-align: center;
+}
+.dialog-app-icon {
+  width: 59px;
+  height: 59px;
+  display: grid;
+  place-items: center;
+  background: var(--forest);
+  color: var(--lime);
+  border-radius: 16px;
+  margin-inline: auto;
+  transform: rotate(-7deg);
+  box-shadow: 0 7px 12px #19362415;
+}
+.dialog-app-icon svg {
+  height: 34px;
+  width: 34px;
+}
+.app-dialog h2,
+.plan-summary h2 {
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -1.4px;
+  margin-top: 24px;
+}
+.app-dialog h2 em {
+  color: var(--forest);
+}
+.app-dialog > p:not(.dialog-disclosure),
+.plan-summary > p:not(.summary-billing, .dialog-disclosure) {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 325px;
+  margin: 18px auto 0;
+}
+.store-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 23px;
+}
+.store-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  text-align: left;
+  background: #fcfcf7;
+}
+.store-link > svg:first-child {
+  color: var(--forest);
+}
+.store-link > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+.store-link small {
+  font-size: 8px;
+  color: var(--muted);
+}
+.store-link strong {
+  font-weight: 500;
+  font-size: 12px;
+}
+.store-demo {
+  font-size: 8px;
+  color: #667758;
+  border: 1px solid #d6dfcb;
+  border-radius: 4px;
+  padding: 3px 6px;
+  background: #f0f3e7;
+}
+.app-dialog > .button {
+  margin-top: 21px;
+  width: 100%;
+  font-size: 12px;
+}
+.dialog-disclosure {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 17px;
+}
+.dialog-flower {
+  color: #738e5b;
+  font-size: 40px;
+  line-height: 1;
+  display: block;
+}
+.plan-summary h2 {
+  margin-top: 17px;
+}
+.summary-price {
+  font-size: 65px;
+  letter-spacing: -3px;
+  margin-top: 23px;
+  line-height: 1;
+}
+.summary-price > span {
+  font-size: 12px;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.summary-billing {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #61754f;
+}
+.plan-summary ul {
+  list-style: none;
+  text-align: left;
+  margin: 24px 0;
+  border-block: 1px solid var(--line);
+  padding: 20px 12px;
+}
+.plan-summary li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 11px;
+  margin-top: 13px;
+}
+.plan-summary li:first-child {
+  margin-top: 0;
+}
+.plan-summary li svg {
+  color: #698453;
+}
+.plan-summary > .button {
+  width: 100%;
+  margin-top: 22px;
+}
+@media (max-width: 400px) {
+  .modal {
+    padding: 20px;
+  }
+  .app-dialog,
+  .plan-summary {
+    padding-inline: 0;
+  }
+  .app-dialog h2,
+  .plan-summary h2 {
+    font-size: 31px;
+  }
+  .app-dialog > .button {
+    font-size: 11px;
+    padding-inline: 12px;
+  }
+}

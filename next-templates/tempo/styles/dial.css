@@ -1,0 +1,208 @@
+.focus-instrument {
+  width: 390px;
+  text-align: center;
+}
+.instrument-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 19px;
+  color: #627057;
+}
+.instrument-heading .mono {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+.instrument-light {
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background: #6c8a5b;
+}
+.dial-face {
+  width: 310px;
+  height: 310px;
+  margin-inline: auto;
+  position: relative;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fffff8, #f2f3e9);
+  border: 1px solid #fffffc;
+  box-shadow:
+    inset 0 0 0 7px #f7f8f0,
+    inset 0 0 0 8px #eceee3,
+    inset 0 0 0 13px #fafbf4,
+    0 2px 2px #32492c17,
+    0 18px 35px #32492c13,
+    0 35px 60px #32492c0d;
+}
+.dial-face::after {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border-radius: 50%;
+  border: 1px solid #d5dcce36;
+  background: radial-gradient(ellipse at 30% 20%, #fffef839, transparent 80%);
+  pointer-events: none;
+}
+.dial-face > svg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.dial-readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  z-index: 2;
+}
+.dial-caption {
+  font-size: 8px;
+  color: #64725c;
+  letter-spacing: 0.17em;
+  margin-bottom: 16px;
+}
+.dial-time {
+  font-size: 69px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -4.7px;
+  font-variant-numeric: tabular-nums;
+  color: #304937;
+}
+.dial-subtitle {
+  font-size: 10px;
+  color: #65705e;
+  margin-top: 13px;
+}
+.dial-flower {
+  font-size: 24px;
+  color: #7d916b;
+  margin-top: 16px;
+}
+.duration-controls {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 26px;
+}
+.duration-controls button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: transparent;
+  color: #56664c;
+  font-size: 11px;
+  border: 1px solid transparent;
+}
+.duration-controls button[aria-pressed="true"] {
+  background: #fffff8;
+  border-color: #d9dfcf;
+  box-shadow: 0 2px 2px #32492c08;
+  color: var(--forest);
+}
+.duration-controls button:disabled {
+  opacity: 0.65;
+}
+.duration-controls button:not(:disabled):hover {
+  background: #fffff85e;
+}
+.duration-controls span {
+  font-size: 10px;
+}
+.session-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 13px;
+  padding-left: 36px;
+}
+.session-controls .button {
+  padding: 11px 28px;
+  min-height: 40px;
+  font-size: 11px;
+  gap: 10px;
+}
+.reset-session {
+  color: #5b6c50;
+  width: 28px;
+  height: 28px;
+}
+.session-status {
+  margin-top: 13px;
+  font-size: 9px;
+  line-height: 1.5;
+  color: #64715b;
+  min-height: 14px;
+}
+.dial-face.compact {
+  width: 180px;
+  height: 180px;
+  box-shadow: none;
+  border: none;
+  background: #f7f8f1;
+}
+.compact .dial-readout {
+  padding-top: 2px;
+}
+.compact .dial-caption {
+  font-size: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.09em;
+}
+.compact .dial-time {
+  font-size: 43px;
+  letter-spacing: -2px;
+}
+.compact .dial-subtitle {
+  font-size: 7px;
+  margin-top: 9px;
+}
+@media (max-width: 1100px) {
+  .focus-instrument {
+    width: 360px;
+  }
+  .dial-face:not(.compact) {
+    width: 330px;
+    height: 330px;
+  }
+}
+@media (max-width: 680px) {
+  .focus-instrument {
+    width: 300px;
+  }
+  .dial-face:not(.compact) {
+    width: 290px;
+    height: 290px;
+  }
+  .dial-time {
+    font-size: 59px;
+    letter-spacing: -3.5px;
+  }
+  .dial-caption {
+    margin-bottom: 13px;
+  }
+  .dial-flower {
+    margin-top: 11px;
+  }
+  .instrument-heading {
+    margin-bottom: 15px;
+  }
+  .duration-controls {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 360px) {
+  .focus-instrument {
+    width: 265px;
+  }
+  .dial-face:not(.compact) {
+    width: 265px;
+    height: 265px;
+  }
+}

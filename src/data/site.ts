@@ -1,4 +1,4 @@
-export const SITE_NAME = 'FounderDada';
+export const SITE_NAME = 'Hairline UI';
 
 /**
  * Absolute origin for canonical URLs, Open Graph images, the sitemap and structured data.

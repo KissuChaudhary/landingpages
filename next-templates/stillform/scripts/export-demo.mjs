@@ -8,7 +8,7 @@ const marketplace = path.resolve(root, "../..");
 const destination = path.join(marketplace, "public/demos/stillform");
 if (!existsSync(path.join(marketplace, "src/data/templates.ts"))) {
   throw new Error(
-    "Run export:demo inside the FounderDada repository. Use npm run build for your standalone site.",
+    "Run export:demo inside the Hairline UI repository. Use npm run build for your standalone site.",
   );
 }
 const result = spawnSync(

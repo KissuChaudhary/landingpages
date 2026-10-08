@@ -156,7 +156,7 @@ export default async function TemplateDetailPage({ params }: PageProps) {
       name: `${d.name}: ${d.kind}`,
       description: d.summary,
       image: [absoluteUrl(`/og/${slug}.jpg`), absoluteUrl(`/previews/card/${slug}.webp`)],
-      sku: `founderdada-${slug}`,
+      sku: `hairline-${slug}`,
       category: 'Website templates',
       brand: { '@type': 'Brand', name: SITE_NAME },
       offers: {

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, Copy, RotateCcw, ThumbsDown, ThumbsUp } from "lucide-react";
+import { AlertCircle, Check, Copy, RotateCcw, ThumbsDown, ThumbsUp } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────
  * STREAMING ANSWER: an AI answer as it arrives
@@ -11,17 +11,23 @@ import { Check, Copy, RotateCcw, ThumbsDown, ThumbsUp } from "lucide-react";
  *   AnswerActions   copy, regenerate, feedback and a sources stack
  *   FollowUps       suggested next questions
  *
- * StreamingText renders whatever you pass it. Append to `content`
- * as your stream delivers tokens and set `streaming` while it runs.
+ * StreamingText renders whatever you pass it: append to `content`
+ * as tokens arrive. Blank lines start new paragraphs, and finished
+ * paragraphs don't re-render while the last one grows. For Markdown,
+ * pass your renderer as children instead of `content`.
  * ───────────────────────────────────────────────────────── */
 
 export type AnswerCitation = { type: "citation"; label: string; href?: string };
 export type AnswerSegment = string | AnswerCitation;
+export type AnswerStatus = "streaming" | "done" | "stopped" | "error";
+export type AnswerFeedback = "up" | "down" | null;
 
 export interface AnswerSource {
   name: string;
   href?: string;
-  /** Tailwind background class for the dot, e.g. "bg-blue-500". */
+  /** A favicon or logo, e.g. <img src="…/favicon.ico" alt="" />. */
+  icon?: React.ReactNode;
+  /** Tailwind background class for the dot when there's no icon. */
   color?: string;
 }
 
@@ -30,13 +36,40 @@ const DOTS = ["bg-blue-500", "bg-emerald-500", "bg-orange-500", "bg-violet-500"]
 
 /* ── StreamingText ───────────────────────────────────────── */
 
-export interface StreamingTextProps extends Omit<React.HTMLAttributes<HTMLParagraphElement>, "content"> {
-  content: AnswerSegment[];
-  streaming?: boolean;
+export interface StreamingTextProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "content"> {
+  /** The answer so far. Append as tokens arrive. */
+  content?: AnswerSegment[];
+  status?: AnswerStatus;
+  /** Shows a retry button when status is "error". */
+  onRetry?: () => void;
+  /** Your own renderer (e.g. Markdown) instead of `content`. */
+  children?: React.ReactNode;
+}
+
+type Token = { kind: "word" | "space"; text: string } | { kind: "cite"; citation: AnswerCitation };
+
+function toParagraphs(content: AnswerSegment[]): Token[][] {
+  const paragraphs: Token[][] = [[]];
+  for (const segment of content) {
+    if (typeof segment !== "string") {
+      paragraphs[paragraphs.length - 1].push({ kind: "cite", citation: segment });
+      continue;
+    }
+    for (const part of segment.split(/(\n{2,})/)) {
+      if (/^\n{2,}$/.test(part)) {
+        paragraphs.push([]);
+        continue;
+      }
+      for (const text of part.split(/(\s+)/)) {
+        if (text) paragraphs[paragraphs.length - 1].push({ kind: /^\s+$/.test(text) ? "space" : "word", text });
+      }
+    }
+  }
+  return paragraphs.filter((p, i) => p.length > 0 || i === paragraphs.length - 1);
 }
 
 function CitationChip({ citation }: { citation: AnswerCitation }) {
-  const className = `mx-0.5 inline-flex translate-y-[-1px] items-center gap-1 rounded-[5px] border border-border bg-muted px-1.5 py-px align-middle font-mono text-[11px] text-foreground animate-[ui-fade-up_240ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none ${FOCUS}`;
+  const className = `mx-0.5 inline-flex -translate-y-px items-center gap-1 rounded-[5px] border border-border bg-muted px-1.5 py-px align-middle font-mono text-[11px] text-foreground animate-[ui-fade-up_240ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none ${FOCUS}`;
   const inner = (
     <>
       <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-emerald-500" />
@@ -52,36 +85,70 @@ function CitationChip({ citation }: { citation: AnswerCitation }) {
   );
 }
 
-export function StreamingText({ content, streaming = false, className = "", ...props }: StreamingTextProps) {
-  // Words keep a stable key by position, so only words that just arrived mount and fade in.
-  let word = 0;
+const Caret = () => (
+  <span
+    aria-hidden="true"
+    className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.18em] bg-foreground animate-[ui-blink_1s_steps(2,start)_infinite] motion-reduce:animate-none"
+  />
+);
+
+// Words keep a stable key by position, so only words that just arrived mount and fade in.
+const Paragraph = React.memo(
+  function Paragraph({ tokens, caret }: { tokens: Token[]; signature: string; caret: boolean }) {
+    return (
+      <p>
+        {tokens.map((token, i) =>
+          token.kind === "cite" ? (
+            <CitationChip key={i} citation={token.citation} />
+          ) : token.kind === "space" ? (
+            token.text
+          ) : (
+            <span key={i} className="animate-[ui-fade-in_420ms_ease-out_both] motion-reduce:animate-none">
+              {token.text}
+            </span>
+          )
+        )}
+        {caret && <Caret />}
+      </p>
+    );
+  },
+  (a, b) => a.signature === b.signature && a.caret === b.caret
+);
+
+export function StreamingText({ content = [], status = "done", onRetry, children, className = "", ...props }: StreamingTextProps) {
+  const streaming = status === "streaming";
+  const paragraphs = children === undefined ? toParagraphs(content) : [];
 
   return (
-    <p aria-busy={streaming} className={`text-[13.5px] leading-relaxed text-foreground ${className}`} {...props}>
-      {content.map((segment, i) =>
-        typeof segment === "string" ? (
-          <React.Fragment key={`s${i}`}>
-            {segment.split(/(\s+)/).map((token) =>
-              token === "" ? null : /^\s+$/.test(token) ? (
-                token
-              ) : (
-                <span key={`w${word++}`} className="animate-[ui-fade-in_420ms_ease-out_both] motion-reduce:animate-none">
-                  {token}
-                </span>
-              )
-            )}
-          </React.Fragment>
-        ) : (
-          <CitationChip key={`c${i}`} citation={segment} />
-        )
+    <div aria-busy={streaming} className={`flex flex-col gap-3 text-[13.5px] leading-relaxed text-foreground ${className}`} {...props}>
+      {children ??
+        paragraphs.map((tokens, i) => (
+          <Paragraph
+            key={i}
+            tokens={tokens}
+            signature={tokens.map((t) => (t.kind === "cite" ? `\u0000${t.citation.label}` : t.text)).join("")}
+            caret={streaming && i === paragraphs.length - 1}
+          />
+        ))}
+
+      {status === "stopped" && <p className="text-xs text-muted-foreground animate-[ui-fade-in_300ms_ease-out_both]">Stopped</p>}
+
+      {status === "error" && (
+        <p className="flex items-center gap-1.5 text-xs text-muted-foreground animate-[ui-fade-in_300ms_ease-out_both]">
+          <AlertCircle aria-hidden="true" className="size-3.5 shrink-0 text-red-500" />
+          The answer was interrupted.
+          {onRetry && (
+            <button
+              type="button"
+              onClick={onRetry}
+              className={`rounded px-1 font-medium text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground ${FOCUS}`}
+            >
+              Retry
+            </button>
+          )}
+        </p>
       )}
-      {streaming && (
-        <span
-          aria-hidden="true"
-          className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.18em] bg-foreground animate-[ui-blink_1s_steps(2,start)_infinite] motion-reduce:animate-none"
-        />
-      )}
-    </p>
+    </div>
   );
 }
 
@@ -91,19 +158,25 @@ export interface AnswerActionsProps extends React.HTMLAttributes<HTMLDivElement>
   /** Text the copy button puts on the clipboard. Hides the button when omitted. */
   copyText?: string;
   onRegenerate?: () => void;
-  onFeedback?: (value: "up" | "down" | null) => void;
+  /** Controlled feedback, e.g. restored from your database. */
+  feedback?: AnswerFeedback;
+  defaultFeedback?: AnswerFeedback;
+  onFeedback?: (value: AnswerFeedback) => void;
   sources?: AnswerSource[];
   onSourcesClick?: () => void;
+  /** Disables the buttons, e.g. while the answer is still streaming. */
+  disabled?: boolean;
 }
 
-function IconButton({ label, pressed, onClick, children }: { label: string; pressed?: boolean; onClick: () => void; children: React.ReactNode }) {
+function IconButton({ label, pressed, disabled, onClick, children }: { label: string; pressed?: boolean; disabled?: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
       type="button"
       aria-label={label}
       aria-pressed={pressed}
+      disabled={disabled}
       onClick={onClick}
-      className={`flex size-7 items-center justify-center rounded-md transition-colors duration-150 hover:bg-accent hover:text-foreground ${
+      className={`flex size-7 items-center justify-center rounded-md transition-colors duration-150 hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-40 ${
         pressed ? "bg-accent text-foreground" : "text-muted-foreground"
       } ${FOCUS}`}
     >
@@ -112,9 +185,21 @@ function IconButton({ label, pressed, onClick, children }: { label: string; pres
   );
 }
 
-export function AnswerActions({ copyText, onRegenerate, onFeedback, sources, onSourcesClick, className = "", ...props }: AnswerActionsProps) {
+export function AnswerActions({
+  copyText,
+  onRegenerate,
+  feedback,
+  defaultFeedback = null,
+  onFeedback,
+  sources,
+  onSourcesClick,
+  disabled,
+  className = "",
+  ...props
+}: AnswerActionsProps) {
   const [copied, setCopied] = React.useState(false);
-  const [feedback, setFeedback] = React.useState<"up" | "down" | null>(null);
+  const [ownFeedback, setOwnFeedback] = React.useState<AnswerFeedback>(defaultFeedback);
+  const current = feedback !== undefined ? feedback : ownFeedback;
 
   React.useEffect(() => {
     if (!copied) return;
@@ -133,17 +218,23 @@ export function AnswerActions({ copyText, onRegenerate, onFeedback, sources, onS
   };
 
   const rate = (value: "up" | "down") => {
-    const next = feedback === value ? null : value;
-    setFeedback(next);
+    const next = current === value ? null : value;
+    if (feedback === undefined) setOwnFeedback(next);
     onFeedback?.(next);
   };
 
   const stack = sources && sources.length > 0 && (
     <>
       <span className="flex items-center -space-x-1.5" aria-hidden="true">
-        {sources.slice(0, 3).map((s, i) => (
-          <span key={s.name} className={`size-3.5 rounded-full ring-2 ring-background ${s.color ?? DOTS[i % DOTS.length]}`} />
-        ))}
+        {sources.slice(0, 3).map((s, i) =>
+          s.icon ? (
+            <span key={s.name} className="flex size-3.5 items-center justify-center overflow-hidden rounded-full bg-background ring-2 ring-background">
+              {s.icon}
+            </span>
+          ) : (
+            <span key={s.name} className={`size-3.5 rounded-full ring-2 ring-background ${s.color ?? DOTS[i % DOTS.length]}`} />
+          )
+        )}
       </span>
       <span>
         {sources.length} {sources.length === 1 ? "source" : "sources"}
@@ -155,19 +246,19 @@ export function AnswerActions({ copyText, onRegenerate, onFeedback, sources, onS
     <div className={`flex items-center justify-between gap-4 ${className}`} {...props}>
       <div className="flex items-center gap-1">
         {copyText !== undefined && (
-          <IconButton label={copied ? "Copied" : "Copy answer"} onClick={copy}>
+          <IconButton label={copied ? "Copied" : "Copy answer"} disabled={disabled} onClick={copy}>
             {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
           </IconButton>
         )}
         {onRegenerate && (
-          <IconButton label="Regenerate" onClick={onRegenerate}>
+          <IconButton label="Regenerate" disabled={disabled} onClick={onRegenerate}>
             <RotateCcw className="size-3.5" />
           </IconButton>
         )}
-        <IconButton label="Helpful" pressed={feedback === "up"} onClick={() => rate("up")}>
+        <IconButton label="Helpful" pressed={current === "up"} disabled={disabled} onClick={() => rate("up")}>
           <ThumbsUp className="size-3.5" />
         </IconButton>
-        <IconButton label="Not helpful" pressed={feedback === "down"} onClick={() => rate("down")}>
+        <IconButton label="Not helpful" pressed={current === "down"} disabled={disabled} onClick={() => rate("down")}>
           <ThumbsDown className="size-3.5" />
         </IconButton>
       </div>

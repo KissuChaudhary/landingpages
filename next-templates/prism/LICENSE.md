@@ -1,6 +1,6 @@
 # Commercial template license
 
-Copyright © FounderDada. All rights reserved.
+Copyright © Hairline UI. All rights reserved.
 
 A purchase of this template grants a non-exclusive license to use and modify it for your own products and any number of client projects, including commercial deployments.
 
@@ -10,4 +10,4 @@ Prism is a fictional demonstration. Its sample people, quotes, pricing, credits 
 
 Third-party dependencies retain their own licenses. Lucide icons use ISC; Manrope, Geist and Geist Mono use the SIL Open Font License. These terms do not replace those licenses.
 
-The template is supplied as-is, without warranties of merchantability, fitness for a particular purpose or non-infringement. FounderDada is not liable for damages resulting from its use.
+The template is supplied as-is, without warranties of merchantability, fitness for a particular purpose or non-infringement. Hairline UI is not liable for damages resulting from its use.

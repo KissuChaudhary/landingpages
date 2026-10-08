@@ -8,7 +8,7 @@ const marketplace = path.resolve(root, "../..");
 const destination = path.join(marketplace, "public/demos/prism");
 if (!existsSync(path.join(marketplace, "src/data/templates.ts"))) {
   throw new Error(
-    "Use npm run build for your standalone site. export:demo requires the FounderDada repository.",
+    "Use npm run build for your standalone site. export:demo requires the Hairline UI repository.",
   );
 }
 const result = spawnSync(

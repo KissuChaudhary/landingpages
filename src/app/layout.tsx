@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { TEMPLATES } from '@/data/templates';
-import { SITE_URL } from '@/data/site';
+import { SITE_NAME, SITE_URL } from '@/data/site';
 import './globals.css';
 
 const sans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'swap' });
@@ -9,7 +9,7 @@ const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', dis
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: `FounderDada — ${TEMPLATES.length} Production-Ready Next.js & Tailwind Templates`,
+  title: `${SITE_NAME}: ${TEMPLATES.length} production-ready Next.js and Tailwind templates`,
   description:
     'A curated marketplace of high-converting landing pages for AI tools, SaaS products, studios and agencies, with live interactive demos.',
 };

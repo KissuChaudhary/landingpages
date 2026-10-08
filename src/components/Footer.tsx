@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
 import { TEMPLATES } from '@/data/templates';
+import { SITE_NAME } from '@/data/site';
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
           <div className="flex size-5 items-center justify-center rounded-full bg-primary text-white">
             <Sparkles className="size-3" />
           </div>
-          <span className="font-medium text-[#181925]">FounderDada</span>
+          <span className="font-medium text-[#181925]">{SITE_NAME}</span>
           <span>· {TEMPLATES.length} Production Next.js UI Templates.</span>
         </div>
 
@@ -36,7 +37,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="text-[#888]">© {new Date().getFullYear()} FounderDada. All rights reserved.</div>
+        <div className="text-[#888]">© {new Date().getFullYear()} {SITE_NAME}. All rights reserved.</div>
       </div>
     </footer>
   );

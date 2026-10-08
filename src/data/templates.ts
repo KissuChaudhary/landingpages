@@ -297,6 +297,26 @@ export const TEMPLATES: TemplateItem[] = [
       "demoUrl": "/demo/prism",
       "detailUrl": "/template/prism",
       "thumbnailUrl": "/previews/card/prism.webp"
+    },
+    {
+      "slug": "tempo",
+      "title": "Tempo: Everyday App Launch",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Mobile App",
+      "description": "A considered light launch page for mobile apps and personal tools. A working focus dial, interactive phone screens and thoughtful editorial sections in paper, sage and forest green.",
+      "tags": ["Mobile App", "Consumer App", "Light Theme", "Interactive UI", "Next.js 15"],
+      "features": [
+        "Real focus timer synchronized with the phone preview",
+        "Plan, Focus and Reflect screens with screenshot replacements",
+        "Saved reflections, routine controls and a sample-week explorer",
+        "Paper-and-sage design with configurable content and pricing"
+      ],
+      "accentColor": "from-lime-200 to-emerald-700",
+      "previewUrl": "/preview/tempo",
+      "demoUrl": "/demo/tempo",
+      "detailUrl": "/template/tempo",
+      "thumbnailUrl": "/previews/card/tempo.webp"
     }
 ];
 
