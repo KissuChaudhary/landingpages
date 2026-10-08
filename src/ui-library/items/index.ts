@@ -38,6 +38,7 @@ import { usageMeter } from './usage-meter';
 import { chatScroll } from './chat-scroll';
 import { messageEdit } from './message-edit';
 import { chatHistory } from './chat-history';
+import { agentPlayback } from './agent-playback';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory, agentPlayback];
