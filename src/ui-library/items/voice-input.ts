@@ -10,7 +10,7 @@ export const voiceInput: UiItem = {
   dependencies: ['lucide-react'],
   registryDependencies: ['number-roll', 'text-morph'],
   css: ['@keyframes ui-sheen', '@keyframes ui-wave'],
-  tabs: ['Live', 'Blocked', 'Error'],
+  tabs: ['Live', 'In a composer', 'Blocked', 'Error'],
   states: [
     { name: 'idle', description: 'A mic button labelled "Dictate".' },
     { name: 'listening', description: 'The button stretches into a 44px bar over 520ms while the mic blurs into Stop; the waveform, a timer whose seconds roll and Cancel fade in once there’s room. The transcript so far opens above.' },
@@ -103,11 +103,12 @@ export function Dictate({ onText }: { onText: (text: string) => void }) {
     { name: 'startedAt', type: 'number', description: 'When listening started (ms); shows the timer.' },
     { name: 'onStart / onStop / onCancel', type: '() => void', description: 'Mic button and Try again; Stop and transcribe; Cancel.' },
     { name: 'errorText', type: 'string', description: 'Overrides the blocked or error explanation.' },
+    { name: 'align', type: '"start" | "end"', default: '"start"', description: 'Which side the mic sits on; the bar grows from there. Use "end" for a mic beside Send.' },
   ],
   notes: [
     'Buttons are labelled "Dictate", "Stop and transcribe" and "Cancel"; listening and transcribing are announced as status.',
     'The waveform is decorative (aria-hidden); the timer and transcript carry the information.',
-    'Blocked and error use role="alert". Give the component the width the bar should fill; the mic sits at the start and stretches across it.',
+    'Blocked and error use role="alert". Give the component the width the bar should fill; the mic stretches across it from its own side: align="start" (default) grows rightwards, align="end" puts the mic beside Send and grows leftwards, mirroring the bar and the error line.',
     'Installs Number roll and Text morph. With reduced motion the bar changes size in place and the fallback wave holds still.',
   ],
 };

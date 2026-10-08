@@ -21,7 +21,8 @@ import { TextMorph } from "./text-morph";
  *   error         it didn't catch that; try again
  *
  * One surface throughout: give it the width the bar should fill
- * and the mic stretches across it from the start. Your recording
+ * and the mic stretches across it from its own side (align="end"
+ * for a mic beside Send, so it grows leftwards). Your recording
  * code owns the mic: pass
  * status and the current level (0 to 1). Without a level the
  * bars move in a gentle wave.
@@ -41,6 +42,8 @@ export interface VoiceInputProps extends React.HTMLAttributes<HTMLDivElement> {
   onStop?: () => void;
   onCancel?: () => void;
   errorText?: string;
+  /** Which side the mic sits on; the bar grows from there. "end" suits a mic beside Send. */
+  align?: "start" | "end";
 }
 
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
@@ -84,9 +87,11 @@ export function VoiceInput({
   onStop,
   onCancel,
   errorText,
+  align = "start",
   className = "",
   ...props
 }: VoiceInputProps) {
+  const end = align === "end";
   const reduced = useReducedMotion();
   const listening = status === "listening";
   const transcribing = status === "transcribing";
@@ -127,7 +132,7 @@ export function VoiceInput({
   const showTranscript = listening && Boolean(transcript);
 
   return (
-    <div className={`flex flex-col gap-2 ${className}`} {...props}>
+    <div className={`flex flex-col ${className}`} {...props}>
       {/* The words so far open above the bar, and fold away with it. */}
       <div
         aria-hidden={!showTranscript || undefined}
@@ -139,21 +144,22 @@ export function VoiceInput({
         }}
       >
         <div className="min-h-0 overflow-hidden">
-          <p aria-live="polite" className="px-1 text-[13px] leading-relaxed text-foreground">
+          <p aria-live="polite" className="px-1 pb-2 text-[13px] leading-relaxed text-foreground">
             {transcript ?? lastTranscript}
           </p>
         </div>
       </div>
 
-      <div role={alert ? "alert" : undefined} className="flex items-center">
+      <div role={alert ? "alert" : undefined} className={`flex items-center ${end ? "flex-row-reverse" : ""}`}>
         {/* The one surface: a mic button that stretches into the listening bar and shrinks back. */}
         <div
-          className="flex shrink-0 items-center overflow-hidden rounded-full border border-border bg-background"
+          className={`flex shrink-0 items-center overflow-hidden rounded-full border border-border bg-background ${end ? "flex-row-reverse" : ""}`}
           style={{
             width: wide ? "100%" : 36,
             height: wide ? 44 : 36,
-            paddingLeft: wide ? 5 : 1,
-            paddingRight: wide ? 8 : 1,
+            // The button side keeps the tighter inset, whichever side that is.
+            [end ? "paddingRight" : "paddingLeft"]: wide ? 5 : 1,
+            [end ? "paddingLeft" : "paddingRight"]: wide ? 8 : 1,
             transition: reduced ? "none" : `width 520ms ${MORPH}, height 520ms ${MORPH}, padding 520ms ${MORPH}`,
           }}
         >
@@ -205,7 +211,11 @@ export function VoiceInput({
                 )
               )}
             </span>
-            <span aria-hidden="true" className={`absolute inset-y-0 left-1 flex items-center text-[13px] font-medium ${transcribing ? SHEEN : ""}`} style={appear(transcribing, reduced)}>
+            <span
+              aria-hidden="true"
+              className={`absolute inset-y-0 flex items-center text-[13px] font-medium ${end ? "right-1" : "left-1"} ${transcribing ? SHEEN : ""}`}
+              style={appear(transcribing, reduced)}
+            >
               <TextMorph>{transcribing ? "Transcribing" : "Listening"}</TextMorph>
             </span>
           </span>
@@ -222,7 +232,7 @@ export function VoiceInput({
               aria-label="Cancel"
               inert={!listening}
               onClick={onCancel}
-              className={`ml-1 flex size-7 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground ${FOCUS}`}
+              className={`${end ? "mr-1" : "ml-1"} flex size-7 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground ${FOCUS}`}
               style={appear(listening, reduced)}
             >
               <X className="size-3.5" />
@@ -241,7 +251,7 @@ export function VoiceInput({
             transition: reduced ? "none" : `grid-template-rows 420ms ${MORPH}, ${alert ? `opacity 320ms ${MORPH} 120ms, filter 320ms ${MORPH} 120ms` : "opacity 140ms ease-out, filter 140ms ease-out"}`,
           }}
         >
-          <div className="flex min-h-0 min-w-0 items-center gap-3 overflow-hidden pl-3">
+          <div className={`flex min-h-0 min-w-0 items-center gap-3 overflow-hidden ${end ? "pr-3" : "pl-3"}`}>
             <span className="min-w-0 flex-1 text-[12.5px] leading-5">
               <span className="block font-medium text-foreground">
                 <TextMorph animateWidth={false}>{blocked ? "Microphone blocked" : "Didn’t catch that"}</TextMorph>

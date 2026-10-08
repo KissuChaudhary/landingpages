@@ -16,7 +16,7 @@ export const codeBlock: UiItem = {
     { name: 'complete', description: 'File name and language, a wrap toggle, Copy. Line numbers stay put while you scroll sideways. Toggling wrap eases the block to its new height over 460ms.' },
     { name: 'copied', description: 'The copy icon shrinks away through a 3px blur as a check draws itself in 420ms; "Copy" morphs to "Copied", keeping the letters they share, for 1.6 seconds. A blocked clipboard shakes and says "Couldn’t copy".' },
     { name: 'folded', description: 'Code that arrives complete and runs past collapseAfter shows its start under a fade. "Show 42 more lines" opens it over 460ms while the fade dissolves and the label morphs to "Show less".' },
-    { name: 'apply', description: 'Apply → Applying with a spinner while your promise runs → a drawn check and "Applied", as the button eases from your primary colour to a quiet receipt. A rejected promise shakes and offers "Try again". It waits at 40% opacity while code streams.' },
+    { name: 'apply', description: 'Apply → Applying with a spinner while your promise runs → a drawn check and "Applied", as the button eases from your primary colour to a quiet receipt. A rejected promise shakes and offers "Try again". It waits at 40% opacity while code streams, and when the code changes (a regenerated answer) it morphs back to Apply so the new code can go in too.' },
   ],
   usage: `import { CodeBlock } from "@/components/code-block";
 

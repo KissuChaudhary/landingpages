@@ -112,6 +112,12 @@ export function CodeBlock({
   // Code you watched stream in stays open; only code that arrives complete (e.g. history) starts folded.
   const [expanded, setExpanded] = React.useState(streaming);
   const [apply, setApply] = React.useState<ActionStatus>("idle");
+  // New code (a regenerated answer) can be applied again: "Applied" or "Try again" goes back to Apply.
+  const [appliedCode, setAppliedCode] = React.useState(code);
+  if (appliedCode !== code) {
+    setAppliedCode(code);
+    if (apply === "success" || apply === "error") setApply("idle");
+  }
   const [fullHeight, setFullHeight] = React.useState(0);
   const bodyRef = React.useRef<HTMLDivElement>(null);
   const wrapFrom = React.useRef<number | null>(null);
