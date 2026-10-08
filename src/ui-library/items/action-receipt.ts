@@ -5,17 +5,18 @@ export const actionReceipt: UiItem = {
   title: 'Action receipts',
   description: 'What the agent actually did, one quiet line each, with Undo while a ring drains. Several stack into one.',
   summary:
-    'Agents that act on people’s behalf need to show their work and offer a way back. Each action your tools perform becomes a quiet line: what happened and where, with Undo and a small ring that drains while the window is open. Undoing shows a spinner, then strikes the line through. Failures say why and offer Retry. From three actions on, they fold into "4 actions · Undo all", which opens into the list.',
+    'Agents that act on people’s behalf need to show their work and offer a way back. Each action your tools perform becomes a quiet line: what happened and where, with Undo and a small ring that drains while the window is open. Undo is one button that never gets swapped out: the ring blurs into a spinner as it morphs to "Undoing", then a strike draws itself across the line and it settles on "Undone". When the window closes, Undo folds away. Failures say why and offer Retry. From three actions on, they fold into "4 actions · Undo all", whose counts roll as things change.',
   file: 'action-receipt.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-up', '@keyframes ui-fade-in', '@keyframes ui-drain'],
+  registryDependencies: ['number-roll', 'text-morph'],
+  css: ['@keyframes ui-fade-up', '@keyframes ui-drain'],
   tabs: ['Live', 'Stacked', 'Failed'],
   states: [
-    { name: 'done', description: 'Icon, what happened and where. Undo with a ring that drains until undoUntil, then Undo quietly goes.' },
-    { name: 'undoing', description: 'A spinner and "Undoing" while your onUndo promise runs.' },
-    { name: 'undone', description: 'The line is struck through and marked "Undone".' },
-    { name: 'failed', description: 'A red mark, the reason in place of the detail, and Retry.' },
-    { name: 'stacked', description: 'From stackFrom actions: overlapping icons, "4 actions · 1 undone", Undo all, and the list on open.' },
+    { name: 'done', description: 'Icon, what happened and where. Undo with a ring that drains until undoUntil, then Undo folds away (420ms).' },
+    { name: 'undoing', description: 'The ring blurs into a spinner and "Undo" morphs to "Undoing" while your onUndo promise runs.' },
+    { name: 'undone', description: 'A strike draws itself across the title (480ms) as it fades to muted; the button settles on "Undone".' },
+    { name: 'failed', description: 'The icon swaps to a red cross, the reason replaces the detail, and the button reads Retry.' },
+    { name: 'stacked', description: 'From stackFrom actions: overlapping icons and "4 actions · 1 undone", where counts roll and parts open in as they apply. Undo all spins and morphs to "Undoing all" while it runs.' },
   ],
   usage: `import { ActionReceipts } from "@/components/action-receipt";
 
@@ -58,7 +59,8 @@ function Receipts({ message, undone }: { message: UIMessage; undone: Set<string>
   ],
   notes: [
     'Undo buttons are labelled with the action ("Undo: Added “Soft launch” to Saturday"); undoing, undone and failures are announced.',
-    'The ring drains with a CSS animation, so nothing re-renders every frame; Undo disappears exactly when the window closes.',
+    'The ring drains with a CSS animation, so nothing re-renders every frame; Undo folds away exactly when the window closes, and the ring pauses once it has faded out.',
+    'Installs Number roll and Text morph. With reduced motion, states change in place.',
     'Colour is never the only signal: failed lines show the reason, and undone lines are struck through and labelled.',
     'Always enforce the undo window on the server too; the ring only shows it.',
   ],

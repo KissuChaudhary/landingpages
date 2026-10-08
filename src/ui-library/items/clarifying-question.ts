@@ -5,16 +5,17 @@ export const clarifyingQuestion: UiItem = {
   title: 'Clarifying question',
   description: 'The agent pauses to ask. Pick with a click or a number key, or type your own; it folds into a one-line receipt.',
   summary:
-    'Good agents ask before guessing. When yours needs a decision, it shows the question with a small "Needs your answer" pulse. The options are rows you can pick with a click or the number keys, and "Something else" turns into a text field right in its row. Multi-choice questions toggle, then Continue. Once answered, the card folds into a single line, question · answer, so the thread stays readable.',
+    'Good agents ask before guessing. When yours needs a decision, it shows the question with a small "Needs your answer" pulse. The options are rows you can pick with a click or the number keys, and "Something else" turns into a text field right in its row. Multi-choice questions toggle, each check drawing itself, and "Continue · 3" rolls its count as you pick. Once answered, the same card folds into a single line, question · answer: the options close, "Needs your answer" lifts away and the question and answer slide into its place as a check draws, so the thread stays readable.',
   file: 'clarifying-question.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-in', '@keyframes ui-pop-in', '@keyframes ui-ping'],
+  registryDependencies: ['number-roll', 'text-morph'],
+  css: ['@keyframes ui-fade-in', '@keyframes ui-ping'],
   tabs: ['Single', 'Multiple', 'Answered'],
   states: [
     { name: 'asking', description: 'The question, an optional detail line and numbered options. A highlight follows the pointer and arrow keys.' },
     { name: 'other', description: '"Something else…" opens a field in its row; Enter sends, Escape goes back.' },
-    { name: 'multiple', description: 'Checkboxes instead of numbers, and Continue with a count.' },
-    { name: 'answered', description: 'The card’s height folds into one line: a check, the question and the answer.' },
+    { name: 'multiple', description: 'Checkboxes whose checks draw themselves (320ms), and Continue: " · 3" opens beside it with the first pick and the count rolls as you pick more.' },
+    { name: 'answered', description: 'One motion over 460ms: the options fold shut, "Needs your answer" lifts away letter by letter, the question and the answer open into the header line and the pulse blurs into a drawn check. Focus stays on the card.' },
     { name: 'skipped', description: 'With onSkip, Skip folds it into "Skipped, the agent will decide".' },
   ],
   usage: `import { ClarifyingQuestion } from "@/components/clarifying-question";
@@ -66,7 +67,7 @@ if (part.type === "tool-askUser" && (part.state === "input-available" || part.st
   notes: [
     'Options are a radio group (or checkboxes when multiple) labelled by the question; arrow keys move and number keys pick.',
     'Number keys also work when nothing else has focus, but never while typing in a field.',
-    'The folded line is a status, so screen readers hear the answer that was sent.',
-    'The fold animates the card’s real height and is skipped with reduced motion.',
+    'A status region announces the question and the answer that was sent; the folded options are inert.',
+    'Installs Number roll and Text morph. The fold animates the card’s real height and, like the rest, is skipped with reduced motion.',
   ],
 };

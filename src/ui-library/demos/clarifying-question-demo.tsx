@@ -45,7 +45,7 @@ export default function ClarifyingQuestionDemo({ tab = 'Single' }: { tab?: strin
         />
       )}
       {(answer || skipped) && (
-        <p className="text-[13.5px] leading-relaxed text-muted-foreground animate-[ui-fade-up_320ms_cubic-bezier(0.23,1,0.32,1)_200ms_both]">
+        <p className="text-[13.5px] leading-relaxed text-muted-foreground animate-[ui-fade-up_320ms_cubic-bezier(0.23,1,0.32,1)_200ms_both] motion-reduce:animate-none">
           {skipped ? 'Going with all four channels.' : multiple ? `Drafting for ${reply}.` : `Planning for ${reply}.`}
         </p>
       )}

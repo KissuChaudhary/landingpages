@@ -1,16 +1,21 @@
 "use client";
 
 import * as React from "react";
-import { ArrowUp, Check } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { NumberRoll } from "./number-roll";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * CLARIFYING QUESTION: the agent pauses to ask
  *
  *   asking    the question and its options; press 1–9 or click
  *   other     "Something else" turns into a field in place
- *   multiple  options toggle, then Continue
- *   answered  the card folds into one line: question · answer
- *   skipped   "Skipped · the agent will decide"
+ *   multiple  options toggle (their checks draw themselves), then
+ *             "Continue · 3", the count rolling as you pick
+ *   answered  the same card folds into one line: the options close,
+ *             "Needs your answer" lifts away and the question and
+ *             your answer slide into its place as a check draws
+ *   skipped   "Skipped, the agent will decide"
  *
  * Pair it with a client-side tool that has no execute: render it
  * for the tool's input and send the answer back as the output.
@@ -50,6 +55,7 @@ export interface ClarifyingQuestionProps extends Omit<React.HTMLAttributes<HTMLD
 
 const OTHER = "__other__";
 const EASE = "cubic-bezier(0.23,1,0.32,1)";
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
 
 const reducedQuery = "(prefers-reduced-motion: reduce)";
@@ -60,6 +66,49 @@ const subscribeReduced = (onChange: () => void) => {
 };
 const useReducedMotion = () =>
   React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+
+/** Icons trade places through a blur: the old one shrinks away as the new one grows in. */
+const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  transform: on ? "none" : "scale(0.6)",
+  filter: on ? "none" : "blur(3px)",
+  transition: reduced ? "none" : `opacity 260ms ${MORPH}, transform 380ms ${MORPH}, filter 260ms ${MORPH}`,
+});
+
+/** A piece of a line that opens out of nothing and folds back into it. */
+function Reveal({ show, reduced, className = "", children }: { show: boolean; reduced: boolean; className?: string; children: React.ReactNode }) {
+  return (
+    <span
+      aria-hidden={!show || undefined}
+      className={`grid ${className}`}
+      style={{
+        gridTemplateColumns: show ? "1fr" : "0fr",
+        opacity: show ? 1 : 0,
+        filter: show ? "none" : "blur(3px)",
+        transition: reduced ? "none" : `grid-template-columns 460ms ${MORPH}, opacity ${show ? "320ms" : "160ms"} ${MORPH}, filter 320ms ${MORPH}`,
+      }}
+    >
+      <span className="min-w-0 truncate [clip-path:inset(-4px_-2px)]">{children}</span>
+    </span>
+  );
+}
+
+function DrawnCheck({ drawn, reduced, className = "size-3" }: { drawn: boolean; reduced: boolean; className?: string }) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className={className}>
+      <path
+        d="M3.5 8.5 6.5 11.5 12.5 4.5"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        pathLength={1}
+        strokeDasharray={1}
+        style={{ strokeDashoffset: drawn ? 0 : 1, transition: drawn && !reduced ? `stroke-dashoffset 320ms ${MORPH} 60ms` : "none" }}
+      />
+    </svg>
+  );
+}
 
 export function ClarifyingQuestion({
   question,
@@ -90,22 +139,16 @@ export function ClarifyingQuestion({
   const surfaceRef = React.useRef<HTMLDivElement>(null);
   const rowRefs = React.useRef<(HTMLButtonElement | HTMLDivElement | null)[]>([]);
   const otherRef = React.useRef<HTMLInputElement>(null);
-  const fromHeight = React.useRef<number | null>(null);
 
   const final = answer ?? own;
   const isSkipped = skipped || ownSkipped;
   const done = Boolean(final) || isSkipped;
   const rows = allowOther ? [...options, { id: OTHER, label: otherLabel }] : options;
 
-  // Fold the card into its one-line receipt (and back, if the answer is cleared).
-  const fold = () => (fromHeight.current = surfaceRef.current?.offsetHeight ?? null);
-  React.useLayoutEffect(() => {
-    const el = surfaceRef.current;
-    const from = fromHeight.current;
-    fromHeight.current = null;
-    if (!el || from === null || reduced) return;
-    el.animate([{ height: `${from}px` }, { height: `${el.offsetHeight}px` }], { duration: 420, easing: EASE });
-  }, [done, reduced]);
+  // The options are about to fold away: keep focus on the card instead of dropping it on the page.
+  const fold = () => {
+    if (surfaceRef.current?.contains(document.activeElement)) surfaceRef.current.focus({ preventScroll: true });
+  };
 
   React.useEffect(() => {
     if (autoFocus && !done) (rowRefs.current[0] as HTMLElement | null)?.focus({ preventScroll: true });
@@ -197,181 +240,217 @@ export function ClarifyingQuestion({
   };
 
   const summary = final ? [...final.labels, final.other].filter(Boolean).join(", ") : "";
-  const canContinue = picked.length > 0 || (otherOpen && otherText.trim().length > 0);
+  const receipt = isSkipped && !final ? `Skipped, ${skippedText}` : summary;
+  const count = picked.length + (otherOpen && otherText.trim() ? 1 : 0);
+  const canContinue = count > 0;
 
   return (
-    <div
-      ref={surfaceRef}
-      className={`overflow-hidden rounded-[20px] border border-border bg-background ${className}`}
-      {...props}
-    >
-      {done ? (
-        <div role="status" className="flex min-h-11 items-center gap-2.5 px-3.5 py-2.5 text-[13px] animate-[ui-fade-in_260ms_ease-out_120ms_both] motion-reduce:animate-none">
-          <span aria-hidden="true" className="flex size-4 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-            <Check className="size-2.5" strokeWidth={3} />
+    <div ref={surfaceRef} tabIndex={-1} className={`overflow-hidden rounded-[20px] border border-border bg-background outline-none ${className}`} {...props}>
+      {/* The header stays put; once answered it becomes the whole card: question · answer. */}
+      <div
+        className="flex min-w-0 items-center text-[12px]"
+        style={{ padding: done ? "13px 16px" : "14px 16px 0", transition: reduced ? "none" : `padding 460ms ${MORPH}` }}
+      >
+        <span aria-hidden="true" className="relative mr-2 flex size-4 shrink-0 items-center justify-center">
+          <span className="absolute inset-0 flex items-center justify-center" style={swap(!done, reduced)}>
+            <span className="relative flex size-1.5">
+              <span className={`absolute inset-0 rounded-full bg-primary motion-reduce:animate-none ${done ? "" : "animate-[ui-ping_1.6s_cubic-bezier(0,0,0.2,1)_infinite]"}`} />
+              <span className="relative size-1.5 rounded-full bg-primary" />
+            </span>
           </span>
-          <span title={question} className="min-w-0 truncate text-muted-foreground">
+          <span className="absolute inset-0 flex items-center justify-center rounded-full bg-muted text-muted-foreground" style={swap(done, reduced)}>
+            <DrawnCheck drawn={done} reduced={reduced} className="size-2.5" />
+          </span>
+        </span>
+        <span aria-hidden={done || undefined} className="shrink-0 text-muted-foreground">
+          <TextMorph>{done ? "" : "Needs your answer"}</TextMorph>
+        </span>
+        <Reveal show={done} reduced={reduced} className="min-w-0">
+          <span title={question} className="text-muted-foreground">
             {question}
           </span>
-          <span aria-hidden="true" className="text-border">
+        </Reveal>
+        <Reveal show={done} reduced={reduced} className="max-w-[55%] shrink-0">
+          <span aria-hidden="true" className="px-2 text-muted-foreground/50">
             ·
           </span>
-          <span title={isSkipped && !final ? undefined : summary} className="max-w-[55%] shrink-0 truncate font-medium text-foreground">
-            {isSkipped && !final ? `Skipped, ${skippedText}` : summary}
+          <span title={receipt} className="font-medium text-foreground">
+            {receipt}
           </span>
-        </div>
-      ) : (
-        <div className="p-1.5">
-          <div className="px-2.5 pb-2.5 pt-2">
-            <div className="flex items-center gap-1.5 text-[11.5px] text-muted-foreground">
-              <span className="relative flex size-1.5">
-                <span className="absolute inset-0 rounded-full bg-primary animate-[ui-ping_1.6s_cubic-bezier(0,0,0.2,1)_infinite] motion-reduce:animate-none" />
-                <span className="relative size-1.5 rounded-full bg-primary" />
-              </span>
-              Needs your answer
+        </Reveal>
+      </div>
+      <span role="status" className="sr-only">
+        {done ? `${question}: ${receipt}` : ""}
+      </span>
+
+      {/* Everything else folds shut once it's answered. */}
+      <div
+        inert={done}
+        aria-hidden={done || undefined}
+        className="grid"
+        style={{
+          gridTemplateRows: done ? "0fr" : "1fr",
+          opacity: done ? 0 : 1,
+          transition: reduced ? "none" : `grid-template-rows 460ms ${MORPH}, opacity ${done ? "180ms" : "320ms"} ${MORPH}`,
+        }}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="p-1.5 pt-0">
+            <div className="px-2.5 pb-2.5">
+              <p id={`${id}-q`} className="mt-1.5 text-[14px] font-medium leading-snug text-foreground">
+                {question}
+              </p>
+              {detail && <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{detail}</p>}
             </div>
-            <p id={`${id}-q`} className="mt-1.5 text-[14px] font-medium leading-snug text-foreground">
-              {question}
-            </p>
-            {detail && <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{detail}</p>}
-          </div>
 
-          <div
-            role={multiple ? "group" : "radiogroup"}
-            aria-labelledby={`${id}-q`}
-            onKeyDown={onListKey}
-            className="relative"
-          >
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 rounded-[14px] bg-accent"
-              style={{
-                height: highlight.height,
-                transform: `translateY(${highlight.top}px)`,
-                transition: highlight.ready && !reduced ? `transform 200ms ${EASE}, height 200ms ${EASE}` : "none",
-              }}
-            />
-            {rows.map((row, i) => {
-              const isOther = row.id === OTHER;
-              const checked = isOther ? otherOpen : picked.includes(row.id);
-              const description = "description" in row ? row.description : undefined;
-              const marker = multiple ? (
-                <span
-                  aria-hidden="true"
-                  className={`flex size-[18px] shrink-0 items-center justify-center rounded-[6px] transition-colors ${
-                    checked ? "bg-primary text-primary-foreground" : "shadow-[inset_0_0_0_1.5px_var(--border)]"
-                  }`}
-                >
-                  {checked && <Check className="size-3 animate-[ui-pop-in_160ms_ease-out_both]" strokeWidth={3} />}
-                </span>
-              ) : (
-                <kbd
-                  aria-hidden="true"
-                  className={`flex size-[18px] shrink-0 items-center justify-center rounded-[6px] font-mono text-[10.5px] transition-colors ${
-                    i === active ? "bg-background text-foreground shadow-[0_0_0_1px_var(--border)]" : "text-muted-foreground shadow-[inset_0_0_0_1px_var(--border)]"
-                  }`}
-                >
-                  {i + 1}
-                </kbd>
-              );
+            <div role={multiple ? "group" : "radiogroup"} aria-labelledby={`${id}-q`} onKeyDown={onListKey} className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 rounded-[14px] bg-accent"
+                style={{
+                  height: highlight.height,
+                  transform: `translateY(${highlight.top}px)`,
+                  transition: highlight.ready && !reduced ? `transform 200ms ${EASE}, height 200ms ${EASE}` : "none",
+                }}
+              />
+              {rows.map((row, i) => {
+                const isOther = row.id === OTHER;
+                const checked = isOther ? otherOpen : picked.includes(row.id);
+                const description = "description" in row ? row.description : undefined;
+                const marker = multiple ? (
+                  <span
+                    aria-hidden="true"
+                    className={`flex size-[18px] shrink-0 items-center justify-center rounded-[6px] transition-[background-color,box-shadow] duration-200 ${
+                      checked ? "bg-primary text-primary-foreground" : "shadow-[inset_0_0_0_1.5px_var(--border)]"
+                    }`}
+                  >
+                    <DrawnCheck drawn={checked} reduced={reduced} />
+                  </span>
+                ) : (
+                  <kbd
+                    aria-hidden="true"
+                    className={`flex size-[18px] shrink-0 items-center justify-center rounded-[6px] font-mono text-[10.5px] transition-colors ${
+                      i === active ? "bg-background text-foreground shadow-[0_0_0_1px_var(--border)]" : "text-muted-foreground shadow-[inset_0_0_0_1px_var(--border)]"
+                    }`}
+                  >
+                    {i + 1}
+                  </kbd>
+                );
 
-              if (isOther && otherOpen) {
+                if (isOther && otherOpen) {
+                  return (
+                    <div
+                      key={row.id}
+                      ref={(el) => {
+                        rowRefs.current[i] = el;
+                      }}
+                      className="relative flex min-h-11 items-center gap-3 rounded-[14px] px-2.5"
+                    >
+                      {marker}
+                      <input
+                        ref={otherRef}
+                        value={otherText}
+                        onChange={(e) => setOtherText(e.target.value)}
+                        onFocus={() => setActive(i)}
+                        onKeyDown={(e) => {
+                          if (e.nativeEvent.isComposing) return;
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            submitOther();
+                          } else if (e.key === "Escape") {
+                            e.preventDefault();
+                            setOtherOpen(false);
+                            requestAnimationFrame(() => (rowRefs.current[i] as HTMLElement | null)?.focus());
+                          }
+                        }}
+                        placeholder="Type your answer"
+                        aria-label={otherLabel}
+                        className="h-8 min-w-0 flex-1 bg-transparent text-[13.5px] text-foreground outline-none placeholder:text-muted-foreground animate-[ui-fade-in_200ms_ease-out_both] motion-reduce:animate-none"
+                      />
+                      {!multiple && (
+                        <button
+                          type="button"
+                          aria-label="Send answer"
+                          disabled={!otherText.trim()}
+                          onClick={submitOther}
+                          className={`flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-[opacity,transform] active:scale-[0.94] disabled:opacity-30 ${FOCUS}`}
+                        >
+                          <ArrowUp className="size-3.5" strokeWidth={2.4} />
+                        </button>
+                      )}
+                    </div>
+                  );
+                }
+
                 return (
-                  <div
+                  <button
                     key={row.id}
                     ref={(el) => {
                       rowRefs.current[i] = el;
                     }}
-                    className="relative flex min-h-11 items-center gap-3 rounded-[14px] px-2.5"
+                    type="button"
+                    role={multiple ? "checkbox" : "radio"}
+                    aria-checked={multiple ? checked : false}
+                    tabIndex={i === active ? 0 : -1}
+                    onClick={() => choose(i)}
+                    onPointerMove={() => i !== active && setActive(i)}
+                    onFocus={() => setActive(i)}
+                    className="relative flex min-h-11 w-full items-center gap-3 rounded-[14px] px-2.5 py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/30"
                   >
                     {marker}
-                    <input
-                      ref={otherRef}
-                      value={otherText}
-                      onChange={(e) => setOtherText(e.target.value)}
-                      onFocus={() => setActive(i)}
-                      onKeyDown={(e) => {
-                        if (e.nativeEvent.isComposing) return;
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          submitOther();
-                        } else if (e.key === "Escape") {
-                          e.preventDefault();
-                          setOtherOpen(false);
-                          requestAnimationFrame(() => (rowRefs.current[i] as HTMLElement | null)?.focus());
-                        }
-                      }}
-                      placeholder="Type your answer"
-                      aria-label={otherLabel}
-                      className="h-8 min-w-0 flex-1 bg-transparent text-[13.5px] text-foreground outline-none placeholder:text-muted-foreground animate-[ui-fade-in_200ms_ease-out_both]"
-                    />
-                    {!multiple && (
-                      <button
-                        type="button"
-                        aria-label="Send answer"
-                        disabled={!otherText.trim()}
-                        onClick={submitOther}
-                        className={`flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-[opacity,transform] active:scale-[0.94] disabled:opacity-30 ${FOCUS}`}
-                      >
-                        <ArrowUp className="size-3.5" strokeWidth={2.4} />
-                      </button>
-                    )}
-                  </div>
+                    <span className="min-w-0 flex-1">
+                      <span className={`block text-[13.5px] ${isOther ? "text-muted-foreground" : "text-foreground"}`}>{isOther ? `${row.label}…` : row.label}</span>
+                      {description && <span className="mt-px block text-[12px] leading-snug text-muted-foreground">{description}</span>}
+                    </span>
+                  </button>
                 );
-              }
-
-              return (
-                <button
-                  key={row.id}
-                  ref={(el) => {
-                    rowRefs.current[i] = el;
-                  }}
-                  type="button"
-                  role={multiple ? "checkbox" : "radio"}
-                  aria-checked={multiple ? checked : false}
-                  tabIndex={i === active ? 0 : -1}
-                  onClick={() => choose(i)}
-                  onPointerMove={() => i !== active && setActive(i)}
-                  onFocus={() => setActive(i)}
-                  className="relative flex min-h-11 w-full items-center gap-3 rounded-[14px] px-2.5 py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/30"
-                >
-                  {marker}
-                  <span className="min-w-0 flex-1">
-                    <span className={`block text-[13.5px] ${isOther ? "text-muted-foreground" : "text-foreground"}`}>{isOther ? `${row.label}…` : row.label}</span>
-                    {description && <span className="mt-px block text-[12px] leading-snug text-muted-foreground">{description}</span>}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {(onSkip || multiple) && (
-            <div className="flex items-center justify-between gap-2 px-1 pb-0.5 pt-1.5">
-              {onSkip ? (
-                <button
-                  type="button"
-                  onClick={skip}
-                  className={`h-8 rounded-full px-2.5 text-[12.5px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground ${FOCUS}`}
-                >
-                  Skip
-                </button>
-              ) : (
-                <span />
-              )}
-              {multiple && (
-                <button
-                  type="button"
-                  disabled={!canContinue}
-                  onClick={() => submit(picked, otherOpen && otherText.trim() ? otherText.trim() : undefined)}
-                  className={`h-8 rounded-full bg-primary px-3.5 text-[12.5px] font-medium text-primary-foreground transition-[opacity,transform] active:scale-[0.96] disabled:opacity-35 ${FOCUS}`}
-                >
-                  Continue{picked.length + (otherOpen && otherText.trim() ? 1 : 0) > 0 ? ` · ${picked.length + (otherOpen && otherText.trim() ? 1 : 0)}` : ""}
-                </button>
-              )}
+              })}
             </div>
-          )}
+
+            {(onSkip || multiple) && (
+              <div className="flex items-center justify-between gap-2 px-1 pb-0.5 pt-1.5">
+                {onSkip ? (
+                  <button
+                    type="button"
+                    onClick={skip}
+                    className={`h-8 rounded-full px-2.5 text-[12.5px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground ${FOCUS}`}
+                  >
+                    Skip
+                  </button>
+                ) : (
+                  <span />
+                )}
+                {multiple && (
+                  <button
+                    type="button"
+                    disabled={!canContinue}
+                    onClick={() => submit(picked, otherOpen && otherText.trim() ? otherText.trim() : undefined)}
+                    className={`inline-flex h-8 items-center rounded-full bg-primary px-3.5 text-[12.5px] font-medium text-primary-foreground transition-[opacity,transform] duration-300 active:scale-[0.96] disabled:opacity-35 ${FOCUS}`}
+                  >
+                    Continue
+                    {/* " · 3" opens beside it with the first pick and rolls as you pick more. */}
+                    <span
+                      aria-hidden="true"
+                      className="grid"
+                      style={{
+                        gridTemplateColumns: count > 0 ? "1fr" : "0fr",
+                        opacity: count > 0 ? 1 : 0,
+                        transition: reduced ? "none" : `grid-template-columns 380ms ${MORPH}, opacity 260ms ${MORPH}`,
+                      }}
+                    >
+                      <span className="flex min-w-0 items-baseline overflow-hidden whitespace-nowrap tabular-nums">
+                        &nbsp;·&nbsp;
+                        <NumberRoll value={Math.max(count, 1)} duration={500} />
+                      </span>
+                    </span>
+                    {count > 0 && <span className="sr-only">, {count} selected</span>}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
