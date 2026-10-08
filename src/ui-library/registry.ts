@@ -15,15 +15,6 @@ export const UI_REGISTRY_NAME = 'hairline';
 
 export const UI_REQUIREMENTS = 'React 19, Tailwind CSS v4 and shadcn/ui theme variables (any style). Icons from lucide-react.';
 
-export type UiGroup = 'before' | 'working' | 'answer' | 'chat';
-
-export const UI_GROUPS: { id: UiGroup; title: string; description: string }[] = [
-  { id: 'before', title: 'Before the answer', description: 'Asking: the composer, attachments, modes and voice.' },
-  { id: 'working', title: 'While it works', description: 'The agent at work: thinking, tool calls, approvals, plans and progress.' },
-  { id: 'answer', title: 'The answer and after', description: 'Reading, checking and acting on what came back.' },
-  { id: 'chat', title: 'Around the chat', description: 'The conversation itself: scrolling, editing and finding past chats.' },
-];
-
 export interface UiProp {
   name: string;
   type: string;
@@ -102,6 +93,18 @@ export const UI_CSS = {
     from: { 'stroke-dashoffset': '0' },
     to: { 'stroke-dashoffset': 'var(--ui-ring)' },
   },
+  '@keyframes ui-col-in': {
+    from: { 'max-width': '0', opacity: '0' },
+    to: { 'max-width': '1em', opacity: '1' },
+  },
+  '@keyframes ui-col-out': {
+    from: { 'max-width': '1em', opacity: '1' },
+    to: { 'max-width': '0', opacity: '0' },
+  },
+  '@keyframes ui-note-in': {
+    from: { opacity: '0', transform: 'translateY(var(--ui-from))' },
+    to: { opacity: '1', transform: 'none' },
+  },
   '@layer base': {
     '::highlight(ui-selection)': {
       'background-color': 'color-mix(in oklab, var(--primary) 18%, transparent)',
@@ -119,18 +122,22 @@ export interface UiItem {
   description: string;
   /** A paragraph for the component page. */
   summary: string;
-  group: UiGroup;
   /** File in src/ui-library/registry. */
   file: string;
   dependencies: string[];
+  /** Other components from this registry it needs (by name); the CLI installs them too. */
+  registryDependencies?: string[];
   /** The keyframes and rules from UI_CSS it needs; the CLI adds them to the user's stylesheet. */
   css: UiCssKey[];
   /** Tabs in the live preview, usually its states. */
   tabs?: string[];
   tabsLabel?: string;
   usage: string;
-  /** How to drive it from the Vercel AI SDK. */
+  /** A fuller example: how to drive it from the AI SDK, or how it sits in a real section. */
   recipe?: string;
+  /** Heading and intro for the example; defaults to the AI SDK wording. */
+  recipeTitle?: string;
+  recipeIntro?: string;
   states: UiState[];
   props: UiProp[];
   notes: string[];

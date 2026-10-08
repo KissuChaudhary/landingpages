@@ -6,7 +6,6 @@ export const promptComposer: UiItem = {
   description: 'The input that starts it all: grows as you type, takes files, and turns Send into Stop while answering.',
   summary:
     'A composer that takes useChat’s status as is. Send morphs into Stop while the answer streams and shows a spinner while waiting for the first token. It grows with the text, sends on Enter (Shift+Enter for a new line, safe for IME input), and takes files from the paperclip, paste or drag and drop. Slots hold attachment chips and a toolbar, and it can be disabled with a reason.',
-  group: 'before',
   file: 'prompt-composer.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in'],

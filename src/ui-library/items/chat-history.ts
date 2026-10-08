@@ -6,7 +6,6 @@ export const chatHistory: UiItem = {
   description: 'Past chats grouped by day, searchable, with titles that write themselves, rename in place and delete with Undo.',
   summary:
     'The sidebar people come back to every day. Chats group into Pinned, Today, Yesterday, Previous 7 days and older. A new chat shimmers "New chat" until its title is generated, then the title types itself in. Search filters as you type and marks the match. Hover a chat to pin, rename or delete it: renaming turns the row into a field in place, and deleting folds it into "Chat deleted · Undo", only deleting once the undo window has passed.',
-  group: 'chat',
   file: 'chat-history.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-fade-up'],

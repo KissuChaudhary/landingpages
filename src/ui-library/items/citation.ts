@@ -6,7 +6,6 @@ export const citation: UiItem = {
   description: 'An inline numbered source that previews the site, title and snippet on hover or focus.',
   summary:
     'Answers that cite sources earn trust, but a wall of links at the bottom gets ignored. This puts a small numbered marker right in the sentence. Hover or focus it and a card shows where the claim comes from; click and the source opens. The card flips above near the bottom of the screen and shifts to stay on it, and a source that couldn’t be fetched says so instead of failing quietly.',
-  group: 'answer',
   file: 'citation.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-up'],

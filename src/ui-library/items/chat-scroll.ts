@@ -6,7 +6,6 @@ export const chatScroll: UiItem = {
   description: 'A chat that follows the answer as it streams, lets go the moment you scroll up, and brings you back.',
   summary:
     'Every chat needs this, and most get it wrong: they drag you back down while you read, or leave you stranded mid-answer. This scroll area stays pinned to the bottom while text streams in, and lets go the instant you reach for the wheel, trackpad, touch or keyboard. While you’re away a round ↓ button waits; when new text lands below, it widens into "● Writing" (or "New reply" once done). Click it and the chat glides down, chasing the moving bottom, and starts following again.',
-  group: 'chat',
   file: 'chat-scroll.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-ping'],

@@ -1,6 +1,8 @@
 'use client';
 
 import type React from 'react';
+import NumberRollDemo from './number-roll-demo';
+import PricingToggleDemo from './pricing-toggle-demo';
 import PromptComposerDemo from './prompt-composer-demo';
 import MentionMenuDemo from './mention-menu-demo';
 import AttachmentChipDemo from './attachment-chip-demo';
@@ -31,6 +33,8 @@ import ChatHistoryDemo from './chat-history-demo';
 
 /** Live demo for each registry item, keyed by its registry name. Each receives the selected preview tab. */
 export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
+  'number-roll': NumberRollDemo,
+  'pricing-toggle': PricingToggleDemo,
   'prompt-composer': PromptComposerDemo,
   'mention-menu': MentionMenuDemo,
   'attachment-chip': AttachmentChipDemo,

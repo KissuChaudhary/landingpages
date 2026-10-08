@@ -6,7 +6,6 @@ export const mentionMenu: UiItem = {
   description: 'Type @ to pull in context or / for a command. The menu grows from the caret and your text becomes a chip.',
   summary:
     'Agents work better when people can point at what they mean. This prompt field opens a small menu right at the caret when you type a trigger: @ for files, people and pages, / for commands. It narrows as you type, its height follows the results, and a highlight slides between rows. Enter or Tab turns the typed "@q3-sa" into a chip in place. Searches can be async, and earlier results stay up while the next ones load.',
-  group: 'before',
   file: 'mention-menu.tsx',
   dependencies: [],
   css: ['@keyframes ui-shimmer', '@keyframes ui-pop-in', '@keyframes ui-chip-in'],

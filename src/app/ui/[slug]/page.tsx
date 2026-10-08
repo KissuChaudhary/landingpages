@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const item = getUiItem(slug);
   if (!item) return {};
-  const title = `${item.title}: React component for AI interfaces`;
+  const title = `${item.title}: a free React component`;
   const description = `${item.description} Free, built for shadcn/ui and installed with one command.`;
   return {
     title: { absolute: `${title} | ${UI_NAME}` },
@@ -124,12 +124,26 @@ export default async function UiComponentPage({ params }: PageProps) {
               Depends on {item.dependencies.join(', ')}, installed for you by the CLI along with the keyframes it needs.
             </p>
           )}
+          {item.registryDependencies?.length ? (
+            <p className="mt-2 text-sm text-[#888]">
+              Also installs{' '}
+              {item.registryDependencies.map((n, i) => (
+                <React.Fragment key={n}>
+                  {i > 0 && ', '}
+                  <Link href={`/ui/${n}`} className="text-[#181925] underline decoration-black/20 underline-offset-4 hover:decoration-black/60">
+                    {getUiItem(n)?.title ?? n}
+                  </Link>
+                </React.Fragment>
+              ))}
+              .
+            </p>
+          ) : null}
         </Row>
 
         {item.recipe && (
-          <Row id="ai-sdk" label="With the AI SDK">
+          <Row id="example" label={item.recipeTitle ?? 'With the AI SDK'}>
             <p className="mb-4 max-w-2xl text-[15px] leading-relaxed text-[#444]">
-              Map the Vercel AI SDK’s message parts and chat status onto the component’s props.
+              {item.recipeIntro ?? 'Map the Vercel AI SDK’s message parts and chat status onto the component’s props.'}
             </p>
             <pre className={CODE}>
               <code>{item.recipe}</code>

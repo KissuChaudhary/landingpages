@@ -6,7 +6,6 @@ export const taskProgress: UiItem = {
   description: 'For work that takes minutes: phases, a live timer, stats, cancel, and the result when it’s done.',
   summary:
     'Deep research, long builds and batch jobs need more than a spinner. Phases fill left to right with the current one sweeping, a timer and live stats show it’s moving, and a line tells people they can leave. When it finishes it says how long it took and offers the result; failures say where they stopped.',
-  group: 'working',
   file: 'task-progress.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-scan', '@keyframes ui-fade-in'],

@@ -6,7 +6,6 @@ export const voiceInput: UiItem = {
   description: 'Dictate a prompt: a waveform from your real mic level, a timer, then transcribing.',
   summary:
     'Speaking is faster than typing, if you can tell the app is listening. The bars are drawn from your microphone’s level, so they react to your voice rather than looping. A timer runs, words appear as they’re recognised, and Stop sends it off to be transcribed. If the browser blocks the mic, it says how to fix that instead of failing silently.',
-  group: 'before',
   file: 'voice-input.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-wave'],

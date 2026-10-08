@@ -6,7 +6,6 @@ export const diffReview: UiItem = {
   description: 'Accept or reject what the AI changed, word by word for prose or line by line for code.',
   summary:
     'When an AI edits your work, you should see exactly what it touched and keep the final say. Give it each change’s before and after: it works out the difference itself, striking removed words in red and marking added ones in green. Accept or reject one at a time or all at once, undo either, and get a single callback when nothing is left to review.',
-  group: 'answer',
   file: 'diff-review.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in'],

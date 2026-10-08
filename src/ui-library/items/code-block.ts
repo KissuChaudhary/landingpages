@@ -6,7 +6,6 @@ export const codeBlock: UiItem = {
   description: 'Code in an answer: highlighted as it streams, copy and wrap, long files folded, and an optional Apply.',
   summary:
     'Code is where answers get used, so the block should read well mid-stream and be easy to take away. A light highlighter is built in, so lines are coloured the moment they arrive, with a caret at the end. The header carries the file name and language, a wrap toggle, and Copy that turns into "Copied". Long files that arrive complete show their start and "Show 42 more lines", and open smoothly. Pass onApply and an Apply button runs your action, then confirms it.',
-  group: 'answer',
   file: 'code-block.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-pop-in', '@keyframes ui-blink'],

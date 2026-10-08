@@ -6,7 +6,6 @@ export const approvalCard: UiItem = {
   description: 'The agent asks before it acts: what it wants to do, the details, Approve or Deny.',
   summary:
     'Human-in-the-loop, designed. The card says plainly what the agent wants to do, lists the details worth checking, and asks. Once answered it folds into a single confirming line so the conversation stays readable. Destructive actions get a red Approve, and requests can count down and expire.',
-  group: 'working',
   file: 'approval-card.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-up', '@keyframes ui-fade-in'],

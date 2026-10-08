@@ -6,7 +6,6 @@ export const modelPicker: UiItem = {
   description: 'The model pill in your composer grows into the menu: what each model is for, speed, smarts and thinking effort.',
   summary:
     'Choosing a model shouldn’t mean reading a spec sheet in a dropdown. The pill in the composer toolbar shows the model and its thinking effort. Click it and the same surface lifts out of the composer and grows into the menu above it, never over your prompt: its size and corners ease from pill to panel while the label cross-fades into the list. Each model gets a line on what it’s for and small speed and smarts meters. Reasoning models add a Thinking control, and the panel’s height follows. Paid models show "Pro" and hand off to your upgrade flow.',
-  group: 'before',
   file: 'model-picker.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in'],

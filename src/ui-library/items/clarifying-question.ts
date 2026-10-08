@@ -6,7 +6,6 @@ export const clarifyingQuestion: UiItem = {
   description: 'The agent pauses to ask. Pick with a click or a number key, or type your own; it folds into a one-line receipt.',
   summary:
     'Good agents ask before guessing. When yours needs a decision, it shows the question with a small "Needs your answer" pulse. The options are rows you can pick with a click or the number keys, and "Something else" turns into a text field right in its row. Multi-choice questions toggle, then Continue. Once answered, the card folds into a single line, question · answer, so the thread stays readable.',
-  group: 'working',
   file: 'clarifying-question.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in', '@keyframes ui-pop-in', '@keyframes ui-ping'],

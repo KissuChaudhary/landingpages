@@ -6,7 +6,6 @@ export const actionReceipt: UiItem = {
   description: 'What the agent actually did, one quiet line each, with Undo while a ring drains. Several stack into one.',
   summary:
     'Agents that act on people’s behalf need to show their work and offer a way back. Each action your tools perform becomes a quiet line: what happened and where, with Undo and a small ring that drains while the window is open. Undoing shows a spinner, then strikes the line through. Failures say why and offer Retry. From three actions on, they fold into "4 actions · Undo all", which opens into the list.',
-  group: 'answer',
   file: 'action-receipt.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-up', '@keyframes ui-fade-in', '@keyframes ui-drain'],

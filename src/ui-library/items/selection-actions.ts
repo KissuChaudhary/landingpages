@@ -6,7 +6,6 @@ export const selectionActions: UiItem = {
   description: 'Select text and a pill appears under it. Pick an action or describe an edit, and the rewrite streams in place.',
   summary:
     'The fastest way to edit part of a document is to point at it. Select text and a single pill attaches under the last selected line, centred on the selection. It holds a field for your own instruction, the actions you use most, and more behind the chevron. When you start typing, the actions fold away and the field takes their room. The rewrite then streams into the selection itself, and the pill morphs into Keep, Discard and try again.',
-  group: 'answer',
   file: 'selection-actions.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-pop-in', '@layer base'],

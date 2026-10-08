@@ -6,7 +6,6 @@ export const modeSwitcher: UiItem = {
   description: 'Fast, Thinking, Research: a segmented switch with a sliding pill and locked paid modes.',
   summary:
     'Lets people choose how the model should work. A pill slides to the chosen mode, an optional line underneath says what that mode does, and paid modes stay visible with a lock so people can see what an upgrade unlocks. It’s a real radio group: arrow keys move between modes.',
-  group: 'before',
   file: 'mode-switcher.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in'],

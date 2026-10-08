@@ -6,7 +6,6 @@ export const thinkingTrace: UiItem = {
   description: 'An expandable record of what an agent did: steps, reasoning, search or tool calls.',
   summary:
     'Shows an agent at work and keeps the record afterwards. The header shimmers with a live timer while it runs, rows arrive as your stream reports them, and once it settles it folds into one line like "Thought for 6s". On error it stays open so the failed step is visible.',
-  group: 'working',
   file: 'thinking-trace.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-up', '@keyframes ui-fade-in'],

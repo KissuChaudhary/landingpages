@@ -6,7 +6,6 @@ export const messageEdit: UiItem = {
   description: 'Fix a sent message where it sits. The bubble grows into an editor, then folds back and branches the reply.',
   summary:
     'People rephrase constantly, and scrolling down to retype a question breaks their flow. Hover a sent message for Copy and Edit. Editing grows the bubble into a field right where it sits, widening from its right edge to fit, with the text ready to change. Enter sends and folds it back; Escape cancels. When the message has branches, "2 / 2" steps between them, so the earlier question and its answer are never lost.',
-  group: 'chat',
   file: 'message-edit.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in', '@keyframes ui-pop-in'],

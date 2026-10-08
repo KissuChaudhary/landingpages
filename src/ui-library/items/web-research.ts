@@ -6,7 +6,6 @@ export const webResearch: UiItem = {
   description: 'Watch the agent search: the query types in, page icons stack up as it reads, then it folds into a source list.',
   summary:
     'A spinner during web search hides the most reassuring part: what the agent is actually reading. "Searching" shimmers next to the live query as it types in. Each page read drops its icon into an overlapping stack, and its title crossfades underneath. When the work is done, the whole run settles into one quiet line, "3 searches · 9 sources", that opens into the queries and every page, each a link.',
-  group: 'working',
   file: 'web-research.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-fade-up', '@keyframes ui-breathe', '@keyframes ui-drop-in'],

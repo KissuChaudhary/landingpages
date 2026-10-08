@@ -6,7 +6,6 @@ export const streamingAnswer: UiItem = {
   description: 'An answer as it arrives, with inline citations, actions, sources and follow-ups.',
   summary:
     'Renders whatever your stream has delivered so far. Only the words that just arrived fade in, citations land as small chips inside the sentence, and finished paragraphs don’t re-render while the last one grows. It knows when it was stopped or interrupted, and takes your own Markdown renderer when you need one.',
-  group: 'answer',
   file: 'streaming-answer.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-up', '@keyframes ui-fade-in', '@keyframes ui-blink'],

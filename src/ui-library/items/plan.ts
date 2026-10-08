@@ -6,7 +6,6 @@ export const plan: UiItem = {
   description: 'An agent’s checklist that ticks itself off: pending, in progress, done, skipped or failed.',
   summary:
     'Shows what the agent intends to do and how far it has got. The task in progress is set in full weight, finished tasks fade back with a check that draws itself in, and a hairline under the header fills as work completes. When everything is settled it folds into "5 of 5 done"; if something failed it stays open so the reason is visible.',
-  group: 'working',
   file: 'plan.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-draw', '@keyframes ui-fade-in'],

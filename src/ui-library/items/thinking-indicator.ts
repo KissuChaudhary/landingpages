@@ -6,7 +6,6 @@ export const thinkingIndicator: UiItem = {
   description: 'Four quiet loaders for the gap before the first token, with a shimmering label and a live timer.',
   summary:
     'The second between sending and the first word is where an AI product feels fast or slow. Pick an orbit, dots, a pulse or a scan; each pairs with a shimmering label and a timer that counts in tenths ("Churning 44.9s"). When it’s done it settles into a check and "Done in 12.4s".',
-  group: 'working',
   file: 'thinking-indicator.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-bounce', '@keyframes ui-breathe', '@keyframes ui-scan'],

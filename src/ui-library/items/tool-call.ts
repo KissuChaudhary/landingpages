@@ -6,7 +6,6 @@ export const toolCall: UiItem = {
   description: 'One tool invocation from arguments to result: preparing, running, done, failed or denied.',
   summary:
     'The card an agent shows when it calls a tool. Arguments fill in as the model writes them, a spinner marks the run, and the finished call reports how long it took with its result folded underneath. Failures open themselves with the reason and a retry. Arguments read as fields, not raw JSON, and you can render any result your own way.',
-  group: 'working',
   file: 'tool-call.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-up', '@keyframes ui-fade-in'],

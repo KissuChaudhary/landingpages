@@ -6,7 +6,6 @@ export const chatNotice: UiItem = {
   description: 'Calm, specific notices for failed answers, being offline, rate limits and chats that grow too long.',
   summary:
     'Every AI product hits these, and most show a red box with "Error". Each notice says what happened, what happens next and offers the one action that helps: Retry, a live countdown to when the limit resets, or starting fresh with a summary. Technical details fold away behind "Show details".',
-  group: 'answer',
   file: 'chat-notice.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-up', '@keyframes ui-breathe'],

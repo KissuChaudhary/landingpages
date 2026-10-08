@@ -6,7 +6,6 @@ export const attachmentChip: UiItem = {
   description: 'A file on its way into a prompt: uploading, being read, ready or failed.',
   summary:
     'Shows a file’s whole journey in one small chip. A ring fills around the icon while it uploads, "Reading" shimmers while the model processes it, and when ready it shows type and size. Images show a thumbnail, failures say why with a Retry, and the remove button appears on hover or focus (always on touch screens).',
-  group: 'before',
   file: 'attachment-chip.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-up'],

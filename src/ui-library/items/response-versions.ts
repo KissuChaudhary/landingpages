@@ -6,7 +6,6 @@ export const responseVersions: UiItem = {
   description: 'Step between regenerated answers with "2 / 3", and regenerate without losing the old ones.',
   summary:
     'Regenerating shouldn’t throw away an answer you half liked. Wrap the answer and this adds a small pager under it: arrows step between versions, the content slides in from the side it came from, and Regenerate makes a new version with a spinner in place while it’s written.',
-  group: 'answer',
   file: 'response-versions.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-slide-from-right', '@keyframes ui-slide-from-left'],

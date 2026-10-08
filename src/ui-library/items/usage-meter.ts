@@ -6,7 +6,6 @@ export const usageMeter: UiItem = {
   description: 'Credits, messages or context left: quiet when there’s plenty, clear before it runs out.',
   summary:
     'Running out mid-task is the worst way to learn about a limit. The meter stays quiet while there’s plenty, turns amber with the way to upgrade once a fifth is left, and says plainly when you’re out and when it resets. Use the bar in settings and menus, or the ring, small enough for a composer toolbar, for how full the context window is.',
-  group: 'answer',
   file: 'usage-meter.tsx',
   dependencies: [],
   css: [],

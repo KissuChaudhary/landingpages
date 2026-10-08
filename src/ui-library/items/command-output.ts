@@ -6,7 +6,6 @@ export const commandOutput: UiItem = {
   description: 'A command the agent runs: the log streams in, folds away on success, and stays open on failure.',
   summary:
     'Coding agents run commands constantly, and raw logs drown the conversation. This block shows the command, a live timer and Stop, while the log streams underneath and follows the newest line. On success a check pops in and the log folds away a beat later, leaving one tidy line. On failure the exit code turns red, the log stays open, and the first failing line is marked and scrolled into view.',
-  group: 'working',
   file: 'command-output.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-fade-in', '@keyframes ui-pop-in', '@keyframes ui-blink'],
