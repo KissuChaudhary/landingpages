@@ -51,7 +51,7 @@ export function Headline() {
   ],
   notes: [
     'The real text is in the page for screen readers and search; the moving letters are hidden from assistive tech.',
-    'Words never break mid-word: letters are grouped by word, so lines only wrap at spaces.',
+    'Words never break mid-word: letters are grouped by word, so lines only wrap at spaces. While the width eases, the words hold to one line, so "Credits left" never wraps halfway into "No credits left".',
     'Uses the Web Animations API, with no animation library. Interrupting a morph mid-flight continues smoothly from where the letters are.',
     'With reduced motion the text changes in place.',
   ],

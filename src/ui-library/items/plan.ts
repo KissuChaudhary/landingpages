@@ -5,18 +5,19 @@ export const plan: UiItem = {
   title: 'Plan',
   description: 'An agent’s checklist that ticks itself off: pending, in progress, done, skipped or failed.',
   summary:
-    'Shows what the agent intends to do and how far it has got. The task in progress is set in full weight, finished tasks fade back with a check that draws itself in, and a hairline under the header fills as work completes. When everything is settled it folds into "5 of 5 done"; if something failed it stays open so the reason is visible.',
+    'Shows what the agent intends to do and how far it has got. Each task’s mark changes in place: the ring becomes a spinner, the spinner blurs into a check that draws itself, and a strike-through draws across the label as it fades back. A hairline under the header fills as work completes and the count rolls. When everything is settled "done" slides in beside "5 of 5" and the plan folds into that line; if something failed the reason folds open and it stays open.',
   file: 'plan.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-draw', '@keyframes ui-fade-in'],
+  registryDependencies: ['number-roll'],
+  css: [],
   tabs: ['Live', 'Failed', 'Settled'],
   states: [
     { name: 'pending', description: 'An empty ring; not started.' },
-    { name: 'running', description: 'A spinner and full-weight label; the task being worked on.' },
-    { name: 'done', description: 'A filled check that draws itself in; the label fades and is struck through.' },
+    { name: 'running', description: 'The ring blurs into a spinner and the label brightens; the task being worked on.' },
+    { name: 'done', description: 'The spinner blurs out as a filled check draws itself (420ms); a strike-through draws across the label left to right (520ms) as it fades back. The count rolls.' },
     { name: 'skipped', description: 'A dash; no longer needed.' },
-    { name: 'failed', description: 'A red mark with the reason underneath; the plan stays open.' },
-    { name: 'settled', description: 'Every task finished: the header reads "N of N done" and the list folds away.' },
+    { name: 'failed', description: 'A red mark swaps in and the reason folds open underneath; the plan stays open.' },
+    { name: 'settled', description: 'Every task finished: "done" slides in after "5 of 5" and the list folds away 1.2s later.' },
   ],
   usage: `import { Plan } from "@/components/plan";
 
@@ -49,6 +50,6 @@ function MessagePlan({ message }: { message: UIMessage }) {
   notes: [
     'It’s an ordered list; each task carries its status as text for screen readers, and the progress count is announced politely.',
     'The plan never folds itself away after the user has opened or closed it.',
-    'With reduced motion the spinner and check animation stop; states still read clearly.',
+    'Installs Number roll. With reduced motion the spinner, rolls, strikes and folds stop; states still read clearly.',
   ],
 };

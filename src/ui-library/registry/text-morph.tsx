@@ -158,8 +158,14 @@ export function TextMorph({ children: text, duration = 460, direction = "up", an
         );
       }
     }
-    if (animateWidth && Math.abs(prev.width - box.width) > 0.5)
-      root.animate([{ width: `${prev.width}px` }, { width: `${box.width}px` }], { duration, easing: EASE });
+    if (animateWidth && Math.abs(prev.width - box.width) > 0.5) {
+      // Hold the words on one line while the box is narrower than them, or "No credits left" would wrap mid-morph.
+      root.style.whiteSpace = "nowrap";
+      const resize = root.animate([{ width: `${prev.width}px` }, { width: `${box.width}px` }], { duration, easing: EASE });
+      resize.onfinish = resize.oncancel = () => {
+        root.style.whiteSpace = "";
+      };
+    }
   }, [glyphs, duration, rise, animateWidth]);
 
   const done = React.useCallback((key: number) => setLeaving((l) => l.filter((g) => g.key !== key)), []);

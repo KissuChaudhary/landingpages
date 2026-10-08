@@ -5,16 +5,17 @@ export const taskProgress: UiItem = {
   title: 'Task progress',
   description: 'For work that takes minutes: phases, a live timer, stats, cancel, and the result when it’s done.',
   summary:
-    'Deep research, long builds and batch jobs need more than a spinner. Phases fill left to right with the current one sweeping, a timer and live stats show it’s moving, and a line tells people they can leave. When it finishes it says how long it took and offers the result; failures say where they stopped.',
+    'Deep research, long builds and batch jobs need more than a spinner. Phases fill left to right with the current one sweeping, the timer and stats roll as they change, and a line tells people they can leave. One status line names the phase and morphs from "Searching" to "Reading" to "Finished in 4m 12s" as a check draws itself. The button is one surface too: Cancel grows into "Open report" when it’s done, or turns into Retry when it fails.',
   file: 'task-progress.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-scan', '@keyframes ui-fade-in'],
+  registryDependencies: ['number-roll', 'text-morph'],
+  css: ['@keyframes ui-scan', '@keyframes ui-sheen'],
   tabs: ['Live', 'Done', 'Error', 'Cancelled'],
   states: [
-    { name: 'running', description: 'Finished phases filled, the current phase sweeping, timer, stats, message and Cancel.' },
-    { name: 'done', description: 'All phases filled, "Finished in 4m 12s" and an action to open the result.' },
-    { name: 'error', description: 'The failed phase in red, the reason, "Stopped at reading" and Retry.' },
-    { name: 'cancelled', description: '"Cancelled after 1m 02s".' },
+    { name: 'running', description: 'Finished phases fill from the left (620ms); the current one sweeps. The status line names the phase under a sweep of light and morphs as it moves on. Timer and numeric stats roll; the message and Cancel sit below.' },
+    { name: 'done', description: 'The last bar fills, the message folds away, a check draws itself and the line morphs to "Finished in 4m 12s". Cancel turns blue and grows into "Open report →".' },
+    { name: 'error', description: 'The failed phase fills red, the reason opens in, an alert swaps in and the line reads "Stopped at reading". The button morphs into Retry.' },
+    { name: 'cancelled', description: '"Cancelled after 1m 02s"; the button folds away and focus stays on the card.' },
   ],
   usage: `import { TaskProgress } from "@/components/task-progress";
 
@@ -65,8 +66,8 @@ function Research({ message, startedAt }: { message: UIMessage; startedAt: numbe
     { name: 'errorText / onRetry', type: 'string / () => void', description: 'Why it failed, and a Retry.' },
   ],
   notes: [
-    'The current phase and the outcome are announced politely; the bars themselves are decorative.',
-    'The timer ticks once a second and stops when the task settles or unmounts.',
-    'With reduced motion the sweep stops; filled phases still show progress.',
+    'The current phase and the outcome are announced politely; the bars, rolling digits and status line are decorative copies of that text.',
+    'The timer ticks once a second and stops when the task settles or unmounts. Stats that are numbers roll; anything else renders as you pass it.',
+    'Installs Number roll and Text morph. With reduced motion nothing sweeps, fills or rolls; states change in place.',
   ],
 };

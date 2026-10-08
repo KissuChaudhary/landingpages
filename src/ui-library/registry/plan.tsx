@@ -2,18 +2,21 @@
 
 import * as React from "react";
 import { ChevronDown, ListChecks, X } from "lucide-react";
+import { NumberRoll } from "./number-roll";
 
 /* ─────────────────────────────────────────────────────────
  * PLAN: an agent's checklist, ticking itself off
  *
  *   pending   not started
- *   running   being worked on now
- *   done      finished; the check draws itself in
+ *   running   being worked on now; the ring turns into a spinner
+ *   done      finished; the spinner blurs into a check that draws
+ *             itself, and a strike-through draws across the label
  *   skipped   no longer needed
- *   failed    couldn't be done, with the reason underneath
+ *   failed    couldn't be done; the reason folds open underneath
  *
- * A hairline under the header fills as tasks finish. When every
- * task is settled the plan folds into a one-line summary.
+ * A hairline under the header fills as tasks finish and the count
+ * rolls ("3 of 5"). When every task is settled "done" slides in
+ * beside it and the plan folds into that one line.
  * ───────────────────────────────────────────────────────── */
 
 export type PlanTaskStatus = "pending" | "running" | "done" | "skipped" | "failed";
@@ -45,42 +48,86 @@ const STATUS_TEXT: Record<PlanTaskStatus, string> = {
   failed: "Failed",
 };
 
-function Mark({ status }: { status: PlanTaskStatus }) {
-  if (status === "running")
-    return (
-      <span
-        aria-hidden="true"
-        className="size-3.5 shrink-0 animate-spin rounded-full border-[1.5px] border-border border-t-foreground motion-reduce:animate-none"
-      />
-    );
-  if (status === "done")
-    return (
-      <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3.5 shrink-0">
-        <circle cx="8" cy="8" r="8" className="fill-foreground" />
-        <path
-          d="M4.8 8.3l2.1 2.1 4.3-4.6"
-          fill="none"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeDasharray="24"
-          className="stroke-background animate-[ui-draw_450ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
-        />
-      </svg>
-    );
-  if (status === "failed")
-    return (
-      <span aria-hidden="true" className="flex size-3.5 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
-        <X className="size-2.5" strokeWidth={3} />
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+
+/** Icons trade places through a blur: the old one shrinks away as the new one grows in. */
+const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  transform: on ? "none" : "scale(0.6)",
+  filter: on ? "none" : "blur(3px)",
+  transition: reduced ? "none" : `opacity 260ms ${MORPH}, transform 380ms ${MORPH}, filter 260ms ${MORPH}`,
+});
+
+/** Every mark is there at once; the one for the task's status shows, and they trade places through a blur. */
+function Mark({ status, reduced }: { status: PlanTaskStatus; reduced: boolean }) {
+  const layer = "absolute inset-0 flex items-center justify-center";
+  return (
+    <span aria-hidden="true" className="relative flex size-3.5 shrink-0">
+      <span className={layer} style={swap(status === "pending", reduced)}>
+        <span className="size-3.5 rounded-full border-[1.5px] border-border" />
       </span>
-    );
-  if (status === "skipped")
-    return (
-      <span aria-hidden="true" className="flex size-3.5 shrink-0 items-center justify-center rounded-full border-[1.5px] border-border">
-        <span className="h-[1.5px] w-1.5 rounded-full bg-muted-foreground" />
+      <span className={layer} style={swap(status === "running", reduced)}>
+        {/* Spins only while it's showing. */}
+        <span className={`size-3.5 rounded-full border-[1.5px] border-border border-t-foreground motion-reduce:animate-none ${status === "running" ? "animate-spin" : ""}`} />
       </span>
-    );
-  return <span aria-hidden="true" className="size-3.5 shrink-0 rounded-full border-[1.5px] border-border" />;
+      <span className={layer} style={swap(status === "done", reduced)}>
+        <svg viewBox="0 0 16 16" className="size-3.5">
+          <circle cx="8" cy="8" r="8" className="fill-foreground" />
+          <path
+            d="M4.8 8.3l2.1 2.1 4.3-4.6"
+            fill="none"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            pathLength={1}
+            strokeDasharray={1}
+            className="stroke-background"
+            style={{ strokeDashoffset: status === "done" ? 0 : 1, transition: status === "done" && !reduced ? `stroke-dashoffset 420ms ${MORPH} 140ms` : "none" }}
+          />
+        </svg>
+      </span>
+      <span className={layer} style={swap(status === "skipped", reduced)}>
+        <span className="flex size-3.5 items-center justify-center rounded-full border-[1.5px] border-border">
+          <span className="h-[1.5px] w-1.5 rounded-full bg-muted-foreground" />
+        </span>
+      </span>
+      <span className={layer} style={swap(status === "failed", reduced)}>
+        <span className="flex size-3.5 items-center justify-center rounded-full bg-red-500 text-white">
+          <X className="size-2.5" strokeWidth={3} />
+        </span>
+      </span>
+    </span>
+  );
+}
+
+/** A note that folds open under its task and folds shut again, keeping its words while it closes. */
+function Detail({ text, failed, reduced }: { text?: string; failed: boolean; reduced: boolean }) {
+  const [last, setLast] = React.useState(text);
+  if (text && text !== last) setLast(text);
+  return (
+    <span
+      aria-hidden={!text || undefined}
+      className="grid"
+      style={{
+        gridTemplateRows: text ? "1fr" : "0fr",
+        opacity: text ? 1 : 0,
+        transition: reduced ? "none" : `grid-template-rows 420ms ${MORPH}, opacity ${text ? "320ms" : "160ms"} ${MORPH}, color 300ms`,
+      }}
+    >
+      <span className={`min-h-0 overflow-hidden text-[12px] leading-5 transition-colors duration-300 ${failed ? "text-red-500" : "text-muted-foreground"}`}>
+        <span className="block pt-0.5">{text ?? last}</span>
+      </span>
+    </span>
+  );
 }
 
 export function Plan({
@@ -93,6 +140,7 @@ export function Plan({
   className = "",
   ...props
 }: PlanProps) {
+  const reduced = useReducedMotion();
   const [ownOpen, setOwnOpen] = React.useState(defaultOpen);
   const [touched, setTouched] = React.useState(false);
   const panelId = React.useId();
@@ -127,15 +175,34 @@ export function Plan({
       >
         <ListChecks aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
         <span className="text-[13px] font-medium text-foreground">{title}</span>
-        <span role="status" aria-live="polite" className="ml-auto font-mono text-[11.5px] tabular-nums text-muted-foreground">
-          {settled ? `${done} of ${tasks.length} done` : `${done} of ${tasks.length}`}
+        <span aria-hidden="true" className="ml-auto flex items-baseline font-mono text-[11.5px] tabular-nums text-muted-foreground">
+          <NumberRoll value={done} duration={600} />
+          &nbsp;of&nbsp;
+          <NumberRoll value={tasks.length} duration={600} />
+          <span
+            className="grid"
+            style={{
+              gridTemplateColumns: settled ? "1fr" : "0fr",
+              opacity: settled ? 1 : 0,
+              transition: reduced ? "none" : `grid-template-columns 420ms ${MORPH}, opacity 300ms ${MORPH}`,
+            }}
+          >
+            <span className="min-w-0 overflow-hidden whitespace-nowrap">&nbsp;done</span>
+          </span>
         </span>
-        <ChevronDown aria-hidden="true" className={`size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+        <ChevronDown
+          aria-hidden="true"
+          className={`size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+        />
       </button>
+      {/* Outside the button, so its name stays the title. */}
+      <span role="status" aria-live="polite" className="sr-only">
+        {settled ? `${done} of ${tasks.length} done` : `${done} of ${tasks.length}`}
+      </span>
 
       <div aria-hidden="true" className="mt-1.5 h-px w-full overflow-hidden bg-border">
         <div
-          className="h-full bg-foreground transition-[width] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+          className="h-full bg-foreground transition-[width] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
           style={{ width: `${tasks.length ? (done / tasks.length) * 100 : 0}%` }}
         />
       </div>
@@ -143,7 +210,7 @@ export function Plan({
       <div
         id={panelId}
         inert={!expanded}
-        className={`grid transition-[grid-template-rows,opacity] duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)] ${
+        className={`grid transition-[grid-template-rows,opacity] duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none ${
           expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
@@ -154,30 +221,25 @@ export function Plan({
               return (
                 <li key={task.id ?? `${i}-${task.label}`} className="flex gap-2.5 py-1">
                   <span className="mt-[3px] flex">
-                    <Mark status={task.status} />
+                    <Mark status={task.status} reduced={reduced} />
                   </span>
                   <span className="min-w-0">
-                    <span
-                      className={`block text-[13px] leading-5 transition-colors duration-300 ${
-                        task.status === "running"
-                          ? "font-medium text-foreground"
-                          : quiet
-                            ? "text-muted-foreground line-through decoration-border"
-                            : "text-foreground"
-                      }`}
-                    >
-                      {task.label}
+                    <span className="block text-[13px] leading-5">
+                      {/* The strike draws itself across each line of the label, left to right. */}
+                      <span
+                        className={`bg-[linear-gradient(var(--border),var(--border))] bg-no-repeat [background-position:0_58%] [box-decoration-break:clone] [-webkit-box-decoration-break:clone] ${
+                          quiet ? "text-muted-foreground" : task.status === "pending" ? "text-foreground/70" : "text-foreground"
+                        }`}
+                        style={{
+                          backgroundSize: quiet ? "100% 1px" : "0% 1px",
+                          transition: reduced ? "none" : `background-size 520ms ${MORPH} 120ms, color 300ms`,
+                        }}
+                      >
+                        {task.label}
+                      </span>
                       <span className="sr-only">, {STATUS_TEXT[task.status]}</span>
                     </span>
-                    {task.detail && (
-                      <span
-                        className={`mt-0.5 block text-[12px] leading-5 animate-[ui-fade-in_300ms_ease-out_both] ${
-                          task.status === "failed" ? "text-red-500" : "text-muted-foreground"
-                        }`}
-                      >
-                        {task.detail}
-                      </span>
-                    )}
+                    <Detail text={task.detail} failed={task.status === "failed"} reduced={reduced} />
                   </span>
                 </li>
               );
