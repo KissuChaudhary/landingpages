@@ -48,7 +48,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-blue-400 to-indigo-500",
       "previewUrl": "/preview/footnote",
       "demoUrl": "/demo/footnote",
-      "detailUrl": "/template/footnote"
+      "detailUrl": "/template/footnote",
+      "thumbnailUrl": "/previews/footnote.webp"
     },
     {
       "slug": "cutroom",
@@ -72,7 +73,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-orange-500 to-red-500",
       "previewUrl": "/preview/cutroom",
       "demoUrl": "/demo/cutroom",
-      "detailUrl": "/template/cutroom"
+      "detailUrl": "/template/cutroom",
+      "thumbnailUrl": "/previews/cutroom.webp"
     },
     {
       "slug": "halftone",
@@ -97,7 +99,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-blue-600 to-indigo-600",
       "previewUrl": "/preview/halftone",
       "demoUrl": "/demo/halftone",
-      "detailUrl": "/template/halftone"
+      "detailUrl": "/template/halftone",
+      "thumbnailUrl": "/previews/halftone.webp"
     },
     {
       "slug": "emberline",
@@ -121,7 +124,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-orange-300 to-orange-500",
       "previewUrl": "/preview/emberline",
       "demoUrl": "/demo/emberline",
-      "detailUrl": "/template/emberline"
+      "detailUrl": "/template/emberline",
+      "thumbnailUrl": "/previews/emberline.webp"
     },
     {
       "slug": "influence-hero",
@@ -145,7 +149,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-orange-400 to-amber-500",
       "previewUrl": "/preview/influence-hero",
       "demoUrl": "/demo/influence-hero",
-      "detailUrl": "/template/influence-hero"
+      "detailUrl": "/template/influence-hero",
+      "thumbnailUrl": "/previews/influence-hero.webp"
     },
     {
       "slug": "marlow",
@@ -169,7 +174,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-amber-200 to-orange-300",
       "previewUrl": "/preview/marlow",
       "demoUrl": "/demo/marlow",
-      "detailUrl": "/template/marlow"
+      "detailUrl": "/template/marlow",
+      "thumbnailUrl": "/previews/marlow.webp"
     },
     {
       "slug": "parley",
@@ -193,7 +199,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-pink-400 to-rose-500",
       "previewUrl": "/preview/parley",
       "demoUrl": "/demo/parley",
-      "detailUrl": "/template/parley"
+      "detailUrl": "/template/parley",
+      "thumbnailUrl": "/previews/parley.webp"
     },
     {
       "slug": "quick-14-studio",
@@ -217,7 +224,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-orange-300 to-orange-500",
       "previewUrl": "/preview/quick-14-studio",
       "demoUrl": "/demo/quick-14-studio",
-      "detailUrl": "/template/quick-14-studio"
+      "detailUrl": "/template/quick-14-studio",
+      "thumbnailUrl": "/previews/quick-14-studio.webp"
     },
     {
       "slug": "kept",
@@ -241,7 +249,8 @@ export const TEMPLATES: TemplateItem[] = [
       "accentColor": "from-lime-300 to-emerald-700",
       "previewUrl": "/preview/kept",
       "demoUrl": "/demo/kept",
-      "detailUrl": "/template/kept"
+      "detailUrl": "/template/kept",
+      "thumbnailUrl": "/previews/kept.webp"
     },
     {
       "slug": "stillform",
