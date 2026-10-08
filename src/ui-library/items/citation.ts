@@ -5,13 +5,13 @@ export const citation: UiItem = {
   title: 'Citation',
   description: 'An inline numbered source that previews the site, title and snippet on hover or focus.',
   summary:
-    'Answers that cite sources earn trust, but a wall of links at the bottom gets ignored. This puts a small numbered marker right in the sentence. Hover or focus it and a card shows where the claim comes from; click and the source opens. The card flips above near the bottom of the screen and shifts to stay on it, and a source that couldn’t be fetched says so instead of failing quietly.',
+    'Answers that cite sources earn trust, but a wall of links at the bottom gets ignored. This puts a small numbered marker right in the sentence. Hover or focus it and a card rises out of a light blur to show where the claim comes from, then sinks back when you leave; click and the source opens. The card flips above near the bottom of the screen and shifts to stay on it, and a source that couldn’t be fetched says so instead of failing quietly.',
   file: 'citation.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-up'],
+  css: [],
   states: [
     { name: 'closed', description: 'A quiet numbered marker that sits on the text’s baseline.' },
-    { name: 'open', description: 'After a short hover delay, or at once on focus: site, title and a snippet.' },
+    { name: 'open', description: 'After a short hover delay, or at once on focus: site, title and a snippet. The card rises 4px out of a 2px blur (220ms) and sinks back the same way when it closes (140ms).' },
     { name: 'unavailable', description: 'The marker is struck through and the card says the source couldn’t be loaded.' },
   ],
   usage: `import { Citation } from "@/components/citation";

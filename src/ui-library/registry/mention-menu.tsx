@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * MENTIONS AND COMMANDS: @ for context, / for commands
@@ -9,7 +10,9 @@ import * as React from "react";
  *   open       type a trigger and a menu grows from the caret
  *   filtering  it narrows as you type; its height follows
  *   loading    async search: "Searching…" (earlier results stay)
- *   empty      "No matches for …"
+ *   empty      "Searching" morphs into "No matches for …"
+ *   closing    the menu sinks back toward the caret, keeping what
+ *              it showed, instead of vanishing
  *   chip       Enter or Tab turns the typed "@q3-sa" into a chip
  *              right where it was typed
  *
@@ -79,8 +82,19 @@ const CHIP =
 const COMMAND_CHIP =
   "mx-px inline-block rounded-md bg-muted px-1 align-baseline font-mono text-[0.92em] text-foreground [&>span]:opacity-45";
 const ENTER = "animate-[ui-chip-in_280ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none";
-const SHIMMER =
-  "bg-[linear-gradient(90deg,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_35%,var(--foreground)_50%,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_65%)] bg-[length:200%_100%] bg-clip-text text-transparent animate-[ui-shimmer_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:text-foreground/70";
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+// A light that sweeps across the label. A mask, not a text clip, so it reaches letters that are mid-morph.
+const SHEEN =
+  "text-foreground [mask-image:linear-gradient(90deg,rgb(0_0_0/0.45)_35%,#000_50%,rgb(0_0_0/0.45)_65%)] [mask-size:200%_100%] animate-[ui-sheen_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:[mask-image:none] motion-reduce:text-foreground/70";
+
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
 
 function makeChip(trigger: MentionTrigger | { char: string; variant?: string }, id: string, label: string, animate: boolean) {
   const chip = document.createElement("span");
@@ -416,7 +430,34 @@ export function MentionInput({
 
   const listId = `${id}-list`;
   const optionId = (i: number) => `${id}-option-${i}`;
-  const command = menu?.trigger.variant === "command";
+  const reduced = useReducedMotion();
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  // What the menu shows. While it closes it keeps showing the last of it, so it can sink away instead of vanishing.
+  const live = menu ? { menu, results, loading, active } : null;
+  const [last, setLast] = React.useState(live);
+  if (live && (live.menu !== last?.menu || live.results !== last.results || live.loading !== last.loading || live.active !== last.active)) setLast(live);
+  const view = live ?? last;
+  const closing = !live && last !== null;
+  React.useLayoutEffect(() => {
+    if (!closing) return;
+    const el = menuRef.current;
+    if (!el || reduced) {
+      setLast(null);
+      return;
+    }
+    const away = side === "top" ? 4 : -4;
+    const leave = el.animate(
+      [
+        { opacity: 1, transform: "none" },
+        { opacity: 0, transform: `translateY(${away}px) scale(0.97)` },
+      ],
+      { duration: 160, easing: "ease-out", fill: "forwards" }
+    );
+    leave.onfinish = () => setLast(null);
+    return () => leave.cancel();
+  }, [closing, reduced, side]);
+  const command = view?.menu.trigger.variant === "command";
 
   return (
     <div ref={rootRef} className={`relative ${className}`} {...props}>
@@ -451,45 +492,53 @@ export function MentionInput({
         className="max-h-52 min-h-6 overflow-y-auto whitespace-pre-wrap outline-none [overflow-wrap:anywhere] empty:before:pointer-events-none empty:before:float-left empty:before:h-0 empty:before:text-muted-foreground empty:before:content-[attr(data-placeholder)]"
       />
 
-      {menu && (
+      {view && (
         <div
-          className="absolute z-50 overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-[0_0_0_1px_var(--border)] animate-[ui-pop-in_200ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
+          ref={menuRef}
+          inert={closing}
+          aria-hidden={closing || undefined}
+          className={`absolute z-50 overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-[0_0_0_1px_var(--border)] motion-reduce:animate-none ${
+            closing ? "pointer-events-none" : "animate-[ui-pop-in_200ms_cubic-bezier(0.23,1,0.32,1)_backwards]"
+          }`}
           style={{
-            left: menu.left,
-            width: menu.width,
-            ...(side === "top" ? { bottom: menu.bottom, transformOrigin: "bottom left" } : { top: menu.top, transformOrigin: "top left" }),
+            left: view.menu.left,
+            width: view.menu.width,
+            ...(side === "top" ? { bottom: view.menu.bottom, transformOrigin: "bottom left" } : { top: view.menu.top, transformOrigin: "top left" }),
             height: height ?? undefined,
-            transition: `height 220ms ${EASE}`,
+            transition: reduced ? "none" : `height 220ms ${EASE}`,
           }}
           // Keep the caret in the field while clicking the menu.
           onPointerDown={(e) => e.preventDefault()}
         >
           <div ref={innerRef} className="p-1">
             <div className="flex h-7 items-center justify-between px-2.5 text-[11.5px] text-muted-foreground">
-              <span>{menu.trigger.label}</span>
-              {loading && results.length > 0 && (
-                <span aria-hidden="true" className="size-3 animate-spin rounded-full border-[1.5px] border-border border-t-muted-foreground motion-reduce:animate-none" />
-              )}
+              <span>{view.menu.trigger.label}</span>
+              {/* Fades in while a search runs over results you can already see. */}
+              <span
+                aria-hidden="true"
+                className={`size-3 rounded-full border-[1.5px] border-border border-t-muted-foreground motion-reduce:animate-none ${view.loading && view.results.length > 0 ? "animate-spin" : ""}`}
+                style={{ opacity: view.loading && view.results.length > 0 ? 1 : 0, transition: reduced ? "none" : `opacity 240ms ${MORPH}` }}
+              />
             </div>
             <div
               ref={listRef}
               id={listId}
               role="listbox"
-              aria-label={menu.trigger.label}
+              aria-label={view.menu.trigger.label}
               className="relative overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               style={{ maxHeight: ROW * MAX_ROWS }}
             >
-              {results.length > 0 && (
+              {view.results.length > 0 && (
                 <span
                   aria-hidden="true"
                   className="absolute inset-x-0 top-0 h-9 rounded-xl bg-accent"
                   style={{
                     transform: `translateY(${highlight.top}px)`,
-                    transition: highlight.ready ? `transform 180ms ${EASE}` : "none",
+                    transition: highlight.ready && !reduced ? `transform 180ms ${EASE}` : "none",
                   }}
                 />
               )}
-              {results.map((item, i) => (
+              {view.results.map((item, i) => (
                 <div
                   key={item.id}
                   ref={(el) => {
@@ -497,7 +546,7 @@ export function MentionInput({
                   }}
                   id={optionId(i)}
                   role="option"
-                  aria-selected={i === active}
+                  aria-selected={i === view.active}
                   onPointerMove={() => i !== active && setActive(i)}
                   onClick={() => select(item)}
                   className="relative flex h-9 cursor-pointer items-center gap-2.5 rounded-xl px-2.5 text-[13px]"
@@ -508,22 +557,25 @@ export function MentionInput({
                     </span>
                   )}
                   <span className={`max-w-[65%] shrink-0 truncate text-foreground/85 ${command ? "font-mono text-[12.5px]" : ""}`}>
-                    {command && <span className="text-muted-foreground">{menu.trigger.char}</span>}
-                    <Highlight text={item.label} query={menu.query} />
+                    {command && <span className="text-muted-foreground">{view.menu.trigger.char}</span>}
+                    <Highlight text={item.label} query={view.menu.query} />
                   </span>
                   {item.description && <span className="min-w-0 flex-1 truncate text-[12px] text-muted-foreground">{item.description}</span>}
                 </div>
               ))}
-              {results.length === 0 && (
-                <div role="status" className="flex h-9 items-center gap-2 px-2.5 text-[12.5px] text-muted-foreground">
-                  {loading ? (
-                    <>
-                      <span aria-hidden="true" className="size-3 animate-spin rounded-full border-[1.5px] border-border border-t-muted-foreground motion-reduce:animate-none" />
-                      <span className={SHIMMER}>Searching</span>
-                    </>
-                  ) : (
-                    <span className="truncate">{menu.query ? `No matches for “${menu.query}”` : "Nothing here yet"}</span>
-                  )}
+              {view.results.length === 0 && (
+                // One line: "Searching" morphs into "No matches for …" as the answer comes back.
+                <div role="status" className="flex h-9 items-center px-2.5 text-[12.5px] text-muted-foreground">
+                  <span
+                    aria-hidden="true"
+                    className="flex shrink-0 items-center overflow-hidden"
+                    style={{ width: view.loading ? 20 : 0, opacity: view.loading ? 1 : 0, transition: reduced ? "none" : `width 320ms ${MORPH}, opacity 240ms ${MORPH}` }}
+                  >
+                    <span className={`size-3 rounded-full border-[1.5px] border-border border-t-muted-foreground motion-reduce:animate-none ${view.loading ? "animate-spin" : ""}`} />
+                  </span>
+                  <span className={`min-w-0 truncate ${view.loading ? SHEEN : ""}`}>
+                    <TextMorph>{view.loading ? "Searching" : view.menu.query ? `No matches for “${view.menu.query}”` : "Nothing here yet"}</TextMorph>
+                  </span>
                 </div>
               )}
             </div>

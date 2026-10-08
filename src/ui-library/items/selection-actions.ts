@@ -5,7 +5,7 @@ export const selectionActions: UiItem = {
   title: 'Selection actions',
   description: 'Select text and a pill appears under it. Pick an action or describe an edit, and the rewrite streams in place.',
   summary:
-    'The fastest way to edit part of a document is to point at it. Select text and a single pill attaches under the last selected line, centred on the selection. It holds a field for your own instruction, the actions you use most, and more behind the chevron. When you start typing, the actions fold away and the field takes their room. The rewrite then streams into the selection itself, and the pill morphs into Keep, Discard and try again.',
+    'The fastest way to edit part of a document is to point at it. Select text and a single pill attaches under the last selected line, centred on the selection. It holds a field for your own instruction, the actions you use most, and more behind the chevron. When you start typing, the actions fold away and the field takes their room. The rewrite then streams into the selection itself, and the pill morphs into Keep, Discard and try again: its width eases to each set of controls while they rise out of a light blur.',
   file: 'selection-actions.tsx',
   dependencies: ['lucide-react'],
   css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-pop-in', '@layer base'],
@@ -15,7 +15,7 @@ export const selectionActions: UiItem = {
     { name: 'typing', description: 'The actions fold away, the field grows into their space and a send button appears.' },
     { name: 'thinking', description: 'The selection dims slightly; a spinner and "Improving…" shimmer until the first words arrive.' },
     { name: 'streaming', description: 'The rewrite replaces the selection word by word; the pill follows its last line.' },
-    { name: 'result', description: 'Keep (focused, so Enter accepts), Discard, and try again.' },
+    { name: 'result', description: 'The pill eases to its new width as Keep (focused, so Enter accepts), Discard and try again blur in.' },
     { name: 'error', description: '"That didn’t work" with Try again; the original text is untouched.' },
   ],
   usage: `import { SelectionActions } from "@/components/selection-actions";

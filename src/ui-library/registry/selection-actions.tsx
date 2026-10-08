@@ -448,6 +448,17 @@ export function SelectionActions({
     }
     const next = Math.ceil(content.getBoundingClientRect().width) + 8;
     const previous = lastWidth.current;
+    // The new content rises out of a light blur as the bar takes its width (progress → Keep, actions → progress…).
+    const busyBoth = (m: Mode) => m === "thinking" || m === "streaming";
+    if (previousMode.current !== mode && previous && !reduced && !(busyBoth(previousMode.current) && busyBoth(mode))) {
+      content.animate(
+        [
+          { opacity: 0, filter: "blur(4px)" },
+          { opacity: 1, filter: "blur(0px)" },
+        ],
+        { duration: 300, easing: "cubic-bezier(0.16,1,0.3,1)", delay: 60, fill: "backwards" }
+      );
+    }
     if (previousMode.current !== mode && previous && Math.abs(next - previous) > 1 && !reduced) {
       widthAnimation.current?.cancel();
       const animation = bar.animate([{ width: `${previous}px` }, { width: `${next}px` }], { duration: 320, easing: EASE });

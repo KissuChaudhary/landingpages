@@ -5,17 +5,18 @@ export const mentionMenu: UiItem = {
   title: 'Mentions and commands',
   description: 'Type @ to pull in context or / for a command. The menu grows from the caret and your text becomes a chip.',
   summary:
-    'Agents work better when people can point at what they mean. This prompt field opens a small menu right at the caret when you type a trigger: @ for files, people and pages, / for commands. It narrows as you type, its height follows the results, and a highlight slides between rows. Enter or Tab turns the typed "@q3-sa" into a chip in place. Searches can be async, and earlier results stay up while the next ones load.',
+    'Agents work better when people can point at what they mean. This prompt field opens a small menu right at the caret when you type a trigger: @ for files, people and pages, / for commands. It narrows as you type, its height follows the results, and a highlight slides between rows. Enter or Tab turns the typed "@q3-sa" into a chip in place. Searches can be async, and earlier results stay up while the next ones load; with nothing to show, "Searching" morphs into "No matches for …". Closing, the menu sinks back toward the caret rather than vanishing.',
   file: 'mention-menu.tsx',
   dependencies: [],
-  css: ['@keyframes ui-shimmer', '@keyframes ui-pop-in', '@keyframes ui-chip-in'],
+  registryDependencies: ['text-morph'],
+  css: ['@keyframes ui-sheen', '@keyframes ui-pop-in', '@keyframes ui-chip-in'],
   tabs: ['Try it', 'With context'],
   states: [
     { name: 'closed', description: 'A plain prompt field with a placeholder. Enter sends, Shift+Enter adds a line.' },
     { name: 'open', description: 'A trigger after a space (or at a line’s start, for commands) grows the menu from the caret.' },
     { name: 'filtering', description: 'Results narrow and rank as you type, matching text is bold, and the menu’s height animates to fit.' },
-    { name: 'loading', description: 'An async search shows "Searching" until results arrive; on later keystrokes the old results stay with a small spinner.' },
-    { name: 'empty', description: '"No matches for “xyz”". Escape closes the menu and leaves your text alone.' },
+    { name: 'loading', description: 'An async search shows "Searching" under a sweep of light until results arrive; on later keystrokes the old results stay and a small spinner fades in.' },
+    { name: 'empty', description: '"Searching" morphs into "No matches for “xyz”" as its spinner folds away. Escape closes the menu (it sinks away in 160ms) and leaves your text alone.' },
     { name: 'chip', description: 'The typed token becomes a tinted chip (or a mono command chip) where it was typed. Backspace removes it whole.' },
   ],
   usage: `import { MentionInput } from "@/components/mention-menu";

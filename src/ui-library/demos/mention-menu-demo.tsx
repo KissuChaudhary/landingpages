@@ -52,7 +52,7 @@ const STARTER: MentionSegment[] = [
 
 function Sent({ segments }: { segments: MentionSegment[] }) {
   return (
-    <p className="ml-auto w-fit max-w-[85%] animate-[ui-fade-up_300ms_cubic-bezier(0.23,1,0.32,1)_both] whitespace-pre-wrap rounded-2xl bg-muted px-3.5 py-2 text-[13.5px] leading-relaxed text-foreground">
+    <p className="ml-auto w-fit max-w-[85%] animate-[ui-fade-up_300ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none whitespace-pre-wrap rounded-2xl bg-muted px-3.5 py-2 text-[13.5px] leading-relaxed text-foreground">
       {segments.map((s, i) =>
         s.type === 'text' ? (
           <React.Fragment key={i}>{s.text}</React.Fragment>

@@ -10,10 +10,14 @@ import { Pencil, Pin, PinOff, Search, SquarePen, Trash2, X } from "lucide-react"
  *              Previous 30 days, then by month
  *   new        a fresh chat shimmers "New chat" until its title
  *              is generated, then the title types itself in
- *   search     filters as you type and marks the match
+ *   search     filters as you type and marks the match; the rows
+ *              that stay glide up to close the gaps
+ *   pin        the row glides into Pinned (and back); the pin
+ *              icon trades places with unpin through a blur
  *   rename     the row turns into a field in place
- *   delete     the row folds into "Chat deleted · Undo"; it is
- *              only deleted once the undo window passes
+ *   delete     the row's text gives way to "Chat deleted · Undo";
+ *              it is only deleted once the undo window passes,
+ *              then folds away
  *
  * Rows are buttons; arrow keys move between them.
  * ───────────────────────────────────────────────────────── */
@@ -44,6 +48,7 @@ export interface ChatHistoryProps extends Omit<React.HTMLAttributes<HTMLElement>
 }
 
 const EASE = "cubic-bezier(0.23,1,0.32,1)";
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
 const ICON = `flex size-6 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-background hover:text-foreground [&_svg]:size-3.5 ${FOCUS}`;
 const SHIMMER =
@@ -57,6 +62,27 @@ const subscribeReduced = (onChange: () => void) => {
 };
 const useReducedMotion = () =>
   React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+
+/** Icons trade places through a blur: the old one shrinks away as the new one grows in. */
+const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  transform: on ? "none" : "scale(0.6)",
+  filter: on ? "none" : "blur(3px)",
+  transition: reduced ? "none" : `opacity 260ms ${MORPH}, transform 380ms ${MORPH}, filter 260ms ${MORPH}`,
+});
+
+/** One layer of a row: it fades in through a blur when it becomes the row, and out when it stops being it. */
+const layer = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  filter: on ? "none" : "blur(4px)",
+  transition: reduced ? "none" : on ? `opacity 280ms ${MORPH} 60ms, filter 280ms ${MORPH} 60ms` : "opacity 140ms ease-out, filter 140ms ease-out",
+});
+
+/** Rows that weren't in the list before rise in; rows that were (even if they moved group) don't replay it. */
+function Arrive({ fresh, children }: { fresh: boolean; children: React.ReactNode }) {
+  const [animate] = React.useState(fresh);
+  return <div className={animate ? "animate-[ui-fade-up_280ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none" : ""}>{children}</div>;
+}
 
 const DAY = 86_400_000;
 const startOfDay = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
@@ -152,87 +178,102 @@ function Row({
     requestAnimationFrame(() => rowRef.current?.focus({ preventScroll: true }));
   };
 
-  if (deleted) {
-    return (
-      <div className="flex h-9 items-center justify-between gap-2 rounded-xl px-3 text-[12.5px] text-muted-foreground animate-[ui-fade-in_200ms_ease-out_both]">
+  const mode = deleted ? "deleted" : renaming ? "renaming" : "row";
+
+  // One surface: the row, its rename field and its "deleted" note are layers of the same box.
+  return (
+    <div
+      className={`group/row relative flex h-9 items-center rounded-xl transition-[background-color,box-shadow] duration-200 ${
+        mode === "renaming"
+          ? "bg-background shadow-[0_0_0_1px_var(--border)]"
+          : mode === "deleted"
+            ? "shadow-[0_0_0_1px_transparent]"
+            : active
+              ? "bg-accent shadow-[0_0_0_1px_transparent]"
+              : "shadow-[0_0_0_1px_transparent] hover:bg-accent/70 focus-within:bg-accent/70"
+      }`}
+    >
+      <div inert={mode !== "row"} className="flex h-9 min-w-0 flex-1 items-center" style={layer(mode === "row", reduced)}>
+        <button
+          ref={rowRef}
+          type="button"
+          data-chat=""
+          aria-current={active ? "page" : undefined}
+          onClick={onSelect}
+          className={`flex h-9 min-w-0 flex-1 items-center rounded-xl pl-3 pr-2 text-left text-[13px] outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${active ? "font-medium text-foreground" : "text-foreground/80"}`}
+        >
+          <span className="min-w-0 flex-1 truncate group-focus-within/row:[mask-image:linear-gradient(to_right,#000_calc(100%_-_4.5rem),transparent)] group-hover/row:[mask-image:linear-gradient(to_right,#000_calc(100%_-_4.5rem),transparent)]">
+            {generating ? <span className={SHIMMER}>New chat</span> : <Mark text={title} query={query} />}
+          </span>
+        </button>
+        {!generating && (onPin || onRename || onDelete) && (
+          <span className="absolute right-1.5 flex items-center gap-0.5 opacity-0 transition-opacity duration-150 group-focus-within/row:opacity-100 group-hover/row:opacity-100 [@media(hover:none)]:opacity-100">
+            {onPin && (
+              <button type="button" aria-label={chat.pinned ? `Unpin ${chat.title}` : `Pin ${chat.title}`} onClick={onPin} className={`relative ${ICON}`}>
+                <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center" style={swap(!chat.pinned, reduced)}>
+                  <Pin />
+                </span>
+                <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center" style={swap(Boolean(chat.pinned), reduced)}>
+                  <PinOff />
+                </span>
+              </button>
+            )}
+            {onRename && (
+              <button
+                type="button"
+                aria-label={`Rename ${chat.title}`}
+                onClick={() => {
+                  setDraft(chat.title ?? "");
+                  setRenaming(true);
+                }}
+                className={ICON}
+              >
+                <Pencil />
+              </button>
+            )}
+            {onDelete && (
+              <button type="button" aria-label={`Delete ${chat.title}`} onClick={onDelete} className={`${ICON} hover:text-red-600`}>
+                <Trash2 />
+              </button>
+            )}
+          </span>
+        )}
+      </div>
+
+      {(onRename || renaming) && (
+        <div inert={mode !== "renaming"} className="absolute inset-0 flex items-center px-1" style={layer(mode === "renaming", reduced)}>
+          <input
+            ref={fieldRef}
+            value={draft}
+            aria-label="Chat title"
+            tabIndex={mode === "renaming" ? 0 : -1}
+            onChange={(e) => setDraft(e.target.value)}
+            onBlur={() => mode === "renaming" && save()}
+            onKeyDown={(e) => {
+              if (e.nativeEvent.isComposing) return;
+              if (e.key === "Enter") {
+                e.preventDefault();
+                save();
+              } else if (e.key === "Escape") {
+                e.preventDefault();
+                setDraft(chat.title ?? "");
+                setRenaming(false);
+                requestAnimationFrame(() => rowRef.current?.focus({ preventScroll: true }));
+              }
+            }}
+            className="h-7 min-w-0 flex-1 rounded-lg bg-transparent px-2 text-[13px] text-foreground outline-none"
+          />
+        </div>
+      )}
+
+      <div inert={mode !== "deleted"} className="absolute inset-0 flex items-center justify-between gap-2 px-3 text-[12.5px] text-muted-foreground" style={layer(mode === "deleted", reduced)}>
         <span role="status" className="truncate">
-          Chat deleted
+          {deleted ? "Chat deleted" : ""}
         </span>
         <button type="button" onClick={onUndo} className={`rounded font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground ${FOCUS}`}>
           Undo
         </button>
       </div>
-    );
-  }
-
-  if (renaming) {
-    return (
-      <div className="flex h-9 items-center rounded-xl bg-background px-1 shadow-[0_0_0_1px_var(--border)] animate-[ui-fade-in_160ms_ease-out_both]">
-        <input
-          ref={fieldRef}
-          value={draft}
-          aria-label="Chat title"
-          onChange={(e) => setDraft(e.target.value)}
-          onBlur={save}
-          onKeyDown={(e) => {
-            if (e.nativeEvent.isComposing) return;
-            if (e.key === "Enter") {
-              e.preventDefault();
-              save();
-            } else if (e.key === "Escape") {
-              e.preventDefault();
-              setDraft(chat.title ?? "");
-              setRenaming(false);
-              requestAnimationFrame(() => rowRef.current?.focus({ preventScroll: true }));
-            }
-          }}
-          className="h-7 min-w-0 flex-1 rounded-lg bg-transparent px-2 text-[13px] text-foreground outline-none"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className={`group/row relative flex h-9 items-center rounded-xl transition-colors ${active ? "bg-accent" : "hover:bg-accent/70 focus-within:bg-accent/70"}`}>
-      <button
-        ref={rowRef}
-        type="button"
-        data-chat=""
-        aria-current={active ? "page" : undefined}
-        onClick={onSelect}
-        className={`flex h-9 min-w-0 flex-1 items-center rounded-xl pl-3 pr-2 text-left text-[13px] outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${active ? "font-medium text-foreground" : "text-foreground/80"}`}
-      >
-        <span className="min-w-0 flex-1 truncate group-focus-within/row:[mask-image:linear-gradient(to_right,#000_calc(100%_-_4.5rem),transparent)] group-hover/row:[mask-image:linear-gradient(to_right,#000_calc(100%_-_4.5rem),transparent)]">
-          {generating ? <span className={SHIMMER}>New chat</span> : <Mark text={title} query={query} />}
-        </span>
-      </button>
-      {!generating && (onPin || onRename || onDelete) && (
-        <span className="absolute right-1.5 flex items-center gap-0.5 opacity-0 transition-opacity duration-150 group-focus-within/row:opacity-100 group-hover/row:opacity-100 [@media(hover:none)]:opacity-100">
-          {onPin && (
-            <button type="button" aria-label={chat.pinned ? `Unpin ${chat.title}` : `Pin ${chat.title}`} onClick={onPin} className={ICON}>
-              {chat.pinned ? <PinOff /> : <Pin />}
-            </button>
-          )}
-          {onRename && (
-            <button
-              type="button"
-              aria-label={`Rename ${chat.title}`}
-              onClick={() => {
-                setDraft(chat.title ?? "");
-                setRenaming(true);
-              }}
-              className={ICON}
-            >
-              <Pencil />
-            </button>
-          )}
-          {onDelete && (
-            <button type="button" aria-label={`Delete ${chat.title}`} onClick={onDelete} className={`${ICON} hover:text-red-600`}>
-              <Trash2 />
-            </button>
-          )}
-        </span>
-      )}
     </div>
   );
 }
@@ -257,7 +298,32 @@ export function ChatHistory({
   const [gone, setGone] = React.useState<Set<string>>(() => new Set());
   const timers = React.useRef(new Map<string, number>());
   const listRef = React.useRef<HTMLDivElement>(null);
+  const known = React.useRef(new Set<string>());
+  const snapshot = React.useRef<{ at: number; tops: Map<string, number> } | null>(null);
   const [today, setToday] = React.useState(() => startOfDay(new Date()));
+
+  // Just before a reorder (a pin, a search keystroke), note where every row is...
+  const capture = () => {
+    const tops = new Map<string, number>();
+    listRef.current?.querySelectorAll<HTMLElement>("[data-row]").forEach((el) => tops.set(el.dataset.row ?? "", el.offsetTop));
+    snapshot.current = { at: performance.now(), tops };
+  };
+
+  // ...then glide each row from there to its new place: into Pinned and back, or up as a search filters others out.
+  React.useLayoutEffect(() => {
+    const list = listRef.current;
+    const before = snapshot.current;
+    if (list) known.current = new Set([...list.querySelectorAll<HTMLElement>("[data-row]")].map((el) => el.dataset.row ?? ""));
+    if (!list || !before) return;
+    snapshot.current = null;
+    if (reduced || performance.now() - before.at > 1000) return;
+    list.querySelectorAll<HTMLElement>("[data-row]").forEach((el) => {
+      const from = before.tops.get(el.dataset.row ?? "");
+      if (from !== undefined && Math.abs(from - el.offsetTop) > 1) {
+        el.animate([{ transform: `translateY(${from - el.offsetTop}px)` }, { transform: "none" }], { duration: 420, easing: MORPH });
+      }
+    });
+  });
 
   React.useEffect(() => {
     const all = timers.current;
@@ -324,14 +390,29 @@ export function ChatHistory({
               <input
                 type="search"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => e.key === "Escape" && setQuery("")}
+                onChange={(e) => {
+                  capture();
+                  setQuery(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key !== "Escape") return;
+                  capture();
+                  setQuery("");
+                }}
                 placeholder="Search chats"
                 aria-label="Search chats"
                 className="h-full min-w-0 flex-1 bg-transparent text-[13px] text-foreground outline-none placeholder:text-muted-foreground [&::-webkit-search-cancel-button]:hidden"
               />
               {query && (
-                <button type="button" aria-label="Clear search" onClick={() => setQuery("")} className={`-mr-1.5 ${ICON}`}>
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  onClick={() => {
+                    capture();
+                    setQuery("");
+                  }}
+                  className={`-mr-1.5 ${ICON}`}
+                >
                   <X />
                 </button>
               )}
@@ -350,7 +431,7 @@ export function ChatHistory({
         </div>
       )}
 
-      <div ref={listRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-color:var(--border)_transparent] [scrollbar-width:thin]">
+      <div ref={listRef} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-color:var(--border)_transparent] [scrollbar-width:thin]">
         {ordered.length === 0 && (
           <p role="status" className="px-3 py-6 text-center text-[12.5px] text-muted-foreground">
             {q ? `No chats match “${query.trim()}”` : "No chats yet"}
@@ -363,6 +444,7 @@ export function ChatHistory({
               {items.map((chat) => (
                 <li
                   key={chat.id}
+                  data-row={chat.id}
                   className="grid"
                   style={{
                     gridTemplateRows: gone.has(chat.id) ? "0fr" : "1fr",
@@ -371,7 +453,7 @@ export function ChatHistory({
                   }}
                 >
                   <div className="min-h-0 overflow-hidden">
-                    <div className="animate-[ui-fade-up_280ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none">
+                    <Arrive fresh={!known.current.has(chat.id)}>
                       <Row
                         chat={chat}
                         active={chat.id === activeId}
@@ -380,11 +462,18 @@ export function ChatHistory({
                         deleted={deleted.has(chat.id)}
                         onSelect={() => onSelect(chat.id)}
                         onRename={onRename ? (title) => onRename(chat.id, title) : undefined}
-                        onPin={onPin ? () => onPin(chat.id, !chat.pinned) : undefined}
+                        onPin={
+                          onPin
+                            ? () => {
+                                capture();
+                                onPin(chat.id, !chat.pinned);
+                              }
+                            : undefined
+                        }
                         onDelete={onDelete ? () => remove(chat.id) : undefined}
                         onUndo={() => undo(chat.id)}
                       />
-                    </div>
+                    </Arrive>
                   </div>
                 </li>
               ))}

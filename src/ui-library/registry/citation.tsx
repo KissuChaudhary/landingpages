@@ -7,7 +7,9 @@ import { Globe } from "lucide-react";
  * CITATION: an inline [1] that previews its source
  *
  *   closed       a small numbered marker in the sentence
- *   open         hover or focus shows the site, title and snippet
+ *   open         hover or focus: the card rises out of a light blur
+ *                with the site, title and snippet, and sinks back
+ *                when you leave
  *   unavailable  the source couldn't be fetched
  *
  * The marker is the link itself, so clicking opens the source.
@@ -31,6 +33,16 @@ export interface CitationProps extends Omit<React.HTMLAttributes<HTMLSpanElement
 
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
 const CARD_WIDTH = 288;
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
 
 function hostname(url: string) {
   try {
@@ -41,7 +53,11 @@ function hostname(url: string) {
 }
 
 export function Citation({ index, source, status = "available", className = "", ...props }: CitationProps) {
+  const reduced = useReducedMotion();
   const [open, setOpen] = React.useState(false);
+  // The card stays mounted while it sinks away after closing.
+  const [mounted, setMounted] = React.useState(false);
+  if (open && !mounted) setMounted(true);
   const [place, setPlace] = React.useState<{ above: boolean; shift: number }>({ above: false, shift: 0 });
   const triggerRef = React.useRef<HTMLAnchorElement>(null);
   const cardRef = React.useRef<HTMLSpanElement>(null);
@@ -68,6 +84,32 @@ export function Citation({ index, source, status = "available", className = "", 
     setPlace({ above: t.bottom + h + 12 > window.innerHeight && t.top > h + 12, shift: Math.max(0, overflowRight) });
   }, [open]);
 
+  // Rise in from the side it opens on; sink back the same way, then unmount.
+  React.useLayoutEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const from = `translateY(${place.above ? 4 : -4}px)`;
+    if (open) {
+      if (reduced) return;
+      const enter = el.animate(
+        [
+          { opacity: 0, transform: from, filter: "blur(2px)" },
+          { opacity: 1, transform: "none", filter: "blur(0px)" },
+        ],
+        { duration: 220, easing: MORPH }
+      );
+      return () => enter.cancel();
+    }
+    if (reduced) {
+      setMounted(false);
+      return;
+    }
+    const leave = el.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: from }], { duration: 140, easing: "ease-out", fill: "forwards" });
+    leave.onfinish = () => setMounted(false);
+    return () => leave.cancel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, mounted]);
+
   React.useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -93,15 +135,17 @@ export function Citation({ index, source, status = "available", className = "", 
         {index}
       </a>
 
-      {open && (
+      {mounted && (
         <span
           ref={cardRef}
           id={id}
           role="tooltip"
-          className={`absolute left-0 z-50 block rounded-xl border border-border bg-background p-3 text-left animate-[ui-fade-up_180ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none ${
-            place.above ? "bottom-full mb-1.5" : "top-full mt-1.5"
+          aria-hidden={!open || undefined}
+          className={`absolute z-50 block rounded-xl border border-border bg-background p-3 text-left ${place.above ? "bottom-full mb-1.5" : "top-full mt-1.5"} ${
+            open ? "" : "pointer-events-none"
           }`}
-          style={{ width: CARD_WIDTH, transform: place.shift ? `translateX(-${place.shift}px)` : undefined }}
+          // Shifted with left, not transform, so the entrance animation can't undo it.
+          style={{ width: CARD_WIDTH, left: -place.shift }}
         >
           {unavailable ? (
             <span className="block text-[12.5px] text-muted-foreground">This source couldn’t be loaded.</span>

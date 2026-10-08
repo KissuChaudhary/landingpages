@@ -5,17 +5,18 @@ export const chatHistory: UiItem = {
   title: 'Chat history',
   description: 'Past chats grouped by day, searchable, with titles that write themselves, rename in place and delete with Undo.',
   summary:
-    'The sidebar people come back to every day. Chats group into Pinned, Today, Yesterday, Previous 7 days and older. A new chat shimmers "New chat" until its title is generated, then the title types itself in. Search filters as you type and marks the match. Hover a chat to pin, rename or delete it: renaming turns the row into a field in place, and deleting folds it into "Chat deleted · Undo", only deleting once the undo window has passed.',
+    'The sidebar people come back to every day. Chats group into Pinned, Today, Yesterday, Previous 7 days and older. A new chat shimmers "New chat" until its title is generated, then the title types itself in. Search filters as you type and marks the match, and the rows that stay glide up to close the gaps. Hover a chat to pin, rename or delete it: pinning glides the row into Pinned while the pin trades places with unpin, renaming turns the row into a field in place, and deleting lets the title give way to "Chat deleted · Undo", only deleting (and folding the row away) once the undo window has passed.',
   file: 'chat-history.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-fade-up'],
+  css: ['@keyframes ui-shimmer', '@keyframes ui-fade-up'],
   tabs: ['Live', 'Search'],
   states: [
     { name: 'grouped', description: 'Newest first under Pinned, Today, Yesterday, Previous 7 days, Previous 30 days, then month names. It regroups at midnight.' },
     { name: 'new', description: '"New chat" shimmers while generating is true; the title then types in once.' },
-    { name: 'search', description: 'Rows filter as you type, the match is highlighted, Escape clears, and an empty search says so.' },
-    { name: 'rename', description: 'The row becomes a field with the title selected; Enter or leaving saves, Escape cancels.' },
-    { name: 'deleted', description: '"Chat deleted · Undo" for undoWindow, then the row folds away and onDelete is called.' },
+    { name: 'search', description: 'Rows filter as you type and the ones that stay glide to their new places (420ms); the match is highlighted, Escape clears, and an empty search says so.' },
+    { name: 'pin', description: 'The row glides from its group into Pinned (and back) instead of jumping; the pin icon blurs into unpin.' },
+    { name: 'rename', description: 'The same row becomes a field, its outline fading in, with the title selected; Enter or leaving saves, Escape cancels.' },
+    { name: 'deleted', description: 'The title blurs out as "Chat deleted · Undo" fades in for undoWindow, then the row folds away and onDelete is called.' },
   ],
   usage: `import { ChatHistory } from "@/components/chat-history";
 
@@ -54,5 +55,6 @@ setChats((c) => c.map((x) => (x.id === chatId ? { ...x, title, generating: false
     'Up and Down move between chats from anywhere in the list, including the search field.',
     'Row actions appear on hover and keyboard focus, always on touch screens, and are labelled with the chat ("Delete Pistachio supplier prices").',
     'Nothing is deleted until Undo has had its chance, so a slip of the finger never costs a conversation.',
+    'With reduced motion, rows move and change state in place.',
   ],
 };
