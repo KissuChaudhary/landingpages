@@ -105,6 +105,10 @@ export const UI_CSS = {
     from: { opacity: '0', transform: 'translateY(var(--ui-from))' },
     to: { opacity: '1', transform: 'none' },
   },
+  '@keyframes ui-progress': {
+    from: { transform: 'scaleX(0)' },
+    to: { transform: 'scaleX(1)' },
+  },
   '@layer base': {
     '::highlight(ui-selection)': {
       'background-color': 'color-mix(in oklab, var(--primary) 18%, transparent)',

@@ -6,6 +6,8 @@ import StatusButtonDemo from './status-button-demo';
 import NumberRollDemo from './number-roll-demo';
 import PricingToggleDemo from './pricing-toggle-demo';
 import WaitlistFieldDemo from './waitlist-field-demo';
+import MorphingNavDemo from './morphing-nav-demo';
+import FeatureTabsDemo from './feature-tabs-demo';
 import PromptComposerDemo from './prompt-composer-demo';
 import MentionMenuDemo from './mention-menu-demo';
 import AttachmentChipDemo from './attachment-chip-demo';
@@ -41,6 +43,8 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'number-roll': NumberRollDemo,
   'pricing-toggle': PricingToggleDemo,
   'waitlist-field': WaitlistFieldDemo,
+  'morphing-nav': MorphingNavDemo,
+  'feature-tabs': FeatureTabsDemo,
   'prompt-composer': PromptComposerDemo,
   'mention-menu': MentionMenuDemo,
   'attachment-chip': AttachmentChipDemo,
