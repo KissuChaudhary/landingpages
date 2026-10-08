@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ApprovalCard } from '../registry/approval-card';
 
 export default function ApprovalCardDemo({ tab = 'Pending' }: { tab?: string }) {
-  const [expiresAt] = useState(() => Date.now() + 2 * 60 * 1000 + 41 * 1000);
+  const [expiresAt] = useState(() => Date.now() + (tab === 'Expired' ? 7 * 1000 : 2 * 60 * 1000 + 41 * 1000));
 
   if (tab === 'Destructive') {
     return (
@@ -25,7 +25,8 @@ export default function ApprovalCardDemo({ tab = 'Pending' }: { tab?: string }) 
     );
   }
 
-  const status = tab === 'Approved' ? 'approved' : tab === 'Denied' ? 'denied' : tab === 'Expired' ? 'expired' : undefined;
+  // Expired runs a short countdown live, so you can watch it roll down and fold.
+  const status = tab === 'Approved' ? 'approved' : tab === 'Denied' ? 'denied' : undefined;
 
   return (
     <div className="w-full max-w-[420px]">
@@ -40,6 +41,7 @@ export default function ApprovalCardDemo({ tab = 'Pending' }: { tab?: string }) 
         approveLabel="Send"
         denyLabel="Don’t send"
         status={status}
+        expiresAt={tab === 'Expired' ? expiresAt : undefined}
       />
     </div>
   );

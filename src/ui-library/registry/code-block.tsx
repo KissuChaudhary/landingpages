@@ -283,7 +283,7 @@ export function CodeBlock({
       {foldable && (
         <div className="flex justify-center border-t border-border/60 py-1.5">
           <button type="button" onClick={() => setExpanded((e) => !e)} aria-expanded={expanded} className={ACTION}>
-            <ChevronDown className="transition-transform duration-300" style={{ transform: expanded ? "rotate(180deg)" : "none", transitionTimingFunction: EASE }} />
+            <ChevronDown className="transition-transform duration-300 motion-reduce:transition-none" style={{ transform: expanded ? "rotate(180deg)" : "none", transitionTimingFunction: EASE }} />
             <TextMorph>{expanded ? "Show less" : `Show ${hidden} more line${hidden === 1 ? "" : "s"}`}</TextMorph>
           </button>
         </div>

@@ -5,16 +5,17 @@ export const approvalCard: UiItem = {
   title: 'Approval card',
   description: 'The agent asks before it acts: what it wants to do, the details, Approve or Deny.',
   summary:
-    'Human-in-the-loop, designed. The card says plainly what the agent wants to do, lists the details worth checking, and asks. Once answered it folds into a single confirming line so the conversation stays readable. Destructive actions get a red Approve, and requests can count down and expire.',
+    'Human-in-the-loop, designed. The card says plainly what the agent wants to do, lists the details worth checking, and asks. Once answered it doesn’t get swapped for a receipt: the same card folds into one line. The body closes, the action slides up beside the header, "Needs your approval" morphs into "Approved" and a check draws itself where the shield was. Destructive actions get a red Approve, and requests can count down, the seconds rolling back like a clock, and expire the same way.',
   file: 'approval-card.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-up', '@keyframes ui-fade-in'],
+  registryDependencies: ['number-roll', 'text-morph'],
+  css: ['@keyframes ui-fade-up'],
   tabs: ['Pending', 'Destructive', 'Approved', 'Denied', 'Expired'],
   states: [
-    { name: 'pending', description: 'The request with its details, an optional countdown, and Deny / Approve.' },
-    { name: 'approved', description: 'Folds into one line: a check, "Approved" and the action.' },
-    { name: 'denied', description: 'Folds into one line; the agent carries on without it.' },
-    { name: 'expired', description: 'The countdown ran out before anyone answered.' },
+    { name: 'pending', description: 'The request with its details and Deny / Approve. With expiresAt, a countdown whose digits roll down each second (00 rolls back to 59, like a clock).' },
+    { name: 'approved', description: 'One motion over 480ms: the body folds shut and blurs out, the padding tightens, the action slides into the header line, the label morphs to "Approved" and an emerald check draws itself in place of the shield.' },
+    { name: 'denied', description: 'Folds the same way into "Denied" with a ban icon; the agent carries on without it.' },
+    { name: 'expired', description: 'The countdown reaches 0:00, folds away with the body, and the label morphs to "Expired".' },
   ],
   usage: `import { ApprovalCard } from "@/components/approval-card";
 
@@ -66,7 +67,10 @@ if (part.state === "output-denied") {
     { name: 'expiresAt / onExpire', type: 'number / () => void', description: 'Countdown to when the request lapses.' },
   ],
   notes: [
-    'The pending card is a labelled group; the answered line is a status, so screen readers hear the outcome.',
+    'The card is a labelled group in every state; the outcome is announced from a status region inside it, so screen readers hear "Approved: Send email to 3 people".',
+    'When you answer, focus moves to the card itself rather than dropping to the page as the buttons fold away. The folded body is inert.',
+    'The countdown is not a live region, so it never chatters; its digits are hidden from assistive tech and the time is real text.',
+    'Installs Number roll and Text morph. With reduced motion, the card changes state in place.',
     'Approve is never focused automatically, so a stray Enter can’t approve an action.',
     'Details wrap rather than truncate, because they are what the user is approving.',
   ],

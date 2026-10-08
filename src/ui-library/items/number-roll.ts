@@ -47,6 +47,7 @@ export function LiveSignups() {
     { name: 'prefix / suffix', type: 'string', description: 'Text around the number, e.g. "+" or " users".' },
     { name: 'from', type: 'number', description: 'Start here and roll to value once painted.' },
     { name: 'duration', type: 'number', default: '900', description: 'Roll time in ms.' },
+    { name: 'direction', type: '"up" | "down"', description: 'Always roll this way. Use "down" for a countdown’s seconds, so 00 → 59 rolls back like a clock instead of spinning forward.' },
   ],
   notes: [
     'The full number is real text for screen readers, search and copy and paste; the rolling columns are hidden from assistive tech.',

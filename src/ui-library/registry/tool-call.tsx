@@ -1,18 +1,28 @@
 "use client";
 
 import * as React from "react";
-import { AlertCircle, Ban, Check, ChevronDown, RotateCcw, Wrench } from "lucide-react";
+import { AlertCircle, Ban, ChevronDown, RotateCcw, Wrench } from "lucide-react";
+import { NumberRoll } from "./number-roll";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * TOOL CALL: one tool invocation, from arguments to result
  *
- *   preparing  the model is still writing the arguments
- *   running    arguments are complete; the tool is executing
- *   done       finished, with timing; output folds open
- *   error      failed, with the message and a retry
+ *   preparing  the model is still writing the arguments; the
+ *              panel eases taller as each one arrives
+ *   running    a spinner opens in and the label morphs to
+ *              "Running"
+ *   done       the spinner blurs into a check that draws itself
+ *              and the run time rolls up from zero; the output
+ *              rises in as the panel eases to fit it
+ *   error      the label morphs to "Failed" in red, with the
+ *              message and a retry
  *   denied     the user said no
  *
- * Arguments render as readable fields; nested values as JSON.
+ * One status pill throughout: its icon slot opens and closes,
+ * icons swap through a blur and the label morphs, so it never
+ * swaps out. Arguments render as readable fields; nested
+ * values as JSON.
  * Pass renderOutput to show a result your own way.
  * ───────────────────────────────────────────────────────── */
 
@@ -41,12 +51,60 @@ export interface ToolCallProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 }
 
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
-const SHIMMER =
-  "bg-[linear-gradient(90deg,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_35%,var(--foreground)_50%,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_65%)] bg-[length:200%_100%] bg-clip-text text-transparent animate-[ui-shimmer_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:text-foreground/70";
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+// A light that sweeps across the label. A mask, not a text clip, so it reaches letters that are mid-morph.
+const SHEEN =
+  "text-foreground [mask-image:linear-gradient(90deg,rgb(0_0_0/0.45)_35%,#000_50%,rgb(0_0_0/0.45)_65%)] [mask-size:200%_100%] animate-[ui-sheen_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:[mask-image:none] motion-reduce:text-foreground/70";
+const LABELS: Record<ToolCallStatus, string> = { preparing: "Preparing", running: "Running", done: "Done", error: "Failed", denied: "Denied" };
 
-function formatDuration(ms: number) {
-  return ms < 1000 ? `${Math.round(ms)}ms` : ms < 60000 ? `${(ms / 1000).toFixed(1)}s` : `${Math.floor(ms / 60000)}m ${Math.round((ms % 60000) / 1000)}s`;
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+
+/** Icons trade places through a blur: the old one shrinks away as the new one grows in. */
+const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  transform: on ? "none" : "scale(0.6)",
+  filter: on ? "none" : "blur(3px)",
+  transition: reduced ? "none" : `opacity 260ms ${MORPH}, transform 380ms ${MORPH}, filter 260ms ${MORPH}`,
+});
+
+function DrawnCheck({ drawn, reduced }: { drawn: boolean; reduced: boolean }) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="size-3.5">
+      <path
+        d="M3.5 8.5 6.5 11.5 12.5 4.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        pathLength={1}
+        strokeDasharray={1}
+        style={{ strokeDashoffset: drawn ? 0 : 1, transition: drawn && !reduced ? `stroke-dashoffset 420ms ${MORPH} 120ms` : "none" }}
+      />
+    </svg>
+  );
 }
+
+/** The run time, in the unit that reads best; it rolls up from zero when the call has just finished. */
+function Duration({ ms, rollIn }: { ms: number; rollIn: boolean }) {
+  const from = rollIn ? 0 : undefined;
+  if (ms < 1000) return <NumberRoll value={Math.round(ms)} suffix="ms" from={from} />;
+  if (ms < 60000) return <NumberRoll value={Math.round(ms / 100) / 10} format={ONE_DECIMAL} suffix="s" from={from} />;
+  return (
+    <>
+      <NumberRoll value={Math.floor(ms / 60000)} suffix="m" from={from} />
+      &nbsp;
+      <NumberRoll value={Math.round((ms % 60000) / 1000)} suffix="s" from={from} />
+    </>
+  );
+}
+const ONE_DECIMAL = { minimumFractionDigits: 1, maximumFractionDigits: 1 };
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -105,9 +163,31 @@ export function ToolCall({
   className = "",
   ...props
 }: ToolCallProps) {
+  const reduced = useReducedMotion();
   const [ownOpen, setOwnOpen] = React.useState(defaultOpen);
   const [errorSeen, setErrorSeen] = React.useState(false);
   const panelId = React.useId();
+  const bodyRef = React.useRef<HTMLDivElement>(null);
+  const [bodyHeight, setBodyHeight] = React.useState<number | null>(null);
+
+  // Each time it finishes while you watch, the run time rolls up from zero (a finished call in history just sits).
+  const [prevStatus, setPrevStatus] = React.useState(status);
+  const [finishes, setFinishes] = React.useState(0);
+  if (prevStatus !== status) {
+    setPrevStatus(status);
+    if (status === "done") setFinishes((n) => n + 1);
+  }
+
+  // The panel takes the height of what's in it, so arguments and output arriving ease it taller instead of jumping.
+  React.useLayoutEffect(() => {
+    const el = bodyRef.current;
+    if (!el) return;
+    const measure = () => setBodyHeight((h) => (h === el.offsetHeight ? h : el.offsetHeight));
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Failures open themselves once, so the reason is visible without a click.
   React.useEffect(() => {
@@ -124,30 +204,59 @@ export function ToolCall({
     onOpenChange?.(next);
   };
 
-  const badge =
-    status === "preparing" ? (
-      <span className={`text-[12px] font-medium ${SHIMMER}`}>Preparing</span>
-    ) : status === "running" ? (
-      <span className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
-        <span aria-hidden="true" className="size-3 animate-spin rounded-full border-[1.5px] border-border border-t-foreground/70 motion-reduce:animate-none" />
-        Running
+  const showTime = status === "done" && duration !== undefined;
+  const icons: Partial<Record<ToolCallStatus, React.ReactNode>> = {
+    // Spins only while running, so a hidden spinner never keeps the page busy.
+    running: (
+      <span className={`size-3 rounded-full border-[1.5px] border-border border-t-foreground/70 motion-reduce:animate-none ${status === "running" ? "animate-spin" : ""}`} />
+    ),
+    done: (
+      <span className="text-emerald-600 dark:text-emerald-400">
+        <DrawnCheck drawn={status === "done"} reduced={reduced} />
       </span>
-    ) : status === "done" ? (
-      <span className="flex items-center gap-1 text-[12px] text-muted-foreground animate-[ui-fade-in_300ms_ease-out_both]">
-        <Check aria-hidden="true" className="size-3.5 text-emerald-600" strokeWidth={2.5} />
-        {duration !== undefined ? formatDuration(duration) : "Done"}
+    ),
+    error: <AlertCircle className="size-3.5" />,
+    denied: <Ban className="size-3.5" />,
+  };
+  const badge = (
+    <span
+      className={`flex items-center text-[12px] transition-colors duration-300 ${status === "error" ? "font-medium text-red-500" : status === "preparing" ? "font-medium" : "text-muted-foreground"}`}
+    >
+      <span
+        aria-hidden="true"
+        className="relative flex h-3.5 shrink-0 items-center justify-center"
+        style={{
+          width: status === "preparing" ? 0 : 14,
+          marginRight: status === "preparing" ? 0 : 5,
+          transition: reduced ? "none" : `width 380ms ${MORPH}, margin 380ms ${MORPH}`,
+        }}
+      >
+        {(Object.keys(icons) as ToolCallStatus[]).map((s) => (
+          <span key={s} className="absolute inset-0 flex items-center justify-center" style={swap(s === status, reduced)}>
+            {icons[s]}
+          </span>
+        ))}
       </span>
-    ) : status === "error" ? (
-      <span className="flex items-center gap-1 text-[12px] font-medium text-red-500 animate-[ui-fade-in_300ms_ease-out_both]">
-        <AlertCircle aria-hidden="true" className="size-3.5" />
-        Failed
+      <span className={status === "preparing" ? SHEEN : ""}>
+        <TextMorph>{showTime ? "" : LABELS[status]}</TextMorph>
       </span>
-    ) : (
-      <span className="flex items-center gap-1 text-[12px] text-muted-foreground">
-        <Ban aria-hidden="true" className="size-3.5" />
-        Denied
-      </span>
-    );
+      {duration !== undefined && (
+        <span
+          aria-hidden={!showTime || undefined}
+          className="grid"
+          style={{
+            gridTemplateColumns: showTime ? "1fr" : "0fr",
+            opacity: showTime ? 1 : 0,
+            transition: reduced ? "none" : `grid-template-columns 420ms ${MORPH}, opacity 300ms ${MORPH}`,
+          }}
+        >
+          <span className="flex min-w-0 whitespace-nowrap tabular-nums [clip-path:inset(-4px_0)]">
+            <Duration key={finishes} ms={duration} rollIn={finishes > 0 && !reduced} />
+          </span>
+        </span>
+      )}
+    </span>
+  );
 
   return (
     <div className={`overflow-hidden rounded-xl border border-border bg-background ${className}`} {...props}>
@@ -168,17 +277,20 @@ export function ToolCall({
         <span role="status" aria-live="polite" className="shrink-0">
           {badge}
         </span>
-        <ChevronDown aria-hidden="true" className={`size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+        <ChevronDown aria-hidden="true" className={`size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`} />
       </button>
 
       <div
         id={panelId}
         inert={!expanded}
-        className={`grid transition-[grid-template-rows,opacity] duration-[350ms] ease-[cubic-bezier(0.23,1,0.32,1)] ${
-          expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        className="overflow-hidden"
+        style={{
+          height: expanded ? (bodyHeight ?? "auto") : 0,
+          opacity: expanded ? 1 : 0,
+          transition: reduced || bodyHeight === null ? "none" : `height 420ms ${MORPH}, opacity 300ms ${MORPH}`,
+        }}
       >
-        <div className="overflow-hidden">
+        <div ref={bodyRef}>
           <div className="flex flex-col gap-4 border-t border-border px-3 py-3">
             {input !== undefined && (
               <section>
@@ -195,7 +307,7 @@ export function ToolCall({
             )}
 
             {status === "error" && (
-              <section className="flex items-start justify-between gap-3">
+              <section className="flex items-start justify-between gap-3 animate-[ui-fade-up_300ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none">
                 <p className="text-[12.5px] leading-5 text-red-500">{errorText ?? "The tool failed."}</p>
                 {onRetry && (
                   <button

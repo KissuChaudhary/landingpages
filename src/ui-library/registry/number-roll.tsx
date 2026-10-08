@@ -28,6 +28,8 @@ export interface NumberRollProps extends Omit<React.HTMLAttributes<HTMLSpanEleme
   from?: number;
   /** Roll duration in ms. */
   duration?: number;
+  /** Always roll this way, e.g. "down" for a countdown's seconds, which wrap from 00 to 59. Defaults to the way the number moved. */
+  direction?: "up" | "down";
 }
 
 type Column = { key: string; char: string; digit: number | null };
@@ -126,7 +128,7 @@ function Place({ enter, children }: { enter: boolean; children: React.ReactNode 
   );
 }
 
-export function NumberRoll({ value, format, locales, prefix = "", suffix = "", from, duration = 900, className = "", ...props }: NumberRollProps) {
+export function NumberRoll({ value, format, locales, prefix = "", suffix = "", from, duration = 900, direction, className = "", ...props }: NumberRollProps) {
   const reduced = useReducedMotion();
   const [shown, setShown] = React.useState(from ?? value);
   const previous = React.useRef(shown);
@@ -145,7 +147,7 @@ export function NumberRoll({ value, format, locales, prefix = "", suffix = "", f
   const formatter = React.useMemo(() => new Intl.NumberFormat(locales, format), [locales, format && JSON.stringify(format)]); // eslint-disable-line react-hooks/exhaustive-deps
   const text = `${prefix}${formatter.format(shown)}${suffix}`;
   const cols = React.useMemo(() => columns(text), [text]);
-  const trend = Math.sign(shown - previous.current);
+  const trend = direction === "up" ? 1 : direction === "down" ? -1 : Math.sign(shown - previous.current);
 
   // Places that disappear fold away instead of vanishing.
   const [leaving, setLeaving] = React.useState<Column[]>([]);

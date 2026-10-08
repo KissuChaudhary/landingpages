@@ -344,7 +344,7 @@ export function WebResearch({ status, queries, sources, open: openProp, defaultO
         <Reveal show={!working} reduced={reduced} className="shrink-0">
           <ChevronRight
             aria-hidden="true"
-            className="size-3.5 text-muted-foreground transition-transform duration-300 group-hover:text-foreground"
+            className="size-3.5 text-muted-foreground transition-transform duration-300 group-hover:text-foreground motion-reduce:transition-none"
             style={{
               transform: open ? "rotate(90deg)" : "none",
               transitionTimingFunction: EASE,
