@@ -277,6 +277,26 @@ export const TEMPLATES: TemplateItem[] = [
       "demoUrl": "/demo/stillform",
       "detailUrl": "/template/stillform",
       "thumbnailUrl": "/previews/card/stillform.webp"
+    },
+    {
+      "slug": "prism",
+      "title": "Prism: AI Creative App Launch",
+      "category": "Landing Pages",
+      "defaultTheme": "dark",
+      "badge": "Creative App",
+      "description": "A premium creative-app launch page with three complete themes, two hero compositions, original artwork, and an interactive product workspace.",
+      "tags": ["AI Creative App", "Consumer App", "Three Themes", "Interactive UI", "Next.js 15"],
+      "features": [
+        "Graphite, Paper and Studio themes with two hero layouts",
+        "Filterable artwork gallery with prompt-to-workspace dialogs",
+        "Colour comparison, canvas crops and real example image exports",
+        "Modular sections, typed content config and original artwork"
+      ],
+      "accentColor": "from-violet-400 to-indigo-500",
+      "previewUrl": "/preview/prism",
+      "demoUrl": "/demo/prism",
+      "detailUrl": "/template/prism",
+      "thumbnailUrl": "/previews/card/prism.webp"
     }
 ];
 

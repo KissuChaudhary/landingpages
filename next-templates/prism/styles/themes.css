@@ -1,0 +1,66 @@
+.prism-site {
+  --bg: #0e0e13;
+  --surface: #17171e;
+  --surface-raised: #202028;
+  --surface-soft: #131319;
+  --text: #f1f0f6;
+  --muted: #a5a3b3;
+  --subtle: #8d899c;
+  --line: #2c2b37;
+  --line-strong: #484354;
+  --accent: #b9a1ff;
+  --accent-strong: #8762e6;
+  --accent-soft: #242033;
+  --on-accent: #201536;
+  --button: #eae6f6;
+  --on-button: #191521;
+  --glow: #7852c7;
+  --shadow: 0 24px 90px #0005;
+  --canvas-grid: #ffffff05;
+  --overlay: #09090dbd;
+  color-scheme: dark;
+}
+.prism-site[data-theme="paper"] {
+  --bg: #fafbfe;
+  --surface: #fff;
+  --surface-raised: #f0f3fa;
+  --surface-soft: #f4f6fc;
+  --text: #1e2435;
+  --muted: #58637b;
+  --subtle: #606b83;
+  --line: #dce2ef;
+  --line-strong: #b4c0d9;
+  --accent: #365ad6;
+  --accent-strong: #304fc3;
+  --accent-soft: #e9eefc;
+  --on-accent: #fff;
+  --button: #252e45;
+  --on-button: #fff;
+  --glow: #7a9fe5;
+  --shadow: 0 24px 80px #233e7b16;
+  --canvas-grid: #25478508;
+  --overlay: #131c36b5;
+  color-scheme: light;
+}
+.prism-site[data-theme="studio"] {
+  --bg: #f6f2ec;
+  --surface: #fffcf8;
+  --surface-raised: #eee7de;
+  --surface-soft: #f0ebe4;
+  --text: #342a27;
+  --muted: #6d605a;
+  --subtle: #73645d;
+  --line: #e0d6cc;
+  --line-strong: #bdae9f;
+  --accent: #ad3c26;
+  --accent-strong: #a83b24;
+  --accent-soft: #f6e3da;
+  --on-accent: #fff;
+  --button: #3b2c27;
+  --on-button: #fff;
+  --glow: #d98d6b;
+  --shadow: 0 24px 80px #64402b18;
+  --canvas-grid: #65442b08;
+  --overlay: #2f2119b5;
+  color-scheme: light;
+}

@@ -1,0 +1,221 @@
+.workflow-section {
+  border-top: 1px solid var(--line);
+}
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin-top: 50px;
+}
+.workflow-step {
+  position: relative;
+}
+.workflow-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: var(--line);
+  left: 70px;
+  top: 25px;
+  width: calc(100% - 20px);
+}
+.workflow-node {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.workflow-node > svg {
+  box-sizing: content-box;
+  padding: 14px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 12px;
+}
+.workflow-node .mono {
+  color: var(--subtle);
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+  padding-right: 10px;
+}
+.workflow-step h3 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin: 25px 0 12px;
+}
+.workflow-step > p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 275px;
+}
+.workflow-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 22px;
+  font-size: 9px;
+  color: var(--subtle);
+}
+.workflow-detail svg,
+.detail-dot {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.detail-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.stories-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.stories-symbol {
+  font-size: 70px;
+  line-height: 1;
+  color: var(--accent);
+}
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 37px;
+}
+.story {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  margin: 0;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.story-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--subtle);
+}
+.story-top .mono {
+  font-size: 8px;
+}
+.story blockquote {
+  margin: 29px 0 31px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+.story figcaption {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: auto;
+}
+.story-avatar {
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  color: #332c39;
+  border-radius: 50%;
+  font-size: 9px;
+}
+.story figcaption > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 10px;
+}
+.story figcaption > div > span:last-child {
+  color: var(--subtle);
+  font-size: 9px;
+}
+@media (max-width: 1000px) {
+  .workflow-grid {
+    gap: 25px;
+  }
+  .story {
+    padding: 20px;
+  }
+  .story blockquote {
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+  .story blockquote {
+    max-width: 560px;
+    font-size: 19px;
+    margin-block: 20px 25px;
+  }
+}
+@media (max-width: 640px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin-top: 35px;
+  }
+  .workflow-step {
+    padding-left: 66px;
+  }
+  .workflow-node {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .workflow-node > svg {
+    padding: 11px;
+  }
+  .workflow-node .mono {
+    padding: 0;
+  }
+  .workflow-step:not(:last-child)::after {
+    width: 1px;
+    height: calc(100% - 16px);
+    left: 23px;
+    top: 78px;
+  }
+  .workflow-step h3 {
+    margin-top: 0;
+  }
+  .workflow-step > p {
+    max-width: 100%;
+  }
+  .workflow-detail {
+    margin-top: 15px;
+    font-size: 8px;
+  }
+  .stories-symbol {
+    font-size: 47px;
+  }
+  .stories-grid {
+    margin-top: 30px;
+  }
+  .story {
+    padding: 24px;
+  }
+  .story blockquote {
+    font-size: 17px;
+  }
+  .story figcaption > div {
+    font-size: 11px;
+  }
+}
