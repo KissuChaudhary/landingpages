@@ -103,6 +103,27 @@ canvas[style*="pixelated"] {
   image-rendering: pixelated;
 }
 
+/* UI library keyframes. Shipped to installers through the registry too (src/ui-library/registry.ts, UI_CSS) */
+@keyframes ui-shimmer {
+  0% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+@keyframes ui-fade-up {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes ui-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ui-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 7px;

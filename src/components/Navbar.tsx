@@ -27,8 +27,8 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
           <Link href="/#catalog" className="hover:text-[#181925] transition-colors">
             Templates
           </Link>
-          <Link href="/#how-it-works" className="hover:text-[#181925] transition-colors">
-            How it works
+          <Link href="/ui" className="hover:text-[#181925] transition-colors">
+            Components
           </Link>
           <Link href="/#pricing" className="hover:text-[#181925] transition-colors">
             Pricing

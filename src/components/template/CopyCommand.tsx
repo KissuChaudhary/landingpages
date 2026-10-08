@@ -17,7 +17,7 @@ export default function CopyCommand({ commands }: { commands: string[] }) {
 
   return (
     <div className="flex items-start justify-between gap-4 rounded-lg border border-neutral-200 px-4 py-3">
-      <pre className="overflow-x-auto font-mono text-[13px] leading-6 text-neutral-900">
+      <pre className="min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden font-mono text-[13px] leading-6 text-neutral-900">
         <code>
           {commands.map((line) => (
             <span key={line} className="block">
