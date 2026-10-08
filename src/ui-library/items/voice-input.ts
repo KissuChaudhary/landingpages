@@ -5,17 +5,18 @@ export const voiceInput: UiItem = {
   title: 'Voice input',
   description: 'Dictate a prompt: a waveform from your real mic level, a timer, then transcribing.',
   summary:
-    'Speaking is faster than typing, if you can tell the app is listening. The bars are drawn from your microphone’s level, so they react to your voice rather than looping. A timer runs, words appear as they’re recognised, and Stop sends it off to be transcribed. If the browser blocks the mic, it says how to fix that instead of failing silently.',
+    'Speaking is faster than typing, if you can tell the app is listening. It’s one surface from start to finish: the mic button stretches into the listening bar as the mic blurs into Stop. The bars are drawn from your microphone’s level, so they react to your voice rather than looping; the timer’s seconds roll, and words appear above as they’re recognised. Stop settles the waveform flat as "Transcribing" rises over it, then the bar shrinks back into the mic. If the browser blocks the mic, the icon crosses out and how to fix it opens beside it instead of failing silently.',
   file: 'voice-input.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-shimmer', '@keyframes ui-fade-in', '@keyframes ui-wave'],
+  registryDependencies: ['number-roll', 'text-morph'],
+  css: ['@keyframes ui-sheen', '@keyframes ui-wave'],
   tabs: ['Live', 'Blocked', 'Error'],
   states: [
     { name: 'idle', description: 'A mic button labelled "Dictate".' },
-    { name: 'listening', description: 'Stop, a scrolling waveform from level, the timer, Cancel, and the transcript so far.' },
-    { name: 'transcribing', description: 'A spinner and "Transcribing" while the audio becomes text.' },
-    { name: 'blocked', description: 'Microphone permission was denied; tells you where to allow it, with Try again.' },
-    { name: 'error', description: 'Nothing usable was heard; Try again.' },
+    { name: 'listening', description: 'The button stretches into a 44px bar over 520ms while the mic blurs into Stop; the waveform, a timer whose seconds roll and Cancel fade in once there’s room. The transcript so far opens above.' },
+    { name: 'transcribing', description: 'Stop blurs into a spinner, the waveform settles flat and fades as "Transcribing" rises under a sweep of light; afterwards the bar shrinks back into the mic.' },
+    { name: 'blocked', description: 'Microphone permission was denied: the mic blurs into a crossed-out one and where to allow it opens beside it, with Try again.' },
+    { name: 'error', description: 'Nothing usable was heard; the title morphs to "Didn’t catch that", with Try again.' },
   ],
   usage: `import { VoiceInput } from "@/components/voice-input";
 
@@ -106,6 +107,7 @@ export function Dictate({ onText }: { onText: (text: string) => void }) {
   notes: [
     'Buttons are labelled "Dictate", "Stop and transcribe" and "Cancel"; listening and transcribing are announced as status.',
     'The waveform is decorative (aria-hidden); the timer and transcript carry the information.',
-    'Blocked and error use role="alert". With reduced motion the fallback wave holds still.',
+    'Blocked and error use role="alert". Give the component the width the bar should fill; the mic sits at the start and stretches across it.',
+    'Installs Number roll and Text morph. With reduced motion the bar changes size in place and the fallback wave holds still.',
   ],
 };

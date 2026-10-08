@@ -56,7 +56,7 @@ export default function VoiceInputDemo({ tab = 'Live' }: { tab?: string }) {
   const retry = () => (tab === 'Live' ? start() : setStatus(tab === 'Blocked' ? 'blocked' : 'error'));
 
   return (
-    <div className="flex w-full max-w-[420px] flex-col items-center gap-3">
+    <div className="flex w-full max-w-[420px] flex-col gap-3">
       <VoiceInput
         status={status}
         level={level}
@@ -65,10 +65,10 @@ export default function VoiceInputDemo({ tab = 'Live' }: { tab?: string }) {
         onStart={retry}
         onStop={stop}
         onCancel={cancel}
-        className={status === 'idle' ? '' : 'w-full'}
+        className="w-full"
       />
       {status === 'idle' && (
-        <p className="text-center text-[12.5px] text-muted-foreground">{sent ? `“${sent}”` : 'Press the mic to dictate.'}</p>
+        <p className="text-[12.5px] text-muted-foreground animate-[ui-fade-in_300ms_ease-out_both] motion-reduce:animate-none">{sent ? `“${sent}”` : 'Press the mic to dictate.'}</p>
       )}
     </div>
   );

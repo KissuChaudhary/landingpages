@@ -5,14 +5,15 @@ export const responseVersions: UiItem = {
   title: 'Response versions',
   description: 'Step between regenerated answers with "2 / 3", and regenerate without losing the old ones.',
   summary:
-    'Regenerating shouldn’t throw away an answer you half liked. Wrap the answer and this adds a small pager under it: arrows step between versions, the content slides in from the side it came from, and Regenerate makes a new version with a spinner in place while it’s written.',
+    'Regenerating shouldn’t throw away an answer you half liked. Wrap the answer and this adds a small pager under it. Each step sends the answer you leave out one way through a blur while the next comes in from the other side, the height eases between them and "2 / 3" rolls. Regenerate blurs into a spinner while the new version is written, and the count rolls up when it lands.',
   file: 'response-versions.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-slide-from-right', '@keyframes ui-slide-from-left'],
+  registryDependencies: ['number-roll'],
+  css: [],
   states: [
     { name: 'single', description: 'One version: the arrows are disabled and only Regenerate is live.' },
-    { name: 'browsing', description: '"2 / 3"; the content slides from the right going forward and from the left going back.' },
-    { name: 'regenerating', description: 'The Regenerate button spins and is disabled until the new version arrives.' },
+    { name: 'browsing', description: 'The old answer leaves 24px toward where you came from (260ms) as the new one arrives from the side you stepped toward (420ms); the height eases between them and the counter rolls.' },
+    { name: 'regenerating', description: 'The arrow blurs into a spinner and Regenerate is disabled until the new version arrives; then "3 / 3" rolls up.' },
   ],
   usage: `import { ResponseVersions } from "@/components/response-versions";
 
@@ -61,6 +62,6 @@ function LastAnswer() {
   notes: [
     'The counter is announced politely as "Version 2 / 3".',
     'Arrows are real disabled buttons at either end, so they’re skipped by Tab.',
-    'The slide is off with reduced motion; the content simply swaps.',
+    'Installs Number roll. With reduced motion the content simply swaps and the counter changes in place.',
   ],
 };

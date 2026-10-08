@@ -5,16 +5,17 @@ export const attachmentChip: UiItem = {
   title: 'Attachment chip',
   description: 'A file on its way into a prompt: uploading, being read, ready or failed.',
   summary:
-    'Shows a file’s whole journey in one small chip. A ring fills around the icon while it uploads, "Reading" shimmers while the model processes it, and when ready it shows type and size. Images show a thumbnail, failures say why with a Retry, and the remove button appears on hover or focus (always on touch screens).',
+    'Shows a file’s whole journey in one small chip, on one line that never swaps out. A ring fills around the icon while "Uploading 42%" rolls; the ring fades as the line morphs to "Reading" under a sweep of light; then it morphs again into type and size. Images show a thumbnail, failures blur the icon into an alert and say why, with Retry opening in beside it, and the remove button appears on hover or focus (always on touch screens).',
   file: 'attachment-chip.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-shimmer', '@keyframes ui-fade-up'],
+  registryDependencies: ['number-roll', 'text-morph'],
+  css: ['@keyframes ui-sheen', '@keyframes ui-fade-up'],
   tabs: ['Live', 'Image', 'Error'],
   states: [
-    { name: 'uploading', description: 'A progress ring around the icon and "Uploading 42%".' },
-    { name: 'processing', description: 'Uploaded; "Reading" shimmers while the model takes it in.' },
-    { name: 'ready', description: 'File type and size, e.g. "PDF · 2.4 MB".' },
-    { name: 'error', description: 'A red border, the reason and a Retry link.' },
+    { name: 'uploading', description: 'A progress ring fills around the icon and "Uploading 42%" rolls with it.' },
+    { name: 'processing', description: 'The ring fades (360ms), the percent folds away and the line morphs to "Reading" under a 1.4s sweep of light.' },
+    { name: 'ready', description: 'The line morphs into type and size, e.g. "PDF · 2.4 MB"; a thumbnail brightens to full.' },
+    { name: 'error', description: 'A red border, the icon blurs into an alert, the line morphs to the reason and Retry opens in.' },
   ],
   usage: `import { AttachmentChip } from "@/components/attachment-chip";
 
@@ -44,7 +45,8 @@ function SentFiles({ message }: { message: UIMessage }) {
     { name: 'onRemove', type: '() => void', description: 'Shows the remove button.' },
   ],
   notes: [
-    'The status line is announced politely, so progress and failures reach screen readers.',
+    'Each step is announced politely ("Uploading q3-sales.pdf", "q3-sales.pdf is ready"), but never every percent.',
+    'Installs Number roll and Text morph. With reduced motion, states change in place.',
     'The remove button is labelled with the file name, e.g. "Remove q3-sales.pdf".',
     'Long names truncate; the chip never grows past 260px.',
   ],

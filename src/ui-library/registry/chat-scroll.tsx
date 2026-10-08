@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { ArrowDown } from "lucide-react";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * JUMP TO LATEST: a chat that follows the answer, until you
@@ -11,7 +12,8 @@ import { ArrowDown } from "lucide-react";
  *   away       you scrolled up: it lets go at once, and a round
  *              ↓ button appears
  *   new below  text arrived while you were away: the button
- *              widens into "● Writing" (or "New reply")
+ *              widens into "● Writing"; when the answer ends the
+ *              label morphs to "New reply"
  *   back       a click glides down, chasing the moving bottom,
  *              and it follows again
  *
@@ -32,8 +34,9 @@ export interface ChatScrollProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const EASE = "cubic-bezier(0.23,1,0.32,1)";
-const SHIMMER =
-  "bg-[linear-gradient(90deg,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_35%,var(--foreground)_50%,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_65%)] bg-[length:200%_100%] bg-clip-text text-transparent animate-[ui-shimmer_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:text-foreground/70";
+// A light that sweeps across the label. A mask, not a text clip, so it reaches letters that are mid-morph.
+const SHEEN =
+  "text-foreground [mask-image:linear-gradient(90deg,rgb(0_0_0/0.45)_35%,#000_50%,rgb(0_0_0/0.45)_65%)] [mask-size:200%_100%] animate-[ui-sheen_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:[mask-image:none] motion-reduce:text-foreground/70";
 
 const reducedQuery = "(prefers-reduced-motion: reduce)";
 const subscribeReduced = (onChange: () => void) => {
@@ -56,7 +59,6 @@ export function ChatScroll({
   const reduced = useReducedMotion();
   const scrollerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const labelRef = React.useRef<HTMLSpanElement>(null);
   const stuck = React.useRef(true);
   const lastTop = React.useRef(0);
   const touchY = React.useRef(0);
@@ -66,7 +68,6 @@ export function ChatScroll({
   const intent = React.useRef(0);
   const [away, setAway] = React.useState(false);
   const [unread, setUnread] = React.useState(false);
-  const [labelWidth, setLabelWidth] = React.useState(0);
 
   const distance = () => {
     const el = scrollerRef.current;
@@ -141,16 +142,6 @@ export function ChatScroll({
     toBottom(true);
   }, [followKey, toBottom]);
 
-  React.useLayoutEffect(() => {
-    const label = labelRef.current;
-    if (!label) return;
-    const measure = () => setLabelWidth((w) => (w === label.offsetWidth ? w : label.offsetWidth));
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(label);
-    return () => observer.disconnect();
-  }, []);
-
   const onScroll = () => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -218,21 +209,26 @@ export function ChatScroll({
             transition: reduced ? "none" : `opacity 220ms ${EASE}, transform 320ms ${EASE}`,
           }}
         >
+          {/* The label opens out of the round button; its words morph from "Writing" to "New reply" and the pill follows. */}
           <span
             aria-hidden="true"
-            className="flex overflow-hidden"
+            className="grid"
             style={{
-              maxWidth: unread ? labelWidth : 0,
+              gridTemplateColumns: unread ? "1fr" : "0fr",
               opacity: unread ? 1 : 0,
-              transition: reduced ? "none" : `max-width 380ms ${EASE}, opacity 260ms ${EASE}`,
+              transition: reduced ? "none" : `grid-template-columns 380ms ${EASE}, opacity 260ms ${EASE}`,
             }}
           >
-            <span ref={labelRef} className="flex w-max shrink-0 items-center gap-1.5 whitespace-nowrap pl-1 pr-1.5">
-              <span className="relative flex size-1.5">
-                {streaming && <span className="absolute inset-0 rounded-full bg-primary animate-[ui-ping_1.4s_cubic-bezier(0,0,0.2,1)_infinite] motion-reduce:animate-none" />}
-                <span className="relative size-1.5 rounded-full bg-primary" />
+            <span className="flex min-w-0 items-center gap-1.5 overflow-hidden whitespace-nowrap">
+              <span className="flex shrink-0 items-center gap-1.5 pl-1 pr-1.5">
+                <span className="relative flex size-1.5">
+                  <span className={`absolute inset-0 rounded-full bg-primary motion-reduce:animate-none ${streaming ? "animate-[ui-ping_1.4s_cubic-bezier(0,0,0.2,1)_infinite]" : "opacity-0"}`} />
+                  <span className="relative size-1.5 rounded-full bg-primary" />
+                </span>
+                <span className={`transition-colors duration-300 ${streaming ? SHEEN : ""}`}>
+                  <TextMorph>{streaming ? "Writing" : "New reply"}</TextMorph>
+                </span>
               </span>
-              <span className={streaming ? SHIMMER : ""}>{streaming ? "Writing" : "New reply"}</span>
             </span>
           </span>
           <ArrowDown aria-hidden="true" className="size-4" />

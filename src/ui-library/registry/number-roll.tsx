@@ -70,6 +70,7 @@ function Digit({ digit, trend, duration, reduced, rollIn }: { digit: number; tre
   const [pos, setPos] = React.useState(MIDDLE + (rollIn ? 0 : digit));
   const [moving, setMoving] = React.useState(false);
   const posRef = React.useRef(pos);
+  const stripRef = React.useRef<HTMLSpanElement>(null);
 
   React.useLayoutEffect(() => {
     const current = posRef.current;
@@ -82,7 +83,25 @@ function Digit({ digit, trend, duration, reduced, rollIn }: { digit: number; tre
       return;
     }
     const up = trend > 0 || (trend === 0 && digit > showing);
-    const target = up ? current + ((digit - showing + 10) % 10) : current - ((showing - digit + 10) % 10);
+    let target = up ? current + ((digit - showing + 10) % 10) : current - ((showing - digit + 10) % 10);
+    // Values arriving faster than a roll (a progress percent) never let it re-centre, so before it runs off the strip,
+    // jump the strip back by whole sets mid-roll (it looks identical) and roll on from there.
+    if (target < 10 || target > SETS * 10 - 11) {
+      const shift = Math.round((target - MIDDLE) / 10) * 10;
+      const strip = stripRef.current;
+      if (strip?.offsetHeight) {
+        let visual = current;
+        try {
+          visual = -new DOMMatrixReadOnly(getComputedStyle(strip).transform).m42 / (strip.offsetHeight / (SETS * 10));
+        } catch {}
+        const transition = strip.style.transition;
+        strip.style.transition = "none";
+        strip.style.transform = `translateY(${(-(visual - shift) * 100) / (SETS * 10)}%)`;
+        void strip.offsetHeight;
+        strip.style.transition = transition;
+      }
+      target -= shift;
+    }
     posRef.current = target;
     setMoving(true);
     setPos(target);
@@ -100,6 +119,7 @@ function Digit({ digit, trend, duration, reduced, rollIn }: { digit: number; tre
     <span className="relative inline-block [clip-path:inset(0)]">
       <span className="invisible">{digit}</span>
       <span
+        ref={stripRef}
         aria-hidden="true"
         onTransitionEnd={settle}
         className="absolute inset-x-0 top-0 flex flex-col"
