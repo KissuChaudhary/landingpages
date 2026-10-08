@@ -1,13 +1,18 @@
 import type { UiItem } from '../registry';
 import { promptComposer } from './prompt-composer';
+import { mentionMenu } from './mention-menu';
 import { attachmentChip } from './attachment-chip';
 import { modeSwitcher } from './mode-switcher';
+import { modelPicker } from './model-picker';
 import { voiceInput } from './voice-input';
 import { thinkingIndicator } from './thinking-indicator';
 import { thinkingTrace } from './thinking-trace';
 import { toolCall } from './tool-call';
+import { clarifyingQuestion } from './clarifying-question';
 import { approvalCard } from './approval-card';
 import { plan } from './plan';
+import { webResearch } from './web-research';
+import { commandOutput } from './command-output';
 import { taskProgress } from './task-progress';
 import { streamingAnswer } from './streaming-answer';
 import { citation } from './citation';
@@ -16,6 +21,8 @@ import { selectionActions } from './selection-actions';
 import { diffReview } from './diff-review';
 import { chatNotice } from './chat-notice';
 import { usageMeter } from './usage-meter';
+import { chatScroll } from './chat-scroll';
+import { messageEdit } from './message-edit';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [promptComposer, attachmentChip, modeSwitcher, voiceInput, thinkingIndicator, thinkingTrace, toolCall, approvalCard, plan, taskProgress, streamingAnswer, citation, responseVersions, selectionActions, diffReview, chatNotice, usageMeter];
+export const items: UiItem[] = [promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, citation, responseVersions, selectionActions, diffReview, chatNotice, usageMeter, chatScroll, messageEdit];

@@ -15,12 +15,13 @@ export const UI_REGISTRY_NAME = 'hairline';
 
 export const UI_REQUIREMENTS = 'React 19, Tailwind CSS v4 and shadcn/ui theme variables (any style). Icons from lucide-react.';
 
-export type UiGroup = 'before' | 'working' | 'answer';
+export type UiGroup = 'before' | 'working' | 'answer' | 'chat';
 
 export const UI_GROUPS: { id: UiGroup; title: string; description: string }[] = [
   { id: 'before', title: 'Before the answer', description: 'Asking: the composer, attachments, modes and voice.' },
   { id: 'working', title: 'While it works', description: 'The agent at work: thinking, tool calls, approvals, plans and progress.' },
   { id: 'answer', title: 'The answer and after', description: 'Reading, checking and acting on what came back.' },
+  { id: 'chat', title: 'Around the chat', description: 'The conversation itself: scrolling, editing and finding past chats.' },
 ];
 
 export interface UiProp {
@@ -83,6 +84,18 @@ export const UI_CSS = {
   },
   '@keyframes ui-pop-in': {
     from: { opacity: '0', transform: 'translateY(-4px) scale(0.96)' },
+    to: { opacity: '1', transform: 'none' },
+  },
+  '@keyframes ui-chip-in': {
+    from: { opacity: '0.35', transform: 'scale(0.9)' },
+    to: { opacity: '1', transform: 'none' },
+  },
+  '@keyframes ui-ping': {
+    from: { transform: 'scale(1)', opacity: '0.55' },
+    to: { transform: 'scale(2.6)', opacity: '0' },
+  },
+  '@keyframes ui-drop-in': {
+    from: { opacity: '0', transform: 'translateY(-8px) scale(0.6)' },
     to: { opacity: '1', transform: 'none' },
   },
   '@layer base': {

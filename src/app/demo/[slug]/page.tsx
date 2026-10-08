@@ -107,12 +107,12 @@ export default function DemoPage({ params }: DemoPageProps) {
           <iframe
             key={iframeKey}
             ref={frameRef}
-            src={`/preview/${template.slug}`}
+            src={template.standaloneUrl || `/preview/${template.slug}`}
             title={template.title}
             onLoad={() => setIsLoading(false)}
             className="h-full w-full border-0 bg-white"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            sandbox={`allow-scripts allow-same-origin allow-forms allow-popups allow-modals${['stillform', 'prism'].includes(template.slug) ? ' allow-downloads' : ''}`}
+            sandbox={`allow-scripts allow-same-origin allow-forms allow-popups allow-modals${['stillform', 'prism', 'patch'].includes(template.slug) ? ' allow-downloads' : ''}`}
           />
         </div>
       </main>

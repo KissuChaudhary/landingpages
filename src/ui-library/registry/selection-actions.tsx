@@ -130,7 +130,7 @@ function Fold({
         transition: reduced ? "none" : `max-width 400ms ${EASE}, opacity 300ms ${EASE}, transform 400ms ${EASE}`,
       }}
     >
-      <div ref={inner} className={`flex w-max items-center gap-0.5 ${gap ? "pl-0.5" : ""}`}>
+      <div ref={inner} className={`flex w-max shrink-0 items-center gap-0.5 ${gap ? "pl-0.5" : ""}`}>
         {children}
       </div>
     </div>

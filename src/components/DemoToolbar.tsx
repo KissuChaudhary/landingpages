@@ -139,7 +139,7 @@ export default function DemoToolbar({
         </button>
 
         <Link
-          href={`/preview/${template.slug}`}
+          href={template.standaloneUrl || `/preview/${template.slug}`}
           target="_blank"
           rel="noreferrer"
           title="Open Standalone in New Tab"

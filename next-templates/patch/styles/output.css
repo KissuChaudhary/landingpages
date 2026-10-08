@@ -1,0 +1,256 @@
+.output-preview {
+  --output-bg: var(--surface);
+  --output-ink: var(--ink);
+  --output-muted: var(--muted);
+  --output-rule: var(--rule);
+  background: var(--output-bg);
+  color: var(--output-ink);
+  border-radius: 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+.signup-output {
+  padding: 23px 21px 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.output-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--olive);
+  font: 8px var(--font-mono);
+  letter-spacing: 0.8px;
+  margin-bottom: 27px;
+}
+.signup-output h3,
+.pricing-output h3,
+.command-output h3 {
+  font-size: 28px;
+  font-weight: 450;
+  letter-spacing: -1.1px;
+  line-height: 1.15;
+  max-width: 330px;
+}
+.signup-output > p,
+.pricing-output > p {
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--output-muted);
+  margin-top: 12px;
+  max-width: 235px;
+}
+.signup-output form {
+  margin-top: 21px;
+}
+.signup-output label {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.signup-field {
+  display: flex;
+  gap: 4px;
+  border: 1px solid var(--output-rule);
+  border-radius: 4px;
+  padding: 4px;
+  background: var(--surface-raised);
+}
+.signup-field input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline-offset: 5px;
+  font-size: 9px;
+  padding: 7px 8px;
+  color: var(--output-ink);
+}
+.signup-field input::placeholder {
+  color: var(--output-muted);
+}
+.signup-field button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-ink);
+  min-width: 30px;
+  height: 30px;
+  border-radius: 2px;
+}
+.output-form-note {
+  display: block;
+  font-size: 8px;
+  line-height: 1.7;
+  color: var(--output-muted);
+  margin-top: 8px;
+  min-height: 14px;
+}
+.output-rule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 23px;
+  font: 7px var(--font-mono);
+  color: var(--output-muted);
+  letter-spacing: 0.4px;
+}
+.pricing-output,
+.command-output {
+  padding: 22px 20px 20px;
+}
+.output-overline {
+  display: block;
+  font: 8px/1.6 var(--font-mono);
+  letter-spacing: 0.5px;
+  color: var(--output-muted);
+  margin-bottom: 19px;
+}
+.output-billing {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--output-rule);
+  border-radius: 4px;
+  margin-top: 18px;
+  width: max-content;
+}
+.output-billing button {
+  padding: 6px 11px;
+  border: 0;
+  background: transparent;
+  border-radius: 2px;
+  font-size: 9px;
+}
+.output-billing button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--canvas);
+}
+.output-price {
+  font-size: 43px;
+  line-height: 1.2;
+  letter-spacing: -2.5px;
+  margin-top: 23px;
+}
+.output-price > span {
+  font-size: 10px;
+  letter-spacing: 0;
+  color: var(--output-muted);
+  margin-left: 8px;
+}
+.pricing-output .output-total {
+  font-size: 9px;
+  margin-top: 4px;
+}
+.output-plan-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  padding: 11px 12px;
+  margin-top: 18px;
+  font-size: 9px;
+  background: var(--ink);
+  color: var(--canvas);
+  border: 0;
+  border-radius: 4px;
+}
+.output-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--output-rule);
+  border-radius: 4px;
+  padding: 9px 10px;
+  margin-top: 18px;
+  color: var(--output-muted);
+  background: var(--surface-raised);
+}
+.output-search input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--output-ink);
+  font-size: 9px;
+}
+.output-page-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 17px;
+}
+.output-page-list button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--output-rule);
+  padding: 13px 0;
+  font-size: 10px;
+}
+.output-page-list button > span {
+  flex: 1;
+  text-align: left;
+}
+.output-page-list button[aria-pressed="true"] {
+  color: var(--olive);
+}
+.output-empty {
+  padding: 20px 0;
+  font-size: 11px;
+  color: var(--output-muted);
+}
+@media (max-width: 640px) {
+  .signup-field input,
+  .output-search input {
+    font-size: 16px;
+  }
+  .signup-field input {
+    padding: 9px 8px;
+  }
+  .signup-field button {
+    min-width: 40px;
+    height: 40px;
+  }
+  .signup-output {
+    padding: 27px 24px 21px;
+  }
+  .signup-output h3,
+  .pricing-output h3,
+  .command-output h3 {
+    font-size: 30px;
+  }
+  .signup-output > p,
+  .pricing-output > p {
+    font-size: 11px;
+  }
+  .signup-output label {
+    font-size: 10px;
+  }
+  .output-form-note {
+    font-size: 9px;
+  }
+  .output-rule {
+    font-size: 8px;
+  }
+  .output-billing button {
+    min-height: 38px;
+  }
+  .output-plan-button {
+    min-height: 42px;
+    font-size: 11px;
+  }
+  .output-page-list button {
+    min-height: 45px;
+  }
+  .output-search {
+    padding: 12px;
+  }
+  .output-search input {
+    max-width: 100%;
+  }
+}

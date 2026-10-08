@@ -9,6 +9,8 @@ export interface TemplateItem {
   features: string[];
   accentColor: string;
   previewUrl: string;
+  /** Optional standalone export, used directly by the responsive demo. */
+  standaloneUrl?: string;
   demoUrl: string;
   detailUrl: string;
   thumbnailUrl?: string;
@@ -317,6 +319,27 @@ export const TEMPLATES: TemplateItem[] = [
       "demoUrl": "/demo/tempo",
       "detailUrl": "/template/tempo",
       "thumbnailUrl": "/previews/card/tempo.webp"
+    },
+    {
+      "slug": "patch",
+      "title": "Patch: AI Builder & Developer Tool Launch",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "AI Builder",
+      "description": "A precise grid-framed launch page in chalk, citrus and graphite. A working code-and-output workspace, original product studies, two complete appearances and real React example exports.",
+      "tags": ["AI Builder", "Developer Tool", "Grid Layout", "Two Themes", "Next.js 15"],
+      "features": [
+        "Three component examples with Apply, Undo and code review",
+        "Chalk and graphite appearances with a shared page grid",
+        "Keyboard command menu, responsive previews and real TSX exports",
+        "Modular sections, typed content config and screenshot replacements"
+      ],
+      "accentColor": "from-lime-200 to-emerald-800",
+      "previewUrl": "/preview/patch",
+      "standaloneUrl": "/demos/patch/index.html",
+      "demoUrl": "/demo/patch",
+      "detailUrl": "/template/patch",
+      "thumbnailUrl": "/previews/card/patch.webp"
     }
 ];
 

@@ -50,6 +50,7 @@ export const TEMPLATE_CHECKOUT: Record<string, string> = {
   stillform: '',
   prism: '',
   tempo: '',
+  patch: '',
 };
 
 export const formatPrice = (amount: number) => `$${amount}`;

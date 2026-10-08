@@ -309,8 +309,7 @@ export default async function TemplateDetailPage({ params }: PageProps) {
 
         <Row id="customize" label="Make it yours">
           <p className="max-w-2xl text-[15px] leading-relaxed text-neutral-900">
-            Every word, link and price lives in <RichText text="`site.config.ts`" />. TypeScript flags a missing or misspelled field, so you
-            can’t quietly break a section.
+            <RichText text={d.customizeIntro || 'Every word, link and price lives in `site.config.ts`. TypeScript flags a missing or misspelled field, so you can’t quietly break a section.'} />
           </p>
 
           <table className="mt-8 w-full text-left text-[15px]">

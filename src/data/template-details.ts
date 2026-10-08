@@ -20,6 +20,7 @@ export interface TemplateDetails {
   design: string;
   sections: TemplateSection[];
   customize: { what: string; where: string }[];
+  customizeIntro?: string;
   fonts: string[];
   dependencies: string[];
   images: string;
@@ -483,6 +484,43 @@ export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
     files: 42,
     lines: 4944,
     beforeLaunch: 'Set `links.ios`, `links.android`, optional `links.app`, `links.email` and each plan’s `href` in `site.config.ts`. Replace the fictional brand, stories, membership features and sample data. The timer is local, routines are current-page state and reflections save only in this browser; connect your actual app and checkout separately.',
+    updated: '2026-10-08',
+  },
+  patch: {
+    name: 'Patch',
+    kind: 'AI builder and developer tool landing page template',
+    summary: 'A precise launch page for AI builders, developer tools and small component products. An architectural grid joins a split headline, interactive code-and-output workspace, original product studies, two complete appearances and usable React example exports.',
+    bestFor: ['AI coding and builder tools', 'Developer utilities and browser extensions', 'Component products and indie apps'],
+    design: 'Chalk, ink and citrus, anchored by a graphite editor. Geist headlines and Geist Mono annotations sit inside a continuous page frame with fine rules, registration marks and varied column proportions. Original CSS/SVG product studies make the design editable without stock imagery.',
+    sections: [
+      { name: 'Navigation', detail: 'Anchor links, mobile menu, appearance switch and a working example-selector action.' },
+      { name: 'Hero', detail: 'A 5/7 split composition with an emphasized headline and real Build, Review and Preview workspace views.' },
+      { name: 'Capabilities', detail: 'Four joined cells that explain the building sequence.' },
+      { name: 'Workspace', detail: 'Three prepared React examples with independent state, Apply/Undo, code review, clipboard and TSX downloads.' },
+      { name: 'Product details', detail: 'An 8/4 and three-column feature matrix with responsive previews, file context, command menu, theme studies and exports.' },
+      { name: 'Workflow', detail: 'Three keyboard-accessible steps with distinct request, diff and file compositions.' },
+      { name: 'Starting points', detail: 'App, browser extension and component-product studies with coordinated copy and example actions.' },
+      { name: 'Pricing', detail: 'Two joined plans, independent monthly/yearly destinations, computed savings and accurate billing review dialogs.' },
+      { name: 'FAQ', detail: 'Native disclosures that explain the local previews and buyer integrations.' },
+      { name: 'Closing and footer', detail: 'An original bracket composition, example action, navigation and oversized wordmark.' },
+    ],
+    customizeIntro: 'Start with `site.config.ts` for the brand, primary copy, links, plans and appearance. Product examples and interface microcopy have their own small files, listed below.',
+    customize: [
+      { what: 'Brand, metadata, primary copy, links, plans, FAQ and appearance', where: 'site.config.ts' },
+      { what: 'Chalk and graphite palettes and shared typography', where: 'styles/base.css' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Section order', where: 'app/page.tsx' },
+      { what: 'Full before/after example code and diff excerpts', where: 'data/signup.ts, data/pricing.ts and data/command.ts' },
+      { what: 'Rendered product previews and microcopy', where: 'components/product/' },
+      { what: 'Product screenshot replacements', where: 'site.config.ts → workspace and useCases.items' },
+    ],
+    fonts: ['Geist', 'Geist Mono'],
+    dependencies: ['next', 'react', 'react-dom', 'lucide-react'],
+    images: 'Original HTML/CSS/SVG mark, workspace and product illustrations. No external photography or reference-site assets. Optional product screenshot slots are included.',
+    node: '20.9',
+    files: 57,
+    lines: 6490,
+    beforeLaunch: 'Set `links.app`, `links.docs`, `links.email` and both billing destinations for each plan in `site.config.ts`. Replace the fictional brand, product claims and prices. The prepared examples run locally and export standard React components; connect your real app, AI service, email provider and checkout separately.',
     updated: '2026-10-08',
   },
 };
