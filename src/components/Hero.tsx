@@ -30,7 +30,7 @@ export default function Hero() {
             data-slot="badge"
             className="flex items-center justify-center border font-medium w-fit whitespace-nowrap border-transparent bg-neutral-100 text-[#666] h-[24px] min-w-[24px] text-xs px-2.5 rounded-md select-none"
           >
-            35+ Production-Ready Next.js & Tailwind Kits
+            {TEMPLATES.length} Production-Ready Next.js & Tailwind Kits
           </span>
         </div>
 
@@ -43,7 +43,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="mx-auto max-w-[660px] text-pretty text-base sm:text-xl leading-relaxed text-[#666] mb-5 sm:mb-6">
-          A curated library of high-converting landing pages, financial analytics dashboards, animated bento grids, and interactive hero sections{' '}
+          A curated library of high-converting landing pages for AI tools, SaaS products, studios and agencies{' '}
           <span className="rounded-md bg-primary/10 box-decoration-clone px-1 py-0.5 text-primary font-medium">
             with live responsive demo access
           </span>{' '}
@@ -64,7 +64,7 @@ export default function Hero() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Fintech, SaaS, Agency, Bento..."
+                placeholder="Fintech, SaaS, Agency, AI..."
                 className="w-full bg-transparent font-medium text-[#181925] outline-none placeholder:text-[#aaa] text-sm"
               />
             </div>
@@ -73,7 +73,7 @@ export default function Hero() {
               type="submit"
               className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer border border-[color-mix(in_srgb,var(--primary)_80%,#12245e)] bg-[color-mix(in_srgb,var(--primary)_90%,#12245e)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(18,36,94,0.4)] transform-gpu hover:bg-primary active:scale-[0.98] h-11 sm:h-10 px-5 text-sm group shrink-0 select-none w-full sm:w-auto"
             >
-              <span>Explore 35+ Kits</span>
+              <span>Explore {TEMPLATES.length} Kits</span>
               <span className="relative size-3.5 overflow-hidden inline-flex items-center">
                 <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-1" />
               </span>
@@ -99,7 +99,7 @@ export default function Hero() {
               <span className="ml-2 font-mono text-[11px] text-[#999]">founderdada.com/demo/showcase</span>
             </div>
             <div className="hidden sm:flex items-center gap-4 text-xs font-medium text-[#666]">
-              <span>35 Total Templates</span>
+              <span>{TEMPLATES.length} Total Templates</span>
               <span>·</span>
               <span className="text-primary font-semibold">Live Preview Active</span>
             </div>

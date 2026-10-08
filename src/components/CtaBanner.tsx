@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { DitherGradient } from '@/components/theirs/dither-gradient';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { TEMPLATES } from '@/data/templates';
 
 export function CtaBanner() {
   return (
@@ -31,7 +32,7 @@ export function CtaBanner() {
 
           {/* Headline */}
           <h2 className="relative z-10 text-balance text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-[1.15] max-w-3xl mx-auto mb-3.5">
-            Start with 35+ production templates.{' '}
+            Start with {TEMPLATES.length} production templates.{' '}
             <span className="text-neutral-400 font-normal block mt-1 sm:mt-1.5">
               Ship your SaaS before the week ends.
             </span>
@@ -47,7 +48,7 @@ export function CtaBanner() {
               href="#catalog"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer bg-white text-[#181925] hover:bg-neutral-100 active:scale-[0.98] h-11 px-6 text-sm group shrink-0 select-none shadow-sm"
             >
-              <span>Explore All 35 Templates</span>
+              <span>Explore All {TEMPLATES.length} Templates</span>
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </a>
 

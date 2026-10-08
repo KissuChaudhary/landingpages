@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { SectionHeader } from './theirs/section-header';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { TEMPLATES } from '@/data/templates';
 
 export default function PricingPlans() {
   return (
@@ -14,7 +15,7 @@ export default function PricingPlans() {
         title="Start free. Own the full library with one payment."
         description={
           <>
-            Browse and test all 35 interactive demos for free. Upgrade once when you want full source code{' '}
+            Browse and test all {TEMPLATES.length} interactive demos for free. Upgrade once when you want full source code{' '}
             <span className="rounded-md bg-primary/10 box-decoration-clone px-1 py-0.5 text-primary font-medium">
               without monthly subscriptions
             </span>
@@ -49,7 +50,7 @@ export default function PricingPlans() {
             <dl className="mt-5 flex flex-col gap-2 border-t border-dashed border-black/[0.1] pt-4 font-mono text-xs">
               <div className="flex items-baseline justify-between gap-3">
                 <dt className="text-muted-foreground">Interactive Demos</dt>
-                <dd className="tabular-nums font-medium text-primary">All 35 Kits</dd>
+                <dd className="tabular-nums font-medium text-primary">All {TEMPLATES.length} Kits</dd>
               </div>
               <div className="flex items-baseline justify-between gap-3">
                 <dt className="text-muted-foreground">Device Viewport Switcher</dt>
@@ -68,7 +69,7 @@ export default function PricingPlans() {
             {/* Features Checklist */}
             <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-dashed border-black/[0.1] pt-4 list-none p-0">
               {[
-                'Full access to test 35 live interactive demos',
+                `Full access to test ${TEMPLATES.length} live interactive demos`,
                 'Responsive emulation (Desktop, 1024px, 768px, 375px)',
                 'Tech stack and feature breakdown specifications',
                 'Community Discord support',
@@ -88,7 +89,7 @@ export default function PricingPlans() {
               href="#catalog"
               className="mt-6 inline-flex items-center justify-center gap-1 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer border border-black/[0.1] bg-white text-[#181925] shadow-2xs hover:bg-neutral-50 h-10 px-5 text-sm select-none"
             >
-              Browse 35 Free Demos
+              Browse {TEMPLATES.length} Free Demos
             </a>
           </li>
 
@@ -114,7 +115,7 @@ export default function PricingPlans() {
             <dl className="mt-5 flex flex-col gap-2 border-t border-dashed border-black/[0.1] pt-4 font-mono text-xs">
               <div className="flex items-baseline justify-between gap-3">
                 <dt className="text-muted-foreground">Source Code (.zip)</dt>
-                <dd className="tabular-nums font-medium text-primary">All 35 Full Packages</dd>
+                <dd className="tabular-nums font-medium text-primary">All {TEMPLATES.length} Full Packages</dd>
               </div>
               <div className="flex items-baseline justify-between gap-3">
                 <dt className="text-muted-foreground">Commercial Projects</dt>
@@ -133,11 +134,10 @@ export default function PricingPlans() {
             {/* Features Checklist */}
             <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-dashed border-black/[0.1] pt-4 list-none p-0">
               {[
-                'Instant download of all 35 full standalone zip archives',
+                `Instant download of all ${TEMPLATES.length} full standalone zip archives`,
                 'Unlimited commercial SaaS and client web applications',
                 'Next.js 15 App Router, React 19 & Tailwind CSS v4',
-                '6 Analytics & Financial Dashboards included',
-                '17 High-converting SaaS landing pages',
+                'Every template driven from one config file',
                 'Priority direct author support',
               ].map((text) => (
                 <li key={text} className="flex items-start gap-2 text-xs leading-5 text-[#181925] font-medium">

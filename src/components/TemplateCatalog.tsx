@@ -17,6 +17,12 @@ export default function TemplateCatalog() {
     return Array.from(tags).sort().slice(0, 8);
   }, []);
 
+  // Only offer categories that have templates, and skip the pills entirely while everything sits in one category
+  const visibleCategories = CATEGORIES.filter(
+    (category) => category === 'All' || TEMPLATES.some((t) => t.category === category)
+  );
+  const showCategories = visibleCategories.length > 2;
+
   const filteredTemplates = useMemo(() => {
     return TEMPLATES.filter((template) => {
       if (selectedCategory !== 'All' && template.category !== selectedCategory) {
@@ -43,7 +49,7 @@ export default function TemplateCatalog() {
         {/* Section Header */}
         <SectionHeader
           badge="The Library"
-          title="Curated templates, dashboards and UI components."
+          title="Curated landing page templates, ready to ship."
           description={
             <>
               Every kit is ready to deploy with Next.js, React 19, and Tailwind CSS.{' '}
@@ -58,8 +64,9 @@ export default function TemplateCatalog() {
         {/* Search & Filter Bar */}
         <div className="mt-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-black/[0.06]">
           {/* Category Tabs: Rounded Pills */}
+          {showCategories && (
           <div className="flex flex-wrap items-center gap-1.5">
-            {CATEGORIES.map((category) => {
+            {visibleCategories.map((category) => {
               const count =
                 category === 'All'
                   ? TEMPLATES.length
@@ -90,6 +97,7 @@ export default function TemplateCatalog() {
               );
             })}
           </div>
+          )}
 
           {/* Search Box */}
           <div className="relative w-full md:w-72">

@@ -1,6 +1,0 @@
-{
-  "name": "ClearNotes Hero",
-  "description": "A playful SaaS landing page hero section with modern apple-style design.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { SectionHeader } from './theirs/section-header';
+import { TEMPLATES } from '@/data/templates';
 
 const FAQS = [
   {
@@ -15,16 +16,16 @@ const FAQS = [
     a: 'Every template is hosted on an isolated endpoint. Our Cruip-inspired responsive demo viewer allows you to simulate live breakpoints (Desktop, 1024px Laptop, 768px Tablet, and 375px Mobile) directly in your browser without downloading the code first.',
   },
   {
-    q: 'What stack is used across the 35 templates?',
-    a: 'All templates are built with Next.js 15, React 19, Tailwind CSS, Lucide icons, and Framer Motion. Analytics dashboards also feature Recharts.',
+    q: `What stack is used across the ${TEMPLATES.length} templates?`,
+    a: 'Every template is a standalone Next.js 15 project built with React 19, Tailwind CSS v4 and Lucide icons.',
   },
   {
     q: 'How do I download and export the source code?',
     a: 'Each template card and detail page has a direct download action. You can download the complete standalone zip package, unpack it, run pnpm install, and launch immediately.',
   },
   {
-    q: 'Will new templates and dashboards be added?',
-    a: 'Yes. All-Access Lifetime Pass holders receive all future dashboard kits, landing pages, and bento components at no extra charge.',
+    q: 'Will new templates be added?',
+    a: 'Yes. All-Access Lifetime Pass holders receive every future template at no extra charge.',
   },
 ];
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { SectionHeader } from '@/components/theirs/section-header';
 import { DitherGradient } from '@/components/theirs/dither-gradient';
 import { Monitor, Smartphone, Tablet, Download, Code2, Check, ArrowRight, Eye } from 'lucide-react';
+import { TEMPLATES } from '@/data/templates';
 
 export function Steps() {
   return (
@@ -15,7 +16,7 @@ export function Steps() {
         title="Ship your next startup in three simple steps."
         description={
           <>
-            Browse 35+ full templates, test them with live responsive device previews,{' '}
+            Browse {TEMPLATES.length} full templates, test them with live responsive device previews,{' '}
             <span className="rounded-md bg-primary/10 box-decoration-clone px-1 py-0.5 text-primary font-medium">
               and export clean Next.js source code
             </span>
@@ -37,17 +38,17 @@ export function Steps() {
 
           <div className="relative flex items-baseline gap-2.5 px-6 py-4 sm:px-8">
             <span className="text-base tabular-nums text-muted-foreground font-medium">01</span>
-            <h3 className="text-base font-medium tracking-tight text-[#222]">Browse 35+ Curated Kits</h3>
+            <h3 className="text-base font-medium tracking-tight text-[#222]">Browse {TEMPLATES.length} Curated Kits</h3>
           </div>
 
           {/* Micro Preview Box */}
           <div className="relative flex flex-1 items-center justify-center px-4 py-5 sm:px-6 min-h-[200px]">
             <div className="w-full max-w-[19rem] bg-white border border-black/[0.08] rounded-xl p-3.5 shadow-2xs text-left">
               <div className="flex items-center justify-between text-[10px] font-mono text-primary font-medium uppercase">
-                <span>Dashboard Kit</span>
+                <span>Landing Kit</span>
                 <span className="rounded bg-emerald-50 text-emerald-600 px-1.5 py-0.5 text-[9px] font-bold">READY</span>
               </div>
-              <div className="mt-1 text-xs font-semibold text-[#181925]">Apex Analytics Command</div>
+              <div className="mt-1 text-xs font-semibold text-[#181925]">Halftone Developer API</div>
               <div className="mt-2.5 flex items-center gap-2">
                 <span className="text-[10px] bg-[#f5f5f7] px-2 py-0.5 rounded text-[#666]">#Next.js 15</span>
                 <span className="text-[10px] bg-[#f5f5f7] px-2 py-0.5 rounded text-[#666]">#Tailwind v4</span>
@@ -56,7 +57,7 @@ export function Steps() {
           </div>
 
           <p className="relative pl-6 pr-6 text-sm leading-6 text-muted-foreground sm:pl-8 sm:pr-8 tracking-tight">
-            Find the exact design direction your SaaS needs: investment dashboards, AI copilot hero sections, or high-converting agency landing pages.
+            Find the exact design direction your SaaS needs: AI writing tools, developer APIs, creator studios or high-converting agency landing pages.
           </p>
         </li>
 

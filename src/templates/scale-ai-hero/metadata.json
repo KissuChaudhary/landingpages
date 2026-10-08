@@ -1,8 +1,0 @@
-{
-  "name": "Scale AI Hero UI",
-  "description": "Modern hero section with smooth scroll, minimal animations, and interactive typography.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}

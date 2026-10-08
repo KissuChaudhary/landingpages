@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
+import { TEMPLATES } from '@/data/templates';
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
             <Sparkles className="size-3" />
           </div>
           <span className="font-medium text-[#181925]">FounderDada</span>
-          <span>· 35+ Production Next.js UI Templates.</span>
+          <span>· {TEMPLATES.length} Production Next.js UI Templates.</span>
         </div>
 
         {/* Links */}

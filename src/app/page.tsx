@@ -22,7 +22,7 @@ export default function HomePage() {
       {/* Three Steps Section with Dither Auras */}
       <Steps />
 
-      {/* 35 Templates Library Bento Catalog */}
+      {/* Templates Library Catalog */}
       <TemplateCatalog />
 
       {/* Transparent Split Pricing */}
