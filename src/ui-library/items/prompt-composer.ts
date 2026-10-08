@@ -5,18 +5,20 @@ export const promptComposer: UiItem = {
   title: 'Prompt composer',
   description: 'The input that starts it all: grows as you type, takes files, and turns Send into Stop while answering.',
   summary:
-    'A composer that takes useChat’s status as is. Send morphs into Stop while the answer streams and shows a spinner while waiting for the first token. It grows with the text, sends on Enter (Shift+Enter for a new line, safe for IME input), and takes files from the paperclip, paste or drag and drop. Slots hold attachment chips and a toolbar, and it can be disabled with a reason.',
+    'A composer that takes useChat’s status as is. Send blurs into a spinner while it waits for the first token, then into Stop while the answer streams. It grows with the text, sends on Enter (Shift+Enter for a new line, safe for IME input), and takes files from the paperclip, paste or drag and drop. Slots hold attachment chips, which fold open above the field as the first one lands, and a toolbar. Near maxLength a counter opens in and rolls as you type, and it can be disabled with a reason that folds open above it.',
   file: 'prompt-composer.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-in'],
+  registryDependencies: ['number-roll'],
+  css: [],
   tabs: ['Live', 'With files', 'Rate limited'],
   states: [
     { name: 'ready', description: 'Type; Send is enabled once there’s text (or files, with allowEmpty).' },
-    { name: 'submitted', description: 'Sent and waiting for the first token: the button shows a spinner.' },
-    { name: 'streaming', description: 'The button becomes Stop and calls onStop.' },
+    { name: 'submitted', description: 'Sent and waiting for the first token: the arrow shrinks away through a 3px blur as a spinner grows in.' },
+    { name: 'streaming', description: 'The spinner blurs into Stop, which calls onStop.' },
     { name: 'error', description: 'Back to ready so the user can resend.' },
-    { name: 'disabled', description: 'Input locked, with your reason shown above it.' },
-    { name: 'dragging', description: 'A dashed border and "Drop files to attach" while files are dragged over.' },
+    { name: 'disabled', description: 'Input locked, with your reason folding open above it (380ms).' },
+    { name: 'dragging', description: 'A dashed border and "Drop files to attach" fading in while files are dragged over.' },
+    { name: 'near the limit', description: 'Past 80% of maxLength the counter opens in and rolls with each keystroke; it turns red once you’re over.' },
   ],
   usage: `import { PromptComposer } from "@/components/prompt-composer";
 
@@ -81,5 +83,6 @@ function Composer() {
     'The send button’s label changes with its job: Send, Sending or Stop.',
     'The text grows to 200px, then scrolls.',
     'Paste with files attaches them; paste with text still pastes the text.',
+    'Installs Number roll. With reduced motion, icons, folds and the counter change in place.',
   ],
 };

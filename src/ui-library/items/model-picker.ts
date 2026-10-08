@@ -5,12 +5,13 @@ export const modelPicker: UiItem = {
   title: 'Model picker',
   description: 'The model pill in your composer grows into the menu: what each model is for, speed, smarts and thinking effort.',
   summary:
-    'Choosing a model shouldn’t mean reading a spec sheet in a dropdown. The pill in the composer toolbar shows the model and its thinking effort. Click it and the same surface lifts out of the composer and grows into the menu above it, never over your prompt: its size and corners ease from pill to panel while the label cross-fades into the list. Each model gets a line on what it’s for and small speed and smarts meters. Reasoning models add a Thinking control, and the panel’s height follows. Paid models show "Pro" and hand off to your upgrade flow.',
+    'Choosing a model shouldn’t mean reading a spec sheet in a dropdown. The pill in the composer toolbar shows the model and its thinking effort, and both morph when they change: the name’s shared letters glide, the effort word slides in for reasoning models and folds away for the rest, and the icon trades places through a blur. Click it and the same surface lifts out of the composer and grows into the menu above it, never over your prompt: its size and corners ease from pill to panel while the label cross-fades into the list. Each model gets a line on what it’s for and small speed and smarts meters. Reasoning models add a Thinking control, and the panel’s height follows. Paid models show "Pro" and hand off to your upgrade flow.',
   file: 'model-picker.tsx',
   dependencies: ['lucide-react'],
+  registryDependencies: ['text-morph'],
   css: ['@keyframes ui-fade-in'],
   states: [
-    { name: 'closed', description: 'A quiet pill: icon, model name, and the effort for reasoning models, e.g. "Aurora Think Medium".' },
+    { name: 'closed', description: 'A quiet pill: icon, model name, and the effort for reasoning models, e.g. "Aurora Think Medium". A new model or effort morphs in place ("Medium" → "High"); the effort opens or folds over 380ms as reasoning comes and goes.' },
     { name: 'open', description: 'The pill lifts clear of the composer and grows into a 340px panel above it, lined up with its edge. The current model is checked and a highlight slides with the pointer or arrow keys.' },
     { name: 'effort', description: 'For reasoning models, a Thinking control (Low, Medium, High) with a sliding thumb. The panel grows to fit it.' },
     { name: 'locked', description: '"Pro" instead of a check. Choosing it calls onLockedSelect, e.g. to open pricing, and keeps the current model.' },
@@ -76,6 +77,6 @@ export async function POST(req: Request) {
     'Arrow keys, Home and End move; Enter or Space picks; Escape closes and returns focus to the pill. Tab reaches the Thinking control, a radio group you move through with the arrow keys.',
     'Meters have text for screen readers ("Speed 2 of 3"), so they don’t rely on the dots alone.',
     'Always check the model id on the server; the picker only offers choices.',
-    'With reduced motion, it opens and closes instantly.',
+    'Installs Text morph. With reduced motion, it opens, closes and changes its label instantly.',
   ],
 };

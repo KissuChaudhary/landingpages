@@ -2,15 +2,20 @@
 
 import * as React from "react";
 import { ArrowUp, Paperclip, Square } from "lucide-react";
+import { NumberRoll } from "./number-roll";
 
 /* ─────────────────────────────────────────────────────────
  * PROMPT COMPOSER: where the conversation starts
  *
  *   ready      type; Enter sends, Shift+Enter adds a line
- *   submitted  sent, waiting for the first token
- *   streaming  the send button becomes Stop
+ *   submitted  sent: the arrow blurs into a spinner
+ *   streaming  the spinner blurs into Stop
  *   error      ready to try again
- *   disabled   with a reason, e.g. a rate limit
+ *   disabled   with a reason, e.g. a rate limit, folding open
+ *              above the field
+ *
+ * Near the limit a counter opens in and rolls as you type;
+ * attachments fold open above the field as the first one lands.
  *
  * status takes useChat's status as is. Files come in through the
  * paperclip, paste or drag and drop; render them as chips in the
@@ -45,6 +50,44 @@ export interface PromptComposerProps extends Omit<React.FormHTMLAttributes<HTMLF
 }
 
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+
+/** Icons trade places through a blur: the old one shrinks away as the new one grows in. */
+const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  transform: on ? "none" : "scale(0.6)",
+  filter: on ? "none" : "blur(3px)",
+  transition: reduced ? "none" : `opacity 260ms ${MORPH}, transform 380ms ${MORPH}, filter 260ms ${MORPH}`,
+});
+
+/** A block that folds open to its height and shut again, keeping what it showed while it closes. */
+function Fold({ show, reduced, children }: { show: boolean; reduced: boolean; children: React.ReactNode }) {
+  const [last, setLast] = React.useState(children);
+  if (show && children !== last) setLast(children);
+  return (
+    <div
+      aria-hidden={!show || undefined}
+      inert={!show}
+      className="grid"
+      style={{
+        gridTemplateRows: show ? "1fr" : "0fr",
+        opacity: show ? 1 : 0,
+        transition: reduced ? "none" : `grid-template-rows 380ms ${MORPH}, opacity ${show ? "280ms" : "140ms"} ${MORPH}`,
+      }}
+    >
+      <div className="min-h-0 overflow-hidden">{show ? children : last}</div>
+    </div>
+  );
+}
 
 export function PromptComposer({
   value,
@@ -66,6 +109,7 @@ export function PromptComposer({
   className = "",
   ...props
 }: PromptComposerProps) {
+  const reduced = useReducedMotion();
   const [own, setOwn] = React.useState(defaultValue);
   const [dragging, setDragging] = React.useState(false);
   const text = value ?? own;
@@ -133,11 +177,13 @@ export function PromptComposer({
       } ${className}`}
       {...props}
     >
-      {disabled && disabledReason && (
-        <div className="border-b border-border px-3.5 py-2 text-[12px] text-muted-foreground animate-[ui-fade-in_250ms_ease-out_both]">{disabledReason}</div>
-      )}
+      <Fold show={Boolean(disabled && disabledReason)} reduced={reduced}>
+        <div className="border-b border-border px-3.5 py-2 text-[12px] text-muted-foreground">{disabledReason}</div>
+      </Fold>
 
-      {attachments && <div className="flex flex-wrap gap-2 px-3 pt-3">{attachments}</div>}
+      <Fold show={Boolean(attachments)} reduced={reduced}>
+        <div className="flex flex-wrap gap-2 px-3 pt-3">{attachments}</div>
+      </Fold>
 
       <textarea
         ref={textareaRef}
@@ -183,9 +229,24 @@ export function PromptComposer({
         {toolbar}
 
         <div className="ml-auto flex items-center gap-2.5">
-          {maxLength !== undefined && text.length > maxLength * 0.8 && (
-            <span className={`font-mono text-[11px] tabular-nums ${text.length > maxLength ? "text-red-500" : "text-muted-foreground"}`}>
-              {text.length}/{maxLength}
+          {maxLength !== undefined && (
+            // Opens in near the limit and rolls as you type; red once you're over.
+            <span
+              aria-hidden={text.length <= maxLength * 0.8 || undefined}
+              className="grid"
+              style={{
+                gridTemplateColumns: text.length > maxLength * 0.8 ? "1fr" : "0fr",
+                opacity: text.length > maxLength * 0.8 ? 1 : 0,
+                transition: reduced ? "none" : `grid-template-columns 380ms ${MORPH}, opacity 260ms ${MORPH}`,
+              }}
+            >
+              <span
+                className={`flex min-w-0 items-baseline overflow-hidden whitespace-nowrap font-mono text-[11px] tabular-nums transition-colors duration-300 ${
+                  text.length > maxLength ? "text-red-500" : "text-muted-foreground"
+                }`}
+              >
+                <NumberRoll value={text.length} duration={300} />/{maxLength}
+              </span>
             </span>
           )}
           <button
@@ -195,30 +256,27 @@ export function PromptComposer({
             onClick={action === "stop" ? onStop : undefined}
             className={`relative flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground transition-[opacity,transform] duration-200 active:scale-95 disabled:opacity-35 ${FOCUS}`}
           >
-            <ArrowUp
-              aria-hidden="true"
-              className={`absolute size-4 transition-[opacity,transform] duration-200 ${action === "send" ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
-            />
-            <Square
-              aria-hidden="true"
-              fill="currentColor"
-              className={`absolute size-3 transition-[opacity,transform] duration-200 ${action === "stop" ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
-            />
-            <span
-              aria-hidden="true"
-              className={`absolute size-3.5 rounded-full border-[1.5px] border-current/35 border-t-current transition-opacity duration-200 ${
-                action === "wait" ? "animate-spin opacity-100 motion-reduce:animate-none" : "opacity-0"
-              }`}
-            />
+            <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center" style={swap(action === "send", reduced)}>
+              <ArrowUp className="size-4" />
+            </span>
+            <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center" style={swap(action === "stop", reduced)}>
+              <Square fill="currentColor" className="size-3" />
+            </span>
+            <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center" style={swap(action === "wait", reduced)}>
+              {/* Spins only while it's showing. */}
+              <span className={`size-3.5 rounded-full border-[1.5px] border-current/35 border-t-current motion-reduce:animate-none ${action === "wait" ? "animate-spin" : ""}`} />
+            </span>
           </button>
         </div>
       </div>
 
-      {dragging && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-2xl bg-background/85 text-[13px] font-medium text-foreground">
-          Drop files to attach
-        </div>
-      )}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-2xl bg-background/85 text-[13px] font-medium text-foreground"
+        style={{ opacity: dragging ? 1 : 0, transition: reduced ? "none" : `opacity 200ms ${MORPH}` }}
+      >
+        Drop files to attach
+      </div>
     </form>
   );
 }

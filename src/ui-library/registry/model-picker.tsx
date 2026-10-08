@@ -2,12 +2,14 @@
 
 import * as React from "react";
 import { Check, ChevronDown } from "lucide-react";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * MODEL PICKER: the pill grows into the menu
  *
  *   closed   a quiet pill in the composer toolbar: model and
- *            thinking effort
+ *            thinking effort; both morph when they change, and
+ *            the model's icon trades places through a blur
  *   open     a copy of the pill lifts clear of the composer and
  *            unfolds into the list: each model with a line on
  *            what it's for, speed and smarts
@@ -89,16 +91,79 @@ function Meter({ value = 0, label }: { value?: number; label: string }) {
   );
 }
 
-function PillLabel({ model, effort }: { model?: ModelOption; effort?: string }) {
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+
+/** The model's icon: a new one rises out of a blur while the old one shrinks away. */
+function ModelIcon({ id, icon, reduced }: { id: string; icon: React.ReactNode; reduced: boolean }) {
+  const [items, setItems] = React.useState([{ id, icon }]);
+  if (items[items.length - 1].id !== id) setItems([...items.slice(-1), { id, icon }]);
+  const first = React.useRef(true);
+  React.useEffect(() => {
+    first.current = false;
+  }, []);
+  return (
+    <span aria-hidden="true" className="relative flex size-4 items-center justify-center text-muted-foreground [&_svg]:size-4 [&_svg]:stroke-[1.8]">
+      {items.map((item) => (
+        <IconLayer key={item.id} on={item.id === id} enter={!first.current && !reduced} reduced={reduced}>
+          {item.icon}
+        </IconLayer>
+      ))}
+    </span>
+  );
+}
+
+function IconLayer({ on, enter, reduced, children }: { on: boolean; enter: boolean; reduced: boolean; children: React.ReactNode }) {
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const [entering] = React.useState(enter);
+  React.useLayoutEffect(() => {
+    if (!entering) return;
+    ref.current?.animate(
+      [
+        { opacity: 0, transform: "scale(0.6)", filter: "blur(3px)" },
+        { opacity: 1, transform: "none", filter: "blur(0px)" },
+      ],
+      { duration: 380, easing: MORPH, fill: "backwards" }
+    );
+  }, [entering]);
+  return (
+    <span
+      ref={ref}
+      className="absolute inset-0 flex items-center justify-center"
+      style={{
+        opacity: on ? 1 : 0,
+        transform: on ? "none" : "scale(0.6)",
+        filter: on ? "none" : "blur(3px)",
+        transition: reduced ? "none" : `opacity 200ms ${MORPH}, transform 380ms ${MORPH}, filter 200ms ${MORPH}`,
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+function PillLabel({ model, effort, reduced }: { model?: ModelOption; effort?: string; reduced: boolean }) {
+  // The effort opens beside the name for models that reason, and folds away (keeping its word) for those that don't.
+  const showEffort = Boolean(model?.reasoning && effort);
+  const [lastEffort, setLastEffort] = React.useState(effort);
+  if (effort && effort !== lastEffort) setLastEffort(effort);
   return (
     <>
-      {model?.icon && (
-        <span aria-hidden="true" className="flex size-4 items-center justify-center text-muted-foreground [&_svg]:size-4 [&_svg]:stroke-[1.8]">
-          {model.icon}
+      {model?.icon && <ModelIcon id={model.id} icon={model.icon} reduced={reduced} />}
+      <span className="whitespace-nowrap text-foreground">
+        <TextMorph>{model?.name ?? "Choose a model"}</TextMorph>
+      </span>
+      <span
+        className="-ml-1.5 grid"
+        style={{
+          gridTemplateColumns: showEffort ? "1fr" : "0fr",
+          opacity: showEffort ? 1 : 0,
+          transition: reduced ? "none" : `grid-template-columns 380ms ${MORPH}, opacity ${showEffort ? "280ms" : "140ms"} ${MORPH}`,
+        }}
+      >
+        <span className="min-w-0 overflow-hidden whitespace-nowrap pl-1.5 text-muted-foreground">
+          <TextMorph>{effort ?? lastEffort ?? ""}</TextMorph>
         </span>
-      )}
-      <span className="whitespace-nowrap text-foreground">{model?.name ?? "Choose a model"}</span>
-      {model?.reasoning && effort && <span className="whitespace-nowrap text-muted-foreground">{effort}</span>}
+      </span>
     </>
   );
 }
@@ -338,7 +403,7 @@ export function ModelPicker({
         onBlur={() => setQuietFocus(false)}
         className={`inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[12.5px] font-medium transition-colors duration-150 hover:bg-accent disabled:pointer-events-none disabled:opacity-50 ${quietFocus ? "outline-none" : FOCUS} ${expanded ? "bg-accent" : ""}`}
       >
-        <PillLabel model={selected} effort={effort} />
+        <PillLabel model={selected} effort={effort} reduced={reduced} />
         {/* Points up while the panel is open; the panel's copy of the pill turns in step. */}
         <ChevronDown
           aria-hidden="true"
@@ -376,7 +441,7 @@ export function ModelPicker({
               transition: reduced ? "none" : expanded ? "opacity 120ms ease-out" : "opacity 200ms ease-out 140ms",
             }}
           >
-            <PillLabel model={selected} effort={effort} />
+            <PillLabel model={selected} effort={effort} reduced={reduced} />
             {/* Turns with the surface: up as it opens, back down as it folds, so the hand-off to the pill never flips. */}
             <ChevronDown
               className="size-3.5 text-muted-foreground"

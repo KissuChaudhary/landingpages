@@ -2,14 +2,17 @@
 
 import * as React from "react";
 import { Lock } from "lucide-react";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * MODE SWITCHER: Fast, Thinking, Research…
  *
- * A segmented radio group with a pill that slides to the chosen
- * mode. Locked modes stay visible with a lock, so people see what
- * an upgrade unlocks; choosing one calls onLockedSelect instead.
- * Arrow keys move between modes, like any radio group.
+ * A segmented radio group with a pill that is thrown to the chosen
+ * mode, with a little give. The description underneath morphs
+ * into the new mode's line, keeping the words they share. Locked
+ * modes stay visible with a lock, so people see what an upgrade
+ * unlocks; choosing one calls onLockedSelect instead. Arrow keys
+ * move between modes, like any radio group.
  * ───────────────────────────────────────────────────────── */
 
 export interface Mode {
@@ -35,6 +38,17 @@ export interface ModeSwitcherProps extends Omit<React.HTMLAttributes<HTMLDivElem
 }
 
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
+const EASE = "cubic-bezier(0.16,1,0.3,1)";
+const THROW = "cubic-bezier(0.34,1.36,0.64,1)";
+
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
 
 export function ModeSwitcher({
   modes,
@@ -47,10 +61,11 @@ export function ModeSwitcher({
   className = "",
   ...props
 }: ModeSwitcherProps) {
+  const reduced = useReducedMotion();
   const [own, setOwn] = React.useState(defaultValue ?? modes.find((m) => !m.locked)?.value);
   const current = value ?? own;
   const refs = React.useRef<(HTMLButtonElement | null)[]>([]);
-  const [pill, setPill] = React.useState<{ left: number; width: number } | null>(null);
+  const [pill, setPill] = React.useState<{ left: number; width: number; ready: boolean } | null>(null);
   const index = modes.findIndex((m) => m.value === current);
   const active = modes[index];
 
@@ -58,7 +73,9 @@ export function ModeSwitcher({
   React.useLayoutEffect(() => {
     const el = refs.current[index];
     if (!el) return;
-    const measure = () => setPill({ left: el.offsetLeft, width: el.offsetWidth });
+    // The first placement doesn't animate; every move after that does.
+    const measure = () =>
+      setPill((p) => (p && p.left === el.offsetLeft && p.width === el.offsetWidth ? p : { left: el.offsetLeft, width: el.offsetWidth, ready: p !== null }));
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(el);
@@ -92,8 +109,12 @@ export function ModeSwitcher({
         {pill && (
           <span
             aria-hidden="true"
-            className="absolute inset-y-0.5 rounded-full bg-background shadow-[0_0_0_1px_var(--border)] transition-[left,width] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
-            style={{ left: pill.left, width: pill.width }}
+            className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_0_0_1px_var(--border)]"
+            style={{
+              width: pill.width,
+              transform: `translateX(${pill.left}px)`,
+              transition: pill.ready && !reduced ? `transform 460ms ${THROW}, width 380ms ${EASE}` : "none",
+            }}
           />
         )}
         {modes.map((mode, i) => {
@@ -126,9 +147,10 @@ export function ModeSwitcher({
           );
         })}
       </div>
-      {showDescription && active?.description && (
-        <p key={active.value} className="px-1 text-[12px] text-muted-foreground animate-[ui-fade-in_250ms_ease-out_both]">
-          {active.description}
+      {showDescription && (
+        // One line that morphs from mode to mode, rather than being swapped.
+        <p className="min-h-[18px] px-1 text-[12px] leading-[18px] text-muted-foreground">
+          <TextMorph animateWidth={false}>{active?.description ?? ""}</TextMorph>
         </p>
       )}
     </div>

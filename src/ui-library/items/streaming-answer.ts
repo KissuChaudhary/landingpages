@@ -5,15 +5,16 @@ export const streamingAnswer: UiItem = {
   title: 'Streaming answer',
   description: 'An answer as it arrives, with inline citations, actions, sources and follow-ups.',
   summary:
-    'Renders whatever your stream has delivered so far. Only the words that just arrived fade in, citations land as small chips inside the sentence, and finished paragraphs don’t re-render while the last one grows. It knows when it was stopped or interrupted, and takes your own Markdown renderer when you need one.',
+    'Renders whatever your stream has delivered so far. Only the words that just arrived fade in, citations land as small chips inside the sentence, and finished paragraphs don’t re-render while the last one grows. It knows when it was stopped or interrupted, and takes your own Markdown renderer when you need one. Underneath, the actions answer back: Copy blurs into a check that draws itself, a thumb fills in with a small thrown pop, and the sources count rolls as more arrive.',
   file: 'streaming-answer.tsx',
   dependencies: ['lucide-react'],
+  registryDependencies: ['number-roll'],
   css: ['@keyframes ui-fade-up', '@keyframes ui-fade-in', '@keyframes ui-blink'],
   tabs: ['Streaming', 'Stopped', 'Error'],
   tabsLabel: 'States',
   states: [
     { name: 'streaming', description: 'Caret at the end; new words fade in; the paragraph is aria-busy.' },
-    { name: 'done', description: 'Plain, selectable text; actions enabled.' },
+    { name: 'done', description: 'Plain, selectable text; actions enabled. Copy shrinks away through a blur as a green check draws itself (380ms); a chosen thumb fills (220ms) with a 420ms thrown pop.' },
     { name: 'stopped', description: 'A quiet "Stopped" note when the user stopped generation.' },
     { name: 'error', description: '"The answer was interrupted." with a Retry button.' },
   ],
@@ -71,7 +72,7 @@ function Answer({ message, isLast }: { message: UIMessage; isLast: boolean }) {
   notes: [
     'Words keep a stable key, so only new words mount and fade in; the answer is ordinary text for copying and screen readers.',
     'Finished paragraphs are memoised, so long answers stay smooth while streaming.',
-    'Every icon button has a label and the feedback buttons use aria-pressed.',
-    'With reduced motion, words and citations appear without fading and the caret stops blinking.',
+    'Every icon button has a label and the feedback buttons use aria-pressed; "Copied" is announced from a status region beside them.',
+    'Installs Number roll. With reduced motion, words and citations appear without fading, the caret stops blinking and the actions change in place.',
   ],
 };

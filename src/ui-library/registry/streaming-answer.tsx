@@ -1,14 +1,18 @@
 "use client";
 
 import * as React from "react";
-import { AlertCircle, Check, Copy, RotateCcw, ThumbsDown, ThumbsUp } from "lucide-react";
+import { AlertCircle, Copy, RotateCcw, ThumbsDown, ThumbsUp } from "lucide-react";
+import { NumberRoll } from "./number-roll";
 
 /* ─────────────────────────────────────────────────────────
  * STREAMING ANSWER: an AI answer as it arrives
  *
  *   StreamingText   the text so far, with inline citation chips;
  *                   only newly arrived words fade in
- *   AnswerActions   copy, regenerate, feedback and a sources stack
+ *   AnswerActions   copy (blurs into a check that draws itself),
+ *                   regenerate, feedback (the thumb fills with a
+ *                   small thrown pop) and a sources stack whose
+ *                   count rolls
  *   FollowUps       suggested next questions
  *
  * StreamingText renders whatever you pass it: append to `content`
@@ -33,6 +37,25 @@ export interface AnswerSource {
 
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
 const DOTS = ["bg-blue-500", "bg-emerald-500", "bg-orange-500", "bg-violet-500"];
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
+const THROW = "cubic-bezier(0.34,1.36,0.64,1)";
+
+const reducedQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const query = window.matchMedia(reducedQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+
+/** Icons trade places through a blur: the old one shrinks away as the new one grows in. */
+const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
+  opacity: on ? 1 : 0,
+  transform: on ? "none" : "scale(0.6)",
+  filter: on ? "none" : "blur(3px)",
+  transition: reduced ? "none" : `opacity 260ms ${MORPH}, transform 380ms ${MORPH}, filter 260ms ${MORPH}`,
+});
 
 /* ── StreamingText ───────────────────────────────────────── */
 
@@ -176,12 +199,32 @@ function IconButton({ label, pressed, disabled, onClick, children }: { label: st
       aria-pressed={pressed}
       disabled={disabled}
       onClick={onClick}
-      className={`flex size-7 items-center justify-center rounded-md transition-colors duration-150 hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-40 ${
+      className={`relative flex size-7 items-center justify-center rounded-md transition-colors duration-150 hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-40 ${
         pressed ? "bg-accent text-foreground" : "text-muted-foreground"
       } ${FOCUS}`}
     >
       {children}
     </button>
+  );
+}
+
+/** A thumb that fills in with a small thrown pop when chosen, and empties when let go. */
+function Thumb({ down, filled, reduced }: { down?: boolean; filled: boolean; reduced: boolean }) {
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const first = React.useRef(true);
+  React.useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    if (!filled || reduced) return;
+    ref.current?.animate([{ transform: "scale(0.8) rotate(-8deg)" }, { transform: "none" }], { duration: 420, easing: THROW });
+  }, [filled, reduced]);
+  const Icon = down ? ThumbsDown : ThumbsUp;
+  return (
+    <span ref={ref} className="flex">
+      <Icon className="size-3.5" style={{ fill: filled ? "currentColor" : "transparent", transition: reduced ? "none" : `fill 220ms ${MORPH}` }} />
+    </span>
   );
 }
 
@@ -197,6 +240,7 @@ export function AnswerActions({
   className = "",
   ...props
 }: AnswerActionsProps) {
+  const reduced = useReducedMotion();
   const [copied, setCopied] = React.useState(false);
   const [ownFeedback, setOwnFeedback] = React.useState<AnswerFeedback>(defaultFeedback);
   const current = feedback !== undefined ? feedback : ownFeedback;
@@ -236,8 +280,9 @@ export function AnswerActions({
           )
         )}
       </span>
-      <span>
-        {sources.length} {sources.length === 1 ? "source" : "sources"}
+      <span className="inline-flex items-baseline gap-[0.3em] tabular-nums">
+        <NumberRoll value={sources.length} duration={600} />
+        {sources.length === 1 ? "source" : "sources"}
       </span>
     </>
   );
@@ -246,8 +291,24 @@ export function AnswerActions({
     <div className={`flex items-center justify-between gap-4 ${className}`} {...props}>
       <div className="flex items-center gap-1">
         {copyText !== undefined && (
-          <IconButton label={copied ? "Copied" : "Copy answer"} disabled={disabled} onClick={copy}>
-            {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
+          <IconButton label="Copy answer" disabled={disabled} onClick={copy}>
+            <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center" style={swap(!copied, reduced)}>
+              <Copy className="size-3.5" />
+            </span>
+            <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center text-emerald-600 dark:text-emerald-400" style={swap(copied, reduced)}>
+              <svg viewBox="0 0 16 16" fill="none" className="size-3.5">
+                <path
+                  d="M3.5 8.5 6.5 11.5 12.5 4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  pathLength={1}
+                  strokeDasharray={1}
+                  style={{ strokeDashoffset: copied ? 0 : 1, transition: copied && !reduced ? `stroke-dashoffset 380ms ${MORPH} 100ms` : "none" }}
+                />
+              </svg>
+            </span>
           </IconButton>
         )}
         {onRegenerate && (
@@ -256,12 +317,16 @@ export function AnswerActions({
           </IconButton>
         )}
         <IconButton label="Helpful" pressed={current === "up"} disabled={disabled} onClick={() => rate("up")}>
-          <ThumbsUp className="size-3.5" />
+          <Thumb filled={current === "up"} reduced={reduced} />
         </IconButton>
         <IconButton label="Not helpful" pressed={current === "down"} disabled={disabled} onClick={() => rate("down")}>
-          <ThumbsDown className="size-3.5" />
+          <Thumb down filled={current === "down"} reduced={reduced} />
         </IconButton>
       </div>
+      {/* Outside the buttons, so their names stay their labels. */}
+      <span role="status" className="sr-only">
+        {copied ? "Copied" : ""}
+      </span>
 
       {stack &&
         (onSourcesClick ? (

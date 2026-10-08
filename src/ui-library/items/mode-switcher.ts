@@ -5,12 +5,13 @@ export const modeSwitcher: UiItem = {
   title: 'Mode switcher',
   description: 'Fast, Thinking, Research: a segmented switch with a sliding pill and locked paid modes.',
   summary:
-    'Lets people choose how the model should work. A pill slides to the chosen mode, an optional line underneath says what that mode does, and paid modes stay visible with a lock so people can see what an upgrade unlocks. It’s a real radio group: arrow keys move between modes.',
+    'Lets people choose how the model should work. A pill is thrown to the chosen mode with a little give, an optional line underneath morphs to say what that mode does, and paid modes stay visible with a lock so people can see what an upgrade unlocks. It’s a real radio group: arrow keys move between modes.',
   file: 'mode-switcher.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-in'],
+  registryDependencies: ['text-morph'],
+  css: [],
   states: [
-    { name: 'selected', description: 'The pill sits under the chosen mode; its description shows below if enabled.' },
+    { name: 'selected', description: 'The pill is thrown to the chosen mode with a slight overshoot (460ms) while its width eases; the description below, if enabled, morphs into the new mode’s line, keeping the words they share.' },
     { name: 'locked', description: 'Visible with a lock; choosing it calls onLockedSelect (e.g. open pricing) instead of switching.' },
   ],
   usage: `import { ModeSwitcher } from "@/components/mode-switcher";
@@ -52,6 +53,6 @@ const result = streamText({ model: mode === "thinking" ? reasoningModel : fastMo
   notes: [
     'role="radiogroup" with roving focus: Tab lands on the chosen mode, arrow keys move and skip locked modes.',
     'Locked modes are aria-disabled but still focusable and explained in their title.',
-    'The pill re-measures on resize; with reduced motion it jumps instead of sliding.',
+    'The pill re-measures on resize and its first placement never animates. Installs Text morph; with reduced motion the pill jumps and the description changes in place.',
   ],
 };
