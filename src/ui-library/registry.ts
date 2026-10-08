@@ -109,6 +109,10 @@ export const UI_CSS = {
     from: { transform: 'scaleX(0)' },
     to: { transform: 'scaleX(1)' },
   },
+  '@keyframes ui-ring-fill': {
+    from: { 'stroke-dashoffset': 'var(--ui-ring)' },
+    to: { 'stroke-dashoffset': '0' },
+  },
   '@layer base': {
     '::highlight(ui-selection)': {
       'background-color': 'color-mix(in oklab, var(--primary) 18%, transparent)',

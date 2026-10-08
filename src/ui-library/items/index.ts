@@ -6,6 +6,11 @@ import { pricingToggle } from './pricing-toggle';
 import { waitlistField } from './waitlist-field';
 import { morphingNav } from './morphing-nav';
 import { featureTabs } from './feature-tabs';
+import { statsBand } from './stats-band';
+import { announcementPill } from './announcement-pill';
+import { testimonials } from './testimonials';
+import { faqAccordion } from './faq-accordion';
+import { logoMarquee } from './logo-marquee';
 import { promptComposer } from './prompt-composer';
 import { mentionMenu } from './mention-menu';
 import { attachmentChip } from './attachment-chip';
@@ -35,4 +40,4 @@ import { messageEdit } from './message-edit';
 import { chatHistory } from './chat-history';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory];
