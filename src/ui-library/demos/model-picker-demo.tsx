@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ArrowUp, Brain, Gem, Paperclip, Sparkle, Zap } from 'lucide-react';
 import { ModelPicker, type ModelOption } from '../registry/model-picker';
 
@@ -15,10 +15,11 @@ export default function ModelPickerDemo() {
   const [model, setModel] = useState('aurora-think');
   const [effort, setEffort] = useState('Medium');
   const [upsell, setUpsell] = useState(false);
+  const composer = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="flex min-h-[320px] w-full max-w-[500px] flex-col justify-end gap-3">
-      <div className="rounded-[22px] bg-background p-2 shadow-[0_0_0_1px_var(--border),0_8px_24px_-16px_rgba(0,0,0,0.25)]">
+    <div className="flex min-h-[380px] w-full max-w-[500px] flex-col justify-end gap-3">
+      <div ref={composer} className="rounded-[22px] border border-border bg-background p-2">
         <p className="px-2.5 pb-3 pt-1.5 text-[14px] leading-6 text-muted-foreground">Plan the autumn menu launch</p>
         <div className="flex items-center gap-1">
           <button
@@ -28,6 +29,7 @@ export default function ModelPickerDemo() {
           >
             <Paperclip className="size-4" />
           </button>
+          {/* The model sits with Send: it's a setting on how this message goes out. */}
           <ModelPicker
             models={MODELS}
             value={model}
@@ -38,11 +40,15 @@ export default function ModelPickerDemo() {
             effort={effort}
             onEffortChange={setEffort}
             onLockedSelect={() => setUpsell(true)}
+            align="end"
+            collisionPadding={28}
+            anchorRef={composer}
+            className="ml-auto"
           />
           <button
             type="button"
             aria-label="Send"
-            className="ml-auto flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform active:scale-[0.94]"
+            className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform active:scale-[0.94]"
           >
             <ArrowUp className="size-4" strokeWidth={2.4} />
           </button>

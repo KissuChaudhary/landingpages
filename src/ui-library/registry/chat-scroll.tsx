@@ -211,7 +211,7 @@ export function ChatScroll({
           inert={!away}
           onClick={() => toBottom(true)}
           aria-label={unread ? `${streaming ? "Still writing" : "New reply"} below. Jump to latest` : "Jump to latest"}
-          className="pointer-events-auto flex h-8 items-center rounded-full bg-background px-2 text-[12.5px] font-medium text-foreground shadow-[0_0_0_1px_var(--border),0_8px_24px_-10px_rgba(0,0,0,0.3)] outline-none focus-visible:ring-2 focus-visible:ring-ring/40 active:scale-[0.96]"
+          className="pointer-events-auto flex h-8 items-center rounded-full border border-border bg-background px-2 text-[12.5px] font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring/40 active:scale-[0.96]"
           style={{
             opacity: away ? 1 : 0,
             transform: away ? "none" : "translateY(8px) scale(0.92)",

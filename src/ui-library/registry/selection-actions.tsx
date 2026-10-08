@@ -559,7 +559,7 @@ export function SelectionActions({
             onPointerDown={(e) => {
               if (!(e.target instanceof HTMLInputElement)) e.preventDefault();
             }}
-            className="flex h-9 w-fit max-w-[calc(100vw-32px)] select-none items-center justify-center overflow-hidden rounded-full bg-background p-1 text-foreground shadow-[0_0_0_1px_var(--border),0_12px_32px_-12px_rgba(0,0,0,0.3)] animate-[ui-pop-in_220ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
+            className="flex h-9 w-fit max-w-[calc(100vw-32px)] select-none items-center justify-center overflow-hidden rounded-full bg-background p-1 text-foreground shadow-[0_0_0_1px_var(--border)] animate-[ui-pop-in_220ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
             style={{ width: mode === "idle" && typing ? typingWidth ?? undefined : undefined }}
           >
             <div

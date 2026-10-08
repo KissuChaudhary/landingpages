@@ -139,7 +139,7 @@ export function CommandOutput({
   let errorSeen = false;
 
   return (
-    <div className={`w-full rounded-[18px] bg-background p-1 shadow-[0_0_0_1px_var(--border)] ${className}`} {...props}>
+    <div className={`w-full rounded-[18px] border border-border bg-background p-1 ${className}`} {...props}>
       <div className="flex h-9 items-center gap-2.5 pl-2.5 pr-1">
         <span aria-hidden="true" className="flex size-4 shrink-0 items-center justify-center">
           {running ? (

@@ -76,6 +76,7 @@ function Sent({ segments }: { segments: MentionSegment[] }) {
 
 export default function MentionMenuDemo({ tab = 'Try it' }: { tab?: string }) {
   const input = useRef<MentionInputHandle>(null);
+  const composer = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState<MentionValue | null>(null);
   const [sent, setSent] = useState<MentionSegment[] | null>(null);
   const canSend = Boolean(value?.segments.length);
@@ -87,12 +88,13 @@ export default function MentionMenuDemo({ tab = 'Try it' }: { tab?: string }) {
   };
 
   return (
-    <div className="flex min-h-[300px] w-full max-w-[500px] flex-col justify-end gap-4">
+    <div className="flex min-h-[340px] w-full max-w-[500px] flex-col justify-end gap-4">
       {sent && <Sent key={JSON.stringify(sent)} segments={sent} />}
-      <div className="rounded-[22px] bg-background p-2 shadow-[0_0_0_1px_var(--border),0_8px_24px_-16px_rgba(0,0,0,0.25)]">
+      <div ref={composer} className="rounded-[22px] border border-border bg-background p-2">
         <MentionInput
           ref={input}
           triggers={TRIGGERS}
+          anchorRef={composer}
           defaultValue={tab === 'With context' ? STARTER : undefined}
           onChange={setValue}
           onSubmit={send}

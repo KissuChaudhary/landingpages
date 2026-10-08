@@ -72,7 +72,7 @@ export default function ChatScrollDemo() {
       <ChatScroll
         streaming={streamed !== null}
         followKey={asked}
-        className="h-[300px] rounded-[22px] bg-background shadow-[0_0_0_1px_var(--border)]"
+        className="h-[300px] rounded-[22px] border border-border bg-background"
         contentClassName="flex flex-col gap-4 px-5 py-5"
       >
         {messages.map((m, i) =>

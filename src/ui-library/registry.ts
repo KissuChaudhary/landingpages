@@ -98,6 +98,10 @@ export const UI_CSS = {
     from: { opacity: '0', transform: 'translateY(-8px) scale(0.6)' },
     to: { opacity: '1', transform: 'none' },
   },
+  '@keyframes ui-drain': {
+    from: { 'stroke-dashoffset': '0' },
+    to: { 'stroke-dashoffset': 'var(--ui-ring)' },
+  },
   '@layer base': {
     '::highlight(ui-selection)': {
       'background-color': 'color-mix(in oklab, var(--primary) 18%, transparent)',

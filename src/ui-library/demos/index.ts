@@ -17,14 +17,17 @@ import WebResearchDemo from './web-research-demo';
 import CommandOutputDemo from './command-output-demo';
 import TaskProgressDemo from './task-progress-demo';
 import StreamingAnswerDemo from './streaming-answer-demo';
+import CodeBlockDemo from './code-block-demo';
 import CitationDemo from './citation-demo';
 import ResponseVersionsDemo from './response-versions-demo';
 import SelectionActionsDemo from './selection-actions-demo';
 import DiffReviewDemo from './diff-review-demo';
+import ActionReceiptDemo from './action-receipt-demo';
 import ChatNoticeDemo from './chat-notice-demo';
 import UsageMeterDemo from './usage-meter-demo';
 import ChatScrollDemo from './chat-scroll-demo';
 import MessageEditDemo from './message-edit-demo';
+import ChatHistoryDemo from './chat-history-demo';
 
 /** Live demo for each registry item, keyed by its registry name. Each receives the selected preview tab. */
 export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
@@ -44,12 +47,15 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'command-output': CommandOutputDemo,
   'task-progress': TaskProgressDemo,
   'streaming-answer': StreamingAnswerDemo,
+  'code-block': CodeBlockDemo,
   'citation': CitationDemo,
   'response-versions': ResponseVersionsDemo,
   'selection-actions': SelectionActionsDemo,
   'diff-review': DiffReviewDemo,
+  'action-receipt': ActionReceiptDemo,
   'chat-notice': ChatNoticeDemo,
   'usage-meter': UsageMeterDemo,
   'chat-scroll': ChatScrollDemo,
   'message-edit': MessageEditDemo,
+  'chat-history': ChatHistoryDemo,
 };

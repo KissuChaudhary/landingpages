@@ -62,11 +62,13 @@ export interface MentionInputProps extends Omit<React.HTMLAttributes<HTMLDivElem
   disabled?: boolean;
   /** Open the menu above the caret (composers at the bottom) or below it. */
   side?: "top" | "bottom";
+  /** Open clear of this element (e.g. your composer) instead of over it. */
+  anchorRef?: React.RefObject<HTMLElement | null>;
   ref?: React.Ref<MentionInputHandle>;
 }
 
 type Token = { node: Text; start: number; end: number };
-type Menu = { trigger: MentionTrigger; query: string; left: number; top: number; bottom: number };
+type Menu = { trigger: MentionTrigger; query: string; left: number; top: number; bottom: number; width: number };
 
 const EASE = "cubic-bezier(0.23,1,0.32,1)";
 const MENU_WIDTH = 300;
@@ -168,6 +170,7 @@ export function MentionInput({
   placeholder = "Ask anything",
   disabled = false,
   side = "top",
+  anchorRef,
   className = "",
   ref,
   ...props
@@ -253,15 +256,26 @@ export function MentionInput({
     range.setEnd(textNode, found.at + 1);
     const rect = range.getBoundingClientRect();
     const box = root.getBoundingClientRect();
-    const left = Math.max(0, Math.min(rect.left - box.left - 10, box.width - Math.min(MENU_WIDTH, box.width)));
+    // Never wider than the field, and kept inside it.
+    const width = Math.min(MENU_WIDTH, box.width);
+    const left = Math.max(0, Math.min(rect.left - box.left - 10, box.width - width));
     const { trigger, at } = found;
+    const edge = anchorRef?.current?.getBoundingClientRect();
     const query = before.slice(at + 1);
     setMenu((m) =>
-      m && m.trigger === trigger && m.query === query && m.left === left
+      m && m.trigger === trigger && m.query === query && m.left === left && m.width === width
         ? m
-        : { trigger, query, left, top: rect.bottom - box.top, bottom: box.bottom - rect.top }
+        : {
+            trigger,
+            query,
+            left,
+            width,
+            // Clear of the anchor when there is one (so it never covers the composer), else of the caret's line.
+            top: (edge ? edge.bottom : rect.bottom) - box.top + 6,
+            bottom: box.bottom - (edge ? edge.top : rect.top) + 6,
+          }
     );
-  }, [triggers, closeMenu]);
+  }, [triggers, closeMenu, anchorRef]);
 
   // Results for the current trigger and query; stale async answers are dropped.
   const trigger = menu?.trigger;
@@ -439,12 +453,11 @@ export function MentionInput({
 
       {menu && (
         <div
-          className="absolute z-50 overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-[0_0_0_1px_var(--border),0_16px_40px_-16px_rgba(0,0,0,0.3)] animate-[ui-pop-in_200ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
+          className="absolute z-50 overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-[0_0_0_1px_var(--border)] animate-[ui-pop-in_200ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
           style={{
             left: menu.left,
-            width: MENU_WIDTH,
-            maxWidth: "calc(100vw - 32px)",
-            ...(side === "top" ? { bottom: menu.bottom + 6, transformOrigin: "bottom left" } : { top: menu.top + 6, transformOrigin: "top left" }),
+            width: menu.width,
+            ...(side === "top" ? { bottom: menu.bottom, transformOrigin: "bottom left" } : { top: menu.top, transformOrigin: "top left" }),
             height: height ?? undefined,
             transition: `height 220ms ${EASE}`,
           }}

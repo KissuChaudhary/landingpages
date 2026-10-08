@@ -8,15 +8,17 @@ import { Check, ChevronDown } from "lucide-react";
  *
  *   closed   a quiet pill in the composer toolbar: model and
  *            thinking effort
- *   open     the same surface expands into the list: each model
- *            with a line on what it's for, speed and smarts
+ *   open     a copy of the pill lifts clear of the composer and
+ *            unfolds into the list: each model with a line on
+ *            what it's for, speed and smarts
  *   effort   models that reason get a Thinking control; the
  *            panel's height follows
  *   locked   paid models show "Pro" and call onLockedSelect
  *
  * One surface: opening grows the pill's size and radius into the
  * panel while the label cross-fades into the list, and closing
- * folds it back.
+ * folds it back into the pill. It never covers the composer:
+ * pass anchorRef and it opens above it, lined up with its edge.
  * ───────────────────────────────────────────────────────── */
 
 export interface ModelOption {
@@ -49,6 +51,10 @@ export interface ModelPickerProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   side?: "top" | "bottom";
   /** Grow from the pill's left edge or its right edge. */
   align?: "start" | "end";
+  /** Space to keep from the viewport edges on narrow screens. */
+  collisionPadding?: number;
+  /** Open clear of this element (e.g. your composer) and line up with its edge, instead of over it. */
+  anchorRef?: React.RefObject<HTMLElement | null>;
   disabled?: boolean;
 }
 
@@ -58,6 +64,7 @@ const EFFORTS = ["Low", "Medium", "High"];
 const EASE = "cubic-bezier(0.23,1,0.32,1)";
 const DURATION = 380;
 const PANEL_WIDTH = 340;
+const GAP = 8;
 const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
 
 const reducedQuery = "(prefers-reduced-motion: reduce)";
@@ -106,6 +113,8 @@ export function ModelPicker({
   onLockedSelect,
   side = "top",
   align = "start",
+  collisionPadding = 16,
+  anchorRef,
   disabled = false,
   className = "",
   ...props
@@ -117,6 +126,8 @@ export function ModelPicker({
   const [active, setActive] = React.useState(0);
   const [pill, setPill] = React.useState({ width: 0, height: 32 });
   const [panelHeight, setPanelHeight] = React.useState(0);
+  // The panel's width and sideways shift, so it always fits the screen.
+  const [fit, setFit] = React.useState({ width: PANEL_WIDTH, shift: 0, lift: 0 });
   const [highlight, setHighlight] = React.useState({ top: 0, ready: false });
   const [segment, setSegment] = React.useState({ left: 0, width: 0, ready: false });
   // After a mouse choice, focus returns to the pill without a keyboard focus ring.
@@ -134,9 +145,31 @@ export function ModelPicker({
   const mounted = phase !== "closed";
   const showEffort = Boolean(onEffortChange && selected?.reasoning);
 
+  /* Where the open panel sits: lifted clear of the anchor (the pill itself by default), lined up
+   * with the anchor's edge, and narrowed or shifted so it never leaves the screen. */
+  const measureFit = React.useCallback(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    const rect = wrap.getBoundingClientRect();
+    const edge = (anchorRef?.current ?? wrap).getBoundingClientRect();
+    const viewport = document.documentElement.clientWidth;
+    const width = Math.min(PANEL_WIDTH, viewport - collisionPadding * 2);
+    const lift = side === "top" ? rect.bottom - edge.top + GAP : edge.bottom - rect.top + GAP;
+    let shift: number;
+    if (align === "start") {
+      const left = Math.min(Math.max(edge.left, collisionPadding), viewport - collisionPadding - width);
+      shift = left - rect.left;
+    } else {
+      const right = Math.max(Math.min(edge.right, viewport - collisionPadding), collisionPadding + width);
+      shift = right - rect.right;
+    }
+    setFit((f) => (f.width === width && f.shift === shift && f.lift === lift ? f : { width, shift, lift }));
+  }, [align, side, collisionPadding, anchorRef]);
+
   const open = () => {
     if (disabled || phase === "open" || phase === "opening") return;
     window.clearTimeout(timer.current);
+    measureFit();
     setActive(Math.max(0, models.findIndex((m) => m.id === value)));
     setPhase(reduced ? "open" : "opening");
   };
@@ -169,6 +202,12 @@ export function ModelPicker({
   }, [phase]);
 
   React.useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  React.useEffect(() => {
+    if (!mounted) return;
+    window.addEventListener("resize", measureFit);
+    return () => window.removeEventListener("resize", measureFit);
+  }, [mounted, measureFit]);
 
   React.useEffect(() => {
     if (expanded) listRef.current?.focus({ preventScroll: true });
@@ -265,7 +304,7 @@ export function ModelPicker({
     segmentRefs.current[next]?.focus();
   };
 
-  const width = expanded ? PANEL_WIDTH : pill.width;
+  const width = expanded ? fit.width : pill.width;
   const height = expanded ? panelHeight : pill.height;
   const listId = `${id}-list`;
 
@@ -297,10 +336,15 @@ export function ModelPicker({
         onPointerDown={() => setQuietFocus(true)}
         onKeyDown={() => setQuietFocus(false)}
         onBlur={() => setQuietFocus(false)}
-        className={`inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[12.5px] font-medium transition-[background-color,opacity] duration-150 hover:bg-accent disabled:pointer-events-none disabled:opacity-50 ${quietFocus ? "outline-none" : FOCUS} ${mounted ? "opacity-0" : ""}`}
+        className={`inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[12.5px] font-medium transition-colors duration-150 hover:bg-accent disabled:pointer-events-none disabled:opacity-50 ${quietFocus ? "outline-none" : FOCUS} ${expanded ? "bg-accent" : ""}`}
       >
         <PillLabel model={selected} effort={effort} />
-        <ChevronDown aria-hidden="true" className="size-3.5 text-muted-foreground" />
+        {/* Points up while the panel is open; the panel's copy of the pill turns in step. */}
+        <ChevronDown
+          aria-hidden="true"
+          className="size-3.5 text-muted-foreground"
+          style={{ transform: expanded ? "rotate(180deg)" : "none", transition: reduced ? "none" : `transform 320ms ${EASE}` }}
+        />
       </button>
 
       {mounted && (
@@ -312,16 +356,15 @@ export function ModelPicker({
           }}
           className="absolute z-50 overflow-hidden bg-popover text-popover-foreground"
           style={{
-            [side === "top" ? "bottom" : "top"]: 0,
-            [align === "start" ? "left" : "right"]: 0,
+            [side === "top" ? "bottom" : "top"]: expanded ? fit.lift : 0,
+            [align === "start" ? "left" : "right"]: expanded ? (align === "start" ? fit.shift : -fit.shift) : 0,
             width,
             height,
-            maxWidth: "calc(100vw - 32px)",
             borderRadius: expanded ? 20 : pill.height / 2,
-            boxShadow: expanded ? "0 0 0 1px var(--border), 0 16px 40px -16px rgba(0,0,0,0.3)" : "0 0 0 1px transparent, 0 0 0 0 transparent",
+            boxShadow: expanded ? "0 0 0 1px var(--border)" : "0 0 0 1px transparent",
             transition: reduced
               ? "none"
-              : `width ${DURATION}ms ${EASE}, height ${DURATION}ms ${EASE}, border-radius ${DURATION}ms ${EASE}, box-shadow 240ms ${EASE}`,
+              : `width ${DURATION}ms ${EASE}, height ${DURATION}ms ${EASE}, left ${DURATION}ms ${EASE}, right ${DURATION}ms ${EASE}, top ${DURATION}ms ${EASE}, bottom ${DURATION}ms ${EASE}, border-radius ${DURATION}ms ${EASE}, box-shadow 240ms ${EASE}`,
           }}
         >
           {/* The pill's label, fading out as the surface grows (and back in as it folds). */}
@@ -330,11 +373,15 @@ export function ModelPicker({
             className={`pointer-events-none absolute inline-flex h-8 items-center gap-1.5 px-3 text-[12.5px] font-medium ${side === "top" ? "bottom-0" : "top-0"} ${align === "start" ? "left-0" : "right-0"}`}
             style={{
               opacity: expanded ? 0 : 1,
-              transition: reduced ? "none" : expanded ? "opacity 120ms ease-out" : `opacity 200ms ease-out ${DURATION - 220}ms`,
+              transition: reduced ? "none" : expanded ? "opacity 120ms ease-out" : "opacity 200ms ease-out 140ms",
             }}
           >
             <PillLabel model={selected} effort={effort} />
-            <ChevronDown className="size-3.5 rotate-180 text-muted-foreground" />
+            {/* Turns with the surface: up as it opens, back down as it folds, so the hand-off to the pill never flips. */}
+            <ChevronDown
+              className="size-3.5 text-muted-foreground"
+              style={{ transform: expanded ? "rotate(180deg)" : "none", transition: reduced ? "none" : `transform 320ms ${EASE}` }}
+            />
           </span>
 
           <div
@@ -342,7 +389,7 @@ export function ModelPicker({
             inert={!expanded}
             className={`absolute p-1.5 ${side === "top" ? "bottom-0" : "top-0"} ${align === "start" ? "left-0" : "right-0"}`}
             style={{
-              width: PANEL_WIDTH,
+              width: fit.width,
               opacity: expanded ? 1 : 0,
               transform: expanded ? "none" : `translateY(${side === "top" ? 6 : -6}px)`,
               transition: reduced
@@ -421,7 +468,7 @@ export function ModelPicker({
                 <div role="radiogroup" aria-labelledby={`${id}-effort`} onKeyDown={onEffortKey} className="relative flex rounded-full bg-muted p-0.5">
                   <span
                     aria-hidden="true"
-                    className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_1px_2px_rgba(0,0,0,0.08),0_0_0_1px_var(--border)]"
+                    className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_0_0_1px_var(--border)]"
                     style={{
                       width: segment.width,
                       transform: `translateX(${segment.left}px)`,

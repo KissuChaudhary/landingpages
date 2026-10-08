@@ -202,7 +202,7 @@ export function ClarifyingQuestion({
   return (
     <div
       ref={surfaceRef}
-      className={`overflow-hidden rounded-[20px] bg-background shadow-[0_0_0_1px_var(--border),0_8px_24px_-18px_rgba(0,0,0,0.25)] ${className}`}
+      className={`overflow-hidden rounded-[20px] border border-border bg-background ${className}`}
       {...props}
     >
       {done ? (

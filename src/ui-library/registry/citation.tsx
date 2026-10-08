@@ -98,7 +98,7 @@ export function Citation({ index, source, status = "available", className = "", 
           ref={cardRef}
           id={id}
           role="tooltip"
-          className={`absolute left-0 z-50 block rounded-xl border border-border bg-background p-3 text-left shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)] animate-[ui-fade-up_180ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none ${
+          className={`absolute left-0 z-50 block rounded-xl border border-border bg-background p-3 text-left animate-[ui-fade-up_180ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none ${
             place.above ? "bottom-full mb-1.5" : "top-full mt-1.5"
           }`}
           style={{ width: CARD_WIDTH, transform: place.shift ? `translateX(-${place.shift}px)` : undefined }}

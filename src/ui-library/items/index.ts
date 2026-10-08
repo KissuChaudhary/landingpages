@@ -15,14 +15,17 @@ import { webResearch } from './web-research';
 import { commandOutput } from './command-output';
 import { taskProgress } from './task-progress';
 import { streamingAnswer } from './streaming-answer';
+import { codeBlock } from './code-block';
 import { citation } from './citation';
 import { responseVersions } from './response-versions';
 import { selectionActions } from './selection-actions';
 import { diffReview } from './diff-review';
+import { actionReceipt } from './action-receipt';
 import { chatNotice } from './chat-notice';
 import { usageMeter } from './usage-meter';
 import { chatScroll } from './chat-scroll';
 import { messageEdit } from './message-edit';
+import { chatHistory } from './chat-history';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, citation, responseVersions, selectionActions, diffReview, chatNotice, usageMeter, chatScroll, messageEdit];
+export const items: UiItem[] = [promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory];

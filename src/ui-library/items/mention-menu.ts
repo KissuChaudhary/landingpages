@@ -82,6 +82,7 @@ export async function POST(req: Request) {
     { name: 'defaultValue', type: 'MentionSegment[]', description: 'Starting text and chips, e.g. a draft.' },
     { name: 'placeholder', type: 'string', default: '"Ask anything"', description: 'Shown while the field is empty; also its label.' },
     { name: 'side', type: '"top" | "bottom"', default: '"top"', description: 'Open above the caret (composers at the bottom of the screen) or below it.' },
+    { name: 'anchorRef', type: 'RefObject<HTMLElement>', description: 'Open clear of this element, e.g. your composer, so the menu never covers it.' },
     { name: 'ref', type: '{ focus(); clear() }', description: 'Focus the field, or clear it after sending.' },
   ],
   notes: [

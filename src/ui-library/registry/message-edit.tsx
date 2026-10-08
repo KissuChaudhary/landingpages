@@ -138,7 +138,7 @@ export function MessageEdit({
         ref={surfaceRef}
         className={`overflow-hidden rounded-[20px] transition-[background-color,box-shadow] duration-300 ${
           editing
-            ? "w-full bg-background shadow-[0_0_0_1px_var(--border),0_8px_24px_-16px_rgba(0,0,0,0.25)]"
+            ? "w-full bg-background shadow-[0_0_0_1px_var(--border)]"
             : "w-fit max-w-[85%] bg-muted shadow-[0_0_0_1px_transparent]"
         }`}
       >

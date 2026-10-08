@@ -92,7 +92,7 @@ export function ModeSwitcher({
         {pill && (
           <span
             aria-hidden="true"
-            className="absolute inset-y-0.5 rounded-full bg-background shadow-[0_1px_2px_rgba(0,0,0,0.08)] transition-[left,width] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
+            className="absolute inset-y-0.5 rounded-full bg-background shadow-[0_0_0_1px_var(--border)] transition-[left,width] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
             style={{ left: pill.left, width: pill.width }}
           />
         )}
