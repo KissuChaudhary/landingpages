@@ -1,0 +1,10 @@
+
+:root { --rail-gutter: 40px; }
+.site-frame::before { content: ""; position: absolute; inset: 0 var(--rail-gutter); border-inline: 1px solid var(--line); pointer-events: none; z-index: 2; }
+.grid-inner { position: relative; width: calc(100% - var(--rail-gutter) * 2); margin-inline: auto; }
+.grid-section { position: relative; }
+.grid-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: var(--line); box-shadow: 0 0 0 100vmax var(--line); clip-path: inset(0 -100vmax); pointer-events: none; }
+.grid-hatch { background-image: repeating-linear-gradient(135deg, transparent 0 6px, var(--line) 6px 7px, transparent 7px 13px), repeating-linear-gradient(135deg, transparent 0 6px, var(--line) 6px 7px, transparent 7px 13px); background-size: var(--rail-gutter) 100%; background-position: left top, right top; background-repeat: no-repeat; }
+.grid-hatch > .grid-inner { background: var(--canvas); }
+@media(max-width: 800px) { :root { --rail-gutter: 24px; } }
+@media(max-width: 540px) { :root { --rail-gutter: 12px; } }

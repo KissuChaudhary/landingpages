@@ -1,0 +1,17 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const configPath = path.join(root, 'tsconfig.json');
+const before = fs.readFileSync(path.join(__dirname, 'patch-root-tsconfig.before.json'));
+const baseline = JSON.parse(before.toString());
+const current = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+current.include = current.include.filter(entry => entry !== 'build/patch-release/types/**/*.ts').sort();
+baseline.include.sort();
+if (JSON.stringify(current) !== JSON.stringify(baseline)) throw new Error('Concurrent config changes; preserve them.');
+fs.writeFileSync(configPath, before);
+const envPath = path.join(root, 'next-env.d.ts');
+const envBefore = fs.readFileSync(path.join(__dirname, 'patch-root-next-env.before.txt'));
+const envNow = fs.readFileSync(envPath, 'utf8').replace('./build/patch-release/types/routes.d.ts', './.next/types/routes.d.ts');
+if (envNow.replace(/\r\n/g, '\n') !== envBefore.toString().replace(/\r\n/g, '\n')) throw new Error('Concurrent generated types changes; preserve them.');
+fs.writeFileSync(envPath, envBefore);
+console.log('Restored isolated build references; production build passed.');

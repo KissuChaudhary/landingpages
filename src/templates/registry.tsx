@@ -25,6 +25,7 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'prism': dynamic(() => import('@/templates/prism'), { ssr: false, loading: Loading }),
   'tempo': dynamic(() => import('@/templates/tempo'), { ssr: false, loading: Loading }),
   'patch': dynamic(() => import('@/templates/patch'), { ssr: false, loading: Loading }),
+  'relay': dynamic(() => import('@/templates/relay'), { ssr: false, loading: Loading }),
 };
 
 export function getTemplateComponent(slug: string): React.ComponentType<any> | undefined {

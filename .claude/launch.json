@@ -21,6 +21,20 @@
       "port": 3100
     },
     {
+      "name": "hairline-motion-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "node_modules/next/dist/bin/next",
+        "dev",
+        "-p",
+        "3300"
+      ],
+      "env": {
+        "NEXT_DIST_DIR": ".next-verify"
+      },
+      "port": 3300
+    },
+    {
       "name": "founderdada-prod-check",
       "runtimeExecutable": "node",
       "runtimeArgs": [

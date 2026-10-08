@@ -91,7 +91,7 @@ export default async function TemplateDetailPage({ params }: PageProps) {
   const specs: [string, React.ReactNode][] = [
     ['Framework', 'Next.js 15 (App Router), React 19'],
     ['Language', 'TypeScript'],
-    ['Styling', 'Tailwind CSS v4, design tokens in one stylesheet'],
+    ['Styling', 'Tailwind CSS v4 with design tokens and component styles'],
     ['Fonts', `${d.fonts.join(', ')}, self-hosted with next/font`],
     ['Dependencies', <span key="deps" className="font-mono text-[13px]">{d.dependencies.join(', ')}</span>],
     ['Images', d.images],

@@ -340,6 +340,27 @@ export const TEMPLATES: TemplateItem[] = [
       "demoUrl": "/demo/patch",
       "detailUrl": "/template/patch",
       "thumbnailUrl": "/previews/card/patch.webp"
+    },
+    {
+      "slug": "relay",
+      "title": "Relay: Personal Assistant & AI Companion",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Personal Assistant",
+      "description": "A light-theme launch page for personal assistants with continuous page rails, an interactive conversation hero, expansive feature illustrations and a working assistant workspace.",
+      "tags": ["Personal Assistant", "AI Companion", "Light Theme", "Feature Grid", "Next.js 15"],
+      "features": [
+        "Centered hero, floating navigation and interactive workspace",
+        "Three examples with selected context, pause, resume and reset",
+        "Saved example library, clipboard and real text exports",
+        "Illustrated feature grid, two appearances and typed config"
+      ],
+      "accentColor": "from-blue-200 to-blue-600",
+      "previewUrl": "/preview/relay",
+      "standaloneUrl": "/demos/relay/index.html",
+      "demoUrl": "/demo/relay",
+      "detailUrl": "/template/relay",
+      "thumbnailUrl": "/previews/card/relay.webp"
     }
 ];
 

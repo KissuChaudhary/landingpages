@@ -1,0 +1,39 @@
+
+.hero-scene { background: radial-gradient(ellipse at 50% 60%, #bfd0ff80, transparent 68%); }
+.scene-conversation { max-width: 800px; margin: auto; padding: 20px 32px 52px; }
+.scene-question { margin: 0 0 24px auto; max-width: 480px; }
+.scene-question > span { display: block; text-align: right; margin-bottom: 8px; font-size: var(--small); color: var(--muted); }
+.scene-question p { padding: 20px 24px; border-radius: 18px 18px 4px 18px; background: #295cf1; color: white; box-shadow: 0 12px 30px #295cf120; }
+.scene-answer { display: flex; align-items: flex-start; gap: 16px; }
+.scene-avatar { flex: 0 0 40px; height: 40px; border: 1px solid var(--line); background: var(--paper); border-radius: 50%; display: grid; place-items: center; }
+.scene-avatar svg { width: 22px; height: 22px; color: var(--blue); }
+.scene-response { flex: 1; min-width: 0; padding: 26px 28px 0; border: 1px solid var(--line); background: var(--paper); border-radius: 4px 18px 18px 18px; box-shadow: 0 20px 60px #1f4d9e10; }
+.scene-author { font-size: var(--small); font-weight: 600; }
+.scene-author > span { font-weight: 400; color: var(--muted); margin-left: 8px; }
+.scene-response h2 { font-size: 24px; margin-top: 18px; }
+.scene-response > p { color: var(--muted); margin-top: 10px; font-size: var(--small); }
+.scene-steps { display: grid; gap: 10px; margin-block: 22px; }
+.scene-step { display: flex; align-items: center; gap: 10px; font-size: var(--small); }
+.scene-step svg { color: var(--blue); }
+.scene-response-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-block: 10px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.scene-response-footer > span, .scene-response-footer button { display: flex; align-items: center; gap: 8px; }
+.scene-response-footer button { min-height: 40px; border: 0; background: transparent; color: var(--blue); padding: 0; }
+.scene-options { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); background: color-mix(in srgb, var(--canvas) 75%, transparent); }
+.scene-options button { min-height: 72px; display: flex; align-items: center; justify-content: center; gap: 16px; border: 0; background: transparent; color: var(--muted); font-size: var(--small); }
+.scene-options button + button { border-left: 1px solid var(--line); }
+.scene-options button[aria-pressed="true"] { color: var(--blue); background: color-mix(in srgb, var(--blue) 4%, transparent); box-shadow: inset 0 -2px var(--blue); }
+[data-theme="dark"] .hero-scene { background: radial-gradient(ellipse at 50% 60%, #295cf12b, transparent 68%); }
+@media(max-width:540px) {
+ .scene-conversation { padding: 0 16px 32px; }
+ .scene-question { max-width: 90%; margin-bottom: 20px; }
+ .scene-question p { padding: 16px; font-size: 14px; }
+ .scene-answer { gap: 8px; }
+ .scene-avatar { flex-basis: 28px; height: 28px; }
+ .scene-avatar svg { width: 16px; }
+ .scene-response { padding: 18px 16px 0; }
+ .scene-author > span { display: none; }
+ .scene-response h2 { font-size: 20px; }
+ .scene-options button { gap: 4px; padding: 14px 8px; font-size: 12px; min-height: 66px; }
+ .scene-options svg { display: none; }
+ .scene-response-footer > span { display: none; }
+}

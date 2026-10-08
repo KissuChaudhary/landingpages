@@ -1,0 +1,27 @@
+
+.navigation { position: sticky; top: 16px; z-index: 30; width: calc(100% - var(--rail-gutter) * 2 - 40px); min-height: 76px; margin: 16px auto 0; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid transparent; border-radius: 16px; transition: width .3s, background .3s, box-shadow .3s, border-color .3s; }
+.navigation.is-scrolled { width: min(900px, calc(100% - var(--rail-gutter) * 2 - 16px)); background: color-mix(in srgb, var(--paper) 93%, transparent); backdrop-filter: blur(16px); border-color: var(--line); box-shadow: 0 8px 32px #17243b0a; }
+.navigation nav, .nav-actions { display: flex; align-items: center; gap: 8px; }
+.navigation nav a { padding: 10px 14px; color: var(--muted); font-size: var(--small); border-radius: 8px; white-space: nowrap; }
+.navigation nav a:hover, .navigation nav a[aria-current] { color: var(--ink); background: var(--surface); }
+.nav-start { font-size: var(--small); border-radius: 10px; }
+.menu-toggle { display: none; }
+.hero-copy { padding: 74px 24px 50px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: var(--small); }
+.hero-eyebrow svg { width: 18px; height: 18px; color: var(--blue); }
+.hero h1 { margin: 20px auto 0; font-size: var(--display); line-height: 1.08; letter-spacing: -.055em; max-width: 960px; }
+.hero h1 span { display: block; }
+.hero-description { max-width: 560px; margin: 24px auto 0; color: var(--muted); }
+.hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero-actions .button { border-radius: 10px; }
+@media(max-width: 950px) { .navigation { gap: 12px; padding-inline: 12px; } .navigation nav a { padding-inline: 10px; } .nav-start { display: none; } }
+@media(max-width: 700px) {
+ .navigation, .navigation.is-scrolled { width: calc(100% - var(--rail-gutter) * 2 - 16px); min-height: 64px; margin-top: 8px; top: 8px; padding: 8px 12px; }
+ .navigation nav { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; padding: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 24px #17243b12; }
+ .navigation nav.is-open { display: flex; flex-direction: column; align-items: stretch; }
+ .menu-toggle { display: grid; }
+ .hero-copy { padding: 56px 20px 36px; }
+ .hero h1 { font-size: clamp(34px, 6.7vw, 48px); }
+ .hero-description { max-width: 430px; }
+}
+@media(max-width: 380px) { .hero-actions { flex-direction: column; } .hero h1 { font-size: 32px; } }

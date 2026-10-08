@@ -1,6 +1,6 @@
 # Patch and Relay — proposed grid launch templates
 
-Status: design plan, 8 October 2026. Working names. Implementation has not started.
+Status: Patch is built and deployed. Relay's opening and feature system were rebuilt after the user's 8 October critique of the first design. Relay's current design specification is `next-templates/relay/DESIGN.md`.
 
 ## Brief
 
@@ -24,11 +24,13 @@ The catalog already contains Halftone (API tools), Parley (support chat), Footno
 
 ## Shared grid discipline
 
-- A 1248px maximum content frame inside the page, with a 12-column desktop grid. The two outer rails remain aligned through navigation, hero, features, pricing, CTA, and footer.
+Patch uses the denser architectural frame described below. Relay uses continuous outer and inner rails, navigation that contracts on scroll, a conversation hero and a joined feature grid.
+
+- Patch has a 1248px framed grid; Relay has a 1280px outer frame with 40px inner gutters on desktop. Content alignment remains consistent through navigation, hero, product, pricing and footer.
 - One-pixel rules, drawn once per shared edge. Avoid doubled borders and drifting column boundaries.
 - Alternate full-width introductions, unequal split rows, dense product panels, and sparse text cells. Small app windows may have rounded corners; the page grid stays architectural.
-- At desktop widths, use 20–28px ornamental rails. At phone widths, reduce to 6–8px or omit their decoration where it steals reading space. Keep content padding at least 20px.
-- Registration ticks for Patch; subtle dotted rails and connector junctions for Relay. Use original details rather than reproducing the reference hatch pattern everywhere.
+- Patch uses registration ticks. Relay carries inner rails through all sections and hatches selected outer gutters. Keep phone cell content padding at least 20px.
+- Use original details and useful section relationships rather than reproducing the reference hatch pattern.
 - Both pages have a complete semantic colour-token system. Theme changes affect diagrams, illustrations, code, borders, shadows, selections, forms, and dialogs.
 - Animation clarifies an action or transition. No automatic carousel for primary product content; no constant movement in every cell. Respect reduced motion.
 
@@ -76,30 +78,29 @@ For personal AI assistants, browser extensions, desktop companions, research age
 
 Promise: a thought becomes an organized next step.
 
-Hero copy direction: **One thought. A clear next step.**
+Hero copy: **For everything on your mind.**
 
 ### Identity
 
-Cool white `#F7F9FC`, midnight `#17243B`, cobalt `#315DEA`, pale blue, and tiny warm accents inside examples. DM Sans for the conversational display and interface; Geist Mono for context labels and activity. Dark appearance uses deep navy and softened blue highlights.
+Cloud white `#FBFCFF`, ink `#182137`, cobalt `#295CF1` and a pale-blue hero glow. DM Sans is the only typeface, with five shared semantic text roles. The alternate ink appearance uses deep navy and softened blue highlights across the complete page.
 
-Original connected-point mark, gently rounded product panels inside straight page rules, quiet dotted rails, and short conversational copy. A smaller contained blue glow belongs to the assistant workspace rather than filling the hero.
+An original linked-ribbon mark, one useful hero eyebrow, floating navigation and clear space. Borders join four feature cells; their original visuals show product behavior rather than generic cards.
 
 ### Page composition
 
-1. **Framed navigation.** Brand and compact anchors share the grid frame; the mobile header keeps a clear primary action and menu.
-2. **Centered hero.** Headline and brief copy lead into a large command surface, with three scenario chips directly attached to it. Keep the example output visible near the fold rather than spending an entire viewport on text.
-3. **Agent workspace, 8/4.** Wide left cell: request and a structured result. Right column: context sources and a short action timeline. A thin connector line joins these cells to explain how input becomes output.
-4. **Connected-tools strip.** Neutral tool slots and editable compatible-tool labels. Selecting a source reveals what it contributes to the example; no real accounts are connected.
-5. **Everyday capabilities.** One large conversation/result cell beside two stacked context/action cells, then three compact utility cells. Each demonstrates a specific action: save a note, select relevant context, prepare a task list, copy a draft.
-6. **One request, three steps.** Ask / Gather / Prepare selector beside one changing demonstration. No automatically cycling accordion that interrupts reading.
-7. **Use-case mosaic.** Creator launch, personal research, and daily planning. Category filters update visible examples. Saved examples persist locally when storage is available.
-8. **Control and trust row.** Original permission-preview UI, showing which context is included and where the example stays. Describe the actual local demo accurately; actual security claims belong to the buyer.
-9. **Membership and FAQ.** A clean three-column comparison grid with accurate period totals, followed by concise disclosures.
-10. **Closing statement and footer.** Spacious full-width CTA, a restrained connector motif, and structured footer cells.
+1. **Navigation.** Open navigation contracts into a compact floating bar after scrolling; it includes active anchors, appearance switch and mobile menu.
+2. **Hero.** A tightly set centered two-line headline, blue light and two actions lead directly into the product.
+3. **Assistant workspace.** A dedicated grid section combines selected context, prepared request, three tabs and a document. Phone context follows the result so the primary task appears first.
+4. **Illustrated details.** Four joined feature cells each show a distinct product stage with code-native visuals.
+5. **Possibilities.** Three shared grid columns contain original example studies, a Saved filter and coordinated workspace actions.
+6. **Context and control.** An open explanation of the actual local data boundaries.
+7. **Pricing.** Two plans share a ledger, with calculated annual savings and accurate billing previews.
+8. **FAQ.** Native disclosures explain the demonstration and buyer integrations.
+9. **Closing and footer.** A focused cobalt closing panel and useful links.
 
 ### Interaction contract
 
-- Scenario chips coordinate the request, sources, action trail, and output. Replay progresses through a short deterministic sequence and offers pause/reset; reduced motion reveals the completed state immediately.
+- Scenario tabs coordinate the request, sources and output. Replay progresses through a finite sequence and offers pause/resume/reset; reduced motion reveals the completed state immediately.
 - Source controls change the visible included-context state. They are demo controls, not OAuth integrations.
 - Save/remove stores only example IDs locally. Copy/export produces the displayed result and reports failures honestly.
 - Any free-form input must route to a real configured app or explain the available sample scenarios; never simulate an arbitrary AI response to text that was ignored.
@@ -109,23 +110,23 @@ Original connected-point mark, gently rounded product panels inside straight pag
 
 | Decision | Patch | Relay |
 | --- | --- | --- |
-| Hero silhouette | Asymmetrical copy/editor split | Centered copy/command surface |
+| Hero silhouette | Asymmetrical copy/editor split | Centered statement above a selectable conversation |
 | Main visual | File, diff, rendered component | Request, context, structured result |
-| Grid rhythm | Precise, denser, alternating spans | Spacious, larger joined cells |
+| Grid rhythm | Precise, denser, alternating spans | Continuous rails, viewport section rules and border-sharing cells |
 | Accent | Citrus with graphite UI | Cobalt with pale-blue UI |
-| Repeated motif | Brackets and registration ticks | Nodes and connector junctions |
+| Repeated motif | Brackets and registration ticks | Cobalt light and joined feature borders |
 | Core action | Apply a change, inspect, export | Choose context, prepare, save |
 | Buyer adaptations | Builders, editors, developer products | Assistants, extensions, personal agents |
 
 ## Mobile plan
 
-Design the 390px compositions deliberately, then verify 320px. Preserve the frame and shared rules while stacking content in reading order. Patch shows headline, request, readable diff excerpt, then output; file controls remain reachable. Relay shows headline, scenario chips, request/result, then context and action trail. Avoid scaled-down desktop screenshots and narrow chat bubbles. Horizontal overflow is permitted only within a labeled code block where wrapping changes meaning.
+Design the 390px compositions deliberately, then verify 320px. Patch retains its frame and readable diff excerpt. Relay shows a centered headline, working tabs, multiline request, readable document and compact context controls. Avoid scaled-down desktop screenshots and narrow chat bubbles. Horizontal overflow is permitted only within a labeled code block where wrapping changes meaning.
 
 ## Reusable architecture
 
 Keep each template independent under `next-templates/patch/` and `next-templates/relay/`. Separate section components, product-demo components, primitives, state hooks, and styles by responsibility. Use typed `site.config.ts` files for all buyer-facing content, links, pricing, scenarios, screenshot slots, and theme settings. Keep local sample datasets separate from page copy.
 
-Create a small consistent GridFrame/GridRow/GridCell vocabulary within each standalone template. A buyer must not depend on importing the other template or the marketplace. Avoid a large universal component with many layout conditionals.
+Patch uses GridFrame/GridRow/GridCell primitives; Relay uses a shared GridSection primitive, continuous rails and purpose-specific section styles. A buyer must not depend on importing the other template or the marketplace. Avoid a large universal component with many layout conditionals.
 
 Each ships with its own README, design decisions, asset provenance, commercial license, dependency lockfile, strict typecheck, and export script. Then add the isolated live demo, catalog entry, detail content, desktop/mobile screenshots, and OG image to the marketplace.
 
@@ -133,7 +134,7 @@ Each ships with its own README, design decisions, asset provenance, commercial l
 
 1. Build Patch's grid primitives and hero/workspace at desktop and phone widths. Review its primary visual before filling the rest of the page.
 2. Complete Patch's sections, both themes, local interactions, and customization surface. Verify, capture, and integrate it into the catalog.
-3. Build Relay with its own composition and product examples. Reuse the proven layout principles while retaining separate standalone source.
+3. Build Relay from its revised composition and typography brief, with separate standalone source and product examples.
 4. Complete Relay's sections and interaction states, verify, capture, and integrate.
 
 Acceptance: coherent line intersections, distinct section rhythm, useful demonstrations, authentic typography, complete empty/error/selected states, 44px touch targets, keyboard operation, dialog focus handling, visible focus, reduced motion, contrast checks, and responsive inspection at 1440/1280/1024/768/390/320px. Run typecheck and production/export checks after substantial batches; dependency audit and final console review before completion. Run lint after meaningful changes, never after every small edit. Capture actual pages for catalog assets.
