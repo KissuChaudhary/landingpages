@@ -24,16 +24,16 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
         {/* Center Links */}
         <div className="hidden sm:flex items-center gap-6 text-xs sm:text-sm font-medium text-[#666]">
-          <Link href="#catalog" className="hover:text-[#181925] transition-colors">
+          <Link href="/#catalog" className="hover:text-[#181925] transition-colors">
             Templates
           </Link>
-          <Link href="#how-it-works" className="hover:text-[#181925] transition-colors">
+          <Link href="/#how-it-works" className="hover:text-[#181925] transition-colors">
             How it works
           </Link>
-          <Link href="#pricing" className="hover:text-[#181925] transition-colors">
+          <Link href="/#pricing" className="hover:text-[#181925] transition-colors">
             Pricing
           </Link>
-          <Link href="#faq" className="hover:text-[#181925] transition-colors">
+          <Link href="/#faq" className="hover:text-[#181925] transition-colors">
             FAQ
           </Link>
         </div>
@@ -41,7 +41,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
         {/* Right CTA Button: Tactile 3D Button */}
         <div className="flex items-center gap-2">
           <Link
-            href="#pricing"
+            href="/#pricing"
             className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer border border-[color-mix(in_srgb,var(--primary)_80%,#12245e)] bg-[color-mix(in_srgb,var(--primary)_90%,#12245e)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(18,36,94,0.4)] transform-gpu hover:bg-primary active:translate-y-px active:scale-[0.98] h-8.5 px-4 text-xs select-none"
           >
             <span>All-Access Pass</span>

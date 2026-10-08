@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { DitherGradient } from '@/components/theirs/dither-gradient';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { TEMPLATES } from '@/data/templates';
+import { PRICING, formatPrice } from '@/data/pricing';
 
 export function CtaBanner() {
   return (
@@ -56,7 +57,7 @@ export function CtaBanner() {
               href="#pricing"
               className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer border border-white/20 bg-white/10 text-white hover:bg-white/20 active:scale-[0.98] h-11 px-6 text-sm select-none"
             >
-              <span>Get Lifetime Pass ($129)</span>
+              <span>Get all-access ({formatPrice(PRICING.allAccess.price)})</span>
             </a>
           </div>
         </div>

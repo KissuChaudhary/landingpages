@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import type { TemplateItem } from '@/data/templates';
+import { PRICING, formatPrice } from '@/data/pricing';
 
 export type DeviceMode = 'desktop' | 'laptop' | 'tablet' | 'mobile';
 
@@ -149,10 +150,10 @@ export default function DemoToolbar({
 
 
         <Link
-          href="/#pricing"
+          href={template.detailUrl}
           className="inline-flex items-center justify-center gap-1 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer border border-[color-mix(in_srgb,var(--primary)_80%,#12245e)] bg-[color-mix(in_srgb,var(--primary)_90%,#12245e)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(18,36,94,0.4)] transform-gpu hover:bg-primary active:scale-[0.98] h-8.5 px-3.5 text-xs select-none"
         >
-          <span>All-Access</span>
+          <span>Get template · {formatPrice(PRICING.single.price)}</span>
         </Link>
       </div>
     </header>

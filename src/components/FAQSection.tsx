@@ -5,27 +5,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { SectionHeader } from './theirs/section-header';
 import { TEMPLATES } from '@/data/templates';
+import { PRICING, formatPrice } from '@/data/pricing';
+
+const single = formatPrice(PRICING.single.price);
+const allAccess = formatPrice(PRICING.allAccess.price);
 
 const FAQS = [
   {
+    q: 'What does a template cost?',
+    a: `${single} for one template, or ${allAccess} for all ${TEMPLATES.length} plus every template added later. Both are one-time payments with a ${PRICING.refundDays}-day money-back guarantee.`,
+  },
+  {
     q: 'Can I use these templates for commercial SaaS and client projects?',
-    a: 'Yes. Both the free demos and the All-Access Lifetime Pass grant you unrestricted rights to build, deploy, and monetize commercial SaaS applications and client websites.',
+    a: 'Yes. Every purchase includes a commercial license: use the template for your own products and any number of client projects. You just can’t resell the template files themselves as a template or UI kit.',
   },
   {
     q: 'How does the interactive demo viewer work?',
-    a: 'Every template is hosted on an isolated endpoint. Our Cruip-inspired responsive demo viewer allows you to simulate live breakpoints (Desktop, 1024px Laptop, 768px Tablet, and 375px Mobile) directly in your browser without downloading the code first.',
+    a: 'Every template runs as a real, isolated build. The demo viewer lets you switch between desktop, 1024px laptop, 768px tablet and 375px phone widths in your browser before you buy.',
   },
   {
     q: `What stack is used across the ${TEMPLATES.length} templates?`,
-    a: 'Every template is a standalone Next.js 15 project built with React 19, Tailwind CSS v4 and Lucide icons.',
+    a: 'Every template is a standalone Next.js 15 project built with React 19, TypeScript, Tailwind CSS v4 and Lucide icons. No API keys or environment variables.',
   },
   {
-    q: 'How do I download and export the source code?',
-    a: 'Each template card and detail page has a direct download action. You can download the complete standalone zip package, unpack it, run pnpm install, and launch immediately.',
+    q: 'How do I get the source code?',
+    a: 'Buy a template from its page, or get all-access. Checkout sends a download link straight away: unzip the project, run npm install and npm run dev.',
   },
   {
     q: 'Will new templates be added?',
-    a: 'Yes. All-Access Lifetime Pass holders receive every future template at no extra charge.',
+    a: 'Yes. All-access holders get every new template at no extra charge.',
   },
 ];
 

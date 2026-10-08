@@ -1,126 +1,89 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Eye, ArrowRight } from 'lucide-react';
-import type { TemplateItem } from '@/data/templates';
 
 interface TemplateCardProps {
-  template: TemplateItem;
+  slug: string;
+  name: string;
+  /** What it is, e.g. "AI writing tool landing page". */
+  kind: string;
+  price: string;
+  href: string;
+  /** Load the screenshot right away (for cards visible on first paint). */
+  priority?: boolean;
 }
 
-export default function TemplateCard({ template }: TemplateCardProps) {
+const SCROLL_SPEED = 450; // px per second while hovered
+
+/**
+ * A screenshot, the name, what it is and the price. On a mouse, hovering scrolls the template's whole page
+ * inside the frame; the tall image is only fetched on the first hover.
+ */
+export default function TemplateCard({ slug, name, kind, price, href, priority = false }: TemplateCardProps) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const pageRef = useRef<HTMLImageElement>(null);
+  const canScroll = useRef(false);
+  const [requested, setRequested] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [distance, setDistance] = useState(0);
+
+  useEffect(() => {
+    canScroll.current =
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+
+  const measure = () => {
+    if (frameRef.current && pageRef.current) setDistance(pageRef.current.offsetHeight - frameRef.current.offsetHeight);
+  };
+
+  const onEnter = () => {
+    if (!canScroll.current) return;
+    setRequested(true);
+    if (ready) measure();
+    setHovered(true);
+  };
+
+  const scrolling = hovered && ready;
+
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-black/[0.06] bg-[#f7f7f8] p-4 sm:p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-black/[0.12] hover:shadow-md">
-      {/* Top Preview Frame (Browser Mockup Style) */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/[0.06] bg-white">
-        {/* Browser Top Controls */}
-        <div className="flex h-7 items-center justify-between border-b border-black/[0.04] bg-[#f6f6f6] px-3">
-          <div className="flex items-center gap-1.5">
-            <div className="h-2 w-2 rounded-full bg-neutral-300" />
-            <div className="h-2 w-2 rounded-full bg-neutral-300" />
-            <div className="h-2 w-2 rounded-full bg-neutral-300" />
-          </div>
-          <div className="rounded bg-white px-2 py-0.5 font-mono text-[9px] text-[#777] border border-black/[0.04]">
-            /{template.slug}
-          </div>
-          <div className="text-[10px] text-[#999] font-medium">Preview</div>
-        </div>
-
-        {/* Visual Preview Graphic */}
-        <div className={`relative h-[calc(100%-1.75rem)] w-full flex flex-col justify-between overflow-hidden ${template.thumbnailUrl ? 'bg-[#f5f4ef]' : 'p-4 bg-gradient-to-br from-[#fafafa] via-white to-[#f5f5f7]'}`}>
-          {template.thumbnailUrl ? (
-            <img src={template.thumbnailUrl} alt={`${template.title} page preview`} loading="lazy" className="h-full w-full object-cover object-top" />
-          ) : (
-            <>
-              <div className="flex items-center justify-between z-10">
-                <span className="rounded-md bg-white border border-black/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#555] shadow-2xs">
-                  {template.category}
-                </span>
-                <span className="rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">
-                  {template.badge}
-                </span>
-              </div>
-
-              <div className="z-10 my-auto">
-                <div className="text-base font-semibold text-[#181925] tracking-tight group-hover:text-primary transition-colors">
-                  {template.title}
-                </div>
-                <div className="mt-1 line-clamp-2 text-xs text-[#666]">
-                  {template.description}
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* Hover Overlay with Quick Actions */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center gap-2.5 bg-[#181925]/85 backdrop-blur-xs opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-            <Link
-              href={template.demoUrl}
-              className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#181925] shadow-md hover:bg-neutral-100 transition-transform active:scale-95"
-            >
-              <Eye className="size-3.5 text-primary" />
-              <span>Live Demo</span>
-            </Link>
-            <Link
-              href={template.detailUrl}
-              className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-medium text-white hover:bg-white/20 transition-colors"
-            >
-              <span>Specs</span>
-              <ArrowRight className="size-3" />
-            </Link>
-          </div>
-        </div>
+    <Link href={href} className="group block" onPointerEnter={onEnter} onPointerLeave={() => setHovered(false)}>
+      <div ref={frameRef} className="relative aspect-[16/10] overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100">
+        <img
+          src={`/previews/card/${slug}.webp`}
+          alt={`The ${name} landing page template`}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+        />
+        {requested && (
+          <img
+            ref={pageRef}
+            src={`/previews/card-full/${slug}.jpg`}
+            alt=""
+            aria-hidden="true"
+            decoding="async"
+            onLoad={() => {
+              measure();
+              setReady(true);
+            }}
+            className={`absolute inset-x-0 top-0 w-full will-change-transform ${ready ? 'opacity-100' : 'opacity-0'}`}
+            style={{
+              transform: `translate3d(0, ${scrolling ? -distance : 0}px, 0)`,
+              transitionProperty: 'transform',
+              transitionDuration: scrolling ? `${Math.max(distance / SCROLL_SPEED, 1.5)}s` : '0.9s',
+              transitionTimingFunction: scrolling ? 'linear' : 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+            }}
+          />
+        )}
       </div>
-
-      {/* Card Body */}
-      <div className="mt-4 flex flex-1 flex-col justify-between text-left">
-        <div>
-          <Link
-            href={template.detailUrl}
-            className="text-base font-medium text-[#181925] hover:text-primary transition-colors block"
-          >
-            {template.title}
-          </Link>
-
-          <p className="mt-1.5 line-clamp-2 text-xs text-[#666] leading-relaxed">
-            {template.description}
-          </p>
-
-          {/* Tags */}
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {template.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md bg-white border border-black/[0.05] px-2 py-0.5 text-[10px] font-medium text-[#777]"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Footer */}
-        <div className="mt-4 flex items-center justify-between border-t border-black/[0.05] pt-3.5 text-xs font-medium">
-          <Link
-            href={template.demoUrl}
-            className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium"
-          >
-            <Eye className="size-3.5" />
-            <span>Interactive Demo</span>
-          </Link>
-
-          <div className="flex items-center gap-2">
-
-            <Link
-              href={template.detailUrl}
-              className="inline-flex items-center text-[#777] hover:text-[#181925] transition-colors text-xs"
-            >
-              <span>Details &rarr;</span>
-            </Link>
-          </div>
-        </div>
+      <div className="mt-4 flex items-baseline justify-between gap-4">
+        <h3 className="text-base font-medium tracking-[-0.01em] text-neutral-950">{name}</h3>
+        <span className="text-sm tabular-nums text-neutral-500">{price}</span>
       </div>
-    </div>
+      <p className="mt-1 text-sm text-neutral-500">{kind}</p>
+    </Link>
   );
 }

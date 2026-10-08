@@ -16,12 +16,11 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'cutroom': dynamic(() => import('@/templates/cutroom'), { ssr: false, loading: Loading }),
   'emberline': dynamic(() => import('@/templates/emberline'), { ssr: false, loading: Loading }),
   'halftone': dynamic(() => import('@/templates/halftone'), { ssr: false, loading: Loading }),
-  'influence-hero': dynamic(() => import('@/templates/influence-hero'), { ssr: false, loading: Loading }),
+  'influence': dynamic(() => import('@/templates/influence'), { ssr: false, loading: Loading }),
   'marlow': dynamic(() => import('@/templates/marlow'), { ssr: false, loading: Loading }),
   'parley': dynamic(() => import('@/templates/parley'), { ssr: false, loading: Loading }),
-  'quick-14-studio': dynamic(() => import('@/templates/quick-14-studio'), { ssr: false, loading: Loading }),
+  'fourteen': dynamic(() => import('@/templates/fourteen'), { ssr: false, loading: Loading }),
   'kept': dynamic(() => import('@/templates/kept'), { ssr: false, loading: Loading }),
-  'unreal-shot': dynamic(() => import('@/templates/unreal-shot'), { ssr: false, loading: Loading }),
   'stillform': dynamic(() => import('@/templates/stillform'), { ssr: false, loading: Loading }),
 };
 

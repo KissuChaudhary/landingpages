@@ -19,6 +19,20 @@
         "C:/Users/harva/AppData/Local/Temp/claude/E--tutorial-founderdada/fd869b52-51df-4fbf-a2bc-b7d1cd997163/scratchpad/dev-hv.js"
       ],
       "port": 3100
+    },
+    {
+      "name": "founderdada-prod-check",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "node_modules/next/dist/bin/next",
+        "start",
+        "-p",
+        "3200"
+      ],
+      "env": {
+        "NEXT_DIST_DIR": ".next-verify"
+      },
+      "port": 3200
     }
   ]
 }

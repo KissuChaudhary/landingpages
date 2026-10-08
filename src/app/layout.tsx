@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { TEMPLATES } from '@/data/templates';
+import { SITE_URL } from '@/data/site';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: `FounderDada — ${TEMPLATES.length} Production-Ready Next.js & Tailwind Templates`,
   description:
     'A curated marketplace of high-converting landing pages for AI tools, SaaS products, studios and agencies, with live interactive demos.',

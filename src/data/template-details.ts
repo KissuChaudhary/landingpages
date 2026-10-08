@@ -1,0 +1,424 @@
+/**
+ * Long-form content for each template's detail page. Everything here is taken from the template's own
+ * README, package.json and source, so keep it in step when a template changes.
+ * Text in `backticks` renders as inline code.
+ */
+
+export interface TemplateSection {
+  name: string;
+  detail: string;
+}
+
+export interface TemplateDetails {
+  name: string;
+  /** What it is, used in the H1, the page title and the meta description. */
+  kind: string;
+  /** One or two sentences: the pitch under the heading. */
+  summary: string;
+  bestFor: string[];
+  /** The visual system, in the words of the template's README. */
+  design: string;
+  sections: TemplateSection[];
+  customize: { what: string; where: string }[];
+  fonts: string[];
+  dependencies: string[];
+  images: string;
+  node: string;
+  files: number;
+  lines: number;
+  /** What a buyer has to connect or replace before going live. */
+  beforeLaunch: string;
+  updated: string;
+}
+
+const NEXT_DEPS = ['next', 'react', 'react-dom', 'lucide-react', 'clsx', 'tailwind-merge'];
+const PLACEHOLDERS =
+  'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
+
+export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  footnote: {
+    name: 'Footnote',
+    kind: 'AI writing tool landing page template',
+    summary:
+      'A dark, editorial landing page for AI writing and research products, built around the footnote: every section is a piece of evidence, from a before-and-after draft with numbered citations to a proof ledger.',
+    bestFor: ['AI writing tools', 'Content platforms', 'Research products'],
+    design:
+      'Dark graphite, warm-white text and one blue accent. Headlines are set in a light serif with an italic accent phrase, the page sits inside two thin vertical rules, and small + marks appear only where lines really meet. There are no shadows: depth comes from hairlines and spacing.',
+    sections: [
+      { name: 'Hero', detail: 'Serif headline with an italic accent phrase over an animated dot field, with a row of customer names.' },
+      { name: 'The difference', detail: 'The same paragraph written twice: uncited claims underlined on one side, numbered footnotes on the other.' },
+      { name: 'Method', detail: 'An annotated draft. Each row is one sentence with a margin note explaining the move.' },
+      { name: 'Engine', detail: 'Three alternating sections with a source matrix, a sources list and a voice panel.' },
+      { name: 'Proof', detail: 'Three figures and a customer quote.' },
+      { name: 'FAQ', detail: 'Every answer written out as plain text, so there is nothing to click.' },
+      { name: 'Closing sign-up', detail: 'Email capture with a confirmation state.' },
+      { name: 'Footer', detail: 'Links, legal and the wordmark.' },
+    ],
+    customize: [
+      { what: 'All copy, links, numbers, FAQ', where: 'site.config.ts' },
+      { what: 'Colours', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+      { what: 'The grid lines and + marks', where: 'components/ui/Grid.tsx' },
+      { what: 'The three engine visuals', where: 'components/sections/Engine.tsx' },
+    ],
+    fonts: ['Newsreader', 'Instrument Sans', 'IBM Plex Mono'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 19,
+    lines: 1332,
+    beforeLaunch:
+      'The sign-up form in `components/sections/FinalCta.tsx` only shows a confirmation message, so connect its `onSubmit` to your own sign-up endpoint or email provider. The logos in the hero are text placeholders: swap them for your customers’ marks.',
+    updated: '2026-10-07',
+  },
+
+  cutroom: {
+    name: 'Cutroom',
+    kind: 'Video editing studio landing page template',
+    summary:
+      'A landing page for video editing studios and creator agencies, dressed like the cutting room: a timeline hero with a playhead, a retention chart, an edit decision list for the process and a pricing calculator.',
+    bestFor: ['Video editing studios', 'YouTube editors', 'Creator agencies'],
+    design:
+      'Clean white, near-black ink and one signal orange. The look borrows from the cutting room: timecodes, a ruler, a timeline, and key words that sit inside an orange “clip” with trim handles. There are no shadows: depth comes from borders, tints and contrast.',
+    sections: [
+      { name: 'Hero', detail: 'Headline with a clipped keyword above an editor with a timeline and playhead.' },
+      { name: 'Client channels', detail: 'The channels you edit for.' },
+      { name: 'Services', detail: 'A selector with a drawing for each video format.' },
+      { name: 'Results', detail: 'A retention chart with numbered markers.' },
+      { name: 'Process', detail: 'Your workflow written as an edit decision list.' },
+      { name: 'Pricing', detail: 'A calculator with volume discounts.' },
+      { name: 'Testimonials', detail: 'Quotes set as pinned comments.' },
+      { name: 'FAQ', detail: 'Common questions, answered in place.' },
+      { name: 'Journal', detail: 'Recent articles from your blog.' },
+      { name: 'Closing block', detail: 'A call to action with a footage drop zone.' },
+      { name: 'Footer', detail: 'Links, legal and the wordmark.' },
+    ],
+    customize: [
+      { what: 'All copy, links, prices, chart data, FAQ', where: 'site.config.ts' },
+      { what: 'Colours', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+      { what: 'The editor drawing in the hero', where: 'components/sections/HeroEditor.tsx' },
+      { what: 'The service drawings', where: 'components/sections/ServiceVisuals.tsx' },
+    ],
+    fonts: ['Bricolage Grotesque', 'Hanken Grotesk', 'JetBrains Mono'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 23,
+    lines: 2013,
+    beforeLaunch: PLACEHOLDERS,
+    updated: '2026-10-07',
+  },
+
+  emberline: {
+    name: 'Emberline',
+    kind: 'AI SaaS landing page template',
+    summary:
+      'A dark, grid-framed landing page for AI and SaaS products: energy lines running through the hero into a dashboard mockup, bento features, a comparison table and a monthly and yearly pricing toggle.',
+    bestFor: ['AI products', 'SaaS startups', 'Analytics tools'],
+    design:
+      'Near-black surfaces, a warm orange glow and a visible grid whose intersections light up. Headlines are set in Inter Tight with an Instrument Serif italic accent, and the whole palette comes from one colour ramp.',
+    sections: [
+      { name: 'Hero', detail: 'Grid-framed headline with animated energy lines feeding a product dashboard mockup.' },
+      { name: 'Logo strip', detail: 'Customer wordmarks.' },
+      { name: 'Features', detail: 'A bento grid with inline illustrations.' },
+      { name: 'Comparison', detail: 'A table of your product against the alternatives.' },
+      { name: 'How it works', detail: 'The steps from sign-up to result.' },
+      { name: 'Testimonials', detail: 'Customer quotes.' },
+      { name: 'Pricing', detail: 'Plans with a monthly and yearly toggle.' },
+      { name: 'FAQ', detail: 'Common questions, answered in place.' },
+      { name: 'Final call to action', detail: 'One last push to sign up.' },
+      { name: 'Footer', detail: 'Links, legal and the wordmark.' },
+    ],
+    customize: [
+      { what: 'All copy, links, prices, plans, FAQ', where: 'site.config.ts' },
+      { what: 'Accent colour and surfaces', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Feature card illustrations', where: 'components/sections/Features.tsx' },
+      { what: 'Hero product mockup', where: 'components/hero/DashboardMockup.tsx' },
+      { what: 'Add, remove or reorder sections', where: 'app/page.tsx' },
+    ],
+    fonts: ['Inter Tight', 'Instrument Serif'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 25,
+    lines: 2124,
+    beforeLaunch: PLACEHOLDERS,
+    updated: '2026-10-07',
+  },
+
+  fourteen: {
+    name: 'Fourteen',
+    kind: 'Done-for-you service landing page template',
+    summary:
+      'A warm, complete landing page for done-for-you services and productised B2B offers: a strip of sample emails, drawn feature illustrations, handwritten notes, one-plan pricing and a founder’s note.',
+    bestFor: ['Outbound agencies', 'Productised services', 'B2B consultants'],
+    design:
+      'Warm paper with a fine grain, stone neutrals and one orange. Headlines are set in Playfair Display with the second half in italic, handwritten notes point at the buttons, the page sits between two hatched rails, and the cards that matter wear a two-tone ring.',
+    sections: [
+      { name: 'Hero', detail: 'Headline, a short testimonial and a slow-moving strip of sample emails.' },
+      { name: 'Problem', detail: 'What your buyer is stuck with today.' },
+      { name: 'Solution', detail: 'Six cards in an alternating wide and narrow layout.' },
+      { name: 'How it works', detail: 'Three steps on a cream panel.' },
+      { name: 'Features', detail: 'Eight cards, each with a small drawing.' },
+      { name: 'Case studies', detail: 'Results from clients.' },
+      { name: 'Pricing', detail: 'One plan, stated plainly.' },
+      { name: 'FAQ', detail: 'Native disclosures for each question.' },
+      { name: 'Founder’s note', detail: 'A personal note with a signature.' },
+      { name: 'Closing', detail: 'A call to action surrounded by handwritten notes.' },
+    ],
+    customize: [
+      { what: 'All copy, links, price, FAQ', where: 'site.config.ts' },
+      { what: 'Colours', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+      { what: 'Page frame, buttons, rings and handwritten notes', where: 'components/ui/Kit.tsx' },
+      { what: 'The small drawings inside the cards', where: 'components/visuals/Visuals.tsx' },
+    ],
+    fonts: ['Playfair Display', 'Inter', 'Caveat'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 20,
+    lines: 1939,
+    beforeLaunch:
+      'The buttons point at the closing section: replace them with your booking or sign-up link in `site.config.ts`. The clients, numbers, quotes and the guarantee are placeholders, so swap them for real ones and only promise what you can deliver.',
+    updated: '2026-10-07',
+  },
+
+  halftone: {
+    name: 'Halftone',
+    kind: 'Developer tool and API landing page template',
+    summary:
+      'A clean, light landing page for developer tools and API products. Every product visual is built in code and animated: a live delivery log, a pipeline, six product panels, a code window with language tabs and a CLI terminal.',
+    bestFor: ['APIs and webhooks', 'Developer infrastructure', 'Email, auth and payments APIs'],
+    design:
+      'White surfaces, one cobalt accent and soft dithered colour fields. Text is set in Instrument Sans, code and data in Geist Mono, and every panel stays sharp at any size because none of it is a screenshot.',
+    sections: [
+      { name: 'Hero', detail: 'Headline, an install command with a copy button, and a live delivery log in which one request fails and recovers on retry.' },
+      { name: 'Logo strip', detail: 'Six placeholder wordmarks.' },
+      { name: 'Build vs. buy', detail: 'The same rows on both sides: weeks of work against “Included”.' },
+      { name: 'How it works', detail: 'Your app, your product and three customer endpoints, with packets travelling along the lines.' },
+      { name: 'Product', detail: 'A bento grid of six animated panels: retries, signing, replay, latency, regions and a customer portal.' },
+      { name: 'Developers', detail: 'Three steps beside a code window. Each step highlights its lines, and language tabs switch the sample.' },
+      { name: 'Numbers', detail: 'Four figures that count up.' },
+      { name: 'Customers', detail: 'One long story with its result, and two short quotes.' },
+      { name: 'Pricing', detail: 'Usage-based. A log-scale slider prices every plan at the chosen volume and marks the cheapest.' },
+      { name: 'FAQ', detail: 'Heading and contact card beside an accordion.' },
+      { name: 'Closing card', detail: 'A call to action beside a terminal that forwards events to localhost.' },
+    ],
+    customize: [
+      { what: 'Copy, links, plans, FAQ, sample events and code', where: 'site.config.ts' },
+      { what: 'Accent colour, surfaces and code colours', where: 'app/globals.css (@theme)' },
+      { what: 'Dither colours (hero, closing card)', where: 'site.config.ts → dither' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Logo', where: 'components/ui/BrandMark.tsx' },
+      { what: 'Section order', where: 'app/page.tsx' },
+    ],
+    fonts: ['Instrument Sans', 'Geist Mono'],
+    dependencies: [...NEXT_DEPS.slice(0, 4), 'motion', 'clsx', 'tailwind-merge'],
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 34,
+    lines: 3780,
+    beforeLaunch:
+      'The product is a made-up webhook service called Ferry. Keep the structure and change the nouns: for an email API the log becomes sent and bounced messages, for auth it shows sign-ins. Each panel is one small component in `components/visuals/`, so you can also swap any of them for a screenshot.',
+    updated: '2026-10-07',
+  },
+
+  influence: {
+    name: 'Influence',
+    kind: 'Short-form video agency landing page template',
+    summary:
+      'A high-energy landing page for short-form video studios: platform badges in the headline, a phone with floating metrics, a filterable wall of drawn video thumbnails and comparison pricing with a billing switch. No photos to license.',
+    bestFor: ['Short-form video studios', 'Creator agencies', 'Social media managers'],
+    design:
+      'Soft off-white, near-black ink and one orange. Headlines are heavy Inter Tight with one italic serif phrase. The look comes from the platforms themselves: round pills, social badges in the headline, a phone with floating metrics and vertical thumbnails with live-caption highlights.',
+    sections: [
+      { name: 'Hero', detail: 'Headline with platform badges, a phone with floating metrics, and social proof.' },
+      { name: 'Numbers strip', detail: 'A slow strip of headline numbers.' },
+      { name: 'Results', detail: 'One case study with a chart, and three smaller ones.' },
+      { name: 'Work', detail: 'A wall of drawn video thumbnails with a working filter.' },
+      { name: 'Process', detail: 'A dark timeline from footage to posting.' },
+      { name: 'Creators', detail: 'One video testimonial and six short quotes.' },
+      { name: 'Pricing', detail: 'A comparison table with a billing switch.' },
+      { name: 'FAQ', detail: 'Common questions, answered in place.' },
+      { name: 'Closing block', detail: 'A final call to book a call.' },
+    ],
+    customize: [
+      { what: 'All copy, links, prices, numbers, FAQ', where: 'site.config.ts' },
+      { what: 'Colours', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+      { what: 'The drawn video thumbnails', where: 'components/ui/Reel.tsx' },
+      { what: 'The platform badges', where: 'components/ui/Icons.tsx' },
+    ],
+    fonts: ['Inter Tight', 'Inter', 'Playfair Display'],
+    dependencies: NEXT_DEPS,
+    images: 'None. The video thumbnails are drawn from a colour pair, a shape and a hook.',
+    node: '18.18',
+    files: 23,
+    lines: 1733,
+    beforeLaunch:
+      'The “Book a call” links point at the closing section: replace them with your calendar link in `site.config.ts`. The creators, handles, numbers and quotes are placeholders, so only publish results you can back up.',
+    updated: '2026-10-07',
+  },
+
+  kept: {
+    name: 'Kept',
+    kind: 'Invoicing and fintech landing page template',
+    summary:
+      'A calm, statement-style landing page for invoicing and tax tools: a hero built as an invoice that was just paid, a twelve-month chart drawn from your own numbers, a dotted-leader feature ledger and a receipt for a price.',
+    bestFor: ['Invoicing tools', 'Accounting apps', 'Freelancer finance'],
+    design:
+      'Warm paper, a deep pine ink and one fresh lime. Headlines are set in a condensed serif with an italic green accent, and every amount uses tabular figures so columns line up. There are no shadows and no gradients: depth comes from hairlines and a slightly lighter sheet colour.',
+    sections: [
+      { name: 'Hero', detail: 'An invoice that was just paid, split into tax, buffer and spend, with three headline figures.' },
+      { name: 'The year', detail: 'A twelve-month chart with tax dates, calculated from your figures.' },
+      { name: 'What it does', detail: 'A ledger of six features along dotted leaders.' },
+      { name: 'Quotes', detail: 'Customer quotes set as a table.' },
+      { name: 'Pricing', detail: 'One plan, laid out as a receipt.' },
+      { name: 'FAQ', detail: 'Common questions, answered in place.' },
+      { name: 'Closing sign-up', detail: 'A sign-up block on the pine band, with the footer.' },
+    ],
+    customize: [
+      { what: 'All copy, links, prices, figures, FAQ', where: 'site.config.ts' },
+      { what: 'Colours', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Currency and number format', where: 'lib/money.ts' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+    ],
+    fonts: ['Instrument Serif', 'Geist', 'Geist Mono'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 18,
+    lines: 1214,
+    beforeLaunch:
+      'The form in `components/sections/FinalCta.tsx` only shows a confirmation message, so connect its `onSubmit` to your own sign-up flow. Replace the demo customers, figures and tax details with your own, and have a professional check any tax claims you make.',
+    updated: '2026-10-07',
+  },
+
+  marlow: {
+    name: 'Marlow',
+    kind: 'Studio and consultancy landing page template',
+    summary:
+      'A warm, editorial landing page for studios, consultancies and agencies: serif display type, a highlighted manifesto, a services index, result tiles, a six-week Gantt process and a rate card.',
+    bestFor: ['Consultancies', 'Strategy and design studios', 'Agencies'],
+    design:
+      'Warm paper, a Fraunces display face, one clay accent and five pastel tints. Ten sections, and every word of them lives in one file.',
+    sections: [
+      { name: 'Hero', detail: 'Headline beside two product-style panels.' },
+      { name: 'Client names', detail: 'The teams you have worked with.' },
+      { name: 'Approach', detail: 'Your manifesto, with highlighter marks.' },
+      { name: 'Services', detail: 'An index of what you offer.' },
+      { name: 'Selected work', detail: 'Result tiles for past engagements.' },
+      { name: 'Process', detail: 'A six-week Gantt chart.' },
+      { name: 'Testimonials', detail: 'Client quotes.' },
+      { name: 'Pricing', detail: 'A rate card.' },
+      { name: 'FAQ', detail: 'Common questions, answered in place.' },
+      { name: 'Closing', detail: 'A call to action with your next open call slots.' },
+      { name: 'Footer', detail: 'Links, legal and the wordmark.' },
+    ],
+    customize: [
+      { what: 'All copy, links, prices, FAQ', where: 'site.config.ts' },
+      { what: 'Colours (paper, ink, clay, five tints)', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+      { what: 'The two hero panels', where: 'components/sections/HeroPanels.tsx' },
+    ],
+    fonts: ['Fraunces', 'Geist', 'Geist Mono'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 22,
+    lines: 1721,
+    beforeLaunch: PLACEHOLDERS,
+    updated: '2026-10-07',
+  },
+
+  parley: {
+    name: 'Parley',
+    kind: 'AI support agent landing page template',
+    summary:
+      'A warm, conversational landing page for AI support agents and chatbots: the hero is a chat, the comparison is a transcript you can switch, and even the FAQ is written as a conversation.',
+    bestFor: ['AI support agents', 'Chatbots', 'Customer service tools'],
+    design:
+      'Warm paper, a plum-brown ink and one rose accent. Headlines are set in a soft, round serif with an italic accent phrase. There are no shadows: depth comes from soft tints and spacing.',
+    sections: [
+      { name: 'Hero', detail: 'A live-looking support chat that ends with a refund issued.' },
+      { name: 'Comparison', detail: 'A classic chatbot and your product, as a transcript you can switch.' },
+      { name: 'Action log', detail: 'A timeline of what the agent actually did.' },
+      { name: 'Results band', detail: 'Headline numbers on a plum band.' },
+      { name: 'Quotes', detail: 'Customer quotes.' },
+      { name: 'Pricing', detail: 'Plans set out as rows.' },
+      { name: 'FAQ', detail: 'Written as a conversation.' },
+      { name: 'Closing sign-up', detail: 'Email capture with a confirmation state.' },
+    ],
+    customize: [
+      { what: 'All copy, links, prices, numbers, FAQ', where: 'site.config.ts' },
+      { what: 'Colours', where: 'app/globals.css (@theme)' },
+      { what: 'Fonts', where: 'app/layout.tsx' },
+      { what: 'Which sections appear, and in what order', where: 'app/page.tsx' },
+      { what: 'The chat bubbles and the logo mark', where: 'components/ui/Chat.tsx' },
+    ],
+    fonts: ['Fraunces', 'Figtree', 'Caveat'],
+    dependencies: NEXT_DEPS,
+    images: 'None. Every visual is built in code.',
+    node: '18.18',
+    files: 19,
+    lines: 1254,
+    beforeLaunch:
+      'The form in `components/sections/FinalCta.tsx` only shows a confirmation message, so connect its `onSubmit` to your own sign-up flow. The customer names in the hero are text placeholders: swap them for your customers’ marks.',
+    updated: '2026-10-07',
+  },
+
+  stillform: {
+    name: 'Stillform',
+    kind: 'Product photography studio landing page template',
+    summary:
+      'An editorial landing page for product photographers and CGI studios, with original campaign imagery, a filterable portfolio with project dialogs, and a shoot planner that turns an estimate into a shareable project brief.',
+    bestFor: ['Product photographers', 'CGI studios', 'E-commerce creative studios'],
+    design:
+      'A soft stone background, Instrument Serif headlines and one warm orange, with four original product studies (a fragrance, a skincare set and a pair of headphones) as the imagery.',
+    sections: [
+      { name: 'Hero', detail: 'Campaign headline, a featured study and industry specialties.' },
+      { name: 'Selected work', detail: 'A filterable portfolio with native project dialogs.' },
+      { name: 'Studio', detail: 'Manifesto and working principles.' },
+      { name: 'Perspectives', detail: 'A campaign, packshot and detail selector.' },
+      { name: 'Services', detail: 'Each service selects the matching shoot format.' },
+      { name: 'Process', detail: 'Four production steps with concrete deliverables.' },
+      { name: 'Shoot planner', detail: 'Product count, direction and extras, with a live estimate.' },
+      { name: 'FAQ', detail: 'Native disclosures for each question.' },
+      { name: 'Project brief', detail: 'A form with a review step that turns into an email draft, a copy or a text file.' },
+      { name: 'Footer', detail: 'An oversized studio wordmark.' },
+    ],
+    customize: [
+      { what: 'Brand, contact email, copy, projects, prices, FAQ', where: 'site.config.ts' },
+      { what: 'Palette, spacing, typography', where: 'styles/base.css and app/globals.css' },
+      { what: 'Fonts and metadata', where: 'app/layout.tsx' },
+      { what: 'Section order', where: 'app/page.tsx' },
+      { what: 'Product images', where: 'public/images/' },
+      { what: 'Quote calculation', where: 'lib/quote.ts' },
+    ],
+    fonts: ['Instrument Sans', 'Instrument Serif', 'Geist Mono'],
+    dependencies: ['next', 'react', 'react-dom', 'lucide-react'],
+    images: 'Four original WebP product studies, included as demo imagery to replace with your own work.',
+    node: '20.9',
+    files: 36,
+    lines: 3833,
+    beforeLaunch:
+      'Change `brand.email` in `site.config.ts` before accepting enquiries. The brief form prepares an email draft, a copy or a text file in the browser; to send it to a form provider instead, replace the submit handler in `components/sections/Contact.tsx`. The brands, rates and projects are fictional demo content.',
+    updated: '2026-10-08',
+  },
+};
+
+export function getTemplateDetails(slug: string): TemplateDetails | undefined {
+  return TEMPLATE_DETAILS[slug];
+}
+
+/** "AI writing tool landing page": the kind without the trailing "template", for cards. */
+export const shortKind = (d: TemplateDetails) => d.kind.replace(/ template$/, '');

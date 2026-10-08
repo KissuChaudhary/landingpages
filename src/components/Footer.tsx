@@ -18,16 +18,16 @@ export default function Footer() {
 
         {/* Links */}
         <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-          <Link href="#catalog" className="hover:text-[#181925] transition-colors">
+          <Link href="/#catalog" className="hover:text-[#181925] transition-colors">
             Templates
           </Link>
-          <Link href="#how-it-works" className="hover:text-[#181925] transition-colors">
+          <Link href="/#how-it-works" className="hover:text-[#181925] transition-colors">
             How it works
           </Link>
-          <Link href="#pricing" className="hover:text-[#181925] transition-colors">
+          <Link href="/#pricing" className="hover:text-[#181925] transition-colors">
             Pricing
           </Link>
-          <Link href="#faq" className="hover:text-[#181925] transition-colors">
+          <Link href="/#faq" className="hover:text-[#181925] transition-colors">
             FAQ
           </Link>
         </div>

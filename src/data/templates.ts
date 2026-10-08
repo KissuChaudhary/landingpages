@@ -49,7 +49,7 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/footnote",
       "demoUrl": "/demo/footnote",
       "detailUrl": "/template/footnote",
-      "thumbnailUrl": "/previews/footnote.webp"
+      "thumbnailUrl": "/previews/card/footnote.webp"
     },
     {
       "slug": "cutroom",
@@ -74,7 +74,7 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/cutroom",
       "demoUrl": "/demo/cutroom",
       "detailUrl": "/template/cutroom",
-      "thumbnailUrl": "/previews/cutroom.webp"
+      "thumbnailUrl": "/previews/card/cutroom.webp"
     },
     {
       "slug": "halftone",
@@ -100,7 +100,7 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/halftone",
       "demoUrl": "/demo/halftone",
       "detailUrl": "/template/halftone",
-      "thumbnailUrl": "/previews/halftone.webp"
+      "thumbnailUrl": "/previews/card/halftone.webp"
     },
     {
       "slug": "emberline",
@@ -125,10 +125,10 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/emberline",
       "demoUrl": "/demo/emberline",
       "detailUrl": "/template/emberline",
-      "thumbnailUrl": "/previews/emberline.webp"
+      "thumbnailUrl": "/previews/card/emberline.webp"
     },
     {
-      "slug": "influence-hero",
+      "slug": "influence",
       "title": "Influence: Short-Form Video Studio Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
@@ -147,10 +147,10 @@ export const TEMPLATES: TemplateItem[] = [
         "Comparison pricing with a billing switch"
       ],
       "accentColor": "from-orange-400 to-amber-500",
-      "previewUrl": "/preview/influence-hero",
-      "demoUrl": "/demo/influence-hero",
-      "detailUrl": "/template/influence-hero",
-      "thumbnailUrl": "/previews/influence-hero.webp"
+      "previewUrl": "/preview/influence",
+      "demoUrl": "/demo/influence",
+      "detailUrl": "/template/influence",
+      "thumbnailUrl": "/previews/card/influence.webp"
     },
     {
       "slug": "marlow",
@@ -175,7 +175,7 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/marlow",
       "demoUrl": "/demo/marlow",
       "detailUrl": "/template/marlow",
-      "thumbnailUrl": "/previews/marlow.webp"
+      "thumbnailUrl": "/previews/card/marlow.webp"
     },
     {
       "slug": "parley",
@@ -200,10 +200,10 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/parley",
       "demoUrl": "/demo/parley",
       "detailUrl": "/template/parley",
-      "thumbnailUrl": "/previews/parley.webp"
+      "thumbnailUrl": "/previews/card/parley.webp"
     },
     {
-      "slug": "quick-14-studio",
+      "slug": "fourteen",
       "title": "Fourteen: Done-for-You Outbound Landing Page",
       "category": "Landing Pages",
       "defaultTheme": "light",
@@ -222,10 +222,10 @@ export const TEMPLATES: TemplateItem[] = [
         "One-plan pricing and founder's note"
       ],
       "accentColor": "from-orange-300 to-orange-500",
-      "previewUrl": "/preview/quick-14-studio",
-      "demoUrl": "/demo/quick-14-studio",
-      "detailUrl": "/template/quick-14-studio",
-      "thumbnailUrl": "/previews/quick-14-studio.webp"
+      "previewUrl": "/preview/fourteen",
+      "demoUrl": "/demo/fourteen",
+      "detailUrl": "/template/fourteen",
+      "thumbnailUrl": "/previews/card/fourteen.webp"
     },
     {
       "slug": "kept",
@@ -250,7 +250,7 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/kept",
       "demoUrl": "/demo/kept",
       "detailUrl": "/template/kept",
-      "thumbnailUrl": "/previews/kept.webp"
+      "thumbnailUrl": "/previews/card/kept.webp"
     },
     {
       "slug": "stillform",
@@ -276,11 +276,10 @@ export const TEMPLATES: TemplateItem[] = [
       "previewUrl": "/preview/stillform",
       "demoUrl": "/demo/stillform",
       "detailUrl": "/template/stillform",
-      "thumbnailUrl": "/previews/stillform.webp"
+      "thumbnailUrl": "/previews/card/stillform.webp"
     }
 ];
 
 export function getTemplateBySlug(slug: string): TemplateItem | undefined {
-  const canonicalSlug = slug === 'unreal-shot' ? 'stillform' : slug;
-  return TEMPLATES.find((t) => t.slug === canonicalSlug);
+  return TEMPLATES.find((t) => t.slug === slug);
 }

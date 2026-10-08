@@ -93,7 +93,7 @@ export function Steps() {
           </div>
 
           <p className="relative pl-6 pr-6 text-sm leading-6 text-muted-foreground sm:pl-8 sm:pr-8 tracking-tight">
-            Use the Cruip-style interactive player to test true CSS media queries on Desktop, Tablet (768px), and Mobile (375px) viewports before using the code.
+            Use the interactive player to test real CSS media queries on Desktop, Tablet (768px), and Mobile (375px) viewports before using the code.
           </p>
         </li>
 
@@ -119,7 +119,7 @@ export function Steps() {
                 <Download className="size-3.5 text-primary" />
               </div>
               <div className="mt-2 rounded bg-neutral-900 p-2 font-mono text-[10px] text-emerald-400">
-                $ pnpm install && pnpm dev
+                $ npm install && npm run dev
               </div>
               <div className="mt-2 flex items-center gap-1.5 text-[10px] text-[#666]">
                 <Check className="size-3 text-emerald-500" />
@@ -129,7 +129,7 @@ export function Steps() {
           </div>
 
           <p className="relative pl-6 pr-6 text-sm leading-6 text-muted-foreground sm:pl-8 sm:pr-8 tracking-tight">
-            Download the standalone zip package or copy components into your existing Next.js app. Customize copy and colors, connect auth, and launch.
+            Download the complete project, change the copy and colours in one config file, and deploy to Vercel, Netlify or Cloudflare.
           </p>
         </li>
       </ul>
