@@ -1,0 +1,20 @@
+@import "tailwindcss" source("..");
+@import "../styles/base.css";
+@import "../styles/hero.css";
+@import "../styles/portfolio.css";
+@import "../styles/studio.css";
+@import "../styles/perspectives.css";
+@import "../styles/production.css";
+@import "../styles/investment.css";
+@import "../styles/faq.css";
+@import "../styles/contact.css";
+@import "../styles/footer.css";
+
+@theme {
+  --font-sans: var(--font-sans-face), Arial, sans-serif;
+  --font-serif: var(--font-serif-face), Georgia, serif;
+  --font-mono: var(--font-mono-face), monospace;
+  --color-paper: #f5f4ef;
+  --color-ink: #22231f;
+  --color-accent: #ff5a36;
+}

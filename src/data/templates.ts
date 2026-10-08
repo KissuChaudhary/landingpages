@@ -12,6 +12,7 @@ export interface TemplateItem {
   previewUrl: string;
   demoUrl: string;
   detailUrl: string;
+  thumbnailUrl?: string;
 }
 
 export const CATEGORIES = [
@@ -582,30 +583,31 @@ export const TEMPLATES: TemplateItem[] = [
       "detailUrl": "/template/passport-studio"
     },
     {
-      "slug": "unreal-shot",
-      "title": "UnrealShot AI - Studio Headshots & Portraits",
+      "slug": "stillform",
+      "title": "Stillform: Product Photography & CGI Studio",
       "category": "Landing Pages",
       "defaultTheme": "light",
-      "badge": "AI Studio",
-      "description": "Ultra-sleek photo studio landing page featuring dynamic gallery carousels, pack tier comparisons, and professional headshot styles.",
+      "badge": "Product Studio",
+      "description": "An editorial landing page for product photographers and CGI studios. Original campaign imagery, a filterable portfolio with project lightboxes, campaign and packshot perspectives, and a shoot planner that carries its estimate into a shareable project brief.",
       "tags": [
-        "Headshots",
-        "Studio Photography",
-        "Framer Motion",
-        "Modern UI",
-        "Light Mode"
+        "Product Photography",
+        "CGI Studio",
+        "E-commerce",
+        "Editorial",
+        "Next.js 15"
       ],
       "features": [
-        "Infinite Carousel Gallery",
-        "Style Archetype Selectors",
-        "Interactive Price Toggle",
-        "High-Resolution Output Previews"
+        "Original campaign imagery and project lightboxes",
+        "Keyboard-operable campaign and packshot selector",
+        "Shoot planner with products, formats and extras",
+        "Shareable enquiry brief with your selected estimate"
       ],
-      "accentColor": "from-purple-600 to-pink-600",
-      "downloadUrl": "/downloads/unreal-shot.zip",
-      "previewUrl": "/preview/unreal-shot",
-      "demoUrl": "/demo/unreal-shot",
-      "detailUrl": "/template/unreal-shot"
+      "accentColor": "from-orange-400 to-red-500",
+      "downloadUrl": "",
+      "previewUrl": "/preview/stillform",
+      "demoUrl": "/demo/stillform",
+      "detailUrl": "/template/stillform",
+      "thumbnailUrl": "/previews/stillform.webp"
     },
     {
       "slug": "ai-imagetools",
@@ -688,5 +690,6 @@ export const TEMPLATES: TemplateItem[] = [
 ];
 
 export function getTemplateBySlug(slug: string): TemplateItem | undefined {
-  return TEMPLATES.find((t) => t.slug === slug);
+  const canonicalSlug = slug === 'unreal-shot' ? 'stillform' : slug;
+  return TEMPLATES.find((t) => t.slug === canonicalSlug);
 }

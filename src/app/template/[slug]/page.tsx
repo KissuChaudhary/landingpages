@@ -10,8 +10,6 @@ import { getTemplateBySlug, TEMPLATES } from '@/data/templates';
 import {
   Eye,
   CheckCircle2,
-  Sparkles,
-  ArrowRight
 } from 'lucide-react';
 
 interface TemplateDetailPageProps {
@@ -125,22 +123,30 @@ export default function TemplateDetailPage({ params }: TemplateDetailPageProps) 
                 </div>
 
                 {/* Preview mockup view */}
-                <div className="relative h-full w-full bg-white p-8 flex flex-col justify-center items-center text-center">
-                  <span className="font-mono text-xs text-primary uppercase font-semibold">
-                    {template.category}
-                  </span>
-                  <h3 className="mt-2 text-xl font-medium text-[#181925]">{template.title}</h3>
-                  <p className="mt-2 max-w-sm text-xs text-[#777] leading-relaxed">
-                    {template.description}
-                  </p>
+                <div className={`relative h-[calc(100%-2rem)] w-full flex flex-col justify-center items-center text-center ${template.thumbnailUrl ? 'bg-[#f5f4ef]' : 'bg-white p-8'}`}>
+                  {template.thumbnailUrl ? (
+                    <Link href={template.demoUrl} className="block h-full w-full" aria-label={`Open ${template.title} live demo`}>
+                      <img src={template.thumbnailUrl} alt={`${template.title} page preview`} className="h-full w-full object-cover object-top" />
+                    </Link>
+                  ) : (
+                    <>
+                      <span className="font-mono text-xs text-primary uppercase font-semibold">
+                        {template.category}
+                      </span>
+                      <h3 className="mt-2 text-xl font-medium text-[#181925]">{template.title}</h3>
+                      <p className="mt-2 max-w-sm text-xs text-[#777] leading-relaxed">
+                        {template.description}
+                      </p>
 
-                  <Link
-                    href={template.demoUrl}
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#181925] px-5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-black transition-all"
-                  >
-                    <Eye className="size-3.5" />
-                    <span>Open Interactive Preview</span>
-                  </Link>
+                      <Link
+                        href={template.demoUrl}
+                        className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#181925] px-5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-black transition-all"
+                      >
+                        <Eye className="size-3.5" />
+                        <span>Open Interactive Preview</span>
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

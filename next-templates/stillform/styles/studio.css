@@ -1,0 +1,100 @@
+.studio-section {
+  background: var(--night);
+  color: var(--paper);
+  padding-block: 110px 70px;
+}
+.studio-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 85px;
+}
+.studio-intro .eyebrow {
+  color: #b7beb0;
+  margin-bottom: 32px;
+}
+.studio-intro h2 {
+  font-size: 49px;
+}
+.studio-star {
+  width: 115px;
+  height: 115px;
+  margin-top: 72px;
+  color: var(--sage);
+}
+.manifesto {
+  font-size: clamp(28px, 3.3vw, 46px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+.studio-description {
+  margin-top: 30px;
+  color: #b7beb0;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+.studio-intro .text-link {
+  margin-top: 25px;
+  color: var(--sage);
+}
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin-top: 85px;
+  padding-top: 30px;
+  border-top: 1px solid #4b5046;
+}
+.principles .eyebrow {
+  color: var(--sage);
+}
+.principles h3 {
+  font-size: 19px;
+  font-weight: 500;
+  margin-block: 17px 12px;
+}
+.principles p {
+  font-size: 13px;
+  color: #b7beb0;
+  line-height: 1.7;
+  max-width: 325px;
+}
+@media (max-width: 1000px) {
+  .studio-intro {
+    gap: 45px;
+    grid-template-columns: 1fr 1.5fr;
+  }
+  .studio-intro h2 {
+    font-size: 39px;
+  }
+}
+@media (max-width: 760px) {
+  .studio-section {
+    padding-block: 70px 50px;
+  }
+  .studio-intro {
+    display: block;
+  }
+  .studio-intro h2 {
+    font-size: 44px;
+  }
+  .studio-star {
+    width: 57px;
+    height: 57px;
+    margin-block: 32px 37px;
+  }
+  .manifesto {
+    font-size: 30px;
+  }
+  .principles {
+    grid-template-columns: 1fr;
+    gap: 29px;
+    margin-top: 48px;
+  }
+  .principles h3 {
+    margin-top: 10px;
+  }
+  .principles p {
+    max-width: none;
+  }
+}

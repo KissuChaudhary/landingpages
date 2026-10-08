@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Eye, ArrowRight, Sparkles } from 'lucide-react';
+import { Eye, ArrowRight } from 'lucide-react';
 import type { TemplateItem } from '@/data/templates';
 
 interface TemplateCardProps {
@@ -28,24 +28,30 @@ export default function TemplateCard({ template }: TemplateCardProps) {
         </div>
 
         {/* Visual Preview Graphic */}
-        <div className="relative h-full w-full p-4 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#fafafa] via-white to-[#f5f5f7]">
-          <div className="flex items-center justify-between z-10">
-            <span className="rounded-md bg-white border border-black/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#555] shadow-2xs">
-              {template.category}
-            </span>
-            <span className="rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">
-              {template.badge}
-            </span>
-          </div>
+        <div className={`relative h-[calc(100%-1.75rem)] w-full flex flex-col justify-between overflow-hidden ${template.thumbnailUrl ? 'bg-[#f5f4ef]' : 'p-4 bg-gradient-to-br from-[#fafafa] via-white to-[#f5f5f7]'}`}>
+          {template.thumbnailUrl ? (
+            <img src={template.thumbnailUrl} alt={`${template.title} page preview`} loading="lazy" className="h-full w-full object-cover object-top" />
+          ) : (
+            <>
+              <div className="flex items-center justify-between z-10">
+                <span className="rounded-md bg-white border border-black/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#555] shadow-2xs">
+                  {template.category}
+                </span>
+                <span className="rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">
+                  {template.badge}
+                </span>
+              </div>
 
-          <div className="z-10 my-auto">
-            <div className="text-base font-semibold text-[#181925] tracking-tight group-hover:text-primary transition-colors">
-              {template.title}
-            </div>
-            <div className="mt-1 line-clamp-2 text-xs text-[#666]">
-              {template.description}
-            </div>
-          </div>
+              <div className="z-10 my-auto">
+                <div className="text-base font-semibold text-[#181925] tracking-tight group-hover:text-primary transition-colors">
+                  {template.title}
+                </div>
+                <div className="mt-1 line-clamp-2 text-xs text-[#666]">
+                  {template.description}
+                </div>
+              </div>
+            </>
+          )}
 
           {/* Hover Overlay with Quick Actions */}
           <div className="absolute inset-0 z-20 flex items-center justify-center gap-2.5 bg-[#181925]/85 backdrop-blur-xs opacity-0 transition-opacity duration-200 group-hover:opacity-100">

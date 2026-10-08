@@ -1,0 +1,263 @@
+.investment-section {
+  padding-block: 100px;
+  background: #e9eddf;
+}
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+.quote-options legend {
+  margin-bottom: 20px;
+  color: #535a49;
+}
+.format-options {
+  display: grid;
+  gap: 10px;
+}
+.format-option {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #c5cdbb;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.format-option.is-selected {
+  border-color: var(--ink);
+  background: var(--paper);
+}
+.format-option input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.format-option:has(:focus-visible) {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 4px;
+}
+.radio-mark {
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #8e9981;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.is-selected .radio-mark {
+  border: 5px solid var(--ink);
+}
+.format-option strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.format-option small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.format-count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.product-control {
+  margin-top: 32px;
+}
+.range-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+.range-heading output {
+  font-size: 31px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+input[type="range"] {
+  width: 100%;
+  margin: 16px 0 10px;
+  cursor: pointer;
+  accent-color: var(--ink);
+  height: 22px;
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-family: var(--font-mono-face), monospace;
+  font-size: 9px;
+}
+.extra-options {
+  margin-top: 33px;
+}
+.extra-options > label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-block: 15px;
+  border-top: 1px solid #c5cdbb;
+  cursor: pointer;
+}
+.extra-options input {
+  appearance: auto;
+  accent-color: var(--ink);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  flex-shrink: 0;
+}
+.extra-options strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+}
+.extra-options small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.extra-options label > span:last-child {
+  margin-left: auto;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.quote-summary {
+  padding: 34px;
+  background: var(--night);
+  color: var(--paper);
+  border-radius: 3px;
+}
+.quote-summary-top {
+  display: flex;
+  justify-content: space-between;
+  color: #b7beb0;
+  gap: 15px;
+}
+.quote-name {
+  margin-top: 32px;
+  font-family: var(--font-serif-face), Georgia, serif;
+  font-size: 31px;
+}
+.quote-total {
+  margin-block: 16px 26px;
+}
+.quote-total > span {
+  display: block;
+  font-size: clamp(56px, 5.5vw, 80px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-variant-numeric: tabular-nums;
+}
+.quote-total > p {
+  color: #b7beb0;
+  font-size: 12px;
+  margin-top: 14px;
+}
+.quote-breakdown {
+  margin: 0;
+  border-top: 1px solid #4b5046;
+  padding-top: 14px;
+}
+.quote-breakdown > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-block: 8px;
+  font-size: 11px;
+}
+.quote-breakdown dt {
+  color: #b7beb0;
+}
+.quote-breakdown dd {
+  margin: 0;
+}
+.quote-breakdown .quote-turnaround {
+  border-top: 1px solid #4b5046;
+  margin-top: 12px;
+  padding-block: 17px;
+  font-size: 10px;
+}
+.quote-included {
+  display: grid;
+  gap: 12px;
+  padding-block: 20px 28px;
+  border-top: 1px solid #4b5046;
+}
+.quote-included li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 11px;
+}
+.quote-included svg {
+  color: var(--sage);
+}
+.quote-summary .button {
+  width: 100%;
+}
+.quote-note {
+  margin-top: 20px;
+  font-size: 10px;
+  color: #b7beb0;
+  line-height: 1.7;
+}
+@media (max-width: 1000px) {
+  .quote-grid {
+    gap: 35px;
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .format-option {
+    padding: 17px 14px;
+  }
+  .format-count {
+    display: none;
+  }
+  .quote-summary {
+    padding: 27px;
+  }
+}
+@media (max-width: 760px) {
+  .investment-section {
+    padding-block: 70px;
+  }
+  .quote-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .format-count {
+    display: block;
+    font-size: 9px;
+  }
+  .quote-summary {
+    padding: 28px;
+  }
+  .quote-total > span {
+    font-size: 70px;
+  }
+  .quote-name {
+    margin-top: 25px;
+  }
+  .quote-note {
+    font-size: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .format-count {
+    display: none;
+  }
+}

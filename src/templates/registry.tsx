@@ -38,6 +38,7 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'skywrite-ai': dynamic(() => import('@/templates/skywrite-ai'), { ssr: false, loading: Loading }),
   'kept': dynamic(() => import('@/templates/kept'), { ssr: false, loading: Loading }),
   'unreal-shot': dynamic(() => import('@/templates/unreal-shot'), { ssr: false, loading: Loading }),
+  'stillform': dynamic(() => import('@/templates/stillform'), { ssr: false, loading: Loading }),
 };
 
 export function getTemplateComponent(slug: string): React.ComponentType<any> | undefined {
