@@ -113,6 +113,10 @@ export const UI_CSS = {
     from: { 'stroke-dashoffset': 'var(--ui-ring)' },
     to: { 'stroke-dashoffset': '0' },
   },
+  '@keyframes ui-sheen': {
+    from: { 'mask-position': '150% 0' },
+    to: { 'mask-position': '-50% 0' },
+  },
   '@layer base': {
     '::highlight(ui-selection)': {
       'background-color': 'color-mix(in oklab, var(--primary) 18%, transparent)',

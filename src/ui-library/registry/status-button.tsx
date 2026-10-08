@@ -24,7 +24,9 @@ export interface StatusButtonProps extends React.ButtonHTMLAttributes<HTMLButton
   labels?: Partial<Record<ActionStatus, string>>;
   /** Shown before the label while idle. */
   icon?: React.ReactNode;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "ghost";
+  /** "sm" is 28px tall, for toolbars and headers. */
+  size?: "default" | "sm";
   /** Called this long after success (ms), e.g. to go back to idle. */
   onReset?: () => void;
   resetAfter?: number;
@@ -47,9 +49,9 @@ const useReducedMotion = () =>
     () => false,
   );
 
-function Check({ drawn }: { drawn: boolean }) {
+function Check({ drawn, reduced }: { drawn: boolean; reduced: boolean }) {
   return (
-    <svg viewBox="0 0 16 16" fill="none" className="size-4">
+    <svg viewBox="0 0 16 16" fill="none">
       <path
         d="M3.5 8.5 6.5 11.5 12.5 4.5"
         stroke="currentColor"
@@ -58,7 +60,7 @@ function Check({ drawn }: { drawn: boolean }) {
         strokeLinejoin="round"
         pathLength={1}
         strokeDasharray={1}
-        style={{ strokeDashoffset: drawn ? 0 : 1, transition: drawn ? `stroke-dashoffset 420ms ${EASE} 120ms` : "none" }}
+        style={{ strokeDashoffset: drawn ? 0 : 1, transition: drawn && !reduced ? `stroke-dashoffset 420ms ${EASE} 120ms` : "none" }}
       />
     </svg>
   );
@@ -66,7 +68,7 @@ function Check({ drawn }: { drawn: boolean }) {
 
 function Alert() {
   return (
-    <svg viewBox="0 0 16 16" fill="none" className="size-4">
+    <svg viewBox="0 0 16 16" fill="none">
       <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
       <path d="M8 4.75v3.75" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
       <circle cx="8" cy="11" r="1" fill="currentColor" />
@@ -79,6 +81,7 @@ export function StatusButton({
   labels,
   icon,
   variant = "primary",
+  size = "default",
   onReset,
   resetAfter = 1800,
   className = "",
@@ -90,6 +93,8 @@ export function StatusButton({
   const label = { ...LABELS, ...labels }[status];
   const showIcon = status !== "idle" || Boolean(icon);
   const busy = status === "pending";
+  const sm = size === "sm";
+  const iconSize = sm ? 14 : 16;
 
   // A short shake when it fails: the eye catches it even if you looked away.
   React.useEffect(() => {
@@ -111,17 +116,19 @@ export function StatusButton({
       ? "bg-red-500/10 text-red-600 shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--color-red-500)_30%,transparent)] dark:text-red-400"
       : variant === "primary"
         ? "bg-primary text-primary-foreground hover:bg-primary/90"
-        : "text-foreground shadow-[inset_0_0_0_1px_var(--border)] hover:bg-accent";
+        : variant === "ghost"
+          ? `hover:bg-accent hover:text-foreground ${status === "idle" ? "text-muted-foreground" : "text-foreground"}`
+          : "text-foreground shadow-[inset_0_0_0_1px_var(--border)] hover:bg-accent";
 
   const icons: Record<ActionStatus, React.ReactNode> = {
     idle: icon,
     // Spins only while pending, so a hidden spinner never keeps the page busy.
     pending: (
       <span
-        className={`size-3.5 rounded-full border-[1.5px] border-current border-t-transparent opacity-80 motion-reduce:animate-none ${status === "pending" ? "animate-spin" : ""}`}
+        className={`${sm ? "size-3" : "size-3.5"} rounded-full border-[1.5px] border-current border-t-transparent opacity-80 motion-reduce:animate-none ${status === "pending" ? "animate-spin" : ""}`}
       />
     ),
-    success: <Check drawn={status === "success"} />,
+    success: <Check drawn={status === "success"} reduced={reduced} />,
     error: <Alert />,
   };
 
@@ -136,15 +143,17 @@ export function StatusButton({
           if (busy) return e.preventDefault();
           onClick?.(e);
         }}
-        className={`inline-flex h-9 items-center justify-center whitespace-nowrap rounded-full px-4 text-[13px] font-medium transition-[background-color,color,box-shadow,transform] duration-300 active:scale-[0.97] ${FOCUS} ${tone} ${className}`}
+        className={`inline-flex items-center justify-center whitespace-nowrap rounded-full font-medium transition-[background-color,color,box-shadow,transform,padding] duration-300 active:scale-[0.97] ${
+          sm ? `h-7 text-[12px] ${variant === "ghost" ? "px-2.5" : "px-3"}` : "h-9 px-4 text-[13px]"
+        } ${FOCUS} ${tone} ${className}`}
         {...props}
       >
         <span
           aria-hidden="true"
-          className="relative flex h-4 shrink-0 items-center justify-center [&_svg]:size-4"
+          className={`relative flex shrink-0 items-center justify-center ${sm ? "h-3.5 [&_svg]:size-3.5" : "h-4 [&_svg]:size-4"}`}
           style={{
-            width: showIcon ? 16 : 0,
-            marginRight: showIcon ? 6 : 0,
+            width: showIcon ? iconSize : 0,
+            marginRight: showIcon ? (sm ? 5 : 6) : 0,
             transition: reduced ? "none" : `width 380ms ${EASE}, margin 380ms ${EASE}`,
           }}
         >

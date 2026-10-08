@@ -2,14 +2,20 @@
 
 import * as React from "react";
 import { ChevronRight, Search } from "lucide-react";
+import { NumberRoll } from "./number-roll";
+import { TextMorph } from "./text-morph";
 
 /* ─────────────────────────────────────────────────────────
  * WEB RESEARCH: watch the agent search and read
  *
  *   searching  "Searching" shimmers; the live query types in
- *   reading    each page read drops its icon into the stack;
- *              its title crossfades underneath
- *   done       "3 searches · 14 sources"; open it for the list
+ *   reading    the label morphs to "Reading" and "7 sites"
+ *              rolls up; each page drops its icon into the
+ *              stack (the oldest folds away) while its title
+ *              rises in underneath as the last one lifts off
+ *   done       the line morphs into "3 searches · 9 sources":
+ *              counts roll, words morph, the title row folds
+ *              shut and a chevron opens in; open it for the list
  *   error      "Search failed", keeping whatever was found
  *   cancelled  "Stopped after 2 searches"
  *
@@ -38,9 +44,11 @@ export interface WebResearchProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const EASE = "cubic-bezier(0.23,1,0.32,1)";
+const MORPH = "cubic-bezier(0.16,1,0.3,1)";
 const STACK = 4;
-const SHIMMER =
-  "bg-[linear-gradient(90deg,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_35%,var(--foreground)_50%,color-mix(in_oklab,var(--muted-foreground)_55%,transparent)_65%)] bg-[length:200%_100%] bg-clip-text text-transparent animate-[ui-shimmer_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:text-foreground/70";
+// A light that sweeps across the label. A mask, not a text clip, so it reaches letters that are mid-morph.
+const SHEEN =
+  "text-foreground [mask-image:linear-gradient(90deg,rgb(0_0_0/0.45)_35%,#000_50%,rgb(0_0_0/0.45)_65%)] [mask-size:200%_100%] animate-[ui-sheen_1.4s_linear_infinite] motion-reduce:animate-none motion-reduce:[mask-image:none] motion-reduce:text-foreground/70";
 
 const reducedQuery = "(prefers-reduced-motion: reduce)";
 const subscribeReduced = (onChange: () => void) => {
@@ -68,6 +76,8 @@ function hue(text: string) {
   for (let i = 0; i < text.length; i++) h = (h * 31 + text.charCodeAt(i)) % 360;
   return h;
 }
+
+const plural = (n: number, word: string) => `${word}${n === 1 ? "" : /(s|sh|ch|x)$/.test(word) ? "es" : "s"}`;
 
 function Favicon({ source, className = "" }: { source: ResearchSource; className?: string }) {
   const host = hostname(source.url);
@@ -111,6 +121,107 @@ function useTyped(text: string, active: boolean, reduced: boolean) {
   return shown;
 }
 
+/** A piece of the line that opens out of nothing and folds back into it (width eases, content blurs in). */
+function Reveal({ show, reduced, className = "", children }: { show: boolean; reduced: boolean; className?: string; children: React.ReactNode }) {
+  return (
+    <span
+      aria-hidden={!show || undefined}
+      className={`grid min-w-0 ${className}`}
+      style={{
+        gridTemplateColumns: show ? "1fr" : "0fr",
+        opacity: show ? 1 : 0,
+        filter: show ? "none" : "blur(4px)",
+        transition: reduced ? "none" : `grid-template-columns 460ms ${MORPH}, opacity ${show ? "320ms" : "180ms"} ${MORPH}, filter 320ms ${MORPH}`,
+      }}
+    >
+      <span className="min-w-0 whitespace-nowrap [clip-path:inset(-4px_-2px)]">{children}</span>
+    </span>
+  );
+}
+
+/** One icon in the stack: drops in when it's new, folds away when it's pushed out by a newer one. */
+function StackIcon({ shown, first, enter, reduced, z, children }: { shown: boolean; first: boolean; enter: boolean; reduced: boolean; z: number; children: React.ReactNode }) {
+  const [entering] = React.useState(enter);
+  return (
+    <span
+      aria-hidden={!shown || undefined}
+      className={`relative flex h-5 shrink-0 ${entering && !reduced ? "animate-[ui-drop-in_420ms_cubic-bezier(0.23,1,0.32,1)_backwards]" : ""}`}
+      style={{
+        zIndex: z,
+        width: shown ? 20 : 0,
+        marginLeft: shown && !first ? -6 : 0,
+        opacity: shown ? 1 : 0,
+        transform: shown ? "none" : "scale(0.6)",
+        transition: reduced ? "none" : `width 420ms ${MORPH}, margin 420ms ${MORPH}, opacity 260ms ${MORPH}, transform 420ms ${MORPH}`,
+      }}
+    >
+      <span className="flex size-5 shrink-0 overflow-hidden rounded-full ring-2 ring-background">{children}</span>
+    </span>
+  );
+}
+
+/** A one-line ticker: the new text rises in out of a blur while the last one lifts away. */
+function Ticker({ id, reduced, children }: { id: string; reduced: boolean; children: React.ReactNode }) {
+  const [current, setCurrent] = React.useState<{ id: string; node: React.ReactNode }>({ id, node: children });
+  const [leaving, setLeaving] = React.useState<{ id: string; node: React.ReactNode }[]>([]);
+  if (current.id !== id) {
+    if (!reduced) setLeaving((l) => (l.some((x) => x.id === current.id) ? l : [...l, current]));
+    setCurrent({ id, node: children });
+  }
+  const done = React.useCallback((leftId: string) => setLeaving((l) => l.filter((x) => x.id !== leftId)), []);
+  const first = React.useRef(true);
+  React.useEffect(() => {
+    first.current = false;
+  }, []);
+
+  return (
+    <span className="relative block h-4">
+      {leaving.map((l) => (
+        <Tick key={`out-${l.id}`} id={l.id} out onDone={done}>
+          {l.node}
+        </Tick>
+      ))}
+      <Tick key={id} id={id} enter={!first.current && !reduced}>
+        {children}
+      </Tick>
+    </span>
+  );
+}
+
+function Tick({ id, out = false, enter = false, onDone, children }: { id: string; out?: boolean; enter?: boolean; onDone?: (id: string) => void; children: React.ReactNode }) {
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const [entering] = React.useState(enter);
+  React.useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (out) {
+      const animation = el.animate(
+        [
+          { opacity: 1, filter: "blur(0px)", transform: "none" },
+          { opacity: 0, filter: "blur(4px)", transform: "translateY(-6px)" },
+        ],
+        { duration: 220, easing: MORPH, fill: "forwards" }
+      );
+      animation.onfinish = () => onDone?.(id);
+      return () => animation.cancel();
+    }
+    if (!entering) return;
+    const animation = el.animate(
+      [
+        { opacity: 0, filter: "blur(4px)", transform: "translateY(6px)" },
+        { opacity: 1, filter: "blur(0px)", transform: "none" },
+      ],
+      { duration: 380, easing: MORPH, delay: 60, fill: "backwards" }
+    );
+    return () => animation.cancel();
+  }, [id, out, entering, onDone]);
+  return (
+    <span ref={ref} aria-hidden={out || undefined} className="absolute inset-0 truncate text-[11.5px] text-muted-foreground/80">
+      {children}
+    </span>
+  );
+}
+
 export function WebResearch({ status, queries, sources, open: openProp, defaultOpen = false, onOpenChange, className = "", ...props }: WebResearchProps) {
   const reduced = useReducedMotion();
   const [ownOpen, setOwnOpen] = React.useState(defaultOpen);
@@ -124,103 +235,127 @@ export function WebResearch({ status, queries, sources, open: openProp, defaultO
   const query = queries[queries.length - 1] ?? "";
   const typed = useTyped(query, status === "searching", reduced);
   const latest = sources[sources.length - 1];
-  const stack = sources.slice(-STACK);
-  const extra = sources.length - stack.length;
+  const extra = Math.max(0, sources.length - STACK);
   const listId = React.useId();
 
-  const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : /(s|sh|ch|x)$/.test(word) ? "es" : "s"}`;
+  // Icons that arrive after the first paint drop in; the ones already there just sit.
+  const mounted = React.useRef(false);
+  React.useEffect(() => {
+    mounted.current = true;
+  }, []);
+
+  // One line that rearranges itself: a label, then whichever counts this state needs.
+  const label = { searching: "Searching", reading: "Reading", error: "Search failed", cancelled: "Stopped after", done: "" }[status];
+  const showSearches = status === "done" || status === "cancelled";
+  const showSources = sources.length > 0 && (status === "reading" || status === "done" || status === "error");
+  const showDot = showSources && (status === "done" || status === "error");
+  const sourceWord = status === "reading" ? plural(sources.length, "site") : plural(sources.length, "source");
+
   const summary =
-    status === "error"
-      ? `Search failed${sources.length ? ` · ${plural(sources.length, "source")}` : ""}`
-      : status === "cancelled"
-        ? `Stopped after ${plural(queries.length, "search")}`
-        : `${plural(queries.length, "search")} · ${plural(sources.length, "source")}`;
-
-  const header = (
-    <>
-      <span className="relative flex h-5 shrink-0 items-center">
-        {stack.length === 0 ? (
-          <span className="flex size-5 items-center justify-center rounded-full bg-muted text-muted-foreground">
-            <Search className={`size-3 ${working ? "animate-[ui-breathe_1.6s_ease-in-out_infinite] motion-reduce:animate-none" : ""}`} strokeWidth={2.2} />
-          </span>
-        ) : (
-          stack.map((s, i) => (
-            <span
-              key={s.url}
-              className={`relative flex size-5 overflow-hidden rounded-full ring-2 ring-background ${i ? "-ml-1.5" : ""} ${working ? "animate-[ui-drop-in_420ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none" : ""}`}
-              style={{ zIndex: i }}
-            >
-              <Favicon source={s} className="size-full" />
-            </span>
-          ))
-        )}
-        {extra > 0 && (
-          <span
-            key={extra}
-            className="-ml-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-muted px-1 font-mono text-[9.5px] tabular-nums text-muted-foreground ring-2 ring-background animate-[ui-fade-in_200ms_ease-out_both]"
-          >
-            +{extra}
-          </span>
-        )}
-      </span>
-
-      <span className="min-w-0 flex-1 text-left">
-        {working ? (
-          <span className="flex min-w-0 items-baseline gap-1.5 text-[13px]">
-            <span className={`shrink-0 font-medium ${SHIMMER}`}>{status === "searching" ? "Searching" : "Reading"}</span>
-            {status === "searching" && query && <span className="truncate text-muted-foreground">“{typed}”</span>}
-            {status === "reading" && (
-              <span
-                key={sources.length}
-                className="shrink-0 font-mono text-[11.5px] tabular-nums text-muted-foreground animate-[ui-fade-up_240ms_ease-out_both] motion-reduce:animate-none"
-              >
-                {plural(sources.length, "site")}
-              </span>
-            )}
-          </span>
-        ) : (
-          <span className={`block truncate text-[13px] ${status === "error" ? "text-red-600 dark:text-red-400" : "text-muted-foreground"}`}>{summary}</span>
-        )}
-        {working && latest && (
-          <span className="relative mt-0.5 block h-4 overflow-hidden">
-            <span
-              key={latest.url}
-              className="absolute inset-0 truncate text-[11.5px] text-muted-foreground/80 animate-[ui-fade-up_320ms_cubic-bezier(0.23,1,0.32,1)_both] motion-reduce:animate-none"
-            >
-              {latest.title ?? hostname(latest.url)} <span className="text-muted-foreground/60">· {hostname(latest.url)}</span>
-            </span>
-          </span>
-        )}
-      </span>
-    </>
-  );
+    status === "searching"
+      ? `Searching for ${query}`
+      : status === "reading"
+        ? `Read ${sources.length} ${sourceWord}`
+        : status === "error"
+          ? `Search failed${sources.length ? `, ${sources.length} ${sourceWord}` : ""}`
+          : status === "cancelled"
+            ? `Stopped after ${queries.length} ${plural(queries.length, "search")}`
+            : `Done: ${queries.length} ${plural(queries.length, "search")}, ${sources.length} ${sourceWord}`;
 
   return (
     <div className={`w-full ${className}`} {...props}>
-      {working ? (
-        <div role="status" aria-live="polite" className="flex min-h-9 items-center gap-2.5 py-1">
-          {header}
-          <span className="sr-only">{status === "searching" ? `Searching for ${query}` : `Read ${plural(sources.length, "site")}`}</span>
-        </div>
-      ) : (
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={listId}
-          onClick={() => setOpen(!open)}
-          className="group flex min-h-9 w-full items-center gap-2.5 rounded-lg py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-        >
-          {header}
+      {/* The same row from first search to final summary, so every piece of it can morph; it becomes a button once there's a list to open. */}
+      <button
+        type="button"
+        disabled={working}
+        aria-expanded={working ? undefined : open}
+        aria-controls={working ? undefined : listId}
+        onClick={() => setOpen(!open)}
+        className="group flex min-h-9 w-full items-center gap-2.5 rounded-lg py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-default"
+      >
+        <span aria-hidden="true" className="relative flex h-5 shrink-0 items-center">
+          <StackIcon shown={sources.length === 0} first enter={false} reduced={reduced} z={0}>
+            <span className="flex size-full items-center justify-center bg-muted text-muted-foreground">
+              <Search className={`size-3 ${working ? "animate-[ui-breathe_1.6s_ease-in-out_infinite] motion-reduce:animate-none" : ""}`} strokeWidth={2.2} />
+            </span>
+          </StackIcon>
+          {sources.map((s, i) => (
+            <StackIcon key={s.url} shown={i >= sources.length - STACK} first={i === Math.max(0, sources.length - STACK)} enter={mounted.current && working} reduced={reduced} z={i + 1}>
+              <Favicon source={s} className="size-full" />
+            </StackIcon>
+          ))}
+          <Reveal show={extra > 0} reduced={reduced} className="relative z-[999]">
+            <span className="ml-[-6px] flex h-5 min-w-5 items-center justify-center rounded-full bg-muted px-1 font-mono text-[9.5px] text-muted-foreground ring-2 ring-background">
+              <NumberRoll value={extra} prefix="+" duration={600} />
+            </span>
+          </Reveal>
+        </span>
+
+        <span className="min-w-0 flex-1 text-left">
+          <span
+            className={`flex min-w-0 items-center text-[13px] leading-5 transition-colors duration-300 ${status === "error" ? "text-red-600 dark:text-red-400" : "text-muted-foreground"}`}
+          >
+            <span className={`shrink-0 font-medium transition-colors duration-300 ${working ? SHEEN : ""}`}>
+              <TextMorph>{label}</TextMorph>
+            </span>
+            <Reveal show={showSearches} reduced={reduced} className="shrink-0">
+              <span className="inline-flex items-baseline transition-[padding] duration-500" style={{ paddingLeft: label ? 5 : 0, transitionTimingFunction: MORPH }}>
+                <NumberRoll value={queries.length} duration={700} />
+                &nbsp;
+                <TextMorph>{plural(queries.length, "search")}</TextMorph>
+              </span>
+            </Reveal>
+            <Reveal show={showDot} reduced={reduced} className="shrink-0">
+              <span className="px-1.5 opacity-60">·</span>
+            </Reveal>
+            <Reveal show={showSources} reduced={reduced} className="shrink-0">
+              <span className="inline-flex items-baseline transition-[padding] duration-500" style={{ paddingLeft: showDot ? 0 : 5, transitionTimingFunction: MORPH }}>
+                <NumberRoll value={sources.length} duration={700} />
+                &nbsp;
+                <TextMorph>{sourceWord}</TextMorph>
+              </span>
+            </Reveal>
+            <Reveal show={status === "searching" && Boolean(query)} reduced={reduced} className="shrink">
+              <span className="block truncate pl-1.5">“{typed}”</span>
+            </Reveal>
+          </span>
+          {/* The page being read; the row folds shut when the work is done. */}
+          <span
+            aria-hidden={!working || undefined}
+            className="grid"
+            style={{
+              gridTemplateRows: working && latest ? "1fr" : "0fr",
+              opacity: working && latest ? 1 : 0,
+              transition: reduced ? "none" : `grid-template-rows 420ms ${MORPH}, opacity 260ms ${MORPH}`,
+            }}
+          >
+            <span className="min-h-0 overflow-hidden">
+              <span className="block pt-0.5">
+                {latest && (
+                  <Ticker id={latest.url} reduced={reduced}>
+                    {latest.title ?? hostname(latest.url)} <span className="text-muted-foreground/60">· {hostname(latest.url)}</span>
+                  </Ticker>
+                )}
+              </span>
+            </span>
+          </span>
+        </span>
+
+        <Reveal show={!working} reduced={reduced} className="shrink-0">
           <ChevronRight
             aria-hidden="true"
-            className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:text-foreground"
+            className="size-3.5 text-muted-foreground transition-transform duration-300 group-hover:text-foreground"
             style={{
               transform: open ? "rotate(90deg)" : "none",
               transitionTimingFunction: EASE,
             }}
           />
-        </button>
-      )}
+        </Reveal>
+      </button>
+      {/* Outside the button, so the button's name stays its visible text. */}
+      <span role="status" aria-live="polite" className="sr-only">
+        {summary}
+      </span>
 
       <div
         id={listId}

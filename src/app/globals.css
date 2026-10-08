@@ -198,6 +198,10 @@ canvas[style*="pixelated"] {
   from { opacity: 0; transform: translateY(-4px) scale(0.96); }
   to { opacity: 1; transform: none; }
 }
+@keyframes ui-sheen {
+  from { mask-position: 150% 0; }
+  to { mask-position: -50% 0; }
+}
 
 ::highlight(ui-selection) {
   background-color: color-mix(in oklab, var(--primary) 18%, transparent);

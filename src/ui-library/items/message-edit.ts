@@ -5,14 +5,15 @@ export const messageEdit: UiItem = {
   title: 'Edit and resend',
   description: 'Fix a sent message where it sits. The bubble grows into an editor, then folds back and branches the reply.',
   summary:
-    'People rephrase constantly, and scrolling down to retype a question breaks their flow. Hover a sent message for Copy and Edit. Editing grows the bubble into a field right where it sits, widening from its right edge to fit, with the text ready to change. Enter sends and folds it back; Escape cancels. When the message has branches, "2 / 2" steps between them, so the earlier question and its answer are never lost.',
+    'People rephrase constantly, and scrolling down to retype a question breaks their flow. Hover a sent message for Copy and Edit. Editing grows the bubble into a field right where it sits, widening from its right edge to fit, with the text ready to change. Enter sends and folds it back; Escape cancels. After a resend the pager slides open beside Copy, and "2 / 2" steps between branches: the counter rolls, the message slides in from the side you stepped toward and the bubble eases to fit it, so the earlier question and its answer are never lost. Copy blurs into a check that draws itself.',
   file: 'message-edit.tsx',
   dependencies: ['lucide-react'],
-  css: ['@keyframes ui-fade-in', '@keyframes ui-pop-in'],
+  registryDependencies: ['number-roll'],
+  css: ['@keyframes ui-fade-in'],
   states: [
-    { name: 'sent', description: 'The message bubble. Copy and Edit appear on hover or focus (always on touch screens).' },
+    { name: 'sent', description: 'The message bubble. Copy and Edit appear on hover or focus (always on touch screens). Copy shrinks away through a 3px blur as a check draws itself in 380ms.' },
     { name: 'editing', description: 'The bubble grows into a field in place, caret at the end. Send stays disabled until the text changes.' },
-    { name: 'versions', description: 'With more than one branch, a "2 / 2" pager steps between them.' },
+    { name: 'versions', description: 'The pager slides open (420ms) once there is a second branch. Each step rolls the counter, sends the old message out 16px toward where you came from through a 6px blur, brings the new one in from the other side and eases the bubble to its size.' },
     { name: 'disabled', description: 'While an answer streams, Edit is dimmed and says why on hover.' },
   ],
   usage: `import { MessageEdit } from "@/components/message-edit";
@@ -52,6 +53,7 @@ export function UserMessages() {
     'Enter sends and Shift+Enter adds a line, like the composer; Escape cancels. IME composition never sends early.',
     'Focus moves into the field on edit and back to the Edit button after sending or cancelling.',
     'The version counter is announced politely; the pager arrows are real buttons, disabled at either end.',
-    'The morph uses the Web Animations API and is skipped with reduced motion.',
+    'Copy announces "Copied" from a status region beside the buttons, so the button keeps its name.',
+    'The morphs use the Web Animations API and CSS transitions, no animation library. With reduced motion, versions and edits change in place.',
   ],
 };

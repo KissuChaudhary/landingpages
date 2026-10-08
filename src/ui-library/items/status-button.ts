@@ -47,7 +47,8 @@ export function SaveSettings({ values }: { values: Settings }) {
     { name: 'status', type: '"idle" | "pending" | "success" | "error"', default: '"idle"', description: 'What the button shows.' },
     { name: 'labels', type: 'Partial<Record<status, string>>', default: 'Save, Saving, Saved, Try again', description: 'Wording per state.' },
     { name: 'icon', type: 'ReactNode', description: 'An icon beside the idle label, e.g. a link icon for Copy link.' },
-    { name: 'variant', type: '"primary" | "outline"', default: '"primary"', description: 'Filled with your brand colour, or a hairline outline.' },
+    { name: 'variant', type: '"primary" | "outline" | "ghost"', default: '"primary"', description: 'Filled with your brand colour, a hairline outline, or quiet text for toolbars.' },
+    { name: 'size', type: '"default" | "sm"', default: '"default"', description: '36px, or 28px for headers and toolbars (Copy in a code block, Undo in a receipt).' },
     { name: 'onReset / resetAfter', type: '() => void / number', default: '— / 1800', description: 'Called that long after success, to go back to idle.' },
   ],
   notes: [
