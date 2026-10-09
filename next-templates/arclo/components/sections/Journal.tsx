@@ -10,8 +10,8 @@ export function Journal({ full = false }: { full?: boolean }) {
       <SectionHead
         label="The journal"
         icon={BookOpen}
-        title="A little inspiration goes a long way."
-        description="Ideas, guides and useful starting points for a more thoughtful way to work."
+        title="Notes from month end."
+        description="Practical guides for a faster, calmer and better-documented close."
       />
       <div className="three-grid journal-grid">
         {articles.map((article) => (

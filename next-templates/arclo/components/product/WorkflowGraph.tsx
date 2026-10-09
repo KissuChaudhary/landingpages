@@ -10,25 +10,9 @@ export function WorkflowGraph({
 }) {
   const nodes = [
     { tool: "trigger", label: "Trigger", title: workflow.trigger },
-    { tool: "agent", label: "AI agent", title: workflow.agent },
-    {
-      tool: "database",
-      label: "Condition",
-      title:
-        workflow.id === "leads"
-          ? "Matches your criteria"
-          : "Organize the context",
-    },
-    {
-      tool:
-        workflow.id === "leads"
-          ? "chat"
-          : workflow.id === "inbox"
-            ? "email"
-            : "document",
-      label: "Action",
-      title: workflow.action,
-    },
+    { tool: "rules", label: "Rules", title: workflow.engine },
+    { tool: "check", label: "Condition", title: workflow.condition },
+    { tool: workflow.tool, label: "Action", title: workflow.action },
   ];
   return (
     <div className="workflow-graph">
@@ -61,31 +45,31 @@ export function WorkflowGraph({
       </div>
       <div className="graph-tools">
         <div className="flow-node resource-node">
-          <ToolIcon name="document" small />
+          <ToolIcon name="bank" small />
           <div>
-            <span>Context</span>
-            <strong>Source records</strong>
+            <span>Source</span>
+            <strong>Bank and card feeds</strong>
           </div>
           <ArrowUpRight size={13} />
         </div>
         <div className="flow-node resource-node">
-          <ToolIcon name="agent" small />
+          <ToolIcon name="ledger" small />
           <div>
-            <span>Model</span>
-            <strong>Language engine</strong>
+            <span>Ledger</span>
+            <strong>Chart of accounts</strong>
           </div>
           <ArrowUpRight size={13} />
         </div>
         <div className="flow-node resource-node">
-          <ToolIcon name="database" small />
+          <ToolIcon name="approval" small />
           <div>
-            <span>Memory</span>
-            <strong>Team knowledge</strong>
+            <span>Policy</span>
+            <strong>Approval limits</strong>
           </div>
           <ArrowUpRight size={13} />
         </div>
       </div>
-      <span className="canvas-label">YOUR IDEAS, CONNECTED.</span>
+      <span className="canvas-label">EVERY NUMBER, ACCOUNTED FOR.</span>
     </div>
   );
 }

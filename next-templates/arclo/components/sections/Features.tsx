@@ -1,4 +1,4 @@
-import { Zap, LayoutGrid, Terminal, Code2, Users } from "lucide-react";
+import { Zap, ScrollText, Building2, History, Users } from "lucide-react";
 import { Section, SectionHead, IconTile } from "../ui/Primitives";
 import {
   AnalyticsScene,
@@ -10,28 +10,28 @@ import {
 } from "../product/FeatureScenes";
 const features = [
   {
-    title: "See the whole flow.",
-    text: "A visual canvas for your triggers, logic and actions. Make the complex feel wonderfully simple.",
+    title: "Reconciliation that keeps up.",
+    text: "Bank, card and payout lines meet their ledger entries as they arrive, with rules you can read.",
     scene: BuilderScene,
   },
   {
-    title: "Bring your favorite tools.",
-    text: "Email, documents, calendars and team channels. Keep everything moving in the same direction.",
+    title: "Your ledger stays the ledger.",
+    text: "Arclo sits beside your accounting system, banks, cards and payroll. Nothing to migrate.",
     scene: IntegrationScene,
   },
   {
-    title: "Skip the blank canvas.",
-    text: "Start with thoughtful building blocks. A useful first workflow is closer than you think.",
+    title: "A checklist that rolls forward.",
+    text: "Recurring tasks, owners and due days carry into next month on their own.",
     scene: ModuleScene,
   },
   {
-    title: "Every step, in the open.",
-    text: "Know what ran, what worked and what needs your attention. Clear signals, less guesswork.",
+    title: "Know where the close stands.",
+    text: "What’s reconciled, who’s holding what and how many days are left, on one page.",
     scene: AnalyticsScene,
   },
   {
-    title: "Just say what you need.",
-    text: "Good instructions start with plain language. Give your agents an idea, then make it your own.",
+    title: "Variance notes, drafted.",
+    text: "Movements over your threshold arrive with a first draft of the explanation, ready for your edit.",
     scene: PromptScene,
   },
 ];
@@ -41,8 +41,8 @@ export function Features() {
       <SectionHead
         label="The platform"
         icon={Zap}
-        title="Built for the way you work."
-        description="Everything you need to turn a repeatable task into a little everyday magic."
+        title="The whole close, in one place."
+        description="Five tools that turn a month-end checklist into a finished, defensible close."
       />
       <div className="feature-grid">
         {features.map(({ scene: Scene, title, text }) => (
@@ -60,24 +60,24 @@ export function Features() {
 }
 const differences = [
   {
-    icon: LayoutGrid,
-    title: "A framework that fits.",
-    text: "Give every agent a role, the right context and a clear next step.",
+    icon: ScrollText,
+    title: "Rules you can read.",
+    text: "Matching and routing written as plain sentences, not buried formulas.",
   },
   {
-    icon: Code2,
-    title: "Room to make it yours.",
-    text: "Extend the flow with your own instructions, logic and APIs.",
+    icon: Building2,
+    title: "Your chart, your entities.",
+    text: "Mapped to the accounts you already use, across every entity you close.",
   },
   {
-    icon: Terminal,
-    title: "Clarity at every step.",
-    text: "Follow each action from its source to the final prepared result.",
+    icon: History,
+    title: "A trail behind every entry.",
+    text: "Who prepared it, who approved it and what changed, kept for the auditors.",
   },
   {
     icon: Users,
-    title: "Better, together.",
-    text: "Build with your team. Keep good ideas and shared context connected.",
+    title: "Close as a team.",
+    text: "Assign tasks, leave review notes and hand off without a status meeting.",
   },
 ];
 export function Difference() {
@@ -85,8 +85,8 @@ export function Difference() {
     <Section id="why-arclo">
       <SectionHead
         label="Why Arclo"
-        title="More power. Less friction."
-        description="A thoughtful foundation for the workflows you haven’t imagined yet."
+        title="Built the way a controller thinks."
+        description="Calm defaults for work that has to be right the first time."
       />
       <div className="difference-grid">
         <div>

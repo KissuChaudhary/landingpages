@@ -10,10 +10,10 @@ export function Stories() {
   return (
     <Section id="stories">
       <SectionHead
-        label="Team perspectives"
+        label="From the finance team"
         icon={Quote}
-        title="Good work is a team sport."
-        description="Different teams. Shared ambition. A little more room for what matters."
+        title="Month end, without the dread."
+        description="Three teams on what changed when the close stopped living in spreadsheets."
       />
       <div className="story-grid" aria-live="polite">
         {visible.map((story) => (
@@ -35,11 +35,11 @@ export function Stories() {
         ))}
       </div>
       <div className="story-controls">
-        <span>Illustrative team stories</span>
+        <span>Illustrative finance stories</span>
         <div>
           <button
             className="icon-button"
-            aria-label="Previous team stories"
+            aria-label="Previous stories"
             onClick={() =>
               setSelected((selected + stories.length - 1) % stories.length)
             }
@@ -49,7 +49,7 @@ export function Stories() {
           <span>0{selected + 1} / 03</span>
           <button
             className="icon-button"
-            aria-label="Next team stories"
+            aria-label="Next stories"
             onClick={() => setSelected((selected + 1) % stories.length)}
           >
             <ArrowRight size={17} />

@@ -59,7 +59,7 @@
 }
 .contact-form > label,
 .form-pair > label,
-.handoff-form label {
+.changes-form label {
   display: grid;
   gap: 9px;
   font-size: 14px;
@@ -76,8 +76,8 @@
 .contact-form input,
 .contact-form select,
 .contact-form textarea,
-.handoff-form textarea,
-.handoff-form select {
+.changes-form textarea,
+.changes-form select {
   width: 100%;
   border: 1px solid var(--line);
   background: #fff;
@@ -86,7 +86,7 @@
   font-size: 15px;
 }
 .contact-form textarea,
-.handoff-form textarea {
+.changes-form textarea {
   resize: vertical;
 }
 .contact-form > .button {

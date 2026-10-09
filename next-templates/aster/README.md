@@ -1,6 +1,8 @@
 # Aster
 
-A white-label AI customer support landing page and working local workspace. Warm ivory, Newsreader headings, Onest reading type and original botanical paintings give the product story a spacious, human character.
+A creative review landing page and working local workspace for independent creatives and studios. The product brings project briefs, client feedback, studio responses and recorded decisions together. Its positioning, project scenarios, pricing, stories and editorial copy are original to Aster.
+
+Warm ivory, Newsreader headings, Onest reading type and original botanical paintings frame the review process. The approved visual composition is preserved.
 
 ## Run
 
@@ -15,49 +17,49 @@ Open http://localhost:3000. For production, run `npm run build` and `npm start`.
 
 ## Make it yours
 
-Start with `site.config.ts`. Change the brand, metadata, main copy, section labels, pricing, FAQ and destinations. One label introduces each main heading. Keep the short headline lines and the restrained display scale when changing the copy.
+Start with `site.config.ts` for brand, metadata, copy, plans, FAQ and destinations. Preserve the short headline lines and consistent display scale when changing copy.
 
-| Content                                             | File                          |
-| --------------------------------------------------- | ----------------------------- |
-| Brand, copy, pricing, FAQ, destinations             | `site.config.ts`              |
-| Fictional tickets, filters, metrics and transitions | `data/tickets.ts`             |
-| Approved knowledge articles                         | `data/knowledge.ts`           |
-| Fictional teams and portrait stories                | `data/teams.ts`               |
-| Connection guides and data scopes                   | `data/integrations.ts`        |
-| Articles, updates and supporting pages              | `data/pages.ts`               |
-| Palette, typography, gutters and controls           | `styles/base.css`             |
-| Original artwork and portraits                      | `public/images/`, `ASSETS.md` |
-| Page composition                                    | `app/page.tsx`                |
+| Content | File |
+| --- | --- |
+| Brand, copy, pricing, FAQ and destinations | `site.config.ts` |
+| Reviews, projects, versions, filters and decisions | `data/reviews.ts` |
+| Project briefs and agreed creative direction | `data/briefs.ts` |
+| Fictional studios and portrait stories | `data/teams.ts` |
+| Connection guides and data scopes | `data/integrations.ts` |
+| Articles, updates and supporting pages | `data/pages.ts` |
+| Palette, typography, gutters and controls | `styles/base.css` |
+| Original artwork and portraits | `public/images/`, `ASSETS.md` |
+| Page composition | `app/page.tsx` |
 
-The component tree separates landing sections, product illustrations, workspace views, secondary pages and shared primitives. CSS is split by purpose. There is no Tailwind requirement or animation library.
+The component tree separates landing sections, product scenes, review views, secondary pages and shared primitives. CSS is split by purpose. There is no Tailwind requirement or animation library.
 
-## Destinations and contact
+## Destinations, plans and contact
 
-`site.links.app` replaces local workspace destinations when configured. Leave it empty to explore the included workspace. Each plan has separate `checkout.monthly` and `checkout.annual` destinations. An empty paid checkout opens a local plan review followed by the contact brief. The Starter plan opens the example workspace. Scale retains custom pricing for both billing periods.
+`site.links.app` replaces local review destinations when configured. An empty value opens the included workspace. Plan checkout URLs are configured separately for monthly and annual billing. An empty paid checkout opens a plan review followed by the studio enquiry. Solo opens the local example; Collective keeps custom pricing in both billing periods.
 
-The example Team plan costs $59 monthly or $588 per year, equivalent to $49 monthly. The review shows the full annual amount. Update the plan values and the matching FAQ when changing your pricing.
+Studio is shown at $32 monthly or $312 annually, equivalent to $26 per month and $72 annual savings. Allowances use projects and studio members. These are example product plans, not account limits enforced by the demo. Update the matching FAQ when changing pricing.
 
-The contact form validates details, prepares a review and downloads a JSON brief locally. Configure `site.links.contactEndpoint` to submit that brief as JSON using POST. Your service must handle validation, delivery, rate limits and any required CORS configuration. A failed request preserves the brief and offers retry/download. No credentials belong in the frontend.
+The contact form validates details, prepares a review and downloads a JSON enquiry locally. Configure `site.links.contactEndpoint` to submit JSON via POST. Your service must handle validation, delivery, rate limits and required CORS configuration. A failed request preserves the enquiry. Keep credentials on the server.
 
-## Working local experience
+## Working review process
 
-- Search twelve tickets and combine status, channel and category filters. CSV exports contain the visible rows.
-- Open a conversation, read its approved article and edit the suggested reply. Resolve a routine ticket locally or choose an owner and handoff reason. Questions marked as requiring a person cannot be resolved automatically.
-- Download the current conversation as JSON, including the edited draft, source article and any recorded handoff reason.
-- Search the knowledge library and read complete articles. The selected article follows the filtered results.
-- Review calculated counts, resolution rate, median response time, scored customer ratings and a local activity ledger. Unscored resolutions do not invent customer ratings.
-- Reset the workspace through a confirmation dialog. Ticket edits and history remain in memory and reset on reload.
-- Explore searchable connection guides, journal articles, pricing, customer stories and policy placeholders.
+- Search twelve original reviews across four projects; combine decision, format and discipline filters. CSV exports contain the visible rows and their edited responses.
+- Read a client’s feedback beside the full project brief. Edit the studio response and record approval or request changes with a named owner and a specific reason.
+- Export a review as JSON with its current decision, edited response, revision request and full linked brief.
+- Search the separate brief library by project, direction or deliverable. Selection follows the filtered results.
+- Review project counts, approval share, pending reviews and a decision ledger. Review ages are fictional dataset values; local decisions update counts.
+- Reset through a confirmation dialog. Decisions and history remain in memory and reset on reload.
+- Explore studio stories, original articles, connection scope guides, pricing and policy placeholders.
 
-This template does not call an AI model, send customer messages, connect provider accounts, authenticate a user or collect payment. Connect those production services in your application. Replace the fictional identities, quotes, tickets, plan allowances, privacy and terms before launch.
+The demo does not upload files, invite clients, send notifications, authenticate users or collect payments. Connect storage, permissions, file previews, notifications and billing for your production product. Replace fictional stories and policy placeholders before launch.
 
 ## Motion and accessibility
 
-Headings and feature tiles enter once when they reach the viewport. The desktop product chapters stack while scrolling; phones read them in normal order. Botanical backdrops and product tiles respond subtly to hover. Product tabs support arrows, Home and End. Native dialogs trap focus, close on Escape and return focus. FAQ uses native disclosures.
+Headings and tiles reveal on scroll. Desktop product chapters stack; phones and reduced-motion views use normal flow. Botanical backdrops and product tiles respond subtly to hover. Product tabs support arrows, Home and End. Native dialogs trap focus, close on Escape and return focus. FAQ uses native disclosures.
 
-System reduced motion disables decorative movement and stacking. A remembered footer control pauses motion manually. Hidden menus have no keyboard stops; the phone menu returns focus on Escape. Compact marketing illustrations link to the readable workspace.
+System reduced motion and a remembered footer control disable decorative movement and stacking. Hidden menus have no keyboard stops; the phone menu restores trigger focus on Escape. Compact marketing scenes link to the readable review workspace.
 
-## Verification
+## Verification and export
 
 ```sh
 npm run typecheck
@@ -65,10 +67,8 @@ npm run verify:content
 npm run build
 ```
 
-The content verifier checks billing totals, combined filters, calculated metrics, immutable state transitions, guarded resolutions, handoff edits, CSV escaping, knowledge references, export URLs and all seven image assets. See `QA.md` for browser verification and `DESIGN.md` for layout decisions.
+The content verifier checks billing, project metrics, combined filters, immutable decisions, revision validation, CSV escaping, brief references, article routes and assets. See `QA.md` for completed checks and `DESIGN.md` for decisions.
 
-## Marketplace export
+Inside Hairline UI, `npm run export:demo` builds `/demos/aster` and copies it into the marketplace public directory. Export URLs retain query strings and anchors. For your own deployment, use the normal build or configure static export for your host. Exclude `.next`, `out`, `node_modules` and local environment files from the source package.
 
-Inside the Hairline UI repository, `npm run export:demo` builds the static `/demos/aster` version and copies it into the marketplace's public directory. Export-specific URLs preserve query strings and anchors. For your own standalone deployment, use the normal build or configure Next.js static export for your host. Keep `.next`, `out`, `node_modules` and local environment files out of the source package.
-
-Original generated images ship with this template; their full prompts and provenance are in `ASSETS.md`. Font licenses are provided by their upstream Google Fonts packages. Commercial template usage is described in `LICENSE.md`.
+All seven generated images ship locally; prompts and provenance are in `ASSETS.md`. Font licenses come from their upstream Google Fonts packages. Template usage terms are in `LICENSE.md`.

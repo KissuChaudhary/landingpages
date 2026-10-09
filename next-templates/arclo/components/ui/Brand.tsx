@@ -18,9 +18,9 @@ export function Mark({ className = "" }: { className?: string }) {
           y2="10"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#280843" />
-          <stop offset=".45" stopColor="#a914f5" />
-          <stop offset="1" stopColor="#ff8d99" />
+          <stop stopColor="#132e38" />
+          <stop offset=".45" stopColor="#267284" />
+          <stop offset="1" stopColor="#e2d0aa" />
         </linearGradient>
       </defs>
       <path

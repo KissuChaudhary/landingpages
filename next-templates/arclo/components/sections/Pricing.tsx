@@ -15,8 +15,8 @@ export function Pricing({ comparison = false }: { comparison?: boolean }) {
       <SectionHead
         label="Pricing"
         icon={CircleDollarSign}
-        title="Good things start small."
-        description="From your first useful agent to your team’s next big leap. Grow at your own pace."
+        title="Priced by entity, not by seat."
+        description="Bring the whole finance team. Pay for the companies you close."
       />
       <div className="billing-switch">
         <button aria-pressed={!annual} onClick={() => setAnnual(false)}>
@@ -39,12 +39,12 @@ export function Pricing({ comparison = false }: { comparison?: boolean }) {
       <div className="three-grid pricing-grid">
         {site.plans.map((plan) => (
           <article
-            className={`surface plan-card reveal ${plan.id === "pro" ? "plan-featured" : ""}`}
+            className={`surface plan-card reveal ${plan.id === "growth" ? "plan-featured" : ""}`}
             key={plan.id}
           >
             <div className="plan-name">
               <h3>{plan.name}</h3>
-              {plan.id === "pro" && <span>THE SWEET SPOT</span>}
+              {plan.id === "growth" && <span>MOST TEAMS START HERE</span>}
             </div>
             <div className="plan-price">
               <strong>
@@ -59,11 +59,11 @@ export function Pricing({ comparison = false }: { comparison?: boolean }) {
             </p>
             <p className="plan-audience">{plan.audience}</p>
             <Button
-              secondary={plan.id !== "pro"}
+              secondary={plan.id !== "growth"}
               onClick={() => choosePlan(plan, annual)}
             >
-              {plan.id === "starter"
-                ? "Start exploring"
+              {plan.id === "launch"
+                ? "Start with one entity"
                 : `Choose ${plan.name}`}
             </Button>
             <ul>
@@ -79,7 +79,7 @@ export function Pricing({ comparison = false }: { comparison?: boolean }) {
       </div>
       {comparison ? (
         <div className="plan-comparison" id="comparison">
-          <h3>A little more detail.</h3>
+          <h3>Side by side.</h3>
           <div
             className="comparison-scroll"
             tabIndex={0}
@@ -99,10 +99,10 @@ export function Pricing({ comparison = false }: { comparison?: boolean }) {
               </thead>
               <tbody>
                 {[
-                  "Active agents",
-                  "Workflows",
-                  "Monthly runs",
-                  "Run history",
+                  "Entities",
+                  "Bank and card feeds",
+                  "Automation",
+                  "Close history",
                 ].map((name, index) => (
                   <tr key={name}>
                     <th scope="row">{name}</th>

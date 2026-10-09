@@ -18,11 +18,11 @@ export function Features() {
               className="feature-visual"
               href={href(
                 appHref(
-                  item.scene === "answer"
-                    ? "inbox"
-                    : item.scene === "knowledge"
-                      ? "knowledge"
-                      : "triage",
+                  item.scene === "feedback"
+                    ? "reviews"
+                    : item.scene === "briefs"
+                      ? "briefs"
+                      : "board",
                 ),
               )}
               aria-label={`Explore: ${item.title}`}

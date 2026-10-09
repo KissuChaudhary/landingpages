@@ -7,7 +7,7 @@ export default function ContactPage() {
       <div className="contact-intro">
         <SectionHead
           label="A new conversation"
-          lines={["Tell us about", "your support day."]}
+          lines={["Tell us about", "your creative practice."]}
           text="A question, a team or an idea. A little context is a good place to start."
           primary
         />

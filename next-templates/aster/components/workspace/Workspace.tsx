@@ -8,50 +8,50 @@ import {
   RotateCcw,
 } from "lucide-react";
 import {
-  tickets,
-  type TicketFilters,
-  type TicketEvent,
-  updateTicket,
-  ticketMetrics,
-} from "@/data/tickets";
+  reviews,
+  type ReviewFilters,
+  type ReviewEvent,
+  updateReview,
+  reviewMetrics,
+} from "@/data/reviews";
 import { site } from "@/site.config";
-import { TicketTable } from "./TicketTable";
-import { Conversation } from "./Conversation";
-import { Knowledge } from "./Knowledge";
+import { ReviewTable } from "./ReviewTable";
+import { ReviewDetail } from "./ReviewDetail";
+import { BriefLibrary } from "./BriefLibrary";
 import { Reporting } from "./Reporting";
 import { Modal } from "../ui/Modal";
 const views = [
   {
-    id: "inbox",
-    name: "Inbox",
+    id: "reviews",
+    name: "Reviews",
     icon: Inbox,
-    text: "Good support starts with the whole question.",
+    text: "The feedback, the brief and the next decision.",
   },
   {
-    id: "triage",
-    name: "Ticket triage",
+    id: "board",
+    name: "Review board",
     icon: ListFilter,
-    text: "A clearer view of what needs care.",
+    text: "A shared view of what needs another pass.",
   },
   {
-    id: "knowledge",
-    name: "Knowledge",
+    id: "briefs",
+    name: "Project briefs",
     icon: BookOpen,
-    text: "Keep the useful answers close.",
+    text: "Keep the agreed direction beside the work.",
   },
   {
     id: "reporting",
     name: "Reporting",
     icon: ChartNoAxesCombined,
-    text: "A useful picture of the support day.",
+    text: "Decisions across the studio’s current projects.",
   },
 ];
 export function Workspace() {
-  const [view, setView] = useState("inbox");
-  const [rows, setRows] = useState(tickets);
-  const [filters, setFilters] = useState<TicketFilters>({});
+  const [view, setView] = useState("reviews");
+  const [rows, setRows] = useState(reviews);
+  const [filters, setFilters] = useState<ReviewFilters>({});
   const [selected, setSelected] = useState<string | null>(null);
-  const [events, setEvents] = useState<TicketEvent[]>([]);
+  const [events, setEvents] = useState<ReviewEvent[]>([]);
   const [notice, setNotice] = useState("");
   const [reset, setReset] = useState(false);
   useEffect(() => {
@@ -59,8 +59,8 @@ export function Workspace() {
     if (views.some((v) => v.id === requested)) setView(requested!);
   }, []);
   const current = views.find((v) => v.id === view)!;
-  const ticket = rows.find((t) => t.id === selected);
-  const metrics = ticketMetrics(rows);
+  const review = rows.find((t) => t.id === selected);
+  const metrics = reviewMetrics(rows);
   function changeView(id: string) {
     setView(id);
     setSelected(null);
@@ -70,20 +70,20 @@ export function Workspace() {
     window.history.replaceState(null, "", url);
   }
   function update(
-    action: "resolved" | "handoff",
+    action: "approved" | "changes",
     draft: string,
     owner: string,
     reason: string,
   ) {
-    if (!ticket) return;
+    if (!review || !draft.trim() || !owner.trim() || (action === "changes" && reason.trim().length < 5)) return;
     setRows((value) =>
-      updateTicket(value, ticket.id, action, draft, owner, reason),
+      updateReview(value, review.id, action, draft, owner, reason),
     );
     setEvents((value) => [
       ...value,
       {
         action,
-        ticketId: ticket.id,
+        reviewId: review.id,
         detail: reason,
         time: new Date().toLocaleTimeString([], {
           hour: "2-digit",
@@ -92,7 +92,7 @@ export function Workspace() {
       },
     ]);
     setNotice(
-      `${ticket.id} ${action === "resolved" ? "marked resolved" : "handed off to " + owner} locally.`,
+      `${review.id} ${action === "approved" ? "marked approved" : "changes requested · " + owner} locally.`,
     );
   }
   return (
@@ -104,19 +104,18 @@ export function Workspace() {
             {site.brand} workspace
           </p>
           <h1>
-            A little clarity.
+            Your work, together.
             <br />
-            <span className="muted-line">A better next step.</span>
+            <span className="muted-line">Your next decision.</span>
           </h1>
         </div>
         <p>
-          A working local example. Review fictional tickets, edit a draft,
-          choose a handoff and explore the knowledge behind an answer.
+          Explore four fictional projects. Read the brief, edit a studio response and record an approval or revision request in this local workspace.
         </p>
       </div>
       <div className="workspace-frame">
         <aside className="workspace-sidebar">
-          <p className="workspace-team">Your support space</p>
+          <p className="workspace-team">Your creative studio</p>
           <nav aria-label="Workspace views">
             {views.map((v) => (
               <button
@@ -127,7 +126,7 @@ export function Workspace() {
               >
                 <v.icon size={18} />
                 {v.name}
-                {v.id === "inbox" && <span>{metrics.open}</span>}
+                {v.id === "reviews" && <span>{metrics.pending}</span>}
               </button>
             ))}
           </nav>
@@ -147,7 +146,7 @@ export function Workspace() {
               <p>{current.text}</p>
             </div>
             <span className="workspace-count">
-              {rows.length} example tickets
+              {rows.length} example reviews
             </span>
           </header>
           <p
@@ -156,16 +155,16 @@ export function Workspace() {
           >
             {notice}
           </p>
-          {(view === "inbox" || view === "triage") &&
-            (ticket ? (
-              <Conversation
-                key={ticket.id}
-                ticket={ticket}
+          {(view === "reviews" || view === "board") &&
+            (review ? (
+              <ReviewDetail
+                key={review.id}
+                review={review}
                 onBack={() => setSelected(null)}
                 onUpdate={update}
               />
             ) : (
-              <TicketTable
+              <ReviewTable
                 rows={rows}
                 filters={filters}
                 onFilter={setFilters}
@@ -173,23 +172,23 @@ export function Workspace() {
                   setSelected(id);
                   setNotice("");
                 }}
-                triage={view === "triage"}
+                board={view === "board"}
               />
             ))}
-          {view === "knowledge" && <Knowledge />}
+          {view === "briefs" && <BriefLibrary />}
           {view === "reporting" && <Reporting rows={rows} events={events} />}
         </div>
       </div>
       {reset && (
         <Modal title="Reset this workspace?" onClose={() => setReset(false)}>
           <p>
-            Restore the original twelve example tickets and clear this visit’s
+            Restore the original twelve example reviews and clear this visit’s
             review history.
           </p>
           <button
             className="button"
             onClick={() => {
-              setRows(tickets);
+              setRows(reviews);
               setEvents([]);
               setSelected(null);
               setFilters({});

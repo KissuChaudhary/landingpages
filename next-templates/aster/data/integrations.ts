@@ -1,66 +1,20 @@
-export const integrations = [
+export const integrations=[
   {
-    id: "email",
-    name: "Email",
-    category: "Conversations",
-    icon: "mail",
-    text: "Keep questions from the inbox in the same review queue.",
-    fields: [
-      "Message body and subject",
-      "Customer reference",
-      "Thread and reply context",
-    ],
-    scope:
-      "Review the message permissions your provider requires. Only request the fields your support workflow needs.",
+    id: "design",name: "Design files",category: "Creative work",icon: "bag",text: "Keep a design reference and its version beside the review.",fields: ["Selected file reference","Version and preview URL","Project association"],scope: "Let the project owner choose which files can be read. Your production connector must respect file permissions and distinguish a preview from the editable original."
   },
   {
-    id: "chat",
-    name: "Live chat",
-    category: "Conversations",
-    icon: "chat",
-    text: "Bring a live conversation and its recent context into view.",
-    fields: ["Conversation reference", "Recent messages", "Source channel"],
-    scope:
-      "Use your provider's account consent flow. A real connection must explain when messages are read and when replies can be sent.",
+    id: "storage",name: "Cloud storage",category: "Creative work",icon: "book",text: "Bring approved project assets into a considered handover.",fields: ["Selected folder reference","Asset names and links","File revision dates"],scope: "Request access to the selected project folder. Keep private drafts outside the shared review and apply your service’s access controls to every asset."
   },
   {
-    id: "knowledge",
-    name: "Help center",
-    category: "Knowledge",
-    icon: "book",
-    text: "Give suggested replies a clear, useful source.",
-    fields: ["Published article title", "Article content", "Revision date"],
-    scope:
-      "Choose approved articles for retrieval. Exclude drafts or internal documents that should not be used in customer answers.",
+    id: "email",name: "Email",category: "Communication",icon: "mail",text: "Invite a client to the right review, with a clear next action.",fields: ["Recipient and project reference","Review destination","Notification preference"],scope: "A live integration needs your own invitation and notification flow. Explain who receives a message and avoid including private project content in previews."
   },
   {
-    id: "commerce",
-    name: "Commerce",
-    category: "Context",
-    icon: "bag",
-    text: "Keep an order reference beside an order question.",
-    fields: ["Order reference", "Dispatch status", "Relevant product details"],
-    scope:
-      "Limit access to the order fields needed for support. Confirm the customer's identity using your own product flow.",
+    id: "team",name: "Team chat",category: "Communication",icon: "people",text: "Give an agreed revision a place in the studio’s daily workflow.",fields: ["Selected team destination","Revision owner","Review link and summary"],scope: "Choose the destination deliberately. Connect your own approval and notification service before sharing project feedback outside the workspace."
   },
   {
-    id: "team",
-    name: "Team chat",
-    category: "Context",
-    icon: "people",
-    text: "Give an internal handoff a clear owner and reason.",
-    fields: ["Team or queue reference", "Handoff summary", "Ticket link"],
-    scope:
-      "Select the internal destination deliberately. Connect your own approval and notification flow before enabling live messages.",
+    id: "calendar",name: "Calendar",category: "Planning",icon: "chat",text: "Set aside time for the next review round.",fields: ["Review session title","Participants and time","Project reference"],scope: "Use the calendar provider’s consent flow and make availability permissions explicit. Check participants before creating or updating a live session."
   },
   {
-    id: "webhooks",
-    name: "Webhooks",
-    category: "Workflow",
-    icon: "workflow",
-    text: "Give the useful ticket events a place in your workflow.",
-    fields: ["Ticket state change", "Event timestamp", "Workspace reference"],
-    scope:
-      "Validate signatures and event identity in your backend. Keep credentials on the server and explain the event destinations.",
-  },
+    id: "webhooks",name: "Webhooks",category: "Planning",icon: "workflow",text: "Pass an approval or revision request into your project system.",fields: ["Review decision and version","Event timestamp","Project and workspace reference"],scope: "Validate event signatures and identity in your backend. Deduplicate events and keep credentials on the server when connecting production workflows."
+  }
 ];

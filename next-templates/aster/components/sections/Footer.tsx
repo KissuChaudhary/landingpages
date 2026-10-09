@@ -20,7 +20,7 @@ export function Footer() {
       title: "Company",
       links: [
         ["Our approach", "/about"],
-        ["Customers", "/customers"],
+        ["Studios", "/studios"],
         ["Journal", "/journal"],
         ["Contact", "/contact"],
       ],

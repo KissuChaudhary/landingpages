@@ -34,7 +34,7 @@ export function SectionHead({
 }
 export function AppButton({
   children = site.hero.cta,
-  view = "inbox",
+  view = "reviews",
   light = false,
 }: {
   children?: React.ReactNode;

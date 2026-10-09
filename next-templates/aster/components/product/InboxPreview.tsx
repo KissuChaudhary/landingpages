@@ -11,14 +11,14 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { site, appHref } from "@/site.config";
-import { tickets } from "@/data/tickets";
-import { findKnowledge } from "@/data/knowledge";
+import { reviews } from "@/data/reviews";
+import { findBrief } from "@/data/briefs";
 import { href } from "@/lib/urls";
 import { AsterMark } from "../ui/Brand";
 import { Avatar } from "../ui/Primitives";
 export function InboxPreview({ compact = false }: { compact?: boolean }) {
-  const [selected, setSelected] = useState(tickets[0].id);
-  const ticket = tickets.find((t) => t.id === selected) || tickets[0];
+  const [selected, setSelected] = useState(reviews[0].id);
+  const review = reviews.find((t) => t.id === selected) || reviews[0];
   return (
     <div className={`inbox-preview ${compact ? "inbox-compact" : ""}`}>
       <aside className="preview-sidebar">
@@ -27,9 +27,9 @@ export function InboxPreview({ compact = false }: { compact?: boolean }) {
           {site.brand}
         </div>
         {[
-          [Inbox, "Inbox"],
-          [Tags, "Triage"],
-          [BookOpen, "Knowledge"],
+          [Inbox, "Reviews"],
+          [Tags, "Board"],
+          [BookOpen, "Briefs"],
           [BarChart3, "Reports"],
         ].map(([Icon, text], i) => {
           const Symbol = Icon as typeof Inbox;
@@ -37,7 +37,7 @@ export function InboxPreview({ compact = false }: { compact?: boolean }) {
             <div className={i === 0 ? "active" : ""} key={text as string}>
               <Symbol size={14} />
               {text as string}
-              {i === 0 && <span>{tickets.length}</span>}
+              {i === 0 && <span>{reviews.length}</span>}
             </div>
           );
         })}
@@ -48,14 +48,14 @@ export function InboxPreview({ compact = false }: { compact?: boolean }) {
       </aside>
       <div className="preview-list">
         <div className="preview-list-title">
-          Inbox
+          Reviews
           <ChevronDown size={13} />
         </div>
         <div className="preview-search">
           <Search size={13} />
-          Your conversations
+          Client feedback
         </div>
-        {tickets.slice(0, 5).map((t) => (
+        {reviews.slice(0, 5).map((t) => (
           <button
             key={t.id}
             className={selected === t.id ? "selected" : ""}
@@ -64,38 +64,38 @@ export function InboxPreview({ compact = false }: { compact?: boolean }) {
           >
             <Avatar initials={t.initials} />
             <span>
-              <strong>{t.customer}</strong>
+              <strong>{t.reviewer}</strong>
               <small>{t.subject}</small>
             </span>
-            <i className={`ticket-dot ${t.status}`} aria-label={t.status} />
+            <i className={`review-dot ${t.status}`} aria-label={t.status} />
           </button>
         ))}
       </div>
       <div className="preview-conversation">
         <header>
-          <Avatar initials={ticket.initials} />
+          <Avatar initials={review.initials} />
           <span>
-            <strong>{ticket.customer}</strong>
-            <small>{ticket.id}</small>
+            <strong>{review.reviewer}</strong>
+            <small>{review.project} · v{review.version}</small>
           </span>
           <span className="preview-state">
-            {ticket.status === "resolved" ? (
+            {review.status === "approved" ? (
               <>
                 <Check size={12} />
-                Resolved
+                Approved
               </>
-            ) : ticket.status === "handoff" ? (
-              "With the team"
+            ) : review.status === "changes" ? (
+              "Changes requested"
             ) : (
               "For review"
             )}
           </span>
         </header>
         <div className="preview-message">
-          <Avatar initials={ticket.initials} />
+          <Avatar initials={review.initials} />
           <div>
-            <strong>{ticket.customer}</strong>
-            <p>{ticket.message}</p>
+            <strong>{review.reviewer}</strong>
+            <p>{review.message}</p>
           </div>
         </div>
         <div className="preview-message aster-reply">
@@ -103,17 +103,17 @@ export function InboxPreview({ compact = false }: { compact?: boolean }) {
           <div>
             <strong>
               {site.brand}
-              <span>Suggested answer</span>
+              <span>Studio response</span>
             </strong>
-            <p>{ticket.draft}</p>
+            <p>{review.draft}</p>
           </div>
         </div>
         <div className="preview-source">
           <BookOpen size={13} />
-          {findKnowledge(ticket.source)?.title}
+          {findBrief(review.briefId)?.title}
         </div>
         <a className="preview-open" href={href(appHref())}>
-          Explore the inbox
+          Explore the reviews
           <ArrowUpRight size={13} />
         </a>
       </div>

@@ -11,11 +11,11 @@ const policies = {
       },
       {
         heading: "The included preview",
-        text: "Workflow examples process sample data locally in the browser. The motion preference uses local storage. Forms keep entered details in current-page state unless a destination endpoint is configured. Downloads are created locally. The template doesn’t include tracking scripts.",
+        text: "Close examples process sample financial data locally in the browser. The motion preference uses local storage. Forms keep entered details in current-page state unless a destination endpoint is configured. Downloads are created locally. The template doesn’t include tracking scripts.",
       },
       {
         heading: "Your production service",
-        text: "Replace this section with your actual data collection, use, retention, providers, security practices, user rights and contact process. Review any analytics, account integrations and form providers you add.",
+        text: "Replace this section with your actual data collection, use, retention, providers, security practices, user rights and contact process. Financial data usually carries extra obligations; review every bank, ledger and form provider you add.",
       },
     ],
   },
@@ -29,7 +29,7 @@ const policies = {
       },
       {
         heading: "The demonstration",
-        text: "Arclo is a fictional example product. Local workflow results, team stories, integrations and plan prices demonstrate the template. No live account, message delivery or subscription is created by the included preview.",
+        text: "Arclo is a fictional example product. Local close results, finance stories, connections and plan prices demonstrate the template. No ledger is changed and no account, message or subscription is created by the included preview.",
       },
       {
         heading: "Your service",

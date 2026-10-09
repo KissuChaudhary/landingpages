@@ -10,36 +10,36 @@ import {
   ArrowRight,
   CircleCheck,
 } from "lucide-react";
-import { executeWorkflow, workflows } from "@/data/workflows";
+import { describeRow, executeWorkflow, money, workflows } from "@/data/workflows";
 import { WorkflowGraph } from "./WorkflowGraph";
 import { downloadFile } from "@/lib/download";
 const stages = [
-  "Read source records",
-  "Apply agent instructions",
-  "Check conditions",
-  "Prepare output",
+  "Read the source",
+  "Apply your rules",
+  "Check the limits",
+  "Prepare for review",
 ];
 export function Workbench({
-  initial = "leads",
+  initial = "match",
   expanded = false,
 }: {
   initial?: string;
   expanded?: boolean;
 }) {
   const [selected, setSelected] = useState(
-    workflows.find((item) => item.id === initial)?.id || "leads",
+    workflows.find((item) => item.id === initial)?.id || "match",
   );
   const [step, setStep] = useState(0);
   const [running, setRunning] = useState(false);
-  const [minimum, setMinimum] = useState(10);
+  const [tolerance, setTolerance] = useState(5);
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
   const [recordedAt, setRecordedAt] = useState("");
   const id = useId();
   const workflow = workflows.find((item) => item.id === selected)!;
   const result = useMemo(
-    () => executeWorkflow(workflow, minimum),
-    [workflow, minimum],
+    () => executeWorkflow(workflow, tolerance),
+    [workflow, tolerance],
   );
   useEffect(() => {
     if (!running) return;
@@ -74,9 +74,9 @@ export function Workbench({
         workflow: workflow.label,
         createdAt: recordedAt,
         source: workflow.source,
-        criteria: workflow.id === "leads" ? { minimumTeam: minimum } : null,
+        criteria: workflow.id === "match" ? { toleranceUSD: tolerance } : null,
         output: result,
-        delivery: "Prepared locally; no messages sent.",
+        delivery: "Prepared locally; nothing was posted to a ledger.",
       },
       null,
       2,
@@ -86,9 +86,9 @@ export function Workbench({
       <div className="workbench-top">
         <span className="workspace-name">
           <span className="status-dot" />
-          Your first workflow
+          October close
         </span>
-        <span className="workspace-meta">Example workspace</span>
+        <span className="workspace-meta">Sample entity</span>
         <div
           className="workbench-tabs"
           role="tablist"
@@ -138,52 +138,45 @@ export function Workbench({
         {expanded && (
           <div className="workbench-detail">
             <div>
-              <span className="detail-label">01 / THE CONTEXT</span>
-              <h3>Start with something real.</h3>
-              <p>{workflow.prompt}</p>
+              <span className="detail-label">01 / THE SOURCE</span>
+              <h3>See what came in.</h3>
+              <p>{workflow.context}</p>
               <ul className="source-list">
                 {workflow.source.map((item) => (
                   <li key={item.name}>
                     <strong>{item.name}</strong>
-                    <span>
-                      {item.team > 0 ? `${item.team} people · ` : ""}
-                      {item.need}
-                    </span>
+                    <span>{describeRow(workflow, item)}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <span className="detail-label">02 / THE INSTRUCTIONS</span>
+              <span className="detail-label">02 / THE RULES</span>
               <h3>
-                {workflow.id === "leads"
-                  ? "Define a good fit."
-                  : "Give every step a purpose."}
+                {workflow.id === "match"
+                  ? "Set your tolerance."
+                  : "Decide what counts."}
               </h3>
-              {workflow.id === "leads" ? (
+              {workflow.id === "match" ? (
                 <label className="threshold-label">
-                  Minimum team size <output>{minimum} people</output>
+                  Match tolerance <output>{money(tolerance, true)}</output>
                   <input
-                    aria-label="Minimum team size"
+                    aria-label="Match tolerance in dollars"
                     type="range"
-                    min="1"
-                    max="30"
-                    value={minimum}
+                    min="0"
+                    max="50"
+                    value={tolerance}
                     onChange={(event) => {
                       reset();
-                      setMinimum(Number(event.target.value));
+                      setTolerance(Number(event.target.value));
                     }}
                   />
                   <span className="muted small">
-                    Needs must mention automation or qualification.
+                    Lines further off than this wait for a person.
                   </span>
                 </label>
               ) : (
-                <p>
-                  {workflow.id === "inbox"
-                    ? "Urgent messages become priorities. Team updates stay together. Newsletters can wait."
-                    : "Turn the three sample onboarding tasks into a simple, numbered first-day checklist."}
-                </p>
+                <p>{workflow.rules}</p>
               )}
               <div className="run-log" aria-label="Workflow log">
                 {stages.map((stage, index) => (
@@ -251,7 +244,7 @@ export function Workbench({
       {step === 4 && (
         <div className="workflow-result">
           <div>
-            <span className="detail-label">PREPARED OUTPUT</span>
+            <span className="detail-label">PREPARED FOR REVIEW</span>
             <h3>{result.title}</h3>
             <ul>
               {result.items.length ? (
@@ -263,14 +256,14 @@ export function Workbench({
                 ))
               ) : (
                 <li>
-                  No leads match these criteria. Lower the minimum team size to
-                  broaden the result.
+                  Nothing matches at this tolerance. Raise it to accept small
+                  differences.
                 </li>
               )}
             </ul>
             <p className="muted small">
-              Processed {result.processed} sample records. Prepared locally; no
-              messages sent.
+              Processed {result.processed} sample records. Prepared locally;
+              nothing was posted.
             </p>
           </div>
           <div className="result-actions">

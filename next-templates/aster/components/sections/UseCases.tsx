@@ -4,7 +4,6 @@ import {
   Tags,
   Zap,
   Users,
-  BarChart3,
   BookOpen,
   Route,
   CheckCircle2,
@@ -13,101 +12,38 @@ import {
 import { site } from "@/site.config";
 import { SectionHead, Art, AppButton } from "../ui/Primitives";
 import { Scene } from "../product/Scenes";
+
 const cases = [
   {
-    title: "Ticket triage",
-    icon: Tags,
-    heading: "Read the work. Find the right next step.",
-    view: "triage",
-    scene: "triage",
+    title: "Brand identities", icon: Tags, heading: "Find the direction. Refine the detail.", view: "reviews", scene: "feedback",
     features: [
-      {
-        icon: Tags,
-        title: "Context at a glance",
-        text: "Keep the topic, channel and current state together.",
-      },
-      {
-        icon: Route,
-        title: "A clear priority",
-        text: "Find the questions that need a person's attention.",
-      },
-      {
-        icon: CheckCircle2,
-        title: "A useful place to begin",
-        text: "Open the conversation before choosing the next step.",
-      },
+      { icon: Tags, title: "A version to talk about", text: "Keep the wordmark, palette and format named in the review." },
+      { icon: BookOpen, title: "An agreed direction", text: "Check the creative brief before refining the next detail." },
+      { icon: CheckCircle2, title: "A clear sign-off", text: "Record the decision with the response you have reviewed." },
     ],
   },
   {
-    title: "Suggested answers",
-    icon: Zap,
-    heading: "A useful draft. A clear source.",
-    view: "inbox",
-    scene: "answer",
+    title: "Website design", icon: Zap, heading: "Review the experience, one decision at a time.", view: "reviews", scene: "web",
     features: [
-      {
-        icon: BookOpen,
-        title: "Your knowledge, nearby",
-        text: "See the relevant article beside the draft.",
-      },
-      {
-        icon: Zap,
-        title: "A stronger starting point",
-        text: "Begin with a suggested answer you can review and edit.",
-      },
-      {
-        icon: CheckCircle2,
-        title: "Keep the decision visible",
-        text: "Resolve the local example when it is ready.",
-      },
+      { icon: BookOpen, title: "Purpose before preference", text: "Read the audience and page goals beside the client’s note." },
+      { icon: Route, title: "A considered next pass", text: "Turn feedback on a flow into a specific design change." },
+      { icon: CheckCircle2, title: "The version that matters", text: "Keep the project and version attached to the decision." },
     ],
   },
   {
-    title: "Human handoff",
-    icon: Users,
-    heading: "A person. With the whole picture.",
-    view: "triage",
-    scene: "handoff",
+    title: "Launch campaigns", icon: Users, heading: "One direction. Every format considered.", view: "board", scene: "campaign",
     features: [
-      {
-        icon: Users,
-        title: "Choose an owner",
-        text: "Give a complex question a clear destination.",
-      },
-      {
-        icon: BookOpen,
-        title: "Carry the context",
-        text: "Keep the customer's question and source together.",
-      },
-      {
-        icon: ArrowUpRight,
-        title: "Explain the next step",
-        text: "Add a short reason for the teammate picking it up.",
-      },
+      { icon: Tags, title: "Digital and print together", text: "Filter the launch reviews by format or discipline." },
+      { icon: Users, title: "A named revision owner", text: "Give the next pass to the person making the change." },
+      { icon: ArrowUpRight, title: "A useful production handover", text: "Export the feedback, response and complete project brief." },
     ],
   },
   {
-    title: "Shared reporting",
-    icon: BarChart3,
-    heading: "The queue, in a clearer light.",
-    view: "reporting",
-    scene: "reporting",
+    title: "Editorial work", icon: BookOpen, heading: "Keep the story intact through every round.", view: "briefs", scene: "editorial",
     features: [
-      {
-        icon: BarChart3,
-        title: "A shared picture",
-        text: "Read resolved, waiting and handoff counts together.",
-      },
-      {
-        icon: Tags,
-        title: "Follow the useful detail",
-        text: "Filter the queue by its channel, state or topic.",
-      },
-      {
-        icon: ArrowUpRight,
-        title: "Take the review with you",
-        text: "Export the rows that match your current filters.",
-      },
+      { icon: BookOpen, title: "A shared reference", text: "Keep the image sequence and reading direction in the brief." },
+      { icon: Route, title: "Specific changes", text: "Give notes on spacing, captions and reading order a next step." },
+      { icon: CheckCircle2, title: "A recorded conclusion", text: "Keep the approved version clear before production begins." },
     ],
   },
 ];

@@ -20,7 +20,7 @@
   color: #52565c;
 }
 .nav-desktop > a:hover {
-  color: #a72fd9;
+  color: #2c6f7e;
 }
 .nav-actions {
   display: flex;
@@ -68,7 +68,7 @@
   background: #fff;
   border: 1px solid #e7e7eb;
   border-radius: 12px;
-  box-shadow: 0 8px 25px #23162f12;
+  box-shadow: 0 8px 25px #16282f12;
 }
 .pages-menu a {
   display: block;
@@ -76,7 +76,7 @@
   border-radius: 6px;
 }
 .pages-menu a:hover {
-  background: #f7f2fa;
+  background: #f4f7f8;
 }
 .mobile-toggle {
   display: none;
@@ -90,7 +90,7 @@
   background: white;
   border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 10px 30px #1b142317;
+  box-shadow: 0 10px 30px #141f2317;
 }
 .mobile-navigation > a {
   display: block;

@@ -28,7 +28,7 @@
   grid-template-columns: minmax(0, 1.4fr) minmax(230px, 0.8fr);
   gap: 28px;
 }
-.customer-question {
+.reviewer-question {
   display: flex;
   gap: 13px;
   padding: 22px;
@@ -37,11 +37,11 @@
   border-radius: 10px;
   margin-bottom: 28px;
 }
-.customer-question strong {
+.reviewer-question strong {
   font-size: 13px;
   font-weight: 500;
 }
-.customer-question p {
+.reviewer-question p {
   font-size: 15px;
   color: var(--muted);
   margin-top: 10px;
@@ -150,24 +150,24 @@
 .source-context dd {
   margin: 0;
 }
-.handoff-form {
+.changes-form {
   display: grid;
   gap: 22px;
   margin-top: 22px;
 }
-.modal:has(.handoff-form) > p,
-.modal:has(.handoff-form) > .handoff-form {
+.modal:has(.changes-form) > p,
+.modal:has(.changes-form) > .changes-form {
   margin-inline: 26px;
 }
-.modal:has(.handoff-form) > p {
+.modal:has(.changes-form) > p {
   margin-top: 26px;
   font-size: 15px;
   color: var(--muted);
 }
-.handoff-form {
+.changes-form {
   margin-bottom: 26px;
 }
-.handoff-form > .button {
+.changes-form > .button {
   justify-self: start;
 }
 .modal:has(.workspace-page) {
@@ -209,7 +209,7 @@
   .conversation-heading h2 {
     font-size: 22px;
   }
-  .customer-question {
+  .reviewer-question {
     padding: 18px 14px;
   }
   .conversation-thread > textarea {

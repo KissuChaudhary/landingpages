@@ -311,11 +311,11 @@
   line-height: 1.65;
   padding: 0 45px 24px 0;
 }
-.customers-intro {
+.studios-intro {
   padding-top: 75px;
   padding-bottom: 0;
 }
-.customers-intro .section-head {
+.studios-intro .section-head {
   margin-bottom: 0;
 }
 @media (max-width: 1100px) {
@@ -453,7 +453,7 @@
   .page-pricing {
     padding-top: 60px;
   }
-  .customers-intro {
+  .studios-intro {
     padding-top: 60px;
   }
 }

@@ -6,10 +6,10 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 98% 0%, #ff9395 0%, transparent 62%),
-    radial-gradient(ellipse at 57% 64%, #bf00ff 0%, transparent 56%),
-    radial-gradient(ellipse at 30% 0%, #b926f4 0%, transparent 53%),
-    linear-gradient(25deg, #0e0a13 0%, #401052 28%, #a22bca 63%, #f695a1);
+    radial-gradient(ellipse at 100% 0%, #d9c38f 0%, transparent 44%),
+    radial-gradient(ellipse at 57% 64%, #1f6876 0%, transparent 56%),
+    radial-gradient(ellipse at 30% 0%, #23707f 0%, transparent 53%),
+    linear-gradient(25deg, #070d10 0%, #10303a 32%, #1b5865 70%, #6f8f86);
 }
 .gradient-field::after {
   content: "";
@@ -34,8 +34,8 @@
   align-items: center;
   gap: 9px;
   padding: 5px 12px 5px 5px;
-  background: #411b616b;
-  border: 1px solid #e7c2ff21;
+  background: #1f4c5d6b;
+  border: 1px solid #d4e9ed21;
   border-radius: 100px;
   font-size: 11px;
   box-shadow: inset 0 1px 3px #ffffff20;
@@ -55,7 +55,7 @@
   display: block;
 }
 .hero-copy > p {
-  color: #f7eaff;
+  color: #f0f7f9;
   max-width: 540px;
   margin: 22px auto 0;
   font-size: 16px;
@@ -68,27 +68,27 @@
   margin-top: 38px;
 }
 .hero .button-secondary {
-  background: #8c39946b;
+  background: #30535b6b;
   color: #fff;
-  border-color: #e6c9f27a;
+  border-color: #c4e1e77a;
   box-shadow:
     inset 0 1px 1px #ffffff20,
-    0 1px 2px #21132924;
+    0 1px 2px #13232924;
 }
 .hero .button-glow,
 .closing .button-glow {
   box-shadow:
-    -7px 0 18px #f3caff66,
-    6px 0 18px #ee536064,
-    0 2px 4px #270d3340;
+    -7px 0 18px #d9ecf066,
+    6px 0 18px #d0b27164,
+    0 2px 4px #10273040;
 }
 .social-proof {
   display: inline-flex;
   align-items: center;
   gap: 9px;
   font-size: 11px;
-  color: #f2e5fa;
-  background: #3d1a5859;
+  color: #eaf3f5;
+  background: #1c465659;
   border-radius: 100px;
   padding: 6px 12px 6px 7px;
 }
@@ -98,18 +98,18 @@
 .proof-stars {
   display: flex;
   gap: 3px;
-  color: #ffbd3d;
+  color: #ceb06e;
 }
 .proof-divider {
   width: 1px;
   height: 14px;
-  background: #e7c6f043;
+  background: #bedde343;
 }
 .hero-workspace {
-  border: 7px solid #4d235dba;
+  border: 7px solid #234e5dba;
   border-radius: 16px;
   margin-top: 24px;
-  box-shadow: 0 16px 50px #23013233;
+  box-shadow: 0 16px 50px #0d1f2633;
   overflow: hidden;
   text-align: left;
   color: var(--ink);
@@ -137,15 +137,15 @@
 .logo-row > :last-child {
   color: #929497;
 }
-.logo-oslo {
+.logo-serif {
   letter-spacing: -0.07em;
   font-weight: 800;
 }
-.logo-monaco {
+.logo-mono {
   letter-spacing: -0.05em;
   font-weight: 800;
 }
-.logo-california {
+.logo-spaced {
   font-size: 20px;
   letter-spacing: -0.05em;
 }
@@ -166,7 +166,7 @@
   display: block;
 }
 .closing > p {
-  color: #f1dfff;
+  color: #e8f3f6;
   margin-top: 22px;
 }
 .closing .social-proof {
@@ -186,7 +186,7 @@
     gap: 20px;
     font-size: 19px;
   }
-  .logo-california {
+  .logo-spaced {
     font-size: 16px;
   }
 }

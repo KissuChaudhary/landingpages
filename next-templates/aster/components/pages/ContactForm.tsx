@@ -16,7 +16,7 @@ export function ContactForm() {
     name: "",
     email: "",
     company: "",
-    plan: "team",
+    plan: "studio",
     billing: "monthly",
     message: "",
   });
@@ -64,7 +64,7 @@ export function ContactForm() {
     return (
       <div className="contact-review">
         <p className="eyebrow">
-          {sent ? "Message received" : "Your conversation brief"}
+          {sent ? "Message received" : "Your studio enquiry"}
         </p>
         <h2>{sent ? "Thanks for reaching out." : "A good place to begin."}</h2>
         <p>
@@ -111,13 +111,13 @@ export function ContactForm() {
             className={`button ${site.links.contactEndpoint ? "button-light" : ""}`}
             onClick={() =>
               downloadText(
-                "aster-conversation-brief.json",
+                "aster-studio-enquiry.json",
                 JSON.stringify(brief, null, 2),
                 "application/json",
               )
             }
           >
-            Download brief
+            Download enquiry
             <Download size={15} />
           </button>
           {!sent && (
@@ -190,7 +190,7 @@ export function ContactForm() {
           autoComplete="organization"
           value={brief.company}
           onChange={(e) => field("company", e.target.value)}
-          placeholder="Your team or product"
+          placeholder="Your studio or creative practice"
         />
       </label>
       <div className="form-pair">
@@ -227,11 +227,11 @@ export function ContactForm() {
           rows={5}
           value={brief.message}
           onChange={(e) => field("message", e.target.value)}
-          placeholder="Tell us a little about your support day."
+          placeholder="Tell us about your projects and how you review them."
         />
       </label>
       <button className="button" type="submit">
-        Review your brief
+        Review your enquiry
         <ArrowUpRight size={15} />
       </button>
       {error && (

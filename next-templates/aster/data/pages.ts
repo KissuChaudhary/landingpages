@@ -1,163 +1,79 @@
-export const articles = [
+export const articles=[
   {
-    slug: "the-human-handoff",
-    label: "People in the loop",
-    title: "The next person deserves the whole picture.",
-    description:
-      "A handoff is more useful when it carries the question, its source and a clear next step.",
-    art: "blossom",
+    slug: "feedback-with-direction",label: "The next version",title: "Useful feedback names the change.",description: "Move from a broad opinion to a specific next step without losing the client’s intent.",art: "blossom"
   },
   {
-    slug: "knowledge-that-helps",
-    label: "A stronger starting point",
-    title: "Good knowledge makes room for a good answer.",
-    description: "Keep help articles useful, specific and easy to review.",
-    art: "petal",
+    slug: "a-brief-worth-revisiting",label: "An agreed starting point",title: "Keep the brief in the conversation.",description: "Make the project’s direction a useful reference throughout the review process.",art: "petal"
   },
   {
-    slug: "a-calmer-queue",
-    label: "A clearer support day",
-    title: "Begin with the queue. Make room for the person.",
-    description:
-      "A few useful habits for reading the work before assigning it.",
-    art: "grass",
-  },
-];
-export const pages: Record<
-  string,
-  {
-    label: string;
-    title: string;
-    intro: string;
-    sections: { title: string; text: string }[];
+    slug: "closing-a-review-round",label: "Finishing the work",title: "A review round deserves a decision.",description: "Give the next version a purpose, an owner and a clear path to sign-off.",art: "grass"
   }
-> = {
+];
+export const pages: Record<string,{
+  label: string;
+  title: string;
+  intro: string;
+  sections: {
+    title: string;
+    text: string;
+  }[];
+}>={
   about: {
-    label: "Our approach",
-    title: "Good support leaves room for people.",
-    intro:
-      "Aster is an original white-label example of a more thoughtful support workspace. Its design brings the question, knowledge and next step together.",
+    label: "Our approach",title: "Good work takes a conversation.",
+    intro: "Aster is a creative review workspace for independent practices and studios. It brings the client’s feedback, the agreed brief and the next decision into one considered place.",
     sections: [
-      {
-        title: "Keep the useful context close",
-        text: "A visible source gives a draft a better starting point. A clear owner gives a handoff somewhere to go. A shared view helps a team understand what needs care.",
-      },
-      {
-        title: "Make it your own",
-        text: "This template includes editable interfaces, sample tickets and original artwork. Replace the example brand, stories and policies with your own, then connect your product services.",
-      },
-    ],
+      { title: "Stay close to the work",text: "A useful review has a project and a version. A useful comment explains what should change. Keeping both beside the brief gives the studio and the client a shared starting point." },
+      { title: "A workspace you can make your own",text: "This template includes original creative-project scenarios, editable review interfaces and locally shipped artwork. Replace the fictional studios and connect your own product services before launching a live workspace." }
+    ]
   },
   updates: {
-    label: "What's taking shape",
-    title: "A few useful next steps.",
-    intro:
-      "A sample changelog for the white-label workspace. Replace these entries with your product's own releases.",
+    label: "In the studio",title: "A few things taking shape.",
+    intro: "A sample release journal for the creative review workspace. Replace these entries with your own product’s updates.",
     sections: [
-      {
-        title: "October 9 · A clearer workspace",
-        text: "The local inbox brings ticket review, source context, draft editing and handoff into one place. Search the queue, review the reporting view and export the current results.",
-      },
-      {
-        title: "October 5 · Knowledge in context",
-        text: "Help articles have a readable revision date, topic and full body. Search the knowledge library and keep the relevant article beside the conversation.",
-      },
-    ],
+      { title: "October 9 · Decisions with a direction",text: "The local review board now brings twelve reviews across four creative projects together. Edit a studio response, approve a review or request a revision with an owner and reason. Reports and exports reflect each decision." },
+      { title: "October 5 · The brief, alongside",text: "Each project has a searchable brief with the agreed direction, deliverables and constraints. Read it beside the feedback or include the full reference in a review export." }
+    ]
   },
   privacy: {
-    label: "The details",
-    title: "Privacy, in plain language.",
-    intro:
-      "Policy placeholder for the Aster template. Replace this page with the policy that applies to your own service before launch.",
+    label: "The details",title: "Privacy, in plain language.",intro: "Policy placeholder for the Aster template. Replace this page with the policy that applies to your own service before launch.",
     sections: [
-      {
-        title: "The local demonstration",
-        text: "Example tickets are fictional. Ticket edits remain in browser memory and reset when the workspace reloads. A motion preference may be stored in this browser. Downloads are prepared locally.",
-      },
-      {
-        title: "Your production service",
-        text: "Document the information you collect, its purpose, processors, retention, customer rights and contact route. If you configure a contact endpoint, explain how submitted details are handled.",
-      },
-    ],
+      { title: "The local demonstration",text: "Projects, studios and reviews are fictional. Decisions remain in browser memory and reset on reload. A motion preference may be stored in this browser. Downloads are prepared locally." },
+      { title: "Your production service",text: "Document the project information you collect, its purpose, processors, retention, user rights and contact route. Explain client access to files and feedback. If you configure a contact endpoint, describe how submitted details are handled." }
+    ]
   },
   terms: {
-    label: "The details",
-    title: "Terms for your workspace.",
-    intro:
-      "Terms placeholder for the Aster template. Replace this page with your business's own terms before launch.",
+    label: "The details",title: "Terms for your review space.",intro: "Terms placeholder for the Aster template. Replace this page with your business’s own terms before launch.",
     sections: [
-      {
-        title: "The example experience",
-        text: "The included workspace uses local fictional data. It does not create an account, send customer messages or collect a payment. The plans show example product pricing.",
-      },
-      {
-        title: "Your own service",
-        text: "Describe access, billing, cancellation, permitted use, availability, ownership and support for your product. The template's commercial usage terms are provided separately in LICENSE.md.",
-      },
-    ],
+      { title: "The example experience",text: "The included workspace uses local fictional projects. It does not create an account, upload files, invite clients or collect a payment. The plans show example product pricing." },
+      { title: "Your own service",text: "Describe access, billing, cancellation, permitted use, availability and ownership of project materials for your product. The template’s commercial usage terms are provided separately in LICENSE.md." }
+    ]
   },
   accessibility: {
-    label: "Room for everyone",
-    title: "A considered experience.",
-    intro:
-      "Clear controls, readable type and a useful path through the page are part of the product experience.",
+    label: "Room for everyone",title: "A considered experience.",intro: "Clear controls, readable type and a useful path through the page are part of the product experience.",
     sections: [
-      {
-        title: "Keyboard navigation",
-        text: "Navigate links and controls with Tab. Product tabs support arrow keys, Home and End. Dialogs close on Escape and return focus to their invoking control. The page includes a skip link.",
-      },
-      {
-        title: "Motion and readability",
-        text: "System reduced motion disables decorative movement. The footer includes a remembered manual motion control. Product tours and the full workspace provide readable versions of the compact marketing scenes.",
-      },
-    ],
+      { title: "Keyboard navigation",text: "Navigate links and controls with Tab. Product tabs support arrow keys, Home and End. Dialogs close on Escape and return focus to their invoking control. The page includes a skip link." },
+      { title: "Motion and readability",text: "System reduced motion disables decorative movement. The footer includes a remembered manual motion control. Product tours and the full review workspace provide readable versions of the compact marketing scenes." }
+    ]
   },
-  "the-human-handoff": {
-    label: "People in the loop",
-    title: "The next person deserves the whole picture.",
-    intro:
-      "A customer should not have to begin the conversation again when a person joins it. A good handoff keeps the useful context intact.",
+  "feedback-with-direction": {
+    label: "The next version",title: "Useful feedback names the change.",intro: "A broad opinion can open the conversation, but a specific request gives the next version somewhere to go. Keep the intent and the action together.",
     sections: [
-      {
-        title: "Give it a reason",
-        text: "Describe what needs a person: an exception, an unresolved account question or a decision the current source cannot support. A short reason helps the next teammate read the work.",
-      },
-      {
-        title: "Keep the source",
-        text: "Carry the customer's original question, the relevant policy and the draft already reviewed. Make the owner clear. Preserve the customer's own words where they explain what went wrong.",
-      },
-    ],
+      { title: "Find the reason beneath the preference",text: "If an image feels too loud, ask what it competes with. If a page feels crowded, identify the information that needs more room. Refer to the audience and purpose in the brief before choosing a visual change." },
+      { title: "Record one actionable next step",text: "Write down the agreed change in terms the maker can use: replace the opening image, move availability ahead of contact fields, or open the wordmark spacing. Name the owner and retain the original feedback for context." }
+    ]
   },
-  "knowledge-that-helps": {
-    label: "A stronger starting point",
-    title: "Good knowledge makes room for a good answer.",
-    intro:
-      "The best source is one a person can understand and review. Keep the useful rule, its exceptions and the next step together.",
+  "a-brief-worth-revisiting": {
+    label: "An agreed starting point",title: "Keep the brief in the conversation.",intro: "A brief is useful beyond kickoff. It gives each review a shared reference for the audience, deliverables and constraints that shaped the work.",
     sections: [
-      {
-        title: "Write for the question",
-        text: "Use specific titles and clear examples. A return policy should explain the window, conditions and what happens next. An account article should describe the usual recovery path without asking for private credentials.",
-      },
-      {
-        title: "Leave a review trail",
-        text: "Give articles a revision date and an owner in your own knowledge service. When the policy changes, make it easy to see which drafts relied on the earlier source.",
-      },
-    ],
+      { title: "Make the direction easy to find",text: "Keep the agreed creative direction specific. Name the selected imagery, the intended tone and the delivery formats. Include what sits outside the project so a new request can be discussed before it becomes unplanned work." },
+      { title: "Let the brief evolve deliberately",text: "When the direction changes, agree the change with the client and update the brief. Record its date and explain which version of the work will use the new direction. Avoid rewriting the reference silently midway through a review." }
+    ]
   },
-  "a-calmer-queue": {
-    label: "A clearer support day",
-    title: "Begin with the queue. Make room for the person.",
-    intro:
-      "A queue is more useful when it makes the work legible. Read what is waiting before deciding who should pick it up.",
+  "closing-a-review-round": {
+    label: "Finishing the work",title: "A review round deserves a decision.",intro: "A review round should end with an approval or a clear request for another pass. The decision makes the next stage easier to plan.",
     sections: [
-      {
-        title: "Separate urgency from arrival",
-        text: "A newer question may need more care than an older routine one. Make the category, priority and current owner visible. Keep a way to review the original conversation.",
-      },
-      {
-        title: "Review the useful picture",
-        text: "Read the resolved, waiting and handoff counts together. A summary is a starting point for the team conversation, not a substitute for the customer context beneath it.",
-      },
-    ],
-  },
+      { title: "Separate discussion from sign-off",text: "A positive comment can still carry an unresolved change. Read the complete feedback, confirm the current version and record an explicit decision. Keep production specifications separate from aesthetic approval when the project needs both." },
+      { title: "Give the next pass a boundary",text: "When changes are requested, name what will be revised and who owns it. Refer back to the brief and agree what stays in place. A focused next pass is easier to review than a version that changes everything at once." }
+    ]
+  }
 };

@@ -1,28 +1,28 @@
 "use client";
 import { Download } from "lucide-react";
 import {
-  type Ticket,
-  type TicketEvent,
-  ticketMetrics,
-  ticketCSV,
-} from "@/data/tickets";
+  type Review,
+  type ReviewEvent,
+  reviewMetrics,
+  reviewCSV,
+} from "@/data/reviews";
 import { downloadText } from "@/lib/download";
 export function Reporting({
   rows,
   events,
 }: {
-  rows: Ticket[];
-  events: TicketEvent[];
+  rows: Review[];
+  events: ReviewEvent[];
 }) {
-  const m = ticketMetrics(rows);
+  const m = reviewMetrics(rows);
   return (
     <section className="reporting-workspace">
       <div className="reporting-summary">
         {[
-          ["Tickets reviewed", m.total],
-          ["Resolved", `${m.rate}%`],
-          ["Median response", `${m.median} min`],
-          ["Customer rating", `${m.csat.toFixed(1)} / 5`],
+          ["Creative projects", m.projects],
+          ["Reviews approved", `${m.rate}%`],
+          ["Median review age", `${m.median} hr`],
+          ["Awaiting a decision", m.pending],
         ].map(([label, value]) => (
           <div key={label}>
             <span>{label}</span>
@@ -32,12 +32,12 @@ export function Reporting({
       </div>
       <div className="reporting-columns">
         <div className="reporting-panel">
-          <h3>The current queue</h3>
-          <p>Counts from the {rows.length} example tickets.</p>
+          <h3>The current review board</h3>
+          <p>Counts from the {rows.length} example reviews.</p>
           {[
-            ["Resolved", m.resolved, "resolved"],
-            ["Open", m.open, "open"],
-            ["Handed off", m.handoff, "handoff"],
+            ["Approved", m.approved, "approved"],
+            ["Pending", m.pending, "pending"],
+            ["Changes requested", m.changes, "changes"],
           ].map(([label, value, status]) => (
             <div className="reporting-bar" key={label}>
               <span>{label}</span>
@@ -53,16 +53,15 @@ export function Reporting({
             </div>
           ))}
           <p className="small-note">
-            Ratings include scored resolved tickets only. Response times belong
-            to the fictional dataset; local edits update status counts.
+            Review ages belong to the fictional dataset and are measured in hours. Local decisions update the counts and approval share.
           </p>
           <button
             className="button button-light"
             onClick={() =>
-              downloadText("aster-report.csv", ticketCSV(rows), "text/csv")
+              downloadText("aster-report.csv", reviewCSV(rows), "text/csv")
             }
           >
-            Export ticket report
+            Export review report
             <Download size={15} />
           </button>
         </div>
@@ -72,10 +71,10 @@ export function Reporting({
           {events.length ? (
             <ol className="activity-list">
               {[...events].reverse().map((e, i) => (
-                <li key={`${e.ticketId}-${i}`}>
+                <li key={`${e.reviewId}-${i}`}>
                   <span>
-                    {e.ticketId} ·{" "}
-                    {e.action === "handoff" ? "Handed off" : "Resolved"}
+                    {e.reviewId} ·{" "}
+                    {e.action === "changes" ? "Changes requested" : "Approved"}
                   </span>
                   <p>{e.detail}</p>
                   <time>{e.time}</time>
@@ -84,7 +83,7 @@ export function Reporting({
             </ol>
           ) : (
             <div className="empty-history">
-              <p>Your review history begins with the first ticket change.</p>
+              <p>Your review history begins with the first review change.</p>
             </div>
           )}
         </div>

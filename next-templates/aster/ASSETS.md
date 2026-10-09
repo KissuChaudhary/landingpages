@@ -1,6 +1,6 @@
 # Original Aster assets
 
-Generated using the built-in imagegen tool on 9 October 2026. No reference-site assets were downloaded or reused. Portraits depict fictional example people. The paintings, original portraits, branding and interfaces are original work.
+Generated using the built-in imagegen tool on 9 October 2026. Portraits depict fictional example people. The paintings, original portraits, branding and interfaces are original work.
 
 ## blossom
 

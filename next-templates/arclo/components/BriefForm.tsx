@@ -18,8 +18,8 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
   const endpoint = waitlist
     ? site.links.waitlistEndpoint
     : site.links.contactEndpoint;
-  const title = waitlist ? "Early access interest" : "Automation brief";
-  const content = `${title}\n\nName: ${data.name}\nEmail: ${data.email}\nTeam: ${data.team || "Not provided"}\n\n${data.message}`;
+  const title = waitlist ? "Early access interest" : "Close walkthrough request";
+  const content = `${title}\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.team || "Not provided"}\n\n${data.message}`;
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
@@ -29,7 +29,7 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
       (!waitlist && !data.message.trim())
     ) {
       setError(
-        "Add your name, a valid email and a short note about your idea.",
+        "Add your name, a valid email and a short note about your close.",
       );
       return;
     }
@@ -62,11 +62,11 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
         <span className="icon-tile">
           <Check size={24} />
         </span>
-        <h2>{waitlist ? "You’re on the list." : "Your idea is on its way."}</h2>
+        <h2>{waitlist ? "You’re on the list." : "Your note is on its way."}</h2>
         <p>
           {waitlist
             ? "Thanks for sharing your interest. We’ll be in touch using the email you provided."
-            : "Thanks for the thoughtful note. The team will follow up by email."}
+            : "Thanks. Someone from the team will reply by email to find a time."}
         </p>
       </div>
     );
@@ -78,7 +78,7 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
           Ready to keep
         </span>
         <h2>
-          {waitlist ? "Your interest, noted." : "A good idea, clearly briefed."}
+          {waitlist ? "Your interest, noted." : "Your close, in a few lines."}
         </h2>
         <p className="muted">
           This is a local preview.{" "}
@@ -94,11 +94,11 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
           <dd>{data.email}</dd>
           {data.team && (
             <>
-              <dt>Team</dt>
+              <dt>Company</dt>
               <dd>{data.team}</dd>
             </>
           )}
-          <dt>Your idea</dt>
+          <dt>Your close</dt>
           <dd>{data.message || "Interested in early access."}</dd>
         </dl>
         <div className="brief-actions">
@@ -106,7 +106,7 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
             className="button button-secondary"
             onClick={() =>
               downloadFile(
-                waitlist ? "arclo-interest.txt" : "arclo-brief.txt",
+                waitlist ? "arclo-interest.txt" : "arclo-walkthrough.txt",
                 content,
                 "text/plain",
               )
@@ -129,12 +129,12 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
   return (
     <form className="surface brief-form" onSubmit={submit}>
       <h2>
-        {waitlist ? "Be part of what’s next." : "Tell us what’s on your mind."}
+        {waitlist ? "Join the early group." : "Tell us how you close today."}
       </h2>
       <p>
         {waitlist
-          ? "A small note today. A new possibility tomorrow."
-          : "The best workflows start with a good conversation."}
+          ? "We’re opening multi-entity closes to a few groups at a time."
+          : "A few lines are enough. We’ll come back with a walkthrough built around it."}
       </p>
       <div className="form-row">
         <label>
@@ -155,7 +155,7 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="alex@yourteam.com"
+            placeholder="alex@company.com"
             required
             maxLength={200}
             value={data.email}
@@ -166,11 +166,11 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
         </label>
       </div>
       <label>
-        Team or company <span className="muted">(optional)</span>
+        Company <span className="muted">(optional)</span>
         <input
           name="team"
           autoComplete="organization"
-          placeholder="Your corner of the world"
+          placeholder="Company name and entities"
           maxLength={150}
           value={data.team}
           onChange={(event) => setData({ ...data, team: event.target.value })}
@@ -178,11 +178,11 @@ export function BriefForm({ waitlist = false }: { waitlist?: boolean }) {
       </label>
       <label>
         {waitlist
-          ? "What would you love to automate? (optional)"
-          : "What would you love to automate?"}
+          ? "What slows your close down today? (optional)"
+          : "What slows your close down today?"}
         <textarea
           name="message"
-          placeholder="A repetitive task, a big idea, or a little of both…"
+          placeholder="Number of entities, how many days the close takes, where it gets stuck…"
           required={!waitlist}
           maxLength={3000}
           rows={5}

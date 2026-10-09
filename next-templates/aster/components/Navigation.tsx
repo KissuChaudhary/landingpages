@@ -47,7 +47,7 @@ export function Navigation() {
   }, [company, menu]);
   const links = [
     ["Integrations", "/integrations"],
-    ["Customers", "/customers"],
+    ["Studios", "/studios"],
     ["Pricing", "/pricing"],
   ];
   return (

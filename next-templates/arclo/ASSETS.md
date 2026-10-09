@@ -8,4 +8,4 @@ Final prompt:
 
 The Arclo mark, gradient field, grain texture, workflow diagram, five feature scenes, central framework and three article cover studies are original SVG, CSS and React assets. Interface icons use Lucide (ISC license). Manrope is loaded through Next font (SIL Open Font License). Demo company wordmarks and people’s names are fictional illustrative content.
 
-The reference site supplied design direction only. No reference images, Framer scripts, logos or font files were copied. Replace demo content with your own evidence before publication.
+Replace demo content with your own evidence before publication.

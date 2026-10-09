@@ -1,6 +1,6 @@
 # Aster design decisions
 
-The Solva reference informed the composition: a spacious split hero, botanical product backdrops, open chapter headings, stacked feature panels, horizontal use-case tabs, three plans and a compact footer. Aster has original branding, copy, paintings, portraits, marks and React interfaces. No reference-site assets are included.
+Aster is a creative review workspace for independent practices and studios. The page is composed as a spacious split hero, botanical product backdrops, open chapter headings, stacked feature panels, horizontal use-case tabs, three plans and a compact footer. Its brief-linked feedback, versioned reviews, revision requests, approvals, project-based plans and editorial stories are all specific to that product.
 
 ## Typography
 
@@ -12,9 +12,9 @@ Use short sentences and purposeful line breaks. One understated text label intro
 
 The navigation is a 76px open row with a fine bottom rule; phones use 68px. There is no floating navigation pill or decorative page grid. Controls are compact rounded rectangles with a consistent 44px action height.
 
-The hero places copy beside a 522px botanical panel and a deliberately cropped inbox. Three illustrated feature tiles follow an open fictional-team strip. The wide product chapters use one scene and one copy block each. Desktop panels stack under the navigation; the static and reduced-motion reading order remains complete.
+The hero places copy beside a 522px botanical panel and a deliberately cropped creative review interface. Three illustrated feature tiles follow an open fictional-studio strip. The wide product chapters use one scene and one copy block each. Desktop panels stack under the navigation; the static and reduced-motion reading order remains complete.
 
-Tabs coordinate their heading, details and scene. On phones, the tab rail scrolls horizontally rather than compressing labels into tiny text. The trust chapter changes the full-width surface; subsequent pricing and story sections return to paper. The closing revisits the inbox so the final action has a clear destination.
+Tabs coordinate their heading, details and scene. On phones, the tab rail scrolls horizontally rather than compressing labels into tiny text. The trust chapter changes the full-width surface; subsequent pricing and story sections return to paper. The closing revisits the review space so the final action has a clear destination.
 
 ## Surfaces and imagery
 
@@ -30,4 +30,4 @@ The system motion preference and footer pause control both disable decorative mo
 
 ## Product integrity
 
-Marketing scenes and the initial workspace read the same fictional ticket dataset. Resolution counts, median time and satisfaction ratings are calculated from that data. A local handoff records the owner, reason and edited draft. Approved sources remain readable and exportable. The frontend clearly distinguishes local reviews from real messages or provider connections.
+Marketing scenes and the initial workspace read the same original project-review dataset. Approval share and project counts derive from actual rows. A revision request needs a named owner, a specific reason and a nonempty studio response. Full project briefs remain readable and exportable. Local decisions are explicitly distinguished from client notifications and production storage.

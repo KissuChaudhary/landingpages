@@ -10,24 +10,24 @@ import {
 import { useExperience } from "../Experience";
 const steps = [
   {
-    title: "Bring your world together.",
+    title: "Connect the ledger and the banks.",
     description:
-      "Start with the tools and context you already know. Make a place for everything that matters.",
+      "Point Arclo at your accounting system and feeds. Balances and transactions arrive read-only.",
   },
   {
-    title: "Give your idea a shape.",
+    title: "Map accounts and write the rules.",
     description:
-      "Choose a trigger, describe the job and connect your actions. A clear flow makes all the difference.",
+      "Decide which lines clear which accounts, the tolerance you accept and who signs what.",
   },
   {
-    title: "Try a little test run.",
+    title: "Close a month side by side.",
     description:
-      "Watch the steps unfold. Review the prepared output before connecting it to the real world.",
+      "Run Arclo next to your current process once, compare the results and keep what you trust.",
   },
   {
-    title: "Let good work keep flowing.",
+    title: "Close every month from one page.",
     description:
-      "Follow your agents’ activity, refine the instructions and make more room for meaningful work.",
+      "Watch the checklist, the reconciliations and the approvals move together, and lock the period.",
   },
 ];
 export function HowItWorks() {
@@ -39,8 +39,8 @@ export function HowItWorks() {
       <SectionHead
         label="How it works"
         icon={Route}
-        title="From idea to autopilot."
-        description="A few thoughtful steps. A whole new way to spend your day."
+        title="From spreadsheets to a five-day close."
+        description="Four steps, and the first one takes an afternoon."
       />
       <div className="how-grid">
         <div
@@ -90,14 +90,14 @@ export function HowItWorks() {
           id={`${id}-panel`}
           aria-labelledby={`${id}-step-${selected}`}
         >
-          <span className="scene-overline">A LITTLE MOMENT OF CLARITY</span>
+          <span className="scene-overline">ONE STEP AT A TIME</span>
           {selected === 0 ? (
             <>
               <div className="connect-card">
                 <span>
-                  <Check size={13} /> Your workspace is ready
+                  <Check size={13} /> Ledger and feeds connected
                 </span>
-                <strong>Everything in its right place.</strong>
+                <strong>Read-only, from the first day.</strong>
               </div>
               <IntegrationScene />
             </>
@@ -108,14 +108,14 @@ export function HowItWorks() {
               <span className="test-icon">
                 <Check size={28} />
               </span>
-              <h3>Ready for a test run.</h3>
+              <h3>Ready for a parallel run.</h3>
               <p>
-                Three sample records.
+                Three sample bank lines.
                 <br />
-                One useful outcome.
+                One clean reconciliation.
               </p>
               <button className="run-button" onClick={() => openWorkspace()}>
-                <Play size={13} /> Try the workflow
+                <Play size={13} /> Run the sample
               </button>
             </div>
           ) : (
@@ -124,7 +124,7 @@ export function HowItWorks() {
           <button
             className="text-link"
             onClick={() =>
-              openWorkspace(selected === 1 ? "onboarding" : "leads")
+              openWorkspace(selected === 1 ? "approve" : "match")
             }
           >
             Explore this step <ArrowRight size={15} />

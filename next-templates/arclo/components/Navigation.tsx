@@ -75,7 +75,7 @@ export function Navigation() {
           </details>
         </div>
         <div className="nav-actions">
-          <Button onClick={() => openWorkspace()}>Try Arclo</Button>
+          <Button onClick={() => openWorkspace()}>Run a sample close</Button>
           <button
             id="mobile-toggle"
             className="icon-button mobile-toggle"

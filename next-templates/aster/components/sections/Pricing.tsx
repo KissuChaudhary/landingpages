@@ -8,6 +8,8 @@ import { SectionHead, Art } from "../ui/Primitives";
 export function Pricing({ primary = false }: { primary?: boolean }) {
   const [billing, setBilling] = useState<Billing>("monthly");
   const { open } = useExperience();
+  const studio = site.plans[1];
+  const annualSavings = studio.monthly! * 12 - studio.annual! * 12;
   return (
     <section
       className={`pricing section container ${primary ? "page-pricing" : ""}`}
@@ -33,7 +35,7 @@ export function Pricing({ primary = false }: { primary?: boolean }) {
           <i />
         </button>
         <span className={billing === "annual" ? "active" : ""}>
-          Yearly<small>Save $120</small>
+          Yearly<small>Save ${annualSavings}</small>
         </span>
       </div>
       <div className="pricing-grid">
@@ -47,7 +49,7 @@ export function Pricing({ primary = false }: { primary?: boolean }) {
               {i === 1 && <Art name="petal" />}
               <div className="plan-title">
                 <h3>{plan.name}</h3>
-                {i === 1 && <span>For your team</span>}
+                {i === 1 && <span>For your studio</span>}
               </div>
               <p className="plan-price">
                 {price === null

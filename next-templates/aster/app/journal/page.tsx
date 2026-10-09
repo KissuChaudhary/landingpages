@@ -7,7 +7,7 @@ export default function JournalPage() {
   return (
     <main id="main" className="container journal-page">
       <SectionHead
-        label="Notes for a better support day"
+        label="Notes from the creative process"
         lines={["A little perspective.", "A useful next step."]}
         primary
       />

@@ -1,207 +1,103 @@
-export type Billing = "monthly" | "annual";
-export const site = {
+export type Billing="monthly"|"annual";
+export const site={
   brand: "Aster",
-  title: "Aster — a little more human support",
-  description:
-    "A thoughtful support workspace. Bring your knowledge, conversations and people into one clear picture.",
-  links: { app: "", contactEndpoint: "", contactEmail: "" },
+  title: "Aster — a shared space for creative reviews",
+  description: "Present the work, gather client feedback and record the next decision. A considered review workspace for independent creatives and studios.",
+  links: {
+    app: "",contactEndpoint: "",contactEmail: ""
+  },
   hero: {
-    announcement: "A clearer support day",
-    heading: ["Good support.", "A little more human."],
-    text: "Meet the AI workspace that makes room for your customers. Helpful answers, thoughtful handoffs, and a team that stays in the loop.",
-    cta: "Try Aster",
+    announcement: "For the work between versions",
+    heading: ["Share the work.","Shape what’s next."],
+    text: "A shared space for creative reviews. Bring the brief, the feedback and the next decision together, so your best work keeps moving.",
+    cta: "Explore Aster"
   },
   features: {
-    label: "What Aster brings",
-    heading: ["A good answer.", "The right next step."],
+    label: "From first look to final sign-off",
+    heading: ["Thoughtful feedback.","A clear way forward."],
     items: [
       {
-        title: "Make the everyday easier",
-        text: "Find the useful answer in your knowledge, right when a customer needs it.",
-        scene: "answer",
+        title: "Give the work a conversation",text: "Keep each review with its project and version. Read the feedback without piecing together a thread of emails.",scene: "feedback"
       },
       {
-        title: "Keep your knowledge close",
-        text: "Help articles and clear policies give every conversation a stronger starting point.",
-        scene: "knowledge",
+        title: "Keep the brief in view",text: "Bring the agreed direction into the review. A useful reference makes every comment more specific.",scene: "briefs"
       },
       {
-        title: "Leave room for a person",
-        text: "When a question needs care, your team gets the context to pick it up.",
-        scene: "handoff",
-      },
-    ],
+        title: "Turn a note into a next step",text: "Agree what needs changing, choose who takes it forward and keep the decision with the work.",scene: "revision"
+      }
+    ]
   },
   benefits: {
-    label: "A calmer way to work",
-    heading: ["One shared space.", "More thoughtful support."],
+    label: "A little structure for the process",
+    heading: ["Room for the work.","Clarity for everyone."],
     items: [
       {
-        title: "See what needs your attention.",
-        text: "A shared view makes the work easier to read. Keep an eye on what is resolved, what is waiting, and where your team can help.",
-        scene: "performance",
-        art: "grass",
-        cta: "Explore the overview",
-        view: "reporting",
+        title: "Know where each project stands.",text: "See the reviews waiting for a decision, the work returning for another pass and the pieces ready to move on. Keep the studio’s next steps in one view.",scene: "performance",art: "grass",cta: "See the project overview",view: "reporting"
       },
       {
-        title: "Sound like the people behind your product.",
-        text: "Start with your own words and policies. Review a suggested answer, give it your voice, and keep its source in sight.",
-        scene: "voice",
-        art: "blossom",
-        cta: "Try a conversation",
-        view: "inbox",
+        title: "Make feedback useful to the maker.",text: "Read the client’s note beside the brief. Write a considered response, capture the change and leave the next person with something they can act on.",scene: "response",art: "blossom",cta: "Open a creative review",view: "reviews"
       },
       {
-        title: "Make a little room for tomorrow.",
-        text: "Give the routine a useful rhythm. Sort the queue, review the handoffs, and begin the next day with a clearer picture.",
-        scene: "queue",
-        art: "grass",
-        cta: "Review the queue",
-        view: "triage",
-      },
-    ],
+        title: "Close a round with a decision.",text: "A review should lead somewhere. Record an approval or request a revision with an owner and a reason, so the next version begins with a clear direction.",scene: "queue",art: "grass",cta: "Browse the review board",view: "board"
+      }
+    ]
   },
-  useCases: {
-    label: "Ways to work",
-    heading: ["Every conversation.", "A place to begin."],
-  },
+  useCases: { label: "Inside the studio",heading: ["One review process.","Many kinds of work."] },
   trust: {
-    label: "Thoughtful by design",
-    heading: ["Clear boundaries.", "People in the loop."],
-    text: "A good support experience makes its sources, decisions and next steps easy to understand.",
+    label: "Care in the details",heading: ["The work changes.","The context stays."],
+    text: "Make it easy to understand what was asked, what was agreed and who is taking the next step.",
     items: [
       {
-        title: "Know the source",
-        text: "Keep the relevant help article beside the suggested answer.",
-        icon: "book",
+        title: "An agreed starting point",text: "Read the project brief alongside each feedback thread.",icon: "book"
       },
       {
-        title: "Choose the handoff",
-        text: "Give complex questions a person, a reason and a clear owner.",
-        icon: "people",
+        title: "A named next step",text: "Give revision requests an owner and a specific change to make.",icon: "people"
       },
       {
-        title: "See the changes",
-        text: "Review the local activity trail when a ticket changes state.",
-        icon: "history",
+        title: "A record of decisions",text: "See approvals and revision requests in this visit’s activity trail.",icon: "history"
       },
       {
-        title: "Keep the context",
-        text: "Export the conversation and its sources for a useful review.",
-        icon: "download",
-      },
-    ],
+        title: "A useful handover",text: "Export the review, edited response and full brief together.",icon: "download"
+      }
+    ]
   },
   pricing: {
-    label: "Find your fit",
-    heading: ["A simple start.", "Room to grow."],
-    text: "Choose a workspace that fits the way your team works.",
+    label: "A place for your practice",heading: ["Start with a project.","Grow with your studio."],text: "Three ways to bring a little more order to the creative process."
   },
   plans: [
     {
-      id: "starter",
-      name: "Starter",
-      monthly: 0,
-      annual: 0,
-      text: "For a first look at a more thoughtful support day.",
-      features: [
-        "100 example resolutions",
-        "One support channel",
-        "Knowledge and source context",
-        "Human handoff",
-        "Conversation exports",
-      ],
-      cta: "Start exploring",
-      checkout: { monthly: "", annual: "" },
+      id: "solo",name: "Solo",monthly: 0,annual: 0,text: "For an independent practice finding its rhythm.",features: ["Three active projects","One studio member","Client review threads","Project briefs and decisions","Review exports"],cta: "Find your starting point",checkout: { monthly: "",annual: "" }
     },
     {
-      id: "team",
-      name: "Team",
-      monthly: 59,
-      annual: 49,
-      text: "For teams making more room for their customers.",
-      features: [
-        "2,000 resolutions per month",
-        "Chat, email and help desk",
-        "Triage and reporting",
-        "Shared knowledge library",
-        "Five team members",
-      ],
-      cta: "Make room for your team",
-      checkout: { monthly: "", annual: "" },
+      id: "studio",name: "Studio",monthly: 32,annual: 26,text: "For a small team shaping the work together.",features: ["Twenty active projects","Six studio members","Shared revision board","Project review reporting","Reusable brief library"],cta: "Bring your studio together",checkout: { monthly: "",annual: "" }
     },
     {
-      id: "scale",
-      name: "Scale",
-      monthly: null,
-      annual: null,
-      text: "For a bigger conversation about your support needs.",
-      features: [
-        "Everything in Team",
-        "Custom resolution volume",
-        "Workspace and access options",
-        "A tailored onboarding plan",
-        "A dedicated point of contact",
-      ],
-      cta: "Talk to us",
-      checkout: { monthly: "", annual: "" },
-    },
+      id: "collective",name: "Collective",monthly: null,annual: null,text: "For a creative practice with a wider circle.",features: ["A tailored project allowance","Multiple studio teams","Workspace configuration","Guided team onboarding","A dedicated point of contact"],cta: "Talk about your practice",checkout: { monthly: "",annual: "" }
+    }
   ],
   story: {
-    label: "A clearer picture",
-    heading: ["Good work starts", "with a little context."],
-    quote:
-      "We wanted a support day with room to think. Seeing the question, its source and the next step together is a good place to start.",
-    person: "Nina Shah",
-    role: "Support lead at Willow",
-    note: "An illustrative team story with local sample data.",
+    label: "A studio in focus",heading: ["Better work begins","with a shared direction."],
+    quote: "The useful part isn’t collecting more opinions. It’s knowing which change we’ve agreed to make. We can keep that decision beside the brief and get back to designing.",
+    person: "Nina Shah",role: "Creative director at Willow",
+    note: "An illustrative studio story. Counts below come from the fictional review board."
   },
   perspectives: {
-    label: "A few familiar perspectives",
-    heading: ["Less noise.", "More room for people."],
-    note: "Fictional teams and original portraits. Replace with your customer stories.",
+    label: "Around the creative table",heading: ["Different practices.","A shared point of view."],note: "Fictional studios and original portraits. Replace with your own client stories."
   },
   faq: {
-    label: "A little clarity",
-    heading: ["A few good questions.", "Some useful answers."],
+    label: "Before your first review",heading: ["A few things","you might be wondering."],
     items: [
-      {
-        q: "What can I try in the workspace?",
-        a: "Open the local example inbox, find a ticket, edit its draft and resolve or hand it off. You can search knowledge, filter the queue, review its metrics and export a report. These actions use local example data.",
-      },
-      {
-        q: "Does this demo send replies to customers?",
-        a: "No. Resolving or handing off a ticket changes its state in the local demonstration. It does not send a message or connect a customer account.",
-      },
-      {
-        q: "Where do the suggested answers come from?",
-        a: "Each sample ticket has a suggested draft linked to a local help article. The template makes that source visible. Connect your production search, retrieval and AI services for your own product.",
-      },
-      {
-        q: "How does annual billing work?",
-        a: "The example Team plan is $59 each month, or $588 billed once per year. Annual billing works out to $49 per month and saves $120 over twelve monthly payments. The plan review shows the full amount before you continue.",
-      },
-      {
-        q: "Can I use my own brand and product?",
-        a: "Yes. Brand, copy, plans and destinations live in site.config.ts. Tickets, knowledge, connection guides and team perspectives have separate editable data files. All product interfaces are built in React.",
-      },
-      {
-        q: "Can I connect my existing help desk?",
-        a: "The connection directory shows example fields and scopes. Connect your provider, authentication and consent flow when adapting the template to your real service.",
-      },
-    ],
+      { q: "What can I try in the review space?",a: "Explore twelve fictional reviews across four creative projects. Filter by format, discipline or decision, edit a response, approve a review or request changes with an owner and reason. The board, report and exports reflect your local decisions." },
+      { q: "Does a decision notify the client?",a: "This template demonstrates the review process with local data. Decisions stay in browser memory until reload; no client receives a notification. Connect your own storage, permissions and delivery services for a live workspace." },
+      { q: "Can I read the brief while reviewing?",a: "Each example review links to a full project brief with its direction, deliverables and constraints. Open that reference beside the feedback or search the separate brief library. Review exports include the complete linked brief." },
+      { q: "What does annual Studio billing cost?",a: "Studio is shown at $32 monthly or $312 billed once a year. Annual billing works out to $26 per month, saving $72 over twelve monthly payments. The plan review shows the total before you continue." },
+      { q: "Can I tailor this to my own creative product?",a: "Yes. Branding, page copy, example plans and destinations are configured separately from reviews, project briefs, connection guides and editorial articles. The product scenes are editable React interfaces and the artwork ships locally." },
+      { q: "Can I upload files or invite a client here?",a: "The included demo covers feedback and decisions; it does not upload files or invite real people. The connection directory outlines design files, storage and team workflows you can connect when building your production service." }
+    ]
   },
   closing: {
-    label: "For your next support day",
-    heading: ["Make room for", "a better conversation."],
-    text: "Bring the question. Keep the context. Give your people a little more space.",
-    cta: "Explore Aster",
+    label: "For the next version",heading: ["Good work deserves","a clear next step."],text: "Bring the project. Gather the feedback. Leave with a shared direction.",cta: "Open the review space"
   },
-  footer: {
-    text: "A thoughtful workspace for the people on both sides of the conversation.",
-    note: "Fictional brand. Working local examples.",
-  },
+  footer: { text: "A considered review space for the people who make things together.",note: "Fictional studios. Working local reviews." }
 };
-export const appHref = (view = "inbox") =>
-  site.links.app || `/workspace?view=${view}`;
+export const appHref=(view="reviews") => site.links.app||`/workspace?view=${view}`;

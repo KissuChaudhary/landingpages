@@ -6,11 +6,11 @@ import { Brand } from "../ui/Brand";
 import { useExperience } from "../Experience";
 const homeLinks = [
   ["Benefits", "benefits"],
-  ["The platform", "features"],
+  ["Platform", "features"],
   ["Why Arclo", "why-arclo"],
   ["Pricing", "pricing"],
   ["How it works", "how-it-works"],
-  ["Team stories", "stories"],
+  ["Stories", "stories"],
   ["About us", "about"],
   ["The journal", "journal"],
   ["Questions", "faq"],
@@ -44,7 +44,7 @@ export function Footer() {
           </a>
         </div>
         <div className="footer-column">
-          <h4>Find your flow</h4>
+          <h4>The product</h4>
           {homeLinks.map(([label, id]) => (
             <a key={id} href={href(`/#${id}`)}>
               {label}
@@ -52,7 +52,7 @@ export function Footer() {
           ))}
         </div>
         <div className="footer-column">
-          <h4>Around Arclo</h4>
+          <h4>Company</h4>
           {pages.map(([label, link]) => (
             <a key={link} href={route(link)}>
               {label}
@@ -65,7 +65,7 @@ export function Footer() {
       </div>
       <div className="footer-bottom">
         <span>
-          © {new Date().getFullYear()} {site.brand}. Make work flow.
+          © {new Date().getFullYear()} {site.brand}. Close with confidence.
         </span>
         <span>A thoughtfully made template.</span>
         <button onClick={toggleMotion} aria-pressed={paused}>

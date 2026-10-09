@@ -2,26 +2,26 @@ import type { TemplateItem } from "../templates";
 import type { TemplateDetails } from "../template-details";
 export const arcloTemplate: TemplateItem = {
   slug: "arclo",
-  title: "Arclo: No-code AI Automation",
+  title: "Arclo: Finance Close Platform",
   category: "Landing Pages",
   defaultTheme: "light",
-  badge: "AI Agents & Automation",
+  badge: "Fintech & Finance Ops",
   description:
-    "A luminous violet-to-coral launch page with precise Manrope typography, glowing controls and fine frame rails. Original product illustrations, live local workflows and complete pricing, contact, waitlist and editorial pages make the product story tangible.",
+    "A premium ink, petrol and champagne launch page for a month-end close product. Precise Manrope typography, a textured hero field and a working close canvas that matches bank lines, flags variances and routes approvals, with entity-based pricing, a walkthrough form and a finance journal.",
   tags: [
-    "AI Automation",
-    "No-code",
-    "Gradient",
+    "Fintech",
+    "Finance Ops",
+    "Dark Gradient",
     "Original Imagery",
     "Next.js 15",
   ],
   features: [
-    "Centered gradient hero, glowing controls and editable workflow canvas",
-    "Three local workflows, configurable lead criteria and matching JSON exports",
-    "Five original feature scenes, four onboarding views and team perspectives",
-    "Monthly/yearly pricing, plan comparison, contact briefs, waitlist and journal",
+    "Ink-to-petrol hero field, glowing controls and a working close canvas",
+    "Bank matching with a dollar tolerance, variance flags and approval routing, all exportable as JSON",
+    "Five original feature scenes, four onboarding steps and finance team stories",
+    "Entity-based pricing with comparison, walkthrough form, early-access page and journal",
   ],
-  accentColor: "from-purple-500 to-rose-300",
+  accentColor: "from-cyan-900 to-amber-200",
   previewUrl: "/preview/arclo",
   standaloneUrl: "/demos/arclo/index.html",
   demoUrl: "/demo/arclo",
@@ -30,46 +30,46 @@ export const arcloTemplate: TemplateItem = {
 };
 export const arcloDetails: TemplateDetails = {
   name: "Arclo",
-  kind: "No-code AI automation landing page template",
+  kind: "Finance close and fintech landing page template",
   summary:
-    "A complete platform launch with a luminous textured hero, quiet white product chapters and an interactive workflow canvas. Precise Manrope typography, glowing controls, original photography and editable diagrams carry the experience from first impression to the supporting pages.",
+    "A complete launch for a month-end close product: a textured ink-to-petrol hero, quiet white chapters and an interactive close canvas that runs on real sample numbers. Precise Manrope typography, glowing controls, original photography and editable diagrams carry it from first impression to the supporting pages.",
   bestFor: [
-    "No-code AI agent platforms",
-    "Workflow automation products",
-    "Connected team workspaces and productivity tools",
+    "Finance close, reconciliation and accounting products",
+    "Fintech and spend management platforms",
+    "B2B tools for controllers, CFOs and finance operations",
   ],
   design:
-    "Violet, coral, white and charcoal. A 52px centered Manrope headline, a fine frame with real intersection dots, softly inset surfaces and a luminous gradient border system. Three benefits, a three-plus-two feature grid, a central agent framework, three plans, four onboarding views, team stories, a split about chapter and journal follow the reference’s visual rhythm.",
+    "Ink, petrol and champagne on cool white. A 52px centered Manrope headline, a fine frame with real intersection dots, softly inset surfaces and a champagne-edged glow on the main action. Three benefits, a three-plus-two feature grid, a central close framework, three entity-based plans, four onboarding steps, finance stories, a split about chapter and journal.",
   sections: [
     {
       name: "Navigation and hero",
       detail:
-        "Contracting navigation, native page menu, accessible mobile menu, a textured gradient and three selectable local workflow examples.",
+        "Contracting navigation, native page menu, accessible mobile menu, a textured ink-to-petrol field and three selectable close steps.",
     },
     {
       name: "Benefits and platform",
       detail:
-        "Three benefits and five original React/CSS/SVG scenes, including chart periods and an editable idea field.",
+        "Three benefits and five original React/CSS/SVG scenes, including two reconciliation views and an editable variance note.",
     },
     {
-      name: "Agent framework and onboarding",
+      name: "Close framework and onboarding",
       detail:
-        "A central layered framework and four keyboard-accessible getting-started views.",
+        "A central layered framework and four keyboard-accessible onboarding steps.",
     },
     {
-      name: "Workflow explorer",
+      name: "Close explorer",
       detail:
-        "Source records, configurable lead threshold, finite execution, visible logs, empty results, clipboard output and matching JSON run receipts.",
+        "Sample bank lines, accounts and entries, a dollar tolerance, finite runs, visible logs, exceptions, clipboard output and matching JSON records.",
     },
     {
       name: "Pricing",
       detail:
-        "Three plans, monthly/yearly selection, a comparison table and complete billing review dialogs.",
+        "Three entity-based plans, monthly/yearly selection, a comparison table and complete billing review dialogs.",
     },
     {
       name: "People and journal",
       detail:
-        "Illustrative team stories, original team photography, three original article covers and three complete articles.",
+        "Illustrative finance stories, original team photography, three original article covers and three complete articles on the close, audit and variance notes.",
     },
     {
       name: "Questions and closing",
@@ -79,18 +79,18 @@ export const arcloDetails: TemplateDetails = {
     {
       name: "Supporting pages",
       detail:
-        "Pricing, contact, waitlist, journal and articles, privacy/terms placeholders and a custom missing-page state.",
+        "Pricing, walkthrough request, early access, journal and articles, privacy/terms placeholders and a custom missing-page state.",
     },
   ],
   customizeIntro:
-    "Start in `site.config.ts` for the brand, primary copy, plans, FAQ and destinations. Workflow examples, stories and articles each have a focused data file.",
+    "Start in `site.config.ts` for the brand, primary copy, plans, FAQ and destinations. The sample close data, stories and articles each have a focused data file.",
   customize: [
     {
       what: "Brand, copy, plans, FAQ and destinations",
       where: "site.config.ts",
     },
     {
-      what: "Workflow records, conditions and outputs",
+      what: "Sample bank lines, accounts, entries and rules",
       where: "data/workflows.ts",
     },
     {
@@ -111,11 +111,11 @@ export const arcloDetails: TemplateDetails = {
   dependencies: ["next", "react", "react-dom", "lucide-react"],
   styling: "CSS",
   images:
-    "One original generated WebP team photograph, with CSS crops for illustrative portraits. Original SVG mark, grain texture, workflow canvas, feature scenes, framework and three journal cover studies. No reference-site assets.",
+    "One original generated WebP team photograph, with CSS crops for illustrative portraits. Original SVG mark, grain texture, close canvas, feature scenes, framework and three journal cover studies.",
   node: "20.9",
   files: 66,
   lines: 6625,
   beforeLaunch:
-    "Replace the fictional brand, sample records, team stories and prices. Configure your app URL, each plan’s monthly/yearly checkout and contact/waitlist endpoints. Replace policy placeholders. Local workflows and downloads work; connect your live AI, account authentication, integrations and message delivery in your application.",
+    "Replace the fictional brand, sample close data, stories and prices. Configure your app URL, each plan’s monthly/yearly checkout and contact/waitlist endpoints. Replace policy placeholders. Local runs and downloads work; connect your ledger, bank feeds, authentication and posting in your application.",
   updated: "2026-10-09",
 };

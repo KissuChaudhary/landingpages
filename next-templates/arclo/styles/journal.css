@@ -5,8 +5,8 @@
 }
 .journal-card:hover {
   box-shadow:
-    0 3px 15px #9545b014,
-    0 0 0 7px #faf3fd;
+    0 3px 15px #375f6814,
+    0 0 0 7px #f5fafb;
 }
 .journal-art {
   position: relative;
@@ -18,8 +18,8 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 25% 0%, #f7d8ff, transparent 65%),
-    linear-gradient(145deg, #f4effa, #e9ddf8 70%, #f8d5e3);
+    radial-gradient(ellipse at 25% 0%, #e3f1f4, transparent 65%),
+    linear-gradient(145deg, #f1f6f8, #e3eff2 70%, #efeade);
 }
 .art-grid {
   position: absolute;
@@ -35,7 +35,7 @@
   position: absolute;
   top: 27px;
   left: calc(50% - 107px);
-  border: 1px solid #b761dc5b;
+  border: 1px solid #367e8e5b;
   border-radius: 50%;
   transform: rotate(-30deg);
   box-shadow: 0 1px 0 white;
@@ -54,17 +54,17 @@
   border-radius: 20px;
   display: grid;
   place-items: center;
-  background: linear-gradient(140deg, #f6dcff, #9c4ad7);
+  background: linear-gradient(140deg, #e6f2f5, #327584);
   color: white;
-  border: 1px solid #e9bef3;
+  border: 1px solid #b3dbe4;
   box-shadow:
-    0 10px 25px #9149bc35,
+    0 10px 25px #39656f35,
     inset 0 1px 10px #ffffff80;
   transform: rotate(-13deg);
 }
 .art-star {
   position: absolute;
-  color: #b86ccd;
+  color: #407683;
   font-size: 18px;
 }
 .star-a {
@@ -78,8 +78,8 @@
 }
 .art-stack {
   background:
-    radial-gradient(ellipse at 85% 10%, #ffcfc9, transparent 70%),
-    linear-gradient(135deg, #f4e9fb, #ead5f6);
+    radial-gradient(ellipse at 85% 10%, #eee8da, transparent 70%),
+    linear-gradient(135deg, #edf5f7, #dcebef);
 }
 .art-sheet {
   position: absolute;
@@ -87,10 +87,10 @@
   height: 128px;
   top: 35px;
   left: calc(50% - 58px);
-  border: 1px solid #efc6eb;
+  border: 1px solid #bddbe2;
   border-radius: 12px;
-  background: linear-gradient(150deg, #fff9, #fef0ffaa);
-  box-shadow: 0 8px 15px #9b5ca516;
+  background: linear-gradient(150deg, #fff9, #f4f9fbaa);
+  box-shadow: 0 8px 15px #425d6416;
 }
 .sheet-back {
   transform: translate(26px, -10px) rotate(17deg);
@@ -101,13 +101,13 @@
 .sheet-front {
   padding: 19px;
   transform: rotate(-12deg);
-  background: linear-gradient(130deg, #fffc, #efd8fbee);
-  color: #b45ece;
+  background: linear-gradient(130deg, #fffc, #e0eff3ee);
+  color: #3b7481;
 }
 .sheet-front span {
   display: block;
   height: 5px;
-  background: #d7a6e5;
+  background: #83bbc8;
   border-radius: 5px;
   margin-top: 10px;
   opacity: 0.5;
@@ -118,7 +118,7 @@
 .art-connections {
   background:
     radial-gradient(ellipse at 5% 100%, #cde6f4, transparent 65%),
-    linear-gradient(120deg, #f4e9fb, #e5d4f7);
+    linear-gradient(120deg, #edf5f7, #dcecef);
 }
 .article-art > svg {
   position: absolute;
@@ -128,7 +128,7 @@
 }
 .article-art > svg path {
   fill: none;
-  stroke: #b89ace;
+  stroke: #6496a1;
   stroke-width: 1;
   stroke-dasharray: 4 4;
 }
@@ -139,15 +139,15 @@
   display: grid;
   place-items: center;
   background: #ffffffc9;
-  border: 1px solid #e3c6ef;
-  color: #b96ecf;
+  border: 1px solid #bddbe2;
+  color: #407885;
   border-radius: 10px;
-  box-shadow: 0 3px 7px #7955a115;
+  box-shadow: 0 3px 7px #3f5b6115;
 }
 .app-one {
   top: 35px;
   left: 12%;
-  color: #e397a9;
+  color: #d5c6a5;
   transform: rotate(-8deg);
 }
 .app-two {
@@ -165,7 +165,7 @@
 .app-four {
   bottom: 22px;
   left: 13%;
-  color: #d3a368;
+  color: #bfaa7c;
   transform: rotate(8deg);
 }
 .app-center {
@@ -173,8 +173,8 @@
   height: 58px;
   left: calc(50% - 29px);
   top: 74px;
-  background: linear-gradient(140deg, #fff, #efdbfa);
-  border-color: #cba5e2;
+  background: linear-gradient(140deg, #fff, #e2f0f3);
+  border-color: #80b7c3;
 }
 .journal-hover {
   position: absolute;
@@ -194,7 +194,7 @@
   transition:
     opacity 0.2s,
     transform 0.2s;
-  box-shadow: 0 5px 18px #77498a20;
+  box-shadow: 0 5px 18px #38515620;
 }
 .journal-card:hover .journal-hover,
 .journal-card:focus-visible .journal-hover {
@@ -203,7 +203,7 @@
 }
 .article-category {
   font-size: 9px;
-  color: #b185c4;
+  color: #4d757e;
   display: block;
   margin-top: 20px;
 }
@@ -224,7 +224,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  border-top: 1px solid #f0edf3;
+  border-top: 1px solid #eef1f2;
   padding: 17px 0;
   font-size: 9px;
   color: #9c94a3;
@@ -241,7 +241,7 @@
 }
 .article-meta > span:last-child {
   padding: 4px 5px;
-  background: #fbf9fc;
+  background: #fafbfb;
   border-radius: 4px;
   font-size: 8px;
 }

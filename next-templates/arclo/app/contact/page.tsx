@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Primitives";
 import { BriefForm } from "@/components/BriefForm";
 import { AvatarStack } from "@/components/ui/Portrait";
 import { site } from "@/site.config";
-export const metadata = { title: "Let’s talk" };
+export const metadata = { title: "Book a walkthrough" };
 export default function ContactPage() {
   return (
     <main id="main">
@@ -12,16 +12,16 @@ export default function ContactPage() {
           <div className="contact-intro">
             <span className="eyebrow">
               <MessagesSquare size={14} />
-              Let’s talk
+              Book a walkthrough
             </span>
             <h1>
-              Big ideas start
+              Show us your close.
               <br />
-              with a little hello.
+              We’ll show you ours.
             </h1>
             <p>
-              A question, a possibility, a workflow you can’t stop thinking
-              about. We’d love to hear it.
+              Thirty minutes with someone who has run a month end, built around
+              your entities, your ledger and the step that takes longest.
             </p>
             <AvatarStack />
             <a className="contact-email" href={`mailto:${site.email}`}>
@@ -30,7 +30,7 @@ export default function ContactPage() {
               <ArrowUpRight size={15} />
             </a>
             <span className="contact-footnote">
-              Thoughtful people. Useful conversations.
+              No slides. Your numbers, your questions.
             </span>
           </div>
           <BriefForm />

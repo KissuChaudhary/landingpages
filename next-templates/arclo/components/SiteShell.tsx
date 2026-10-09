@@ -30,7 +30,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       } catch {}
       return !value;
     });
-  const openWorkspace = (workflow = "leads") => {
+  const openWorkspace = (workflow = "match") => {
     if (site.links.app) window.location.assign(site.links.app);
     else setWorkspace(workflow);
   };
@@ -54,7 +54,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </div>
       {workspace && (
         <Dialog
-          title="A little automation. A real result."
+          title="A sample close, start to finish."
           onClose={() => setWorkspace(null)}
           wide
         >
@@ -63,7 +63,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       )}
       {billing && (
         <Dialog
-          title={`${billing.plan.name}, at your pace.`}
+          title={`The ${billing.plan.name} plan.`}
           onClose={() => setBilling(null)}
         >
           <div className="plan-review">

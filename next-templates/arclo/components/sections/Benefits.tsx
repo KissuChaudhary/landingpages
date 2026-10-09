@@ -1,33 +1,33 @@
-import { Blocks, Cog, MousePointer2, BriefcaseBusiness } from "lucide-react";
+import { Landmark, Stamp, FileSearch, BriefcaseBusiness } from "lucide-react";
 import { Section, SectionHead, IconTile } from "../ui/Primitives";
 const benefits = [
   {
-    icon: Cog,
-    title: "Build once. Breathe easier.",
-    text: "Give repetitive tasks a reliable home. Your agents take it from there, every time.",
+    icon: Landmark,
+    title: "Every line, matched as it lands.",
+    text: "Bank and card feeds reconcile against the ledger through the month, not in a rush on day three.",
   },
   {
-    icon: Blocks,
-    title: "Your tools, working together.",
-    text: "Keep the stack you love. Connect the dots between your people, data and apps.",
+    icon: Stamp,
+    title: "Approvals that chase themselves.",
+    text: "Entries go to the right approver by amount and account, and the reminders stop the moment they sign.",
   },
   {
-    icon: MousePointer2,
-    title: "Big ideas. Zero code.",
-    text: "Turn a spark into a working flow with clear instructions and a visual canvas.",
+    icon: FileSearch,
+    title: "Evidence behind every number.",
+    text: "Each adjustment carries its source, its reason and its sign-off. Audit season becomes another week.",
   },
 ];
 export function Logos() {
   return (
     <Section className="logos">
-      <p>Made for teams that move things forward</p>
+      <p>Closing the books at growing companies</p>
       <div className="logo-row" aria-label="Illustrative customer brands">
-        <span className="logo-field">▰ fieldwork</span>
-        <span className="logo-oslo">offstage.</span>
-        <span className="logo-vision">◉ Meridian</span>
-        <span className="logo-monaco">▦ loomhouse</span>
-        <span className="logo-delaware">◖ OFFSET</span>
-        <span className="logo-california">DAYLIGHT</span>
+        <span className="logo-mark">▰ fieldwork</span>
+        <span className="logo-serif">offstage.</span>
+        <span className="logo-round">◉ Meridian</span>
+        <span className="logo-mono">▦ loomhouse</span>
+        <span className="logo-half">◖ OFFSET</span>
+        <span className="logo-spaced">DAYLIGHT</span>
       </div>
     </Section>
   );
@@ -38,8 +38,8 @@ export function Benefits() {
       <SectionHead
         label="Benefits"
         icon={BriefcaseBusiness}
-        title="Let AI handle the everyday."
-        description="A little more breathing room. A lot more room to grow."
+        title="Spend the close on judgment."
+        description="Arclo does the matching and the chasing. Your team does the thinking."
       />
       <div className="three-grid">
         {benefits.map((item) => (

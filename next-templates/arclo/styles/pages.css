@@ -36,7 +36,7 @@
 .contact-footnote {
   font-size: 11px;
   margin-top: 18px;
-  color: #a497ae;
+  color: #5c6a6d;
 }
 .brief-form,
 .brief-review,
@@ -65,7 +65,7 @@
   display: block;
   width: 100%;
   padding: 12px 13px;
-  border: 1px solid #e4dee9;
+  border: 1px solid #e0e5e7;
   border-radius: 7px;
   background: #fdfcfe;
   color: #5e5166;
@@ -75,7 +75,7 @@
 }
 .brief-form input::placeholder,
 .brief-form textarea::placeholder {
-  color: #b3a8bd;
+  color: #73878c;
 }
 .brief-form textarea {
   resize: vertical;
@@ -97,7 +97,7 @@
 }
 .brief-form .form-error {
   font-size: 11px;
-  color: #a24567;
+  color: #a99770;
   margin: 0 0 18px;
 }
 .brief-review .eyebrow {
@@ -109,13 +109,13 @@
 .brief-review dl {
   margin: 25px 0;
   padding: 20px;
-  background: #fbf7fe;
+  background: #f9fcfc;
   border-radius: 10px;
   overflow-wrap: anywhere;
 }
 .brief-review dt {
   font-size: 10px;
-  color: #b097bc;
+  color: #5d787e;
   margin-top: 15px;
 }
 .brief-review dt:first-child {
@@ -172,10 +172,10 @@
   width: 115px;
   height: 115px;
   margin-bottom: 35px;
-  filter: drop-shadow(0 5px 40px #c990fc);
+  filter: drop-shadow(0 5px 40px #76c5d7);
 }
 .waitlist-visual .eyebrow {
-  color: #fcefff;
+  color: #f4f9fa;
   border-color: #ffffff3b;
   background: #ffffff1a;
 }
@@ -184,7 +184,7 @@
   margin: 25px 0;
 }
 .waitlist-visual p {
-  color: #e5c8f4;
+  color: #c4e2e9;
   font-size: 14px;
   max-width: 260px;
 }
@@ -194,7 +194,7 @@
   width: 280px;
   height: 160px;
   border-radius: 50%;
-  border: 1px solid #e8b1fd39;
+  border: 1px solid #abdbe639;
   transform: rotate(-25deg);
   pointer-events: none;
 }
@@ -209,7 +209,7 @@
 .article-header > .text-link {
   display: flex;
   justify-content: center;
-  color: #9a8ca5;
+  color: #576467;
   margin-bottom: 35px;
   font-size: 12px;
 }
@@ -235,7 +235,7 @@
 }
 .article-byline small {
   display: block;
-  color: #a99db3;
+  color: #617074;
   font-size: 9px;
   margin-top: 3px;
 }
@@ -295,7 +295,7 @@
 .article-body aside > a {
   display: block;
   font-size: 11px;
-  color: #a394ad;
+  color: #5a696c;
   margin-bottom: 16px;
   line-height: 1.65;
 }
@@ -315,15 +315,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 25px;
-  border: 1px solid #ebdaef;
+  border: 1px solid #dfe8ea;
   border-radius: 12px;
   margin-top: 50px;
-  color: #b77acf;
+  color: #447a87;
   font-size: 11px;
 }
 .next-article strong {
   display: block;
-  color: #5c4569;
+  color: #354346;
   font-size: 17px;
   margin-top: 10px;
   max-width: 390px;
@@ -464,7 +464,7 @@
   }
   .article-body aside {
     position: static;
-    border-bottom: 1px solid #eee5f4;
+    border-bottom: 1px solid #e8eff1;
     padding-bottom: 12px;
   }
   .article-body aside > a {

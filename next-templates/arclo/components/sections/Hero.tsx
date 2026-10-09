@@ -30,14 +30,14 @@ export function Hero() {
           </div>
           <div className="social-proof">
             <AvatarStack />
-            <span>Built for your team</span>
+            <span>Built with controllers</span>
             <span className="proof-divider" />
             <span className="proof-stars" aria-hidden="true">
               {Array.from({ length: 5 }, (_, i) => (
                 <Star key={i} size={15} fill="currentColor" />
               ))}
             </span>
-            <span>Made to flow</span>
+            <span>Ready for audit</span>
           </div>
         </div>
         <div className="hero-workspace">

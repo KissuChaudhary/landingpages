@@ -2,7 +2,7 @@ import { Sparkles } from "lucide-react";
 import { Section } from "@/components/ui/Primitives";
 import { BriefForm } from "@/components/BriefForm";
 import { Mark } from "@/components/ui/Brand";
-export const metadata = { title: "A new possibility" };
+export const metadata = { title: "Early access" };
 export default function WaitlistPage() {
   return (
     <main id="main">
@@ -13,14 +13,14 @@ export default function WaitlistPage() {
             <Mark />
             <span className="eyebrow">
               <Sparkles size={14} />
-              What’s next
+              Early access
             </span>
             <h1>
-              A little ahead
+              Multi-entity close,
               <br />
-              of the everyday.
+              a little early.
             </h1>
-            <p>Be part of a more thoughtful way to work.</p>
+            <p>Intercompany matching and group reporting, for the first few groups.</p>
           </div>
           <BriefForm waitlist />
         </div>

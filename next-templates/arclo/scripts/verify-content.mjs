@@ -22,27 +22,21 @@ const { articles } = await readModule("data/articles.ts");
 const { amount, annualSavings } = await readModule("lib/billing.ts");
 assert.equal(amount(199 / 12), "16.58", "Fractional monthly equivalents should display as currency.");
 assert.equal(annualSavings([{ monthly: 20, annual: 180 }]), 25, "Savings should derive from the configured annual charge.");
-const leads = workflows.find((item) => item.id === "leads");
-assert.equal(
-  executeWorkflow(leads, 10).matched,
-  2,
-  "Default lead filter must qualify both applicable teams.",
-);
-assert.equal(
-  executeWorkflow(leads, 20).matched,
-  1,
-  "Higher threshold must exclude the smaller qualified team.",
-);
-assert.equal(
-  executeWorkflow(leads, 30).matched,
-  0,
-  "Empty results must remain valid.",
-);
-assert.equal(
-  executeWorkflow(workflows[1]).items[0].startsWith("Priority:"),
-  true,
-);
-assert.equal(executeWorkflow(workflows[2]).items.length, 3);
+const match = workflows.find((item) => item.id === "match");
+assert.equal(executeWorkflow(match, 0).matched, 1, "At zero tolerance only the exact bank line matches.");
+assert.equal(executeWorkflow(match, 5).matched, 2, "The default $5 tolerance accepts the $4.52 difference.");
+assert.equal(executeWorkflow(match, 50).matched, 2, "The $250 lease difference always waits for review.");
+assert.equal(executeWorkflow(match, 5).items.length, 3, "Matched and unmatched lines are both reported.");
+assert.ok(executeWorkflow(match, 5).items.at(-1).startsWith("Review ·"), "Exceptions are listed after the matches.");
+const flux = workflows.find((item) => item.id === "flux");
+const variances = executeWorkflow(flux);
+assert.equal(variances.matched, 2, "Only movements above 10% and $2,000 are flagged.");
+assert.ok(variances.items[0].includes("29.6%"), "Variance percentages derive from the sample balances.");
+const approvals = executeWorkflow(workflows.find((item) => item.id === "approve"));
+assert.equal(approvals.items.length, 3);
+assert.ok(approvals.items[0].endsWith("Controller, then CFO"), "Entries from $25,000 need two approvers.");
+assert.ok(approvals.items[1].endsWith("Peer review, then post"), "Small entries post after a peer review.");
+assert.equal(approvals.matched, 2, "Two entries are above the controller's limit.");
 for (const plan of site.plans) {
   assert.equal(plan.limits.length, 4);
   assert.ok(Number.isInteger(plan.annual));
@@ -66,5 +60,5 @@ for (const route of [
 ])
   assert.ok(existsSync(path.join(root, route)), `Missing ${route}`);
 console.log(
-  "PASS: lead thresholds, empty outputs, digest ordering, onboarding tasks, pricing, article content, routes and assets.",
+  "PASS: match tolerance, exceptions, variance thresholds, approval routing, pricing, article content, routes and assets.",
 );

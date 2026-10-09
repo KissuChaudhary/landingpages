@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ArrowRight, Check, Plus, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Plus, Sparkles, Stamp } from "lucide-react";
 import { ToolIcon } from "./ToolIcon";
 import { useExperience } from "../Experience";
 export function BuilderScene() {
@@ -10,35 +10,35 @@ export function BuilderScene() {
         <path d="M65 44H250V140H160V44" />
       </svg>
       <div className="mini-node builder-trigger">
-        <ToolIcon name="trigger" small />
+        <ToolIcon name="bank" small />
         <span>
-          New teammate
+          Bank feed
           <br />
-          <b>joins your team</b>
+          <b>synced at 6:00</b>
         </span>
       </div>
-      <div className="mini-node builder-agent">
+      <div className="mini-node builder-rules">
         <ToolIcon small />
         <span>
-          Onboarding
+          Matching
           <br />
-          <b>AI assistant</b>
+          <b>rules applied</b>
         </span>
       </div>
       <div className="mini-node builder-message">
-        <ToolIcon name="chat" small />
+        <ToolIcon name="approval" small />
         <span>
-          Prepare a warm
+          Exceptions
           <br />
-          <b>welcome message</b>
+          <b>sent to Lena</b>
         </span>
       </div>
       <div className="mini-node builder-calendar">
-        <ToolIcon name="calendar" small />
+        <ToolIcon name="ledger" small />
         <span>
-          Plan the
+          Matches
           <br />
-          <b>first week</b>
+          <b>posted to ledger</b>
         </span>
       </div>
       <span className="scene-cursor">↖</span>
@@ -54,7 +54,7 @@ export function IntegrationScene() {
       <div className="integration-center">
         <ToolIcon />
       </div>
-      {["email", "chat", "calendar", "database", "document", "trigger"].map(
+      {["bank", "card", "ledger", "payroll", "document", "calendar"].map(
         (name, index) => (
           <div
             className={`integration-satellite satellite-${index}`}
@@ -71,36 +71,36 @@ export function ModuleScene() {
   return (
     <div className="feature-scene module-scene" aria-hidden="true">
       <div className="module-library">
-        <span>YOUR BUILDING BLOCKS</span>
+        <span>OCTOBER CHECKLIST</span>
         <div>
-          <ToolIcon name="email" small />
-          Summarize an inbox
+          <ToolIcon name="bank" small />
+          Reconcile bank accounts
         </div>
         <div>
-          <ToolIcon name="chat" small />
-          Prepare an update
+          <ToolIcon name="document" small />
+          Review accruals
         </div>
         <div className="module-selected">
-          <ToolIcon name="document" small />
-          Create a checklist <Plus size={13} />
+          <ToolIcon name="calendar" small />
+          Lock the period <Plus size={13} />
         </div>
       </div>
       <div className="module-chain">
         <div className="mini-node">
-          <ToolIcon name="database" small />
+          <ToolIcon name="check" small />
           <span>
-            Read
+            Day 1
             <br />
-            <b>team context</b>
+            <b>banks and cards</b>
           </span>
         </div>
         <span className="chain-line" />
         <div className="mini-node">
-          <ToolIcon name="document" small />
+          <ToolIcon name="ledger" small />
           <span>
-            Create
+            Day 3
             <br />
-            <b>welcome guide</b>
+            <b>accruals booked</b>
           </span>
         </div>
       </div>
@@ -108,38 +108,43 @@ export function ModuleScene() {
   );
 }
 export function AnalyticsScene() {
-  const [period, setPeriod] = useState("week");
+  const [period, setPeriod] = useState("close");
+  // Share of bank lines reconciled: through this close by day, or at each month's close.
   const values =
-    period === "week" ? [22, 30, 24, 43, 55, 48, 72] : [30, 44, 64, 94];
+    period === "close" ? [18, 34, 51, 66, 79, 90, 97] : [62, 74, 85, 97];
   const x = (index: number) => 25 + index * (438 / (values.length - 1));
   return (
     <div className="feature-scene analytics-scene">
       <div className="chart-heading">
-        <span>Workflow activity</span>
+        <span>Lines reconciled</span>
         <div>
           <button
-            aria-pressed={period === "week"}
-            onClick={() => setPeriod("week")}
+            aria-pressed={period === "close"}
+            onClick={() => setPeriod("close")}
           >
-            Week
+            This close
           </button>
           <button
-            aria-pressed={period === "month"}
-            onClick={() => setPeriod("month")}
+            aria-pressed={period === "months"}
+            onClick={() => setPeriod("months")}
           >
-            Month
+            By month
           </button>
         </div>
       </div>
       <svg
         viewBox="0 0 480 170"
         role="img"
-        aria-label={`Illustrative ${period} workflow activity chart`}
+        aria-label={
+          period === "close"
+            ? "Illustrative chart: lines reconciled rise from 18% on day one to 97% on day seven of the close"
+            : "Illustrative chart: lines reconciled at close rise from 62% in July to 97% in October"
+        }
       >
         <defs>
           <linearGradient id="arclo-chart" x1="0" y1="0" x2="0" y2="1">
-            <stop stopColor="#cf7fea" stopOpacity=".35" />
-            <stop offset="1" stopColor="#cf7fea" stopOpacity="0" />
+            <stop stopColor="#2a7d88" stopOpacity=".3" />
+            <stop offset="1" stopColor="#2a7d88" stopOpacity="0" />
           </linearGradient>
         </defs>
         {[30, 75, 120].map((y) => (
@@ -155,7 +160,7 @@ export function AnalyticsScene() {
             .map((value, index) => `${x(index)},${145 - value * 1.2}`)
             .join(" ")}
           fill="none"
-          stroke="#c66be3"
+          stroke="#1f6c77"
           strokeWidth="2.5"
         />
         <polyline
@@ -164,34 +169,34 @@ export function AnalyticsScene() {
         />
         {values.map((_, i) => (
           <text key={i} x={x(i)} y="169">
-            {period === "week"
-              ? ["M", "T", "W", "T", "F", "S", "S"][i]
-              : `W${i + 1}`}
+            {period === "close" ? `D${i + 1}` : ["Jul", "Aug", "Sep", "Oct"][i]}
           </text>
         ))}
       </svg>
       <span className="chart-caption">
-        Illustrative activity · explore the two views
+        Illustrative close data · switch between the two views
       </span>
     </div>
   );
 }
 export function PromptScene() {
-  const [text, setText] = useState("Help a new teammate feel at home.");
+  const [text, setText] = useState(
+    "Software is up because the annual design tool renewal landed in October.",
+  );
   const { openWorkspace } = useExperience();
   return (
     <div className="feature-scene prompt-scene">
-      <div className="mini-node prompt-agent">
-        <ToolIcon />
+      <div className="mini-node prompt-account">
+        <ToolIcon name="document" />
         <span>
-          Your next
+          6100 Software
           <br />
-          <b>onboarding assistant</b>
+          <b>up 29.6% on September</b>
         </span>
       </div>
       <div className="prompt-input">
         <label className="sr-only" htmlFor="feature-prompt">
-          Example agent instruction
+          Draft variance note
         </label>
         <textarea
           id="feature-prompt"
@@ -204,16 +209,16 @@ export function PromptScene() {
             className="refine-button"
             onClick={() =>
               setText(
-                "Create a first-day checklist using the team’s workspace, people and product context.",
+                "One-off annual renewal, paid in October. Moved to prepaids and released monthly from November.",
               )
             }
           >
-            <Sparkles size={12} /> Refine idea
+            <Sparkles size={12} /> Tighten the note
           </button>
           <button
-            aria-label="Explore onboarding workflow"
+            aria-label="Explore the variance workflow"
             className="prompt-submit"
-            onClick={() => openWorkspace("onboarding")}
+            onClick={() => openWorkspace("flux")}
           >
             <ArrowRight size={18} />
           </button>
@@ -234,17 +239,17 @@ export function FrameworkScene() {
       </div>
       <div className="framework-stack stack-front">
         <div>
-          <Check size={13} /> Context
+          <Check size={13} /> Source
         </div>
         <div>
-          <Sparkles size={13} /> Instructions
+          <Sparkles size={13} /> Rules
         </div>
         <div>
-          <ArrowRight size={13} /> Actions
+          <Stamp size={13} /> Sign-off
         </div>
         <div>
           <ToolIcon small />
-          Your agent
+          Your close
         </div>
       </div>
       <span className="framework-spark spark-one">✦</span>

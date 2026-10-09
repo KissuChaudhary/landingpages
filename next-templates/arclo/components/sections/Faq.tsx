@@ -9,22 +9,22 @@ export function Faq() {
       <div className="faq-grid">
         <div className="faq-intro reveal">
           <span className="eyebrow">
-            <MessagesSquare size={14} />A little clarity
+            <MessagesSquare size={14} />Before you start
           </span>
           <h2>
-            Good questions.
+            What finance teams
             <br />
-            Clear answers.
+            ask us first.
           </h2>
           <p>
-            A few things to know before your first idea becomes a working flow.
+            Straight answers on systems, controls and audit.
           </p>
           <div className="faq-contact">
             <AvatarStack />
-            <h3>Still thinking it through?</h3>
-            <p>We’re happy to help you find a starting point.</p>
+            <h3>Something we didn’t cover?</h3>
+            <p>Walk us through your close and we’ll show you where to start.</p>
             <Button secondary href={route("/contact")}>
-              Let’s talk
+              Book a walkthrough
             </Button>
           </div>
         </div>

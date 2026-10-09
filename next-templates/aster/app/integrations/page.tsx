@@ -7,7 +7,7 @@ export default function IntegrationsPage() {
       <SectionHead
         label="Bring your world in"
         lines={["The right context.", "In one shared space."]}
-        text="Explore the sources and channels that can shape your support workspace."
+        text="Explore the creative tools and project workflows you can bring into your review space."
         primary
       />
       <IntegrationDirectory />

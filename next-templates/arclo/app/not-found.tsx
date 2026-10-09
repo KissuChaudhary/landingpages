@@ -6,12 +6,12 @@ export default function NotFound() {
       <Section className="not-found">
         <span className="eyebrow">A small detour · 404</span>
         <h1>
-          This flow goes
+          This page didn’t
           <br />
-          somewhere else.
+          reconcile.
         </h1>
-        <p>Let’s get you back to a useful starting point.</p>
-        <Button href={route("/")}>Find your way home</Button>
+        <p>It isn’t here, but the rest of the books are in order.</p>
+        <Button href={route("/")}>Back to the overview</Button>
       </Section>
     </main>
   );

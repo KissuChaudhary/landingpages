@@ -2,7 +2,7 @@
   --ink: #202528;
   --muted: #7b7e84;
   --line: #ededee;
-  --purple: #ad32e5;
+  --accent: #287789;
   --font: var(--font-manrope), sans-serif;
   --frame: 1200px;
 }
@@ -95,11 +95,11 @@ ul {
   list-style: none;
 }
 ::selection {
-  background: #ecd1fa;
-  color: #352043;
+  background: #dbecf0;
+  color: #203a43;
 }
 :focus-visible {
-  outline: 3px solid #ad32e5;
+  outline: 3px solid #287789;
   outline-offset: 5px;
 }
 .frame {
@@ -197,18 +197,18 @@ ul {
   color: white;
   border: 2px solid transparent;
   background:
-    linear-gradient(115deg, #362d40, #280d33 66%, #47161d) padding-box,
-    linear-gradient(110deg, #dfc8e8, #bb2afd 55%, #ff979f) border-box;
+    linear-gradient(115deg, #24343a, #0c1f26 66%, #15313a) padding-box,
+    linear-gradient(110deg, #e6d8b6, #2a7d90 55%, #d9c38f) border-box;
   box-shadow:
-    -5px 0 15px #ab31ef25,
-    5px 2px 13px #fa92993b,
-    0 2px 4px #31183440;
+    -5px 0 15px #297a8d25,
+    5px 2px 13px #e2d0a93b,
+    0 2px 4px #182d3440;
 }
 .button-glow:hover {
   box-shadow:
-    -5px 0 25px #ab31ef50,
-    5px 2px 20px #fa929950,
-    0 2px 4px #31183440;
+    -5px 0 25px #297a8d50,
+    5px 2px 20px #e2d0a950,
+    0 2px 4px #182d3440;
 }
 .button-secondary {
   background: #fafafb;
@@ -227,7 +227,7 @@ ul {
   transition: background 0.2s;
 }
 .icon-button:hover {
-  background: #f6f0fb;
+  background: #f2f7f9;
 }
 .icon-tile {
   width: 37px;
@@ -236,10 +236,10 @@ ul {
   place-items: center;
   border-radius: 8px;
   color: white;
-  background: linear-gradient(130deg, #60546c, #aa36db 55%, #fba0b4);
+  background: linear-gradient(130deg, #3c4648, #2d7281 55%, #e3d1ab);
   box-shadow:
     inset 0 1px 3px #ffffff9c,
-    0 2px 3px #43185315;
+    0 2px 3px #1b425015;
 }
 .brand {
   display: inline-flex;
@@ -253,10 +253,10 @@ ul {
 .brand-mark {
   width: 38px;
   height: 38px;
-  filter: drop-shadow(0 1px 3px #8925964a);
+  filter: drop-shadow(0 1px 3px #25525c4a);
 }
 .brand-period {
-  color: #a72fd9;
+  color: #2c6f7e;
 }
 .text-link {
   display: inline-flex;
@@ -266,7 +266,7 @@ ul {
   font-weight: 650;
 }
 .text-link:hover {
-  color: #9834c9;
+  color: #306774;
 }
 .muted {
   color: var(--muted);
@@ -280,7 +280,7 @@ ul {
   height: 30px;
   background-size: 510%;
   border-radius: 50%;
-  background-color: #eedff2;
+  background-color: #e3ecee;
   flex-shrink: 0;
 }
 .avatar-stack {

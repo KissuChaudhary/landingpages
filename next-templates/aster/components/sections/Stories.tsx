@@ -1,12 +1,12 @@
 import { site } from "@/site.config";
 import { teams } from "@/data/teams";
-import { tickets, ticketMetrics } from "@/data/tickets";
+import { reviews, reviewMetrics } from "@/data/reviews";
 import { SectionHead, Avatar, Art } from "../ui/Primitives";
 import { TeamMark } from "../ui/Brand";
 export function Story() {
-  const metrics = ticketMetrics(tickets);
+  const metrics = reviewMetrics(reviews);
   return (
-    <section className="story section container" id="customer-story">
+    <section className="story section container" id="reviewer-story">
       <SectionHead label={site.story.label} lines={site.story.heading} />
       <div className="story-layout">
         <div className="story-art">
@@ -31,9 +31,9 @@ export function Story() {
           </div>
           <div className="story-stats">
             {[
-              [`${metrics.rate}%`, "Resolved in the example"],
-              [String(metrics.handoff), "With the team"],
-              [`${metrics.csat.toFixed(1)}/5`, "Example satisfaction"],
+              [`${metrics.rate}%`, "Approved in the example"],
+              [String(metrics.projects), "Creative projects"],
+              [String(metrics.total), "Project reviews"],
             ].map(([number, label]) => (
               <div key={label}>
                 <strong>{number}</strong>

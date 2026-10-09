@@ -396,15 +396,15 @@ summary:focus-visible {
   line-height: 1.3;
   white-space: nowrap;
 }
-.status.resolved {
+.status.approved {
   color: #3b6550;
   background: #edf4ee;
 }
-.status.open {
+.status.pending {
   color: #816936;
   background: #f7f0df;
 }
-.status.handoff {
+.status.changes {
   color: #77545d;
   background: #f5eaed;
 }

@@ -116,20 +116,20 @@
   color: #8c8e82;
   margin-top: 5px;
 }
-.ticket-dot {
+.review-dot {
   width: 5px;
   height: 5px;
   background: #c9cbbb;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.ticket-dot.open {
+.review-dot.pending {
   background: #bbaa74;
 }
-.ticket-dot.resolved {
+.review-dot.approved {
   background: #7d9d83;
 }
-.ticket-dot.handoff {
+.review-dot.changes {
   background: #bd8e97;
 }
 .preview-conversation {
@@ -309,25 +309,25 @@
 .answer-source svg:last-child {
   margin-left: auto;
 }
-.knowledge-row {
+.briefs-row {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 16px 0;
   border-bottom: 1px solid #eff0e8;
 }
-.knowledge-row strong {
+.briefs-row strong {
   font-size: 11px;
   font-weight: 400;
   display: block;
 }
-.knowledge-row small {
+.briefs-row small {
   font-size: 9px;
   color: #99a08e;
   margin-top: 5px;
   display: block;
 }
-.knowledge-row > span {
+.briefs-row > span {
   font-size: 9px;
   display: flex;
   align-items: center;
@@ -335,7 +335,7 @@
   color: #66856b;
   margin-left: auto;
 }
-.handoff-owner {
+.changes-owner {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -345,16 +345,16 @@
   padding: 11px;
   margin-top: 18px;
 }
-.handoff-owner span:not(.avatar) {
+.changes-owner span:not(.avatar) {
   font-size: 11px;
 }
-.handoff-owner small {
+.changes-owner small {
   font-size: 9px;
   display: block;
   color: #8b9480;
   margin-top: 4px;
 }
-.handoff-owner svg {
+.changes-owner svg {
   margin-left: auto;
 }
 .scene-metrics {
