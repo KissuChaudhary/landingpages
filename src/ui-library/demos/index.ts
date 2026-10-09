@@ -25,6 +25,7 @@ import ThemeToggleDemo from './theme-toggle-demo';
 import PricingCalculatorDemo from './pricing-calculator-demo';
 import ComparisonTableDemo from './comparison-table-demo';
 import OnboardingChecklistDemo from './onboarding-checklist-demo';
+import SortableListDemo from './sortable-list-demo';
 import ChangelogTimelineDemo from './changelog-timeline-demo';
 import ChangelogTraceDemo from './changelog-trace-demo';
 import ChangelogScrubberDemo from './changelog-scrubber-demo';
@@ -97,6 +98,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'pricing-calculator': PricingCalculatorDemo,
   'comparison-table': ComparisonTableDemo,
   'onboarding-checklist': OnboardingChecklistDemo,
+  'sortable-list': SortableListDemo,
   'changelog-timeline': ChangelogTimelineDemo,
   'changelog-trace': ChangelogTraceDemo,
   'changelog-scrubber': ChangelogScrubberDemo,

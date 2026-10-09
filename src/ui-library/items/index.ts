@@ -23,6 +23,7 @@ import { themeToggle } from './theme-toggle';
 import { pricingCalculator } from './pricing-calculator';
 import { comparisonTable } from './comparison-table';
 import { onboardingChecklist } from './onboarding-checklist';
+import { sortableList } from './sortable-list';
 import { changelogTimeline } from './changelog-timeline';
 import { changelogTrace } from './changelog-trace';
 import { changelogScrubber } from './changelog-scrubber';
@@ -70,4 +71,4 @@ import { activityRings } from './activity-rings';
 import { agentPlayback } from './agent-playback';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, codeInput, dateRangePicker, morphingNav, featureTabs, scrollStory, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, liveActivity, liveCursors, liveMap, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, agentComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, voiceNote, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, taskLog, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, inlineRewrite, diffReview, actionReceipt, chatNotice, usageMeter, usageLimits, chatScroll, messageEdit, chatHistory, earningsChart, stepsChart, revenueChart, areaChart, comboChart, stageBars, activityRings, agentPlayback];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, codeInput, dateRangePicker, morphingNav, featureTabs, scrollStory, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, liveActivity, liveCursors, liveMap, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, sortableList, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, agentComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, voiceNote, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, taskLog, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, inlineRewrite, diffReview, actionReceipt, chatNotice, usageMeter, usageLimits, chatScroll, messageEdit, chatHistory, earningsChart, stepsChart, revenueChart, areaChart, comboChart, stageBars, activityRings, agentPlayback];
