@@ -1,0 +1,78 @@
+@keyframes scene-enter {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+[data-ready="true"][data-motion="on"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s var(--ease) var(--delay, 0ms),
+    transform 0.8s var(--ease) var(--delay, 0ms);
+}
+[data-ready="true"][data-motion="on"] [data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+[data-motion="on"] .hero h1 > span {
+  animation: hero-enter 0.85s var(--ease) both;
+  animation-delay: calc(var(--line) * 120ms);
+}
+[data-motion="off"] *,
+[data-motion="off"] *::before,
+[data-motion="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+[data-motion="off"] [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+[data-motion="off"] .benefit-panel {
+  position: relative;
+  top: auto;
+}
+html[data-motion="off"] {
+  scroll-behavior: auto;
+}
+[data-ready="true"][data-motion="on"] .modal [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .benefit-panel {
+    position: relative;
+    top: auto;
+  }
+}

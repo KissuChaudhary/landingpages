@@ -1,3 +1,6 @@
+import { arcloTemplate } from './template-catalog/arclo';
+import { asterTemplate } from './template-catalog/aster';
+
 export interface TemplateItem {
   slug: string;
   title: string;
@@ -28,6 +31,8 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    asterTemplate,
+    arcloTemplate,
     {
       slug: 'daybreak',
       title: 'Daybreak: AI Marketing Workspace',

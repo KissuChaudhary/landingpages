@@ -12,6 +12,8 @@ const Loading = () => (
 );
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  'aster': dynamic(() => import('@/templates/aster'), { ssr: false, loading: Loading }),
+  'arclo': dynamic(() => import('@/templates/arclo'), { ssr: false, loading: Loading }),
   'daybreak': dynamic(() => import('@/templates/daybreak'), { ssr: false, loading: Loading }),
   'conduit': dynamic(() => import('@/templates/conduit'), { ssr: false, loading: Loading }),
   'footnote': dynamic(() => import('@/templates/footnote'), { ssr: false, loading: Loading }),

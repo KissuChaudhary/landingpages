@@ -1,3 +1,6 @@
+import { arcloDetails } from './template-catalog/arclo';
+import { asterDetails } from './template-catalog/aster';
+
 /**
  * Long-form content for each template's detail page. Everything here is taken from the template's own
  * README, package.json and source, so keep it in step when a template changes.
@@ -38,6 +41,8 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  aster: asterDetails,
+  arclo: arcloDetails,
   daybreak: {
     name: 'Daybreak',
     kind: 'AI marketing and analytics workspace landing page template',
