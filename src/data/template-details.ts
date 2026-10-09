@@ -38,6 +38,42 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  conduit: {
+    name: 'Conduit',
+    kind: 'AI agent and workflow platform landing page template',
+    summary: 'A complete platform launch experience with a centered serif hero, original cobalt imagery and alternating white and black chapters. Real local demonstrations make the product story tangible, while separate pricing, contact and resource pages complete the template.',
+    bestFor: ['AI agent and automation platforms', 'Workflow orchestration products', 'Developer tools and connected workspaces'],
+    design: 'Light Merriweather headings and Inter text. Square controls, dashed frame rules, subtle square intersection marks and original cobalt glass and point-cloud artwork. A two-part hero visual leads into a dark problem chapter, alternating product rows, a flow graphic, a dark capability grid and a tabbed story panel. One consistent label introduces each main heading.',
+    sections: [
+      { name: 'Navigation and hero', detail: 'Announcement strip, compact square navigation, accessible company/mobile menus, a centered serif heading and four selectable agent blueprints over original glass artwork.' },
+      { name: 'Problem and product', detail: 'A dark three-column problem chapter, an editable agent builder, a working four-step workflow with a JSON receipt and switchable analytics.' },
+      { name: 'Impact and capabilities', detail: 'A glass flow graphic, isometric context layers, connected logic nodes, task rails, model selection and functional tool controls.' },
+      { name: 'Industries and stories', detail: 'Six sectors linked to example blueprints and four keyboard-accessible workflow stories with local detail dialogs.' },
+      { name: 'Control and FAQ', detail: 'Original access, context and oversight seals followed by native FAQ disclosures.' },
+      { name: 'Closing and footer', detail: 'A two-column black closing section, working resource links, remembered motion preference and a large pixel wordmark.' },
+      { name: 'Pricing and contact', detail: 'Three plans on a dedicated page, correct monthly/annual reviews and a contact form that can prepare a local brief or submit to your configured endpoint.' },
+      { name: 'Resource pages', detail: 'About, guides, changelog, accessibility and editable privacy/terms placeholder pages, plus a custom missing-page state.' },
+    ],
+    customizeIntro: 'Start in `site.config.ts` for the brand, marketing copy, plans and destinations. Agent examples, workflow stories and resource content each have their own small data file.',
+    customize: [
+      { what: 'Brand, copy, plans, FAQ and destinations', where: 'site.config.ts' },
+      { what: 'Agent instructions, tools, approval boundaries and run receipt', where: 'data/blueprints.ts' },
+      { what: 'Workflow stories and supporting pages', where: 'data/stories.ts and data/pages.ts' },
+      { what: 'Palette, gutters, type and controls', where: 'styles/base.css' },
+      { what: 'Original image assets and provenance', where: 'public/images/ and ASSETS.md' },
+      { what: 'Section composition and product scenes', where: 'components/sections/ and components/product/' },
+      { what: 'Pricing and contact integration', where: 'components/PricingContent.tsx and components/ContactContent.tsx' },
+    ],
+    fonts: ['Merriweather', 'Inter'],
+    dependencies: ['next', 'react', 'react-dom', 'lucide-react'],
+    styling: 'CSS',
+    images: 'Three original images generated with the built-in imagegen tool, optimized to WebP and shipped locally. Original HTML/CSS/SVG logos, diagrams, seals and pixel wordmark. No reference-site assets.',
+    node: '20.9',
+    files: 46,
+    lines: 6260,
+    beforeLaunch: 'Replace the fictional brand, identities, example metrics and plan allowances. Set your app, contact endpoint and each plan’s monthly/annual checkout destination. Replace privacy and terms with your own policies. The blueprints, run receipts, story dialogs and local contact exports work; connect your production AI, accounts, tools and billing separately.',
+    updated: '2026-10-09',
+  },
   index: {
     name: 'Index',
     kind: 'AI research and knowledge workspace landing page template',

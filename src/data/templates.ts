@@ -29,6 +29,27 @@ export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
     {
+      slug: 'conduit',
+      title: 'Conduit: AI Agent & Workflow Platform',
+      category: 'Landing Pages',
+      defaultTheme: 'light',
+      badge: 'AI Agents & Workflows',
+      description: 'Light serif typography, original cobalt glass imagery and precise white-to-black chapters. A complete agent platform launch template with working product demonstrations, workflow stories, pricing and contact pages.',
+      tags: ['AI Agents', 'Workflow Platform', 'Serif', 'Original Imagery', 'Next.js 15'],
+      features: [
+        'Centered serif hero, two-part visual and original optimized cobalt artwork',
+        'Editable agent blueprints, workflow execution and real JSON run exports',
+        'Interactive capability diagrams and keyboard-accessible workflow stories',
+        'Separate pricing and contact pages, correct billing and local brief exports',
+      ],
+      accentColor: 'from-blue-400 to-blue-700',
+      previewUrl: '/preview/conduit',
+      standaloneUrl: '/demos/conduit/index.html',
+      demoUrl: '/demo/conduit',
+      detailUrl: '/template/conduit',
+      thumbnailUrl: '/previews/card/conduit.webp',
+    },
+    {
       "slug": "index",
       "title": "Index: AI Research & Knowledge Workspace",
       "category": "Landing Pages",

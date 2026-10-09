@@ -1,0 +1,242 @@
+.problem {
+  padding: 100px 32px;
+}
+.problem .section-head {
+  max-width: 950px;
+  margin-bottom: 64px;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+}
+.problem-grid article {
+  padding: 32px 28px;
+  border-right: 1px solid var(--line);
+}
+.problem-grid article:last-child {
+  border-right: 0;
+}
+.problem-symbol {
+  position: relative;
+  width: 52px;
+  height: 63px;
+  color: #79a4ff;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.problem-symbol > span {
+  position: absolute;
+  inset: 12px 3px;
+  border: 1px solid #3a4c70;
+  transform: rotate(-22deg) skew(10deg);
+  background: linear-gradient(135deg, #1758ff14, transparent);
+  z-index: -1;
+}
+.problem-grid h3 {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.problem-grid p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.reveal-statement span {
+  display: inline;
+}
+.impact-board {
+  border: 1px solid var(--line);
+}
+.impact-plot {
+  position: relative;
+  padding: 40px 44px 0;
+  overflow: hidden;
+}
+.impact-metrics {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  gap: 30px;
+}
+.impact-metrics > div:last-child {
+  width: 43%;
+}
+.impact-metrics strong {
+  font: 300 43px/1.1 var(--serif);
+  letter-spacing: -0.045em;
+}
+.impact-metrics strong > span {
+  font: 400 28px/1 var(--serif);
+}
+.impact-metrics p {
+  font-size: 13px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+.impact-graphic {
+  width: 100%;
+  margin-top: 10px;
+}
+.impact-caption {
+  padding: 35px 44px;
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 65px;
+  border-top: 1px solid var(--line);
+}
+.impact-caption h3 {
+  font-size: 26px;
+  max-width: 650px;
+}
+.impact-caption p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 17px;
+  max-width: 650px;
+}
+.impact-result {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.impact-result strong {
+  font: 300 65px/1 var(--serif);
+}
+.impact-result p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+@media (max-width: 1199px) {
+  .problem-grid article {
+    padding: 28px 22px;
+  }
+  .problem-grid h3 {
+    font-size: 23px;
+  }
+}
+@media (max-width: 1023px) {
+  .problem {
+    padding: 80px 26px;
+  }
+  .problem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .problem-grid article:nth-child(2) {
+    border-right: 0;
+  }
+  .problem-grid article:last-child {
+    grid-column: span 2;
+    border-top: 1px solid var(--line);
+  }
+  .impact-plot {
+    padding: 30px 30px 0;
+  }
+  .impact-caption {
+    padding: 30px;
+    gap: 32px;
+    grid-template-columns: 1fr 140px;
+  }
+  .impact-caption h3 {
+    font-size: 24px;
+  }
+  .impact-metrics strong {
+    font-size: 36px;
+  }
+  .impact-metrics strong > span {
+    font-size: 23px;
+  }
+}
+@media (max-width: 767px) {
+  .problem-grid {
+    grid-template-columns: 1fr;
+  }
+  .problem-grid article {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .problem-grid article:last-child {
+    grid-column: auto;
+    border-top: 0;
+    border-bottom: 0;
+  }
+  .problem-symbol {
+    margin-bottom: 18px;
+  }
+  .problem-grid article {
+    padding: 27px;
+  }
+  .impact-metrics {
+    gap: 25px;
+  }
+  .impact-metrics > div:last-child {
+    width: 48%;
+  }
+  .impact-caption {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .impact-result {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .impact-graphic {
+    min-height: 200px;
+  }
+}
+@media (max-width: 639px) {
+  .problem {
+    padding: 64px 16px;
+  }
+  .problem .section-head {
+    margin-bottom: 38px;
+  }
+  .problem-grid h3 {
+    font-size: 24px;
+  }
+  .problem-grid p {
+    font-size: 14px;
+  }
+  .problem-grid article {
+    padding: 26px 22px;
+  }
+  .impact-plot {
+    padding: 27px 22px 0;
+  }
+  .impact-metrics strong {
+    font-size: 31px;
+  }
+  .impact-metrics strong > span {
+    font-size: 19px;
+  }
+  .impact-metrics p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .impact-graphic {
+    min-height: 150px;
+    width: 150%;
+    max-width: none;
+    margin-left: -25%;
+    margin-top: 24px;
+  }
+  .impact-caption {
+    padding: 25px 22px;
+  }
+  .impact-caption h3 {
+    font-size: 23px;
+  }
+  .impact-caption p {
+    font-size: 13px;
+  }
+  .impact-result strong {
+    font-size: 48px;
+  }
+  .impact-result p {
+    font-size: 12px;
+  }
+}
