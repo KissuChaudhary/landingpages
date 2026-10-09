@@ -7,6 +7,8 @@ import { Solutions } from "@/components/sections/Solutions";
 import { Stories } from "@/components/sections/Stories";
 import { Pricing } from "@/components/sections/Pricing";
 import { Closing } from "@/components/sections/Closing";
+import { Week } from "@/components/sections/Week";
+import { Trust } from "@/components/sections/Trust";
 export default function Home() {
   return (
     <main id="main">
@@ -14,9 +16,11 @@ export default function Home() {
       <Logos />
       <Product />
       <Workspace />
+      <Week />
       <Integrations />
       <Solutions />
       <Stories />
+      <Trust />
       <Pricing />
       <Closing />
     </main>

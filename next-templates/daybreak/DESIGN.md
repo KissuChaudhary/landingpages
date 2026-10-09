@@ -1,6 +1,6 @@
 # Design direction
 
-The Nexura reference informed page rhythm and layout: a compact sticky navigation, centered two-line hero with a landscape and prompt, logo strip, product tabs, wide dashboard, split integration chapter, audience rows, expanding portraits, three plans and an illustrated closing section. Daybreak uses an original brand, copy, portraits, landscapes and code.
+Daybreak’s page moves through a compact sticky navigation, a centered two-line hero with a landscape and prompt, a logo strip, product tabs, a wide dashboard over a painted valley, a week of mornings on a sun-path arc, a split integration chapter, audience rows, expanding portraits, a “Calm by design” access panel, three plans and an illustrated closing section.
 
 ## Visual system
 
@@ -18,7 +18,7 @@ Motion uses CSS transforms/opacity, IntersectionObserver and one requestAnimatio
 
 ## Responsive behavior
 
-Desktop preserves the reference's centered hero, split product/integration chapters, sticky audience links and horizontal portrait row. Phone layouts use a compact menu, stacked hero actions, full-width prompt, vertical feature controls, single-column audience rows, a selected story above three portrait choices and stacked plans. The decorative dashboard preview crops intentionally; opening its tour provides a fully responsive, readable dashboard.
+Desktop keeps the centered hero, split product/integration chapters, sticky audience links and horizontal portrait row. Phone layouts use a compact menu, stacked hero actions, full-width prompt, vertical feature controls, single-column audience rows, a selected story above three portrait choices and stacked plans. The dashboard preview is a picture with art direction: the full desktop layout on wide screens and a short, readable card on phones. The week section keeps its arc and switches to short day names; the access panel stacks under its copy.
 
 ## Content discipline
 

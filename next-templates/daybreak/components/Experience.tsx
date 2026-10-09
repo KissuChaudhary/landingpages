@@ -7,10 +7,8 @@ import { money } from "@/data/campaigns";
 import { href } from "@/lib/urls";
 import { Modal } from "./ui/Modal";
 import { Report } from "./product/Report";
-import { Dashboard } from "./product/Dashboard";
 type DialogState =
   | { type: "report"; question: string }
-  | { type: "tour" }
   | { type: "plan"; plan: number; annual: boolean }
   | { type: "integration"; id: string }
   | null;
@@ -28,9 +26,7 @@ export function Experience({ children }: { children: ReactNode }) {
   const title =
     dialog?.type === "report"
       ? "Your campaign review"
-      : dialog?.type === "tour"
-        ? "Explore the workspace"
-        : plan
+      : plan
           ? `${plan.name} plan review`
           : integration
             ? integration.name
@@ -43,20 +39,9 @@ export function Experience({ children }: { children: ReactNode }) {
           key={dialog.type}
           title={title}
           onClose={() => setDialog(null)}
-          wide={dialog.type === "tour" || dialog.type === "report"}
+          wide={dialog.type === "report"}
         >
           {dialog.type === "report" && <Report question={dialog.question} />}
-          {dialog.type === "tour" && (
-            <div className="tour-dialog">
-              <p className="eyebrow">A working local preview</p>
-              <h2>A place for the whole picture.</h2>
-              <p>
-                Switch channels and periods. Export the campaign data whenever
-                you need it.
-              </p>
-              <Dashboard interactive />
-            </div>
-          )}
           {plan && dialog.type === "plan" && (
             <div className="plan-review">
               <p className="eyebrow">Your starting point</p>

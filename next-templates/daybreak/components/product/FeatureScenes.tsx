@@ -1,4 +1,5 @@
 "use client";
+import { asset } from "@/lib/urls";
 import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
@@ -22,7 +23,6 @@ import {
 import { workspaceIdentity } from "@/data/teams";
 import { BrandMark } from "../ui/Brand";
 import { exportReport } from "./Report";
-import { Dashboard } from "./Dashboard";
 import { useExperience } from "../Experience";
 export function InsightScene() {
   const [source, setSource] = useState("All channels");
@@ -241,7 +241,21 @@ export function FeatureScene({ selected }: { selected: number }) {
   ) : selected === 1 ? (
     <CampaignScene />
   ) : selected === 2 ? (
-    <Dashboard compact />
+    <picture className="scene-dashboard">
+      <source
+        media="(max-width: 700px)"
+        srcSet={asset("/images/dashboard-phone.webp")}
+        width="1080"
+        height="1452"
+      />
+      <img
+        src={asset("/images/dashboard.webp")}
+        alt="The Daybreak overview: the month’s revenue, return on spend, conversions and spend, with trends and campaigns."
+        width="2540"
+        height="1486"
+        loading="lazy"
+      />
+    </picture>
   ) : (
     <WorkflowScene />
   );

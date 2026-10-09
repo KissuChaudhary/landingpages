@@ -1,38 +1,40 @@
-"use client";
-import { Play, ArrowUpRight } from "lucide-react";
-import { asset } from "@/lib/urls";
-import { useExperience } from "../Experience";
+import { ArrowUpRight } from "lucide-react";
+import { asset, href } from "@/lib/urls";
 import { Frame } from "../ui/Primitives";
-import { Dashboard } from "../product/Dashboard";
 export function Workspace() {
-  const { open } = useExperience();
   return (
     <Frame className="workspace-section" id="demo">
       <div className="workspace-caption">
         <p className="eyebrow">The whole picture, together</p>
-        <button className="text-button" onClick={() => open({ type: "tour" })}>
-          Explore the workspace
+        <a className="text-button" href={href("/integrations")}>
+          See what it connects to
           <ArrowUpRight size={16} />
-        </button>
+        </a>
       </div>
       <div className="workspace-landscape">
         <img
           src={asset("/images/landscape.webp")}
-          alt="A painted coastal valley at sunrise"
+          alt=""
           width="1536"
           height="1024"
           loading="lazy"
         />
-        <div className="workspace-preview">
-          <Dashboard interactive={false} />
-        </div>
-        <button
-          className="tour-play"
-          aria-label="Open interactive workspace tour"
-          onClick={() => open({ type: "tour" })}
-        >
-          <Play size={24} fill="currentColor" />
-        </button>
+        {/* The dashboard is a picture: a full layout on wide screens, its own phone layout on small ones. */}
+        <picture className="workspace-preview" data-reveal>
+          <source
+            media="(max-width: 700px)"
+            srcSet={asset("/images/dashboard-phone.webp")}
+            width="1080"
+            height="1452"
+          />
+          <img
+            src={asset("/images/dashboard.webp")}
+            alt="The Daybreak overview: attributed revenue, return on spend, conversions and spend for the month, a conversion trend, spend by channel and a table of five campaigns."
+            width="2540"
+            height="1486"
+            loading="lazy"
+          />
+        </picture>
       </div>
     </Frame>
   );

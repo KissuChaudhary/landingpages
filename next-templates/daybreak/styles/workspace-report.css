@@ -28,60 +28,15 @@
 }
 .workspace-preview {
   position: relative;
+  display: block;
 }
-.workspace-preview:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #fff3;
+.workspace-preview img {
+  width: 100%;
+  height: auto;
   border-radius: 13px;
-}
-.workspace-preview .dashboard {
+  border: 1px solid #e9ebee;
+  background: #fff;
   box-shadow: 0 12px 40px #27303526;
-}
-.workspace-preview button,
-.workspace-preview select {
-  pointer-events: none;
-  opacity: 1;
-}
-.tour-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #101112;
-  color: #fff;
-  box-shadow: 0 8px 30px #0003;
-  transition:
-    transform 0.25s,
-    box-shadow 0.25s;
-}
-.tour-play svg {
-  margin-left: 3px;
-}
-.tour-play:hover {
-  transform: translate(-50%, -50%) scale(1.08);
-  box-shadow: 0 10px 35px #0004;
-}
-.tour-dialog {
-  padding: 30px;
-}
-.tour-dialog > p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 16px;
-  margin-bottom: 30px;
-}
-.tour-dialog h2 {
-  font-size: 32px;
-}
-.tour-dialog .dashboard {
-  box-shadow: none;
 }
 .report-view {
   padding: 30px;
@@ -185,106 +140,18 @@
     font-size: 12px;
   }
   .workspace-landscape {
-    padding: 24px 16px;
-    min-height: 355px;
+    padding: 28px 18px;
   }
   .workspace-preview {
-    overflow: hidden;
-    border-radius: 8px;
+    max-width: 380px;
+    margin: 0 auto;
   }
-  .workspace-preview .dashboard {
-    width: 650px;
-    grid-template-columns: 110px 1fr;
-    font-size: 9px;
-    pointer-events: none;
-    min-height: 360px;
-  }
-  .workspace-preview .dashboard .dash-main {
-    padding: 18px;
-  }
-  .workspace-preview .dash-metrics strong {
-    font-size: 22px;
-  }
-  .workspace-preview .dash-charts {
-    gap: 12px;
-  }
-  .workspace-preview .dash-chart {
-    padding: 12px;
-  }
-  .workspace-preview .dash-chart > header > span {
-    display: none;
-  }
-  .workspace-preview .campaign-table {
-    font-size: 9px;
-  }
-  .workspace-preview .campaign-table th,
-  .workspace-preview .campaign-table td {
-    padding: 8px;
+  .workspace-preview img {
+    border-radius: 16px;
   }
   .workspace-preview .bar-chart,
   .workspace-preview .channel-bars {
     height: 100px;
-  }
-  .tour-play {
-    width: 52px;
-    height: 52px;
-  }
-  .tour-dialog {
-    padding: 20px 14px;
-  }
-  .tour-dialog h2 {
-    font-size: 26px;
-  }
-  .tour-dialog .dashboard {
-    grid-template-columns: 1fr;
-  }
-  .tour-dialog .dash-sidebar {
-    display: none;
-  }
-  .tour-dialog .dash-main {
-    padding: 16px 12px;
-  }
-  .tour-dialog .dash-toolbar {
-    display: block;
-  }
-  .tour-dialog .dash-toolbar select {
-    margin-top: 16px;
-    font-size: 11px;
-  }
-  .tour-dialog .dash-metrics {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .tour-dialog .dash-metrics > div > span {
-    font-size: 10px;
-  }
-  .tour-dialog .dash-metrics strong {
-    font-size: 27px;
-  }
-  .tour-dialog .dash-metrics small {
-    font-size: 9px;
-  }
-  .tour-dialog .dash-charts {
-    grid-template-columns: 1fr;
-  }
-  .tour-dialog .dash-chart h4 {
-    font-size: 12px;
-  }
-  .tour-dialog .dash-table-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  .tour-dialog .dash-table-header h4 {
-    font-size: 13px;
-  }
-  .tour-dialog .dash-table-header select {
-    font-size: 11px;
-  }
-  .tour-dialog .export-small {
-    font-size: 11px;
-  }
-  .tour-dialog .campaign-table {
-    font-size: 11px;
   }
   .report-view {
     padding: 24px 16px;

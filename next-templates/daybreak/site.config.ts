@@ -54,6 +54,67 @@ export const site = {
       "Bring the picture together",
     ],
   },
+  week: {
+    label: "A week in a better light",
+    heading: "Every morning starts\nwith one clear thing.",
+    text: "Daybreak watches the numbers overnight, so each day opens with something worth your attention, and nothing that isn’t.",
+    days: [
+      {
+        day: "Monday",
+        short: "Mon",
+        time: "8:00",
+        title: "The weekly brief",
+        text: "What moved, what didn’t and the one campaign worth a closer look, waiting before your first coffee.",
+      },
+      {
+        day: "Tuesday",
+        short: "Tue",
+        time: "9:12",
+        title: "A budget nudge",
+        text: "A small, specific suggestion with the numbers beside it. Nothing moves until someone says yes.",
+      },
+      {
+        day: "Wednesday",
+        short: "Wed",
+        time: "11:30",
+        title: "A creative check-in",
+        text: "Two versions, one clear leader. You see it before the rest of the budget does.",
+      },
+      {
+        day: "Thursday",
+        short: "Thu",
+        time: "7:45",
+        title: "Caught early",
+        text: "When a campaign starts to slip, you hear about it midweek, not at the end of the month.",
+      },
+      {
+        day: "Friday",
+        short: "Fri",
+        time: "16:00",
+        title: "Ready for Monday",
+        text: "The week wraps itself up, and next Monday’s brief is already scheduled for the people who need it.",
+      },
+    ],
+  },
+  trust: {
+    label: "Calm by design",
+    heading: "Clear about what\nit can touch.",
+    text: "Daybreak reads your numbers. Anything that would change a campaign waits for a person.",
+    principles: [
+      {
+        title: "Read-only to begin",
+        text: "New connections start with reporting access. Nothing else.",
+      },
+      {
+        title: "Changes wait for a yes",
+        text: "Budget moves and pauses stay suggestions until someone approves them.",
+      },
+      {
+        title: "Yours to take with you",
+        text: "Reports, history and settings export whenever you like.",
+      },
+    ],
+  },
   solutions: {
     label: "Room for the way you work",
     heading: "A good fit for every team.",

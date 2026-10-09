@@ -1,9 +1,10 @@
 @import "../styles/base.css";
 @import "../styles/navigation-hero.css";
 @import "../styles/product.css";
-@import "../styles/dashboard.css";
+@import "../styles/charts.css";
 @import "../styles/workspace-report.css";
 @import "../styles/integrations.css";
+@import "../styles/week-trust.css";
 @import "../styles/solutions.css";
 @import "../styles/stories.css";
 @import "../styles/closing.css";

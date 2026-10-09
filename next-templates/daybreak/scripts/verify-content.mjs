@@ -54,10 +54,10 @@ assert(data.answerFor("strongest campaign").includes("9.0"));
 assert(data.answerFor("weekly report").includes("50,730"));
 assert.equal(new Set(integrations.map((i) => i.id)).size, integrations.length);
 articles.forEach((a) => assert(pages[a.slug]));
-for (const image of ["hero", "landscape", "mara", "elliot", "noa", "leo"])
+for (const image of ["hero", "landscape", "mara", "elliot", "noa", "leo", "dashboard", "dashboard-phone"])
   assert(
     existsSync(new URL(`../public/images/${image}.webp`, import.meta.url)),
   );
 console.log(
-  "Billing, campaign totals, channel filters, recommendations, routes and six local images verified.",
+  "Billing, campaign totals, channel filters, recommendations, routes and eight local images verified.",
 );

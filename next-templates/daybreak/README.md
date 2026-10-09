@@ -29,7 +29,9 @@ For production, run `npm run build`, then `npm start`. `npm run typecheck` check
 - Editable hero question opens a source-linked campaign review. Questions about the strongest campaign, a report or budget guidance produce different answers from the local sample data.
 - Month/quarter selection updates metrics and the campaign table. CSV exports contain the matching data, with escaped text fields.
 - Four keyboard-accessible product views, interactive data-source selection, channel filters and a four-stage local weekly report workflow.
-- An interactive dashboard tour with period/channel filtering and matching filtered CSV exports.
+- A dashboard preview drawn as images: a full layout on wide screens and a short card on phones (`public/images/dashboard.webp`, `dashboard-phone.webp`).
+- A week of mornings on a sun-path arc: five day stops, each with its own small working interface (a brief, an approvable budget nudge, a creative test, an early warning, a scheduled report).
+- A “Calm by design” access panel: read-only connections, per-source suggestion switches, an approval rule and an activity log.
 - Clickable integration garden and a searchable, category-filtered connection directory. Each connection opens its scope guide.
 - Audience navigation follows the visible chapter. Four expanding portrait perspectives support mouse, arrow keys, Home and End.
 - Three plan reviews with precise billing. Growth is $49 monthly or $432 annually; Studio is $149 monthly or $1,308 annually.

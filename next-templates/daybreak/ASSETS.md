@@ -1,6 +1,6 @@
 # Original assets
 
-All six raster images were generated with the built-in imagegen tool for this template. No artwork, portraits, logos, screenshots or code were copied from Nexura. Generated PNG originals remain in `work/daybreak-art/` in the development workspace; the reusable template ships optimized WebP files in `public/images/`.
+All six raster images were generated with the built-in imagegen tool for this template. Generated PNG originals remain in `work/daybreak-art/` in the development workspace; the reusable template ships optimized WebP files in `public/images/`.
 
 Landscape illustrations are 1536 × 1024. Portraits are optimized to 640 × 960. Encoding and resizing use Sharp; scene contents were not composited or altered. The portraits depict fictional people.
 
@@ -12,6 +12,7 @@ Landscape illustrations are 1536 × 1024. Portraits are optimized to 640 × 960.
 | Elliot    | `public/images/elliot.webp`    | Sundial example perspective                   |
 | Noa       | `public/images/noa.webp`       | Northline example perspective                 |
 | Leo       | `public/images/leo.webp`       | Fieldwork example perspective                 |
+| Dashboard | `public/images/dashboard.webp`, `dashboard-phone.webp` | The workspace preview: rendered from the template’s own interface (desktop and phone layouts) |
 
 The sunrise brand mark, fictional company marks, integration icons, charts and diagrams are editable SVG, CSS and React. Lucide icons retain their ISC license. Inter is self-hosted by Next.js at build time and retains its SIL Open Font License. Third-party dependencies retain their respective licenses.
 
