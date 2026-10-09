@@ -3,6 +3,8 @@ import { useState } from "react";
 import { ArrowUpRight, Check, Minus } from "lucide-react";
 import { site } from "@/site.config";
 import { usePatch } from "@/components/PatchProvider";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { GridIntersections } from "@/components/ui/Grid";
 export function Pricing() {
   const [yearly, setYearly] = useState(true);
   const { choosePlan } = usePatch();
@@ -17,12 +19,10 @@ export function Pricing() {
       className="grid-section pricing-section"
       aria-label="Patch plans"
     >
+      <GridIntersections />
       <div className="pricing-intro">
         <div>
-          <p className="eyebrow">
-            <span className="section-number">{content.number}</span>
-            {content.eyebrow}
-          </p>
+          <SectionBadge label={content.badge} />
           <h2>
             {content.title}
             <br />
@@ -39,21 +39,19 @@ export function Pricing() {
               {content.yearly}
             </button>
           </div>
-          {saving > 0 && <span>{saving}% less, billed yearly</span>}
+          <span>
+            {yearly && saving > 0
+              ? `${saving}% less, billed yearly`
+              : "Billed each month"}
+          </span>
         </div>
       </div>
       <div className="plan-columns">
-        {content.plans.map((plan, index) => (
+        {content.plans.map((plan) => (
           <article
-            className={`plan-column ${index === 1 ? "plan-featured" : ""}`}
+            className={`plan-column ${"featured" in plan && plan.featured ? "plan-featured" : ""}`}
             key={plan.id}
           >
-            <div className="plan-topline">
-              <span>
-                0{index + 1} / {plan.name.toUpperCase()}
-              </span>
-              <span>{index === 1 ? "✳" : "+"}</span>
-            </div>
             <h3>{plan.name}</h3>
             <p className="plan-description">{plan.description}</p>
             <div className="plan-price">
@@ -68,16 +66,16 @@ export function Pricing() {
                   : `$${plan.monthly} billed each month`}
             </p>
             <button
-              className={`button ${index === 1 ? "button-dark" : "button-outline"}`}
+              className={`button ${"featured" in plan && plan.featured ? "button-dark" : "button-outline"}`}
               onClick={() => choosePlan(plan, yearly)}
             >
               {plan.action}
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={18} />
             </button>
             <ul>
               {plan.features.map((feature) => (
                 <li key={feature}>
-                  <Check size={13} />
+                  <Check size={16} />
                   {feature}
                 </li>
               ))}
@@ -87,21 +85,26 @@ export function Pricing() {
       </div>
       <div className="plan-comparison">
         <table>
-          <caption className="sr-only">Compare Personal and Builder</caption>
+          <caption className="sr-only">
+            Compare {content.plans.map((plan) => plan.name).join(", ")}
+          </caption>
           <thead>
             <tr>
-              <th scope="col">A FEW GOOD DETAILS</th>
-              <th scope="col">Personal</th>
-              <th scope="col">Builder</th>
+              <th scope="col">Compare plans</th>
+              {content.plans.map((plan) => (
+                <th scope="col" key={plan.id}>
+                  {plan.name}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {content.comparison.map((row) => (
               <tr key={row.label}>
                 <th scope="row">{row.label}</th>
-                {[row.personal, row.builder].map((available, index) => (
-                  <td key={index}>
-                    {available ? (
+                {content.plans.map((plan) => (
+                  <td key={plan.id}>
+                    {row.included.includes(plan.id) ? (
                       <Check size={15} aria-label="Included" />
                     ) : (
                       <Minus size={15} aria-label="Not included" />

@@ -10,7 +10,7 @@ export function ResponsivePreview() {
   return (
     <div className="responsive-demo">
       <div className="responsive-toolbar">
-        <span>OUTPUT / CONSIDERED AT EVERY SIZE</span>
+        <span>Preview width</span>
         <div role="group" aria-label="Responsive component width">
           <button aria-pressed={!narrow} onClick={() => setNarrow(false)}>
             <Monitor size={13} />
@@ -23,15 +23,9 @@ export function ResponsivePreview() {
         </div>
       </div>
       <div className="responsive-stage">
-        <span className="measurement-line" aria-hidden="true" />
         <div className={`responsive-output ${narrow ? "is-narrow" : ""}`}>
           <OutputPreview example={getExample("signup")} applied />
         </div>
-        <span className="responsive-note">
-          {narrow
-            ? "THE SMALL SCREEN, GIVEN ROOM."
-            : "GOOD IDEAS FIT MORE THAN ONE FRAME."}
-        </span>
       </div>
     </div>
   );

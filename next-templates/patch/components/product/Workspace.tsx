@@ -1,13 +1,6 @@
 "use client";
 import { useId, useState } from "react";
-import {
-  ArrowUpRight,
-  Check,
-  Copy,
-  Download,
-  GitBranch,
-  Undo2,
-} from "lucide-react";
+import { ArrowUpRight, Check, Copy, Download, Undo2 } from "lucide-react";
 import { Mark } from "@/components/ui/Brand";
 import { site } from "@/site.config";
 import { CodeView } from "./CodeView";
@@ -87,8 +80,12 @@ export function Workspace({
             code={state.code}
             file={state.example.file}
             label={site.actions.export}
-            onDownload={() => state.setMessage(`${state.example.file} export prepared.`)}
-            onUnavailable={() => state.setMessage("Export unavailable in this browser.")}
+            onDownload={() =>
+              state.setMessage(`${state.example.file} export prepared.`)
+            }
+            onUnavailable={() =>
+              state.setMessage("Export unavailable in this browser.")
+            }
           >
             <Download size={15} />
           </ComponentDownload>
@@ -113,7 +110,7 @@ export function Workspace({
             />
             <div className="workspace-output">
               <div className="preview-label">
-                <span>OUTPUT / {state.applied ? "CHANGED" : "ORIGINAL"}</span>
+                <span>Preview · {state.applied ? "Updated" : "Original"}</span>
                 <ArrowUpRight size={12} />
               </div>
               <OutputPreview example={state.example} applied={state.applied} />
@@ -146,9 +143,9 @@ export function Workspace({
         )}
       </div>
       <div className="workspace-bottom">
-        <span className="workspace-branch">
-          <GitBranch size={13} /> first-commit
-        </span>
+        <p className="workspace-status" role="status">
+          {state.message}
+        </p>
         <button
           className={`apply-button ${state.applied ? "is-applied" : ""}`}
           onClick={state.apply}
@@ -156,12 +153,6 @@ export function Workspace({
           {state.applied ? <Undo2 size={13} /> : <Check size={13} />}
           {state.applied ? site.actions.undo : site.actions.apply}
         </button>
-      </div>
-      <div className="workspace-status" role="status">
-        {state.message ||
-          (state.applied
-            ? "Your change, kept. Ready for the next step."
-            : "Inspect the example. Make the change your own.")}
       </div>
     </div>
   );

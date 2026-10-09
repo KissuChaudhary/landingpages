@@ -1,29 +1,28 @@
 .pricing-intro {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 40px;
-  padding: 65px 52px;
+  padding: 48px var(--section-padding);
   border-bottom: 1px solid var(--rule);
 }
 .pricing-intro h2 {
-  font-size: clamp(36px, 4vw, 48px);
+  font-size: var(--text-title);
   font-weight: 450;
-  letter-spacing: -2px;
-  line-height: 1.12;
-  margin-top: 25px;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
 }
 .pricing-description {
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: var(--text-body);
+  line-height: 1.7;
   color: var(--muted);
-  max-width: 360px;
-  margin-top: 20px;
+  max-width: 400px;
+  margin-top: 18px;
 }
 .pricing-period {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 12px;
   align-items: flex-end;
 }
 .pricing-period > div {
@@ -37,8 +36,9 @@
   border: 0;
   background: transparent;
   padding: 10px 18px;
+  min-height: 44px;
   border-radius: 3px;
-  font-size: 11px;
+  font-size: var(--text-small);
   color: var(--muted);
 }
 .pricing-period button[aria-pressed="true"] {
@@ -46,91 +46,83 @@
   color: var(--canvas);
 }
 .pricing-period > span {
-  font: 9px var(--font-mono);
+  font-size: var(--text-small);
   color: var(--olive);
 }
 .plan-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.plan-column {
-  padding: 36px 52px 42px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-bottom: 1px solid var(--rule);
 }
-.plan-column:first-child {
+.plan-column {
+  min-width: 0;
+  padding: 40px var(--section-padding);
+}
+.plan-column:not(:last-child) {
   border-right: 1px solid var(--rule);
 }
 .plan-featured {
   background: var(--surface);
-}
-.plan-topline {
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  font: 9px var(--font-mono);
-}
-.plan-topline > span:last-child {
-  font-size: 20px;
-  line-height: 1;
-  color: var(--olive);
+  box-shadow: inset 0 3px var(--olive);
 }
 .plan-column h3 {
-  font-size: 28px;
-  font-weight: 450;
-  letter-spacing: -1px;
-  margin-top: 25px;
+  font-size: var(--text-heading);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
 }
 .plan-description {
-  font-size: 12px;
-  line-height: 1.8;
+  font-size: var(--text-body);
+  line-height: 1.7;
   color: var(--muted);
-  margin-top: 10px;
-  min-height: 44px;
+  margin-top: 12px;
+  min-height: 54px;
   max-width: 350px;
 }
 .plan-price {
-  font-size: 63px;
-  letter-spacing: -4px;
-  font-weight: 400;
+  font-size: 56px;
+  letter-spacing: -0.05em;
+  font-weight: 450;
   line-height: 1.1;
-  margin-top: 27px;
+  margin-top: 24px;
 }
 .plan-price > span {
-  font-size: 11px;
+  font-size: var(--text-small);
   letter-spacing: 0;
   color: var(--muted);
-  margin-left: 14px;
+  margin-left: 12px;
 }
 .plan-total {
-  font: 9px/1.7 var(--font-mono);
+  font-size: var(--text-small);
+  line-height: 1.6;
   color: var(--muted);
-  margin-top: 13px;
+  margin-top: 12px;
 }
 .plan-column > .button {
-  display: flex;
-  width: 100%;
+  width: 220px;
+  max-width: 100%;
   justify-content: space-between;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 .plan-column ul {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   list-style: none;
   padding: 0;
-  margin: 26px 0 0;
+  margin: 28px 0 0;
 }
 .plan-column li {
   display: flex;
-  gap: 10px;
   align-items: center;
-  font-size: 11px;
+  gap: 10px;
+  font-size: var(--text-small);
   color: var(--muted);
 }
 .plan-column li > svg {
   color: var(--olive);
 }
 .plan-comparison {
-  padding: 18px 52px 0;
+  padding: 24px var(--section-padding) 0;
 }
 .plan-comparison table {
   width: 100%;
@@ -142,12 +134,12 @@
   text-align: left;
 }
 .plan-comparison th:first-child {
-  width: 52%;
+  width: 40%;
 }
 .plan-comparison thead th {
-  font: 9px var(--font-mono);
+  font-size: var(--text-small);
   color: var(--muted);
-  padding: 20px 0;
+  padding: 16px 0;
 }
 .plan-comparison th:not(:first-child),
 .plan-comparison td {
@@ -157,89 +149,51 @@
   border-top: 1px solid var(--rule);
 }
 .plan-comparison tbody th {
-  font-size: 11px;
-  padding: 17px 0;
+  font-size: var(--text-small);
+  padding: 18px 0;
   color: var(--muted);
 }
 .plan-comparison td {
-  font-size: 11px;
   color: var(--olive);
 }
+.plan-comparison td > svg {
+  display: inline-block;
+}
 .pricing-note {
-  font: 9px/1.8 var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1.6;
   color: var(--muted);
-  padding: 28px 52px 38px;
-  max-width: 760px;
+  padding: 24px var(--section-padding) 32px;
 }
-@media (max-width: 900px) {
-  .pricing-intro {
-    padding: 45px 32px;
-  }
-  .plan-column {
-    padding: 30px 32px 36px;
-  }
-  .plan-comparison {
-    padding-inline: 32px;
-  }
-  .pricing-note {
-    padding-inline: 32px;
-  }
-  .pricing-period button {
-    padding: 10px 14px;
-  }
-  .pricing-intro h2 {
-    font-size: 40px;
-  }
-}
-@media (max-width: 640px) {
-  .pricing-intro {
-    padding: 40px 23px;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 28px;
-  }
-  .pricing-intro h2 {
-    font-size: 37px;
-    letter-spacing: -1.8px;
-  }
-  .pricing-period {
-    align-items: flex-start;
-  }
-  .pricing-period button {
-    min-height: 40px;
-    padding: 10px 20px;
-  }
+@media (max-width: 1000px) {
   .plan-columns {
     grid-template-columns: 1fr;
   }
-  .plan-column {
-    padding: 28px 23px 35px;
-  }
-  .plan-column:first-child {
+  .plan-column:not(:last-child) {
     border-right: 0;
+    border-bottom: 1px solid var(--rule);
   }
   .plan-description {
     min-height: 0;
   }
-  .plan-price {
-    margin-top: 23px;
+}
+@media (max-width: 640px) {
+  .pricing-intro {
+    padding-block: 36px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
   }
-  .plan-comparison {
-    padding: 10px 23px 0;
+  .pricing-period {
+    align-items: flex-start;
   }
-  .plan-comparison th:first-child {
-    width: 54%;
-  }
-  .plan-comparison thead th {
-    font-size: 8px;
-    line-height: 1.8;
+  .plan-column {
+    padding-block: 32px;
   }
   .plan-comparison tbody th {
-    font-size: 10px;
-    line-height: 1.7;
-    padding: 15px 8px 15px 0;
+    padding-right: 12px;
   }
-  .pricing-note {
-    padding: 25px 23px 30px;
+  .plan-comparison thead th {
+    font-size: 12px;
   }
 }

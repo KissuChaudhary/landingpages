@@ -9,6 +9,7 @@ export type Plan = {
   action: string;
   href: { monthly: string; yearly: string };
   features: string[];
+  featured?: boolean;
 };
 export const site = {
   brand: {
@@ -42,40 +43,32 @@ export const site = {
     undo: "Undo change",
   },
   hero: {
-    eyebrow: "AN IDEA IS A GOOD PLACE TO START",
+    badge: "AI builder workspace",
     title: "From first thought to",
     emphasis: "first commit.",
     description:
       "A clear space to build, inspect, and make something your own. Bring the idea. Keep the good parts.",
     secondary: "See how it works",
-    note: "A fictional product. A working little preview.",
-    annotation: "LESS FRICTION. MORE MAKING.",
   },
   capabilities: [
-    { number: "01", title: "Describe it", detail: "Start with the idea" },
-    { number: "02", title: "See the change", detail: "Every line, in context" },
-    { number: "03", title: "Make it yours", detail: "A real, usable output" },
-    { number: "04", title: "Keep building", detail: "Your next good step" },
+    { title: "Describe it", detail: "Start with the idea" },
+    { title: "See the change", detail: "Every line, in context" },
+    { title: "Make it yours", detail: "A real, usable output" },
+    { title: "Keep building", detail: "Your next good step" },
   ],
   workspace: {
-    number: "01",
-    eyebrow: "A CLEARER WAY TO BUILD",
+    badge: "Workspace",
     title: "The whole change.",
     emphasis: "Right in front of you.",
-    description:
-      "A request, a considered change, and the thing it becomes. No hunting between tabs to see what happened.",
-    presetsLabel: "CHOOSE A STARTING POINT",
-    note: "These examples run locally. Nothing is generated or sent to a server.",
-    emptyLink: "Try an example",
+    presetsLabel: "Choose an example",
+    note: "Prepared local examples. Nothing is sent.",
     screenshot: null as { src: string; alt: string } | null,
   },
   features: {
-    number: "02",
-    eyebrow: "THOUGHTFUL, DOWN TO THE LAST BRACKET",
+    badge: "Product details",
     title: "A little less in the way.",
     emphasis: "A lot more possibility.",
     preview: {
-      tag: "01 / THE THING YOU'RE MAKING",
       title: "From code to something you can see.",
       description:
         "Inspect the output at different widths. A small screen deserves the same consideration.",
@@ -83,27 +76,23 @@ export const site = {
       mobile: "Narrow",
     },
     context: {
-      tag: "02 / JUST ENOUGH CONTEXT",
       title: "The right files. Close at hand.",
       description:
         "Keep the relevant pieces together. Choose a file to take a closer look.",
     },
     keyboard: {
-      tag: "03 / STAY IN YOUR FLOW",
       title: "Good with a keyboard.",
       description:
         "One shortcut. A clear next step. Open the command menu from anywhere on the page.",
       action: "Open command menu",
     },
     appearance: {
-      tag: "04 / IN ANOTHER LIGHT",
       title: "The same clarity. Either way.",
       description: "Chalk or graphite. Every detail has a place in both.",
       light: "Chalk",
       dark: "Graphite",
     },
     export: {
-      tag: "05 / YOURS TO KEEP",
       title: "A file. Not a dead end.",
       description:
         "Export the changed example as a React component. A small starting point, ready for your next step.",
@@ -111,8 +100,7 @@ export const site = {
     },
   },
   workflow: {
-    number: "03",
-    eyebrow: "FROM A THOUGHT TO A THING",
+    badge: "How it works",
     title: "Three steps.",
     emphasis: "One good beginning.",
     steps: [
@@ -137,8 +125,7 @@ export const site = {
     ],
   },
   useCases: {
-    number: "04",
-    eyebrow: "MADE FOR WHAT YOU WANT TO MAKE",
+    badge: "Starting points",
     title: "A starting point.",
     emphasis: "Not a stopping point.",
     items: [
@@ -173,8 +160,7 @@ export const site = {
     action: "Explore this starting point",
   },
   pricing: {
-    number: "05",
-    eyebrow: "ROOM TO START. ROOM TO GROW.",
+    badge: "Plans & pricing",
     title: "A simple way",
     emphasis: "to keep making.",
     description:
@@ -200,6 +186,7 @@ export const site = {
       },
       {
         id: "builder",
+        featured: true,
         name: "Builder",
         description: "More space for what comes next.",
         monthly: 15,
@@ -213,17 +200,43 @@ export const site = {
           "A growing component library",
         ],
       },
+      {
+        id: "studio",
+        name: "Studio",
+        description: "A shared space for your next release.",
+        monthly: 30,
+        yearly: 288,
+        action: "Build together",
+        href: { monthly: "", yearly: "" },
+        features: [
+          "Everything in Builder",
+          "Shared team workspaces",
+          "Team component presets",
+          "Project permissions",
+        ],
+      },
     ] satisfies Plan[],
     comparison: [
-      { label: "A considered workspace", personal: true, builder: true },
-      { label: "Code and output, together", personal: true, builder: true },
-      { label: "Component export", personal: true, builder: true },
-      { label: "Larger project context", personal: false, builder: true },
-      { label: "Custom presets", personal: false, builder: true },
+      {
+        label: "A considered workspace",
+        included: ["personal", "builder", "studio"],
+      },
+      {
+        label: "Code and output, together",
+        included: ["personal", "builder", "studio"],
+      },
+      {
+        label: "Component export",
+        included: ["personal", "builder", "studio"],
+      },
+      { label: "Larger project context", included: ["builder", "studio"] },
+      { label: "Custom presets", included: ["builder", "studio"] },
+      { label: "Shared team workspaces", included: ["studio"] },
+      { label: "Project permissions", included: ["studio"] },
     ],
   },
   faq: {
-    eyebrow: "A LITTLE CLARITY",
+    badge: "Questions & answers",
     title: "Before you",
     emphasis: "begin.",
     items: [
@@ -255,11 +268,11 @@ export const site = {
     ],
   },
   closing: {
-    eyebrow: "THE NEXT GOOD THING STARTS SOMEWHERE",
+    badge: "Ready to build?",
     title: "Make the",
     emphasis: "first move.",
     description: "The idea is already yours. Give it a place to begin.",
-    small: "YOUR NEXT IDEA / YOUR FIRST COMMIT",
+    secondary: "See it in action",
   },
   footer: {
     fictional: "Patch is a fictional product demonstration.",

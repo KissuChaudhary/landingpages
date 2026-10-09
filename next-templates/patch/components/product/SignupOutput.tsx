@@ -15,7 +15,7 @@ export function SignupOutput({
     <div className={`signup-output ${applied ? "is-refined" : ""}`}>
       <div className="output-brand">
         <Asterisk size={19} />
-        <span>STUDIO NOTES</span>
+        <span>Studio notes</span>
       </div>
       <h3>{applied ? example.output.title : "Studio notes"}</h3>
       <p>{applied ? example.output.description : "Notes on making things."}</p>
@@ -52,10 +52,6 @@ export function SignupOutput({
               : "An example. Nothing is sent."}
         </div>
       </form>
-      <div className="output-rule">
-        <span>MADE OF GOOD IDEAS</span>
-        <span>↗</span>
-      </div>
     </div>
   );
 }

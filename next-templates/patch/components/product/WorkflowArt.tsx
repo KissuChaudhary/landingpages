@@ -11,17 +11,9 @@ export function WorkflowArt({ step }: { step: number }) {
     return (
       <div className="workflow-request-art">
         <div className="request-card">
-          <span className="eyebrow">A THOUGHT / 001</span>
           <ArrowUpRight className="request-card-arrow" size={22} />
           <p>{example.request}</p>
-          <div>
-            <span className="request-tag">Newsletter signup</span>
-            <span className="request-card-time">READY TO EXPLORE</span>
-          </div>
         </div>
-        <span className="workflow-art-note">
-          A CLEAR INTENTION GOES A LONG WAY.
-        </span>
       </div>
     );
   if (step === 1)
@@ -36,7 +28,7 @@ export function WorkflowArt({ step }: { step: number }) {
         <FileCode2 size={37} strokeWidth={1.2} />
         <div>
           <strong>{example.file}</strong>
-          <span>REACT COMPONENT / WITH YOUR CHANGE</span>
+          <span>React component</span>
         </div>
         <span className="kept-check">
           <Check size={16} />

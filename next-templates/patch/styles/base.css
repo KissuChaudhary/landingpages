@@ -1,4 +1,10 @@
 :root {
+  --text-title: 40px;
+  --text-heading: 24px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-label: 12px;
+  --section-padding: 48px;
   --canvas: #fafaf7;
   --surface: #f4f5ef;
   --surface-raised: #ffffff;
@@ -53,6 +59,8 @@ body {
   background: var(--canvas);
   color: var(--ink);
   font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 button,
@@ -146,20 +154,34 @@ section[id] {
   display: flex;
   align-items: center;
   gap: 12px;
-  font: 10px/1.6 var(--font-mono);
-  letter-spacing: 0.9px;
+  font: var(--text-label)/1.6 var(--font-mono);
+  letter-spacing: 0.04em;
   color: var(--muted);
+}
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  margin-bottom: 20px;
+  padding: 5px 9px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--olive);
+  font: var(--text-label)/1.5 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 12px;
   border: 1px solid transparent;
   border-radius: 5px;
-  padding: 14px 20px;
+  padding: 12px 20px;
   min-height: 48px;
-  font-size: 12px;
+  font-size: var(--text-small);
   font-weight: 500;
   transition:
     background 0.2s,
@@ -187,7 +209,8 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 13px;
-  font-size: 12px;
+  min-height: 44px;
+  font-size: var(--text-small);
 }
 .text-link:hover {
   text-decoration: underline;
@@ -196,8 +219,8 @@ section[id] {
 .icon-button {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--rule);
   border-radius: 5px;
   background: transparent;
@@ -209,7 +232,7 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 550;
   letter-spacing: -1.6px;
 }
@@ -228,23 +251,11 @@ section[id] {
   width: 24px;
   height: 24px;
 }
-.status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--olive);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--olive) 9%, transparent);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.tiny-square {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: var(--olive);
-  margin-right: 7px;
-}
 @media (max-width: 640px) {
+  :root {
+    --text-title: 32px;
+    --section-padding: 24px;
+  }
   .button {
     min-height: 48px;
   }
@@ -253,7 +264,7 @@ section[id] {
     height: 44px;
   }
   .eyebrow {
-    font-size: 10px;
+    font-size: var(--text-label);
     letter-spacing: 0.5px;
   }
   input {

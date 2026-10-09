@@ -2,24 +2,21 @@
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GridCell, GridRow } from "@/components/ui/Grid";
+import { GridCell, GridRow, GridIntersections } from "@/components/ui/Grid";
 import { ResponsivePreview } from "@/components/product/ResponsivePreview";
 import { FileContext } from "@/components/product/FileContext";
 import { AppearancePreview } from "@/components/product/AppearancePreview";
 import { ExportPreview } from "@/components/product/ExportPreview";
 import { usePatch } from "@/components/PatchProvider";
 function FeatureCopy({
-  tag,
   title,
   description,
 }: {
-  tag: string;
   title: string;
   description: string;
 }) {
   return (
     <div className="feature-copy">
-      <span className="eyebrow">{tag}</span>
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
@@ -33,6 +30,7 @@ export function Features() {
       className="grid-section features-section"
       aria-label="Thoughtful product details"
     >
+      <GridIntersections />
       <SectionHeading {...content} />
       <GridRow className="feature-row-primary">
         <GridCell className="feature-responsive">
@@ -56,7 +54,6 @@ export function Features() {
             {content.keyboard.action}
             <ArrowUpRight size={14} />
           </button>
-          <span className="keyboard-note">⌘ / CTRL + K</span>
         </GridCell>
         <GridCell className="feature-appearance">
           <FeatureCopy {...content.appearance} />

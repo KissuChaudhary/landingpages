@@ -5,7 +5,10 @@
 @import "../styles/workspace.css";
 @import "../styles/output.css";
 @import "../styles/hero.css";
+@import "../styles/workspace-section.css";
 @import "../styles/features.css";
+@import "../styles/feature-previews.css";
+@import "../styles/feature-details.css";
 @import "../styles/workflow.css";
 @import "../styles/use-cases.css";
 @import "../styles/pricing.css";

@@ -1,5 +1,7 @@
 import { Plus } from "lucide-react";
 import { site } from "@/site.config";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { GridIntersections } from "@/components/ui/Grid";
 export function FAQ() {
   const content = site.faq;
   return (
@@ -8,8 +10,9 @@ export function FAQ() {
       className="grid-section faq-section"
       aria-label="Before you begin"
     >
+      <GridIntersections />
       <div className="faq-heading">
-        <p className="eyebrow">+ {content.eyebrow}</p>
+        <SectionBadge label={content.badge} />
         <h2>
           {content.title}
           <br />
@@ -20,10 +23,9 @@ export function FAQ() {
         </a>
       </div>
       <div className="faq-list">
-        {content.items.map((item, index) => (
+        {content.items.map((item) => (
           <details key={item.question}>
             <summary>
-              <span className="faq-index">0{index + 1}</span>
               <span>{item.question}</span>
               <Plus size={17} />
             </summary>

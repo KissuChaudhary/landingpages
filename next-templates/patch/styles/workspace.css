@@ -1,4 +1,5 @@
 .workspace-window {
+  position: relative;
   background: var(--dark);
   color: var(--on-dark);
   border: 1px solid var(--code-rule);
@@ -21,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: 500;
   letter-spacing: -0.4px;
 }
@@ -31,7 +32,7 @@
   color: var(--code-green);
 }
 .workspace-wordmark > span {
-  font: 9px var(--font-mono);
+  font: var(--text-label) var(--font-mono);
   letter-spacing: 0;
   color: var(--code-muted);
   margin-left: 5px;
@@ -41,7 +42,7 @@
   align-items: center;
   gap: 7px;
   color: var(--code-muted);
-  font-size: 9px;
+  font-size: var(--text-label);
   white-space: nowrap;
 }
 .workspace-ready > span {
@@ -66,8 +67,9 @@
   border: 0;
   background: transparent;
   padding: 9px 14px;
+  min-height: 40px;
   border-radius: 4px;
-  font-size: 10px;
+  font-size: var(--text-small);
   color: var(--code-muted);
 }
 .workspace-tabs button[aria-selected="true"] {
@@ -82,8 +84,8 @@
 .workspace-tools a {
   display: grid;
   place-items: center;
-  width: 31px;
-  height: 31px;
+  width: 40px;
+  height: 40px;
   border: 0;
   background: transparent;
   color: var(--code-muted);
@@ -109,7 +111,7 @@
   line-height: 1.4;
 }
 .workspace-request p {
-  font-size: 11px;
+  font-size: var(--text-small);
   line-height: 1.7;
   max-width: 460px;
 }
@@ -130,12 +132,12 @@
   gap: 7px;
   color: var(--code-muted);
   padding: 11px 14px;
-  font: 9px var(--font-mono);
+  font: var(--text-label) var(--font-mono);
   border-bottom: 1px solid var(--code-rule);
 }
 .code-language {
   margin-left: auto;
-  font-size: 8px;
+  font-size: var(--text-label);
 }
 .code-view pre {
   margin: 0;
@@ -143,7 +145,7 @@
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--code-rule) transparent;
-  font: 10px/1.9 var(--font-mono);
+  font: var(--text-label)/1.9 var(--font-mono);
   max-height: 350px;
 }
 .code-line {
@@ -170,7 +172,7 @@
 .code-excerpt-note {
   padding: 5px 14px 13px;
   color: var(--code-muted);
-  font: 7px/1.7 var(--font-mono);
+  font: var(--text-label)/1.7 var(--font-mono);
   letter-spacing: 0.15px;
 }
 .workspace-output {
@@ -184,7 +186,7 @@
   display: flex;
   justify-content: space-between;
   color: var(--code-muted);
-  font: 8px var(--font-mono);
+  font: var(--text-label) var(--font-mono);
   letter-spacing: 0.4px;
   margin-bottom: 14px;
 }
@@ -199,24 +201,19 @@
   padding: 13px 15px;
   border-top: 1px solid var(--code-rule);
 }
-.workspace-branch {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--code-muted);
-  font: 9px var(--font-mono);
-}
 .apply-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+  flex-shrink: 0;
   background: var(--code-green);
   color: #28351c;
   border: 0;
   border-radius: 4px;
   padding: 9px 12px;
-  font-size: 10px;
+  min-height: 40px;
+  font-size: var(--text-small);
 }
 .apply-button.is-applied {
   background: transparent;
@@ -225,9 +222,10 @@
   padding: 8px 11px;
 }
 .workspace-status {
-  font: 8px/1.7 var(--font-mono);
-  min-height: 33px;
-  padding: 0 15px 15px;
+  flex: 1;
+  min-width: 0;
+  font-size: var(--text-label);
+  line-height: 1.6;
   color: var(--code-muted);
 }
 .diff-heading {
@@ -237,7 +235,7 @@
   gap: 14px;
   border-bottom: 1px solid var(--code-rule);
   padding: 13px 18px;
-  font: 9px var(--font-mono);
+  font: var(--text-label) var(--font-mono);
   color: var(--code-muted);
 }
 .diff-heading > span:last-child {
@@ -249,7 +247,7 @@
 .diff-label {
   display: block;
   margin: 0 18px 9px;
-  font: 8px var(--font-mono);
+  font: var(--text-label) var(--font-mono);
   color: var(--code-muted);
   letter-spacing: 0.5px;
 }
@@ -260,7 +258,7 @@
   display: flex;
   gap: 10px;
   padding: 8px 18px;
-  font: 10px/1.8 var(--font-mono);
+  font: var(--text-label)/1.8 var(--font-mono);
 }
 .diff-line > svg {
   flex-shrink: 0;
@@ -278,7 +276,7 @@
   color: #dceb99;
 }
 .diff-summary {
-  font-size: 11px;
+  font-size: var(--text-small);
   color: var(--code-muted);
   line-height: 1.8;
   padding: 0 18px 18px;
@@ -303,7 +301,7 @@
   background: transparent;
   border: 0;
   border-radius: 3px;
-  font-size: 9px;
+  font-size: var(--text-small);
   color: var(--code-muted);
 }
 .preview-size-control button[aria-pressed="true"] {
@@ -316,7 +314,7 @@
   transition: max-width 0.25s;
 }
 .workspace-preview-canvas.is-narrow {
-  max-width: 245px;
+  max-width: 280px;
 }
 .workspace-preview-canvas .output-preview {
   min-height: 240px;
@@ -341,7 +339,7 @@
     font-size: 25px;
   }
   .workspace-ready {
-    font-size: 8px;
+    font-size: var(--text-label);
   }
   .workspace-wordmark > span {
     display: none;
@@ -352,27 +350,40 @@
 }
 @media (max-width: 640px) {
   .workspace-top {
-    padding: 14px;
+    min-height: 52px;
+    padding: 14px 96px 14px 14px;
+  }
+  .workspace-ready,
+  .workspace-wordmark > span {
+    display: none;
+  }
+  .workspace-tools {
+    position: absolute;
+    top: 6px;
+    right: 8px;
   }
   .workspace-wordmark > span {
-    font-size: 8px;
+    font-size: var(--text-label);
   }
   .workspace-ready {
-    font-size: 8px;
+    font-size: var(--text-label);
   }
   .workspace-toolbar {
     padding: 6px 8px;
     gap: 5px;
   }
   .workspace-tabs {
-    gap: 1px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 4px;
   }
   .workspace-tabs button {
     padding: 9px 12px;
     min-height: 40px;
   }
   .workspace-tools button {
-    width: 37px;
+    width: 40px;
     height: 40px;
   }
   .workspace-request {
@@ -380,7 +391,7 @@
     min-height: 65px;
   }
   .workspace-request p {
-    font-size: 11px;
+    font-size: var(--text-small);
   }
   .view-build {
     grid-template-columns: 1fr;
@@ -394,10 +405,10 @@
     max-height: 208px;
   }
   .code-view pre {
-    font-size: 10px;
+    font-size: var(--text-label);
   }
   .code-excerpt-note {
-    font-size: 7px;
+    font-size: var(--text-label);
   }
   .workspace-output > .output-preview {
     min-height: 265px;
@@ -410,23 +421,15 @@
     padding: 10px 13px;
     gap: 8px;
   }
-  .workspace-status {
-    font-size: 8px;
-    min-height: 38px;
-    padding: 0 13px 14px;
-  }
-  .workspace-branch {
-    font-size: 8px;
-  }
   .workspace-preview-view {
     padding: 15px;
   }
   .diff-heading {
-    font-size: 8px;
+    font-size: var(--text-label);
     padding: 14px;
   }
   .diff-line {
-    font-size: 10px;
+    font-size: var(--text-label);
     padding-inline: 14px;
   }
   .diff-label {

@@ -3,8 +3,6 @@ import {
   Asterisk,
   Braces,
   Check,
-  Code2,
-  Command,
   FileText,
   Plus,
   Search,
@@ -21,7 +19,7 @@ export function UseCaseArtwork({ id }: { id: string }) {
           <span />
           <span />
           <span />
-          <div>your-everyday / a-good-shortcut</div>
+          <div>Workspace</div>
         </div>
         <div className="extension-lines" aria-hidden="true">
           <i />
@@ -32,19 +30,13 @@ export function UseCaseArtwork({ id }: { id: string }) {
         <div className="extension-command">
           <div className="extension-search">
             <Search size={15} />
-            <span>A thought worth finding</span>
+            <span>Search your workspace</span>
             <kbd>⌘ K</kbd>
           </div>
-          <span className="art-caption">A FEW GOOD PLACES TO GO</span>
-          {[
-            "Your saved ideas",
-            "The work in progress",
-            "Something for later",
-          ].map((label, index) => (
+          {["Saved ideas", "Current project", "Reading list"].map((label) => (
             <div className="extension-command-row" key={label}>
               <FileText size={14} />
               <span>{label}</span>
-              <span>0{index + 1}</span>
             </div>
           ))}
         </div>
@@ -58,21 +50,21 @@ export function UseCaseArtwork({ id }: { id: string }) {
       >
         <div className="component-art-heading">
           <Braces size={18} />
-          <span>GOOD PARTS / BROUGHT TOGETHER</span>
+          <span>Components</span>
         </div>
         <div className="component-pieces">
           <div className="piece-buttons">
             <span className="piece-primary">
-              Make something
+              New project
               <ArrowUpRight size={13} />
             </span>
             <span className="piece-outline">
-              A small beginning
+              Add component
               <Plus size={13} />
             </span>
           </div>
           <div className="piece-toggle">
-            <span>Keep the good parts</span>
+            <span>Auto-save</span>
             <i>
               <b />
             </i>
@@ -82,18 +74,9 @@ export function UseCaseArtwork({ id }: { id: string }) {
               <Check size={15} />
             </span>
             <div>
-              <strong>A good first step.</strong>
-              <p>Something worth building on.</p>
+              <strong>Changes saved</strong>
+              <p>Your workspace is up to date.</p>
             </div>
-          </div>
-          <div className="piece-code">
-            <Code2 size={16} />
-            <span>
-              Yours to arrange.
-              <br />
-              Yours to make your own.
-            </span>
-            <Command size={14} />
           </div>
         </div>
       </div>
@@ -108,22 +91,18 @@ export function UseCaseArtwork({ id }: { id: string }) {
           <Asterisk size={17} />
           collected.
         </span>
-        <span className="app-avatar">Y</span>
+        <span className="app-count">2 ideas</span>
       </div>
       <div className="app-art-heading">
-        <span className="art-caption">A PLACE FOR YOUR GOOD IDEAS</span>
         <h4>Worth coming back to.</h4>
-        <p>A few thoughts. A little perspective.</p>
       </div>
       <div className="app-collection">
         <div className="collection-card collection-citrus">
           <Sparkles size={18} />
-          <span>001 / A BEGINNING</span>
-          <strong>
-            What if the small
-            <br />
-            thing was enough?
-          </strong>
+          <div>
+            <strong>What if the small thing was enough?</strong>
+            <p>A first sketch for something new.</p>
+          </div>
           <ArrowUpRight size={17} />
         </div>
         <div className="collection-card collection-paper">
@@ -132,18 +111,12 @@ export function UseCaseArtwork({ id }: { id: string }) {
             <i />
             <i />
           </div>
-          <span>002 / A POSSIBILITY</span>
-          <strong>
-            An idea,
-            <br />
-            taking shape.
-          </strong>
+          <div>
+            <strong>An idea, taking shape.</strong>
+            <p>Keep the thread. Come back when you're ready.</p>
+          </div>
           <ArrowUpRight size={17} />
         </div>
-      </div>
-      <div className="app-art-footer">
-        <span>2 THOUGHTS, KEPT.</span>
-        <span>+ ADD A LITTLE MORE</span>
       </div>
     </div>
   );

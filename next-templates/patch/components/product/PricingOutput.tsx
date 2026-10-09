@@ -14,7 +14,6 @@ export function PricingOutput({
   const annual = applied && yearly;
   return (
     <div className="pricing-output">
-      <span className="output-overline">BUILDER / A GOOD PLACE TO BEGIN</span>
       <h3>{applied ? example.output.title : "Builder"}</h3>
       <p>{example.output.description}</p>
       {applied && (

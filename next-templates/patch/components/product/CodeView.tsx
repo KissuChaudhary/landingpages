@@ -59,7 +59,7 @@ export function CodeView({
       </pre>
       {compact && all.length > 10 && (
         <div className="code-excerpt-note">
-          EXCERPT / COPY OR EXPORT THE FULL FILE
+          Excerpt. Copy or export the full file.
         </div>
       )}
     </div>

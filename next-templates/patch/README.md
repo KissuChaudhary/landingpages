@@ -37,13 +37,17 @@ Next.js 15, React 19, TypeScript, Tailwind CSS 4 and Lucide. The first build fet
 | Rendered example components and interface microcopy                            | `components/product/`                                  |
 | Original logo and favicon                                                      | `components/ui/Brand.tsx`, `public/icon.svg`           |
 
-Each section and product visual has its own component. CSS is grouped by responsibility. The `PatchProvider` wrapper coordinates the hero example, dialogs and appearance; the main workspace has independent state.
+Each section and product visual has its own component. CSS is grouped by responsibility. The `PatchProvider` wrapper coordinates the hero example, dialogs and appearance; the main workspace has independent state. Each main section has one configurable `badge` label, rendered by the shared `SectionBadge` component. `GridIntersections` supplies the decorative plus marks at the main rail junctions; its placement follows each section border.
+
+`styles/base.css` defines five shared type roles and the action sizes. `styles/grid.css` controls the frame and section connections. Feature layout, preview controls and smaller product details live in separate stylesheets. Workspace, workflow, use cases and FAQ share a 4/8 column division; the hero retains its 5/7 composition.
 
 ### Connect the real product
 
 Set `links.app` to send primary actions to your application. When empty, these actions open the local example selector. Set `links.docs` and `links.email` for your own contact information.
 
-Each pricing plan has separate `href.monthly` and `href.yearly` destinations. Connect both to the appropriate checkout or signup page. Empty destinations open a review dialog with the exact period and billing total. Prices, comparison rows and features are illustrative sample content.
+Personal, Builder and Studio form three joined pricing columns. Each plan has separate `href.monthly` and `href.yearly` destinations. Connect both to the appropriate checkout or signup page. Empty destinations open a review dialog with the exact period and billing total. Set `featured: true` to emphasize a plan; comparison rows use `included` arrays containing the applicable plan IDs. Prices, comparison rows and features are illustrative sample content.
+
+The closing section uses an ink-colored field, a cropped logo watermark and two actions. The primary action follows `links.app`; the secondary action links to the workspace. Its badge, headline and action copy live in `site.config.ts`.
 
 The signup example only changes its local confirmation state. Connect your actual email provider or product inside `components/product/SignupOutput.tsx` if you want the landing-page demo to submit data. The app, authentication, AI inference and checkout are separate integrations.
 

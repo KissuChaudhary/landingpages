@@ -1,40 +1,47 @@
 # Patch verification
 
-Verified on October 8, 2026.
+Verified on October 9, 2026, after the layout refinement and the three-plan pricing, section badge and closing CTA update.
 
 ## Build and source
 
-- Strict standalone TypeScript check passed.
-- All six exported before/after React files passed strict TypeScript checking. Review excerpts are also checked against their full source.
-- Normal standalone production build passed, without a marketplace base path.
+- The standalone production build and strict TypeScript validation passed.
 - Static export under `/demos/patch` passed and was copied into the marketplace.
-- Marketplace production build passed. Its configuration skips project-wide type/lint validation; the changed marketplace integration and full UI library received a separate strict TypeScript check.
-- All seven new UI registry responses include the exact installable component source and required animation CSS, including chip-in, ping and drop-in.
-- Full template dependency audit reported zero vulnerabilities.
-- Marketplace build emitted a CSS optimizer warning for the existing UI library's `::highlight(ui-selection)` rule. Patch's standalone build emitted no such warning.
+- All six before/after React example exports pass strict TypeScript checking; their source did not change during this refinement.
+- The Patch catalog data and iframe preview entry pass a separate strict TypeScript check.
+- An actual downloaded Signup.tsx matches the complete selected example source exactly. Copied source was also checked.
+- Source uses small section components and shared UI primitives. The largest file is 444 lines. Feature layout, preview controls and smaller product details have separate stylesheets.
 
-## Browser checks
+## Layout and typography
 
-- Inspected desktop, laptop, tablet and phone layouts around 1440, 1280, 1024, 768, 390 and 320px. Narrow-screen overflow was fixed; code excerpts scroll within their own panel.
-- Geist and Geist Mono load correctly in the production export.
-- Chalk and graphite apply across the page; the chosen appearance survives reload.
-- Newsletter, pricing and quick-navigation presets coordinate requests, code, review excerpts and output.
-- Apply/Undo, Build/Review/Preview tabs, arrow-key navigation, responsive width controls and file selection work.
-- Signup validates an email and confirms locally; no data is sent.
-- Example billing switches between $15 monthly and $144 yearly. Main Builder pricing shows $12/month with $144 due yearly, or $15 due monthly. Review dialogs match the selected period.
-- Navigation search filters, handles an empty result and records a local selection. The page command menu supports filtering, arrows, Enter, Escape and Cmd/Ctrl+K.
-- Native dialogs contain forward/reverse Tab focus, restore the opener and close with Escape. Example selectors and use-case actions select the corresponding hero example.
-- Workflow tabs, use-case tabs, mobile navigation and native FAQ disclosures work.
-- Clipboard contents and actual Plan.tsx and Signup.tsx downloads were verified on standalone pages. Native export links track the selected before/after code and keep their Blob URLs alive until that source changes or the link unmounts. The final Signup export includes a unique React `useId` label/input pair; its downloaded contents match the copied source.
-- A fresh production standalone tab recorded no console warnings or errors during copy/export verification.
-- Marketplace detail page, desktop/mobile screenshots and direct responsive demo load. The demo allows downloads and delegates clipboard-write; embedded copying was confirmed. The separate `/preview/patch` frame also delegates clipboard-write.
+- Inspected desktop, tablet and phone layouts at 1440, 1280, 1024, 768, 390 and 320px, including the alternate use-case previews.
+- The navigation measures 72px on desktop and 64px on phones. Primary actions share a 48px minimum height and 14px type.
+- Standard section headings use 40px on desktop and 32px on phones. The closing headline uses a deliberate display size of 64px on desktop and 40px on phones. Body copy is 16px; small copy and controls use 14px; labels, badges and code use at least 12px.
+- Exactly one badge appears above the main heading in each of the eight sections. The shared badge component also fits at 320px.
+- Workspace, workflow, use-case and FAQ dividers have the same measured horizontal position. Outer rail connections and restored plus marks are tied to actual section borders; repeating rail ticks are removed.
+- All 20 decorative plus marks are centered on the ten main grid boundaries, including the navigation. Marker centers were checked against the live border coordinates on desktop and at 320px, with no page overflow. The marks are hidden from assistive technology.
+- Personal, Builder and Studio form equal desktop columns with measured matching price and action positions. They stack at the tablet breakpoint; the comparison ledger reflects availability across all three plans.
+- Pricing actions use restrained widths. The main editor sits flush in its cell, the app study uses a joined list, and the closing action uses one dark field with two matching actions. Both closing actions fit at 320px.
+- No page-level horizontal overflow or clipped editor controls at 320px. Code scrolls inside its own panel. On phones, copy/export actions move into the editor header.
+- Geist and Geist Mono load in the static production export. Chalk and graphite apply throughout; the chosen appearance survives reload.
+
+## Interaction checks
+
+- Apply/Undo, Build/Review/Preview tabs and arrow-key navigation work.
+- Newsletter signup validates and confirms locally. Copy and native component export still work with the revised footer.
+- Plan selection changes the request and output. Example billing reports $15 monthly or $144 yearly. Main pricing reports Personal $0, Builder $15 monthly / $144 yearly, and Studio $30 monthly / $288 yearly. Studio review dialogs were checked in both periods; annual pricing shows the correct 20% saving.
+- Workflow tabs show request, review and export views. App, extension and component studies switch correctly.
+- Primary actions, including the revised closing button, open the example selector and coordinate the chosen hero example. The closing secondary action navigates to the workspace.
+- Quick navigation supports search, empty results and local selection.
+- The command menu filters and navigates with Enter. Ctrl+K opens it with the search input focused; Escape restores the opener.
+- Mobile navigation opens and closes with Escape. Native FAQ disclosures work.
+- The production page recorded no console warnings or errors during these checks.
 
 ## Verification limits
 
-The browser tool explicitly reports that Blob downloads are not supported in embedded frames. It therefore cannot confirm the marketplace iframe's download itself. The embedded native link and status were checked; actual downloads and copied source were confirmed on the standalone page available through the demo toolbar.
+The broader marketplace/UI-library strict check currently reports TS7053 at `src/ui-library/registry/action-receipt.tsx:228`. That file belongs to the separate UI-library work and was left untouched. The Patch production build and focused catalog checks pass; no repository-wide typecheck pass is claimed.
 
-Reduced-motion CSS and storage-failure handling were inspected in source. No external AI service, email provider, app login or payment flow is connected or tested; those are documented buyer integrations. The plans, brand and product claims remain fictional sample content.
+The fictional app, email, AI service and checkout remain documented buyer integrations. All landing-page demos are local examples.
 
 ## Captures
 
-Marketplace assets come from actual running production views: `public/previews/card/patch.webp`, `card-full/patch.jpg`, `full/patch.jpg`, `mobile/patch.jpg` and `public/og/patch.jpg`. Original capture PNGs and a full graphite view are kept in the marketplace's local `work/` directory.
+Fresh production screenshots supply `public/previews/card/patch.webp`, `card-full/patch.jpg`, `full/patch.jpg`, `mobile/patch.jpg` and `public/og/patch.jpg`. Original desktop, phone and graphite captures are kept in the marketplace's local `work/` directory.

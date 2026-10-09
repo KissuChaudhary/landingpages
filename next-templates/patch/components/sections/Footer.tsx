@@ -41,7 +41,6 @@ export function Footer() {
         <span>
           © {site.brand.year} {site.brand.name}.
         </span>
-        <span>GOOD IDEAS / GOOD BEGINNINGS</span>
         <a href="#top">
           {site.footer.top}
           <ArrowUp size={13} />

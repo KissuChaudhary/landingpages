@@ -3,6 +3,7 @@
   max-width: 1248px;
   margin: 0 auto;
   border-inline: 1px solid var(--rule);
+  --rail-width: 24px;
 }
 .grid-frame::before,
 .grid-frame::after {
@@ -10,14 +11,9 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 24px;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0 71px,
-    var(--rule) 71px 72px
-  );
+  width: var(--rail-width);
   border-inline: 1px solid var(--rule);
+  pointer-events: none;
 }
 .grid-frame::before {
   right: 100%;
@@ -27,34 +23,65 @@
   left: 100%;
   border-left: 0;
 }
-.grid-section {
-  border-bottom: 1px solid var(--rule);
+.grid-section,
+.capability-strip {
   position: relative;
+  border-bottom: 1px solid var(--rule);
 }
 .grid-section::before,
-.grid-section::after {
-  content: "+";
+.grid-section::after,
+.capability-strip::before,
+.capability-strip::after {
+  content: "";
   position: absolute;
-  top: -8px;
-  z-index: 2;
+  bottom: -1px;
+  width: var(--rail-width);
+  height: 1px;
+  background: var(--rule);
+  pointer-events: none;
+}
+.grid-section::before,
+.capability-strip::before {
+  right: 100%;
+}
+.grid-section::after,
+.capability-strip::after {
+  left: 100%;
+}
+.grid-intersections {
+  position: absolute;
+  inset-inline: -0.5px;
+  bottom: -0.5px;
+  height: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.grid-intersections > span {
+  position: absolute;
+  top: 0;
+  width: 13px;
+  height: 13px;
   color: var(--faint);
-  font: 14px/14px var(--font-mono);
-  background: var(--canvas);
-  width: 14px;
-  text-align: center;
+  background:
+    linear-gradient(currentColor, currentColor) center / 7px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1px 7px no-repeat,
+    var(--canvas);
 }
-.grid-section::before {
-  left: -7px;
+.grid-intersection-left {
+  left: 0;
+  transform: translate(-50%, -50%);
 }
-.grid-section::after {
-  right: -7px;
+.grid-intersection-right {
+  right: 0;
+  transform: translate(50%, -50%);
 }
 .grid-row {
   display: grid;
   border-bottom: 1px solid var(--rule);
 }
 .grid-cell {
-  padding: 40px;
+  min-width: 0;
+  padding: var(--section-padding);
 }
 .grid-row > .grid-cell:not(:last-child) {
   border-right: 1px solid var(--rule);
@@ -62,87 +89,49 @@
 .section-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 55px;
-  padding: 64px 52px;
+  padding: 48px var(--section-padding);
   border-bottom: 1px solid var(--rule);
 }
-.section-heading > .eyebrow {
-  max-width: 310px;
-}
-.section-number {
-  display: grid;
-  place-items: center;
-  min-width: 27px;
-  height: 27px;
-  border: 1px solid var(--rule);
-  font-size: 10px;
-  letter-spacing: 0;
-}
 .section-heading h2 {
-  font-size: clamp(32px, 3.2vw, 44px);
+  font-size: var(--text-title);
   font-weight: 450;
-  letter-spacing: -2px;
-  line-height: 1.12;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
 }
 .subtle-heading {
   color: var(--muted);
 }
-.section-heading > div > p {
-  font-size: 13px;
-  line-height: 1.8;
-  max-width: 360px;
+.section-heading p {
+  font-size: var(--text-body);
+  line-height: 1.7;
+  max-width: 500px;
   color: var(--muted);
   margin-top: 18px;
 }
 @media (max-width: 1320px) {
   .grid-frame {
-    margin-inline: 35px;
-  }
-  .grid-frame::before,
-  .grid-frame::after {
-    width: 19px;
+    margin-inline: 32px;
+    --rail-width: 16px;
   }
 }
 @media (max-width: 900px) {
-  .grid-cell {
-    padding: 30px;
+  :root {
+    --section-padding: 32px;
   }
   .section-heading {
-    padding: 45px 32px;
-    gap: 30px;
-  }
-  .section-heading > .eyebrow {
-    max-width: 245px;
-  }
-  .section-heading h2 {
-    font-size: 34px;
+    padding-block: 44px;
   }
 }
 @media (max-width: 640px) {
+  :root {
+    --section-padding: 24px;
+  }
   .grid-frame {
     margin-inline: 12px;
-  }
-  .grid-frame::before,
-  .grid-frame::after {
-    width: 5px;
-    background: none;
-  }
-  .grid-cell {
-    padding: 28px 23px;
+    --rail-width: 6px;
   }
   .section-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 24px;
-    padding: 40px 23px;
-  }
-  .section-heading > .eyebrow {
-    max-width: none;
-  }
-  .section-heading h2 {
-    font-size: 34px;
-    letter-spacing: -1.6px;
+    padding-block: 36px;
   }
   .grid-row > .grid-cell:not(:last-child) {
     border-right: 0;

@@ -19,7 +19,9 @@ export function ComponentDownload({
   onDownload: () => void;
   onUnavailable: () => void;
 }) {
-  const [source, setSource] = useState<{ code: string; url: string } | null>(null);
+  const [source, setSource] = useState<{ code: string; url: string } | null>(
+    null,
+  );
   useEffect(() => {
     try {
       const url = URL.createObjectURL(

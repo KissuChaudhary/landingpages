@@ -1,7 +1,7 @@
 "use client";
 import { ArrowUpRight, Braces, Check, PanelTop, Search } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GridCell, GridRow } from "@/components/ui/Grid";
+import { GridCell, GridRow, GridIntersections } from "@/components/ui/Grid";
 import { Workspace } from "@/components/product/Workspace";
 import { useExample } from "@/lib/useExample";
 import { assetPath } from "@/lib/files";
@@ -19,10 +19,11 @@ export function WorkspaceSection() {
       className="grid-section workspace-section"
       aria-label="Explore the workspace"
     >
+      <GridIntersections />
       <SectionHeading {...content} />
       <GridRow className="workspace-section-row">
         <GridCell className="workspace-intro">
-          <span className="eyebrow">{content.presetsLabel}</span>
+          <h3 className="preset-heading">{content.presetsLabel}</h3>
           {content.screenshot ? (
             <button className="text-link" onClick={start}>
               {site.actions.start}
@@ -57,9 +58,7 @@ export function WorkspaceSection() {
               })}
             </div>
           )}
-          <p className="workspace-intro-description">{content.description}</p>
           <div className="workspace-footnote">
-            <span className="tiny-square" />
             <p>{content.note}</p>
           </div>
         </GridCell>

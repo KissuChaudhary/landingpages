@@ -14,7 +14,6 @@ export function ExportPreview() {
         <span className="export-fold" />
         <FileCode2 size={27} strokeWidth={1.3} />
         <strong>.tsx</strong>
-        <span className="file-decoration">+ YOUR NEXT STEP</span>
       </div>
       <label className="export-selector">
         <span className="sr-only">Component to export</span>

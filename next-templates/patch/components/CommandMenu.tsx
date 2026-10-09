@@ -37,7 +37,7 @@ export function CommandMenu() {
         <Search size={18} />
         <span className="sr-only">{content.title}</span>
         <input
-          autoFocus
+          data-autofocus
           placeholder={content.placeholder}
           value={query}
           role="combobox"

@@ -6,11 +6,11 @@
 .workflow-steps button {
   display: flex;
   align-items: center;
-  gap: 17px;
+  gap: 16px;
   text-align: left;
   background: transparent;
   border: 0;
-  padding: 30px 32px;
+  padding: 24px var(--section-padding);
   color: var(--muted);
 }
 .workflow-steps button:not(:last-child) {
@@ -21,252 +21,154 @@
   color: var(--accent-ink);
 }
 .workflow-number {
-  font: 11px var(--font-mono);
-  align-self: flex-start;
-  margin-top: 3px;
+  font: var(--text-label) var(--font-mono);
 }
 .workflow-steps strong {
   display: block;
-  font-size: 17px;
+  font-size: var(--text-heading);
   font-weight: 450;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.035em;
 }
 .workflow-steps button > div {
   flex: 1;
 }
-.workflow-steps button > div > span {
-  display: block;
-  font-size: 10px;
-  margin-top: 7px;
-}
 .workflow-panel {
   display: grid;
   grid-template-columns: 4fr 8fr;
-  min-height: 345px;
+  min-height: 320px;
 }
 .workflow-panel-copy {
-  padding: 43px 36px;
+  padding: 40px var(--section-padding);
   border-right: 1px solid var(--rule);
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .workflow-panel-copy h3 {
-  font-size: 28px;
+  font-size: var(--text-heading);
   font-weight: 450;
-  letter-spacing: -1.1px;
-  line-height: 1.2;
-  margin-top: 23px;
-  max-width: 240px;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
 }
 .workflow-panel-copy > p {
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.85;
+  font-size: var(--text-body);
+  line-height: 1.7;
   margin-top: 16px;
-  max-width: 280px;
-}
-.workflow-progress {
-  display: flex;
-  gap: 5px;
-  margin-top: auto;
-  padding-top: 28px;
-}
-.workflow-progress span {
-  width: 24px;
-  height: 3px;
-  background: var(--rule);
-}
-.workflow-progress .is-complete {
-  background: var(--olive);
+  max-width: 320px;
 }
 .workflow-panel-art {
   display: grid;
   place-items: center;
-  padding: 36px;
+  padding: 40px;
   background: var(--surface);
   min-width: 0;
 }
 .workflow-request-art {
   width: 100%;
-  max-width: 470px;
+  max-width: 520px;
 }
 .request-card {
   position: relative;
-  border: 1px solid var(--rule);
-  background: var(--canvas);
-  padding: 27px 30px;
-  border-radius: 5px;
-  box-shadow: var(--shadow);
+  padding: 0 44px 0 0;
 }
 .request-card-arrow {
   position: absolute;
-  right: 25px;
-  top: 25px;
+  right: 0;
+  top: 4px;
   color: var(--olive);
 }
 .request-card p {
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -0.7px;
-  line-height: 1.5;
-  max-width: 345px;
-  margin: 26px 0;
-}
-.request-card > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-.request-tag {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  font-size: 9px;
-  padding: 7px 9px;
-  border-radius: 3px;
-}
-.request-card-time {
-  font: 7px var(--font-mono);
-  color: var(--muted);
-}
-.workflow-art-note {
-  display: block;
-  margin-top: 20px;
-  text-align: center;
-  font: 8px var(--font-mono);
-  color: var(--muted);
+  font-size: 28px;
+  font-weight: 450;
+  letter-spacing: -0.035em;
+  line-height: 1.35;
 }
 .workflow-diff-art {
   width: 100%;
   max-width: 580px;
   background: var(--dark);
   color: var(--on-dark);
-  border: 1px solid var(--code-rule);
   border-radius: 5px;
   overflow: hidden;
 }
-.workflow-diff-art .diff-view {
-  min-height: 0;
-}
 .workflow-export-art {
-  max-width: 470px;
+  max-width: 520px;
   width: 100%;
 }
 .workflow-kept-file {
   display: flex;
   align-items: center;
-  gap: 20px;
-  background: var(--canvas);
-  border: 1px solid var(--rule);
-  padding: 28px;
-  border-radius: 5px;
-  margin-bottom: 22px;
+  gap: 18px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
 }
 .workflow-kept-file > svg {
   color: var(--olive);
   flex-shrink: 0;
 }
 .workflow-kept-file strong {
-  font-size: 20px;
+  font-size: var(--text-heading);
   font-weight: 450;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.035em;
 }
 .workflow-kept-file div > span {
   display: block;
-  font: 8px/1.8 var(--font-mono);
+  font: var(--text-label)/1.6 var(--font-mono);
   color: var(--muted);
   margin-top: 8px;
 }
 .kept-check {
   margin-left: auto;
-  display: grid;
-  place-items: center;
-  background: var(--accent);
-  color: var(--accent-ink);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  flex-shrink: 0;
+  color: var(--olive);
 }
 .workflow-export-art > p {
-  font: 9px/1.8 var(--font-mono);
+  font-size: var(--text-small);
+  line-height: 1.6;
   color: var(--muted);
   margin-top: 14px;
 }
 @media (max-width: 900px) {
   .workflow-steps button {
-    padding: 25px 22px;
-    gap: 12px;
-  }
-  .workflow-panel-copy {
-    padding: 32px 25px;
+    padding: 24px;
   }
   .workflow-panel-art {
-    padding: 30px 24px;
-  }
-  .request-card {
-    padding: 25px;
-  }
-  .request-card p {
-    font-size: 20px;
+    padding: 32px;
   }
 }
 @media (max-width: 640px) {
   .workflow-steps button {
-    padding: 18px 12px;
+    padding: 20px 16px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
   }
   .workflow-steps button > svg {
     display: none;
   }
-  .workflow-steps button > div > span {
-    display: none;
-  }
   .workflow-steps strong {
-    font-size: 16px;
+    font-size: 18px;
   }
   .workflow-panel {
     grid-template-columns: 1fr;
   }
   .workflow-panel-copy {
-    padding: 30px 23px;
+    padding: 32px 24px;
     border-right: 0;
     border-bottom: 1px solid var(--rule);
   }
-  .workflow-panel-copy h3 {
-    max-width: none;
-    margin-top: 17px;
-    font-size: 28px;
-  }
-  .workflow-panel-copy > p {
-    max-width: none;
-  }
-  .workflow-progress {
-    padding-top: 23px;
-  }
   .workflow-panel-art {
-    min-height: 310px;
-    padding: 30px 20px;
-  }
-  .request-card {
-    padding: 24px 20px;
+    min-height: 280px;
+    padding: 32px 24px;
   }
   .request-card p {
-    font-size: 19px;
-  }
-  .request-card > div {
-    flex-wrap: wrap;
+    font-size: 24px;
   }
   .workflow-kept-file {
-    padding: 20px;
-    gap: 14px;
+    gap: 12px;
   }
   .workflow-kept-file strong {
-    font-size: 18px;
-  }
-  .workflow-kept-file div > span {
-    font-size: 7px;
+    font-size: 20px;
   }
 }

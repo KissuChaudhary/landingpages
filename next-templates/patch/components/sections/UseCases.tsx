@@ -3,6 +3,7 @@ import { useId, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { GridIntersections } from "@/components/ui/Grid";
 import { UseCaseArtwork } from "@/components/product/UseCaseArtwork";
 import { usePatch } from "@/components/PatchProvider";
 import { assetPath } from "@/lib/files";
@@ -18,6 +19,7 @@ export function UseCases() {
       className="grid-section use-cases-section"
       aria-label="A few good starting points"
     >
+      <GridIntersections />
       <SectionHeading {...content} />
       <div className="use-case-body">
         <div className="use-case-copy">
@@ -40,7 +42,6 @@ export function UseCases() {
                   moveTab(event, index, content.items.length, setSelected, true)
                 }
               >
-                <span>0{index + 1}</span>
                 {entry.label}
                 <ArrowUpRight size={15} />
               </button>
@@ -61,10 +62,6 @@ export function UseCases() {
           id={`${uid}-panel`}
           aria-labelledby={`${uid}-${selected}`}
         >
-          <div className="use-case-stage-caption">
-            <span>GOOD IDEAS / DIFFERENT FORMS</span>
-            <span>0{selected + 1}</span>
-          </div>
           {item.screenshot ? (
             <img
               className="product-screenshot"
@@ -74,9 +71,6 @@ export function UseCases() {
           ) : (
             <UseCaseArtwork id={item.id} />
           )}
-          <span className="use-case-stage-foot">
-            THE STARTING POINT IS ONLY THE START.
-          </span>
         </div>
       </div>
     </section>

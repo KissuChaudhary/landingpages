@@ -1,23 +1,19 @@
+import { SectionBadge } from "./SectionBadge";
 export function SectionHeading({
-  number,
-  eyebrow,
+  badge,
   title,
   emphasis,
   children,
 }: {
-  number?: string;
-  eyebrow: string;
+  badge: string;
   title: string;
   emphasis: string;
   children?: React.ReactNode;
 }) {
   return (
     <div className="section-heading">
-      <p className="eyebrow">
-        <span className="section-number">{number || "✳"}</span>
-        {eyebrow}
-      </p>
       <div>
+        <SectionBadge label={badge} />
         <h2>
           {title}
           <br />

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Brand } from "@/components/ui/Brand";
+import { GridIntersections } from "@/components/ui/Grid";
 import { ThemeSwitch } from "@/components/ui/ThemeSwitch";
 import { site } from "@/site.config";
 import { usePatch } from "@/components/PatchProvider";
@@ -20,7 +21,8 @@ export function Navigation() {
     return () => window.removeEventListener("keydown", close);
   }, [open]);
   return (
-    <header className="navigation">
+    <header className="navigation grid-section">
+      <GridIntersections />
       <a
         href="#top"
         aria-label={`${site.brand.name} home`}

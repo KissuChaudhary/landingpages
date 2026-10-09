@@ -17,7 +17,6 @@ export function CommandOutput({
   );
   return (
     <div className="command-output">
-      <span className="output-overline">YOUR WORKSPACE</span>
       <h3>{applied ? example.output.title : "Your pages"}</h3>
       {applied && (
         <label className="output-search">

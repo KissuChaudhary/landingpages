@@ -3,6 +3,7 @@ import { useId, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { GridIntersections } from "@/components/ui/Grid";
 import { WorkflowArt } from "@/components/product/WorkflowArt";
 import { moveTab } from "@/lib/tabs";
 export function Workflow() {
@@ -15,6 +16,7 @@ export function Workflow() {
       className="grid-section workflow-section"
       aria-label="From a thought to a thing"
     >
+      <GridIntersections />
       <SectionHeading {...content} />
       <div
         className="workflow-steps"
@@ -37,7 +39,6 @@ export function Workflow() {
             <span className="workflow-number">0{index + 1}</span>
             <div>
               <strong>{item.title}</strong>
-              <span>{item.subtitle}</span>
             </div>
             <ArrowUpRight size={18} />
           </button>
@@ -50,19 +51,8 @@ export function Workflow() {
         aria-labelledby={`${uid}-${step}`}
       >
         <div className="workflow-panel-copy">
-          <span className="eyebrow">
-            STEP 0{step + 1} / {content.steps[step].title.toUpperCase()}
-          </span>
           <h3>{content.steps[step].subtitle}</h3>
           <p>{content.steps[step].description}</p>
-          <div className="workflow-progress" aria-hidden="true">
-            {content.steps.map((_, index) => (
-              <span
-                key={index}
-                className={index <= step ? "is-complete" : ""}
-              />
-            ))}
-          </div>
         </div>
         <div className="workflow-panel-art">
           <WorkflowArt step={step} />

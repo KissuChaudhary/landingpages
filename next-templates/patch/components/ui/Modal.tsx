@@ -16,7 +16,10 @@ export function Modal({
   const opener = useRef<HTMLElement | null>(null);
   useEffect(() => {
     if (!opener.current) opener.current = document.activeElement as HTMLElement;
-    if (ref.current && !ref.current.open) ref.current.showModal();
+    if (ref.current && !ref.current.open) {
+      ref.current.showModal();
+      ref.current.querySelector<HTMLElement>("[data-autofocus]")?.focus();
+    }
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
