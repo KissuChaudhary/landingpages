@@ -45,8 +45,8 @@ export const notchDetails: TemplateDetails = {
   styling: "CSS",
   images: "Fourteen product screens rendered for the template and nine generated photographs and portraits of fictional people, all optimized WebP. The brand mark, customer marks and icons are SVG.",
   node: "20.9",
-  files: 72,
-  lines: 3017,
+  files: 74,
+  lines: 3048,
   beforeLaunch: "Replace the fictional brand, customers, stories and numbers, swap the product screens for your own, set the sign-up, sign-in, sales and checkout links, and replace the privacy and terms placeholders.",
   updated: "2026-10-10",
 };
