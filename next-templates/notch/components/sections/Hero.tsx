@@ -33,8 +33,9 @@ export function Hero() {
       <div className="container hero-inner">
         <TallyBadge />
         <h1 className="hero-title">
-          {hero.heading.map((line) => (
+          {hero.heading.map((line, l) => (
             <span className="hero-line" key={line}>
+              {l > 0 && " "}
               {line.split(" ").map((w, j) => (
                 <Fragment key={w + j}>
                   {j > 0 && " "}
