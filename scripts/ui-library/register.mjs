@@ -23,7 +23,7 @@ const ORDER = [
   'thinking-indicator', 'thinking-trace', 'tool-call', 'clarifying-question', 'approval-card', 'plan',
   'web-research', 'command-output', 'task-progress', 'task-log',
   // Product UI: the answer and after
-  'streaming-answer', 'code-block', 'citation', 'response-versions', 'selection-actions', 'diff-review',
+  'streaming-answer', 'code-block', 'citation', 'response-versions', 'selection-actions', 'inline-rewrite', 'diff-review',
   'action-receipt', 'chat-notice', 'usage-meter', 'usage-limits',
   // Product UI: around the chat
   'chat-scroll', 'message-edit', 'chat-history',

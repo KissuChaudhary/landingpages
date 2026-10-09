@@ -49,6 +49,7 @@ import CodeBlockDemo from './code-block-demo';
 import CitationDemo from './citation-demo';
 import ResponseVersionsDemo from './response-versions-demo';
 import SelectionActionsDemo from './selection-actions-demo';
+import InlineRewriteDemo from './inline-rewrite-demo';
 import DiffReviewDemo from './diff-review-demo';
 import ActionReceiptDemo from './action-receipt-demo';
 import ChatNoticeDemo from './chat-notice-demo';
@@ -116,6 +117,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'citation': CitationDemo,
   'response-versions': ResponseVersionsDemo,
   'selection-actions': SelectionActionsDemo,
+  'inline-rewrite': InlineRewriteDemo,
   'diff-review': DiffReviewDemo,
   'action-receipt': ActionReceiptDemo,
   'chat-notice': ChatNoticeDemo,
