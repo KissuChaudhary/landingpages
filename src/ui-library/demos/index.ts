@@ -10,6 +10,7 @@ import CodeInputDemo from './code-input-demo';
 import DateRangePickerDemo from './date-range-picker-demo';
 import MorphingNavDemo from './morphing-nav-demo';
 import FeatureTabsDemo from './feature-tabs-demo';
+import ScrollStoryDemo from './scroll-story-demo';
 import StatsBandDemo from './stats-band-demo';
 import AnnouncementPillDemo from './announcement-pill-demo';
 import TestimonialsDemo from './testimonials-demo';
@@ -80,6 +81,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'date-range-picker': DateRangePickerDemo,
   'morphing-nav': MorphingNavDemo,
   'feature-tabs': FeatureTabsDemo,
+  'scroll-story': ScrollStoryDemo,
   'stats-band': StatsBandDemo,
   'announcement-pill': AnnouncementPillDemo,
   'testimonials': TestimonialsDemo,

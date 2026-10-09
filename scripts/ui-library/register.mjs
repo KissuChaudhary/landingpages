@@ -14,7 +14,7 @@ import path from 'node:path';
 const ORDER = [
   // Landing interactions and the shared primitives they use
   'text-morph', 'status-button', 'number-roll', 'pricing-toggle', 'waitlist-field', 'code-input', 'date-range-picker', 'morphing-nav',
-  'feature-tabs', 'stats-band', 'announcement-pill', 'testimonials', 'faq-accordion', 'logo-marquee',
+  'feature-tabs', 'scroll-story', 'stats-band', 'announcement-pill', 'testimonials', 'faq-accordion', 'logo-marquee',
   'command-palette', 'toast-stack', 'live-activity', 'live-cursors', 'theme-toggle', 'pricing-calculator', 'comparison-table', 'onboarding-checklist',
   'changelog-timeline', 'changelog-trace', 'changelog-scrubber', 'cookie-banner', 'newsletter-footer',
   // Product UI: asking
