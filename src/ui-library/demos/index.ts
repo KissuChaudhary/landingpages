@@ -34,6 +34,7 @@ import AttachmentChipDemo from './attachment-chip-demo';
 import ModeSwitcherDemo from './mode-switcher-demo';
 import ModelPickerDemo from './model-picker-demo';
 import VoiceInputDemo from './voice-input-demo';
+import VoiceNoteDemo from './voice-note-demo';
 import ThinkingIndicatorDemo from './thinking-indicator-demo';
 import ThinkingTraceDemo from './thinking-trace-demo';
 import ToolCallDemo from './tool-call-demo';
@@ -102,6 +103,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'mode-switcher': ModeSwitcherDemo,
   'model-picker': ModelPickerDemo,
   'voice-input': VoiceInputDemo,
+  'voice-note': VoiceNoteDemo,
   'thinking-indicator': ThinkingIndicatorDemo,
   'thinking-trace': ThinkingTraceDemo,
   'tool-call': ToolCallDemo,

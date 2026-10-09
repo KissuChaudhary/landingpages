@@ -18,7 +18,7 @@ const ORDER = [
   'command-palette', 'toast-stack', 'live-activity', 'theme-toggle', 'pricing-calculator', 'comparison-table', 'onboarding-checklist',
   'changelog-timeline', 'changelog-trace', 'changelog-scrubber', 'cookie-banner', 'newsletter-footer',
   // Product UI: asking
-  'prompt-composer', 'agent-composer', 'mention-menu', 'attachment-chip', 'mode-switcher', 'model-picker', 'voice-input',
+  'prompt-composer', 'agent-composer', 'mention-menu', 'attachment-chip', 'mode-switcher', 'model-picker', 'voice-input', 'voice-note',
   // Product UI: while the agent works
   'thinking-indicator', 'thinking-trace', 'tool-call', 'clarifying-question', 'approval-card', 'plan',
   'web-research', 'command-output', 'task-progress', 'task-log',

@@ -32,6 +32,7 @@ import { attachmentChip } from './attachment-chip';
 import { modeSwitcher } from './mode-switcher';
 import { modelPicker } from './model-picker';
 import { voiceInput } from './voice-input';
+import { voiceNote } from './voice-note';
 import { thinkingIndicator } from './thinking-indicator';
 import { thinkingTrace } from './thinking-trace';
 import { toolCall } from './tool-call';
@@ -66,4 +67,4 @@ import { activityRings } from './activity-rings';
 import { agentPlayback } from './agent-playback';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, codeInput, dateRangePicker, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, liveActivity, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, agentComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, taskLog, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, inlineRewrite, diffReview, actionReceipt, chatNotice, usageMeter, usageLimits, chatScroll, messageEdit, chatHistory, earningsChart, stepsChart, revenueChart, areaChart, comboChart, stageBars, activityRings, agentPlayback];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, codeInput, dateRangePicker, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, liveActivity, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, agentComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, voiceNote, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, taskLog, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, inlineRewrite, diffReview, actionReceipt, chatNotice, usageMeter, usageLimits, chatScroll, messageEdit, chatHistory, earningsChart, stepsChart, revenueChart, areaChart, comboChart, stageBars, activityRings, agentPlayback];
