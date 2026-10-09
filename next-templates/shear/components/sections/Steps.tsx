@@ -3,10 +3,9 @@
 import * as React from "react";
 import { Plus } from "lucide-react";
 import { site } from "@/site.config";
-import { asset } from "@/lib/assets";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { Reveal } from "@/components/motion/Reveal";
-import { StepScene } from "@/components/scenes/StepScene";
+import { Screen } from "@/components/ui/Screen";
 import { useSeen } from "@/components/motion/useInView";
 
 /*
@@ -14,8 +13,7 @@ import { useSeen } from "@/components/motion/useInView";
  *   desktop  the step you point at (or focus) widens and its scene slides
  *            in beside the copy; the others narrow to their titles
  *   phones   a vertical accordion: tap a step to open its scene
- * A scene plays when its step opens (once the row has been seen) and keeps
- * its final state until another step opens.
+ * Each step's screen arrives out of a light blur when its step opens.
  */
 
 const EASE = "cubic-bezier(0.16,1,0.3,1)";
@@ -25,14 +23,9 @@ export function Steps() {
   const [active, setActive] = React.useState(0);
   const [ref, seen] = useSeen<HTMLDivElement>();
 
-  const scene = (i: number) => {
-    const step = steps.items[i];
-    return step.image ? (
-      <img src={asset(step.image)} alt="" className="size-full rounded-[18px] object-cover" />
-    ) : (
-      <StepScene scene={step.scene} play={seen && active === i} />
-    );
-  };
+  const scene = (i: number) => (
+    <Screen image={steps.items[i].image} width={420} height={470} show={seen && active === i} className="size-full rounded-[18px] bg-ink object-cover" />
+  );
 
   return (
     <section id="how" className="mx-auto max-w-[1280px] px-4 py-20 sm:px-6 md:py-28" aria-labelledby="how-title">
@@ -104,7 +97,7 @@ export function Steps() {
                 <div id={`step-panel-${i}`} className="grid" style={{ gridTemplateRows: open ? "1fr" : "0fr", transition: `grid-template-rows 560ms ${EASE}` }} inert={!open}>
                   <div className="min-h-0 overflow-hidden">
                     <p className="px-3 pb-4 text-[14px] leading-relaxed text-muted-foreground">{step.body}</p>
-                    <div className="h-[340px]">{scene(i)}</div>
+                    <div className="aspect-[420/470] w-full">{scene(i)}</div>
                   </div>
                 </div>
               </Reveal>

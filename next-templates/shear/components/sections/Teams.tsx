@@ -6,7 +6,7 @@ import { SectionIntro } from "@/components/ui/SectionIntro";
 import { Reveal } from "@/components/motion/Reveal";
 import { Pill } from "@/components/ui/Pill";
 import { NumberRoll } from "@/components/hairline/number-roll";
-import { TextMorph } from "@/components/hairline/text-morph";
+import { asset } from "@/lib/assets";
 import { useMotion } from "@/components/motion/MotionProvider";
 import { useInView } from "@/components/motion/useInView";
 
@@ -17,8 +17,8 @@ import { useInView } from "@/components/motion/useInView";
  *            and the next one takes over when it is full
  *   copy     the new copy slides in from the side you moved toward, through
  *            a light blur
- *   field    the light field blends to the team colours; its card label and
- *            figure morph letter by letter
+ *   field    the light field blends to the team colours, and its card slides
+ *            over to the next one from the side you moved toward
  * Arrow keys, Home and End move between tabs.
  */
 
@@ -158,18 +158,29 @@ export function Teams() {
             >
               <div aria-hidden="true" className="loop absolute inset-0 animate-[sh-drift_16s_ease-in-out_infinite] bg-[radial-gradient(40%_40%_at_70%_70%,rgba(255,255,255,0.7),transparent_70%)]" />
               <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(rgba(8,9,11,0.08)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:linear-gradient(to_bottom,transparent,#000_40%)]" />
-              <div className="absolute inset-x-5 bottom-5 md:inset-x-auto md:bottom-9 md:right-9 md:w-[300px]">
-                <div className="rounded-[18px] border border-white/60 bg-white/85 p-4">
-                  <p className="text-[12px] text-muted-foreground">
-                    <TextMorph>{tab.card.label}</TextMorph>
-                  </p>
-                  <p className="mt-1 text-[28px] font-[480] leading-none tracking-[-0.04em] text-ink">
-                    <TextMorph>{tab.card.value}</TextMorph>
-                  </p>
-                  <p className="mt-2 font-mono text-[11.5px] text-muted-foreground">
-                    <TextMorph>{tab.card.detail}</TextMorph>
-                  </p>
-                </div>
+              <div className="absolute inset-x-5 bottom-5 aspect-[300/112] md:inset-x-auto md:bottom-9 md:right-9 md:w-[300px]">
+                {teams.tabs.map((t, i) => {
+                  const offset = i === active ? 0 : (i < active ? -1 : 1) * 28;
+                  return (
+                    <img
+                      key={t.id}
+                      src={asset(t.card.src)}
+                      alt={i === active ? t.card.alt : ""}
+                      aria-hidden={i === active ? undefined : true}
+                      width={300}
+                      height={112}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 size-full"
+                      style={{
+                        opacity: i === active ? 1 : 0,
+                        transform: `translateX(${offset}px)`,
+                        filter: i === active ? "none" : "blur(6px)",
+                        transition: reduced ? "none" : `opacity 420ms ${EASE} ${i === active ? 120 : 0}ms, transform 620ms ${EASE}, filter 420ms ${EASE}`,
+                      }}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>

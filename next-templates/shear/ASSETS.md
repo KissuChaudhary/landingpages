@@ -1,9 +1,9 @@
 # Assets
 
-Shear ships no photographs or raster artwork. Everything you see is code:
+Shear ships no photographs. Apart from the product screens, everything you see is code:
 
+- **Product screens** (`public/images/*.webp`): original interface screens designed for this template, rendered from HTML at 2× and saved as WebP with sample figures. Replace them with screenshots of your own product.
 - **Glyph fields**: drawn at runtime on a canvas from characters of Fragment Mono.
-- **Product scenes** (bill chart, feature visuals, step scenes, digest, team card): React, SVG and CSS with sample figures.
 - **Shear mark**: an original SVG (a disc cut on a diagonal, its halves slid along the cut) in `components/ui/Brand.tsx` and `public/icon.svg`.
 - **Customer logos**: fictional companies drawn as simple SVG marks in `components/ui/CompanyLogo.tsx`. They are not real brands.
 - **Avatars**: monograms on gradients, generated from each name.

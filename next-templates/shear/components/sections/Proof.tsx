@@ -4,7 +4,7 @@ import { TrendingDown, Coins, Timer, GitMerge, BellRing } from "lucide-react";
 import { site, type ProofStat } from "@/site.config";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { NumberRoll } from "@/components/hairline/number-roll";
-import { BillChart } from "@/components/scenes/BillChart";
+import { asset } from "@/lib/assets";
 import { useScrollProgress } from "@/components/motion/useScrollProgress";
 import { useMotion } from "@/components/motion/MotionProvider";
 
@@ -14,11 +14,32 @@ import { useMotion } from "@/components/motion/MotionProvider";
  *            middle, slightly turned, and spread to their places as you
  *            scroll (driven by scroll position, not a timer)
  *   settle   once the grid lands, every figure rolls up from zero and the
- *            bill chart draws its line
+ *            bill's line wipes in over the card (two layers of one image)
  *   phones   a plain two-column grid that rises in
  */
 
 const icons = { trend: TrendingDown, coins: Coins, timer: Timer, merge: GitMerge, bell: BellRing };
+
+/** The bill card is two images: the card, and its lines, which wipe in from the left. */
+function Bill({ play }: { play: boolean }) {
+  const { bill } = site.proof;
+  return (
+    <div className="relative aspect-[440/360] w-full">
+      <img src={asset(bill.base)} alt={bill.alt} width={440} height={360} loading="lazy" decoding="async" className="absolute inset-0 size-full" />
+      <img
+        src={asset(bill.lines)}
+        alt=""
+        aria-hidden="true"
+        width={440}
+        height={360}
+        loading="lazy"
+        decoding="async"
+        className="screen absolute inset-0 size-full"
+        style={{ clipPath: play ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
+      />
+    </div>
+  );
+}
 
 function Stat({ stat, play, index, className = "" }: { stat: ProofStat; play: boolean; index: number; className?: string }) {
   const Icon = icons[stat.icon];
@@ -62,9 +83,7 @@ export function Proof() {
           <div className="max-lg:hidden">
             <Stat stat={b} play={settled} index={1} />
           </div>
-          <div className="min-h-[300px] flex-1 lg:min-h-[330px]">
-            <BillChart play={settled} />
-          </div>
+          <Bill play={settled} />
         </div>
         <div className="contents lg:hidden">
           <Stat stat={b} play={settled} index={1} />

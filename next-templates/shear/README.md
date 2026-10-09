@@ -1,6 +1,6 @@
 # Shear
 
-A motion-led landing page for a cloud cost product, built with Next.js 15, React 19 and Tailwind CSS 4. One page, twelve sections, a live glyph-river canvas behind the hero, and every number, label and panel that changes morphs instead of swapping.
+A motion-led landing page for a cloud cost product, built with Next.js 15, React 19 and Tailwind CSS 4. One page, twelve sections, a live glyph-river canvas behind the hero, and every number, label and panel that changes morphs instead of swapping. Product screens are images, so the page stays light.
 
 The brand, customers, figures and quotes are fictional. Replace them in `site.config.ts` before you launch.
 
@@ -35,9 +35,20 @@ Almost everything you'll change is in **`site.config.ts`**: brand, copy, the mov
 | Fonts | `app/layout.tsx` (Mona Sans and Fragment Mono via `next/font`) |
 | Logo mark and wordmark | `components/ui/Brand.tsx` |
 | Customer logos | `site.config.ts` → `hero.logos` (built-in marks, or set `src` to your own file in `public/`) |
-| Product scenes in the feature cards | `components/scenes/FeatureVisual.tsx`, or set `image` on a feature to use your screenshot |
-| Step scenes | `components/scenes/StepScene.tsx`, or set `image` on a step |
+| Product screens | `public/images/`, paths and alt text in `site.config.ts` (see below) |
 | Section order | `app/page.tsx` |
+
+### Product screens
+
+The product visuals are images, not coded mockups, so the page stays fast. Replace the files in `public/images/` with screenshots of your own product at the same proportions and keep the names, or point `site.config.ts` at new files. Give each a useful `alt`.
+
+| Image | Used in | Size (px, 2×) |
+| --- | --- | --- |
+| `feature-*.webp` (6) | Product carousel | 760 × 760 |
+| `step-connect.webp`, `step-review.webp`, `step-merge.webp` | How it works | 840 × 940 |
+| `bill-base.webp` + `bill-lines.webp` | Proof grid: the card, then its lines on a transparent layer that wipes in | 880 × 720 each |
+| `team-*.webp` (4) | Team tabs, the card over the light field | 600 × 224, transparent corners |
+| `digest.webp` | Why Shear | 760 × 664, transparent corners |
 
 ### Where the buttons go
 
@@ -57,7 +68,8 @@ Nothing on the page opens a mock dialog or pretends something happened.
 - **Glyph field** (`components/motion/GlyphField.tsx`): a canvas river of characters that follows a falling cost curve, brightens around the cursor and sends a wave along itself each time the headline word changes. It draws at up to 30fps, only while it's on screen and the tab is visible.
 - **Moving word** (`components/motion/RotatingWord.tsx`): letters are squeezed to Mona Sans' narrowest width and blurred away, and the next word's letters settle in from its widest width, using the font's real width axis.
 - **Section reveals** (`components/motion/Reveal.tsx`): headings rise word by word out of a light blur while the type breathes in from a wider cut.
-- **Scroll-driven moments** (`components/motion/useScrollProgress.ts`): the proof grid spreads out from the middle as you scroll, and the footer wordmark's two halves slide back into line.
+- **Scroll-driven moments** (`components/motion/useScrollProgress.ts`): the proof grid spreads out from the middle as you scroll, the bill's line wipes in over its card, and the footer wordmark's two halves slide back into line.
+- **Product screens** (`components/ui/Screen.tsx`): each arrives out of a light blur, settling from slightly larger; team cards slide over from the side you moved toward.
 - **Pause**: the button beside the logo strip stops every loop on the page (glyph fields, moving word, logo strip, ambient light). The choice is remembered.
 - **Reduced motion**: with the system setting on, nothing moves on its own, all text is visible immediately and the glyph fields show a still frame.
 
@@ -68,7 +80,7 @@ No animation library is used: CSS transitions and keyframes, the Web Animations 
 Five free components from the Hairline UI library are included verbatim in `components/hairline/`:
 
 - **Number roll**: every figure that changes (stats, prices, the carousel counter) rolls like an odometer.
-- **Text morph**: labels that change (scene statuses, the team card, the sign-up button) morph letter by letter.
+- **Text morph**: the sign-up button's label morphs letter by letter as it sends and answers.
 - **Pricing toggle**: the monthly/yearly switch and the rolling prices.
 - **FAQ accordion**: answers open to their real height; arrow keys move between questions.
 - **Logo marquee**: the customer strip in the hero, which eases to a stop on hover.
@@ -90,10 +102,10 @@ For a static host, build with `SHEAR_EXPORT=1 npm run build` and publish the `ou
 ```
 app/                 layout (fonts, metadata), page (section order), globals.css (palette, motion)
 components/sections/ one file per section
-components/scenes/   the small product scenes (bill chart, feature visuals, step scenes)
 components/motion/   glyph field, moving word, reveals, scroll progress, pause and reduced motion
 components/hairline/ Hairline UI components, shipped verbatim
-components/ui/       brand, buttons, badges, section intros, customer logos
+components/ui/       brand, buttons, badges, section intros, customer logos, product screens
+public/images/       product screens (WebP, 2×)
 lib/                 sign-up destination, asset paths
 site.config.ts       all content and destinations
 ```

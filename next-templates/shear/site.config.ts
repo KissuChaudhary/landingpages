@@ -27,23 +27,24 @@ export type ProofStat = {
   icon: "trend" | "coins" | "timer" | "merge" | "bell";
 };
 
-export type FeatureVisual = "radar" | "rightsize" | "commit" | "anomaly" | "unit" | "forecast";
+/**
+ * Product screens are images, not coded mockups, so the page stays fast.
+ * Swap in your own screenshots at the same proportions (see README).
+ */
+export type Screen = { src: string; alt: string };
 
 export type Feature = {
   title: string;
   body: string;
-  visual: FeatureVisual;
-  /** The colour of the light behind the visual. */
-  glow: string;
-  /** Use your own screenshot instead of the built-in visual (a path in public/). */
-  image?: string;
+  /** Square, 760 × 760 at 2×. */
+  image: Screen;
 };
 
 export type Step = {
   title: string;
   body: string;
-  scene: "connect" | "review" | "merge";
-  image?: string;
+  /** 840 × 940 at 2×. */
+  image: Screen;
 };
 
 export type TeamTab = {
@@ -53,8 +54,8 @@ export type TeamTab = {
   body: string;
   /** Three colours for the light field beside the copy. */
   colors: [string, string, string];
-  /** The small card that floats over the light field. */
-  card: { label: string; value: string; detail: string };
+  /** The small card that floats over the light field, 600 px wide at 2×. */
+  card: Screen;
 };
 
 export type Testimonial = { quote: string; name: string; role: string; company: string };
@@ -193,12 +194,11 @@ export const site = {
         icon: "bell",
       },
     ] as ProofStat[],
+    /** Two layers of one 880 × 720 image: the card, then the lines that wipe in over it. */
     bill: {
-      label: "Monthly cloud bill",
-      months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      /** Before Shear, then after connecting in February. */
-      before: [148320, 151200, 153900, 156100, 158400, 160800],
-      after: [148320, 139400, 117800, 104300, 96100, 91960],
+      base: "/images/bill-base.webp",
+      lines: "/images/bill-lines.webp",
+      alt: "Monthly cloud bill falling from a projected $160,800 to $91,960 in June, 43% below projection.",
     },
   },
 
@@ -228,38 +228,32 @@ export const site = {
       {
         title: "Waste radar",
         body: "Idle instances, unattached volumes, forgotten snapshots and empty load balancers, ranked by what they cost you this month.",
-        visual: "radar",
-        glow: "#7cf0b5",
+        image: { src: "/images/feature-radar.webp", alt: "Waste radar listing idle and unattached resources, $3,160 of waste this month." },
       },
       {
         title: "Rightsizing",
         body: "Fourteen days of real CPU and memory per workload, and a smaller size that still leaves headroom for the peak.",
-        visual: "rightsize",
-        glow: "#67e8f9",
+        image: { src: "/images/feature-rightsize.webp", alt: "Rightsizing gauge at 18% CPU, recommending a smaller instance that saves $1,120 a month." },
       },
       {
         title: "Commitment planner",
         body: "Savings plans and reserved capacity sized to the baseline you actually run, with the break-even month shown before you buy.",
-        visual: "commit",
-        glow: "#a78bfa",
+        image: { src: "/images/feature-commit.webp", alt: "Commitment planner ring showing 82% coverage and break-even in month 4." },
       },
       {
         title: "Anomaly alerts",
         body: "A spike reaches your team chat within minutes, with the resource, the deploy behind it and the cost per hour.",
-        visual: "anomaly",
-        glow: "#fbbf24",
+        image: { src: "/images/feature-anomaly.webp", alt: "Spend chart with a spike and an alert: export-job, $38 an hour, four minutes ago." },
       },
       {
         title: "Unit costs",
         body: "Cost per customer, per request or per feature, so pricing and architecture start from the same number.",
-        visual: "unit",
-        glow: "#93c5fd",
+        image: { src: "/images/feature-unit.webp", alt: "Cost per 1,000 requests falling month by month to $0.031." },
       },
       {
         title: "Forecasts",
         body: "Next month's bill projected from your real usage curve, with the fixes you haven't merged shown as the gap.",
-        visual: "forecast",
-        glow: "#f0abfc",
+        image: { src: "/images/feature-forecast.webp", alt: "July forecast: the projection without fixes rising, and with open fixes $7,240 lower." },
       },
     ] as Feature[],
   },
@@ -272,17 +266,17 @@ export const site = {
       {
         title: "Connect read-only",
         body: "Grant a read-only role in your cloud accounts. Shear never gets write access to production.",
-        scene: "connect",
+        image: { src: "/images/step-connect.webp", alt: "Read-only role connecting AWS, Google Cloud, Azure and Kubernetes accounts." },
       },
       {
         title: "Review the findings",
         body: "Every finding shows the resource, its usage, who owns it and what it costs each month.",
-        scene: "review",
+        image: { src: "/images/step-review.webp", alt: "Findings ranked by monthly cost: idle GPU nodes, an oversized database, unattached volumes, old snapshots." },
       },
       {
         title: "Merge the fix",
         body: "Fixes arrive as pull requests to your infrastructure code. Approve, merge and watch the line drop.",
-        scene: "merge",
+        image: { src: "/images/step-merge.webp", alt: "A merged pull request that rightsizes the api-prod node pool, saving $4,120 a month." },
       },
     ] as Step[],
   },
@@ -300,7 +294,7 @@ export const site = {
         title: "Fix waste without leaving the pull request",
         body: "Recommendations arrive as code changes with the usage graph attached. No new dashboard to babysit, no ticket to chase.",
         colors: ["#7cf0b5", "#67e8f9", "#e0f2fe"],
-        card: { label: "Pull request", value: "−$4,120/mo", detail: "Rightsize api-prod node pool" },
+        card: { src: "/images/team-engineering.webp", alt: "Pull request card: −$4,120 a month, rightsize api-prod node pool." },
       },
       {
         id: "platform",
@@ -308,7 +302,7 @@ export const site = {
         title: "Guardrails before the bill arrives",
         body: "Budgets per team, cluster and environment, with alerts that name the workload instead of the account.",
         colors: ["#a78bfa", "#67e8f9", "#ede9fe"],
-        card: { label: "Budget", value: "72% used", detail: "data-platform · 9 days left" },
+        card: { src: "/images/team-platform.webp", alt: "Budget card: 72% used, data-platform, 9 days left." },
       },
       {
         id: "finance",
@@ -316,7 +310,7 @@ export const site = {
         title: "Forecasts that match the invoice",
         body: "Accruals, showback and chargeback reports that reconcile to the bill to the cent, every month.",
         colors: ["#fbbf24", "#7cf0b5", "#fef3c7"],
-        card: { label: "June forecast", value: "$92,410", detail: "Within 0.6% of the invoice" },
+        card: { src: "/images/team-finance.webp", alt: "June forecast card: $92,410, within 0.6% of the invoice." },
       },
       {
         id: "leadership",
@@ -324,7 +318,7 @@ export const site = {
         title: "One number for the board deck",
         body: "Cost per customer and gross margin impact, tracked month over month, next to the plan.",
         colors: ["#f0abfc", "#93c5fd", "#fce7f3"],
-        card: { label: "Gross margin", value: "+6.8 pts", detail: "Since January" },
+        card: { src: "/images/team-leadership.webp", alt: "Gross margin card: up 6.8 points since January." },
       },
     ] as TeamTab[],
   },
@@ -341,14 +335,10 @@ export const site = {
       { icon: "bell", text: "Catch spikes in minutes, not at month end." },
       { icon: "shield", text: "Every change reviewed, logged and reversible." },
     ] as { icon: "clock" | "trend" | "bell" | "shield"; text: string }[],
+    /** 760 px wide at 2×. */
     digest: {
-      title: "Your week in cloud spend",
-      saved: 12480,
-      rows: [
-        { label: "Fixes merged", value: "3", tone: "good" },
-        { label: "Anomaly caught", value: "export-job · $38/hr", tone: "warn" },
-        { label: "Next up", value: "api-prod · −$2,140/mo", tone: "plain" },
-      ] as { label: string; value: string; tone: "good" | "warn" | "plain" }[],
+      src: "/images/digest.webp",
+      alt: "Monday digest email: $12,480 saved this week, 3 fixes merged, one anomaly caught, next up api-prod.",
     },
   },
 

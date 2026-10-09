@@ -3,11 +3,10 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { site, type Feature } from "@/site.config";
-import { asset } from "@/lib/assets";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/motion/Reveal";
-import { FeatureVisual } from "@/components/scenes/FeatureVisual";
+import { Screen } from "@/components/ui/Screen";
 import { NumberRoll } from "@/components/hairline/number-roll";
 import { useSeen } from "@/components/motion/useInView";
 
@@ -18,27 +17,28 @@ import { useSeen } from "@/components/motion/useInView";
  *            drag the row
  *   arrows   step one card at a time; the counter rolls and the hairline
  *            under the row fills with your position
- *   cards    each product scene plays the first time its card is on screen
- *            and keeps its final state; its loops rest while off screen
+ *   cards    each product screen arrives out of a light blur the first time
+ *            its card is on screen, and leans in a little on hover
  */
 
 function Card({ feature, index }: { feature: Feature; index: number }) {
-  // Scenes play the first time they are seen and keep their final state; loops rest off screen.
-  const [ref, seen, visible] = useSeen<HTMLLIElement>("0px -10% 0px -10%");
+  const [ref, seen] = useSeen<HTMLLIElement>("0px -10% 0px -10%");
   return (
     <li
       ref={ref}
       data-card
-      className={`grid w-[86vw] shrink-0 snap-start grid-rows-[auto_1fr] gap-2 rounded-[26px] border border-line bg-white p-2 sm:w-[560px] md:w-[640px] md:grid-cols-[1.05fr_1fr] md:grid-rows-1 ${visible ? "" : "[&_.loop]:[animation-play-state:paused]"}`}
+      className={`grid w-[86vw] shrink-0 snap-start grid-rows-[auto_1fr] gap-2 rounded-[26px] border border-line bg-white p-2 sm:w-[560px] md:w-[640px] md:grid-cols-[1.05fr_1fr] md:grid-rows-1`}
       aria-roledescription="slide"
       aria-label={`${index + 1} of ${site.product.features.length}: ${feature.title}`}
     >
-      <div className="aspect-[4/3] md:aspect-auto md:h-[330px]">
-        {feature.image ? (
-          <img src={asset(feature.image)} alt="" className="size-full rounded-[18px] object-cover" draggable={false} />
-        ) : (
-          <FeatureVisual kind={feature.visual} glow={feature.glow} play={seen} />
-        )}
+      <div className="group aspect-square overflow-hidden rounded-[18px] bg-ink md:aspect-auto md:h-[330px]">
+        <Screen
+          image={feature.image}
+          width={380}
+          height={380}
+          show={seen}
+          className="size-full object-cover transition-[opacity,transform,filter,scale] duration-700 group-hover:scale-[1.025]"
+        />
       </div>
       <div className="flex flex-col justify-end p-4 md:p-6">
         <span className="font-mono text-[12px] text-subtle">{String(index + 1).padStart(2, "0")}</span>

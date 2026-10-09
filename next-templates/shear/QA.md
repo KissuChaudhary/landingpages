@@ -10,3 +10,4 @@ Checked on 10 October 2026 against the dev server and the static export, in head
 - Pause stops the glyph field and every infinite animation in the hero, and is remembered after reload. Spinners only spin while visible.
 - Reduced motion: every reveal word and block visible without scrolling, no pause button, word static, canvas still.
 - No horizontal overflow anywhere at any of the three widths.
+- After converting the product scenes to images (same day): all 67 interaction checks pass again; the screens render identically to the coded versions; total image weight about 250 KB.

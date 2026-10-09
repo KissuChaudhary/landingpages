@@ -31,6 +31,10 @@ Shear: cloud cost control. It finds idle and oversized cloud resources and ships
 | FAQ | Hairline UI FAQ accordion with a sticky intro | |
 | Gradient CTA + footer | Light glyph field CTA + dark footer whose giant wordmark shears back into line | |
 
+## Product screens as images
+
+The owner's standing rule (Notch brief, 2026-10-09): product UI in templates ships as images, not coded mockups, for page performance. Shear's scenes were first built as React components (commit 65a2534, `components/scenes/`), then rendered in their final state to transparent 2× WebP with `work/shear-shots/render.cjs` (isolated clones on a transparent stage, captured from the dev server) and the components removed. To re-render, restore those components from 65a2534 temporarily. Motion comes from how the images arrive: blur-in, the bill lines wiping over the card, team cards sliding with direction.
+
 ## Motion rules followed
 
 No animation library. Loops carry `.loop` (paused by the pause button and by reduced motion). Canvas loops run only in view and in a visible tab. Every changing number uses NumberRoll, every changing label TextMorph. Reduced motion: still frames, all text visible.

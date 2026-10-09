@@ -144,6 +144,20 @@ p {
   filter: blur(6px);
 }
 
+/* ── Product screens (components/ui/Screen.tsx) arrive out of a light blur ── */
+.screen {
+  transition:
+    opacity 700ms var(--ease),
+    transform 1100ms var(--ease),
+    filter 800ms var(--ease),
+    clip-path 1400ms var(--ease);
+}
+.js .screen[data-show="false"] {
+  opacity: 0;
+  transform: scale(1.05) translateY(10px);
+  filter: blur(10px);
+}
+
 /* ── Pill buttons: label + a dark disc holding the mark ─────────────────── */
 .pill-disc .mark-top,
 .pill-disc .mark-bottom {
@@ -206,31 +220,12 @@ p {
 }
 
 /* ── Small loops used by the product scenes ─────────────────────────────── */
-@keyframes sh-pulse {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 @keyframes sh-sweep {
   from {
     transform: translateX(-120%) skewX(-18deg);
   }
   to {
     transform: translateX(320%) skewX(-18deg);
-  }
-}
-@keyframes sh-scan {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(100%);
   }
 }
 @keyframes sh-slide-in {
@@ -243,16 +238,6 @@ p {
     opacity: 1;
     transform: none;
     filter: none;
-  }
-}
-@keyframes sh-ring {
-  from {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  to {
-    transform: scale(3.2);
-    opacity: 0;
   }
 }
 @keyframes sh-drift {
