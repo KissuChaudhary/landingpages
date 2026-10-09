@@ -13,6 +13,9 @@ import AnnouncementPillDemo from './announcement-pill-demo';
 import TestimonialsDemo from './testimonials-demo';
 import FaqAccordionDemo from './faq-accordion-demo';
 import LogoMarqueeDemo from './logo-marquee-demo';
+import CommandPaletteDemo from './command-palette-demo';
+import ToastStackDemo from './toast-stack-demo';
+import ThemeToggleDemo from './theme-toggle-demo';
 import PromptComposerDemo from './prompt-composer-demo';
 import MentionMenuDemo from './mention-menu-demo';
 import AttachmentChipDemo from './attachment-chip-demo';
@@ -56,6 +59,9 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'testimonials': TestimonialsDemo,
   'faq-accordion': FaqAccordionDemo,
   'logo-marquee': LogoMarqueeDemo,
+  'command-palette': CommandPaletteDemo,
+  'toast-stack': ToastStackDemo,
+  'theme-toggle': ThemeToggleDemo,
   'prompt-composer': PromptComposerDemo,
   'mention-menu': MentionMenuDemo,
   'attachment-chip': AttachmentChipDemo,

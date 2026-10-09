@@ -14,6 +14,8 @@ const ORDER = [
   // Landing interactions and the shared primitives they use
   'text-morph', 'status-button', 'number-roll', 'pricing-toggle', 'waitlist-field', 'morphing-nav',
   'feature-tabs', 'stats-band', 'announcement-pill', 'testimonials', 'faq-accordion', 'logo-marquee',
+  'command-palette', 'toast-stack', 'theme-toggle', 'pricing-calculator', 'comparison-table', 'onboarding-checklist',
+  'changelog-timeline', 'cookie-banner', 'newsletter-footer',
   // Product UI: asking
   'prompt-composer', 'mention-menu', 'attachment-chip', 'mode-switcher', 'model-picker', 'voice-input',
   // Product UI: while the agent works
