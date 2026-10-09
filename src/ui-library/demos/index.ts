@@ -6,6 +6,7 @@ import StatusButtonDemo from './status-button-demo';
 import NumberRollDemo from './number-roll-demo';
 import PricingToggleDemo from './pricing-toggle-demo';
 import WaitlistFieldDemo from './waitlist-field-demo';
+import CodeInputDemo from './code-input-demo';
 import MorphingNavDemo from './morphing-nav-demo';
 import FeatureTabsDemo from './feature-tabs-demo';
 import StatsBandDemo from './stats-band-demo';
@@ -70,6 +71,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'number-roll': NumberRollDemo,
   'pricing-toggle': PricingToggleDemo,
   'waitlist-field': WaitlistFieldDemo,
+  'code-input': CodeInputDemo,
   'morphing-nav': MorphingNavDemo,
   'feature-tabs': FeatureTabsDemo,
   'stats-band': StatsBandDemo,
