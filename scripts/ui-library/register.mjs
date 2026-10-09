@@ -18,13 +18,13 @@ const ORDER = [
   'command-palette', 'toast-stack', 'theme-toggle', 'pricing-calculator', 'comparison-table', 'onboarding-checklist',
   'changelog-timeline', 'changelog-trace', 'changelog-scrubber', 'cookie-banner', 'newsletter-footer',
   // Product UI: asking
-  'prompt-composer', 'mention-menu', 'attachment-chip', 'mode-switcher', 'model-picker', 'voice-input',
+  'prompt-composer', 'agent-composer', 'mention-menu', 'attachment-chip', 'mode-switcher', 'model-picker', 'voice-input',
   // Product UI: while the agent works
   'thinking-indicator', 'thinking-trace', 'tool-call', 'clarifying-question', 'approval-card', 'plan',
   'web-research', 'command-output', 'task-progress',
   // Product UI: the answer and after
   'streaming-answer', 'code-block', 'citation', 'response-versions', 'selection-actions', 'diff-review',
-  'action-receipt', 'chat-notice', 'usage-meter',
+  'action-receipt', 'chat-notice', 'usage-meter', 'usage-limits',
   // Product UI: around the chat
   'chat-scroll', 'message-edit', 'chat-history',
   // Dashboard: charts and cards

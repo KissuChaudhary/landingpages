@@ -58,6 +58,8 @@ export interface ModelPickerProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   /** Open clear of this element (e.g. your composer) and line up with its edge, instead of over it. */
   anchorRef?: React.RefObject<HTMLElement | null>;
   disabled?: boolean;
+  /** What the choice is, for screen readers: "Model" by default, e.g. "Permission" for a permissions picker. */
+  label?: string;
 }
 
 type Phase = "closed" | "opening" | "open" | "closing";
@@ -181,6 +183,7 @@ export function ModelPicker({
   collisionPadding = 16,
   anchorRef,
   disabled = false,
+  label = "Model",
   className = "",
   ...props
 }: ModelPickerProps) {
@@ -395,7 +398,7 @@ export function ModelPicker({
         aria-haspopup="listbox"
         aria-expanded={expanded}
         aria-controls={mounted ? listId : undefined}
-        aria-label={`Model: ${selected?.name ?? "none"}${selected?.reasoning && effort ? `, ${effort} thinking` : ""}`}
+        aria-label={`${label}: ${selected?.name ?? "none"}${selected?.reasoning && effort ? `, ${effort} thinking` : ""}`}
         disabled={disabled}
         onClick={() => (expanded ? close() : open())}
         onPointerDown={() => setQuietFocus(true)}
@@ -465,9 +468,13 @@ export function ModelPicker({
             }}
           >
             <div className="flex h-7 items-center gap-3 px-2.5 text-[11px] text-muted-foreground">
-              <span className="flex-1">Model</span>
-              <span className="w-[38px] text-center">Speed</span>
-              <span className="w-[38px] text-center">Smarts</span>
+              <span className="flex-1">{label}</span>
+              {models.some((m) => m.speed != null || m.intelligence != null) && (
+                <>
+                  <span className="w-[38px] text-center">Speed</span>
+                  <span className="w-[38px] text-center">Smarts</span>
+                </>
+              )}
               <span className="w-7" />
             </div>
 
@@ -476,7 +483,7 @@ export function ModelPicker({
               id={listId}
               role="listbox"
               tabIndex={0}
-              aria-label="Models"
+              aria-label={`${label}s`}
               aria-activedescendant={`${id}-model-${active}`}
               onKeyDown={onListKey}
               className="relative rounded-[14px] outline-none"
@@ -511,8 +518,13 @@ export function ModelPicker({
                       <span className="block truncate text-[13px] font-medium text-foreground">{model.name}</span>
                       {model.description && <span className="block truncate text-[11.5px] text-muted-foreground">{model.description}</span>}
                     </span>
-                    <Meter value={model.speed} label="Speed" />
-                    <Meter value={model.intelligence} label="Smarts" />
+                    {/* Speed and smarts only for options that have them (a permissions list doesn't). */}
+                    {(model.speed != null || model.intelligence != null) && (
+                      <>
+                        <Meter value={model.speed} label="Speed" />
+                        <Meter value={model.intelligence} label="Smarts" />
+                      </>
+                    )}
                     <span className="flex w-7 shrink-0 justify-end">
                       {model.locked ? (
                         <span className="rounded-full bg-muted px-1.5 py-px text-[10.5px] font-medium text-muted-foreground">Pro</span>

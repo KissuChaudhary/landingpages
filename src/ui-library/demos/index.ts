@@ -25,6 +25,7 @@ import ChangelogScrubberDemo from './changelog-scrubber-demo';
 import CookieBannerDemo from './cookie-banner-demo';
 import NewsletterFooterDemo from './newsletter-footer-demo';
 import PromptComposerDemo from './prompt-composer-demo';
+import AgentComposerDemo from './agent-composer-demo';
 import MentionMenuDemo from './mention-menu-demo';
 import AttachmentChipDemo from './attachment-chip-demo';
 import ModeSwitcherDemo from './mode-switcher-demo';
@@ -48,6 +49,7 @@ import DiffReviewDemo from './diff-review-demo';
 import ActionReceiptDemo from './action-receipt-demo';
 import ChatNoticeDemo from './chat-notice-demo';
 import UsageMeterDemo from './usage-meter-demo';
+import UsageLimitsDemo from './usage-limits-demo';
 import ChatScrollDemo from './chat-scroll-demo';
 import MessageEditDemo from './message-edit-demo';
 import ChatHistoryDemo from './chat-history-demo';
@@ -86,6 +88,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'cookie-banner': CookieBannerDemo,
   'newsletter-footer': NewsletterFooterDemo,
   'prompt-composer': PromptComposerDemo,
+  'agent-composer': AgentComposerDemo,
   'mention-menu': MentionMenuDemo,
   'attachment-chip': AttachmentChipDemo,
   'mode-switcher': ModeSwitcherDemo,
@@ -109,6 +112,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'action-receipt': ActionReceiptDemo,
   'chat-notice': ChatNoticeDemo,
   'usage-meter': UsageMeterDemo,
+  'usage-limits': UsageLimitsDemo,
   'chat-scroll': ChatScrollDemo,
   'message-edit': MessageEditDemo,
   'chat-history': ChatHistoryDemo,
