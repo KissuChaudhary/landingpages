@@ -33,7 +33,7 @@ No environment variables, API keys or backend are required. The project uses Nex
 | Section order | `app/page.tsx` |
 | Product previews | `components/product/` |
 | Full artwork and thumbnails | `public/images/` |
-| Dialogs and plan summaries | `components/Dialogs.tsx` |
+| Gallery detail and appearance panel | `components/product/GalleryDetail.tsx`, `components/product/Appearance.tsx` |
 
 The styles are split by responsibility. Each section is a named component; remove its line in `app/page.tsx` to remove it, or move the line to reorder it. Keep the `PrismProvider` wrapper around sections that use interactions.
 
@@ -41,13 +41,13 @@ The styles are split by responsibility. Each section is a named component; remov
 
 Graphite is dark/violet, Paper is white/cobalt and Studio is warm stone/coral. Each palette sets semantic surface, text, border, accent, overlay and shadow variables. Change these together for a coherent new theme rather than editing individual hex values across components.
 
-The default split hero puts the artwork beside the headline. The centered hero includes the full inline workspace underneath the headline. Both keep a full editable workspace inside the primary action dialog. Choose the default using `appearance.defaultHero`; all three themes work with both layouts.
+The default split hero puts the artwork beside the headline. The centered hero includes the full inline workspace underneath the headline. In the split hero, the primary action expands the hero workspace in place so the full editable controls are available in both layouts. Choose the default using `appearance.defaultHero`; all three themes work with both layouts.
 
-The demo settings dialog stores theme/layout preferences under `appearance.storageKey`. Storage failures are handled gracefully. Set `appearance.showControls` to `false` before deploying your product to remove the template appearance controls. A buyer can change the storage key to avoid inheriting old demo preferences.
+The demo appearance panel (in the footer) stores theme/layout preferences under `appearance.storageKey`. Storage failures are handled gracefully. Set `appearance.showControls` to `false` before deploying your product to remove the template appearance controls. A buyer can change the storage key to avoid inheriting old demo preferences.
 
 ### Connect your product
 
-Set `appUrl` to your real application URL. Primary CTAs then navigate there instead of opening the local workspace. Give each plan a `href` to connect its checkout; without a link, the plan button shows an honest local summary of the selected billing total. No payment provider or account flow is included.
+Set `appUrl` to your real application URL. Primary CTAs then navigate there instead of loading the local workspace. Give each plan a `href` to connect its checkout; until you do, the free plan opens the workspace and paid plans start an email to `email`. No payment provider or account flow is included.
 
 The workspace accepts custom text and shows preset artwork. It **does not generate new images**. Replace the `preview` handler in `components/product/Workspace.tsx` with your product integration to perform generation. Keep secret API keys on the server. Current prompt and collection state are local to the mounted component; there is no database or account persistence.
 
@@ -61,9 +61,9 @@ Six original artworks ship with matching 480px thumbnails and 1200px main images
 
 ## Interaction and accessibility
 
-- Gallery filters update the visible images and count. Dialogs show artwork, its prompt and a preset reuse action.
+- Gallery filters update the visible images and count. Choosing an idea opens it above the grid with its artwork, prompt and a preset reuse action.
 - Product tabs support Left/Right, Home and End. Native range inputs support keyboard adjustments.
-- Native dialogs contain focus, close with Escape or backdrop clicks, and return focus to their opener. Modal scroll is independent of the background page.
+- The gallery detail and the appearance panel open in place, close with Escape or their close control, and return focus to where you were.
 - All primary buttons have working local demo flows. Download and copy actions report failure instead of showing false success.
 - Skip link, visible focus, semantic landmarks, image descriptions and reduced-motion styles are included.
 - Themes and hero layouts are responsive, with no horizontal page scrolling at the checked desktop, tablet and phone widths.

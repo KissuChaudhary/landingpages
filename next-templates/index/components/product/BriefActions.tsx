@@ -1,16 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Copy, Check, Download } from "lucide-react";
 import type { Topic } from "@/data/topics";
 import { researchBrief } from "@/lib/content";
-import { Dialog } from "@/components/ui/Dialog";
-import { useCallback } from "react";
 export function BriefActions({ topic }: { topic: Topic }) {
   const [status, setStatus] = useState("");
   const [manual, setManual] = useState(false);
   const [download, setDownload] = useState("");
   const text = researchBrief(topic);
-  const close = useCallback(() => setManual(false), []);
+  const fallback = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
     const url = URL.createObjectURL(
       new Blob([text], { type: "text/plain;charset=utf-8" }),
@@ -24,6 +22,9 @@ export function BriefActions({ topic }: { topic: Topic }) {
     const timer = setTimeout(() => setStatus(""), 2500);
     return () => clearTimeout(timer);
   }, [status]);
+  useEffect(() => {
+    if (manual) fallback.current?.focus();
+  }, [manual]);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(text);
@@ -51,19 +52,32 @@ export function BriefActions({ topic }: { topic: Topic }) {
           {status}
         </span>
       </div>
-      <Dialog open={manual} onClose={close} title="Copy your research brief">
-        <p className="manual-copy-note">
-          Clipboard access is unavailable here. Select and copy the complete
-          brief below.
-        </p>
-        <textarea
-          className="manual-copy"
-          aria-label="Complete research brief"
-          readOnly
-          value={text}
-          onFocus={(event) => event.currentTarget.select()}
-        />
-      </Dialog>
+      {manual && (
+        <div className="manual-copy-panel">
+          <p className="manual-copy-note">
+            Clipboard access is unavailable here. Select and copy the complete
+            brief below.
+          </p>
+          <textarea
+            ref={fallback}
+            className="manual-copy"
+            aria-label="Complete research brief"
+            readOnly
+            value={text}
+            onFocus={(event) => event.currentTarget.select()}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") setManual(false);
+            }}
+          />
+          <button
+            type="button"
+            className="text-link"
+            onClick={() => setManual(false)}
+          >
+            Hide
+          </button>
+        </div>
+      )}
     </>
   );
 }

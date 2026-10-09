@@ -232,38 +232,41 @@ p {
 .skip-link:focus {
   transform: none;
 }
-.dialog {
-  width: min(620px, calc(100% - 32px));
-  max-height: calc(100svh - 48px);
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow: 0 32px 100px #0003;
+[hidden] {
+  display: none !important;
 }
-.dialog::backdrop {
-  background: #17191688;
-  backdrop-filter: blur(4px);
+.source-reader {
+  outline: none;
 }
-.dialog__inner {
-  padding: 32px;
-}
-.dialog__top {
+.source-reader__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   margin-bottom: 24px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 16px;
 }
-.source-reader > svg {
-  color: var(--accent);
-  margin-bottom: 24px;
+.source-reader__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 8px 8px;
+  margin: -8px 0 -8px -8px;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 14px;
 }
-.source-reader > h2 {
+.source-reader__back:hover {
+  background: var(--stone);
+}
+.source-reader article > svg {
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.source-reader h2 {
   font-size: 32px;
-  margin: 12px 0 24px;
+  margin: 12px 0 20px;
 }
 .source-reader__passage {
   font-size: 20px;
@@ -272,9 +275,33 @@ p {
 }
 .source-reader__note {
   font-size: 14px;
-  margin-top: 32px;
+  margin-top: 28px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
+}
+.research-scene > .source-reader {
+  min-height: 456px;
+  padding: 32px 64px 40px;
+  background: var(--paper);
+}
+.story-stage > .source-reader {
+  position: relative;
+}
+.source-reader--dark {
+  grid-column: 1 / -1;
+  max-width: 720px;
+  color: var(--paper);
+}
+.source-reader--dark .source-reader__top,
+.source-reader--dark .source-reader__note {
+  border-color: #3d4036;
+}
+.source-reader--dark .source-reader__back:hover {
+  background: #2a2c26;
+}
+.source-reader--dark .source-reader__passage,
+.source-reader--dark h2 {
+  color: var(--paper);
 }
 @media (min-width: 1600px) {
   :root {
@@ -313,11 +340,15 @@ p {
   .section-heading > p:last-child {
     margin-top: 20px;
   }
-  .dialog__inner {
-    padding: 24px;
+  .source-reader h2 {
+    font-size: 26px;
   }
   .source-reader__passage {
-    font-size: 18px;
+    font-size: 17px;
+  }
+  .research-scene > .source-reader {
+    min-height: 0;
+    padding: 20px 20px 28px;
   }
   .section-badge {
     font-size: 11px;

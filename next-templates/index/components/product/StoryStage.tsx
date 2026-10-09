@@ -1,12 +1,20 @@
 "use client";
 import { ArrowUpRight, Check, FileText } from "lucide-react";
-import { useResearch } from "./ResearchProvider";
+import { useEffect, useId } from "react";
+import { useResearch, useSurfaceSource } from "./ResearchProvider";
+import { SourceReader } from "./SourceReader";
 import { Citation } from "./Citation";
 import { BriefActions } from "./BriefActions";
 import { AmbientField } from "@/components/motion/AmbientField";
 import { ConnectionMap } from "./ConnectionMap";
 export function StoryStage({ step }: { step: number }) {
-  const { topic, openSource } = useResearch();
+  const { topic, openSource, dismiss } = useResearch();
+  // The page renders this stage more than once (desktop and phone layouts),
+  // so each instance keeps its own passage.
+  const surface = `stage-${useId()}`;
+  const { source: reading, closeSource } = useSurfaceSource(surface);
+  // Changing stage closes a passage that was open in the old one.
+  useEffect(() => () => dismiss(surface), [step, surface, dismiss]);
   return (
     <div
       className={`story-stage story-stage--${step}`}
@@ -23,69 +31,73 @@ export function StoryStage({ step }: { step: number }) {
         <span className="meta">{topic.category}</span>
         <span className="meta">0{step + 1} / 03</span>
       </div>
-      {step === 0 && (
-        <div className="collection-view">
-          <div className="collection-view__heading">
-            <h3>Your useful pieces.</h3>
-          </div>
-          {topic.sources.map((source) => (
-            <button
-              key={source.id}
-              className="collection-row"
-              onClick={() => openSource(source)}
-            >
-              <FileText size={22} />
-              <span>
-                <strong>{source.title}</strong>
-                <small>
-                  {source.kind} · {source.tag}
-                </small>
-              </span>
-              <ArrowUpRight size={18} />
-            </button>
-          ))}
-          <p className="collection-view__footer">
-            <Check size={16} />
-            Three sources, ready to explore.
-          </p>
-        </div>
-      )}
-      {step === 1 && (
-        <div className="connections-view">
-          <ConnectionMap />
-          <div className="connection-insight">
-            <p className="meta">The thread between them</p>
-            <h3>{topic.connections[0]}</h3>
-            <p>{topic.takeaway}</p>
-          </div>
-        </div>
-      )}
-      {step === 2 && (
-        <article className="understand-view">
-          <p className="meta">Your research brief</p>
-          <h3>{topic.title}</h3>
-          <p className="understand-view__question">{topic.question}</p>
-          {topic.findings.map((finding, i) => (
-            <p key={i} className="understand-finding">
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              {finding.text}
-              <span className="citations">
-                {finding.sources.map((id) => {
-                  const index = topic.sources.findIndex((s) => s.id === id);
-                  return (
-                    <Citation
-                      key={id}
-                      source={topic.sources[index]}
-                      number={index + 1}
-                    />
-                  );
-                })}
-              </span>
+      {reading && <SourceReader source={reading} onClose={closeSource} />}
+      <div className="stage-body" hidden={!!reading}>
+        {step === 0 && (
+          <div className="collection-view">
+            <div className="collection-view__heading">
+              <h3>Your useful pieces.</h3>
+            </div>
+            {topic.sources.map((source) => (
+              <button
+                key={source.id}
+                className="collection-row"
+                onClick={() => openSource(source, surface)}
+              >
+                <FileText size={22} />
+                <span>
+                  <strong>{source.title}</strong>
+                  <small>
+                    {source.kind} · {source.tag}
+                  </small>
+                </span>
+                <ArrowUpRight size={18} />
+              </button>
+            ))}
+            <p className="collection-view__footer">
+              <Check size={16} />
+              Three sources, ready to explore.
             </p>
-          ))}
-          <BriefActions topic={topic} />
-        </article>
-      )}
+          </div>
+        )}
+        {step === 1 && (
+          <div className="connections-view">
+            <ConnectionMap surface={surface} />
+            <div className="connection-insight">
+              <p className="meta">The thread between them</p>
+              <h3>{topic.connections[0]}</h3>
+              <p>{topic.takeaway}</p>
+            </div>
+          </div>
+        )}
+        {step === 2 && (
+          <article className="understand-view">
+            <p className="meta">Your research brief</p>
+            <h3>{topic.title}</h3>
+            <p className="understand-view__question">{topic.question}</p>
+            {topic.findings.map((finding, i) => (
+              <p key={i} className="understand-finding">
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                {finding.text}
+                <span className="citations">
+                  {finding.sources.map((id) => {
+                    const index = topic.sources.findIndex((s) => s.id === id);
+                    return (
+                      <Citation
+                        key={id}
+                        source={topic.sources[index]}
+                        number={index + 1}
+                        surface={surface}
+                      />
+                    );
+                  })}
+                </span>
+              </p>
+            ))}
+            <BriefActions topic={topic} />
+          </article>
+        )}
+      </div>
     </div>
   );
 }

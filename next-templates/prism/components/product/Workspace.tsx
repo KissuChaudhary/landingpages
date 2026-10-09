@@ -13,15 +13,12 @@ import {
 import { artworks, site, type Artwork } from "@/site.config";
 import { asset } from "@/lib/assets";
 import { BrandMark } from "@/components/ui/Brand";
+import { usePrism } from "@/components/PrismProvider";
 
-export function Workspace({
-  initial = artworks[0],
-  compact = false,
-}: {
-  initial?: Artwork;
-  compact?: boolean;
-}) {
+export function Workspace({ initial = artworks[0] }: { initial?: Artwork }) {
   const id = useId();
+  const { request } = usePrism();
+  const root = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState(initial);
   const [result, setResult] = useState(initial);
   const [prompt, setPrompt] = useState(initial.prompt);
@@ -35,6 +32,22 @@ export function Workspace({
     },
     [],
   );
+  // A primary action elsewhere on the page loads its example here and brings
+  // the workspace into view.
+  useEffect(() => {
+    if (!request) return;
+    choose(request.artwork);
+    const element = root.current;
+    if (!element) return;
+    element.focus({ preventScroll: true });
+    element.scrollIntoView({
+      block: "start",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [request]);
   function choose(artwork: Artwork) {
     if (timeout.current) clearTimeout(timeout.current);
     setBusy(false);
@@ -58,7 +71,14 @@ export function Workspace({
     }, 850);
   }
   return (
-    <div className={`workspace${compact ? " workspace-compact" : ""}`}>
+    <div
+      ref={root}
+      id="workspace"
+      className="workspace"
+      tabIndex={-1}
+      aria-label={site.workspace.title}
+      role="region"
+    >
       <div className="workspace-bar">
         <div className="workspace-identity">
           <BrandMark />
@@ -180,7 +200,7 @@ export function Workspace({
               alt={result.alt}
               width="1200"
               height="1200"
-              fetchPriority={compact ? "auto" : "high"}
+              fetchPriority="high"
             />
             <span className="canvas-format">
               {result.style} <span>·</span> 1:1

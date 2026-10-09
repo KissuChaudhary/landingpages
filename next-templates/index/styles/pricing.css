@@ -136,42 +136,6 @@
   font-size: 12px;
   margin-top: 24px;
 }
-.plan-review > h2 {
-  font-size: 40px;
-}
-.plan-review > p {
-  margin-top: 16px;
-  font-size: 16px;
-}
-.plan-review dl {
-  margin: 32px 0;
-  border-top: 1px solid var(--line);
-}
-.plan-review dl > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
-}
-.plan-review dt {
-  color: var(--muted);
-}
-.plan-review dd {
-  margin: 0;
-  text-align: right;
-}
-.plan-review .plan-review__note {
-  font-size: 14px;
-  margin: 24px 0;
-}
-.plan-review > .text-link {
-  margin-top: 20px;
-  background: transparent;
-  padding: 0;
-  display: flex;
-}
 @media (max-width: 1100px) {
   .pricing-heading {
     align-items: flex-start;
@@ -233,16 +197,6 @@
   .plan ul {
     padding-top: 24px;
     margin-top: 24px;
-  }
-  .plan-review > h2 {
-    font-size: 32px;
-  }
-  .plan-review dl > div {
-    gap: 16px;
-  }
-  .plan-review > .action {
-    font-size: 13px;
-    gap: 12px;
   }
   .billing button {
     font-size: 12px;

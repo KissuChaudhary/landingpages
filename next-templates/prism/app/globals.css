@@ -10,7 +10,7 @@
 @import "../styles/community.css";
 @import "../styles/commerce.css";
 @import "../styles/closing.css";
-@import "../styles/dialogs.css";
+@import "../styles/panels.css";
 
 @theme inline {
   --font-sans: var(--font-ui);

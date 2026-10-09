@@ -1,6 +1,7 @@
 "use client";
 import { ArrowUpRight, FileText, StickyNote, BookOpen } from "lucide-react";
-import { useResearch } from "./ResearchProvider";
+import { useResearch, useSurfaceSource } from "./ResearchProvider";
+import { SourceReader } from "./SourceReader";
 import { TopicSelector } from "./TopicSelector";
 import { Citation } from "./Citation";
 import { Mark } from "@/components/ui/Mark";
@@ -9,6 +10,7 @@ import { SourceConnections } from "./SourceConnections";
 const icons = { Article: BookOpen, Note: StickyNote, Document: FileText };
 export function ResearchScene() {
   const { topic, openSource } = useResearch();
+  const { source: reading, closeSource } = useSurfaceSource("scene");
   return (
     <div className="research-scene" aria-label="Interactive research preview">
       <div className="scene-toolbar">
@@ -18,7 +20,8 @@ export function ResearchScene() {
         </span>
         <span className="meta">Local example</span>
       </div>
-      <div className="scene-canvas" key={topic.id}>
+      {reading && <SourceReader source={reading} onClose={closeSource} />}
+      <div className="scene-canvas" key={topic.id} hidden={!!reading}>
         <AmbientField />
         <div className="source-stack">
           {topic.sources.map((source, i) => {
@@ -27,7 +30,7 @@ export function ResearchScene() {
               <button
                 key={source.id}
                 className={`source-fragment source-fragment--${i}`}
-                onClick={() => openSource(source)}
+                onClick={() => openSource(source, "scene")}
               >
                 <span className="source-fragment__type">
                   <Icon size={16} />
@@ -56,6 +59,7 @@ export function ResearchScene() {
                         key={id}
                         source={topic.sources[number]}
                         number={number + 1}
+                        surface="scene"
                       />
                     );
                   })}

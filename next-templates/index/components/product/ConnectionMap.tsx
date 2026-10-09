@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Link2 } from "lucide-react";
 import { useResearch } from "./ResearchProvider";
-export function ConnectionMap() {
+export function ConnectionMap({ surface }: { surface: string }) {
   const { topic, openSource } = useResearch();
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState({
@@ -52,7 +52,7 @@ export function ConnectionMap() {
         <button
           key={source.id}
           className={`connection-tag connection-tag--${i}`}
-          onClick={() => openSource(source)}
+          onClick={() => openSource(source, surface)}
         >
           {source.tag}
           <ArrowUpRight size={14} />

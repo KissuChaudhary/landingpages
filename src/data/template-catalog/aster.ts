@@ -19,7 +19,7 @@ export const asterTemplate: TemplateItem = {
     "Newsreader and Onest typography with original botanical backgrounds",
     "Interactive review preview, sticky chapters and keyboard-accessible tabs",
     "Project filters, studio responses, revision requests, briefs and approvals",
-    "Complete billing reviews, connection directory, contact and editorial pages",
+    "Plan buttons that go to checkout, connection directory, contact and editorial pages",
   ],
   accentColor: "from-stone-200 to-emerald-300",
   previewUrl: "/preview/aster",
@@ -74,7 +74,7 @@ export const asterDetails: TemplateDetails = {
     {
       name: "Pricing",
       detail:
-        "Three plans, monthly/annual selection and full billing reviews with a correctly handled custom tier.",
+        "Three plans, monthly/annual selection and checkout links, with a correctly handled custom tier.",
     },
     {
       name: "Studio story",

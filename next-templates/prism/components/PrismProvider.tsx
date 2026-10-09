@@ -5,24 +5,21 @@ import {
   site,
   type Artwork,
   type HeroLayout,
-  type Plan,
   type ThemeName,
 } from "@/site.config";
-import { Dialogs } from "@/components/Dialogs";
 
-export type DialogState =
-  | { kind: "workspace" | "gallery"; artwork: Artwork }
-  | { kind: "plan"; plan: Plan; annual: boolean }
-  | { kind: "settings" }
-  | null;
 interface PrismContext {
   theme: ThemeName;
   layout: HeroLayout;
   setTheme: (theme: ThemeName) => void;
   setLayout: (layout: HeroLayout) => void;
-  dialog: DialogState;
-  setDialog: (dialog: DialogState) => void;
+  // The hero workspace opens in place. `request` tells it which example to
+  // load; `workspaceOpen` expands the split hero to show the full controls.
+  workspaceOpen: boolean;
+  request: { artwork: Artwork; id: number } | null;
   start: (artwork?: Artwork) => void;
+  appearanceOpen: boolean;
+  setAppearanceOpen: (open: boolean) => void;
 }
 const Context = createContext<PrismContext | null>(null);
 export function usePrism() {
@@ -38,7 +35,9 @@ export function PrismProvider({ children }: { children: React.ReactNode }) {
   const [layout, setLayoutState] = useState<HeroLayout>(
     site.appearance.defaultHero,
   );
-  const [dialog, setDialog] = useState<DialogState>(null);
+  const [workspaceOpen, setWorkspaceOpen] = useState(false);
+  const [request, setRequest] = useState<PrismContext["request"]>(null);
+  const [appearanceOpen, setAppearanceOpen] = useState(false);
   useEffect(() => {
     try {
       const saved = JSON.parse(
@@ -75,15 +74,25 @@ export function PrismProvider({ children }: { children: React.ReactNode }) {
       window.location.assign(site.appUrl);
       return;
     }
-    setDialog({ kind: "workspace", artwork });
+    setWorkspaceOpen(true);
+    setRequest((current) => ({ artwork, id: (current?.id ?? 0) + 1 }));
   }
   return (
     <Context.Provider
-      value={{ theme, layout, setTheme, setLayout, dialog, setDialog, start }}
+      value={{
+        theme,
+        layout,
+        setTheme,
+        setLayout,
+        workspaceOpen,
+        request,
+        start,
+        appearanceOpen,
+        setAppearanceOpen,
+      }}
     >
       <div className="prism-site" data-theme={theme} data-hero={layout}>
         {children}
-        <Dialogs />
       </div>
     </Context.Provider>
   );

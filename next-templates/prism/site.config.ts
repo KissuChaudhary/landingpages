@@ -45,6 +45,8 @@ export const site = {
   },
   // Set to your app URL to replace the local interactive demo on primary CTAs.
   appUrl: "",
+  // Paid plans start an email to this address until each has a checkout `href`.
+  email: "hello@example.com",
   nav: [
     { label: "Explore", href: "#explore" },
     { label: "How it works", href: "#product" },
@@ -281,7 +283,7 @@ export const site = {
       {
         question: "What happens when I choose a plan?",
         answer:
-          "You’ll see a plan summary with the billing period and total. This demo does not create an account or collect payment. Product owners can connect each plan to their own checkout.",
+          "Each plan button goes to that plan’s checkout link. This demo does not create an account or collect payment, so the free plan opens the workspace and paid plans start an email until a product owner connects their own checkout.",
       },
       {
         question: "Can the look work for a different creative app?",

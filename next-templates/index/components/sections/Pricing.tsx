@@ -1,15 +1,21 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { site, type Plan } from "@/site.config";
 import { planPrice, type Billing } from "@/lib/content";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Action } from "@/components/ui/Action";
-import { PlanReview } from "@/components/product/PlanReview";
 export function Pricing() {
   const [billing, setBilling] = useState<Billing>("yearly");
-  const [plan, setPlan] = useState<Plan | null>(null);
-  const close = useCallback(() => setPlan(null), []);
+  // A plan goes to its checkout link. Until one is set, the free plan opens
+  // the working example and paid plans start an email to your team.
+  const planHref = (plan: Plan) =>
+    plan.checkout[billing] ||
+    (plan.monthly === 0
+      ? site.links.app || "#research"
+      : `mailto:${site.links.email}?subject=${encodeURIComponent(
+          `${plan.name} plan, billed ${billing}`,
+        )}`);
   return (
     <section
       id="pricing"
@@ -65,8 +71,7 @@ export function Pricing() {
                       : `$${price.total} billed monthly${price.perSeat ? " per person" : ""}`}
                 </p>
                 <Action
-                  href={item.checkout[billing] || undefined}
-                  onClick={() => setPlan(item)}
+                  href={planHref(item)}
                   variant={item.featured ? "primary" : "secondary"}
                 >
                   {item.action}
@@ -84,11 +89,10 @@ export function Pricing() {
           })}
         </div>
         <p className="pricing-note">
-          Illustrative plans for a fictional product. Choose a plan to review
-          its billing.
+          Illustrative plans for a fictional product. Replace the prices and
+          checkout links in the configuration.
         </p>
       </div>
-      <PlanReview plan={plan} billing={billing} onClose={close} />
     </section>
   );
 }

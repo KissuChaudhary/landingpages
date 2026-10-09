@@ -5,9 +5,12 @@ import { Workspace } from "@/components/product/Workspace";
 import { usePrism } from "@/components/PrismProvider";
 
 export function Hero() {
-  const { start } = usePrism();
+  const { start, workspaceOpen } = usePrism();
   return (
-    <section className="hero container" aria-labelledby="hero-title">
+    <section
+      className={`hero container${workspaceOpen ? " hero-workspace-open" : ""}`}
+      aria-labelledby="hero-title"
+    >
       <div className="hero-copy">
         <p className="hero-badge">
           <span className="badge-dot" />

@@ -21,16 +21,16 @@ An AI creative app launch page for indie builders. The fictional demo turns idea
 5. Capabilities: asymmetrical bento with useful visual states, not identical icon cards.
 6. Workflow: three concise steps, connected by a line and small real UI details.
 7. Creator stories: three editable sample quotes, explicitly identified as illustrative in the demo.
-8. Pricing: free / Creator / Studio, monthly and annual rates with accurate totals; selection opens a clear demo plan summary.
+8. Pricing: free / Creator / Studio, monthly and annual rates with accurate totals; each plan button is a link to its checkout, or an email to your team until one is set.
 9. FAQ: native disclosures with honest demo/product boundaries.
 10. Closing action and footer: a gallery-backed closing composition; theme and hero-layout controls in a separate preview settings panel.
 
 ## Interaction contract
 
 - Presets update image, prompt and style. “Preview result” shows a brief pending state and the selected example; custom text is preserved. The interface clearly labels example results and never implies a live AI service.
-- Gallery filters and preview dialogs work by mouse and keyboard. Escape closes dialogs and restores focus; choosing an idea opens the workspace preset.
+- Gallery filters and the idea detail work by mouse and keyboard. Escape closes the detail and restores focus; choosing an idea loads the workspace preset in the hero.
 - Product tabs support arrows, Home and End. The refine panel has a working before/after slider; export has aspect-ratio and format selections and saves a real cropped example. Embedded previews open the full export page with the chosen settings before saving.
-- Billing toggle changes every displayed amount and annual billing description. Paid actions show a plan summary, never a fake payment success.
+- Billing toggle changes every displayed amount and annual billing description. Paid actions never show a fake payment success.
 - Primary actions open a usable sample workspace unless a buyer configures their real application URL. No email capture or external service is implied.
 - Theme/layout changes update the entire page and persist locally. Storage failure must not break the page. Motion respects reduced motion.
 
@@ -42,8 +42,8 @@ One typed content config; centralized artwork records; semantic CSS theme tokens
 
 - Inspect at 1440, 1024, 768 and 390px; no horizontal overflow, broken art or compressed controls.
 - Check all three themes and both hero layouts. Confirm text, focus rings and surfaces remain readable.
-- Exercise navigation, filters, gallery dialog, workspace presets, preview result, product tabs, refine slider, export selections, billing, plan dialog and settings.
-- Native dialogs trap focus and return it; interactive controls have names; visible focus and reduced-motion styles exist.
+- Exercise navigation, filters, gallery detail, workspace presets, preview result, product tabs, refine slider, export selections, billing, plan links and the appearance panel.
+- In-place panels move focus in and return it; interactive controls have names; visible focus and reduced-motion styles exist.
 - Strict TypeScript check, standalone production export, marketplace production build and browser console review.
 - Actual screenshot previews, complete customization/readme/license/asset provenance docs, and no oversized source file.
 

@@ -64,7 +64,7 @@ export const arcloDetails: TemplateDetails = {
     {
       name: "Pricing",
       detail:
-        "Three entity-based plans, monthly/yearly selection, a comparison table and complete billing review dialogs.",
+        "Three entity-based plans, monthly/yearly selection, a comparison table and plan buttons that go to your checkout or contact page.",
     },
     {
       name: "People and journal",

@@ -2,18 +2,19 @@
 
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { site, type Project } from "@/site.config";
+import { site } from "@/site.config";
 import { asset } from "@/lib/assets";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { ProjectDialog } from "./ProjectDialog";
+import { ProjectDetail } from "./ProjectDetail";
 
 export function SelectedWork() {
   const [filter, setFilter] = useState("All work");
-  const [selected, setSelected] = useState<Project | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
   const projects = site.work.projects.filter(
     (project) => filter === "All work" || project.category === filter,
   );
+  const open = projects.find((project) => project.id === selected);
   return (
     <section className="section container" id="work">
       <Reveal>
@@ -29,7 +30,10 @@ export function SelectedWork() {
             <button
               key={item}
               aria-pressed={filter === item}
-              onClick={() => setFilter(item)}
+              onClick={() => {
+                setFilter(item);
+                setSelected(null);
+              }}
             >
               {item}
               {filter === item && <span aria-hidden="true">↗</span>}
@@ -40,6 +44,15 @@ export function SelectedWork() {
           {String(projects.length).padStart(2, "0")} selected studies
         </span>
       </div>
+      {open && (
+        <ProjectDetail
+          project={open}
+          onClose={() => {
+            setSelected(null);
+            document.getElementById(`project-card-${open.id}`)?.focus();
+          }}
+        />
+      )}
       <div className="project-grid">
         {projects.map((project, index) => (
           <Reveal
@@ -48,7 +61,10 @@ export function SelectedWork() {
           >
             <button
               className="project-card"
-              onClick={() => setSelected(project)}
+              id={`project-card-${project.id}`}
+              onClick={() => setSelected(project.id)}
+              aria-expanded={open?.id === project.id}
+              aria-controls="project-detail"
               aria-label={`${site.work.openLabel}: ${project.name}, ${project.title}`}
             >
               <div className="project-image">
@@ -79,7 +95,6 @@ export function SelectedWork() {
           </Reveal>
         ))}
       </div>
-      <ProjectDialog project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

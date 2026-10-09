@@ -4,10 +4,15 @@ import { site } from "@/site.config";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { AccentReveal } from "@/components/motion/AccentReveal";
 import { AmbientField } from "@/components/motion/AmbientField";
-import { useResearch } from "@/components/product/ResearchProvider";
+import {
+  useResearch,
+  useSurfaceSource,
+} from "@/components/product/ResearchProvider";
+import { SourceReader } from "@/components/product/SourceReader";
 import { Citation } from "@/components/product/Citation";
 export function Evidence() {
   const { topic, openSource } = useResearch();
+  const { source: reading, closeSource } = useSurfaceSource("evidence");
   const source = topic.sources[0];
   return (
     <section className="evidence section" aria-labelledby="evidence-heading">
@@ -25,9 +30,12 @@ export function Evidence() {
         </div>
         <div className="evidence__visual">
           <AmbientField variant="dark" />
-          <div className="evidence-source">
+          {reading && (
+            <SourceReader source={reading} onClose={closeSource} tone="dark" />
+          )}
+          <div className="evidence-source" hidden={!!reading}>
             <button
-              onClick={() => openSource(source)}
+              onClick={() => openSource(source, "evidence")}
               className="evidence-source__label"
             >
               <span className="source-number">01</span>
@@ -37,14 +45,19 @@ export function Evidence() {
             <blockquote>“{source.excerpt}”</blockquote>
             <p>{source.publisher}</p>
           </div>
-          <div className="evidence-connection" aria-hidden="true">
+          <div
+            className="evidence-connection"
+            aria-hidden="true"
+            hidden={!!reading}
+          >
             <span />
             <ArrowRight size={18} />
           </div>
-          <div className="evidence-answer">
+          <div className="evidence-answer" hidden={!!reading}>
             <p className="meta">From the source to the idea</p>
             <p>
-              {topic.findings[0].text} <Citation source={source} number={1} />
+              {topic.findings[0].text}{" "}
+              <Citation source={source} number={1} surface="evidence" />
             </p>
             <span className="evidence-hint">
               Open the reference. Follow the thought.

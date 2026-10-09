@@ -5,11 +5,16 @@ import { site } from "@/site.config";
 import { topics } from "@/data/topics";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Action } from "@/components/ui/Action";
-import { useResearch } from "@/components/product/ResearchProvider";
+import {
+  useResearch,
+  useSurfaceSource,
+} from "@/components/product/ResearchProvider";
+import { SourceReader } from "@/components/product/SourceReader";
 import { BriefActions } from "@/components/product/BriefActions";
 import { Citation } from "@/components/product/Citation";
 export function Examples() {
   const { topic, select } = useResearch();
+  const { source: reading, closeSource } = useSurfaceSource("example");
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   return (
     <section
@@ -78,36 +83,40 @@ export function Examples() {
           aria-labelledby={`example-tab-${topic.id}`}
           tabIndex={0}
         >
-          <div className="example-preview__top">
-            <span className="meta">Your question</span>
-            <span className="meta">Sample collection</span>
+          {reading && <SourceReader source={reading} onClose={closeSource} />}
+          <div className="example-preview__body" hidden={!!reading}>
+            <div className="example-preview__top">
+              <span className="meta">Your question</span>
+              <span className="meta">Sample collection</span>
+            </div>
+            <h3>{topic.question}</h3>
+            <p>{topic.takeaway}</p>
+            <div className="example-preview__findings">
+              {topic.findings.map((finding, i) => (
+                <p key={`${topic.id}-${i}`}>
+                  <span>0{i + 1}</span>
+                  {finding.text}
+                  <span className="citations">
+                    {finding.sources.map((id) => {
+                      const n = topic.sources.findIndex((s) => s.id === id);
+                      return (
+                        <Citation
+                          key={id}
+                          source={topic.sources[n]}
+                          number={n + 1}
+                          surface="example"
+                        />
+                      );
+                    })}
+                  </span>
+                </p>
+              ))}
+            </div>
+            <BriefActions topic={topic} />
+            <Action href={site.links.app || "#research"} variant="text">
+              Explore this collection
+            </Action>
           </div>
-          <h3>{topic.question}</h3>
-          <p>{topic.takeaway}</p>
-          <div className="example-preview__findings">
-            {topic.findings.map((finding, i) => (
-              <p key={`${topic.id}-${i}`}>
-                <span>0{i + 1}</span>
-                {finding.text}
-                <span className="citations">
-                  {finding.sources.map((id) => {
-                    const n = topic.sources.findIndex((s) => s.id === id);
-                    return (
-                      <Citation
-                        key={id}
-                        source={topic.sources[n]}
-                        number={n + 1}
-                      />
-                    );
-                  })}
-                </span>
-              </p>
-            ))}
-          </div>
-          <BriefActions topic={topic} />
-          <Action href={site.links.app || "#research"} variant="text">
-            Explore this collection
-          </Action>
         </article>
       </div>
     </section>

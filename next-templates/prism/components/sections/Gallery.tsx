@@ -4,14 +4,15 @@ import { ArrowUpRight } from "lucide-react";
 import { artworks, site } from "@/site.config";
 import { asset } from "@/lib/assets";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { usePrism } from "@/components/PrismProvider";
+import { GalleryDetail } from "@/components/product/GalleryDetail";
 
 export function Gallery() {
   const [filter, setFilter] = useState("All ideas");
-  const { setDialog } = usePrism();
+  const [selected, setSelected] = useState<string | null>(null);
   const visible = artworks.filter(
     (artwork) => filter === "All ideas" || artwork.category === filter,
   );
+  const open = visible.find((artwork) => artwork.id === selected);
   return (
     <section
       id="explore"
@@ -30,19 +31,34 @@ export function Gallery() {
             type="button"
             key={value}
             aria-pressed={value === filter}
-            onClick={() => setFilter(value)}
+            onClick={() => {
+              setFilter(value);
+              setSelected(null);
+            }}
           >
             {value}
             {value === "All ideas" && <span>{artworks.length}</span>}
           </button>
         ))}
       </div>
+      {open && (
+        <GalleryDetail
+          artwork={open}
+          onClose={() => {
+            setSelected(null);
+            document.getElementById(`gallery-card-${open.id}`)?.focus();
+          }}
+        />
+      )}
       <div className="gallery-grid">
         {visible.map((artwork) => (
           <button
             className="gallery-card"
             key={artwork.id}
-            onClick={() => setDialog({ kind: "gallery", artwork })}
+            id={`gallery-card-${artwork.id}`}
+            onClick={() => setSelected(artwork.id)}
+            aria-expanded={open?.id === artwork.id}
+            aria-controls="gallery-detail"
             aria-label={`Explore ${artwork.title}`}
           >
             <div

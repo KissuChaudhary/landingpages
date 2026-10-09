@@ -162,7 +162,7 @@
 [data-hero="split"] .hero .workspace-body {
   grid-template-columns: 1fr;
 }
-[data-hero="split"] .hero .workspace-controls {
+[data-hero="split"] .hero:not(.hero-workspace-open) .workspace-controls {
   display: none;
 }
 [data-hero="split"] .hero .workspace-canvas {
@@ -175,7 +175,7 @@
 [data-hero="split"] .hero .workspace-mode {
   font-size: 8px;
 }
-[data-hero="split"] .hero .workspace-quick {
+[data-hero="split"] .hero:not(.hero-workspace-open) .workspace-quick {
   display: flex;
 }
 [data-hero="split"] .hero-proof {
@@ -184,6 +184,14 @@
 }
 [data-hero="split"] .orbit-label {
   display: none;
+}
+@media (min-width: 801px) {
+  /* The expanded workspace is tall; keep the headline beside it. */
+  [data-hero="split"] .hero-workspace-open .hero-copy {
+    align-self: start;
+    position: sticky;
+    top: 110px;
+  }
 }
 @media (max-width: 1100px) {
   .orbit-label {

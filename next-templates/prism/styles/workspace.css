@@ -1,4 +1,5 @@
 .workspace {
+  scroll-margin-top: 88px;
   border: 1px solid var(--line-strong);
   border-radius: 15px;
   background: var(--surface);
@@ -289,9 +290,6 @@
   font-weight: 500;
   background: #eeebff45;
 }
-.workspace-compact .workspace-body {
-  grid-template-columns: 260px 1fr;
-}
 .workspace-quick {
   display: none;
   justify-content: space-between;
@@ -356,8 +354,7 @@
   .workspace-identity > svg:last-child {
     display: none;
   }
-  .workspace-body,
-  .workspace-compact .workspace-body {
+  .workspace-body {
     display: flex;
     flex-direction: column-reverse;
   }

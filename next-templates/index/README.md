@@ -32,12 +32,12 @@ Deploy this folder as its own Next.js project. Leave `NEXT_PUBLIC_BASE_PATH` uns
 | Documentation and contact | `site.config.ts → links.docs / links.email` |
 | Independent billing destinations | `site.config.ts → plans[].checkout.monthly / yearly` |
 
-The main action explores the local example while `links.app` is empty. Empty plan destinations open a review with correct billing, without payment. Configured destinations use ordinary links. Together is priced per person. The yearly number is the monthly equivalent; the review and card show the full annual total. Update the savings label if changing the rates.
+The main action explores the local example while `links.app` is empty. Each plan button is an ordinary link. It goes to the plan's `checkout` link; until one is set, the free plan opens the working example and paid plans start an email to `links.email`. Together is priced per person. The yearly number is the monthly equivalent; the card shows the full annual total. Update the savings label if changing the rates.
 
 ## Working interactions
 
 - Three topics update the research scene, product story, evidence and example library together.
-- Source buttons and citation numbers open the corresponding complete source passage in a keyboard-accessible dialog.
+- Source buttons and citation numbers open the complete source passage inside the card they were chosen from. Back or Escape returns to the card and to the button you came from.
 - Desktop scrolling advances Collect, Connect and Understand. The same stages have manual controls. Phones show all three in normal reading order.
 - Example rows support Up/Down, Home/End and click. Copy and download include the selected answer and its original sources.
 - Clipboard failure opens a selectable text fallback. Download links are actual UTF-8 text files.

@@ -196,65 +196,85 @@
     position: static;
   }
 }
-.project-dialog {
-  width: min(1050px, 100% - 48px);
-  max-height: 90dvh;
-  margin: auto;
-  background: var(--paper);
+.project-detail {
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
   border-radius: 4px;
+  background: var(--paper);
+  scroll-margin-top: 88px;
 }
-.project-dialog-inner > img {
+.project-detail:focus {
+  outline: none;
+}
+.project-detail:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
+.project-detail .detail-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.project-detail .detail-top .eyebrow {
+  margin: 0;
+}
+.project-detail > img {
+  display: block;
+  width: 100%;
   max-height: 52dvh;
   object-fit: cover;
 }
-.project-dialog-copy {
+.project-detail-copy {
   display: grid;
   grid-template-columns: 1.7fr 1fr;
   gap: 55px;
   padding: 32px 40px 40px;
 }
-.project-dialog-copy .eyebrow {
+.project-detail-copy .eyebrow {
   color: var(--muted);
   margin-bottom: 15px;
 }
-.project-dialog-copy h2 {
+.project-detail-copy h3 {
   font-family: var(--font-serif-face), Georgia, serif;
   font-size: 43px;
   font-weight: 400;
   letter-spacing: -0.02em;
   margin-bottom: 17px;
 }
-.project-dialog-copy p:not(.eyebrow) {
+.project-detail-copy p:not(.eyebrow) {
   font-size: 14px;
   line-height: 1.7;
   color: var(--muted);
 }
-.project-dialog-copy li {
+.project-detail-copy li {
   padding: 8px 0;
   border-bottom: 1px solid var(--line);
   font-size: 12px;
 }
-.project-dialog-copy .text-link {
+.project-detail-copy .text-link {
   margin-top: 20px;
 }
+.project-card[aria-expanded="true"] .project-image {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
 @media (max-width: 760px) {
-  .project-dialog {
-    width: calc(100% - 24px);
-    max-height: 92dvh;
-  }
-  .project-dialog .dialog-top {
+  .project-detail .detail-top {
     padding: 12px 17px;
   }
-  .project-dialog-inner > img {
+  .project-detail > img {
     max-height: none;
     aspect-ratio: 1.2;
   }
-  .project-dialog-copy {
+  .project-detail-copy {
     grid-template-columns: 1fr;
     padding: 25px;
     gap: 27px;
   }
-  .project-dialog-copy h2 {
+  .project-detail-copy h3 {
     font-size: 36px;
   }
 }

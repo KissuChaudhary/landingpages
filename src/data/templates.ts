@@ -85,9 +85,9 @@ export const TEMPLATES: TemplateItem[] = [
       "tags": ["AI Research", "Knowledge App", "Scroll Motion", "Light Theme", "Next.js 15"],
       "features": [
         "Segmented heading accents, brief label decoding and responsive ambient fields",
-        "Three coordinated research examples with real source and citation dialogs",
+        "Three coordinated research examples with source passages that open in place beside each citation",
         "Scroll-led product story, keyboard example selection and complete brief exports",
-        "Three aligned plans, correct billing reviews and configurable destinations"
+        "Three aligned plans, plan buttons that go to your checkout links"
       ],
       "accentColor": "from-orange-300 to-orange-600",
       "previewUrl": "/preview/index",
@@ -358,7 +358,7 @@ export const TEMPLATES: TemplateItem[] = [
       "tags": ["AI Creative App", "Consumer App", "Three Themes", "Interactive UI", "Next.js 15"],
       "features": [
         "Graphite, Paper and Studio themes with two hero layouts",
-        "Filterable artwork gallery with prompt-to-workspace dialogs",
+        "Filterable artwork gallery with an in-place detail that loads each prompt into the workspace",
         "Colour comparison, canvas crops and real example image exports",
         "Modular sections, typed content config and original artwork"
       ],

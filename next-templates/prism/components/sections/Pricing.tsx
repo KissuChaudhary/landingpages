@@ -9,11 +9,16 @@ import { TextMorph } from "@/components/hairline/text-morph";
 
 export function Pricing() {
   const [annual, setAnnual] = useState(false);
-  const { setDialog } = usePrism();
-  function choose(plan: Plan) {
-    if (plan.href) window.location.assign(plan.href);
-    else setDialog({ kind: "plan", plan, annual });
-  }
+  const { start } = usePrism();
+  // A plan goes to its checkout link. Until one is set, the free plan opens
+  // the workspace and paid plans start an email to your team.
+  const planHref = (plan: Plan) =>
+    plan.href ||
+    (plan.monthly === 0
+      ? undefined
+      : `mailto:${site.email}?subject=${encodeURIComponent(
+          `${plan.name} plan, billed ${annual ? "yearly" : "monthly"}`,
+        )}`);
   return (
     <section
       className="section pricing-section container"
@@ -78,13 +83,24 @@ export function Pricing() {
                     : "Billed monthly"}
               </TextMorph>
             </p>
-            <button
-              className={`button ${plan.featured ? "button-primary" : "button-outline"}`}
-              onClick={() => choose(plan)}
-            >
-              Choose {plan.name}
-              <ArrowUpRight size={16} />
-            </button>
+            {planHref(plan) ? (
+              <a
+                className={`button ${plan.featured ? "button-primary" : "button-outline"}`}
+                href={planHref(plan)}
+              >
+                Choose {plan.name}
+                <ArrowUpRight size={16} />
+              </a>
+            ) : (
+              <button
+                type="button"
+                className={`button ${plan.featured ? "button-primary" : "button-outline"}`}
+                onClick={() => start()}
+              >
+                Choose {plan.name}
+                <ArrowUpRight size={16} />
+              </button>
+            )}
             <div className="plan-credits">
               <span className="credit-symbol" aria-hidden="true">
                 ✳

@@ -5,7 +5,7 @@ export const site = {
     description:
       "Collect the useful parts. Connect the ideas. Keep the answer with its sources. A research workspace for curious minds.",
   },
-  links: { app: "", docs: "", email: "" },
+  links: { app: "", docs: "", email: "hello@example.com" },
   hero: {
     badge: "A place for your thinking",
     first: "From open tabs",
@@ -123,7 +123,7 @@ export const site = {
       {
         question: "What happens when I choose a plan?",
         answer:
-          "You’ll see a review of the selected plan and billing period. This preview does not charge you or create an account. When a real checkout destination is configured, the plan action goes there.",
+          "Each plan button goes to its checkout link. This preview does not charge you or create an account, so the free plan opens the working example and paid plans start an email until you add your own checkout links.",
       },
     ],
   },

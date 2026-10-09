@@ -36,7 +36,7 @@ Change `brand.email` before accepting enquiries. The form prepares a brief local
 ## Sections
 
 1. Campaign hero and industry specialties.
-2. Filterable portfolio with native project dialogs.
+2. Filterable portfolio; each study opens in place above the grid.
 3. Studio manifesto and working principles.
 4. Campaign / packshot / detail perspective selector.
 5. Services that select the corresponding shoot format.
@@ -76,8 +76,8 @@ For best results, use landscape 3:2 source images with enough room around the su
 app/                    layout, page composition, stylesheet entry and icon
 components/
   BriefProvider.tsx     shared quote choices
-  Navbar.tsx            desktop navigation and native mobile dialog
-  sections/             one component per section; separate project and brief dialogs
+  Navbar.tsx            desktop navigation and the mobile menu
+  sections/             one component per section; the project detail and brief review open in place
   ui/                   brand mark, button, headings and scroll reveal
 lib/                    assets, quote arithmetic, brief serialization
 styles/                 base styles and focused section stylesheets
@@ -88,7 +88,7 @@ scripts/export-demo.mjs marketplace export helper
 
 ## Accessibility and motion
 
-The page includes a skip link, visible focus rings, labelled form controls, fieldsets, native HTML constraints, a polite estimate announcement and reduced-motion support. Project and mobile navigation dialogs use native focus trapping and Escape behaviour. Perspective tabs support Left/Right, Home and End. FAQ answers work without JavaScript. Scroll reveals enhance already-visible content; unvisited sections are not hidden.
+The page includes a skip link, visible focus rings, labelled form controls, fieldsets, native HTML constraints, a polite estimate announcement and reduced-motion support. The project detail opens in place and closes with Escape or its close control, returning focus to the card; the mobile menu uses native focus trapping and Escape behaviour. Perspective tabs support Left/Right, Home and End. FAQ answers work without JavaScript. Scroll reveals enhance already-visible content; unvisited sections are not hidden.
 
 ## Marketplace export
 
