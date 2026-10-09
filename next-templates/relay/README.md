@@ -65,6 +65,18 @@ This replaces the local request, context and document interface with your image.
 
 `app/page.tsx` composes independent sections. `components/RelayProvider.tsx` coordinates the workspace and plan dialog. `components/product/` holds the workspace pieces and code-native feature art; `components/ui/` holds the shared GridSection primitive, mark and native modal. `data/` and `lib/` separate content and state from rendering. `styles/` separates shared tokens, hero, workspace, features, lower sections and dialog.
 
+## Motion components
+
+Prices roll like an odometer and labels morph letter by letter instead of jumping. That's Number roll and Text morph,
+two free components from the Hairline UI library, kept in `components/hairline/` and used here in pricing. They need
+only React and Tailwind; Number roll's two keyframes sit at the end of `app/globals.css`. Use them for anything else
+that changes:
+
+```tsx
+<NumberRoll value={total} prefix="$" />
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
+
 ## Marketplace export
 
 Inside the Hairline UI repository, `npm run export:demo` builds a static export with `/demos/relay` as its base path and copies it to `public/demos/relay`. It only replaces files inside that demo directory. Use the normal `build` command for your own deployment. Do not run a dev server and build against the same `.next` directory at the same time.

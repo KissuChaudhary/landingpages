@@ -102,6 +102,16 @@ This creates a production static export with `/demos/stillform` as the base path
 
 The catalogue entry is `stillform`. The old `/demo/unreal-shot`, `/preview/unreal-shot` and `/template/unreal-shot` routes are preserved as compatibility aliases.
 
+## Motion components
+
+Labels morph letter by letter instead of jumping. That's Text morph, a free component from the Hairline UI library,
+kept in `components/hairline/text-morph.tsx` and used here in the shot selector. It needs only React and Tailwind. Use
+it for any other text that changes:
+
+```tsx
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
+
 ## Deploy
 
 Deploy the standalone project to any host supporting Next.js, such as Vercel. No environment variables are needed for normal deployment. For a static host, build with `STILLFORM_EXPORT=1`; omit `NEXT_PUBLIC_BASE_PATH` when deploying at the root of a domain.

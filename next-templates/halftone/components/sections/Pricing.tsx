@@ -8,6 +8,8 @@ import { site, type Plan } from "@/site.config";
 import { BrandGlyph } from "@/components/ui/BrandMark";
 import { Button } from "@/components/ui/Button";
 import { Reveal, SectionHeader } from "@/components/ui/Reveal";
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
 
 const STEPS = 1000;
 
@@ -25,6 +27,13 @@ function compact(value: number) {
   if (value >= 1_000_000) return `${trim(value / 1_000_000)}M`;
   if (value >= 1_000) return `${trim(value / 1_000)}k`;
   return String(value);
+}
+
+/** The same as compact(), split so the number can roll and the unit can stay: { n: 2.5, unit: "M" }. */
+function compactParts(value: number) {
+  if (value >= 1_000_000) return { n: value / 1_000_000, unit: "M" };
+  if (value >= 1_000) return { n: value / 1_000, unit: "k" };
+  return { n: value, unit: "" };
 }
 
 /** Two significant figures, so the slider lands on numbers people actually say. */
@@ -54,29 +63,34 @@ function PlanCard({ plan, volume, best }: { plan: Plan; volume: number; best: bo
       <div className="rounded-[26px] bg-white p-6 ring-1 ring-black/[0.05] sm:p-7">
         <div className="flex min-h-6 items-center justify-between gap-3">
           <h3 className="text-lg font-semibold tracking-tight text-ink">{plan.name}</h3>
-          {best ? (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-semibold text-accent">
-              <BrandGlyph className="size-3" />
-              {LABELS.bestFit}
-            </span>
-          ) : null}
+          <span
+            aria-hidden={!best}
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-semibold text-accent transition-[opacity,transform,filter] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none",
+              best ? "opacity-100" : "scale-90 opacity-0 blur-[2px]",
+            )}
+          >
+            <BrandGlyph className="size-3" />
+            {LABELS.bestFit}
+          </span>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-body md:min-h-[2lh]">{plan.description}</p>
 
         <div className="mt-6 flex items-baseline gap-1.5">
+          {/* Past the plan's limit, a strike draws itself across the price. */}
           <span
             className={cn(
-              "text-5xl font-semibold tracking-[-0.04em] tabular-nums",
-              available ? "text-ink" : "text-neutral-300 line-through decoration-2",
+              "bg-[linear-gradient(currentColor,currentColor)] bg-[position:0_55%] bg-no-repeat text-5xl font-semibold tracking-[-0.04em] transition-[background-size,color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none",
+              available ? "bg-[length:0%_2px] text-ink" : "bg-[length:100%_2px] text-neutral-300",
             )}
           >
-            ${(price ?? plan.base).toLocaleString("en-US")}
+            <NumberRoll value={price ?? plan.base} prefix="$" locales="en-US" />
           </span>
           {available ? <span className="text-sm font-medium text-neutral-400">{LABELS.perMonth}</span> : null}
         </div>
         <p className="mt-2 flex items-center gap-1.5 text-[13px] font-medium text-neutral-500">
           <span className={cn("size-1.5 rounded-full", available ? "bg-accent" : "bg-neutral-300")} aria-hidden="true" />
-          {available ? LABELS.atVolume(compact(volume)) : LABELS.overLimit(compact(plan.limit ?? 0))}
+          <TextMorph>{available ? LABELS.atVolume(compact(volume)) : LABELS.overLimit(compact(plan.limit ?? 0))}</TextMorph>
         </p>
 
         <Button href={plan.href} variant={best ? "primary" : "secondary"} className="mt-6 w-full">
@@ -129,7 +143,8 @@ export function Pricing() {
                 {slider.question}
               </label>
               <p className="text-[32px] font-semibold leading-none tracking-[-0.03em] text-ink tabular-nums sm:text-[40px]">
-                {compact(volume)} <span className="text-base font-medium tracking-normal text-neutral-400">{LABELS.unit}</span>
+                <NumberRoll value={compactParts(volume).n} suffix={compactParts(volume).unit} format={{ maximumFractionDigits: 1 }} locales="en-US" />{" "}
+                <span className="text-base font-medium tracking-normal text-neutral-400">{LABELS.unit}</span>
               </p>
             </div>
 

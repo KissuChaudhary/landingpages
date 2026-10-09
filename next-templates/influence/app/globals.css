@@ -136,3 +136,13 @@ details > summary::-webkit-details-marker {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Hairline UI motion primitives (components/hairline) */
+@keyframes ui-col-in {
+  from { max-width: 0; opacity: 0; }
+  to { max-width: 1em; opacity: 1; }
+}
+@keyframes ui-col-out {
+  from { max-width: 1em; opacity: 1; }
+  to { max-width: 0; opacity: 0; }
+}

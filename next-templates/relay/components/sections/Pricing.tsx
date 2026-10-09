@@ -5,6 +5,8 @@ import { site } from "@/site.config";
 import { useRelay } from "@/components/RelayProvider";
 import { formatAmount } from "@/lib/pricing";
 import { GridSection } from "@/components/ui/GridSection";
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
 export function Pricing() {
   const [yearly, setYearly] = useState(true);
   const { choosePlan } = useRelay();
@@ -34,9 +36,11 @@ export function Pricing() {
             </button>
           </div>
           <span>
-            {yearly && saving > 0
-              ? `${saving}% less, billed yearly`
-              : "A simple monthly plan"}
+            <TextMorph>
+              {yearly && saving > 0
+                ? `${saving}% less, billed yearly`
+                : "A simple monthly plan"}
+            </TextMorph>
           </span>
         </div>
       </div>
@@ -47,16 +51,23 @@ export function Pricing() {
             <p>{plan.description}</p>
             <div className="plan-price">
               <strong>
-                ${formatAmount(yearly ? plan.annual / 12 : plan.monthly)}
+                <NumberRoll
+                  value={yearly ? plan.annual / 12 : plan.monthly}
+                  prefix="$"
+                  locales="en-US"
+                  format={{ maximumFractionDigits: 2 }}
+                />
               </strong>
               <span>/ month</span>
             </div>
             <p className="plan-billing">
-              {plan.monthly === 0
-                ? "Free, for a first thought."
-                : yearly
-                  ? `$${formatAmount(plan.annual)} billed once a year`
-                  : `$${formatAmount(plan.monthly)} billed each month`}
+              <TextMorph>
+                {plan.monthly === 0
+                  ? "Free, for a first thought."
+                  : yearly
+                    ? `$${formatAmount(plan.annual)} billed once a year`
+                    : `$${formatAmount(plan.monthly)} billed each month`}
+              </TextMorph>
             </p>
             <button
               className={`button ${plan.monthly ? "button-blue" : "button-ink"}`}

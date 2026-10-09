@@ -115,6 +115,18 @@ components/
 site.config.ts        your content
 ```
 
+## Motion components
+
+Prices roll like an odometer and labels morph letter by letter instead of jumping. That's Number roll and Text morph,
+two free components from the Hairline UI library, kept in `components/hairline/` and used here in pricing. They need
+only React and Tailwind; Number roll's two keyframes sit at the end of `app/globals.css`. Use them for anything else
+that changes:
+
+```tsx
+<NumberRoll value={total} prefix="$" />
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
+
 ## Deploy
 
 Push to GitHub and import the repo in Vercel, Netlify or Cloudflare Pages. No environment variables are needed.

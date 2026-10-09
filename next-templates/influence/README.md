@@ -111,6 +111,18 @@ The "Book a call" links point at the closing section. Replace them with your cal
 creators, handles, numbers and quotes are placeholders: swap them for real ones, and only publish results you can back
 up.
 
+## Motion components
+
+Prices roll like an odometer and labels morph letter by letter instead of jumping. That's Number roll and Text morph,
+two free components from the Hairline UI library, kept in `components/hairline/` and used here in pricing. They need
+only React and Tailwind; Number roll's two keyframes sit at the end of `app/globals.css`. Use them for anything else
+that changes:
+
+```tsx
+<NumberRoll value={total} prefix="$" />
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
+
 ## Deploy
 
 Push to GitHub and import the repo in Vercel (or Netlify, Cloudflare Pages, any Node host).

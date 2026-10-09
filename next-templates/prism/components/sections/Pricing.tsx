@@ -4,6 +4,8 @@ import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { site, type Plan } from "@/site.config";
 import { usePrism } from "@/components/PrismProvider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
 
 export function Pricing() {
   const [annual, setAnnual] = useState(false);
@@ -60,17 +62,21 @@ export function Pricing() {
             <p className="plan-description">{plan.description}</p>
             <p className="plan-price">
               <span>
-                {site.pricing.currency}
-                {annual ? plan.annualMonthly : plan.monthly}
+                <NumberRoll
+                  value={annual ? plan.annualMonthly : plan.monthly}
+                  prefix={site.pricing.currency}
+                />
               </span>
               <span>/ month</span>
             </p>
             <p className="plan-billing">
-              {plan.monthly === 0
-                ? "Free to explore"
-                : annual
-                  ? `${site.pricing.currency}${plan.annualMonthly * 12} billed yearly`
-                  : "Billed monthly"}
+              <TextMorph>
+                {plan.monthly === 0
+                  ? "Free to explore"
+                  : annual
+                    ? `${site.pricing.currency}${plan.annualMonthly * 12} billed yearly`
+                    : "Billed monthly"}
+              </TextMorph>
             </p>
             <button
               className={`button ${plan.featured ? "button-primary" : "button-outline"}`}

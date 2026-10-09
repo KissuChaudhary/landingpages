@@ -4,6 +4,8 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { site } from "@/site.config";
 import { useTempo } from "@/components/TempoProvider";
 import { SectionIntro } from "@/components/ui/SectionIntro";
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
 
 export function Membership() {
   const [yearly, setYearly] = useState(true);
@@ -64,15 +66,24 @@ export function Membership() {
             </div>
             <p className="plan-description">{plan.description}</p>
             <div className="plan-price">
-              <span>${yearly ? plan.yearly / 12 : plan.monthly}</span>
+              <span>
+                <NumberRoll
+                  value={yearly ? plan.yearly / 12 : plan.monthly}
+                  prefix="$"
+                  locales="en-US"
+                  format={{ maximumFractionDigits: 2 }}
+                />
+              </span>
               <span>/ month</span>
             </div>
             <p className="plan-billing">
-              {plan.monthly === 0
-                ? "Free, for your everyday."
-                : yearly
-                  ? `$${plan.yearly} billed once a year`
-                  : `$${plan.monthly} billed monthly`}
+              <TextMorph>
+                {plan.monthly === 0
+                  ? "Free, for your everyday."
+                  : yearly
+                    ? `$${plan.yearly} billed once a year`
+                    : `$${plan.monthly} billed monthly`}
+              </TextMorph>
             </p>
             <button
               className={`button ${index ? "button-lime" : "button-outline"}`}

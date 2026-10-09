@@ -104,9 +104,19 @@ site.config.ts        your content
 
 ## Before you launch
 
-The form in `components/sections/FinalCta.tsx` only shows a confirmation message. Connect its `onSubmit` to your own
-sign-up flow. Replace the demo customers, figures and tax details with your own, and have a professional check the
-tax claims you make.
+The form in `components/sections/FinalCta.tsx` shows a confirmation after a short pretend request. Replace the
+`signUp` function at the top with your own sign-up request. Replace the demo customers, figures and tax details with
+your own, and have a professional check the tax claims you make.
+
+## Motion components
+
+Labels morph letter by letter instead of jumping. That's Text morph, a free component from the Hairline UI library,
+kept in `components/hairline/text-morph.tsx` and used here in the closing sign-up. It needs only React and Tailwind.
+Use it for any other text that changes:
+
+```tsx
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
 
 ## Deploy
 

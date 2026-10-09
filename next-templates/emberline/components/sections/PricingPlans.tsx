@@ -3,6 +3,8 @@
 import { Check } from "lucide-react";
 import { useState } from "react";
 
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
@@ -68,11 +70,11 @@ export function PricingPlans() {
               <p className="mt-1.5 text-[14px] text-ink-mid">{plan.description}</p>
 
               <p className="mt-7 flex items-baseline gap-1.5">
-                <span className="text-[3.25rem] font-medium leading-none tracking-[-0.035em] tabular-nums text-ink">${price}</span>
+                <NumberRoll value={price} prefix="$" className="text-[3.25rem] font-medium leading-none tracking-[-0.035em] text-ink" />
                 <span className="text-[14px] text-ink-low">/month</span>
               </p>
               <p className="mt-2 h-5 text-[13px] text-ink-low">
-                {billing === "yearly" ? `Billed yearly, $${plan.yearly * 12} per year` : "Billed monthly"}
+                <TextMorph>{billing === "yearly" ? `Billed yearly, $${plan.yearly * 12} per year` : "Billed monthly"}</TextMorph>
               </p>
 
               <Button

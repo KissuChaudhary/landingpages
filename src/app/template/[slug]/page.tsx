@@ -16,6 +16,8 @@ import { TEMPLATES, getTemplateBySlug } from '@/data/templates';
 import { TEMPLATE_DETAILS, getTemplateDetails, shortKind, type TemplateDetails } from '@/data/template-details';
 import { ALL_ACCESS_CHECKOUT, CURRENCY, PRICING, TEMPLATE_CHECKOUT, formatPrice } from '@/data/pricing';
 import { SITE_NAME, absoluteUrl } from '@/data/site';
+import { getUiItem } from '@/ui-library/registry';
+import { USED_IN } from '@/ui-library/used-in';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -81,6 +83,12 @@ export default async function TemplateDetailPage({ params }: PageProps) {
   if (!template || !d) notFound();
 
   const single = formatPrice(PRICING.single.price);
+  // The free components this template ships, and the sections they're in.
+  const components = Object.entries(USED_IN).flatMap(([name, uses]) => {
+    const wheres = uses.filter((u) => u.template === slug).map((u) => u.where);
+    const ui = getUiItem(name);
+    return wheres.length && ui ? [{ name, title: ui.title, description: ui.description, where: wheres.join(', ') }] : [];
+  });
   const allAccess = formatPrice(PRICING.allAccess.price);
   const checkout = TEMPLATE_CHECKOUT[slug] ?? '';
   const count = TEMPLATES.length;
@@ -306,6 +314,29 @@ export default async function TemplateDetailPage({ params }: PageProps) {
             Remove a section by deleting its line in <RichText text="`app/page.tsx`" />, or move the line to reorder.
           </p>
         </Row>
+
+        {components.length > 0 && (
+          <Row id="components" label="Built with">
+            <p className="max-w-2xl text-[15px] leading-relaxed text-neutral-900">
+              <RichText text="Its motion comes from free components in our library, shipped in `components/hairline/` so you can use them anywhere else on the page too." />
+            </p>
+            <ul className="mt-6 divide-y divide-neutral-100 border-y border-neutral-100">
+              {components.map((c) => (
+                <li key={c.name}>
+                  <Link href={`/ui/${c.name}`} className="group flex items-center justify-between gap-6 py-4">
+                    <span className="min-w-0">
+                      <span className="block text-[15px] font-medium text-neutral-950 transition-colors group-hover:text-primary">
+                        {c.title} <span className="font-normal text-neutral-400">· {c.where}</span>
+                      </span>
+                      <span className="mt-0.5 block text-sm text-neutral-500">{c.description}</span>
+                    </span>
+                    <ArrowRight className="size-4 shrink-0 text-neutral-300 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Row>
+        )}
 
         <Row id="customize" label="Make it yours">
           <p className="max-w-2xl text-[15px] leading-relaxed text-neutral-900">

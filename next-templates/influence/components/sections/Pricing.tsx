@@ -3,6 +3,8 @@
 import { Check, Minus } from "lucide-react";
 import { useState } from "react";
 
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
 import { Container, SectionTitle } from "@/components/ui/Title";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/site.config";
@@ -24,7 +26,9 @@ export function Pricing() {
   const { billing, plans, rows } = pricing;
   const [quarterly, setQuarterly] = useState(false);
 
-  const price = (base: number) => `$${Math.round(quarterly ? base * (1 - billing.discount) : base).toLocaleString("en-US")}`;
+  const price = (base: number) => (
+    <NumberRoll value={Math.round(quarterly ? base * (1 - billing.discount) : base)} prefix="$" locales="en-US" />
+  );
   const cols = "lg:grid-cols-[minmax(0,1.15fr)_repeat(3,minmax(0,1fr))]";
 
   return (
@@ -53,7 +57,7 @@ export function Pricing() {
             ))}
           </div>
           <p className="text-[13px] font-semibold text-good" aria-live="polite">
-            {quarterly ? billing.note : billing.save}
+            <TextMorph>{quarterly ? billing.note : billing.save}</TextMorph>
           </p>
         </div>
 

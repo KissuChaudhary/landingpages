@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -30,11 +30,12 @@ export function OutlineButton({ className, children, ...props }: LinkProps) {
   );
 }
 
-export function SubmitButton({ className, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
+/** The solid submit pill. `icon` replaces the arrow. */
+export function SubmitButton({ className, children, icon, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { icon?: ReactNode }) {
   return (
     <button type="submit" className={cn(base, solid, "cursor-pointer", className)} {...props}>
       {children}
-      <ArrowRight className="size-4" strokeWidth={2.25} />
+      {icon ?? <ArrowRight className="size-4" strokeWidth={2.25} />}
     </button>
   );
 }

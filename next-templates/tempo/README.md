@@ -59,6 +59,18 @@ The timer uses an absolute deadline and updates from current time, so delayed br
 
 Replace the fictional brand, stories, sample membership features, prices, routine and FAQ before using the page for your real product. Change `links.email` from the placeholder. The commercial license is in LICENSE.md.
 
+## Motion components
+
+Prices roll like an odometer and labels morph letter by letter instead of jumping. That's Number roll and Text morph,
+two free components from the Hairline UI library, kept in `components/hairline/` and used here in membership pricing.
+They need only React and Tailwind; Number roll's two keyframes sit at the end of `app/globals.css`. Use them for
+anything else that changes:
+
+```tsx
+<NumberRoll value={total} prefix="$" />
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
+
 ## Static demo
 
 For a standalone static host, build with `TEMPO_EXPORT=1`. Set `NEXT_PUBLIC_BASE_PATH` at build time when hosting under a subdirectory. Normal Next.js deployment uses neither variable.

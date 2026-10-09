@@ -170,9 +170,11 @@ The `/ui` index, `/ui/<name>` page (States, Usage, example, Props, Accessibility
 
 ---
 
-## 8. Where the library stands (39 components, in /ui order)
+## 8. Where the library stands (49 components, in /ui order)
 
-**Landing interactions (built to the benchmark):** text-morph, status-button, number-roll, pricing-toggle, waitlist-field, morphing-nav, feature-tabs, stats-band, announcement-pill, testimonials, faq-accordion, logo-marquee.
+**Landing interactions (built to the benchmark):** text-morph, status-button, number-roll, pricing-toggle, waitlist-field, morphing-nav, feature-tabs, stats-band, announcement-pill, testimonials, faq-accordion, logo-marquee, then (2026-10-09) command-palette, toast-stack, theme-toggle, pricing-calculator, comparison-table, onboarding-checklist, changelog-timeline, cookie-banner, newsletter-footer.
+
+**Playback:** agent-playback (the product components playing a believable session on their own, for heroes).
 
 **Product / AI UI (brought up to the benchmark in the motion pass, 2026-10-08):**
 - Asking: prompt-composer, mention-menu, attachment-chip, mode-switcher, model-picker, voice-input
@@ -190,7 +192,7 @@ Latest commits: the motion pass `7ab99fd` (code block, message edit, web researc
 
 ## 9. Next (start here)
 
-**Done: the motion upgrade pass** (2026-10-08, pushed in the seven batches above, awaiting the owner's review on the live site). The table below is kept as the record of what each component got; any feedback from that review comes first. Then the next job is **playback mode** (below).
+**Done:** the motion upgrade pass (2026-10-08, the table below is its record), playback mode (`agent-playback`), the nine landing interactions (`fac6f2f`, `44fd555`, `82338af`) and the template link (below). Any feedback from the owner's review comes first.
 
 | Component | What to upgrade |
 | --- | --- |
@@ -219,8 +221,12 @@ Latest commits: the motion pass `7ab99fd` (code block, message edit, web researc
 | prompt-composer | Check send ↔ stop morph and attachment count meet the bar |
 | chat-history, citation, mention-menu, selection-actions | Review for any remaining hard swaps |
 
+### Components inside the templates (how the link works)
+- A template uses a component by shipping the registry file verbatim in `next-templates/<t>/components/hairline/<name>.tsx` (Number roll also needs `ui-col-in/out` at the end of the template's `app/globals.css`) and importing it in a section. Its README has a "Motion components" section saying so.
+- Now: Number roll rolls the prices in cutroom, emberline, halftone, influence, prism, relay and tempo; Text morph morphs the billing lines there, the closing sign-up in kept, footnote and parley (the field gives way to the confirmation in place, the button goes arrow → spinner → drawn check), and the shot selector in stillform. Patch, fourteen and marlow don't use any yet (patch was being reworked by another session).
+- `node scripts/ui-library/register.mjs` scans the templates and writes `src/ui-library/used-in.ts`; `/ui/<name>` shows "In the templates" and `/template/<slug>` shows "Built with" from it. Never edit used-in.ts by hand.
+- After changing a template, rebuild its demo into `public/demos/<folder>` (influence → `influence-hero`, fourteen → `quick-14-studio`): templates with `scripts/export-demo.mjs` use that; the others need a temporary export config (`output: "export"`, `basePath: "/demos/<folder>"`, `images.unoptimized`) for the build, put back afterwards. Don't copy the templates' own `public/*-full-page.png` screenshots into the demo.
+
 ### Next job
-- **Playback mode** for 5 product components (composer, thinking trace, tool call, streaming answer, web research): a hands-off, looping, believable demo for landing-page heroes, so AI startups can show their product working (this is the bridge to the templates).
-- More signature landing interactions in the same style (ideas: command palette, toast stack, onboarding checklist, pricing calculator slider, theme toggle morph, comparison table, changelog timeline, cookie banner, newsletter footer).
-- Link each component page to the templates that use it; use the components inside the templates.
+- More templates using components where a real interaction exists: FAQ accordions, waitlist fields, toast confirmations, theme toggles; then patch once its rework lands.
 - Site/business loose ends: connect `hairlineui.com` in Vercel with `NEXT_PUBLIC_SITE_URL`; add a license (MIT recommended) and submit `@hairline` to the shadcn registry directory; real checkout links in `src/data/pricing.ts`; 260 unused files in `public/` (~131MB) await the owner's approval to delete.

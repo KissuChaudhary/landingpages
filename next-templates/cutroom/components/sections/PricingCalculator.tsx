@@ -3,6 +3,9 @@
 import { Check } from "lucide-react";
 import { useState } from "react";
 
+import { NumberRoll } from "@/components/hairline/number-roll";
+import { TextMorph } from "@/components/hairline/text-morph";
+
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/site.config";
@@ -83,21 +86,25 @@ export function PricingCalculator() {
       <div className="flex flex-col justify-between rounded-3xl bg-ink p-6 text-on-ink sm:p-8 lg:col-span-5">
         <div>
           <p className="timecode text-on-ink-mid">
-            {chosenVolume.count} {chosenFormat.name.toLowerCase()} videos a month
+            <TextMorph>{`${chosenVolume.count} ${chosenFormat.name.toLowerCase()} videos a month`}</TextMorph>
           </p>
           <p aria-live="polite" className="mt-6">
-            <span className="display block text-[clamp(3.5rem,2rem+6vw,6rem)] leading-none text-on-ink">{money(total)}</span>
+            <span className="display block text-[clamp(3.5rem,2rem+6vw,6rem)] leading-none text-on-ink">
+              <NumberRoll value={Math.round(total)} prefix="$" locales="en-US" />
+            </span>
             <span className="mt-2 block text-[15px] text-on-ink-mid">per month</span>
           </p>
           <dl className="mt-8 grid grid-cols-2 gap-6 border-t border-ink-line pt-6">
             <div>
               <dt className="timecode text-on-ink-mid">Per video</dt>
-              <dd className="display mt-1.5 text-[1.75rem] leading-none text-on-ink">{money(perVideo)}</dd>
+              <dd className="display mt-1.5 text-[1.75rem] leading-none text-on-ink">
+                <NumberRoll value={Math.round(perVideo)} prefix="$" locales="en-US" />
+              </dd>
             </div>
             <div>
               <dt className="timecode text-on-ink-mid">You save</dt>
               <dd className={cn("display mt-1.5 text-[1.75rem] leading-none", saving ? "text-flame" : "text-on-ink-mid")}>
-                {saving ? money(saving) : "$0"}
+                <NumberRoll value={Math.round(saving)} prefix="$" locales="en-US" />
               </dd>
             </div>
           </dl>

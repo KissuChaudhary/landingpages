@@ -11,7 +11,10 @@ import Row from '@/components/Row';
 import CopyCommand from '@/components/template/CopyCommand';
 import ComponentPreview from '@/components/ui-site/ComponentPreview';
 import { UI_ITEMS, UI_NAME, UI_REQUIREMENTS, getUiItem } from '@/ui-library/registry';
+import { USED_IN } from '@/ui-library/used-in';
 import { SITE_NAME, absoluteUrl } from '@/data/site';
+import { TEMPLATES } from '@/data/templates';
+import { TEMPLATE_DETAILS, shortKind } from '@/data/template-details';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -47,6 +50,12 @@ export default async function UiComponentPage({ params }: PageProps) {
   const registryUrl = absoluteUrl(`/r/${item.name}.json`);
   const install = `npx shadcn@latest add ${registryUrl}`;
   const others = UI_ITEMS.filter((i) => i.name !== item.name);
+  // The templates that ship this component, in catalog order.
+  const templates = TEMPLATES.flatMap((t) => {
+    const use = USED_IN[item.name]?.find((u) => u.template === t.slug);
+    const details = TEMPLATE_DETAILS[t.slug];
+    return use && details ? [{ slug: t.slug, href: t.detailUrl, name: details.name, kind: shortKind(details), where: use.where }] : [];
+  });
 
   const jsonLd = [
     {
@@ -139,6 +148,38 @@ export default async function UiComponentPage({ params }: PageProps) {
             </p>
           ) : null}
         </Row>
+
+        {templates.length > 0 && (
+          <Row id="templates" label="In the templates">
+            <p className="mb-6 max-w-2xl text-[15px] leading-relaxed text-[#444]">
+              {templates.length === 1 ? 'One template uses' : `${templates.length} templates use`} {item.title.toLowerCase()}, so you can see it at work in a whole page. They
+              ship it in <code className="font-mono text-[13px] text-[#181925]">components/hairline/</code>.
+            </p>
+            <ul className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
+              {templates.map((t) => (
+                <li key={t.slug} className="min-w-0 border-t border-black/[0.06]">
+                  <Link href={t.href} className="group flex items-center gap-4 py-4">
+                    <img
+                      src={`/previews/card/${t.slug}.webp`}
+                      alt=""
+                      width={80}
+                      height={52}
+                      loading="lazy"
+                      className="h-[52px] w-20 shrink-0 rounded-lg border border-black/[0.07] object-cover object-top"
+                    />
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[15px] font-medium text-[#181925] transition-colors group-hover:text-primary">{t.name}</span>
+                      <span className="mt-0.5 block truncate text-sm text-[#888]">
+                        {t.where} · {t.kind}
+                      </span>
+                    </span>
+                    <ArrowRight className="size-4 shrink-0 text-[#bbb] transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Row>
+        )}
 
         {item.recipe && (
           <Row id="example" label={item.recipeTitle ?? 'With the AI SDK'}>

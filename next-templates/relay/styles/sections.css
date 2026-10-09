@@ -42,7 +42,7 @@
 .plan-column > p { color: var(--muted); margin-top: 12px; }
 .plan-price { display: flex; align-items: baseline; gap: 12px; margin-top: 30px; }
 .plan-price strong { font-size: 48px; font-weight: 500; line-height: 1.1; letter-spacing: -.04em; }
-.plan-price span { color: var(--muted); font-size: var(--small); }
+.plan-price > span { color: var(--muted); font-size: var(--small); }
 .plan-column .plan-billing { font-size: var(--small); margin-top: 8px; }
 .plan-column .button { margin-top: 24px; width: 100%; justify-content: space-between; border-radius: 10px; }
 .plan-column ul { list-style: none; padding: 0; margin: 28px 0 0; }

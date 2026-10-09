@@ -107,9 +107,19 @@ site.config.ts        your content
 
 ## Before you launch
 
-The sign-up form in `components/sections/FinalCta.tsx` only shows a confirmation message. Connect its `onSubmit`
-to your own sign-up endpoint or email provider. The logos in the hero are text placeholders: swap them for your
-customers' marks.
+The sign-up form in `components/sections/FinalCta.tsx` shows a confirmation after a short pretend request. Replace the
+`startTrial` function at the top with a call to your own sign-up endpoint or email provider. The logos in the hero are
+text placeholders: swap them for your customers' marks.
+
+## Motion components
+
+Labels morph letter by letter instead of jumping. That's Text morph, a free component from the Hairline UI library,
+kept in `components/hairline/text-morph.tsx` and used here in the closing sign-up. It needs only React and Tailwind.
+Use it for any other text that changes:
+
+```tsx
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
 
 ## Deploy
 

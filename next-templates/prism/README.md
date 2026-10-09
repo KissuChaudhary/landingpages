@@ -68,6 +68,18 @@ Six original artworks ship with matching 480px thumbnails and 1200px main images
 - Skip link, visible focus, semantic landmarks, image descriptions and reduced-motion styles are included.
 - Themes and hero layouts are responsive, with no horizontal page scrolling at the checked desktop, tablet and phone widths.
 
+## Motion components
+
+Prices roll like an odometer and labels morph letter by letter instead of jumping. That's Number roll and Text morph,
+two free components from the Hairline UI library, kept in `components/hairline/` and used here in pricing. They need
+only React and Tailwind; Number roll's two keyframes sit at the end of `app/globals.css`. Use them for anything else
+that changes:
+
+```tsx
+<NumberRoll value={total} prefix="$" />
+<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
+```
+
 ## Deploy
 
 The default build works on a Next.js host such as Vercel or a Node server. For a static host, build with `PRISM_EXPORT=1`. Set `NEXT_PUBLIC_BASE_PATH` at build time only when hosting below a subdirectory. The `asset()` helper prefixes local images consistently; fonts and Next.js assets use the framework’s base path.

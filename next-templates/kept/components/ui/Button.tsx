@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -20,8 +20,8 @@ export function Button({ className, children, ...props }: LinkProps) {
   );
 }
 
-/** The solid button for use on the pine band: lime with dark text. */
-export function LimeButton({ className, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
+/** The solid button for use on the pine band: lime with dark text. `icon` replaces the arrow. */
+export function LimeButton({ className, children, icon, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { icon?: ReactNode }) {
   return (
     <button
       type="submit"
@@ -29,7 +29,7 @@ export function LimeButton({ className, children, ...props }: ButtonHTMLAttribut
       {...props}
     >
       {children}
-      <ArrowRight className="size-4" strokeWidth={2.25} />
+      {icon ?? <ArrowRight className="size-4" strokeWidth={2.25} />}
     </button>
   );
 }

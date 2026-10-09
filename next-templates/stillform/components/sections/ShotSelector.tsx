@@ -6,6 +6,7 @@ import { site } from "@/site.config";
 import { asset } from "@/lib/assets";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { TextMorph } from "@/components/hairline/text-morph";
 
 export function ShotSelector() {
   const [index, setIndex] = useState(0);
@@ -72,12 +73,20 @@ export function ShotSelector() {
             height="1024"
             loading="lazy"
           />
-          <span className="image-label">SOLA / {selected.index}</span>
+          <span className="image-label">
+            <TextMorph>{`SOLA / ${selected.index}`}</TextMorph>
+          </span>
         </div>
         <div className="shot-copy">
-          <span className="eyebrow">The intention / {selected.index}</span>
-          <h3>{selected.title}</h3>
-          <p>{selected.description}</p>
+          <span className="eyebrow">
+            <TextMorph>{`The intention / ${selected.index}`}</TextMorph>
+          </span>
+          <h3>
+            <TextMorph animateWidth={false}>{selected.title}</TextMorph>
+          </h3>
+          <p>
+            <TextMorph animateWidth={false}>{selected.description}</TextMorph>
+          </p>
           <ul>
             {selected.tags.map((tag) => (
               <li key={tag}>{tag}</li>
