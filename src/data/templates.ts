@@ -29,6 +29,27 @@ export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
     {
+      "slug": "index",
+      "title": "Index: AI Research & Knowledge Workspace",
+      "category": "Landing Pages",
+      "defaultTheme": "light",
+      "badge": "Research & Knowledge",
+      "description": "An editorial launch page in warm paper, ink and persimmon. Segmented heading accents, a wide research scene, scroll-led product chapters and working source-linked examples give knowledge and AI products a distinct identity.",
+      "tags": ["AI Research", "Knowledge App", "Scroll Motion", "Light Theme", "Next.js 15"],
+      "features": [
+        "Segmented heading accents, brief label decoding and responsive ambient fields",
+        "Three coordinated research examples with real source and citation dialogs",
+        "Scroll-led product story, keyboard example selection and complete brief exports",
+        "Three aligned plans, correct billing reviews and configurable destinations"
+      ],
+      "accentColor": "from-orange-300 to-orange-600",
+      "previewUrl": "/preview/index",
+      "standaloneUrl": "/demos/index/index.html",
+      "demoUrl": "/demo/index",
+      "detailUrl": "/template/index",
+      "thumbnailUrl": "/previews/card/index.webp"
+    },
+    {
       "slug": "footnote",
       "title": "Footnote: AI Writing Tool Landing Page",
       "category": "Landing Pages",

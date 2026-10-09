@@ -52,6 +52,7 @@ export const TEMPLATE_CHECKOUT: Record<string, string> = {
   tempo: '',
   patch: '',
   relay: '',
+  index: '',
 };
 
 export const formatPrice = (amount: number) => `$${amount}`;

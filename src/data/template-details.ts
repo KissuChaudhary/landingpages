@@ -23,6 +23,7 @@ export interface TemplateDetails {
   customizeIntro?: string;
   fonts: string[];
   dependencies: string[];
+  styling?: 'CSS' | 'Tailwind CSS v4';
   images: string;
   node: string;
   files: number;
@@ -37,6 +38,43 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  index: {
+    name: 'Index',
+    kind: 'AI research and knowledge workspace landing page template',
+    summary: 'A warm editorial launch page for research, knowledge and AI products. A wide source-to-synthesis scene, purposeful heading motion and a scroll-led product story turn a collection of ideas into a clear product narrative.',
+    bestFor: ['AI research and search products', 'Knowledge workspaces and browser extensions', 'Writing, reading and personal productivity tools'],
+    design: 'Warm paper, ink, stone and persimmon. Instrument Sans carries a consistent display and reading hierarchy. Segmented heading accents, briefly decoded labels and sparse animated fields express sources becoming understanding. Open prose alternates with functional product screens and a dark evidence chapter. One badge per section, a 64px navigation row and three aligned plans complete the page.',
+    sections: [
+      { name: 'Navigation', detail: 'Compact open navigation, useful anchors, a main example action and an Escape-aware mobile menu.' },
+      { name: 'Hero', detail: 'A wide headline and research scene with three selectable topics, measured connection paths, original source objects and cited findings.' },
+      { name: 'Introduction', detail: 'An open editorial statement with an assembled accent and a concise source trail.' },
+      { name: 'Product story', detail: 'Collect, Connect and Understand share a large sticky stage. Desktop scrolling and manual controls advance it; phones show the three chapters in normal reading order.' },
+      { name: 'Evidence', detail: 'A dark source-to-answer chapter with a working reference back to the corresponding passage.' },
+      { name: 'Examples', detail: 'Open collection rows with keyboard selection, coordinated cited previews, clipboard fallback and complete plain-text exports.' },
+      { name: 'Pricing', detail: 'Three aligned plans with an emphasized Curious tier, monthly/yearly billing, per-person pricing and correct local plan reviews.' },
+      { name: 'FAQ', detail: 'Native disclosures explaining the examples, exports and buyer integrations.' },
+      { name: 'Closing and footer', detail: 'A persimmon closing field with original sheet artwork, working destinations and a remembered motion control.' },
+    ],
+    customizeIntro: 'Start with `site.config.ts` for the brand, copy, plans and links. The complete fictional sources and their cited findings live in one separate data file.',
+    customize: [
+      { what: 'Brand, metadata, copy, FAQ, plans and destinations', where: 'site.config.ts' },
+      { what: 'Source passages, topics, connections and cited findings', where: 'data/topics.ts' },
+      { what: 'Palette, gutters, shared type and control sizes', where: 'styles/base.css' },
+      { what: 'Fonts and page metadata', where: 'app/layout.tsx' },
+      { what: 'Section order', where: 'app/page.tsx' },
+      { what: 'Accent, decode, visibility and ambient motion', where: 'components/motion/ and styles/motion.css' },
+      { what: 'Research scenes, source previews and exports', where: 'components/product/' },
+    ],
+    fonts: ['Instrument Sans', 'Geist Mono'],
+    dependencies: ['next', 'react', 'react-dom', 'lucide-react'],
+    styling: 'CSS',
+    images: 'Original HTML/CSS/SVG mark, source objects, sheets, connection diagrams and ambient fields. Original fictional research passages. No stock images or reference-site assets.',
+    node: '20.9',
+    files: 42,
+    lines: 4200,
+    beforeLaunch: 'Set `links.app`, `links.docs`, `links.email` and each plan’s monthly/yearly destination. Replace the fictional brand, prices, feature allowances and sample research. The source dialogs, selections, brief exports and pricing reviews work locally; connect your own AI, document processing, accounts and checkout separately.',
+    updated: '2026-10-09',
+  },
   footnote: {
     name: 'Footnote',
     kind: 'AI writing tool landing page template',

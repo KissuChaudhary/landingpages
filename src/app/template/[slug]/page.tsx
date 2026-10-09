@@ -38,7 +38,7 @@ const kindInSentence = (kind: string) => {
 const pageTitle = (d: TemplateDetails) => `${d.name}: ${capitalise(d.kind)} for Next.js`;
 
 const metaDescription = (d: TemplateDetails) =>
-  `${d.name} is ${kindInSentence(d.kind)} built with Next.js 15, React 19 and Tailwind CSS v4. ${d.sections.length} sections, one config file and a live demo. ${formatPrice(PRICING.single.price)}, commercial license.`;
+  `${d.name} is ${kindInSentence(d.kind)} built with Next.js 15, React 19 and ${d.styling || 'Tailwind CSS v4'}. ${d.sections.length} sections, one config file and a live demo. ${formatPrice(PRICING.single.price)}, commercial license.`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -99,7 +99,7 @@ export default async function TemplateDetailPage({ params }: PageProps) {
   const specs: [string, React.ReactNode][] = [
     ['Framework', 'Next.js 15 (App Router), React 19'],
     ['Language', 'TypeScript'],
-    ['Styling', 'Tailwind CSS v4 with design tokens and component styles'],
+    ['Styling', `${d.styling || 'Tailwind CSS v4'} with design tokens and component styles`],
     ['Fonts', `${d.fonts.join(', ')}, self-hosted with next/font`],
     ['Dependencies', <span key="deps" className="font-mono text-[13px]">{d.dependencies.join(', ')}</span>],
     ['Images', d.images],
@@ -188,7 +188,7 @@ export default async function TemplateDetailPage({ params }: PageProps) {
 
   const facts = [
     'Next.js 15',
-    'Tailwind CSS v4',
+    d.styling || 'Tailwind CSS v4',
     'TypeScript',
     `${d.sections.length} sections`,
     template.defaultTheme === 'dark' ? 'Dark' : 'Light',

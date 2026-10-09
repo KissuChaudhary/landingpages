@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: `What stack is used across the ${TEMPLATES.length} templates?`,
-    a: 'Every template is a standalone Next.js 15 project built with React 19, TypeScript, Tailwind CSS v4 and Lucide icons. No API keys or environment variables.',
+    a: 'Every template is a standalone Next.js 15 project built with React 19, TypeScript and Lucide icons. Styling uses Tailwind CSS v4 or modular CSS, listed on each template’s detail page. No API keys or environment variables.',
   },
   {
     q: 'How do I get the source code?',

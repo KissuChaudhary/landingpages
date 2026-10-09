@@ -1,0 +1,250 @@
+.pricing {
+  background: #eeede7;
+  border-block: 1px solid var(--line);
+}
+.pricing-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+.pricing-heading .section-heading {
+  margin-bottom: 0;
+}
+.billing {
+  flex-shrink: 0;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #d4d1c8;
+  border-radius: 4px;
+}
+.billing button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--muted);
+  border-radius: 2px;
+  min-height: 40px;
+}
+.billing button[aria-pressed="true"] {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 1px 3px #17191610;
+}
+.billing button span {
+  font-size: 10px;
+  color: #a7462c;
+}
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #cfcdc3;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.plan {
+  padding: 32px;
+  border-right: 1px solid #cfcdc3;
+  display: flex;
+  flex-direction: column;
+}
+.plan:last-child {
+  border-right: 0;
+}
+.plan--featured {
+  background: #f5dfd1;
+  box-shadow: inset 0 3px var(--accent);
+}
+.plan__name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 32px;
+}
+.plan__recommended {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: #844b32;
+}
+.plan__description {
+  font-size: 16px;
+  margin-top: 16px;
+  min-height: 52px;
+  max-width: 270px;
+}
+.plan__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.plan__price > span:first-child {
+  font-size: 56px;
+  letter-spacing: -0.06em;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.plan__price > span:last-child {
+  font-size: 12px;
+  color: var(--muted);
+}
+.plan__billing {
+  font-size: 12px;
+  margin: 12px 0 28px;
+  min-height: 20px;
+}
+.plan > .action {
+  width: 100%;
+  justify-content: space-between;
+  gap: 12px;
+  padding-inline: 12px;
+  white-space: nowrap;
+}
+.plan--featured > .action {
+  background: var(--ink);
+}
+.plan ul {
+  padding: 28px 0 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+  border-top: 1px solid #17191616;
+  margin-top: 28px;
+}
+.plan li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #575a50;
+  line-height: 1.5;
+}
+.plan li svg {
+  margin-top: 2px;
+  color: #626b53;
+}
+.pricing-note {
+  font-size: 12px;
+  margin-top: 24px;
+}
+.plan-review > h2 {
+  font-size: 40px;
+}
+.plan-review > p {
+  margin-top: 16px;
+  font-size: 16px;
+}
+.plan-review dl {
+  margin: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.plan-review dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.plan-review dt {
+  color: var(--muted);
+}
+.plan-review dd {
+  margin: 0;
+  text-align: right;
+}
+.plan-review .plan-review__note {
+  font-size: 14px;
+  margin: 24px 0;
+}
+.plan-review > .text-link {
+  margin-top: 20px;
+  background: transparent;
+  padding: 0;
+  display: flex;
+}
+@media (max-width: 1100px) {
+  .pricing-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .plan {
+    padding: 28px 24px;
+  }
+  .plan__name {
+    display: block;
+  }
+  .plan__recommended {
+    display: block;
+    margin-top: 12px;
+  }
+  .plan__name {
+    min-height: 58px;
+  }
+  .plan__price > span:first-child {
+    font-size: 48px;
+  }
+}
+@media (max-width: 767px) {
+  .pricing-heading {
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+  .plan-grid {
+    display: block;
+  }
+  .plan {
+    padding: 32px;
+    border-right: 0;
+    border-bottom: 1px solid #cfcdc3;
+  }
+  .plan:last-child {
+    border-bottom: 0;
+  }
+  .plan__name {
+    display: flex;
+    min-height: 32px;
+  }
+  .plan__recommended {
+    margin-top: 0;
+  }
+  .plan__description {
+    min-height: 0;
+    max-width: none;
+  }
+  .plan__price {
+    margin-top: 28px;
+  }
+  .plan__price > span:first-child {
+    font-size: 52px;
+  }
+  .plan__billing {
+    margin-bottom: 24px;
+  }
+  .plan ul {
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+  .plan-review > h2 {
+    font-size: 32px;
+  }
+  .plan-review dl > div {
+    gap: 16px;
+  }
+  .plan-review > .action {
+    font-size: 13px;
+    gap: 12px;
+  }
+  .billing button {
+    font-size: 12px;
+  }
+}
