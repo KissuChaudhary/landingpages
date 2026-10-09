@@ -16,4 +16,4 @@ The close canvas and the content checks share one dataset: three bank lines, thr
 
 ## Motion
 
-Native scrolling, small transform reveals, hover feedback and finite four-step runs. Decorative motion respects the system setting and a remembered manual pause. Reveals keep content visible from the first render. Phones use a compact menu, a readable two-by-two canvas, stacked features and plans, vertical onboarding steps, one story at a time and complete stacked forms.
+Native scrolling, small transform reveals, hover feedback and finite four-step runs. Decorative motion respects the system setting; nothing loops on its own, so there is no pause control. Reveals keep content visible from the first render. Phones use a compact menu, a readable two-by-two canvas, stacked features and plans, vertical onboarding steps, one story at a time and complete stacked forms.

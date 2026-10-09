@@ -26,7 +26,7 @@ All seven images are local WebP files. Paintings retain their square composition
 
 Headings reveal with a short vertical movement and opacity change. Hero lines add a brief blur-to-clear entrance. Hover moves a tile's product scene four pixels and gently enlarges its painting. Tabs transition their replacement scene once. Sticky stacking is limited to desktop. Nothing relies on an endless ambient animation.
 
-The system motion preference and footer pause control both disable decorative movement. A paused page displays every section and returns panels to normal document flow. Content is visible if client JavaScript never initializes.
+The system motion preference disables decorative movement; with nothing looping on its own, there is no separate pause control. A paused page displays every section and returns panels to normal document flow. Content is visible if client JavaScript never initializes.
 
 ## Product integrity
 

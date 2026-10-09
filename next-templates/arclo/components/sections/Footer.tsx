@@ -1,5 +1,5 @@
 "use client";
-import { Pause, Play, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { href, route } from "@/lib/urls";
 import { Brand } from "../ui/Brand";
@@ -25,7 +25,6 @@ const pages = [
   ["Terms", "/terms"],
 ];
 export function Footer() {
-  const { paused, toggleMotion } = useExperience();
   return (
     <footer className="frame footer">
       <div className="footer-top">
@@ -68,10 +67,6 @@ export function Footer() {
           © {new Date().getFullYear()} {site.brand}. Close with confidence.
         </span>
         <span>A thoughtfully made template.</span>
-        <button onClick={toggleMotion} aria-pressed={paused}>
-          {paused ? <Play size={12} /> : <Pause size={12} />}{" "}
-          {paused ? "Resume motion" : "Pause motion"}
-        </button>
       </div>
     </footer>
   );

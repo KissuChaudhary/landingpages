@@ -4,8 +4,6 @@ import type { Plan } from "@/site.config";
 export type Experience = {
   openWorkspace: (workflow?: string) => void;
   choosePlan: (plan: Plan, annual: boolean) => void;
-  paused: boolean;
-  toggleMotion: () => void;
 };
 export const ExperienceContext = createContext<Experience | null>(null);
 export function useExperience() {

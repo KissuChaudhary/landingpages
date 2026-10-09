@@ -57,7 +57,7 @@ The demo does not upload files, invite clients, send notifications, authenticate
 
 Headings and tiles reveal on scroll. Desktop product chapters stack; phones and reduced-motion views use normal flow. Botanical backdrops and product tiles respond subtly to hover. Product tabs support arrows, Home and End. Native dialogs trap focus, close on Escape and return focus. FAQ uses native disclosures.
 
-System reduced motion and a remembered footer control disable decorative movement and stacking. Hidden menus have no keyboard stops; the phone menu restores trigger focus on Escape. Compact marketing scenes link to the readable review workspace.
+System reduced motion disables decorative movement and stacking. Hidden menus have no keyboard stops; the phone menu restores trigger focus on Escape. Compact marketing scenes link to the readable review workspace.
 
 ## Verification and export
 

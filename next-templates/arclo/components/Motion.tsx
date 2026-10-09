@@ -1,9 +1,9 @@
 "use client";
 import { useEffect } from "react";
-export function Motion({ paused }: { paused: boolean }) {
+export function Motion() {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>(".reveal");
-    if (paused || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
       elements.forEach((el) => el.classList.add("in-view"));
       return;
     }
@@ -20,6 +20,6 @@ export function Motion({ paused }: { paused: boolean }) {
     );
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [paused]);
+  }, []);
   return null;
 }

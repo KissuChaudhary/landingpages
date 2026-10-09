@@ -557,13 +557,6 @@
   font-size: 9px;
   color: #9d94a5;
 }
-.footer-bottom button {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 9px;
-  padding: 4px;
-}
 @media (max-width: 1050px) {
   .story-card {
     grid-template-columns: 120px 1fr;

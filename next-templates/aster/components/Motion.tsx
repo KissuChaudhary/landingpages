@@ -1,23 +1,14 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-const MotionContext = createContext({
-  paused: false,
-  system: false,
-  toggle: () => {},
-});
-export const useMotion = () => useContext(MotionContext);
+// Reveals follow the system "reduce motion" setting. Nothing on the page loops
+// on its own, so there is no separate pause control.
 export function MotionProvider({ children }: { children: React.ReactNode }) {
-  const [manual, setManual] = useState(false);
-  const [system, setSystem] = useState(false);
+  const [paused, setPaused] = useState(false);
   const pathname = usePathname();
-  const paused = manual || system;
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    try {
-      setManual(localStorage.getItem("aster-motion") === "paused");
-    } catch {}
-    const sync = () => setSystem(media.matches);
+    const sync = () => setPaused(media.matches);
     sync();
     media.addEventListener("change", sync);
     return () => media.removeEventListener("change", sync);
@@ -41,16 +32,5 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [paused, pathname]);
-  const toggle = () => {
-    const next = !manual;
-    setManual(next);
-    try {
-      localStorage.setItem("aster-motion", next ? "paused" : "on");
-    } catch {}
-  };
-  return (
-    <MotionContext.Provider value={{ paused, system, toggle }}>
-      {children}
-    </MotionContext.Provider>
-  );
+  return <>{children}</>;
 }

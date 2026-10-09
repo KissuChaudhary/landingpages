@@ -1,11 +1,9 @@
 "use client";
-import { ArrowUp, Pause, Play } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { site } from "@/site.config";
 import { href } from "@/lib/urls";
 import { Brand } from "../ui/Brand";
-import { useMotion } from "../Motion";
 export function Footer() {
-  const { paused, system, toggle } = useMotion();
   const groups = [
     {
       title: "Workspace",
@@ -59,19 +57,6 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {site.brand}
         </p>
-        <button
-          className="text-button"
-          onClick={toggle}
-          aria-pressed={paused}
-          disabled={system}
-        >
-          {paused ? <Play size={13} /> : <Pause size={13} />}{" "}
-          {system
-            ? "Reduced motion enabled"
-            : paused
-              ? "Resume motion"
-              : "Pause motion"}
-        </button>
         <a className="text-button" href="#top">
           Back to top
           <ArrowUp size={14} />
