@@ -1,0 +1,169 @@
+.integration-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 68px;
+  align-items: center;
+}
+.integration-layout .section-head {
+  margin-bottom: 34px;
+}
+.integration-layout .section-description {
+  max-width: 330px;
+}
+.integration-steps {
+  border-top: 1px dashed var(--line);
+  padding: 28px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 390px;
+}
+.integration-steps li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.integration-steps li > span {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 11px;
+  background: #f1f6fd;
+  color: #8badde;
+  flex-shrink: 0;
+}
+.integration-garden {
+  position: relative;
+  min-height: 490px;
+  background: #fafafa;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: hidden;
+}
+.garden-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#eeeff1 1px, transparent 1px),
+    linear-gradient(90deg, #eeeff1 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse, #0005, transparent 70%);
+  z-index: -1;
+}
+.garden-node {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  box-shadow:
+    0 8px 24px #2026310c,
+    inset 0 0 0 1px #f4f5f7;
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s;
+}
+.garden-node:hover {
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 14px 25px #20263118;
+}
+.integration-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+}
+.garden-node-0 {
+  top: 9%;
+  left: 44%;
+}
+.garden-node-1 {
+  top: 22%;
+  right: 20%;
+}
+.garden-node-2 {
+  top: 48%;
+  right: 8%;
+}
+.garden-node-3 {
+  bottom: 14%;
+  right: 22%;
+}
+.garden-node-4 {
+  bottom: 6%;
+  left: 45%;
+}
+.garden-node-5 {
+  bottom: 21%;
+  left: 16%;
+}
+.garden-node-6 {
+  top: 43%;
+  left: 8%;
+}
+.integration-garden > .button {
+  position: relative;
+  z-index: 2;
+  font-size: 12px;
+  min-height: 39px;
+  padding: 8px 15px;
+  gap: 8px;
+}
+@media (max-width: 1100px) {
+  .integration-layout {
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .integration-garden {
+    min-height: 440px;
+  }
+  .garden-node {
+    width: 58px;
+    height: 58px;
+  }
+}
+@media (max-width: 700px) {
+  .integration-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .integration-layout .section-head {
+    margin-bottom: 26px;
+  }
+  .integration-layout h2 {
+    font-size: 32px;
+  }
+  .integration-steps {
+    padding-top: 24px;
+    gap: 16px;
+  }
+  .integration-steps li {
+    font-size: 13px;
+  }
+  .integration-garden {
+    min-height: 340px;
+    width: 100%;
+  }
+  .garden-node {
+    width: 51px;
+    height: 51px;
+  }
+  .integration-mark svg {
+    width: 24px;
+    height: 24px;
+  }
+  .integration-garden > .button {
+    font-size: 11px;
+    min-height: 38px;
+    gap: 6px;
+    padding: 8px 12px;
+  }
+}

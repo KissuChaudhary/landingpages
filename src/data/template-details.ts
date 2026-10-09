@@ -38,6 +38,40 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  daybreak: {
+    name: 'Daybreak',
+    kind: 'AI marketing and analytics workspace landing page template',
+    summary: 'A complete launch experience with a landscape-led hero, quiet Inter typography, pill controls and aligned dashed frames. Original artwork and expanding portrait stories add warmth; working local campaign reviews and a dashboard tour make the product story tangible.',
+    bestFor: ['AI marketing and campaign platforms', 'Analytics and reporting products', 'Connected team workspaces and agency tools'],
+    design: 'White, charcoal and quiet blue with ochre, sage and coral in original painted landscapes. A centered two-line hero leads into split product tabs, a wide dashboard, an integration garden, three audience chapters, expanding portrait perspectives and three aligned plans. Shared frame rules meet at actual square intersections.',
+    sections: [
+      { name: 'Navigation and hero', detail: 'Compact sticky navigation, accessible resource/mobile menus, original coastal landscape and an editable question opening a source-linked campaign report.' },
+      { name: 'Product and workspace', detail: 'Four keyboard-accessible views, source context, campaign filtering, a four-step report workflow and an interactive dashboard tour with matching CSV exports.' },
+      { name: 'Integrations and audience chapters', detail: 'Clickable connection garden, searchable directory with category filters and scope guides, plus three audience rows with scroll-aware navigation.' },
+      { name: 'Portrait perspectives', detail: 'Four expanding, keyboard-accessible fictional team stories with original editorial portraits.' },
+      { name: 'Pricing and closing', detail: 'Three plans, monthly/annual selection, complete billing reviews and a landscape-led closing section.' },
+      { name: 'Contact and resources', detail: 'Validated local contact brief or configured JSON submission, journal and three articles, about, privacy, terms, accessibility and a custom missing-page state.' },
+    ],
+    customizeIntro: 'Start in `site.config.ts` for the brand, copy, plans and destinations. Campaign data, team perspectives, integrations and resource content each have their own focused file.',
+    customize: [
+      { what: 'Brand, metadata, copy, plans, FAQ and destinations', where: 'site.config.ts' },
+      { what: 'Campaign values, calculations and recommendations', where: 'data/campaigns.ts' },
+      { what: 'Example teams and portrait stories', where: 'data/teams.ts' },
+      { what: 'Connection directory and scope guides', where: 'data/integrations.ts' },
+      { what: 'Articles and supporting pages', where: 'data/pages.ts' },
+      { what: 'Palette, type, gutters and controls', where: 'styles/base.css' },
+      { what: 'Original images and full prompt set', where: 'public/images/ and ASSETS.md' },
+    ],
+    fonts: ['Inter'],
+    dependencies: ['next', 'react', 'react-dom', 'lucide-react'],
+    styling: 'CSS',
+    images: 'Two original painted landscapes and four original fictional portraits generated with the built-in imagegen tool. Optimized WebP assets ship locally. Brand marks, diagrams and interfaces are editable SVG, CSS and React. No reference-site assets.',
+    node: '20.9',
+    files: 58,
+    lines: 7256,
+    beforeLaunch: 'Replace the fictional brand, teams, quotes and sample campaigns. Configure your app URL, monthly/annual checkout destinations and contact endpoint. Replace privacy and terms with your own policies. Local reports, filtered CSV exports, workflow states and contact briefs work; connect your production AI, accounts, attribution and integration providers separately.',
+    updated: '2026-10-09',
+  },
   conduit: {
     name: 'Conduit',
     kind: 'AI agent and workflow platform landing page template',

@@ -1,0 +1,343 @@
+.solutions-section .section-head {
+  margin-bottom: 48px;
+}
+.solutions-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.audience-nav {
+  position: sticky;
+  top: 148px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 20px;
+}
+.audience-nav a {
+  font-size: 14px;
+  color: #919498;
+  line-height: 1.5;
+  align-self: flex-start;
+  transition: color 0.25s;
+  border-bottom: 1px solid transparent;
+}
+.audience-nav a[aria-current="location"] {
+  color: #111;
+  border-bottom-color: #111;
+}
+.audience-nav a:hover {
+  color: #111;
+}
+.audience-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+  align-items: center;
+  min-height: 350px;
+  padding: 24px 0;
+  scroll-margin-top: 118px;
+}
+.audience-copy h3 {
+  font-size: 28px;
+  max-width: 385px;
+}
+.audience-copy p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 20px;
+  max-width: 385px;
+}
+.audience-scene {
+  height: 310px;
+  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signal-scene {
+  mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+}
+.signal-list {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.signal-list > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px;
+  background: #fff;
+  border: 1px solid #f1f2f4;
+  box-shadow: 0 8px 24px #242e3b07;
+  border-radius: 12px;
+}
+.signal-list > div > span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2f6fc;
+  color: #9ab7e6;
+  flex-shrink: 0;
+}
+.signal-list > div:nth-child(2) > span {
+  background: #f7f2fa;
+  color: #b4a0d4;
+}
+.signal-list > div:nth-child(3) > span {
+  background: #f7f8ee;
+  color: #c4c897;
+}
+.signal-list p {
+  font-size: 12px;
+}
+.signal-list small {
+  font-size: 9px;
+  color: #a0a4aa;
+  display: block;
+  margin-top: 3px;
+}
+.signal-list > div > svg {
+  margin-left: auto;
+  color: #aac3ac;
+}
+.signal-note {
+  position: absolute;
+  bottom: 14px;
+  font-size: 9px;
+  color: #aaaeb4;
+}
+.audience-flow {
+  background-image:
+    linear-gradient(#f0f1f366 1px, transparent 1px),
+    linear-gradient(90deg, #f0f1f366 1px, transparent 1px);
+  background-size: 36px 36px;
+  padding: 20px;
+}
+.audience-flow > span:not(.flow-line):not(.flow-particle) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 61px;
+  height: 65px;
+  flex-shrink: 0;
+  border: 1px solid #edf0f4;
+  background: #fff;
+  border-radius: 11px;
+  position: relative;
+  color: #a0aebf;
+  box-shadow: 0 4px 18px #00000005;
+}
+.audience-flow small {
+  font-size: 9px;
+  position: absolute;
+  bottom: -27px;
+  color: #a7aab0;
+}
+.audience-flow .flow-center {
+  color: #111 !important;
+  width: 66px !important;
+  height: 70px !important;
+}
+.flow-line {
+  height: 1px;
+  background: #d8e2ef;
+  width: 42px;
+}
+.flow-particle {
+  position: absolute;
+  left: 25%;
+  width: 4px;
+  height: 4px;
+  background: #91b2e4;
+  top: 50%;
+  border-radius: 50%;
+  animation: flow-travel 5s infinite linear;
+}
+.floating-charts .float-chart {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 18px;
+  width: 205px;
+  position: absolute;
+  box-shadow: 0 8px 30px #323e5110;
+}
+.float-chart h4 {
+  font-size: 14px;
+  letter-spacing: -0.4px;
+}
+.float-chart p {
+  font-size: 10px;
+  color: #a0a3a9;
+  margin-top: 4px;
+}
+.chart-back {
+  top: 30px;
+  right: 18px;
+  transform: rotate(10deg);
+}
+.chart-front {
+  bottom: 46px;
+  left: 18px;
+  transform: rotate(-5deg);
+  height: 168px;
+}
+.chart-front .line-chart {
+  margin-top: 25px;
+}
+.donut {
+  width: 115px;
+  height: 115px;
+  position: relative;
+  border-radius: 50%;
+  background: conic-gradient(
+    #edc05e 0deg 155deg,
+    #b3cceb 155deg 270deg,
+    #e9eef5 270deg
+  );
+  margin: 22px auto;
+}
+.donut:before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  background: #fff;
+  border-radius: 50%;
+}
+.donut > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+.donut small {
+  font-size: 9px;
+  letter-spacing: 0;
+  color: #a5a8af;
+}
+.charts-note {
+  font-size: 9px;
+  color: #a4a7ad;
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  bottom: 15px;
+}
+@media (max-width: 1100px) {
+  .solutions-layout {
+    grid-template-columns: 150px 1fr;
+    gap: 32px;
+  }
+  .audience-row {
+    gap: 28px;
+  }
+  .audience-copy h3 {
+    font-size: 25px;
+  }
+  .audience-copy p {
+    font-size: 14px;
+  }
+  .signal-list > div {
+    padding: 14px 11px;
+    gap: 8px;
+  }
+  .floating-charts .float-chart {
+    width: 180px;
+    padding: 16px;
+  }
+}
+@media (max-width: 800px) {
+  .solutions-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .audience-nav {
+    position: sticky;
+    top: var(--nav-height);
+    background: #fffffff5;
+    z-index: 5;
+    flex-direction: row;
+    justify-content: center;
+    gap: 26px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .audience-nav a {
+    font-size: 12px;
+  }
+  .audience-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .solutions-section .section-head {
+    margin-bottom: 26px;
+  }
+  .audience-nav {
+    gap: 18px;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .audience-nav a {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .audience-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 34px 0;
+    min-height: 0;
+    scroll-margin-top: 130px;
+  }
+  .audience-copy h3 {
+    font-size: 25px;
+    white-space: normal;
+    max-width: 330px;
+  }
+  .audience-copy p {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+  .audience-scene {
+    height: 290px;
+  }
+  .signal-list {
+    width: 84%;
+  }
+  .signal-list p {
+    font-size: 12px;
+  }
+  .signal-list small {
+    font-size: 10px;
+  }
+  .floating-charts .float-chart {
+    width: 205px;
+  }
+  .chart-back {
+    right: 23px;
+  }
+  .chart-front {
+    left: 20px;
+  }
+}
+@media (max-width: 359px) {
+  .audience-nav {
+    gap: 10px;
+  }
+  .audience-nav a {
+    font-size: 10px;
+  }
+}

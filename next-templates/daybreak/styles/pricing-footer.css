@@ -1,0 +1,442 @@
+.billing-switch {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  background: #f4f4f4;
+  border-radius: 40px;
+  max-width: 220px;
+  margin: 0 auto 34px;
+}
+.billing-switch button {
+  flex: 1;
+  border-radius: 40px;
+  min-height: 34px;
+  font-size: 13px;
+  color: #9b9ea3;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    box-shadow 0.25s;
+}
+.billing-switch button[aria-pressed="true"] {
+  background: #fff;
+  color: #111;
+  box-shadow: 0 2px 5px #0000000b;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.price-plan {
+  background: #f8f8f8;
+  padding: 28px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 430px;
+}
+.price-plan > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.price-plan h3 {
+  font-size: 21px;
+  letter-spacing: -0.7px;
+}
+.price-plan header > span {
+  font-size: 10px;
+  color: #87a6d8;
+  background: #f0f5fc;
+  border-radius: 40px;
+  padding: 4px 9px;
+  white-space: nowrap;
+}
+.plan-amount {
+  margin: 30px 0 20px;
+}
+.plan-amount strong {
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -1.8px;
+  display: block;
+}
+.plan-amount strong > span {
+  font-size: 27px;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.plan-amount p {
+  font-size: 12px;
+  color: #93979c;
+  margin-top: 8px;
+  min-height: 20px;
+}
+.price-plan .button {
+  align-self: flex-start;
+  font-size: 12px;
+  padding: 8px 13px;
+  min-height: 38px;
+  gap: 9px;
+}
+.plan-description {
+  font-size: 13px;
+  color: #44484d;
+  margin-top: 32px;
+  margin-bottom: 18px;
+  min-height: 20px;
+}
+.price-plan ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.price-plan li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  color: #878b90;
+}
+.price-plan li > span {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #111;
+  color: white;
+  flex-shrink: 0;
+}
+.price-popular li > span {
+  background: #97b9ed;
+}
+.pricing-standalone .section-inner {
+  padding-top: 88px;
+}
+.plan-review,
+.integration-review {
+  padding: 30px;
+}
+.plan-review h2,
+.integration-review h2 {
+  font-size: 32px;
+}
+.plan-review > p:not(.eyebrow),
+.integration-review > p:not(.eyebrow) {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 15px;
+}
+.plan-review > strong {
+  display: block;
+  font-size: 44px;
+  line-height: 1.2;
+  letter-spacing: -1.6px;
+  margin-top: 30px;
+  font-weight: 500;
+}
+.plan-review > strong span {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.plan-review > ul,
+.integration-review ul {
+  list-style: none;
+  padding: 20px 0;
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-size: 14px;
+}
+.plan-review li,
+.integration-review li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.plan-review li svg,
+.integration-review li svg {
+  color: #89aa97;
+}
+.plan-review small {
+  display: block;
+  color: #96999f;
+  font-size: 11px;
+  margin-top: 20px;
+}
+.integration-review h3 {
+  font-size: 18px;
+  margin-top: 28px;
+}
+.integration-review .quiet-note {
+  margin: 12px 0 24px !important;
+}
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+}
+.faq-layout .section-head {
+  margin-bottom: 0;
+}
+.faq-layout h2 {
+  font-size: 32px;
+}
+.faq-layout .section-description {
+  font-size: 15px;
+}
+.faq-layout details {
+  border-bottom: 1px solid var(--line);
+}
+.faq-layout summary {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  cursor: pointer;
+  padding: 23px 0;
+  list-style: none;
+}
+.faq-layout summary::-webkit-details-marker {
+  display: none;
+}
+.faq-layout summary svg {
+  color: #9ca1a7;
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+.faq-layout details[open] summary svg {
+  transform: rotate(45deg);
+}
+.faq-layout details > p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  padding-bottom: 24px;
+  max-width: 570px;
+}
+.footer {
+  border-bottom: 0;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+  padding-top: 70px;
+  padding-bottom: 54px;
+}
+.footer-brand h3 {
+  font-size: 24px;
+  letter-spacing: -0.8px;
+  max-width: 270px;
+  margin-top: 26px;
+}
+.footer-brand > p {
+  font-size: 11px;
+  color: #96999e;
+  max-width: 265px;
+  margin-top: 20px;
+}
+.footer nav h4 {
+  font-size: 12px;
+  font-weight: 400;
+  color: #a2a5a9;
+  letter-spacing: 0;
+  margin-bottom: 22px;
+}
+.footer nav a {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 11px;
+  color: #656a71;
+  transition: color 0.2s;
+}
+.footer nav a:hover {
+  color: #111;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+  border-top: 1px solid #eceef1;
+  padding-top: 22px;
+  padding-bottom: 28px;
+}
+.footer-bottom > p,
+.footer-bottom .text-button {
+  font-size: 11px;
+  color: #a0a4aa;
+}
+.footer-bottom .text-button {
+  padding: 2px 0;
+}
+.footer-bottom > p {
+  margin-right: auto;
+}
+.footer-bottom .text-button:hover {
+  color: #222;
+}
+@media (max-width: 1024px) {
+  .pricing-grid {
+    gap: 16px;
+  }
+  .price-plan {
+    padding: 25px 20px 28px;
+  }
+  .price-plan .button {
+    font-size: 11px;
+    gap: 7px;
+    padding: 8px 11px;
+  }
+  .price-plan li {
+    font-size: 11px;
+  }
+  .price-plan header > span {
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+  .price-plan h3 {
+    font-size: 19px;
+  }
+  .faq-layout {
+    gap: 44px;
+  }
+  .footer-main {
+    gap: 32px;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  }
+  .footer-brand h3 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .billing-switch {
+    margin-bottom: 28px;
+  }
+  .price-plan {
+    padding: 28px 24px;
+    min-height: 0;
+  }
+  .price-plan h3 {
+    font-size: 22px;
+  }
+  .price-plan header > span {
+    font-size: 10px;
+    padding: 4px 9px;
+  }
+  .plan-amount {
+    margin-top: 26px;
+  }
+  .plan-amount strong {
+    font-size: 42px;
+  }
+  .plan-amount p {
+    font-size: 12px;
+  }
+  .price-plan .button {
+    font-size: 13px;
+    min-height: 40px;
+    padding: 9px 15px;
+  }
+  .plan-description {
+    font-size: 14px;
+    margin-top: 28px;
+    margin-bottom: 16px;
+  }
+  .price-plan li {
+    font-size: 13px;
+    gap: 10px;
+  }
+  .price-plan ul {
+    gap: 13px;
+  }
+  .pricing-standalone .section-inner {
+    padding-top: 62px;
+  }
+  .plan-review,
+  .integration-review {
+    padding: 24px 20px;
+  }
+  .plan-review h2,
+  .integration-review h2 {
+    font-size: 28px;
+  }
+  .plan-review > strong {
+    font-size: 38px;
+  }
+  .plan-review li,
+  .integration-review li {
+    font-size: 13px;
+  }
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .faq-layout summary {
+    font-size: 13px;
+    line-height: 1.65;
+    padding: 22px 0;
+  }
+  .faq-layout details > p {
+    font-size: 13px;
+  }
+  .footer-main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 28px;
+    padding-top: 52px;
+    padding-bottom: 36px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+  }
+  .footer-brand h3 {
+    font-size: 23px;
+    max-width: none;
+    margin-top: 18px;
+  }
+  .footer-brand > p {
+    font-size: 11px;
+    max-width: 270px;
+    margin-top: 16px;
+  }
+  .footer nav h4 {
+    font-size: 11px;
+    margin-bottom: 18px;
+  }
+  .footer nav a {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .footer-bottom {
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    padding-bottom: 26px;
+  }
+  .footer-bottom > p {
+    width: 100%;
+    font-size: 11px;
+  }
+  .footer-bottom .text-button {
+    font-size: 11px;
+  }
+  .footer-bottom .text-button:last-child {
+    margin-left: auto;
+  }
+}

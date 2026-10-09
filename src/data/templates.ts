@@ -29,6 +29,27 @@ export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
     {
+      slug: 'daybreak',
+      title: 'Daybreak: AI Marketing Workspace',
+      category: 'Landing Pages',
+      defaultTheme: 'light',
+      badge: 'Marketing & Analytics',
+      description: 'A calm marketing platform launch with original painted landscapes, restrained Inter typography and precise dashed frames. Working campaign reviews, a dashboard tour, integration directory, pricing, contact and editorial pages complete the experience.',
+      tags: ['AI Marketing', 'Analytics', 'Original Illustrations', 'Light Theme', 'Next.js 15'],
+      features: [
+        'Landscape-led hero, pill controls and aligned dashed section frames',
+        'Campaign questions, source context, channel filters and matching CSV exports',
+        'Dashboard tour, local reporting workflow and searchable integration directory',
+        'Expanding portrait stories, three plans, contact briefs and editorial routes',
+      ],
+      accentColor: 'from-sky-300 to-amber-400',
+      previewUrl: '/preview/daybreak',
+      standaloneUrl: '/demos/daybreak/index.html',
+      demoUrl: '/demo/daybreak',
+      detailUrl: '/template/daybreak',
+      thumbnailUrl: '/previews/card/daybreak.webp',
+    },
+    {
       slug: 'conduit',
       title: 'Conduit: AI Agent & Workflow Platform',
       category: 'Landing Pages',

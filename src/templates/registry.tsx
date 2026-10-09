@@ -12,6 +12,7 @@ const Loading = () => (
 );
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  'daybreak': dynamic(() => import('@/templates/daybreak'), { ssr: false, loading: Loading }),
   'conduit': dynamic(() => import('@/templates/conduit'), { ssr: false, loading: Loading }),
   'footnote': dynamic(() => import('@/templates/footnote'), { ssr: false, loading: Loading }),
   'cutroom': dynamic(() => import('@/templates/cutroom'), { ssr: false, loading: Loading }),

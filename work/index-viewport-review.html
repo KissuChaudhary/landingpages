@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Index viewport review</title><style>body{margin:0;background:#fff}iframe{display:block;border:0;max-width:none}button{font:14px sans-serif}</style></head><body>
+<iframe id="review" title="Index responsive review" src="/demos/index/index.html" allow="clipboard-write" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads"></iframe>
+<script>
+const params = new URLSearchParams(location.search);
+const width = Number(params.get('width')) || 390;
+const frame = document.getElementById('review');
+frame.style.width = width + 'px';
+frame.style.height = '842px';
+if (params.has('clipboardOff')) frame.setAttribute('sandbox', 'allow-scripts allow-forms allow-popups allow-modals allow-downloads');
+if (params.has('full')) frame.addEventListener('load', () => {
+  const resize = () => frame.style.height = frame.contentDocument.documentElement.scrollHeight + 'px';
+  resize();
+  new ResizeObserver(resize).observe(frame.contentDocument.body);
+});
+</script></body></html>
