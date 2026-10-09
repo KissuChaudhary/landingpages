@@ -16,6 +16,9 @@ import LogoMarqueeDemo from './logo-marquee-demo';
 import CommandPaletteDemo from './command-palette-demo';
 import ToastStackDemo from './toast-stack-demo';
 import ThemeToggleDemo from './theme-toggle-demo';
+import PricingCalculatorDemo from './pricing-calculator-demo';
+import ComparisonTableDemo from './comparison-table-demo';
+import OnboardingChecklistDemo from './onboarding-checklist-demo';
 import PromptComposerDemo from './prompt-composer-demo';
 import MentionMenuDemo from './mention-menu-demo';
 import AttachmentChipDemo from './attachment-chip-demo';
@@ -62,6 +65,9 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'command-palette': CommandPaletteDemo,
   'toast-stack': ToastStackDemo,
   'theme-toggle': ThemeToggleDemo,
+  'pricing-calculator': PricingCalculatorDemo,
+  'comparison-table': ComparisonTableDemo,
+  'onboarding-checklist': OnboardingChecklistDemo,
   'prompt-composer': PromptComposerDemo,
   'mention-menu': MentionMenuDemo,
   'attachment-chip': AttachmentChipDemo,

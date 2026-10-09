@@ -14,6 +14,9 @@ import { logoMarquee } from './logo-marquee';
 import { commandPalette } from './command-palette';
 import { toastStack } from './toast-stack';
 import { themeToggle } from './theme-toggle';
+import { pricingCalculator } from './pricing-calculator';
+import { comparisonTable } from './comparison-table';
+import { onboardingChecklist } from './onboarding-checklist';
 import { promptComposer } from './prompt-composer';
 import { mentionMenu } from './mention-menu';
 import { attachmentChip } from './attachment-chip';
@@ -44,4 +47,4 @@ import { chatHistory } from './chat-history';
 import { agentPlayback } from './agent-playback';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, themeToggle, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory, agentPlayback];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory, agentPlayback];
