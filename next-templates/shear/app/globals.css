@@ -1,0 +1,347 @@
+@import "tailwindcss";
+
+/* ── Palette ────────────────────────────────────────────────────────────────
+ * Change the brand here. `--mint` is the accent; `--ink` is the dark frame.
+ * The shadcn-style names below (background, foreground, primary…) are what
+ * the Hairline UI components in components/hairline read.
+ */
+:root {
+  --ink: #08090b;
+  --ink-2: #111316;
+  --ink-3: #1a1d21;
+  --paper: #ffffff;
+  --mist: #f2f4f3;
+  --mist-2: #e8ebe9;
+  --line: #e1e5e2;
+  --text: #0c0e10;
+  --muted-text: #5b635f;
+  --subtle: #8b938f;
+  --mint: #7cf0b5;
+  --mint-ink: #0a8552;
+  --mint-wash: #e2f9ed;
+
+  --background: var(--paper);
+  --foreground: var(--text);
+  --muted: var(--mist);
+  --muted-foreground: var(--muted-text);
+  --border: var(--line);
+  --primary: var(--mint);
+  --primary-foreground: #04140c;
+  --ring: var(--text);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --throw: cubic-bezier(0.34, 1.36, 0.64, 1);
+  --glide: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Sections on the dark frame. */
+.tone-dark {
+  --background: var(--ink-2);
+  --foreground: #f3f5f4;
+  --muted: var(--ink-3);
+  --muted-foreground: #959d99;
+  --border: rgb(255 255 255 / 0.09);
+  --ring: var(--mint);
+  color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-mist: var(--mist);
+  --color-mist-2: var(--mist-2);
+  --color-line: var(--line);
+  --color-subtle: var(--subtle);
+  --color-mint: var(--mint);
+  --color-mint-ink: var(--mint-ink);
+  --color-mint-wash: var(--mint-wash);
+  --font-sans: var(--font-mona), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-fragment), ui-monospace, monospace;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3 {
+  font-weight: 440;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+::selection {
+  background: var(--mint);
+  color: #04140c;
+}
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Section text that arrives when you do ────────────────────────────────
+ * Words rise out of a light blur while the type breathes in from a wider
+ * cut of Mona Sans (its width axis), one after another. Hidden only once
+ * JavaScript is running (html.js), so the page never depends on it.
+ */
+.reveal-word {
+  display: inline-block;
+  font-variation-settings: "wdth" 100;
+}
+.js [data-reveal="wait"] .reveal-word {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(0.32em);
+  font-variation-settings: "wdth" 120;
+}
+[data-reveal="in"] .reveal-word {
+  --at: calc(var(--base, 0ms) + var(--i) * 34ms);
+  transition:
+    opacity 520ms var(--ease) var(--at),
+    filter 640ms var(--ease) var(--at),
+    transform 800ms var(--ease) var(--at),
+    font-variation-settings 1000ms var(--ease) var(--at);
+}
+.fade-up {
+  transition:
+    opacity 700ms var(--ease) var(--delay, 0ms),
+    transform 900ms var(--ease) var(--delay, 0ms),
+    filter 700ms var(--ease) var(--delay, 0ms);
+}
+.js .fade-up[data-reveal="wait"] {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(6px);
+}
+
+/* ── Pill buttons: label + a dark disc holding the mark ─────────────────── */
+.pill-disc .mark-top,
+.pill-disc .mark-bottom {
+  transition: transform 520ms var(--throw);
+}
+.pill:hover .pill-disc .mark-top,
+.brand:hover .mark-top {
+  transform: translate(-1px, 0.58px);
+}
+.pill:hover .pill-disc .mark-bottom,
+.brand:hover .mark-bottom {
+  transform: translate(1px, -0.58px);
+}
+.brand .mark-top,
+.brand .mark-bottom {
+  transition: transform 520ms var(--throw);
+}
+.pill .pill-disc {
+  transition:
+    transform 520ms var(--throw),
+    background-color 300ms var(--ease);
+}
+.pill:hover .pill-disc {
+  transform: scale(1.08) rotate(-8deg);
+}
+.pill:active {
+  transform: scale(0.98);
+}
+
+/* ── Hairline UI motion primitives (components/hairline) ───────────────── */
+@keyframes ui-col-in {
+  from {
+    max-width: 0;
+    opacity: 0;
+  }
+  to {
+    max-width: 1em;
+    opacity: 1;
+  }
+}
+@keyframes ui-col-out {
+  from {
+    max-width: 1em;
+    opacity: 1;
+  }
+  to {
+    max-width: 0;
+    opacity: 0;
+  }
+}
+@keyframes ui-note-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--ui-from));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Small loops used by the product scenes ─────────────────────────────── */
+@keyframes sh-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes sh-sweep {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+@keyframes sh-scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes sh-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--from, 24px));
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes sh-ring {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+@keyframes sh-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.06);
+  }
+}
+
+/* ── Proof: the outer columns start tucked toward the middle and spread out
+ * as you scroll (--e comes from useScrollProgress). Wide screens only. */
+@media (min-width: 1024px) {
+  .spread [data-col="left"] {
+    transform: translateX(calc((1 - var(--e, 1)) * 58%)) rotate(calc((1 - var(--e, 1)) * -3deg)) scale(calc(0.94 + var(--e, 1) * 0.06));
+  }
+  .spread [data-col="right"] {
+    transform: translateX(calc((1 - var(--e, 1)) * -58%)) rotate(calc((1 - var(--e, 1)) * 3deg)) scale(calc(0.94 + var(--e, 1) * 0.06));
+  }
+  .spread [data-col="center"] {
+    transform: translateY(calc((1 - var(--e, 1)) * 36px));
+  }
+  .spread [data-col] {
+    will-change: transform;
+  }
+}
+
+/* ── Teams: the light field blends between each tab's colours. Registered
+ * colour properties let a gradient transition instead of jumping. */
+@property --c1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #7cf0b5;
+}
+@property --c2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #67e8f9;
+}
+@property --c3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e0f2fe;
+}
+.light-field {
+  transition:
+    --c1 1100ms var(--ease),
+    --c2 1100ms var(--ease),
+    --c3 1100ms var(--ease);
+  background:
+    radial-gradient(60% 55% at 22% 78%, var(--c1), transparent 72%),
+    radial-gradient(55% 60% at 82% 22%, var(--c2), transparent 70%),
+    radial-gradient(70% 70% at 60% 60%, var(--c3), transparent 75%),
+    #f7f9f8;
+}
+@keyframes sh-tab-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Paused motion and reduced motion stop every loop on the page. */
+html[data-motion="paused"] .loop,
+html[data-motion="paused"] .loop * {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .loop,
+  .loop * {
+    animation: none !important;
+  }
+  .js [data-reveal="wait"] .reveal-word,
+  .js .fade-up[data-reveal="wait"] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    font-variation-settings: "wdth" 100;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+  }
+}

@@ -1,0 +1,29 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3565,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"MotionProvider"]
+5:I[4900,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Hero"]
+6:I[3047,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Proof"]
+7:I[1586,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Comparison"]
+8:I[7636,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Features"]
+9:I[6455,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Steps"]
+a:I[6329,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Teams"]
+b:I[7248,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Benefits"]
+c:I[9957,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Testimonials"]
+d:I[3363,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Pricing"]
+e:I[6375,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Faq"]
+f:I[7514,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Closing"]
+10:I[4093,["974","static/chunks/app/page-0edcb4d6557ff2b7.js"],"Footer"]
+11:I[4431,[],"OutletBoundary"]
+13:I[5278,[],"AsyncMetadataOutlet"]
+15:I[4431,[],"ViewportBoundary"]
+17:I[4431,[],"MetadataBoundary"]
+18:"$Sreact.suspense"
+1a:I[7150,[],""]
+:HL["/demos/shear/_next/static/css/5c16c4ce877e6ee4.css","style"]
+0:{"P":null,"b":"KqDm3-NyZXf3OsXJm-PhN","p":"/demos/shear","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/demos/shear/_next/static/css/5c16c4ce877e6ee4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_58117b __variable_34644b","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"document.documentElement.classList.add(\"js\");try{if(localStorage.getItem(\"shear-motion\")===\"paused\")document.documentElement.dataset.motion=\"paused\"}catch(e){}"}}]}],["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L4",null,{"children":[["$","a",null,{"href":"#main","className":"sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white","children":"Skip to content"}],["$","$L5",null,{}],["$","main",null,{"id":"main","children":[["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}],["$","$La",null,{}],["$","$Lb",null,{}],["$","$Lc",null,{}],["$","$Ld",null,{}],["$","$Le",null,{}],["$","$Lf",null,{}]]}],["$","$L10",null,{}]]}],null,["$","$L11",null,{"children":["$L12",["$","$L13",null,{"promise":"$@14"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L15",null,{"children":"$L16"}],null],["$","$L17",null,{"children":["$","div",null,{"hidden":true,"children":["$","$18",null,{"fallback":null,"children":"$L19"}]}]}]]}],false]],"m":"$undefined","G":["$1a",[]],"s":false,"S":true}
+16:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#08090b"}]]
+12:null
+1b:I[622,[],"IconMark"]
+14:{"metadata":[["$","title","0",{"children":"Shear | Turn cloud spend into margin"}],["$","meta","1",{"name":"description","content":"Shear finds idle, oversized and forgotten cloud resources, then ships the fix as a pull request your team approves. Read-only access, savings on the next invoice."}],["$","meta","2",{"property":"og:title","content":"Shear | Turn cloud spend into margin"}],["$","meta","3",{"property":"og:description","content":"Shear finds idle, oversized and forgotten cloud resources, then ships the fix as a pull request your team approves. Read-only access, savings on the next invoice."}],["$","meta","4",{"property":"og:site_name","content":"Shear"}],["$","meta","5",{"property":"og:type","content":"website"}],["$","meta","6",{"name":"twitter:card","content":"summary"}],["$","meta","7",{"name":"twitter:title","content":"Shear | Turn cloud spend into margin"}],["$","meta","8",{"name":"twitter:description","content":"Shear finds idle, oversized and forgotten cloud resources, then ships the fix as a pull request your team approves. Read-only access, savings on the next invoice."}],["$","link","9",{"rel":"icon","href":"/demos/shear/icon.svg"}],["$","$L1b","10",{}]],"error":null,"digest":"$undefined"}
+19:"$14:metadata"

@@ -1,3 +1,4 @@
+import { shearDetails } from './template-catalog/shear';
 import { arcloDetails } from './template-catalog/arclo';
 import { asterDetails } from './template-catalog/aster';
 import { notchDetails } from './template-catalog/notch';
@@ -42,6 +43,7 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  shear: shearDetails,
   notch: notchDetails,
   aster: asterDetails,
   arclo: arcloDetails,

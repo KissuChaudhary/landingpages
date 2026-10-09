@@ -9,6 +9,13 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
     { template: 'influence', where: 'Pricing' },
     { template: 'prism', where: 'Pricing' },
     { template: 'relay', where: 'Pricing' },
+    { template: 'shear', where: 'Bill chart' },
+    { template: 'shear', where: 'Feature visual' },
+    { template: 'shear', where: 'Benefits' },
+    { template: 'shear', where: 'Features' },
+    { template: 'shear', where: 'Proof' },
+    { template: 'shear', where: 'Teams' },
+    { template: 'shear', where: 'Testimonials' },
     { template: 'tempo', where: 'Pricing' },
   ],
   'text-morph': [
@@ -21,7 +28,19 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
     { template: 'parley', where: 'Sign-up' },
     { template: 'prism', where: 'Pricing' },
     { template: 'relay', where: 'Pricing' },
+    { template: 'shear', where: 'Step scene' },
+    { template: 'shear', where: 'Signup form' },
+    { template: 'shear', where: 'Teams' },
     { template: 'stillform', where: 'Shot selector' },
     { template: 'tempo', where: 'Pricing' },
+  ],
+  'faq-accordion': [
+    { template: 'shear', where: 'Faq' },
+  ],
+  'logo-marquee': [
+    { template: 'shear', where: 'Hero' },
+  ],
+  'pricing-toggle': [
+    { template: 'shear', where: 'Pricing' },
   ],
 };

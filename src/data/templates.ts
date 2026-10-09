@@ -1,3 +1,4 @@
+import { shearTemplate } from './template-catalog/shear';
 import { arcloTemplate } from './template-catalog/arclo';
 import { asterTemplate } from './template-catalog/aster';
 import { notchTemplate } from './template-catalog/notch';
@@ -32,6 +33,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    shearTemplate,
     notchTemplate,
     asterTemplate,
     arcloTemplate,
