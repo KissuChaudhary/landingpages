@@ -8,10 +8,8 @@ import {
   ShoppingBag,
   Users,
   Workflow,
-  ArrowUpRight,
 } from "lucide-react";
 import { integrations } from "@/data/integrations";
-import { useExperience } from "../Experience";
 const icons = {
   mail: Mail,
   chat: MessageCircle,
@@ -23,7 +21,6 @@ const icons = {
 export function IntegrationDirectory() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
-  const { open } = useExperience();
   const visible = integrations.filter(
     (i) =>
       (category === "All" || i.category === category) &&
@@ -62,20 +59,18 @@ export function IntegrationDirectory() {
         {visible.map((i) => {
           const Icon = icons[i.icon as keyof typeof icons];
           return (
-            <button
-              key={i.id}
-              className="connection-card"
-              onClick={() => open({ type: "integration", id: i.id })}
-            >
+            <article key={i.id} id={i.id} className="connection-card">
               <Icon size={26} />
               <span className="connection-category">{i.category}</span>
               <h2>{i.name}</h2>
               <p>{i.text}</p>
-              <span className="text-link">
-                Explore the scope
-                <ArrowUpRight size={15} />
-              </span>
-            </button>
+              <ul className="connection-scope" aria-label={`${i.name} data`}>
+                {i.fields.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+              <p className="connection-note">{i.scope}</p>
+            </article>
           );
         })}
       </div>

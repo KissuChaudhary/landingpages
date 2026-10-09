@@ -46,7 +46,7 @@ The three scenarios prepare a weekly plan, compare note-taking approaches, and d
 
 Copy and Download export the currently displayed document. Save stores only a scenario ID in this browser's local storage. It does not save customized source selections or output. The Saved library can remove those IDs; there is no account, cloud sync, live AI, web search, calendar connection or publishing service.
 
-Tabs support arrows, Home and End. Native FAQ disclosures and the plan dialog support keyboard interaction. The dialog traps focus, closes on Escape or backdrop click, and returns focus to its opener. Appearance and saved IDs persist when browser storage is available.
+Tabs support arrows, Home and End. Native FAQ disclosures support keyboard interaction. Nothing opens in a popup: plan buttons go to your checkout links, and until they are set the free plan opens the workspace and paid plans start an email to your team. Appearance and saved IDs persist when browser storage is available.
 
 ## Use a product screenshot
 
@@ -63,7 +63,7 @@ This replaces the local request, context and document interface with your image.
 
 ## Project structure
 
-`app/page.tsx` composes independent sections. `components/RelayProvider.tsx` coordinates the workspace and plan dialog. `components/product/` holds the workspace pieces and code-native feature art; `components/ui/` holds the shared GridSection primitive, mark and native modal. `data/` and `lib/` separate content and state from rendering. `styles/` separates shared tokens, hero, workspace, features, lower sections and dialog.
+`app/page.tsx` composes independent sections. `components/RelayProvider.tsx` coordinates the workspace and plan buttons. `components/product/` holds the workspace pieces and code-native feature art; `components/ui/` holds the shared GridSection primitive and mark. `data/` and `lib/` separate content and state from rendering. `styles/` separates shared tokens, hero, workspace, features, and lower sections.
 
 ## Motion components
 

@@ -2,26 +2,33 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { site, type Plan, type Theme, type ExampleId } from "@/site.config";
 import { useExample, type ExampleState } from "@/lib/useExample";
-type Dialog =
-  | { type: "app" }
-  | { type: "plan"; plan: Plan; yearly: boolean }
-  | { type: "command" }
-  | null;
 type ContextValue = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   hero: ExampleState;
-  dialog: Dialog;
-  close: () => void;
   start: () => void;
+  command: boolean;
   openCommand: () => void;
+  closeCommand: () => void;
   choosePlan: (plan: Plan, yearly: boolean) => void;
   explore: (id: ExampleId) => void;
 };
 const Context = createContext<ContextValue | null>(null);
+function reveal(id: string, focus = false) {
+  window.setTimeout(() => {
+    const target = document.getElementById(id);
+    target?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+      block: "center",
+    });
+    if (focus) target?.focus({ preventScroll: true });
+  }, 30);
+}
 export function PatchProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(site.appearance.defaultTheme);
-  const [dialog, setDialog] = useState<Dialog>(null);
+  const [command, setCommand] = useState(false);
   const hero = useExample();
   useEffect(() => {
     const value = document.documentElement.dataset.theme;
@@ -31,9 +38,10 @@ export function PatchProvider({ children }: { children: React.ReactNode }) {
     function keyboard(event: KeyboardEvent) {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        setDialog((current) =>
-          current?.type === "command" ? null : { type: "command" },
-        );
+        setCommand((open) => {
+          if (!open) reveal("command-menu");
+          return !open;
+        });
       }
     }
     window.addEventListener("keydown", keyboard);
@@ -48,29 +56,32 @@ export function PatchProvider({ children }: { children: React.ReactNode }) {
       /* Appearance remains usable without storage. */
     }
   }
+  // "Get started" goes to your app when it's set, otherwise to the hero workspace.
   function start() {
     if (site.links.app) window.location.assign(site.links.app);
-    else setDialog({ type: "app" });
+    else reveal("hero-workspace", true);
   }
+  // A plan goes to its checkout link. Until one is set, the free plan opens
+  // the workspace and paid plans start an email to your team.
   function choosePlan(plan: Plan, yearly: boolean) {
     const href = yearly ? plan.href.yearly : plan.href.monthly;
     if (href) window.location.assign(href);
-    else setDialog({ type: "plan", plan, yearly });
+    else if (plan.monthly === 0) start();
+    else
+      window.location.assign(
+        `mailto:${site.links.email}?subject=${encodeURIComponent(
+          `${plan.name} plan, billed ${yearly ? "yearly" : "monthly"}`,
+        )}`,
+      );
   }
   function explore(id: ExampleId) {
     hero.choose(id);
     hero.setView("build");
-    setDialog(null);
-    window.setTimeout(() => {
-      const target = document.getElementById("hero-workspace");
-      target?.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-        block: "center",
-      });
-      target?.focus({ preventScroll: true });
-    }, 30);
+    reveal("hero-workspace", true);
+  }
+  function openCommand() {
+    setCommand(true);
+    reveal("command-menu");
   }
   return (
     <Context.Provider
@@ -78,10 +89,10 @@ export function PatchProvider({ children }: { children: React.ReactNode }) {
         theme,
         setTheme,
         hero,
-        dialog,
-        close: () => setDialog(null),
         start,
-        openCommand: () => setDialog({ type: "command" }),
+        command,
+        openCommand,
+        closeCommand: () => setCommand(false),
         choosePlan,
         explore,
       }}

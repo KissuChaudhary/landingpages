@@ -21,9 +21,9 @@ Navigation; hero; Plan / Focus / Reflect chapters; daily timeline; thoughtful de
 - One timestamp-based timer synchronizes every dial. It continues accurately through background-tab delays, supports pause/resume/reset, and prevents duration changes during a running session. Reloading starts a fresh session.
 - Routine checkboxes share current page state. Chapter and phone tabs support their corresponding arrow keys, Home and End.
 - Reflection text is shared across previews. Saving and clearing use browser local storage and report failure honestly; no remote transmission or account is implied.
-- Weekly controls display labeled sample data. Membership totals are computed from configured prices; absent checkout links produce a review dialog, never a payment success.
-- App links are configurable. Missing links are identified as demo destinations; the local preview can start a real focus session.
-- Native dialogs contain focus, close with Escape/backdrop, lock background scroll and restore the opener.
+- Weekly controls display labeled sample data. Membership totals are computed from configured prices; without a checkout link the free plan points to the download links and paid plans start an email, never a payment success.
+- App links are configurable and sit in the closing section. Missing links are marked "Soon"; the local preview can start a real focus session.
+- Nothing opens in a popup.
 
 ## Architecture and acceptance
 

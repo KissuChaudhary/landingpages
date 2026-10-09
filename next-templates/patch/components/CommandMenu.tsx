@@ -7,8 +7,8 @@ export function CommandMenu() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(0);
   const uid = useId();
-  const { close } = usePatch();
-  const content = site.dialogs.command;
+  const { closeCommand } = usePatch();
+  const content = site.commandMenu;
   const entries = [
     ...site.navigation,
     { label: "Questions", href: "#questions" },
@@ -17,7 +17,7 @@ export function CommandMenu() {
   function go(index: number) {
     const item = entries[index];
     if (!item) return;
-    close();
+    closeCommand();
     window.setTimeout(() => {
       const target = document.querySelector<HTMLElement>(item.href);
       target?.scrollIntoView({
@@ -37,7 +37,7 @@ export function CommandMenu() {
         <Search size={18} />
         <span className="sr-only">{content.title}</span>
         <input
-          data-autofocus
+          autoFocus
           placeholder={content.placeholder}
           value={query}
           role="combobox"
@@ -64,6 +64,8 @@ export function CommandMenu() {
             } else if (event.key === "Enter") {
               event.preventDefault();
               go(selected);
+            } else if (event.key === "Escape") {
+              closeCommand();
             }
           }}
         />

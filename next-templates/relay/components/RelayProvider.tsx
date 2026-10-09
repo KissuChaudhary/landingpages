@@ -8,16 +8,12 @@ type ContextValue = {
   changeTheme: () => void;
   start: () => void;
   explore: (id: ScenarioId) => void;
-  selectedPlan: { plan: Plan; yearly: boolean } | null;
   choosePlan: (plan: Plan, yearly: boolean) => void;
-  closePlan: () => void;
 };
 const Context = createContext<ContextValue | null>(null);
 export function RelayProvider({ children }: { children: React.ReactNode }) {
   const assistant = useAssistant();
   const [theme, setTheme] = useState<Theme>(site.appearance.defaultTheme);
-  const [selectedPlan, setSelectedPlan] =
-    useState<ContextValue["selectedPlan"]>(null);
   useEffect(() => {
     const current = document.documentElement.dataset.theme;
     if (current === "light" || current === "dark") setTheme(current);
@@ -51,10 +47,18 @@ export function RelayProvider({ children }: { children: React.ReactNode }) {
     assistant.choose(id);
     focusWorkspace();
   }
+  // A plan goes to its checkout link. Until one is set, the free plan opens
+  // the workspace and paid plans start an email to your team.
   function choosePlan(plan: Plan, yearly: boolean) {
     const href = yearly ? plan.href.yearly : plan.href.monthly;
     if (href) window.location.assign(href);
-    else setSelectedPlan({ plan, yearly });
+    else if (plan.monthly === 0) start();
+    else
+      window.location.assign(
+        `mailto:${site.links.email}?subject=${encodeURIComponent(
+          `${plan.name} plan, billed ${yearly ? "yearly" : "monthly"}`,
+        )}`,
+      );
   }
   return (
     <Context.Provider
@@ -64,9 +68,7 @@ export function RelayProvider({ children }: { children: React.ReactNode }) {
         changeTheme,
         start,
         explore,
-        selectedPlan,
         choosePlan,
-        closePlan: () => setSelectedPlan(null),
       }}
     >
       {children}

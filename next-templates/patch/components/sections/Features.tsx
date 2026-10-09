@@ -8,6 +8,7 @@ import { FileContext } from "@/components/product/FileContext";
 import { AppearancePreview } from "@/components/product/AppearancePreview";
 import { ExportPreview } from "@/components/product/ExportPreview";
 import { usePatch } from "@/components/PatchProvider";
+import { CommandMenu } from "@/components/CommandMenu";
 function FeatureCopy({
   title,
   description,
@@ -23,7 +24,7 @@ function FeatureCopy({
   );
 }
 export function Features() {
-  const { openCommand } = usePatch();
+  const { command, openCommand, closeCommand } = usePatch();
   const content = site.features;
   return (
     <section
@@ -45,13 +46,24 @@ export function Features() {
       <GridRow className="feature-row-secondary">
         <GridCell className="feature-keyboard">
           <FeatureCopy {...content.keyboard} />
-          <div className="key-art" aria-hidden="true">
-            <span className="keycap keycap-command">⌘</span>
-            <span className="key-plus">+</span>
-            <span className="keycap">K</span>
+          <div id="command-menu" className="command-slot">
+            {command ? (
+              <CommandMenu />
+            ) : (
+              <div className="key-art" aria-hidden="true">
+                <span className="keycap keycap-command">⌘</span>
+                <span className="key-plus">+</span>
+                <span className="keycap">K</span>
+              </div>
+            )}
           </div>
-          <button className="text-link" onClick={openCommand}>
-            {content.keyboard.action}
+          <button
+            className="text-link"
+            aria-expanded={command}
+            aria-controls="command-menu"
+            onClick={command ? closeCommand : openCommand}
+          >
+            {command ? content.keyboard.close : content.keyboard.action}
             <ArrowUpRight size={14} />
           </button>
         </GridCell>

@@ -3,11 +3,9 @@ import { useState } from "react";
 import { Check, ArrowUpRight } from "lucide-react";
 import { site, appHref, type Billing } from "@/site.config";
 import { href } from "@/lib/urls";
-import { useExperience } from "../Experience";
 import { SectionHead, Art } from "../ui/Primitives";
 export function Pricing({ primary = false }: { primary?: boolean }) {
   const [billing, setBilling] = useState<Billing>("monthly");
-  const { open } = useExperience();
   const studio = site.plans[1];
   const annualSavings = studio.monthly! * 12 - studio.annual! * 12;
   return (
@@ -84,13 +82,16 @@ export function Pricing({ primary = false }: { primary?: boolean }) {
                   <ArrowUpRight size={15} />
                 </a>
               ) : (
-                <button
+                <a
                   className={`button ${i !== 1 ? "button-light" : ""}`}
-                  onClick={() => open({ type: "plan", id: plan.id, billing })}
+                  href={href(
+                    plan.checkout[billing] ||
+                      `/contact?plan=${plan.id}&billing=${billing}`,
+                  )}
                 >
                   {plan.cta}
                   <ArrowUpRight size={15} />
-                </button>
+                </a>
               )}
             </article>
           );

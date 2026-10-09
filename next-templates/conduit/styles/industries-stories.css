@@ -358,3 +358,10 @@
     margin-bottom: 30px;
   }
 }
+
+/* A story's workflow, read in place. */
+.story-details {
+  font-size: 13px !important;
+  line-height: 1.65;
+  color: var(--muted);
+}

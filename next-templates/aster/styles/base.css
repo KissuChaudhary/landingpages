@@ -344,49 +344,6 @@ summary:focus-visible {
   background: var(--paper);
   font-size: 14px;
 }
-.plan-review,
-.connection-review {
-  padding: 36px;
-}
-.plan-review .section-head,
-.connection-review .section-head {
-  margin-bottom: 26px;
-}
-.plan-review h2,
-.connection-review h2 {
-  font-size: 40px;
-}
-.plan-review > p,
-.connection-review > p {
-  color: var(--muted);
-}
-.plan-review .review-price {
-  font-family: var(--serif);
-  color: var(--ink);
-  font-size: 50px;
-  line-height: 1.1;
-  margin-bottom: 14px;
-  letter-spacing: -1.4px;
-}
-.review-price > span {
-  font-family: var(--sans);
-  font-size: 15px;
-  letter-spacing: 0;
-}
-.plan-review .check-list,
-.connection-review .check-list {
-  margin: 28px 0;
-}
-.plan-review .small-note,
-.connection-review .small-note {
-  margin-top: 20px;
-}
-.connection-review .button {
-  margin-top: 26px;
-}
-.connection-review h3 {
-  font-size: 18px;
-}
 .status {
   display: inline-flex;
   align-items: center;
@@ -473,14 +430,6 @@ summary:focus-visible {
   }
   .button {
     min-height: 44px;
-  }
-  .plan-review,
-  .connection-review {
-    padding: 26px 22px;
-  }
-  .plan-review h2,
-  .connection-review h2 {
-    font-size: 34px;
   }
 }
 @media (max-width: 360px) {

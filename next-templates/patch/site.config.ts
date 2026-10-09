@@ -36,7 +36,6 @@ export const site = {
   actions: {
     start: "Get started",
     try: "Try the workspace",
-    close: "Keep exploring",
     copy: "Copy code",
     export: "Export component",
     apply: "Apply change",
@@ -85,6 +84,7 @@ export const site = {
       description:
         "One shortcut. A clear next step. Open the command menu from anywhere on the page.",
       action: "Open command menu",
+      close: "Close command menu",
     },
     appearance: {
       title: "The same clarity. Either way.",
@@ -280,28 +280,10 @@ export const site = {
     contact: "Say hello",
     docs: "Documentation",
   },
-  dialogs: {
-    app: {
-      label: "START SOMEWHERE",
-      title: "Pick a first thought.",
-      description:
-        "Choose a working example, then inspect the change and make it your own.",
-      note: "Local examples. No account or AI service required.",
-    },
-    plan: {
-      label: "YOUR SELECTED PLAN",
-      note: "This is a local plan preview. Connect a real checkout to accept payments or create accounts.",
-      total: "Billing total",
-      yearly: "Billed once a year",
-      monthly: "Billed each month",
-      free: "Free",
-      action: "Try a local example",
-    },
-    command: {
-      title: "Find your next step",
-      placeholder: "Where would you like to go?",
-      empty: "No matching page sections.",
-      note: "↑ ↓ to choose · Enter to go · Esc to close",
-    },
+  commandMenu: {
+    title: "Find your next step",
+    placeholder: "Where would you like to go?",
+    empty: "No matching page sections.",
+    note: "↑ ↓ to choose · Enter to go · Esc to close",
   },
 };

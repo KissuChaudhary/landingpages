@@ -4,6 +4,7 @@ import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { site } from "@/site.config";
 import { asset, href, route } from "@/lib/urls";
 import { blueprints, type BlueprintKey } from "@/data/blueprints";
+import { showBlueprint } from "@/lib/blueprint";
 import { useSite } from "../SiteShell";
 import { Button, Frame, Label } from "../ui/Primitives";
 import { SampleLogo } from "../ui/Brand";
@@ -11,7 +12,7 @@ const keys: BlueprintKey[] = ["support", "leads", "review", "report"];
 export function Hero() {
   const [active, setActive] = useState<BlueprintKey>("support");
   const [touched, setTouched] = useState(false);
-  const { motion, open } = useSite();
+  const { motion } = useSite();
   useEffect(() => {
     if (!motion || touched) return;
     const timer = setInterval(
@@ -81,7 +82,7 @@ export function Hero() {
               </div>
               <button
                 className="picker-inspect"
-                onClick={() => open({ kind: "blueprint", key: active })}
+                onClick={() => showBlueprint(active)}
               >
                 Explore this blueprint
                 <ArrowUpRight size={14} />

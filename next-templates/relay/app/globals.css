@@ -6,7 +6,6 @@
 @import "../styles/workspace.css";
 @import "../styles/features.css";
 @import "../styles/sections.css";
-@import "../styles/dialog.css";
 
 /* Hairline UI motion primitives (components/hairline) */
 @keyframes ui-col-in {

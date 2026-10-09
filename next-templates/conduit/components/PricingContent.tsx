@@ -1,13 +1,12 @@
 "use client";
+import { route } from "@/lib/urls";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { site } from "@/site.config";
 import { planQuote } from "@/lib/billing";
-import { useSite } from "./SiteShell";
 import { Button, Frame, SectionHead } from "./ui/Primitives";
 export function PricingContent() {
   const [annual, setAnnual] = useState(true);
-  const { open } = useSite();
   return (
     <Frame className="section pricing-page">
       <SectionHead
@@ -57,8 +56,7 @@ export function PricingContent() {
               </p>
               <Button
                 variant={i === 1 ? "solid" : "outline"}
-                href={url || undefined}
-                onClick={() => open({ kind: "plan", index: i, annual })}
+                href={url || route("/contact")}
               >
                 {plan.cta}
               </Button>

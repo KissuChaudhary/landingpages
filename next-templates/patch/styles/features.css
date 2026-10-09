@@ -56,6 +56,71 @@
   align-self: flex-start;
   margin-top: auto;
 }
+/* The command menu opens in place of the key art. */
+.command-slot {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.command-menu {
+  padding: 18px 0 20px;
+}
+.command-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-block: 1px solid var(--rule);
+}
+.command-search input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-size: 14px;
+  padding: 6px 0;
+  color: var(--ink);
+}
+.command-search:focus-within {
+  border-bottom-color: var(--olive);
+}
+.command-results {
+  display: grid;
+  gap: 4px;
+  margin-top: 10px;
+}
+.command-results button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 9px 11px;
+  text-align: left;
+  font-size: var(--text-small);
+}
+.command-results button[aria-selected="true"] {
+  border-color: var(--rule);
+  background: var(--surface);
+}
+.command-results > p {
+  padding: 20px 0;
+  font-size: var(--text-small);
+  color: var(--muted);
+}
+.command-hint {
+  font: var(--text-label)/1.8 var(--font-mono);
+  color: var(--muted);
+  margin-top: 12px;
+}
+@media (max-width: 640px) {
+  .command-search input {
+    font-size: 16px;
+  }
+}
 @media (max-width: 1000px) {
   .feature-row-primary {
     grid-template-columns: 1fr 1fr;

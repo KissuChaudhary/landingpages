@@ -35,7 +35,7 @@ The component tree separates landing sections, product scenes, review views, sec
 
 ## Destinations, plans and contact
 
-`site.links.app` replaces local review destinations when configured. An empty value opens the included workspace. Plan checkout URLs are configured separately for monthly and annual billing. An empty paid checkout opens a plan review followed by the studio enquiry. Solo opens the local example; Collective keeps custom pricing in both billing periods.
+`site.links.app` replaces local review destinations when configured. An empty value opens the included workspace. Plan checkout URLs are configured separately for monthly and annual billing. An empty paid checkout sends the plan button to the studio enquiry, with the plan noted. Solo opens the local example; Collective keeps custom pricing in both billing periods.
 
 Studio is shown at $32 monthly or $312 annually, equivalent to $26 per month and $72 annual savings. Allowances use projects and studio members. These are example product plans, not account limits enforced by the demo. Update the matching FAQ when changing pricing.
 

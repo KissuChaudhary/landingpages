@@ -8,15 +8,12 @@ import {
 } from "react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./sections/Footer";
-import { Overlay, type OverlayValue } from "./ui/Overlay";
 const Context = createContext<{
-  open: (value: OverlayValue) => void;
   motion: boolean;
   toggleMotion: () => void;
-}>({ open: () => {}, motion: true, toggleMotion: () => {} });
+}>({ motion: true, toggleMotion: () => {} });
 export const useSite = () => useContext(Context);
 export function SiteShell({ children }: { children: ReactNode }) {
-  const [overlay, setOverlay] = useState<OverlayValue | null>(null);
   const [motion, setMotion] = useState(true);
   useEffect(() => {
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
@@ -61,14 +58,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
       return !value;
     });
   return (
-    <Context.Provider value={{ open: setOverlay, motion, toggleMotion }}>
+    <Context.Provider value={{ motion, toggleMotion }}>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
       <Navigation />
       <main id="main">{children}</main>
       <Footer />
-      <Overlay value={overlay} close={() => setOverlay(null)} />
     </Context.Provider>
   );
 }

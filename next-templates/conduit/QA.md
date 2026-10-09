@@ -15,15 +15,15 @@
 - Checked 320px, 390px, 768px, 1024px and 1440px iframe viewports. No horizontal overflow. The actual content width excludes a scrollbar where one is present.
 - Checked every homepage frame: all left edges and widths agree at each breakpoint.
 - Confirmed every local image loaded before capturing the finished desktop and phone pages.
-- Built the document-review blueprint, inspected its dialog and downloaded the complete JSON.
+- Built the document-review blueprint, opened it inside the builder and downloaded the complete JSON.
 - Ran all four workflow stages, confirmed 100% completion and inspected the downloaded run receipt.
 - Switched analytics to seven days; changed the model route and tool connections.
 - Selected story tabs with mouse and arrow keys; confirmed the selected story updates together.
 - Expanded a native FAQ; paused motion and checked the remembered preference on the next page.
-- Opened monthly and annual plan dialogs and checked the exact amounts and cadence.
+- Plan buttons link to their checkout, or the contact page while none is set.
 - Prepared a local contact brief, inspected the downloaded text and confirmed that editing retains the entered fields.
 - Opened the company menu. Opened the phone menu, confirmed focus moves into it and Escape closes it.
-- Loaded marketplace details and the mobile screenshot. Checked the embedded phone layout, blueprint dialog and `allow-downloads` sandbox permission.
+- Loaded marketplace details and the mobile screenshot. Checked the embedded phone layout, the in-place blueprint and the `allow-downloads` sandbox permission.
 
 The in-app browser did not expose a download event for the nested marketplace iframe. Standalone downloads were exercised and their contents inspected; embedded file download handling should also be checked in a normal browser before launch. No live contact endpoint, payment provider, account system or AI service was connected. OS reduced-motion behavior was reviewed in CSS and the preference listener; the browser did not expose an OS preference override. The equivalent footer pause control was exercised.
 

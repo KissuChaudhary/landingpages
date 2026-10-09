@@ -37,7 +37,7 @@ Next.js 15, React 19, TypeScript, Tailwind CSS 4 and Lucide. The first build fet
 | Rendered example components and interface microcopy                            | `components/product/`                                  |
 | Original logo and favicon                                                      | `components/ui/Brand.tsx`, `public/icon.svg`           |
 
-Each section and product visual has its own component. CSS is grouped by responsibility. The `PatchProvider` wrapper coordinates the hero example, dialogs and appearance; the main workspace has independent state. Each main section has one configurable `badge` label, rendered by the shared `SectionBadge` component. `GridIntersections` supplies the decorative plus marks at the main rail junctions; its placement follows each section border.
+Each section and product visual has its own component. CSS is grouped by responsibility. The `PatchProvider` wrapper coordinates the hero example, command menu and appearance; the main workspace has independent state. Each main section has one configurable `badge` label, rendered by the shared `SectionBadge` component. `GridIntersections` supplies the decorative plus marks at the main rail junctions; its placement follows each section border.
 
 `styles/base.css` defines five shared type roles and the action sizes. `styles/grid.css` controls the frame and section connections. Feature layout, preview controls and smaller product details live in separate stylesheets. Workspace, workflow, use cases and FAQ share a 4/8 column division; the hero retains its 5/7 composition.
 
@@ -45,7 +45,7 @@ Each section and product visual has its own component. CSS is grouped by respons
 
 Set `links.app` to send primary actions to your application. When empty, these actions open the local example selector. Set `links.docs` and `links.email` for your own contact information.
 
-Personal, Builder and Studio form three joined pricing columns. Each plan has separate `href.monthly` and `href.yearly` destinations. Connect both to the appropriate checkout or signup page. Empty destinations open a review dialog with the exact period and billing total. Set `featured: true` to emphasize a plan; comparison rows use `included` arrays containing the applicable plan IDs. Prices, comparison rows and features are illustrative sample content.
+Personal, Builder and Studio form three joined pricing columns. Each plan has separate `href.monthly` and `href.yearly` destinations. Connect both to the appropriate checkout or signup page. Until they are set, the free plan opens the workspace and paid plans start an email to `links.email` naming the plan and period. Set `featured: true` to emphasize a plan; comparison rows use `included` arrays containing the applicable plan IDs. Prices, comparison rows and features are illustrative sample content.
 
 The closing section uses an ink-colored field, a cropped logo watermark and two actions. The primary action follows `links.app`; the secondary action links to the workspace. Its badge, headline and action copy live in `site.config.ts`.
 
@@ -76,8 +76,7 @@ Copy and workspace export use the currently displayed state. The small export fe
 - Build/Review/Preview tabs support arrows, Home and End.
 - Wide/Narrow controls resize the preview; file controls change the context excerpt.
 - Workflow and use-case tabs support keyboard navigation.
-- Cmd/Ctrl+K opens a filtered command menu with arrow and Enter navigation.
-- Native dialogs support Escape, focus containment, restoration and backdrop dismissal.
+- Cmd/Ctrl+K opens a filtered command menu inside the keyboard feature card, with arrow, Enter and Escape. Nothing opens in a popup.
 - Appearance persists under `patch-appearance-v1`, with a safe fallback if storage is unavailable.
 - Native FAQ disclosures, visible focus, labeled inputs and reduced-motion styles are included.
 

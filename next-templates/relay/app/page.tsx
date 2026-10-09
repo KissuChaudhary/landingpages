@@ -9,7 +9,6 @@ import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { Closing } from "@/components/sections/Closing";
 import { Footer } from "@/components/sections/Footer";
-import { PlanDialog } from "@/components/PlanDialog";
 export default function Page() {
   return (
     <RelayProvider>
@@ -30,7 +29,6 @@ export default function Page() {
         </main>
         <Footer />
       </div>
-      <PlanDialog />
     </RelayProvider>
   );
 }

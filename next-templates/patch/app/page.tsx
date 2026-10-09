@@ -11,7 +11,6 @@ import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { Closing } from "@/components/sections/Closing";
 import { Footer } from "@/components/sections/Footer";
-import { Dialogs } from "@/components/Dialogs";
 export default function Home() {
   return (
     <PatchProvider>
@@ -34,7 +33,6 @@ export default function Home() {
         </main>
         <Footer />
       </GridFrame>
-      <Dialogs />
     </PatchProvider>
   );
 }

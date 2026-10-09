@@ -28,11 +28,11 @@ Verified on October 9, 2026, after the layout refinement and the three-plan pric
 
 - Apply/Undo, Build/Review/Preview tabs and arrow-key navigation work.
 - Newsletter signup validates and confirms locally. Copy and native component export still work with the revised footer.
-- Plan selection changes the request and output. Example billing reports $15 monthly or $144 yearly. Main pricing reports Personal $0, Builder $15 monthly / $144 yearly, and Studio $30 monthly / $288 yearly. Studio review dialogs were checked in both periods; annual pricing shows the correct 20% saving.
+- Plan selection changes the request and output. Example billing reports $15 monthly or $144 yearly. Main pricing reports Personal $0, Builder $15 monthly / $144 yearly, and Studio $30 monthly / $288 yearly. Annual pricing shows the correct 20% saving.
 - Workflow tabs show request, review and export views. App, extension and component studies switch correctly.
-- Primary actions, including the revised closing button, open the example selector and coordinate the chosen hero example. The closing secondary action navigates to the workspace.
+- Primary actions, including the revised closing button, lead to the hero workspace. The closing secondary action navigates to the workspace.
 - Quick navigation supports search, empty results and local selection.
-- The command menu filters and navigates with Enter. Ctrl+K opens it with the search input focused; Escape restores the opener.
+- The command menu filters and navigates with Enter. It opens inside the keyboard feature card; Ctrl+K opens it with the search input focused and Escape closes it.
 - Mobile navigation opens and closes with Escape. Native FAQ disclosures work.
 - The production page recorded no console warnings or errors during these checks.
 

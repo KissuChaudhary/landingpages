@@ -3,13 +3,12 @@ import { useRef, useState } from "react";
 import { stories } from "@/data/stories";
 import { site } from "@/site.config";
 import { asset } from "@/lib/urls";
-import { useSite } from "../SiteShell";
 import { SampleLogo } from "../ui/Brand";
 import { Button, Frame, SectionHead } from "../ui/Primitives";
 export function Stories() {
   const [active, setActive] = useState(0);
+  const [details, setDetails] = useState(false);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const { open } = useSite();
   const story = stories[active];
   return (
     <Frame className="section stories dark" id="stories">
@@ -17,7 +16,10 @@ export function Stories() {
         <SectionHead label={site.stories.label} title={site.stories.title} />
         <Button
           variant="outline"
-          onClick={() => open({ kind: "story", index: active })}
+          onClick={() => {
+            setDetails(true);
+            document.getElementById("story-panel")?.scrollIntoView({ block: "center" });
+          }}
         >
           {site.stories.action}
         </Button>
@@ -34,7 +36,10 @@ export function Stories() {
             aria-selected={i === active}
             aria-controls="story-panel"
             tabIndex={i === active ? 0 : -1}
-            onClick={() => setActive(i)}
+            onClick={() => {
+              setActive(i);
+              setDetails(false);
+            }}
             onKeyDown={(e) => {
               let next = i;
               if (e.key === "ArrowRight") next = (i + 1) % stories.length;
@@ -45,6 +50,7 @@ export function Stories() {
               else return;
               e.preventDefault();
               setActive(next);
+              setDetails(false);
               tabs.current[next]?.focus();
             }}
           >
@@ -70,11 +76,14 @@ export function Stories() {
             <strong>{story.stat}</strong>
             <p>{story.metric}</p>
           </div>
+          {details && <p className="story-details">{story.details}</p>}
           <button
             className="text-action"
-            onClick={() => open({ kind: "story", index: active })}
+            aria-expanded={details}
+            onClick={() => setDetails(!details)}
           >
-            Read the workflow<span aria-hidden="true">↗</span>
+            {details ? "Hide the workflow" : "Read the workflow"}
+            <span aria-hidden="true">{details ? "↑" : "↓"}</span>
           </button>
         </div>
         <div className="story-quote">

@@ -27,11 +27,11 @@ Use a short wordmark (roughly 5–12 characters) for the large pixel footer trea
 ## Included interactions
 
 - Four hero agents. Ambient selection stops after the visitor makes a choice and respects the motion preference.
-- An editable blueprint selector, a build state, an inspection dialog and complete JSON blueprint downloads.
+- An editable blueprint selector, a build state, the blueprint’s steps and decision boundary opened inside the builder, and complete JSON blueprint downloads.
 - A four-stage local lead-routing run, progress, reset and a JSON run receipt.
 - Two analytics periods; model routing selection; previous/next tool connections.
-- Six sector links to the appropriate blueprint; four story tabs with Arrow keys, Home and End, plus story dialogs.
-- Native FAQ disclosures; company and mobile menus; Escape-aware native dialogs that return focus to the trigger.
+- Six sector links that open the matching blueprint in the builder; four story tabs with Arrow keys, Home and End, each story’s workflow readable in place.
+- Native FAQ disclosures; company and mobile menus. No popups: every button is a link or works in place.
 - Three pricing plans and monthly/annual selection. Until a checkout destination is set, the plan button opens an accurate local review. Annual totals are calculated by the shared billing helper.
 - A contact form that prepares a downloadable local brief until an endpoint is configured. Editing a prepared brief retains its fields.
 - A remembered footer motion control and system reduced-motion support.
@@ -44,7 +44,7 @@ These examples run locally. Connect your own accounts, AI, document processing, 
 app/                 Pages, fonts, metadata and style imports
 components/sections/ Homepage and shared footer chapters
 components/product/  Agent, workflow, analytics and capability scenes
-components/ui/       Brand, controls, frames and native dialog
+components/ui/       Brand, controls and frames
 data/                Blueprints, stories and resource-page content
 lib/                 Billing and base-path routing
 styles/              Focused CSS files, including motion and breakpoints

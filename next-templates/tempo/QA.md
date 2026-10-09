@@ -6,7 +6,7 @@
 - Inspected 1440, 1024, 768, 390 and 320px layouts and the complete desktop/mobile pages. Phone screens fit their content area; no horizontal page overflow or clipped controls at these widths.
 - Verified the marketplace detail listing, screenshot previews and nested live demo in desktop and mobile device modes. The embedded timer synchronized and counted down correctly.
 - Exercised real timer synchronization, countdown, pause, duration selection and reset. Checked saved reflection persistence after reload and explicit clearing, routine toggles, sample-week selection, mobile navigation and plan totals ($6 monthly; $4/month and $48 total yearly).
-- Keyboard chapter navigation, dialog forward/reverse focus wrapping, Escape dismissal and opener focus return passed.
+- Keyboard chapter navigation passed. No popups: app buttons lead to the download links in the closing section, and plan buttons to checkout or email.
 - Checked readable colour pairs: body 5.29:1, small phone labels 4.83:1, dial notes 4.66:1, dark-section supporting text 6.96:1 and primary button 8.10:1.
 - Production browser console reviewed; no errors or warnings after rounding SVG tick coordinates consistently across server and browser.
 

@@ -11,7 +11,7 @@ import {
 import { site } from "@/site.config";
 import type { BlueprintKey } from "@/data/blueprints";
 import { asset } from "@/lib/urls";
-import { useSite } from "../SiteShell";
+import { showBlueprint } from "@/lib/blueprint";
 import { Frame, SectionHead } from "../ui/Primitives";
 const icons = [
   Landmark,
@@ -22,7 +22,6 @@ const icons = [
   TrendingUp,
 ];
 export function Industries() {
-  const { open } = useSite();
   return (
     <Frame className="section industries" id="industries">
       <SectionHead
@@ -47,10 +46,7 @@ export function Industries() {
               <button
                 className="text-action"
                 onClick={() =>
-                  open({
-                    kind: "blueprint",
-                    key: item.blueprint as BlueprintKey,
-                  })
+                  showBlueprint(item.blueprint as BlueprintKey)
                 }
               >
                 See an example

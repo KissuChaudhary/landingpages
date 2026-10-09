@@ -190,7 +190,7 @@ export const site = {
     {
       question: "Is Tempo a real app I can download?",
       answer:
-        "Tempo is a demonstration for a mobile-app launch template. The download panel shows how your app links would work. A template buyer can connect their own App Store, Google Play or web app links.",
+        "Tempo is a demonstration for a mobile-app launch template. The download links at the end of the page show where your app links go. A template buyer can connect their own App Store, Google Play or web app links.",
     },
     {
       question: "Where is my reflection saved?",

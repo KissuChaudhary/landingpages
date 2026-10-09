@@ -9,7 +9,6 @@ import { Membership } from "@/components/sections/Membership";
 import { FAQ } from "@/components/sections/FAQ";
 import { Closing } from "@/components/sections/Closing";
 import { Footer } from "@/components/sections/Footer";
-import { Dialogs } from "@/components/Dialogs";
 
 export default function Home() {
   return (
@@ -30,7 +29,6 @@ export default function Home() {
         <Closing />
       </main>
       <Footer />
-      <Dialogs />
     </TempoProvider>
   );
 }

@@ -28,4 +28,4 @@ Most depth comes from borders, spacing and dark/light contrast. The hero editor 
 
 ## Product honesty
 
-Every demo control corresponds to a local action. There is no artificial generation delay or false AI response. Prepared examples visibly change code and output, offer usable component exports, and make their local nature clear. Prices and plan features are illustrative; a review dialog shows totals until a buyer configures actual destinations.
+Every demo control corresponds to a local action. There is no artificial generation delay or false AI response. Prepared examples visibly change code and output, offer usable component exports, and make their local nature clear. Prices and plan features are illustrative; until a buyer sets checkout links, the free plan opens the workspace and paid plans start an email.

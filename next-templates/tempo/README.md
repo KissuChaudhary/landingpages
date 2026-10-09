@@ -51,9 +51,9 @@ Unspecified screens keep their coded demo UI. Local paths respect the export bas
 
 ### Connect your product
 
-Set `links.ios`, `links.android` and optionally `links.app`. A web app URL makes primary CTAs navigate directly there. Otherwise the app dialog shows your configured store links alongside an honest demo state for missing links.
+Set `links.ios`, `links.android` and optionally `links.app`. A web app URL makes primary CTAs navigate directly there. Otherwise they lead to the download links in the closing section, where a missing link is marked "Soon".
 
-Give each plan a `href` to connect its checkout. Without a destination, the local dialog shows the selected plan and accurate billing total. Payment processing, app-store distribution, accounts and cloud sync are integrations for your product; they are not supplied by this template.
+Give each plan a `href` to connect its checkout. Without one, the free plan points to the download links and paid plans start an email to `links.email`. Payment processing, app-store distribution, accounts and cloud sync are integrations for your product; they are not supplied by this template.
 
 The timer uses an absolute deadline and updates from current time, so delayed browser intervals do not introduce drift. It runs only on the mounted page, and resets on reload. Routine changes are current-page state. Reflections are explicitly saved locally under `tempo-example-reflection-v1`; storage errors are caught. The clear button removes that saved note. Week numbers are labeled example data, not recorded activity.
 
