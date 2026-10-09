@@ -7,6 +7,12 @@ const RENAMED_TEMPLATES: Record<string, string> = {
   'influence-hero': 'influence',
 };
 
+// Cloudflare's builds have no production URL of their own: without this, canonical links, the sitemap and the
+// install commands on /ui would all point at localhost.
+if (process.env.WORKERS_CI && !process.env.NEXT_PUBLIC_SITE_URL) {
+  throw new Error("Set NEXT_PUBLIC_SITE_URL in the Worker's build variables (Settings > Build > Variables and secrets).");
+}
+
 const nextConfig: NextConfig = {
   // lets a second dev server run side by side without sharing (and corrupting) .next
   distDir: process.env.NEXT_DIST_DIR || '.next',

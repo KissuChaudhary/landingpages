@@ -1,6 +1,6 @@
 # Hairline UI
 
-One brand, one site (`hairlineui.com` via `NEXT_PUBLIC_SITE_URL`, formerly FounderDada): paid Next.js landing page templates ($39 each, $99 all-access) and a free component library at `/ui`, installable from our own shadcn registry (`/r/<name>.json`, namespace `hairline`). Next.js 15 App Router, React 19, Tailwind CSS v4, pnpm. Pushing to `main` deploys on Vercel.
+One brand, one site (`hairlineui.com` via `NEXT_PUBLIC_SITE_URL`, formerly FounderDada): paid Next.js landing page templates ($39 each, $99 all-access) and a free component library at `/ui`, installable from our own shadcn registry (`/r/<name>.json`, namespace `hairline`). Next.js 15 App Router, React 19, Tailwind CSS v4, pnpm. Hosted on Cloudflare Workers through OpenNext (`wrangler.jsonc`, `open-next.config.ts`, Worker `hairline-ui`); Vercel also still deploys `main` until it's disconnected.
 
 **Before building or changing anything in `src/ui-library/`, read [docs/ui-library-playbook.md](docs/ui-library-playbook.md) in full.** It holds the design and motion standard, the code standard, the workflow, where the library stands and the next job.
 

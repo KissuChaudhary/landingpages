@@ -2,7 +2,8 @@ export const SITE_NAME = 'Hairline UI';
 
 /**
  * Absolute origin for canonical URLs, Open Graph images, the sitemap and structured data.
- * Set NEXT_PUBLIC_SITE_URL once you have a custom domain; until then Vercel's production URL is used.
+ * Set by NEXT_PUBLIC_SITE_URL at build time: on Cloudflare it's a build variable of the Worker (the build fails
+ * without it, see next.config.ts). Vercel's production URL is the fallback while the site is still there too.
  */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ||

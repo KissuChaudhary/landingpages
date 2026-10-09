@@ -1,0 +1,3 @@
+# Files in public/ that are not uploaded to Cloudflare (Workers serves at most 25 MiB per file).
+# Unused: kept in the repo until the owner decides.
+media/drawgle-launch-film.mp4

@@ -24,6 +24,11 @@ dist/
 # Vercel Deployment Cache
 .vercel
 
+# Cloudflare (OpenNext build output, Wrangler state, local secrets)
+.open-next
+.wrangler
+.dev.vars*
+
 # Logs & Debugging
 npm-debug.log*
 yarn-debug.log*

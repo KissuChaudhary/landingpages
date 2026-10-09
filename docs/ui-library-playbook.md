@@ -27,7 +27,7 @@ Never split templates and components into separate brands or domains. `SITE_NAME
 ## 2. Working with the owner (Harvansh)
 
 - Solo builder with a day job; casual, direct, fast. Taste feedback comes bluntly ("pathetic", "noob work"): treat it as signal, fix the root cause, don't argue or over-explain.
-- **Judged by feel, on the deployed site.** "To take a look in browser you will have to deploy." Push to `main` = Vercel deploys. Push in sensible batches so the owner can review live.
+- **Judged by feel, on the deployed site.** "To take a look in browser you will have to deploy." Push to `main` = the site redeploys (Cloudflare Workers once its Git build is connected; Vercel until it's switched off). Push in sensible batches so the owner can review live.
 - Commit/push only when asked (usually "Push" / "deploy"); once the owner has said "let's do this, build them all", pushing finished batches for review is expected.
 - Give honest strategic opinions when asked (e.g. assistant-ui comparison), with a clear recommendation, not a survey.
 - Other sessions work in this repo in parallel (new templates like `next-templates/relay/`, `work/`, `.codex-remote-attachments/`). **Never commit files you didn't change.** Stage paths explicitly.
@@ -166,7 +166,7 @@ The `/ui` index, `/ui/<name>` page (States, Usage, example, Props, Accessibility
    - The browser pane may be hidden: `requestAnimationFrame` and CSS transitions pause until a frame is drawn. Take a screenshot to force frames; verify behaviour by sampling DOM state (`getComputedStyle`, `getAnimations()`, element identity) rather than trusting mid-animation screenshots.
    - Test every state: mouse, keyboard path, narrow width (`resize_window` mobile), reduced motion where relevant. Reset to desktop afterwards.
 3. **Production build:** `NEXT_DIST_DIR=.next-verify npx next build`, then `git restore next-env.d.ts tsconfig.json` (the build rewrites them).
-4. **Commit** only your paths (`git add src/ui-library src/app/globals.css …`), message: a short title, a blank line, bullets describing what moves, then `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Push to `main` when asked → Vercel deploys (check `gh api repos/KissuChaudhary/landingpages/commits/<sha>/status`).
+4. **Commit** only your paths (`git add src/ui-library src/app/globals.css …`), message: a short title, a blank line, bullets describing what moves, then `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Push to `main` when asked → the site redeploys (Cloudflare Workers Builds, or Vercel while it's still connected: `gh api repos/KissuChaudhary/landingpages/commits/<sha>/status`).
 
 ---
 
@@ -229,4 +229,4 @@ Latest commits: the motion pass `7ab99fd` (code block, message edit, web researc
 
 ### Next job
 - More templates using components where a real interaction exists: FAQ accordions, waitlist fields, toast confirmations, theme toggles; then patch once its rework lands.
-- Site/business loose ends: connect `hairlineui.com` in Vercel with `NEXT_PUBLIC_SITE_URL`; add a license (MIT recommended) and submit `@hairline` to the shadcn registry directory; real checkout links in `src/data/pricing.ts`; 260 unused files in `public/` (~131MB) await the owner's approval to delete.
+- Site/business loose ends: the site moved to Cloudflare Workers (2026-10-09): attach `hairlineui.com` to the `hairline-ui` Worker, connect its Git build, then switch Vercel off; add a license (MIT recommended) and submit `@hairline` to the shadcn registry directory; real checkout links in `src/data/pricing.ts`; 260 unused files in `public/` (~131MB) await the owner's approval to delete.

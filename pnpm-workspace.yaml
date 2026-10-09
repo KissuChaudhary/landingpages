@@ -1,3 +1,8 @@
+# Packages whose install scripts may run. esbuild and workerd are needed to build and preview for Cloudflare.
 allowBuilds:
-  '@google/genai': set this to true or false
-  protobufjs: set this to true or false
+  esbuild: true
+  workerd: true
+# The same list for pnpm 10, which reads this key instead.
+onlyBuiltDependencies:
+  - esbuild
+  - workerd
