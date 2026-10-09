@@ -66,7 +66,11 @@ const subscribeReduced = (onChange: () => void) => {
   return () => query.removeEventListener("change", onChange);
 };
 const useReducedMotion = () =>
-  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+  React.useSyncExternalStore(
+    subscribeReduced,
+    () => window.matchMedia(reducedQuery).matches,
+    () => false,
+  );
 
 function niceTop(value: number) {
   if (value <= 0) return STEPS;
@@ -126,10 +130,12 @@ export function ComboChart({
   const reduced = useReducedMotion();
   const id = React.useId();
   const [visible, setVisible] = React.useState(false);
+  const [plotH, setPlotH] = React.useState(PLOT);
   const [active, setActive] = React.useState<number | null>(null);
   const [keyboard, setKeyboard] = React.useState(false);
   const [width, setWidth] = React.useState(0);
   const rootRef = React.useRef<HTMLDivElement>(null);
+  const chartRef = React.useRef<HTMLDivElement>(null);
   const plotRef = React.useRef<HTMLDivElement>(null);
   const pingRef = React.useRef<HTMLSpanElement>(null);
 
@@ -153,6 +159,21 @@ export function ComboChart({
   const best = values.indexOf(Math.max(...values));
   const quiet = values.indexOf(Math.min(...values));
   const change = previous ? (total - previous) / previous : null;
+
+  // The plot's height is set by the card's width in CSS; read it so the drawing fits.
+  React.useLayoutEffect(() => {
+    const el = chartRef.current;
+    if (!el) return;
+    const measure = () =>
+      setPlotH((h) => {
+        const next = el.offsetHeight - LABELS;
+        return next > 0 && next !== h ? next : h;
+      });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   React.useEffect(() => {
     const el = rootRef.current;
@@ -199,7 +220,7 @@ export function ComboChart({
 
   const slot = n ? width / n : 0;
   const cx = (i: number) => (i + 0.5) * slot;
-  const y = (v: number) => TOP + (PLOT - TOP) * (1 - v / max);
+  const y = (v: number) => TOP + (plotH - TOP) * (1 - v / max);
   const line = width ? monotone(average.map((v, i) => [cx(i), y(v)] as [number, number])) : "";
   const barWidth = Math.max(3, Math.min(24, slot * 0.62));
 
@@ -228,43 +249,62 @@ export function ComboChart({
   const compact: Intl.NumberFormatOptions = { ...format, notation: "compact", minimumFractionDigits: 0, maximumFractionDigits: 1 };
 
   return (
-    <div ref={rootRef} className={`w-full rounded-[22px] bg-background p-5 shadow-[0_0_0_1px_var(--border)] sm:p-6 ${className}`} {...props}>
-      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
-        <div className="min-w-0">
-          <p className="text-[13px] text-muted-foreground">
-            <TextMorph>{active !== null ? `${title} on ${name(active)}` : title}</TextMorph>
-          </p>
-          <p className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-            <span className="text-[32px] font-medium leading-tight tracking-[-0.035em] text-foreground">
-              <NumberRoll value={visible ? (active !== null ? values[active] : total) : 0} format={whole} locales={locales} duration={active !== null ? 600 : 1000} />
-            </span>
-            {change !== null && (
-              <span
-                className="grid"
-                style={{ gridTemplateColumns: active === null ? "1fr" : "0fr", opacity: active === null ? 1 : 0, transition: reduced ? "none" : `grid-template-columns 380ms ${EASE}, opacity 220ms ${EASE}` }}
-              >
-                <span className="min-w-0 [clip-path:inset(-4px_-2px)]">
-                  <span
-                    className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px text-[12.5px] font-medium ${
-                      change >= 0 ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
-                    }`}
-                  >
-                    <svg viewBox="0 0 12 12" aria-hidden="true" className="size-3" style={{ transform: change >= 0 ? "none" : "rotate(180deg)" }}>
-                      <path d="M6 9.5V2.5M2.8 5.6 6 2.5l3.2 3.1" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <NumberRoll value={visible ? Math.abs(change) : 0} format={{ style: "percent", maximumFractionDigits: 1 }} duration={700} />
+    <div ref={rootRef} className={`@container w-full rounded-[22px] bg-background shadow-[0_0_0_1px_var(--border)] ${className}`} {...props}>
+      <div className="p-4 @md:p-5 [--gutter:30px] @md:[--gutter:40px] [--plot:150px] @md:[--plot:190px]">
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+          <div className="min-w-0">
+            <p className="text-[12px] text-muted-foreground @md:text-[13px]">
+              <TextMorph>{active !== null ? `${title} on ${name(active)}` : title}</TextMorph>
+            </p>
+            <p className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+              <span className="text-[22px] font-medium leading-tight tracking-[-0.03em] @md:text-[26px] text-foreground">
+                <NumberRoll
+                  value={visible ? (active !== null ? values[active] : total) : 0}
+                  format={whole}
+                  locales={locales}
+                  duration={active !== null ? 600 : 1000}
+                />
+              </span>
+              {change !== null && (
+                <span
+                  className="grid"
+                  style={{
+                    gridTemplateColumns: active === null ? "1fr" : "0fr",
+                    opacity: active === null ? 1 : 0,
+                    transition: reduced ? "none" : `grid-template-columns 380ms ${EASE}, opacity 220ms ${EASE}`,
+                  }}
+                >
+                  <span className="min-w-0 [clip-path:inset(-4px_-2px)]">
+                    <span
+                      className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px text-[12.5px] font-medium ${
+                        change >= 0 ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
+                      }`}
+                    >
+                      <svg viewBox="0 0 12 12" aria-hidden="true" className="size-3" style={{ transform: change >= 0 ? "none" : "rotate(180deg)" }}>
+                        <path
+                          d="M6 9.5V2.5M2.8 5.6 6 2.5l3.2 3.1"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <NumberRoll value={visible ? Math.abs(change) : 0} format={{ style: "percent", maximumFractionDigits: 1 }} duration={700} />
+                    </span>
                   </span>
                 </span>
-              </span>
-            )}
-          </p>
-          <p className="mt-1 flex items-baseline gap-[0.3em] whitespace-nowrap text-[12.5px] text-muted-foreground">
-            <NumberRoll value={visible ? (active !== null ? average[active] : daily) : 0} format={whole} locales={locales} duration={700} />
-            <TextMorph>{active !== null ? `on the ${series[1].toLowerCase()}` : "a day on average"}</TextMorph>
-          </p>
+              )}
+            </p>
+            <p className="mt-1 flex items-baseline gap-[0.3em] whitespace-nowrap text-[11.5px] text-muted-foreground @md:text-[12.5px]">
+              <NumberRoll value={visible ? (active !== null ? average[active] : daily) : 0} format={whole} locales={locales} duration={700} />
+              <TextMorph>{active !== null ? `on the ${series[1].toLowerCase()}` : "a day on average"}</TextMorph>
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4 pt-1 text-[12px] text-muted-foreground">
+        {/* The legend: a bar key and a line key, so the two read by shape as well as colour. */}
+        <div className="mt-3 flex items-center gap-4 text-[11.5px] text-muted-foreground @md:mt-4 @md:text-[12px]">
           <span className="flex items-center gap-1.5">
             <span aria-hidden="true" className="h-2.5 w-2 rounded-t-[2px]" style={{ background: BAR }} />
             {series[0]}
@@ -274,137 +314,142 @@ export function ComboChart({
             {series[1]}
           </span>
         </div>
-      </div>
 
-      <div className="relative mt-6" style={{ height: PLOT + LABELS }}>
-        {Array.from({ length: STEPS + 1 }, (_, k) => 1 - k / STEPS).map((f) => (
-          <div key={f} aria-hidden="true" className="absolute inset-x-0" style={{ top: TOP + (PLOT - TOP) * (1 - f) }}>
-            <span className="absolute left-0 top-0 -translate-y-1/2 text-[10.5px] leading-none tabular-nums text-muted-foreground/80" style={{ width: GUTTER - 10, textAlign: "right" }}>
-              <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
-            </span>
-            <div className="border-t border-border" style={{ marginLeft: GUTTER }} />
-          </div>
-        ))}
-
-        <div
-          ref={plotRef}
-          role="group"
-          tabIndex={0}
-          aria-label={`${title}: ${series[0]} with the ${series[1].toLowerCase()}. Use the arrow keys to read each day.`}
-          onKeyDown={onKeyDown}
-          onBlur={() => keyboard && (setActive(null), setKeyboard(false))}
-          onPointerMove={(e) => {
-            setKeyboard(false);
-            setActive(pointAt(e.clientX));
-          }}
-          onPointerDown={(e) => setActive(pointAt(e.clientX))}
-          onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
-          className={`absolute inset-y-0 right-0 touch-pan-y select-none rounded-lg ${FOCUS}`}
-          style={{ left: GUTTER }}
-        >
-          {days.map((d, i) => {
-            const hovered = active === i;
-            return (
-              <React.Fragment key={d.key}>
-                <span
-                  aria-hidden="true"
-                  className="absolute rounded-t-[4px]"
-                  style={{
-                    left: cx(i) - barWidth / 2,
-                    width: barWidth,
-                    top: TOP,
-                    height: PLOT - TOP,
-                    transformOrigin: "bottom",
-                    // The bar is drawn full height and scaled, so its 4px rounded top stays round while it grows.
-                    clipPath: `inset(${visible ? ((PLOT - TOP) * (1 - d.value / max)).toFixed(1) : PLOT - TOP}px 0 0 0 round 4px 4px 0 0)`,
-                    background: BAR,
-                    opacity: hovered ? 1 : active !== null ? 0.18 : 0.32,
-                    transition: reduced ? "none" : `clip-path 640ms ${EASE} ${Math.min(i, 40) * 14}ms, opacity 240ms ${EASE}`,
-                  }}
-                />
-                <span
-                  aria-hidden="true"
-                  className={`absolute -translate-x-1/2 whitespace-nowrap text-[11px] leading-none transition-colors duration-200 ${hovered ? "text-foreground" : "text-muted-foreground"}`}
-                  style={{ left: cx(i), top: PLOT + 9, opacity: label(i) ? 1 : 0 }}
-                >
-                  {d.label}
-                </span>
-              </React.Fragment>
-            );
-          })}
+        <div ref={chartRef} className="relative mt-3" style={{ height: `calc(var(--plot) + ${LABELS}px)` }}>
+          {Array.from({ length: STEPS + 1 }, (_, k) => 1 - k / STEPS).map((f) => (
+            <div key={f} aria-hidden="true" className="absolute inset-x-0" style={{ top: TOP + (plotH - TOP) * (1 - f) }}>
+              <span
+                className="absolute left-0 top-0 -translate-y-1/2 text-[10px] leading-none tabular-nums text-muted-foreground/80"
+                style={{ width: "calc(var(--gutter) - 8px)", textAlign: "right" }}
+              >
+                <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
+              </span>
+              <div className="border-t border-border" style={{ marginLeft: "var(--gutter)" }} />
+            </div>
+          ))}
 
           <div
-            className="pointer-events-none absolute inset-x-0 top-0"
-            style={{ height: PLOT, clipPath: visible ? "inset(-8px -8px -8px -8px)" : "inset(-8px 100% -8px -8px)", transition: reduced ? "none" : `clip-path 1100ms ${EASE} 260ms` }}
+            ref={plotRef}
+            role="group"
+            tabIndex={0}
+            aria-label={`${title}: ${series[0]} with the ${series[1].toLowerCase()}. Use the arrow keys to read each day.`}
+            onKeyDown={onKeyDown}
+            onBlur={() => keyboard && (setActive(null), setKeyboard(false))}
+            onPointerMove={(e) => {
+              setKeyboard(false);
+              setActive(pointAt(e.clientX));
+            }}
+            onPointerDown={(e) => setActive(pointAt(e.clientX))}
+            onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
+            className={`absolute inset-y-0 right-0 touch-pan-y select-none rounded-lg ${FOCUS}`}
+            style={{ left: "var(--gutter)" }}
           >
-            <svg aria-hidden="true" width={width} height={PLOT} className="absolute inset-0 overflow-visible">
-              {line && <path d={line} fill="none" stroke={LINE} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
-            </svg>
-          </div>
+            {days.map((d, i) => {
+              const hovered = active === i;
+              return (
+                <React.Fragment key={d.key}>
+                  <span
+                    aria-hidden="true"
+                    className="absolute rounded-t-[4px]"
+                    style={{
+                      left: cx(i) - barWidth / 2,
+                      width: barWidth,
+                      top: TOP,
+                      height: plotH - TOP,
+                      transformOrigin: "bottom",
+                      // The bar is drawn full height and scaled, so its 4px rounded top stays round while it grows.
+                      clipPath: `inset(${visible ? ((plotH - TOP) * (1 - d.value / max)).toFixed(1) : plotH - TOP}px 0 0 0 round 4px 4px 0 0)`,
+                      background: BAR,
+                      opacity: hovered ? 1 : active !== null ? 0.18 : 0.32,
+                      transition: reduced ? "none" : `clip-path 640ms ${EASE} ${Math.min(i, 40) * 14}ms, opacity 240ms ${EASE}`,
+                    }}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -translate-x-1/2 whitespace-nowrap text-[11px] leading-none transition-colors duration-200 ${hovered ? "text-foreground" : "text-muted-foreground"}`}
+                    style={{ left: cx(i), top: plotH + 9, opacity: label(i) ? 1 : 0 }}
+                  >
+                    {d.label}
+                  </span>
+                </React.Fragment>
+              );
+            })}
 
-          {/* The line's dot, and the ring that pings when it lands. */}
-          {[pingRef, null].map((ref, k) => (
-            <span
-              key={k}
-              ref={ref ?? undefined}
-              aria-hidden="true"
-              className={`pointer-events-none absolute size-2.5 rounded-full ${ref ? "" : "shadow-[0_0_0_2px_var(--background)]"}`}
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0"
               style={{
-                left: cx(active ?? n - 1),
-                top: y(average[active ?? n - 1] ?? 0),
-                transform: "translate(-50%, -50%)",
-                background: LINE,
-                opacity: active !== null ? (ref ? 0 : 1) : 0,
-                transition: reduced ? "none" : `left 260ms ${THROW}, top 260ms ${THROW}, opacity 200ms ${EASE}`,
+                height: plotH,
+                clipPath: visible ? "inset(-8px -8px -8px -8px)" : "inset(-8px 100% -8px -8px)",
+                transition: reduced ? "none" : `clip-path 1100ms ${EASE} 260ms`,
               }}
-            />
-          ))}
-        </div>
-      </div>
+            >
+              <svg aria-hidden="true" width={width} height={plotH} className="absolute inset-0 overflow-visible">
+                {line && <path d={line} fill="none" stroke={LINE} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
+              </svg>
+            </div>
 
-      <dl className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3">
-        {[
-          { label: "Best day", value: values[best] ?? 0, note: days[best]?.label },
-          { label: "Daily average", value: daily, note: `over ${n} days` },
-          { label: "Quietest day", value: values[quiet] ?? 0, note: days[quiet]?.label },
-        ].map((t) => (
-          <div
-            key={t.label}
-            className="grid min-w-0 grid-cols-[1fr_auto] items-baseline gap-x-3 rounded-[14px] px-3 py-2.5 shadow-[inset_0_0_0_1px_var(--border)] sm:block"
-          >
-            <dt className="truncate text-[12px] text-muted-foreground">{t.label}</dt>
-            <dd className="row-span-2 text-[17px] font-medium tracking-[-0.02em] text-foreground sm:mt-1">
-              <NumberRoll value={visible ? t.value : 0} format={whole} locales={locales} duration={800} />
-            </dd>
-            <dd className="truncate text-[11.5px] text-muted-foreground">{t.note}</dd>
+            {/* The line's dot, and the ring that pings when it lands. */}
+            {[pingRef, null].map((ref, k) => (
+              <span
+                key={k}
+                ref={ref ?? undefined}
+                aria-hidden="true"
+                className={`pointer-events-none absolute size-2.5 rounded-full ${ref ? "" : "shadow-[0_0_0_2px_var(--background)]"}`}
+                style={{
+                  left: cx(active ?? n - 1),
+                  top: y(average[active ?? n - 1] ?? 0),
+                  transform: "translate(-50%, -50%)",
+                  background: LINE,
+                  opacity: active !== null ? (ref ? 0 : 1) : 0,
+                  transition: reduced ? "none" : `left 260ms ${THROW}, top 260ms ${THROW}, opacity 200ms ${EASE}`,
+                }}
+              />
+            ))}
           </div>
-        ))}
-      </dl>
+        </div>
 
-      <p aria-live="polite" className="sr-only">
-        {keyboard && active !== null ? `${name(active)}: ${fmt(values[active])}, ${series[1].toLowerCase()} ${fmt(average[active])}` : ""}
-      </p>
-      <table className="sr-only">
-        <caption>
-          {title}: {fmt(total)} over {n} days
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Day</th>
-            <th scope="col">{series[0]}</th>
-            <th scope="col">{series[1]}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {days.map((d, i) => (
-            <tr key={d.key} id={`${id}-${d.key}`}>
-              <th scope="row">{name(i)}</th>
-              <td>{fmt(d.value)}</td>
-              <td>{fmt(average[i])}</td>
-            </tr>
+        {/* The day's highlights as a compact strip under a hairline. */}
+        <dl className="mt-4 grid grid-cols-3 divide-x divide-border border-t border-border pt-2.5 @md:mt-5 @md:pt-3">
+          {[
+            { label: "Best day", value: values[best] ?? 0, note: days[best]?.label },
+            { label: "Daily average", value: daily, note: `over ${n} days` },
+            { label: "Quietest day", value: values[quiet] ?? 0, note: days[quiet]?.label },
+          ].map((t) => (
+            <div key={t.label} className="min-w-0 px-2.5 first:pl-0 last:pr-0 @md:px-3.5">
+              <dt className="truncate text-[11px] text-muted-foreground @md:text-[11.5px]">{t.label}</dt>
+              <dd className="mt-0.5 text-[13.5px] font-medium tracking-[-0.01em] text-foreground @md:text-[14.5px]">
+                <NumberRoll value={visible ? t.value : 0} format={whole} locales={locales} duration={800} />
+              </dd>
+              <dd className="truncate text-[10.5px] text-muted-foreground @md:text-[11px]">{t.note}</dd>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </dl>
+
+        <p aria-live="polite" className="sr-only">
+          {keyboard && active !== null ? `${name(active)}: ${fmt(values[active])}, ${series[1].toLowerCase()} ${fmt(average[active])}` : ""}
+        </p>
+        <table className="sr-only">
+          <caption>
+            {title}: {fmt(total)} over {n} days
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">{series[0]}</th>
+              <th scope="col">{series[1]}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {days.map((d, i) => (
+              <tr key={d.key} id={`${id}-${d.key}`}>
+                <th scope="row">{name(i)}</th>
+                <td>{fmt(d.value)}</td>
+                <td>{fmt(average[i])}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

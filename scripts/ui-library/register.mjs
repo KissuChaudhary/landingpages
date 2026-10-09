@@ -28,7 +28,7 @@ const ORDER = [
   // Product UI: around the chat
   'chat-scroll', 'message-edit', 'chat-history',
   // Dashboard: charts and cards
-  'earnings-chart', 'steps-chart', 'revenue-chart', 'area-chart', 'combo-chart',
+  'earnings-chart', 'steps-chart', 'revenue-chart', 'area-chart', 'combo-chart', 'stage-bars',
   // Playback: the product components, playing on their own
   'agent-playback',
 ];

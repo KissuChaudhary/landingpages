@@ -56,6 +56,7 @@ import StepsChartDemo from './steps-chart-demo';
 import RevenueChartDemo from './revenue-chart-demo';
 import AreaChartDemo from './area-chart-demo';
 import ComboChartDemo from './combo-chart-demo';
+import StageBarsDemo from './stage-bars-demo';
 import AgentPlaybackDemo from './agent-playback-demo';
 
 /** Live demo for each registry item, keyed by its registry name. Each receives the selected preview tab. */
@@ -115,5 +116,6 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'revenue-chart': RevenueChartDemo,
   'area-chart': AreaChartDemo,
   'combo-chart': ComboChartDemo,
+  'stage-bars': StageBarsDemo,
   'agent-playback': AgentPlaybackDemo,
 };

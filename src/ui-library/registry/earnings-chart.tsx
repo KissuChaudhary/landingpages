@@ -96,7 +96,21 @@ function niceMax(value: number) {
 }
 
 /** One bar and its label. It grows out of the baseline when it first appears, and folds away when it leaves. */
-function ColumnView({ col, grown, delay, tone, reduced, label }: { col: Column; grown: boolean; delay: number; tone: string; reduced: boolean; label: boolean }) {
+function ColumnView({
+  col,
+  grown,
+  delay,
+  tone,
+  reduced,
+  label,
+}: {
+  col: Column;
+  grown: boolean;
+  delay: number;
+  tone: string;
+  reduced: boolean;
+  label: boolean;
+}) {
   const [born, setBorn] = React.useState(false);
   React.useEffect(() => {
     let inner = 0;
@@ -153,10 +167,12 @@ export function EarningsChart({
   const periodId = value ?? own;
   const period = periods.find((p) => p.id === periodId) ?? periods[0];
   const bars = period?.bars ?? [];
+  // Set by the card's width in CSS and measured below.
+  const [plotH, setPlotH] = React.useState(PLOT);
   const total = bars.reduce((sum, b) => sum + b.value, 0);
   const max = niceMax(Math.max(0, ...bars.map((b) => b.value)));
   const slot = bars.length ? 100 / bars.length : 100;
-  const layout: Column[] = bars.map((b, index) => ({ ...b, index, left: index * slot, width: slot, height: (b.value / max) * (PLOT - HEADROOM) }));
+  const layout: Column[] = bars.map((b, index) => ({ ...b, index, left: index * slot, width: slot, height: (b.value / max) * (plotH - HEADROOM) }));
   const hi = highlight ?? bars[bars.length - 1]?.key;
 
   const [visible, setVisible] = React.useState(false);
@@ -196,6 +212,21 @@ export function EarningsChart({
     const timer = window.setTimeout(() => setLeaving([]), MORPH);
     return () => window.clearTimeout(timer);
   }, [leaving]);
+
+  // The plot's height is set by the card's width in CSS; read it so the drawing fits.
+  React.useLayoutEffect(() => {
+    const el = plotRef.current;
+    if (!el) return;
+    const measure = () =>
+      setPlotH((h) => {
+        const next = el.offsetHeight - LABELS;
+        return next > 0 && next !== h ? next : h;
+      });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   React.useEffect(() => {
     const el = rootRef.current;
@@ -272,197 +303,197 @@ export function EarningsChart({
   const compact = { ...format, notation: "compact" as const, minimumFractionDigits: 0, maximumFractionDigits: 1 };
 
   return (
-    <div ref={rootRef} className={`w-full rounded-[22px] bg-background p-5 shadow-[0_0_0_1px_var(--border)] sm:p-6 ${className}`} {...props}>
-      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
-        <div className="min-w-0">
-          <p className="text-[13px] text-muted-foreground">{title}</p>
-          <p className="mt-1 text-[32px] font-medium leading-tight tracking-[-0.035em] text-foreground">
-            <NumberRoll value={visible ? total : 0} format={format} locales={locales} duration={1000} />
-          </p>
-          {(comparable || period?.comparison) && (
-            <p className="mt-1.5 flex items-center text-[12.5px] text-muted-foreground">
-              <span
-                className="grid"
-                style={{
-                  gridTemplateColumns: change !== null ? "1fr" : "0fr",
-                  opacity: change !== null ? 1 : 0,
-                  transition: reduced ? "none" : `grid-template-columns 420ms ${EASE}, opacity 240ms ${EASE}`,
-                }}
-              >
-                <span className="min-w-0 pr-2 [clip-path:inset(-4px_-2px)]">
-                  <span
-                    className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px font-medium tabular-nums transition-colors duration-300 ${
-                      up ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
-                    }`}
+    <div ref={rootRef} className={`@container w-full rounded-[22px] bg-background shadow-[0_0_0_1px_var(--border)] ${className}`} {...props}>
+      <div className="p-4 @md:p-5 [--gutter:30px] @md:[--gutter:40px] [--plot:148px] @md:[--plot:176px]">
+        {/* The title and its control share a row; the figures sit under both. */}
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+          <p className="text-[12px] text-muted-foreground @md:text-[13px]">{title}</p>
+          <div role="radiogroup" aria-label="Period" className="relative -my-1 inline-flex shrink-0 rounded-full bg-muted p-0.5">
+            <span
+              aria-hidden="true"
+              className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_0_0_1px_var(--border)]"
+              style={{
+                width: pill.width,
+                transform: `translateX(${pill.left}px)`,
+                transition: pill.ready && !reduced ? `transform 460ms ${THROW}, width 380ms ${EASE}` : "none",
+              }}
+            />
+            {periods.map((p, i) => {
+              const selected = p.id === periodId;
+              return (
+                <button
+                  key={p.id}
+                  ref={(el) => {
+                    chipRefs.current[i] = el;
+                  }}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  tabIndex={selected ? 0 : -1}
+                  onClick={() => choose(p.id)}
+                  onKeyDown={(e) => {
+                    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+                    e.preventDefault();
+                    const next = (i + (e.key === "ArrowRight" ? 1 : -1) + periods.length) % periods.length;
+                    choose(periods[next].id);
+                    chipRefs.current[next]?.focus();
+                  }}
+                  className={`relative h-6 rounded-full px-2.5 text-[11.5px] font-medium @md:h-7 @md:px-3 @md:text-[12.5px] tabular-nums transition-colors duration-300 ${FOCUS} ${
+                    selected ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        <p className="mt-0.5 text-[22px] font-medium leading-tight tracking-[-0.03em] @md:text-[26px] text-foreground">
+          <NumberRoll value={visible ? total : 0} format={format} locales={locales} duration={1000} />
+        </p>
+        {(comparable || period?.comparison) && (
+          <p className="mt-1 flex items-center text-[11.5px] text-muted-foreground @md:text-[12.5px]">
+            <span
+              className="grid"
+              style={{
+                gridTemplateColumns: change !== null ? "1fr" : "0fr",
+                opacity: change !== null ? 1 : 0,
+                transition: reduced ? "none" : `grid-template-columns 420ms ${EASE}, opacity 240ms ${EASE}`,
+              }}
+            >
+              <span className="min-w-0 pr-2 [clip-path:inset(-4px_-2px)]">
+                <span
+                  className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px font-medium tabular-nums transition-colors duration-300 ${
+                    up ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
+                  }`}
+                >
+                  <svg
+                    viewBox="0 0 12 12"
+                    aria-hidden="true"
+                    className="size-3"
+                    style={{ transform: up ? "none" : "rotate(180deg)", transition: reduced ? "none" : `transform 420ms ${THROW}` }}
                   >
-                    <svg
-                      viewBox="0 0 12 12"
-                      aria-hidden="true"
-                      className="size-3"
-                      style={{ transform: up ? "none" : "rotate(180deg)", transition: reduced ? "none" : `transform 420ms ${THROW}` }}
-                    >
-                      <path
-                        d="M6 9.5V2.5M2.8 5.6 6 2.5l3.2 3.1"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <NumberRoll value={visible ? Math.abs(shownChange) : 0} format={{ style: "percent", maximumFractionDigits: 1 }} duration={800} />
-                  </span>
+                    <path
+                      d="M6 9.5V2.5M2.8 5.6 6 2.5l3.2 3.1"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <NumberRoll value={visible ? Math.abs(shownChange) : 0} format={{ style: "percent", maximumFractionDigits: 1 }} duration={800} />
                 </span>
               </span>
-              <span className="whitespace-nowrap">
-                <TextMorph>{period?.comparison ?? " "}</TextMorph>
-              </span>
-            </p>
-          )}
-        </div>
+            </span>
+            <span className="whitespace-nowrap">
+              <TextMorph>{period?.comparison ?? " "}</TextMorph>
+            </span>
+          </p>
+        )}
 
-        <div role="radiogroup" aria-label="Period" className="relative inline-flex shrink-0 rounded-full bg-muted p-0.5">
-          <span
-            aria-hidden="true"
-            className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_0_0_1px_var(--border)]"
-            style={{
-              width: pill.width,
-              transform: `translateX(${pill.left}px)`,
-              transition: pill.ready && !reduced ? `transform 460ms ${THROW}, width 380ms ${EASE}` : "none",
-            }}
-          />
-          {periods.map((p, i) => {
-            const selected = p.id === periodId;
-            return (
-              <button
-                key={p.id}
-                ref={(el) => {
-                  chipRefs.current[i] = el;
-                }}
-                type="button"
-                role="radio"
-                aria-checked={selected}
-                tabIndex={selected ? 0 : -1}
-                onClick={() => choose(p.id)}
-                onKeyDown={(e) => {
-                  if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-                  e.preventDefault();
-                  const next = (i + (e.key === "ArrowRight" ? 1 : -1) + periods.length) % periods.length;
-                  choose(periods[next].id);
-                  chipRefs.current[next]?.focus();
-                }}
-                className={`relative h-7 rounded-full px-3 text-[12.5px] font-medium tabular-nums transition-colors duration-300 ${FOCUS} ${
-                  selected ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
+        <div
+          ref={plotRef}
+          role="group"
+          tabIndex={0}
+          aria-label={`${title}, ${period?.label ?? ""}. Use the arrow keys to read each bar.`}
+          onKeyDown={onKeyDown}
+          onBlur={() => keyboard && (setActive(null), setKeyboard(false))}
+          onPointerMove={(e) => {
+            setKeyboard(false);
+            setActive(pointAt(e.clientX));
+          }}
+          onPointerDown={(e) => setActive(pointAt(e.clientX))}
+          onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
+          className={`relative mt-4 touch-pan-y @md:mt-5 select-none rounded-lg ${FOCUS}`}
+          style={{ height: `calc(var(--plot) + ${LABELS}px)` }}
+        >
+          {/* The scale: rolling labels in the gutter, the top and the middle as hairlines, and the baseline. */}
+          {[1, 0.5, 0].map((f) => (
+            <div key={f} aria-hidden="true" className="absolute right-0" style={{ left: 0, top: HEADROOM + (1 - f) * (plotH - HEADROOM) }}>
+              <span
+                className="absolute left-0 top-0 -translate-y-1/2 text-[10.5px] tabular-nums leading-none text-muted-foreground/80"
+                style={{ width: "calc(var(--gutter) - 8px)", textAlign: "right" }}
               >
-                {p.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+                <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
+              </span>
+              <div className="border-t border-border" style={{ marginLeft: "var(--gutter)" }} />
+            </div>
+          ))}
 
-      <div
-        ref={plotRef}
-        role="group"
-        tabIndex={0}
-        aria-label={`${title}, ${period?.label ?? ""}. Use the arrow keys to read each bar.`}
-        onKeyDown={onKeyDown}
-        onBlur={() => keyboard && (setActive(null), setKeyboard(false))}
-        onPointerMove={(e) => {
-          setKeyboard(false);
-          setActive(pointAt(e.clientX));
-        }}
-        onPointerDown={(e) => setActive(pointAt(e.clientX))}
-        onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
-        className={`relative mt-6 touch-pan-y select-none rounded-lg ${FOCUS}`}
-        style={{ height: PLOT + LABELS }}
-      >
-        {/* The scale: rolling labels in the gutter, the top and the middle as hairlines, and the baseline. */}
-        {[1, 0.5, 0].map((f) => (
-          <div key={f} aria-hidden="true" className="absolute right-0" style={{ left: 0, top: HEADROOM + (1 - f) * (PLOT - HEADROOM) }}>
-            <span
-              className="absolute left-0 top-0 -translate-y-1/2 text-[10.5px] tabular-nums leading-none text-muted-foreground/80"
-              style={{ width: GUTTER - 10, textAlign: "right" }}
-            >
-              <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
-            </span>
-            <div className="border-t border-border" style={{ marginLeft: GUTTER }} />
-          </div>
-        ))}
-
-        <div ref={barsRef} className="absolute inset-y-0 right-0" style={{ left: GUTTER }}>
-          {/* The hovered column: a hairline lane from the readout down to the baseline. */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute rounded-[10px] bg-foreground/[0.02] shadow-[inset_0_0_0_1px_var(--border)]"
-            style={{
-              top: 2,
-              height: PLOT - 2,
-              left: col ? `calc(${col.left}% + 2px)` : 0,
-              width: col ? `calc(${col.width}% - 4px)` : 0,
-              opacity: col ? 1 : 0,
-              transition: reduced ? "none" : `left 380ms ${THROW}, width 380ms ${EASE}, opacity 200ms ${EASE}`,
-            }}
-          />
-
-          {[...layout, ...leaving.filter((l) => !bars.some((b) => b.key === l.key))].map((c) => (
-            <ColumnView
-              key={c.key}
-              col={c}
-              grown={visible}
-              delay={c.leaving ? 0 : Math.min(c.index, 12) * 28}
-            label={!c.leaving && (bars.length - 1 - c.index) % every === 0}
-              reduced={reduced}
-              tone={
-                c.key === hi
-                  ? "bg-primary"
-                  : active !== null && bars[active]?.key === c.key
-                    ? "bg-foreground/25"
-                    : active !== null
-                      ? "bg-foreground/[0.07]"
-                      : "bg-foreground/[0.11]"
-              }
+          <div ref={barsRef} className="absolute inset-y-0 right-0" style={{ left: "var(--gutter)" }}>
+            {/* The hovered column: a hairline lane from the readout down to the baseline. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute rounded-[10px] bg-foreground/[0.02] shadow-[inset_0_0_0_1px_var(--border)]"
+              style={{
+                top: 2,
+                height: plotH - 2,
+                left: col ? `calc(${col.left}% + 2px)` : 0,
+                width: col ? `calc(${col.width}% - 4px)` : 0,
+                opacity: col ? 1 : 0,
+                transition: reduced ? "none" : `left 380ms ${THROW}, width 380ms ${EASE}, opacity 200ms ${EASE}`,
+              }}
             />
-          ))}
 
-          {/* The readout rides the top of the lane: month morphs, amount rolls. */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute top-[5px] flex h-[22px] -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-background px-2.5 text-[11.5px] shadow-[0_0_0_1px_var(--border)]"
-            style={{
-              left: col ? `clamp(56px, ${col.left + col.width / 2}%, calc(100% - 56px))` : "50%",
-              opacity: shown ? 1 : 0,
-              scale: shown ? "1" : "0.94",
-              transition: reduced ? "none" : `left 380ms ${THROW}, opacity 200ms ${EASE}, scale 260ms ${EASE}`,
-            }}
-          >
-            <span className="text-muted-foreground">
-              <TextMorph>{shown ? (shown.title ?? shown.label) : " "}</TextMorph>
-            </span>
-            <span className="font-medium tabular-nums text-foreground">
-              <NumberRoll value={shown?.value ?? 0} format={format} locales={locales} duration={600} />
-            </span>
+            {[...layout, ...leaving.filter((l) => !bars.some((b) => b.key === l.key))].map((c) => (
+              <ColumnView
+                key={c.key}
+                col={c}
+                grown={visible}
+                delay={c.leaving ? 0 : Math.min(c.index, 12) * 28}
+                label={!c.leaving && (bars.length - 1 - c.index) % every === 0}
+                reduced={reduced}
+                tone={
+                  c.key === hi
+                    ? "bg-primary"
+                    : active !== null && bars[active]?.key === c.key
+                      ? "bg-foreground/25"
+                      : active !== null
+                        ? "bg-foreground/[0.07]"
+                        : "bg-foreground/[0.11]"
+                }
+              />
+            ))}
+
+            {/* The readout rides the top of the lane: month morphs, amount rolls. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-[5px] flex h-[22px] -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-background px-2.5 text-[11.5px] shadow-[0_0_0_1px_var(--border)]"
+              style={{
+                left: col ? `clamp(56px, ${col.left + col.width / 2}%, calc(100% - 56px))` : "50%",
+                opacity: shown ? 1 : 0,
+                scale: shown ? "1" : "0.94",
+                transition: reduced ? "none" : `left 380ms ${THROW}, opacity 200ms ${EASE}, scale 260ms ${EASE}`,
+              }}
+            >
+              <span className="text-muted-foreground">
+                <TextMorph>{shown ? (shown.title ?? shown.label) : " "}</TextMorph>
+              </span>
+              <span className="font-medium tabular-nums text-foreground">
+                <NumberRoll value={shown?.value ?? 0} format={format} locales={locales} duration={600} />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <p aria-live="polite" className="sr-only">
-        {keyboard && shown ? `${shown.title ?? shown.label}: ${fmt(shown.value)}` : ""}
-      </p>
-      <table className="sr-only">
-        <caption>
-          {title}, {period?.label}: {fmt(total)}
-        </caption>
-        <tbody>
-          {bars.map((b) => (
-            <tr key={b.key} id={`${id}-${b.key}`}>
-              <th scope="row">{b.title ?? b.label}</th>
-              <td>{fmt(b.value)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <p aria-live="polite" className="sr-only">
+          {keyboard && shown ? `${shown.title ?? shown.label}: ${fmt(shown.value)}` : ""}
+        </p>
+        <table className="sr-only">
+          <caption>
+            {title}, {period?.label}: {fmt(total)}
+          </caption>
+          <tbody>
+            {bars.map((b) => (
+              <tr key={b.key} id={`${id}-${b.key}`}>
+                <th scope="row">{b.title ?? b.label}</th>
+                <td>{fmt(b.value)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

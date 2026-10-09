@@ -65,7 +65,7 @@ export default function ComponentPreview({ name, tabs, tabsLabel = 'States', ins
         </button>
       </div>
 
-      <div className={`flex min-h-[380px] items-center justify-center px-5 pt-16 sm:px-8 ${hasTabs ? 'pb-24' : 'pb-14'}`}>
+      <div className={`flex min-h-[300px] items-center justify-center px-3 pt-12 sm:min-h-[380px] sm:px-8 sm:pt-16 ${hasTabs ? 'pb-20 sm:pb-24' : 'pb-6 sm:pb-14'}`}>
         {Demo && visible ? <Demo key={`${tab ?? ''}-${run}`} tab={tab} /> : null}
       </div>
 

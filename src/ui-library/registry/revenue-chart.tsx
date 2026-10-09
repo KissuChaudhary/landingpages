@@ -72,7 +72,11 @@ const subscribeReduced = (onChange: () => void) => {
   return () => query.removeEventListener("change", onChange);
 };
 const useReducedMotion = () =>
-  React.useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
+  React.useSyncExternalStore(
+    subscribeReduced,
+    () => window.matchMedia(reducedQuery).matches,
+    () => false,
+  );
 
 const STEPS = 4; // gridlines above the baseline
 
@@ -171,11 +175,13 @@ export function RevenueChart({
   const format = metric?.format;
 
   const [visible, setVisible] = React.useState(false);
+  const [plotH, setPlotH] = React.useState(PLOT);
   const [active, setActive] = React.useState<number | null>(null);
   const [keyboard, setKeyboard] = React.useState(false);
   const [width, setWidth] = React.useState(0);
   const [pill, setPill] = React.useState({ left: 0, width: 0, ready: false });
   const rootRef = React.useRef<HTMLDivElement>(null);
+  const chartRef = React.useRef<HTMLDivElement>(null);
   const plotRef = React.useRef<HTMLDivElement>(null);
   const chipRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -183,6 +189,21 @@ export function RevenueChart({
   const drawnMax = useTween([max], reduced)[0];
   const cur = useTween(current, reduced);
   const prev = useTween(previous, reduced);
+
+  // The plot's height is set by the card's width in CSS; read it so the drawing fits.
+  React.useLayoutEffect(() => {
+    const el = chartRef.current;
+    if (!el) return;
+    const measure = () =>
+      setPlotH((h) => {
+        const next = el.offsetHeight - LABELS;
+        return next > 0 && next !== h ? next : h;
+      });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   React.useEffect(() => {
     const el = rootRef.current;
@@ -218,18 +239,19 @@ export function RevenueChart({
 
   const n = labels.length;
   const x = (i: number) => PAD + (n > 1 ? (i * (width - PAD * 2)) / (n - 1) : (width - PAD * 2) / 2);
-  const y = (v: number) => TOP + (PLOT - TOP) * (1 - v / (drawnMax || 1));
+  const y = (v: number) => TOP + (plotH - TOP) * (1 - v / (drawnMax || 1));
   const curPoints = cur.map((v, i) => [x(i), y(v)] as [number, number]);
   const prevPoints = prev.map((v, i) => [x(i), y(v)] as [number, number]);
   const curLine = width ? monotone(curPoints) : "";
   const prevLine = width ? monotone(prevPoints) : "";
-  const area = curLine && curPoints.length > 1 ? `${curLine}L${curPoints[curPoints.length - 1][0]},${PLOT}L${curPoints[0][0]},${PLOT}Z` : "";
+  const area = curLine && curPoints.length > 1 ? `${curLine}L${curPoints[curPoints.length - 1][0]},${plotH}L${curPoints[0][0]},${plotH}Z` : "";
 
-  const add = (list: number[]) => (metric?.total === "average" ? (list.length ? list.reduce((s, v) => s + v, 0) / list.length : 0) : list.reduce((s, v) => s + v, 0));
+  const add = (list: number[]) =>
+    metric?.total === "average" ? (list.length ? list.reduce((s, v) => s + v, 0) / list.length : 0) : list.reduce((s, v) => s + v, 0);
   const lastIndex = current.length - 1;
   // Last year over the same months as this year, so a year under way compares like with like.
   const prevSame = previous.slice(0, current.length);
-  const headline = active !== null ? current[active] ?? 0 : add(current);
+  const headline = active !== null ? (current[active] ?? 0) : add(current);
   const before = active !== null ? previous[active] : prevSame.length ? add(prevSame) : undefined;
   const change = before ? (headline - before) / before : null;
   const [lastChange, setLastChange] = React.useState(change ?? 0);
@@ -268,7 +290,7 @@ export function RevenueChart({
 
   const dot = (i: number | null, values: number[], color: string, key: string) => {
     const on = i !== null && values[i] !== undefined;
-    const v = on ? values[i] : values[values.length - 1] ?? 0;
+    const v = on ? values[i] : (values[values.length - 1] ?? 0);
     return (
       <span
         key={key}
@@ -287,206 +309,252 @@ export function RevenueChart({
   };
 
   return (
-    <div ref={rootRef} className={`w-full rounded-[22px] bg-background p-5 shadow-[0_0_0_1px_var(--border)] sm:p-6 ${className}`} {...props}>
-      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
-        <div className="min-w-0">
-          <p className="text-[13px] text-muted-foreground">
-            <TextMorph>{active !== null ? `${metric?.label} in ${monthName(active)}` : metric?.label ?? ""}</TextMorph>
-          </p>
-          <p className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-            <span className="text-[32px] font-medium leading-tight tracking-[-0.035em] text-foreground">
-              <NumberRoll value={visible ? headline : 0} format={format} locales={locales} duration={active !== null ? 600 : 1000} />
-            </span>
-            <span
-              className="grid"
-              style={{ gridTemplateColumns: change !== null ? "1fr" : "0fr", opacity: change !== null ? 1 : 0, transition: reduced ? "none" : `grid-template-columns 380ms ${EASE}, opacity 240ms ${EASE}` }}
-            >
-              <span className="min-w-0 [clip-path:inset(-4px_-2px)]">
-                <span
-                  className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px text-[12.5px] font-medium transition-colors duration-300 ${
-                    up ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
-                  }`}
-                >
-                  <svg viewBox="0 0 12 12" aria-hidden="true" className="size-3" style={{ transform: up ? "none" : "rotate(180deg)", transition: reduced ? "none" : `transform 420ms ${THROW}` }}>
-                    <path d="M6 9.5V2.5M2.8 5.6 6 2.5l3.2 3.1" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <NumberRoll value={visible ? Math.abs(change ?? lastChange) : 0} format={{ style: "percent", maximumFractionDigits: 1 }} duration={700} />
+    <div ref={rootRef} className={`@container w-full rounded-[22px] bg-background shadow-[0_0_0_1px_var(--border)] ${className}`} {...props}>
+      <div className="p-4 @md:p-5 [--gutter:30px] @md:[--gutter:40px] [--plot:160px] @md:[--plot:200px]">
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+          <div className="min-w-0">
+            <p className="text-[12px] text-muted-foreground @md:text-[13px]">
+              <TextMorph>{active !== null ? `${metric?.label} in ${monthName(active)}` : (metric?.label ?? "")}</TextMorph>
+            </p>
+            <p className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+              <span className="text-[22px] font-medium leading-tight tracking-[-0.03em] @md:text-[26px] text-foreground">
+                <NumberRoll value={visible ? headline : 0} format={format} locales={locales} duration={active !== null ? 600 : 1000} />
+              </span>
+              <span
+                className="grid"
+                style={{
+                  gridTemplateColumns: change !== null ? "1fr" : "0fr",
+                  opacity: change !== null ? 1 : 0,
+                  transition: reduced ? "none" : `grid-template-columns 380ms ${EASE}, opacity 240ms ${EASE}`,
+                }}
+              >
+                <span className="min-w-0 [clip-path:inset(-4px_-2px)]">
+                  <span
+                    className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px text-[12.5px] font-medium transition-colors duration-300 ${
+                      up ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
+                    }`}
+                  >
+                    <svg
+                      viewBox="0 0 12 12"
+                      aria-hidden="true"
+                      className="size-3"
+                      style={{ transform: up ? "none" : "rotate(180deg)", transition: reduced ? "none" : `transform 420ms ${THROW}` }}
+                    >
+                      <path
+                        d="M6 9.5V2.5M2.8 5.6 6 2.5l3.2 3.1"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <NumberRoll value={visible ? Math.abs(change ?? lastChange) : 0} format={{ style: "percent", maximumFractionDigits: 1 }} duration={700} />
+                  </span>
                 </span>
               </span>
-            </span>
-          </p>
-          {before !== undefined && (
-            <p className="mt-1 flex items-baseline gap-[0.3em] whitespace-nowrap text-[12.5px] text-muted-foreground">
-              <NumberRoll value={visible ? before : 0} format={format} locales={locales} duration={700} />
-              <TextMorph>{active !== null ? `in ${monthName(active)} ${/^\d/.test(series[1]) ? series[1] : series[1].toLowerCase()}` : then(series[1])}</TextMorph>
             </p>
-          )}
-        </div>
-
-        {metrics.length > 1 && (
-          <div role="radiogroup" aria-label="Measure" className="relative inline-flex shrink-0 rounded-full bg-muted p-0.5">
-            <span
-              aria-hidden="true"
-              className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_0_0_1px_var(--border)]"
-              style={{ width: pill.width, transform: `translateX(${pill.left}px)`, transition: pill.ready && !reduced ? `transform 460ms ${THROW}, width 380ms ${EASE}` : "none" }}
-            />
-            {metrics.map((m, i) => {
-              const selected = m.id === metricId;
-              return (
-                <button
-                  key={m.id}
-                  ref={(el) => {
-                    chipRefs.current[i] = el;
-                  }}
-                  type="button"
-                  role="radio"
-                  aria-checked={selected}
-                  tabIndex={selected ? 0 : -1}
-                  onClick={() => choose(m.id)}
-                  onKeyDown={(e) => {
-                    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-                    e.preventDefault();
-                    const next = (i + (e.key === "ArrowRight" ? 1 : -1) + metrics.length) % metrics.length;
-                    choose(metrics[next].id);
-                    chipRefs.current[next]?.focus();
-                  }}
-                  className={`relative h-7 whitespace-nowrap rounded-full px-3 text-[12.5px] font-medium transition-colors duration-300 ${FOCUS} ${
-                    selected ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {m.label}
-                </button>
-              );
-            })}
-          </div>
-        )}
-      </div>
-
-      {/* The legend: a line key for each, so the two never rely on colour alone. */}
-      <div className="mt-5 flex items-center gap-4 text-[12px] text-muted-foreground">
-        <span className="flex items-center gap-1.5">
-          <span aria-hidden="true" className="h-0.5 w-3.5 rounded-full" style={{ background: LINE }} />
-          {series[0]}
-        </span>
-        {previous.length > 0 && (
-          <span className="flex items-center gap-1.5">
-            <svg aria-hidden="true" width="14" height="2" className="text-foreground/35">
-              <line x1="1" y1="1" x2="13" y2="1" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" strokeLinecap="round" />
-            </svg>
-            {series[1]}
-          </span>
-        )}
-      </div>
-
-      <div className="relative mt-3" style={{ height: PLOT + LABELS }}>
-        {/* The scale: rolling labels in the gutter and solid hairlines. */}
-        {Array.from({ length: STEPS + 1 }, (_, k) => 1 - k / STEPS).map((f) => (
-          <div key={f} aria-hidden="true" className="absolute inset-x-0" style={{ top: TOP + (PLOT - TOP) * (1 - f) }}>
-            <span className="absolute left-0 top-0 -translate-y-1/2 text-[10.5px] leading-none tabular-nums text-muted-foreground/80" style={{ width: GUTTER - 10, textAlign: "right" }}>
-              <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
-            </span>
-            <div className="border-t border-border" style={{ marginLeft: GUTTER }} />
-          </div>
-        ))}
-
-        <div
-          ref={plotRef}
-          role="group"
-          tabIndex={0}
-          aria-label={`${metric?.label ?? ""}, ${series[0]} against ${series[1]}. Use the arrow keys to read each month.`}
-          onKeyDown={onKeyDown}
-          onBlur={() => keyboard && (setActive(null), setKeyboard(false))}
-          onPointerMove={(e) => {
-            setKeyboard(false);
-            setActive(pointAt(e.clientX));
-          }}
-          onPointerDown={(e) => setActive(pointAt(e.clientX))}
-          onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
-          className={`absolute inset-y-0 right-0 touch-pan-y select-none rounded-lg ${FOCUS}`}
-          style={{ left: GUTTER }}
-        >
-          {/* Everything drawn reveals left to right the first time it's seen. */}
-          <div
-            className="absolute inset-x-0 top-0"
-            style={{ height: PLOT, clipPath: visible ? "inset(-8px -8px -8px -8px)" : "inset(-8px 100% -8px -8px)", transition: reduced ? "none" : `clip-path 1200ms ${EASE}` }}
-          >
-            <svg aria-hidden="true" width={width} height={PLOT} className="absolute inset-0 overflow-visible">
-              <defs>
-                <linearGradient id={`${id}-wash`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor={LINE} stopOpacity="0.14" />
-                  <stop offset="100%" stopColor={LINE} stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              {prevLine && (
-                <path d={prevLine} fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/30" />
-              )}
-              {area && <path d={area} fill={`url(#${id}-wash)`} />}
-              {curLine && <path d={curLine} fill="none" stroke={LINE} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
-            </svg>
-            {/* The end of a year still under way. */}
-            {current.length > 0 && current.length < n && (
-              <span
-                aria-hidden="true"
-                className="absolute size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_0_0_2px_var(--background)]"
-                style={{ left: x(lastIndex), top: y(cur[lastIndex] ?? 0), background: LINE, opacity: active === null ? 1 : 0, transition: `opacity 200ms ${EASE}` }}
-              />
+            {before !== undefined && (
+              <p className="mt-1 flex items-baseline gap-[0.3em] whitespace-nowrap text-[11.5px] text-muted-foreground @md:text-[12.5px]">
+                <NumberRoll value={visible ? before : 0} format={format} locales={locales} duration={700} />
+                <TextMorph>
+                  {active !== null ? `in ${monthName(active)} ${/^\d/.test(series[1]) ? series[1] : series[1].toLowerCase()}` : then(series[1])}
+                </TextMorph>
+              </p>
             )}
           </div>
 
-          {/* The hovered month: a hairline down to the baseline and a dot on each line. */}
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute top-0 w-px bg-foreground/20"
-            style={{
-              height: PLOT,
-              left: active !== null ? x(active) : 0,
-              opacity: active !== null ? 1 : 0,
-              transition: reduced ? "none" : `left 260ms ${THROW}, opacity 200ms ${EASE}`,
-            }}
-          />
-          {previous.length > 0 && dot(active, prev, "color-mix(in oklab, var(--foreground) 45%, var(--background))", "prev")}
-          {dot(active, cur, LINE, "cur")}
-
-          {labels.map((l, i) => (
-            <span
-              key={l + i}
-              aria-hidden="true"
-              className={`absolute -translate-x-1/2 whitespace-nowrap text-[11px] leading-none transition-colors duration-200 ${active === i ? "text-foreground" : "text-muted-foreground"}`}
-              style={{ left: x(i), top: PLOT + 9, opacity: label(i) ? 1 : 0 }}
-            >
-              {l}
-            </span>
-          ))}
+          {metrics.length > 1 && (
+            <div role="radiogroup" aria-label="Measure" className="relative inline-flex shrink-0 rounded-full bg-muted p-0.5">
+              <span
+                aria-hidden="true"
+                className="absolute inset-y-0.5 left-0 rounded-full bg-background shadow-[0_0_0_1px_var(--border)]"
+                style={{
+                  width: pill.width,
+                  transform: `translateX(${pill.left}px)`,
+                  transition: pill.ready && !reduced ? `transform 460ms ${THROW}, width 380ms ${EASE}` : "none",
+                }}
+              />
+              {metrics.map((m, i) => {
+                const selected = m.id === metricId;
+                return (
+                  <button
+                    key={m.id}
+                    ref={(el) => {
+                      chipRefs.current[i] = el;
+                    }}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    tabIndex={selected ? 0 : -1}
+                    onClick={() => choose(m.id)}
+                    onKeyDown={(e) => {
+                      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+                      e.preventDefault();
+                      const next = (i + (e.key === "ArrowRight" ? 1 : -1) + metrics.length) % metrics.length;
+                      choose(metrics[next].id);
+                      chipRefs.current[next]?.focus();
+                    }}
+                    className={`relative h-6 whitespace-nowrap rounded-full px-2.5 text-[11.5px] font-medium @md:h-7 @md:px-3 @md:text-[12.5px] transition-colors duration-300 ${FOCUS} ${
+                      selected ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {m.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
-      </div>
 
-      <p aria-live="polite" className="sr-only">
-        {keyboard && active !== null
-          ? `${monthName(active)}: ${fmt(current[active] ?? 0)}${previous[active] !== undefined ? `, ${series[1].toLowerCase()} ${fmt(previous[active])}` : ""}`
-          : ""}
-      </p>
-      <table className="sr-only">
-        <caption>
-          {metric?.label}: {fmt(add(current))} {series[0].toLowerCase()}
-          {prevSame.length ? `, ${fmt(add(prevSame))} ${series[1].toLowerCase()} over the same months` : ""}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Month</th>
-            <th scope="col">{series[0]}</th>
-            {previous.length > 0 && <th scope="col">{series[1]}</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {labels.map((l, i) => (
-            <tr key={l + i}>
-              <th scope="row">{monthName(i)}</th>
-              <td>{current[i] !== undefined ? fmt(current[i]) : "–"}</td>
-              {previous.length > 0 && <td>{previous[i] !== undefined ? fmt(previous[i]) : "–"}</td>}
-            </tr>
+        {/* The legend: a line key for each, so the two never rely on colour alone. */}
+        <div className="mt-3 flex items-center gap-4 text-[11.5px] text-muted-foreground @md:mt-4 @md:text-[12px]">
+          <span className="flex items-center gap-1.5">
+            <span aria-hidden="true" className="h-0.5 w-3.5 rounded-full" style={{ background: LINE }} />
+            {series[0]}
+          </span>
+          {previous.length > 0 && (
+            <span className="flex items-center gap-1.5">
+              <svg aria-hidden="true" width="14" height="2" className="text-foreground/35">
+                <line x1="1" y1="1" x2="13" y2="1" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" strokeLinecap="round" />
+              </svg>
+              {series[1]}
+            </span>
+          )}
+        </div>
+
+        <div ref={chartRef} className="relative mt-3" style={{ height: `calc(var(--plot) + ${LABELS}px)` }}>
+          {/* The scale: rolling labels in the gutter and solid hairlines. */}
+          {Array.from({ length: STEPS + 1 }, (_, k) => 1 - k / STEPS).map((f) => (
+            <div key={f} aria-hidden="true" className="absolute inset-x-0" style={{ top: TOP + (plotH - TOP) * (1 - f) }}>
+              <span
+                className="absolute left-0 top-0 -translate-y-1/2 text-[10px] leading-none tabular-nums text-muted-foreground/80"
+                style={{ width: "calc(var(--gutter) - 8px)", textAlign: "right" }}
+              >
+                <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
+              </span>
+              <div className="border-t border-border" style={{ marginLeft: "var(--gutter)" }} />
+            </div>
           ))}
-        </tbody>
-      </table>
+
+          <div
+            ref={plotRef}
+            role="group"
+            tabIndex={0}
+            aria-label={`${metric?.label ?? ""}, ${series[0]} against ${series[1]}. Use the arrow keys to read each month.`}
+            onKeyDown={onKeyDown}
+            onBlur={() => keyboard && (setActive(null), setKeyboard(false))}
+            onPointerMove={(e) => {
+              setKeyboard(false);
+              setActive(pointAt(e.clientX));
+            }}
+            onPointerDown={(e) => setActive(pointAt(e.clientX))}
+            onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
+            className={`absolute inset-y-0 right-0 touch-pan-y select-none rounded-lg ${FOCUS}`}
+            style={{ left: "var(--gutter)" }}
+          >
+            {/* Everything drawn reveals left to right the first time it's seen. */}
+            <div
+              className="absolute inset-x-0 top-0"
+              style={{
+                height: plotH,
+                clipPath: visible ? "inset(-8px -8px -8px -8px)" : "inset(-8px 100% -8px -8px)",
+                transition: reduced ? "none" : `clip-path 1200ms ${EASE}`,
+              }}
+            >
+              <svg aria-hidden="true" width={width} height={plotH} className="absolute inset-0 overflow-visible">
+                <defs>
+                  <linearGradient id={`${id}-wash`} x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={LINE} stopOpacity="0.14" />
+                    <stop offset="100%" stopColor={LINE} stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                {prevLine && (
+                  <path
+                    d={prevLine}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeDasharray="4 5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-foreground/30"
+                  />
+                )}
+                {area && <path d={area} fill={`url(#${id}-wash)`} />}
+                {curLine && <path d={curLine} fill="none" stroke={LINE} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
+              </svg>
+              {/* The end of a year still under way. */}
+              {current.length > 0 && current.length < n && (
+                <span
+                  aria-hidden="true"
+                  className="absolute size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_0_0_2px_var(--background)]"
+                  style={{
+                    left: x(lastIndex),
+                    top: y(cur[lastIndex] ?? 0),
+                    background: LINE,
+                    opacity: active === null ? 1 : 0,
+                    transition: `opacity 200ms ${EASE}`,
+                  }}
+                />
+              )}
+            </div>
+
+            {/* The hovered month: a hairline down to the baseline and a dot on each line. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-0 w-px bg-foreground/20"
+              style={{
+                height: plotH,
+                left: active !== null ? x(active) : 0,
+                opacity: active !== null ? 1 : 0,
+                transition: reduced ? "none" : `left 260ms ${THROW}, opacity 200ms ${EASE}`,
+              }}
+            />
+            {previous.length > 0 && dot(active, prev, "color-mix(in oklab, var(--foreground) 45%, var(--background))", "prev")}
+            {dot(active, cur, LINE, "cur")}
+
+            {labels.map((l, i) => (
+              <span
+                key={l + i}
+                aria-hidden="true"
+                className={`absolute -translate-x-1/2 whitespace-nowrap text-[11px] leading-none transition-colors duration-200 ${active === i ? "text-foreground" : "text-muted-foreground"}`}
+                style={{ left: x(i), top: plotH + 9, opacity: label(i) ? 1 : 0 }}
+              >
+                {l}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <p aria-live="polite" className="sr-only">
+          {keyboard && active !== null
+            ? `${monthName(active)}: ${fmt(current[active] ?? 0)}${previous[active] !== undefined ? `, ${series[1].toLowerCase()} ${fmt(previous[active])}` : ""}`
+            : ""}
+        </p>
+        <table className="sr-only">
+          <caption>
+            {metric?.label}: {fmt(add(current))} {series[0].toLowerCase()}
+            {prevSame.length ? `, ${fmt(add(prevSame))} ${series[1].toLowerCase()} over the same months` : ""}
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Month</th>
+              <th scope="col">{series[0]}</th>
+              {previous.length > 0 && <th scope="col">{series[1]}</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {labels.map((l, i) => (
+              <tr key={l + i}>
+                <th scope="row">{monthName(i)}</th>
+                <td>{current[i] !== undefined ? fmt(current[i]) : "–"}</td>
+                {previous.length > 0 && <td>{previous[i] !== undefined ? fmt(previous[i]) : "–"}</td>}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
