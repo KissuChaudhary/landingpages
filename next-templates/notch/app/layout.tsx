@@ -5,6 +5,7 @@ import { asset } from "@/lib/urls";
 import { MotionProvider, motionBootScript } from "@/components/Motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { HashLinks } from "@/components/HashLinks";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], weight: ["400", "500", "600"], display: "swap", variable: "--font-geist" });
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <MotionProvider>
+          <HashLinks />
           <a className="skip-link" href="#main">
             Skip to content
           </a>
