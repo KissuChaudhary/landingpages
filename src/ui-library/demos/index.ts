@@ -19,6 +19,9 @@ import ThemeToggleDemo from './theme-toggle-demo';
 import PricingCalculatorDemo from './pricing-calculator-demo';
 import ComparisonTableDemo from './comparison-table-demo';
 import OnboardingChecklistDemo from './onboarding-checklist-demo';
+import ChangelogTimelineDemo from './changelog-timeline-demo';
+import CookieBannerDemo from './cookie-banner-demo';
+import NewsletterFooterDemo from './newsletter-footer-demo';
 import PromptComposerDemo from './prompt-composer-demo';
 import MentionMenuDemo from './mention-menu-demo';
 import AttachmentChipDemo from './attachment-chip-demo';
@@ -68,6 +71,9 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'pricing-calculator': PricingCalculatorDemo,
   'comparison-table': ComparisonTableDemo,
   'onboarding-checklist': OnboardingChecklistDemo,
+  'changelog-timeline': ChangelogTimelineDemo,
+  'cookie-banner': CookieBannerDemo,
+  'newsletter-footer': NewsletterFooterDemo,
   'prompt-composer': PromptComposerDemo,
   'mention-menu': MentionMenuDemo,
   'attachment-chip': AttachmentChipDemo,
