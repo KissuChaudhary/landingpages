@@ -1,13 +1,12 @@
 "use client";
+import { href } from "@/lib/urls";
 import { useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { site } from "@/site.config";
 import { money } from "@/data/campaigns";
-import { useExperience } from "../Experience";
 import { Frame, SectionHead } from "../ui/Primitives";
 export function Pricing({ standalone = false }: { standalone?: boolean }) {
   const [annual, setAnnual] = useState(false);
-  const { open } = useExperience();
   return (
     <Frame
       id="pricing"
@@ -59,13 +58,13 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
                       : "Per month, billed monthly"}
                 </p>
               </div>
-              <button
+              <a
                 className={`button ${plan.popular ? "button-dark" : "button-light"}`}
-                onClick={() => open({ type: "plan", plan: i, annual })}
+                href={plan.checkout[annual ? "annual" : "monthly"] || href("/contact")}
               >
                 {plan.cta}
                 <ArrowRight size={15} />
-              </button>
+              </a>
               <p className="plan-description">{plan.description}</p>
               <ul>
                 {plan.features.map((f) => (

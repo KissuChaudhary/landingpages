@@ -3,11 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { integrations } from "@/data/integrations";
 import { href } from "@/lib/urls";
-import { useExperience } from "../Experience";
 import { IntegrationMark } from "../product/IntegrationMark";
 import { Frame, SectionHead } from "../ui/Primitives";
 export function Integrations() {
-  const { open } = useExperience();
   return (
     <Frame id="integrations" className="integration-section">
       <div className="section-inner integration-layout">
@@ -30,17 +28,17 @@ export function Integrations() {
         <div className="integration-garden" data-reveal>
           <div className="garden-grid" aria-hidden="true" />
           {integrations.map((integration, i) => (
-            <button
+            <a
               key={integration.id}
               className={`garden-node garden-node-${i}`}
-              aria-label={`Explore ${integration.name}`}
-              onClick={() => open({ type: "integration", id: integration.id })}
+              aria-label={integration.name}
+              href={href(`/integrations#${integration.id}`)}
             >
               <IntegrationMark
                 mark={integration.mark}
                 color={integration.color}
               />
-            </button>
+            </a>
           ))}
           <a className="button button-dark" href={href("/integrations")}>
             Explore the connections

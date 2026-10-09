@@ -12,7 +12,7 @@ Manrope is the only typeface. Desktop hero display is 52px at weight 800; main s
 
 ## Product truth
 
-The close canvas, the explorer dialog and the content checks share one dataset: three bank lines, three trial-balance accounts and three journal entries. Matching respects a tolerance you can change, variances are flagged only above 10% and $2,000, and approvals follow written limits. Every result is calculated from those rows, and every run can be saved as JSON. Nothing claims to post to a ledger or contact anyone. Stories describe qualitative outcomes without invented performance numbers.
+The close canvas and the content checks share one dataset: three bank lines, three trial-balance accounts and three journal entries. Matching respects a tolerance you can change, variances are flagged only above 10% and $2,000, and approvals follow written limits. Every result is calculated from those rows, and every run can be saved as JSON. Nothing claims to post to a ledger or contact anyone. Stories describe qualitative outcomes without invented performance numbers.
 
 ## Motion
 

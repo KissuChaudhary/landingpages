@@ -418,3 +418,35 @@
     top: 440px;
   }
 }
+
+/* The answer appears inside the hero panel, under the question. */
+.hero-answer {
+  display: flex;
+  gap: 10px;
+  margin: 4px 0 14px;
+  padding: 12px 0 2px;
+  border-top: 1px dashed var(--line);
+  text-align: left;
+  animation: answer-in 0.45s var(--ease) both;
+}
+.hero-answer > :first-child {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 3px;
+}
+.hero-answer p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+@keyframes answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+[data-motion="off"] .hero-answer {
+  animation: none;
+}

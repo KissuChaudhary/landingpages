@@ -16,7 +16,7 @@ For production, run `npm run build`, then `npm start`. `npm run typecheck` check
 ## White label
 
 1. Change the brand, metadata, marketing copy, product labels, plans, FAQ and destination URLs in `site.config.ts`.
-2. Configure `links.app` for your product, each plan's monthly/annual checkout URL and `links.contactEndpoint` for your contact service. An empty app URL opens the working local report. Empty checkout URLs open an accurate local plan review. An empty contact endpoint prepares a downloadable local brief.
+2. Configure `links.app` for your product, each plan's monthly/annual checkout URL and `links.contactEndpoint` for your contact service. With an empty app URL the main buttons go to the pricing section and the hero question answers in place from the sample data. Empty checkout URLs send plan buttons to the contact page. An empty contact endpoint prepares a downloadable local brief.
 3. The contact endpoint receives JSON `{ name, email, team, message }`. Return a success status only when the request is accepted. Failed requests preserve every field. Use a same-origin endpoint or configure CORS for your service.
 4. Replace sample campaigns in `data/campaigns.ts`; totals, return on spend, filtering and CSV downloads derive from this dataset. The quarter is an explicit example transformation. The trend chart is illustrative and labeled accordingly.
 5. Replace team identities, quotes and portraits through `data/teams.ts` and `public/images/`. Quotes and people are fictional examples; publish your own customer evidence before representing them as real testimonials.
@@ -26,17 +26,17 @@ For production, run `npm run build`, then `npm start`. `npm run typecheck` check
 
 ## Working interactions
 
-- Editable hero question opens a source-linked campaign review. Questions about the strongest campaign, a report or budget guidance produce different answers from the local sample data.
+- Editable hero question that answers in place, under the question. Questions about the strongest campaign, a report or budget guidance produce different answers from the local sample data.
 - Month/quarter selection updates metrics and the campaign table. CSV exports contain the matching data, with escaped text fields.
 - Four keyboard-accessible product views, interactive data-source selection, channel filters and a four-stage local weekly report workflow.
 - A dashboard preview drawn as images: a full layout on wide screens and a short card on phones (`public/images/dashboard.webp`, `dashboard-phone.webp`).
 - A week of mornings on a sun-path arc: five day stops, each with its own small working interface (a brief, an approvable budget nudge, a creative test, an early warning, a scheduled report).
 - A “Calm by design” access panel: read-only connections, per-source suggestion switches, an approval rule and an activity log.
-- Clickable integration garden and a searchable, category-filtered connection directory. Each connection opens its scope guide.
+- Integration garden linking to a searchable, category-filtered connection directory, where each connection lists the data it brings in.
 - Audience navigation follows the visible chapter. Four expanding portrait perspectives support mouse, arrow keys, Home and End.
-- Three plan reviews with precise billing. Growth is $49 monthly or $432 annually; Studio is $149 monthly or $1,308 annually.
+- Three plans with monthly/yearly pricing. Growth is $49 monthly or $432 annually; Studio is $149 monthly or $1,308 annually. Each button goes to its checkout link.
 - Validated contact brief, download and edit flow. Editing retains all entered fields.
-- Accessible navigation menus, Escape-aware dialogs that return focus, native FAQ disclosures, remembered motion pause and system reduced-motion support.
+- Accessible navigation menus, native FAQ disclosures and system reduced-motion support. No popups: every button is a link or works in place.
 
 The preview runs locally. Connect your production AI, accounts, attribution, approvals, integration providers, contact service and billing separately.
 
@@ -46,7 +46,7 @@ The preview runs locally. Connect your production AI, accounts, attribution, app
 app/                     Routes, fonts, metadata and style imports
 components/sections/     Homepage chapters and shared footer
 components/product/      Editable product interfaces and diagrams
-components/ui/           Frame, brand and dialog primitives
+components/ui/           Frame and brand primitives
 data/                    Campaigns, teams, connections and resources
 lib/                     Route and download helpers
 styles/                  Focused native CSS files

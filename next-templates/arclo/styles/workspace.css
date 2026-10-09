@@ -219,7 +219,7 @@
 .workbench-bottom {
   min-height: 54px;
   border-top: 1px solid #eaeded;
-  background: #fdfcfe;
+  background: #fbfdfd;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -231,7 +231,7 @@
   align-items: center;
   gap: 7px;
   font-size: 10px;
-  color: #8a7d94;
+  color: #6f7f84;
 }
 .run-actions {
   display: flex;
@@ -376,77 +376,6 @@
   background: white;
   border-radius: 7px;
 }
-.dialog {
-  border: 1px solid #d2dee1;
-  width: min(540px, calc(100% - 32px));
-  max-height: calc(100dvh - 36px);
-  border-radius: 20px;
-  padding: 0;
-  color: var(--ink);
-  background: #fff;
-  box-shadow: 0 20px 100px #0c1c233b;
-  overflow: auto;
-}
-.dialog-wide {
-  width: min(980px, calc(100% - 32px));
-}
-.dialog::backdrop {
-  background: #08141970;
-  backdrop-filter: blur(7px);
-}
-.dialog-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 25px;
-  gap: 20px;
-  border-bottom: 1px solid #eaeff0;
-}
-.dialog-header h2 {
-  font-size: 27px;
-  margin-top: 13px;
-}
-.dialog-header .eyebrow {
-  font-size: 10px;
-}
-.plan-review {
-  padding: 30px;
-}
-.review-icon {
-  color: #347482;
-}
-.review-amount {
-  font-size: 50px;
-  color: var(--ink);
-  letter-spacing: -0.04em;
-  margin: 15px 0 5px;
-}
-.review-amount span {
-  font-size: 14px;
-  letter-spacing: 0;
-  color: var(--muted);
-}
-.plan-review > p {
-  font-size: 14px;
-}
-.plan-review > .review-amount {
-  font-size: 50px;
-}
-.plan-review ul {
-  margin: 25px 0;
-}
-.plan-review li {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-  font-size: 14px;
-}
-.plan-review li svg {
-  color: #397380;
-}
-.plan-review .button {
-  margin-top: 20px;
-}
 @media (max-width: 900px) {
   .graph-main {
     gap: 18px;
@@ -590,17 +519,45 @@
     padding: 18px;
     gap: 15px;
   }
-  .dialog-header {
-    padding: 20px;
-    gap: 10px;
+}
+
+/* Opens the canvas's source and rules in place. */
+.details-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #45555a;
+}
+.details-toggle:hover {
+  background: #eef4f5;
+}
+.details-toggle {
+  white-space: nowrap;
+}
+.details-toggle svg {
+  transition: transform 0.25s;
+}
+/* Phones: the status gets its own line, the controls share one row under it. */
+@media (max-width: 640px) {
+  .workbench-bottom {
+    flex-wrap: wrap;
   }
-  .dialog-header h2 {
-    font-size: 23px;
+  .workbench-bottom > div:first-child {
+    width: 100%;
+    max-width: none;
+    font-size: 10px;
   }
-  .dialog-header .icon-button {
-    flex-shrink: 0;
+  .run-actions {
+    width: 100%;
   }
-  .plan-review {
-    padding: 24px;
+  .details-toggle {
+    margin-right: auto;
+    padding: 0 8px 0 0;
+    font-size: 12px;
   }
 }

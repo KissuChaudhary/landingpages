@@ -103,7 +103,7 @@ export function Navigation() {
                 openWorkspace();
               }}
             >
-              Try a workflow
+              Run a sample close
             </Button>
           </div>
         )}

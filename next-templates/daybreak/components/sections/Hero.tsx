@@ -1,14 +1,16 @@
 "use client";
 import { useState } from "react";
 import { ArrowRight, MousePointer2 } from "lucide-react";
+import { answerFor } from "@/data/campaigns";
+import { BrandMark } from "../ui/Brand";
 import { site } from "@/site.config";
 import { teams } from "@/data/teams";
 import { asset, href } from "@/lib/urls";
-import { StartButton, useExperience } from "../Experience";
+import { StartButton } from "../Experience";
 import { Frame } from "../ui/Primitives";
 export function Hero() {
   const [question, setQuestion] = useState<string>(site.hero.prompt);
-  const { open } = useExperience();
+  const [answer, setAnswer] = useState<string | null>(null);
   return (
     <Frame className="hero" id="home">
       <div className="hero-composition">
@@ -54,8 +56,10 @@ export function Hero() {
           className="hero-prompt"
           onSubmit={(e) => {
             e.preventDefault();
-            if (question.trim())
-              open({ type: "report", question: question.trim() });
+            const asked = question.trim();
+            if (!asked) return;
+            if (site.links.app) window.location.assign(site.links.app);
+            else setAnswer(answerFor(asked));
           }}
         >
           <label htmlFor="hero-question">
@@ -66,11 +70,20 @@ export function Hero() {
             required
             maxLength={300}
             value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            onChange={(e) => {
+              setQuestion(e.target.value);
+              setAnswer(null);
+            }}
             rows={2}
           />
+          {answer && (
+            <div className="hero-answer" aria-live="polite">
+              <BrandMark />
+              <p>{answer}</p>
+            </div>
+          )}
           <div>
-            <span>Try the example workspace</span>
+            <span>{answer ? "Ask another question" : "Try the example workspace"}</span>
             <button
               className="icon-button dark"
               type="submit"

@@ -1,5 +1,5 @@
 "use client";
-import { asset } from "@/lib/urls";
+import { asset, href } from "@/lib/urls";
 import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
@@ -23,10 +23,8 @@ import {
 import { workspaceIdentity } from "@/data/teams";
 import { BrandMark } from "../ui/Brand";
 import { exportReport } from "./Report";
-import { useExperience } from "../Experience";
 export function InsightScene() {
   const [source, setSource] = useState("All channels");
-  const { open } = useExperience();
   const channel: Channel = source.startsWith("Search")
     ? "Search"
     : source.startsWith("Social")
@@ -82,13 +80,10 @@ export function InsightScene() {
             <p>{response}</p>
             <span>Source: sample campaign table</span>
           </div>
-          <button
-            className="scene-question"
-            onClick={() => open({ type: "report", question: site.hero.prompt })}
-          >
-            Ask another question
+          <a className="scene-question" href={href("/#hero-question")}>
+            Ask your own question
             <ArrowUpRight size={15} />
-          </button>
+          </a>
         </div>
       </div>
     </div>

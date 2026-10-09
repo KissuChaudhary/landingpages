@@ -17,7 +17,7 @@ npm run dev
 
 - Start in `site.config.ts`: brand, metadata, main copy, plans, FAQ, email and destinations.
 - Set `links.app` to open your product from every main action. An empty value opens the working local close explorer.
-- Give each plan its own `monthlyHref` and `annualHref`. Empty values open an accurate plan review showing the complete charge. Growth is $149 monthly or $1,428 annually; Group is $399 monthly or $3,828 annually.
+- Give each plan its own `monthlyHref` and `annualHref`. Empty values send the plan button to the contact page. Growth is $149 monthly or $1,428 annually; Group is $399 monthly or $3,828 annually.
 - `lib/billing.ts` formats fractional equivalents and calculates the yearly savings label from your configured prices.
 - Set `links.contactEndpoint` and `links.waitlistEndpoint` to submit forms. Both receive JSON `{ name, email, team, message, intent }` (`team` holds the company). Return a successful HTTP status only after accepting the submission. Use same-origin endpoints or configure CORS. Errors preserve all fields.
 - Without an endpoint, forms prepare a local brief that can be edited, saved as text or opened in an email draft. They do not claim a message was sent or a live waitlist registration occurred.
@@ -28,9 +28,9 @@ npm run dev
 
 ## Working interactions
 
-Three keyboard-accessible close steps: match bank lines, explain variances and route approvals. A finite four-step local run with source rows, a live log, a configurable dollar tolerance, matched and exception lines, clipboard output and a JSON record. Separate instance state lets you explore the hero and dialog independently. Nothing is posted to a ledger and no one is contacted.
+Three keyboard-accessible close steps: match bank lines, explain variances and route approvals. A finite four-step local run with source rows, a live log, a configurable dollar tolerance, matched and exception lines, clipboard output and a JSON record. “Source and rules” opens the rows and the tolerance control in place, and every “Run a sample close” button scrolls to the canvas and opens them. Nothing is posted to a ledger and no one is contacted.
 
-Monthly/yearly pricing and accurate plan reviews. Four keyboard-accessible onboarding steps. Two illustrative reconciliation views. An editable variance note with a tighten action; its explore button opens the variance step. Team story controls. Native FAQ and navigation disclosures. Mobile navigation, Escape-aware dialogs with focus restoration and scroll locking. Motion preference remembers only its on/off value in local storage; system reduced motion is respected.
+Monthly/yearly pricing with each plan linking to its checkout. Four keyboard-accessible onboarding steps. Two illustrative reconciliation views. An editable variance note with a tighten action; its explore button opens the variance step. Team story controls. Native FAQ and navigation disclosures. Mobile navigation. No popups: every button is a link or works in place. Motion preference remembers only its on/off value in local storage; system reduced motion is respected.
 
 ## Project map
 
@@ -38,7 +38,7 @@ Monthly/yearly pricing and accurate plan reviews. Four keyboard-accessible onboa
 app/                     Routes, font, metadata and CSS imports
 components/sections/     Independent homepage chapters and footer
 components/product/      Close canvas and editable illustrations
-components/ui/           Brand, frame, button, portrait and dialog
+components/ui/           Brand, frame, button and portrait
 data/                    Sample close rows, fictional stories and articles
 lib/                     Routes and local download helper
 styles/                  Focused native CSS files

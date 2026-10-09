@@ -40,7 +40,7 @@ export function Hero() {
             <span>Ready for audit</span>
           </div>
         </div>
-        <div className="hero-workspace">
+        <div className="hero-workspace" id="close-canvas">
           <Workbench />
         </div>
       </div>

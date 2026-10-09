@@ -9,6 +9,7 @@ import {
   LoaderCircle,
   ArrowRight,
   CircleCheck,
+  ChevronDown,
 } from "lucide-react";
 import { describeRow, executeWorkflow, money, workflows } from "@/data/workflows";
 import { WorkflowGraph } from "./WorkflowGraph";
@@ -35,6 +36,7 @@ export function Workbench({
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
   const [recordedAt, setRecordedAt] = useState("");
+  const [details, setDetails] = useState(expanded);
   const id = useId();
   const workflow = workflows.find((item) => item.id === selected)!;
   const result = useMemo(
@@ -68,6 +70,16 @@ export function Workbench({
     reset();
     setSelected(value);
   };
+  // Buttons elsewhere on the page ask the canvas for a step and its details.
+  useEffect(() => {
+    const show = (event: Event) => {
+      const wanted = (event as CustomEvent<string>).detail;
+      if (wanted && workflows.some((item) => item.id === wanted)) select(wanted);
+      setDetails(true);
+    };
+    window.addEventListener("arclo:workbench", show);
+    return () => window.removeEventListener("arclo:workbench", show);
+  }, []);
   const receipt = () =>
     JSON.stringify(
       {
@@ -135,8 +147,8 @@ export function Workbench({
         aria-labelledby={`${id}-${selected}`}
       >
         <WorkflowGraph workflow={workflow} step={step} />
-        {expanded && (
-          <div className="workbench-detail">
+        {details && (
+          <div className="workbench-detail" id={`${id}-details`}>
             <div>
               <span className="detail-label">01 / THE SOURCE</span>
               <h3>See what came in.</h3>
@@ -215,6 +227,15 @@ export function Workbench({
           )}
         </div>
         <div className="run-actions">
+          <button
+            className="details-toggle"
+            aria-expanded={details}
+            aria-controls={`${id}-details`}
+            onClick={() => setDetails(!details)}
+          >
+            {details ? "Hide the rules" : "Source and rules"}
+            <ChevronDown size={14} style={{ transform: details ? "rotate(180deg)" : "none" }} />
+          </button>
           {step > 0 && (
             <button
               className="icon-button"

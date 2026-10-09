@@ -1,14 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Search, ArrowUpRight, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { integrations } from "@/data/integrations";
-import { useExperience } from "./Experience";
 import { IntegrationMark } from "./product/IntegrationMark";
 import { Frame, SectionHead } from "./ui/Primitives";
 export function IntegrationDirectory() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
-  const { open } = useExperience();
   const categories = ["All", ...new Set(integrations.map((i) => i.category))];
   const results = integrations.filter(
     (i) =>
@@ -22,7 +20,7 @@ export function IntegrationDirectory() {
           level={1}
           label="Keep the tools you love"
           title="A little more connected."
-          text="Your sources, side by side. Explore the scope of each example connection."
+          text="Your sources, side by side, with the data each example connection would bring in."
         />
         <div className="directory-toolbar">
           <div className="directory-search">
@@ -65,20 +63,17 @@ export function IntegrationDirectory() {
         </p>
         <div className="directory-grid">
           {results.map((i) => (
-            <button
-              className="directory-card"
-              key={i.id}
-              onClick={() => open({ type: "integration", id: i.id })}
-            >
+            <article className="directory-card" key={i.id} id={i.id}>
               <IntegrationMark mark={i.mark} color={i.color} />
               <span className="directory-category">{i.category}</span>
               <h2>{i.name}</h2>
               <p>{i.description}</p>
-              <span>
-                View connection scope
-                <ArrowUpRight size={16} />
-              </span>
-            </button>
+              <ul className="directory-scope" aria-label={`${i.name} data`}>
+                {i.fields.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </article>
           ))}
         </div>
         {!results.length && (
