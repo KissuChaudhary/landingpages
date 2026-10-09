@@ -51,6 +51,8 @@ import UsageMeterDemo from './usage-meter-demo';
 import ChatScrollDemo from './chat-scroll-demo';
 import MessageEditDemo from './message-edit-demo';
 import ChatHistoryDemo from './chat-history-demo';
+import EarningsChartDemo from './earnings-chart-demo';
+import StepsChartDemo from './steps-chart-demo';
 import AgentPlaybackDemo from './agent-playback-demo';
 
 /** Live demo for each registry item, keyed by its registry name. Each receives the selected preview tab. */
@@ -105,5 +107,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'chat-scroll': ChatScrollDemo,
   'message-edit': MessageEditDemo,
   'chat-history': ChatHistoryDemo,
+  'earnings-chart': EarningsChartDemo,
+  'steps-chart': StepsChartDemo,
   'agent-playback': AgentPlaybackDemo,
 };
