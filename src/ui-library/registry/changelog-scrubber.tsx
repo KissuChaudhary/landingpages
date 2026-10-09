@@ -16,6 +16,9 @@ import { TextMorph } from "./text-morph";
  *             tag morph, the count rolls, and the release slides
  *             in from the side the playhead moved toward while
  *             the card eases to its new height
+ *   step      the arrows beside the count step one release; on
+ *             a phone, swipe the card: the release follows your
+ *             finger and springs back at either end
  *   play      plays the history from the first release to the
  *             latest, at the pace it actually shipped; pause
  *             holds it wherever it is
@@ -49,9 +52,10 @@ export interface ChangelogScrubberProps extends Omit<React.HTMLAttributes<HTMLDi
   locales?: string | string[];
 }
 
-type Leaving = { index: number; dir: number; key: number };
+type Leaving = { index: number; dir: number; key: number; from: number };
 
 const EASE = "cubic-bezier(0.16,1,0.3,1)";
+const THROW = "cubic-bezier(0.34,1.36,0.64,1)";
 const MORPH = 460;
 const DAY = 86_400_000;
 const LENS = 7; // how far the lens reaches either side of the playhead, in % of the ruler
@@ -107,8 +111,22 @@ const swap = (on: boolean, reduced: boolean): React.CSSProperties => ({
   transition: reduced ? "none" : `opacity 240ms ${EASE}, transform 360ms ${EASE}, filter 240ms ${EASE}`,
 });
 
-/** One release in the card; it comes in from the side the playhead moved toward and leaves the other way. */
-function Pane({ children, dir, leaving, reduced, paneRef }: { children: React.ReactNode; dir: number; leaving: boolean; reduced: boolean; paneRef?: React.Ref<HTMLDivElement> }) {
+/** One release in the card; it comes in from the side the playhead moved toward and leaves the other way (from where a swipe let it go). */
+function Pane({
+  children,
+  dir,
+  leaving,
+  reduced,
+  from = 0,
+  paneRef,
+}: {
+  children: React.ReactNode;
+  dir: number;
+  leaving: boolean;
+  reduced: boolean;
+  from?: number;
+  paneRef?: React.Ref<HTMLDivElement>;
+}) {
   const ref = React.useRef<HTMLDivElement>(null);
   React.useLayoutEffect(() => {
     const el = ref.current;
@@ -117,8 +135,8 @@ function Pane({ children, dir, leaving, reduced, paneRef }: { children: React.Re
     const animation = leaving
       ? el.animate(
           [
-            { opacity: 1, filter: "blur(0px)", transform: "none" },
-            { opacity: 0, filter: "blur(6px)", transform: `translateX(${-shift}px)` },
+            { opacity: 1, filter: "blur(0px)", transform: `translateX(${from}px)` },
+            { opacity: 0, filter: "blur(6px)", transform: `translateX(${from - shift}px)` },
           ],
           { duration: MORPH * 0.6, easing: EASE, fill: "forwards" }
         )
@@ -130,7 +148,7 @@ function Pane({ children, dir, leaving, reduced, paneRef }: { children: React.Re
           { duration: MORPH, easing: EASE, delay: 60, fill: "backwards" }
         );
     return () => animation.cancel();
-  }, [dir, leaving, reduced]);
+  }, [dir, leaving, reduced, from]);
   return (
     <div
       ref={(el) => {
@@ -144,6 +162,23 @@ function Pane({ children, dir, leaving, reduced, paneRef }: { children: React.Re
     >
       {children}
     </div>
+  );
+}
+
+/** Older / newer. At either end it fades and does nothing, but stays focusable so focus never drops. */
+function Step({ dir, disabled, onStep }: { dir: -1 | 1; disabled: boolean; onStep: () => void }) {
+  return (
+    <button
+      type="button"
+      aria-label={dir < 0 ? "Older release" : "Newer release"}
+      aria-disabled={disabled || undefined}
+      onClick={() => !disabled && onStep()}
+      className={`flex size-7 items-center justify-center rounded-full text-foreground transition-[background-color,opacity] duration-300 ${FOCUS} ${disabled ? "cursor-default opacity-30" : "hover:bg-accent"}`}
+    >
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-3.5">
+        <path d={dir < 0 ? "M10 3.5 5.5 8l4.5 4.5" : "M6 3.5 10.5 8 6 12.5"} />
+      </svg>
+    </button>
   );
 }
 
@@ -201,6 +236,9 @@ export function ChangelogScrubber({ entries, value, defaultValue, onValueChange,
   const playingRef = React.useRef(false);
   const dragRef = React.useRef<{ startX: number; moved: boolean } | null>(null);
   const reducedRef = React.useRef(reduced);
+  const stageRef = React.useRef<HTMLDivElement>(null);
+  const swipeRef = React.useRef<{ id: number; x: number; y: number; t: number; dx: number; axis: "x" | "y" | null } | null>(null);
+  const [carry, setCarry] = React.useState(0);
 
   // Which release left, and which way: kept from the render before, so a controlled value slides the same way.
   const [prev, setPrev] = React.useState({ index, n: 0, dir: 0 });
@@ -208,7 +246,8 @@ export function ChangelogScrubber({ entries, value, defaultValue, onValueChange,
   if (prev.index !== index) {
     const dir = Math.sign(index - prev.index);
     setPrev({ index, n: prev.n + 1, dir });
-    setLeaving((l) => [...l.slice(-1), { index: prev.index, dir, key: prev.n }]);
+    setLeaving((l) => [...l.slice(-1), { index: prev.index, dir, key: prev.n, from: carry }]);
+    if (carry) setCarry(0);
   }
 
   React.useEffect(() => {
@@ -357,6 +396,64 @@ export function ChangelogScrubber({ entries, value, defaultValue, onValueChange,
     else choose(i);
   };
 
+  const step = (d: number) => {
+    pause();
+    const i = Math.min(n - 1, Math.max(0, indexRef.current + d));
+    if (i !== indexRef.current) choose(i);
+  };
+
+  // Swiping the card (touch and pen; a mouse selects text): the release follows the finger, a swipe past 56px or a quick
+  // flick moves one release and the old one carries on from where it was let go; anything less springs back.
+  const onSwipeStart = (e: React.PointerEvent) => {
+    if (e.pointerType === "mouse" || (e.target as HTMLElement).closest("button, a")) return;
+    swipeRef.current = { id: e.pointerId, x: e.clientX, y: e.clientY, t: performance.now(), dx: 0, axis: null };
+  };
+  const onSwipeMove = (e: React.PointerEvent) => {
+    const s = swipeRef.current;
+    if (!s || s.id !== e.pointerId) return;
+    const dx = e.clientX - s.x;
+    const dy = e.clientY - s.y;
+    if (!s.axis) {
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      s.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (s.axis === "y") {
+        swipeRef.current = null;
+        return;
+      }
+      e.currentTarget.setPointerCapture(e.pointerId);
+      pause();
+    }
+    const edge = (dx < 0 && indexRef.current === n - 1) || (dx > 0 && indexRef.current === 0);
+    s.dx = dx * (edge ? 0.3 : 0.8);
+    const stage = stageRef.current;
+    if (stage && !reducedRef.current) {
+      stage.style.transition = "none";
+      stage.style.transform = `translateX(${s.dx}px)`;
+    }
+  };
+  const onSwipeEnd = (e: React.PointerEvent, commit: boolean) => {
+    const s = swipeRef.current;
+    if (!s || s.id !== e.pointerId) return;
+    swipeRef.current = null;
+    if (s.axis !== "x") return;
+    const stage = stageRef.current;
+    const raw = e.clientX - s.x;
+    const flick = performance.now() - s.t < 260 && Math.abs(raw) > 24;
+    const d = commit && (Math.abs(raw) > 56 || flick) ? (raw < 0 ? 1 : -1) : 0;
+    const i = Math.min(n - 1, Math.max(0, indexRef.current + d));
+    if (d && i !== indexRef.current) {
+      if (stage) {
+        stage.style.transition = "none";
+        stage.style.transform = "";
+      }
+      setCarry(reducedRef.current ? 0 : s.dx);
+      step(d);
+    } else if (stage) {
+      stage.style.transition = `transform 420ms ${THROW}`;
+      stage.style.transform = "";
+    }
+  };
+
   if (!current) return null;
 
   const dateText = (d: string | Date, short = false) =>
@@ -419,7 +516,7 @@ export function ChangelogScrubber({ entries, value, defaultValue, onValueChange,
           onPointerUp={(e) => release(e.clientX, true)}
           onPointerCancel={(e) => release(e.clientX, false)}
           onPointerLeave={() => ghost(null)}
-          className={`relative h-[66px] min-w-0 flex-1 touch-pan-y select-none rounded-lg [container-type:inline-size] ${dragging ? "cursor-grabbing" : "cursor-grab"} ${FOCUS}`}
+          className={`relative h-[66px] min-w-0 flex-1 touch-none select-none rounded-lg [container-type:inline-size] ${dragging ? "cursor-grabbing" : "cursor-grab"} ${FOCUS}`}
           style={{ "--x": initialX } as React.CSSProperties}
         >
           {/* The baseline, and the part of history already behind the playhead. */}
@@ -468,7 +565,13 @@ export function ChangelogScrubber({ entries, value, defaultValue, onValueChange,
         </div>
       </div>
 
-      <div className="mt-5 rounded-[22px] bg-background p-5 shadow-[0_0_0_1px_var(--border)] sm:p-6">
+      <div
+        onPointerDown={onSwipeStart}
+        onPointerMove={onSwipeMove}
+        onPointerUp={(e) => onSwipeEnd(e, true)}
+        onPointerCancel={(e) => onSwipeEnd(e, false)}
+        className="mt-5 touch-pan-y touch-pinch-zoom rounded-[22px] bg-background p-5 shadow-[0_0_0_1px_var(--border)] sm:p-6"
+      >
         <div className="flex items-center justify-between gap-3 text-[12.5px] text-muted-foreground">
           <div className="flex min-w-0 items-center">
             <span
@@ -489,24 +592,31 @@ export function ChangelogScrubber({ entries, value, defaultValue, onValueChange,
               <TextMorph>{dateText(current.date)}</TextMorph>
             </time>
           </div>
-          <p className="flex shrink-0 items-baseline gap-[0.3em] tabular-nums">
-            <NumberRoll value={index + 1} duration={600} />
-            <span>of {n}</span>
-          </p>
+          <div className="-my-1 -mr-2 flex shrink-0 items-center">
+            <Step dir={-1} disabled={index === 0} onStep={() => step(-1)} />
+            <p className="flex items-baseline gap-[0.3em] px-1 tabular-nums">
+              <NumberRoll value={index + 1} duration={600} />
+              <span>of {n}</span>
+            </p>
+            <Step dir={1} disabled={index === n - 1} onStep={() => step(1)} />
+          </div>
         </div>
 
-        <div className="relative mt-4 [clip-path:inset(0_-24px)]" style={{ height: height ?? undefined, transition: reduced || height === null ? "none" : `height ${MORPH}ms ${EASE}` }}>
-          {leaving.map((l) => {
-            const e = model.releases[l.index]?.entry;
-            return e ? (
-              <Pane key={`out-${l.key}`} dir={l.dir} leaving reduced={reduced}>
-                <Release entry={e} />
-              </Pane>
-            ) : null;
-          })}
-          <Pane key={current.id} dir={prev.dir} leaving={false} reduced={reduced} paneRef={paneRef}>
-            <Release entry={current} />
-          </Pane>
+        <div className="relative mt-4 [clip-path:inset(0_-20px)]" style={{ height: height ?? undefined, transition: reduced || height === null ? "none" : `height ${MORPH}ms ${EASE}` }}>
+          {/* What a swipe moves. */}
+          <div ref={stageRef} className="relative">
+            {leaving.map((l) => {
+              const e = model.releases[l.index]?.entry;
+              return e ? (
+                <Pane key={`out-${l.key}`} dir={l.dir} leaving reduced={reduced} from={l.from}>
+                  <Release entry={e} />
+                </Pane>
+              ) : null;
+            })}
+            <Pane key={current.id} dir={prev.dir} leaving={false} reduced={reduced} paneRef={paneRef}>
+              <Release entry={current} />
+            </Pane>
+          </div>
         </div>
       </div>
     </div>
