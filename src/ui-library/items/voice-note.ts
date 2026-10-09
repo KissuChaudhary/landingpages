@@ -7,7 +7,7 @@ export const voiceNote: UiItem = {
   summary:
     'Voice messages are quick to send and slow to receive: you can’t skim them, and you can’t listen in a meeting. This one arrives as a waveform that grows out of a flat line. Play and the triangle splits and squares off into pause, the bars fill as it plays and the time rolls up. Press anywhere on the waveform and drag: the bars under your finger swell like a lens and the time follows, and when you let go it carries on from there. The speed rolls from 1× to 1.5× and 2×. Open the transcript and a highlight glides from word to word as they’re said, the words still to come waiting in grey; tap a word and it plays from there. Only one voice note plays at a time on a page.',
   file: 'voice-note.tsx',
-  dependencies: [],
+  dependencies: ['lucide-react'],
   registryDependencies: ['number-roll'],
   css: [],
   tabs: ['Chat', 'Voicemail'],

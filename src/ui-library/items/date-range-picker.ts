@@ -7,7 +7,7 @@ export const dateRangePicker: UiItem = {
   summary:
     'Most date range pickers light up cells one at a time and leave you guessing what you’ve picked until you press Apply. Here the range is one band. Tap a day and a dot drops on it; move toward the day you’d end on and the band stretches after you, week by week, while a second dot glides along and the footer’s dates morph and its day count rolls. Tap again and it’s set. Presets on the side ("Last 30 days", "This month") slide their highlight over and flow the band to their span, switching month if they need to. ‹ and › slide the next month in from the side you went. The panel unfolds out of the pill, folds back into it on Cancel or Escape, and on Apply the pill’s label morphs to the new range. It works for analytics (days, nothing after today) and for stays (nights, nothing before today, at least one night).',
   file: 'date-range-picker.tsx',
-  dependencies: [],
+  dependencies: ['lucide-react'],
   registryDependencies: ['number-roll', 'text-morph'],
   css: [],
   tabs: ['Analytics', 'Stay'],

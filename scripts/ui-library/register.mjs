@@ -13,7 +13,7 @@ import path from 'node:path';
 
 const ORDER = [
   // Landing interactions and the shared primitives they use
-  'text-morph', 'status-button', 'number-roll', 'pricing-toggle', 'waitlist-field', 'code-input', 'date-range-picker', 'morphing-nav',
+  'text-morph', 'status-button', 'number-roll', 'pricing-toggle', 'waitlist-field', 'code-input', 'steps-form', 'date-range-picker', 'morphing-nav',
   'feature-tabs', 'scroll-story', 'stats-band', 'announcement-pill', 'testimonials', 'faq-accordion', 'logo-marquee',
   'command-palette', 'toast-stack', 'live-activity', 'live-cursors', 'live-map', 'theme-toggle', 'pricing-calculator', 'comparison-table', 'onboarding-checklist', 'sortable-list',
   'changelog-timeline', 'changelog-trace', 'changelog-scrubber', 'cookie-banner', 'newsletter-footer',
