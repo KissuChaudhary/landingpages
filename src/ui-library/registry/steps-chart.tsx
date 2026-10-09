@@ -14,7 +14,7 @@ import { TextMorph } from "./text-morph";
  *             each day eases to its new height in a wave that
  *             runs the way you went, days that made the goal
  *             turn your primary colour, the totals roll
- *   goal      a dashed line at the goal; days at or over it are
+ *   goal      a line at the goal in your primary colour; days at or over it are
  *             filled, a day still in progress is drawn as an
  *             outline with its fill so far
  *   hover     a hairline column follows the pointer and the
@@ -222,20 +222,20 @@ export function StepsChart({ weeks, goal = 10_000, value, defaultValue, onValueC
         className={`relative mt-6 touch-pan-y select-none rounded-lg ${FOCUS}`}
         style={{ height: PLOT + LABELS }}
       >
-        {/* The scale: the top and the baseline, and the goal as a dashed line in your primary colour. */}
+        {/* The scale: the top and the baseline, and the goal as a line in your primary colour. */}
         {[1, 0].map((f) => (
           <div key={f} aria-hidden="true" className="absolute right-0" style={{ left: 0, top: HEADROOM + (1 - f) * (PLOT - HEADROOM) }}>
             <span className="absolute left-0 top-0 -translate-y-1/2 text-[10.5px] leading-none tabular-nums text-muted-foreground/80" style={{ width: GUTTER - 10, textAlign: "right" }}>
               <NumberRoll value={max * f} format={COMPACT} locales={locales} duration={700} />
             </span>
-            <div className={`border-t border-border ${f ? "border-dashed" : ""}`} style={{ marginLeft: GUTTER }} />
+            <div className="border-t border-border" style={{ marginLeft: GUTTER }} />
           </div>
         ))}
         <div aria-hidden="true" className="absolute right-0" style={{ left: 0, top: goalTop }}>
           <span className="absolute left-0 top-0 -translate-y-1/2 text-[10.5px] font-medium leading-none tabular-nums text-primary" style={{ width: GUTTER - 10, textAlign: "right" }}>
             <NumberRoll value={goal} format={COMPACT} locales={locales} duration={700} />
           </span>
-          <div className="border-t border-dashed border-primary/50" style={{ marginLeft: GUTTER }} />
+          <div className="border-t border-primary/60" style={{ marginLeft: GUTTER }} />
         </div>
 
         <div ref={barsRef} className="absolute inset-y-0 right-0" style={{ left: GUTTER }}>
@@ -273,7 +273,7 @@ export function StepsChart({ weeks, goal = 10_000, value, defaultValue, onValueC
             return (
               <div key={d.key} aria-hidden="true" className="absolute top-0 h-full" style={{ left: `${i * slot}%`, width: `${slot}%` }}>
                 <div
-                  className={`absolute bottom-[26px] left-1/2 w-[min(30px,58%)] -translate-x-1/2 rounded-[5px] ${tone}`}
+                  className={`absolute bottom-[26px] left-1/2 w-[min(24px,58%)] -translate-x-1/2 rounded-t-[4px] ${tone}`}
                   style={{
                     // Days still to come have no bar at all.
                     height: visible && d.value > 0 ? Math.max(2, scale(d.value)) : 0,

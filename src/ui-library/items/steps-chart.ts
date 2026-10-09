@@ -5,7 +5,7 @@ export const stepsChart: UiItem = {
   title: 'Steps chart',
   description: 'A week against a daily goal: days that make it fill in, a wave runs the way you step through the weeks, the totals roll.',
   summary:
-    'Fitness and habit cards usually redraw the whole week when you go back one. Here the seven days stay put and change: step to last week and each day eases to its new height in a wave that runs the way you went, days that reached the goal turn your primary colour, and the total, the daily average and "goal met on 4 of 7 days" all roll to their new figures while the week’s name morphs between the arrows. The goal is a dashed line across the chart, a day still under way is drawn as an outline holding its fill so far, and the first time the card scrolls into view the days grow out of the baseline one after another. Point at a day and a hairline column follows you with a readout riding its top.',
+    'Fitness and habit cards usually redraw the whole week when you go back one. Here the seven days stay put and change: step to last week and each day eases to its new height in a wave that runs the way you went, days that reached the goal turn your primary colour, and the total, the daily average and "goal met on 4 of 7 days" all roll to their new figures while the week’s name morphs between the arrows. The goal is a line across the chart in your primary colour, a day still under way is drawn as an outline holding its fill so far, and the first time the card scrolls into view the days grow out of the baseline one after another. Point at a day and a hairline column follows you with a readout riding its top.',
   file: 'steps-chart.tsx',
   dependencies: [],
   registryDependencies: ['number-roll', 'text-morph'],
@@ -13,7 +13,7 @@ export const stepsChart: UiItem = {
   states: [
     { name: 'arrive', description: 'In view for the first time, each day grows from the baseline (620ms, 34ms apart) and the total rolls up from zero.' },
     { name: 'week', description: '‹ and › step through the weeks; the label morphs, rising from below going forward and dropping from above going back. Days ease to their new heights in a wave from the side you moved toward; the total, average and days met roll. The arrows fade at the first and last week.' },
-    { name: 'goal', description: 'A dashed line in your primary colour at the goal, with its figure in the scale. Days at or over it are filled with your primary colour; a day still under way is a primary outline with a light fill.' },
+    { name: 'goal', description: 'A line in your primary colour at the goal, with its figure in the scale. Days at or over it are filled with your primary colour; a day still under way is a primary outline with a light fill.' },
     { name: 'hover', description: 'A hairline column glides to the day under the pointer (380ms, slight overshoot) and the readout at its top slides along, the date morphing and the steps rolling. On touch, tap or drag across the days.' },
   ],
   usage: `import { StepsChart } from "@/components/steps-chart";
@@ -54,7 +54,7 @@ export async function StepsCard({ userId }: { userId: string }) {
 }`,
   props: [
     { name: 'weeks', type: 'StepsWeek[]', description: 'Oldest first, each with id, label and seven days ({ key, label, value, title?, today? }). It opens on the last.' },
-    { name: 'goal', type: 'number', default: '10000', description: 'Steps a day; the dashed line and the colour of the days that reach it.' },
+    { name: 'goal', type: 'number', default: '10000', description: 'Steps a day; the goal line and the colour of the days that reach it.' },
     { name: 'value / defaultValue', type: 'string', default: 'the last week', description: 'The week on show, by id; controlled or not.' },
     { name: 'onValueChange', type: '(id: string) => void', description: 'Called when the week changes.' },
     { name: 'title', type: 'string', default: '"Steps"', description: 'Above the total.' },

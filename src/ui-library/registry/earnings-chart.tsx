@@ -119,7 +119,7 @@ function ColumnView({ col, grown, delay, tone, reduced, label }: { col: Column; 
       }}
     >
       <div
-        className={`absolute bottom-[26px] left-1/2 w-[min(28px,62%)] -translate-x-1/2 rounded-[5px] ${tone}`}
+        className={`absolute bottom-[26px] left-1/2 w-[min(24px,62%)] -translate-x-1/2 rounded-t-[4px] ${tone}`}
         style={{
           height: up ? Math.max(2, col.height) : 0,
           transition: reduced ? "none" : `height 640ms ${EASE} ${delay}ms, background-color 300ms ${EASE}`,
@@ -269,7 +269,7 @@ export function EarningsChart({
   const comparable = periods.some((p) => p.previous);
   const shown = active !== null ? bars[active] : null;
   const col = active !== null ? layout[active] : null;
-  const compact = { ...format, notation: "compact" as const, maximumFractionDigits: 1 };
+  const compact = { ...format, notation: "compact" as const, minimumFractionDigits: 0, maximumFractionDigits: 1 };
 
   return (
     <div ref={rootRef} className={`w-full rounded-[22px] bg-background p-5 shadow-[0_0_0_1px_var(--border)] sm:p-6 ${className}`} {...props}>
@@ -378,7 +378,7 @@ export function EarningsChart({
         className={`relative mt-6 touch-pan-y select-none rounded-lg ${FOCUS}`}
         style={{ height: PLOT + LABELS }}
       >
-        {/* The scale: rolling labels in the gutter, the top and the middle as dashed hairlines, and the baseline. */}
+        {/* The scale: rolling labels in the gutter, the top and the middle as hairlines, and the baseline. */}
         {[1, 0.5, 0].map((f) => (
           <div key={f} aria-hidden="true" className="absolute right-0" style={{ left: 0, top: HEADROOM + (1 - f) * (PLOT - HEADROOM) }}>
             <span
@@ -387,7 +387,7 @@ export function EarningsChart({
             >
               <NumberRoll value={visible ? max * f : 0} format={compact} locales={locales} duration={700} />
             </span>
-            <div className={`border-t ${f ? "border-dashed" : ""} border-border`} style={{ marginLeft: GUTTER }} />
+            <div className="border-t border-border" style={{ marginLeft: GUTTER }} />
           </div>
         ))}
 
