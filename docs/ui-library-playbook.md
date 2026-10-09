@@ -172,13 +172,15 @@ The docs shell is `src/app/ui/layout.tsx`: the sidebar (`DocsSidebar`: filter wi
 
 ---
 
-## 8. Where the library stands (61 components, in /ui order)
+## 8. Where the library stands (64 components, in /ui order)
 
 **Landing interactions (built to the benchmark):** text-morph, status-button, number-roll, pricing-toggle, waitlist-field, morphing-nav, feature-tabs, stats-band, announcement-pill, testimonials, faq-accordion, logo-marquee, then (2026-10-09) command-palette, toast-stack, theme-toggle, pricing-calculator, comparison-table, onboarding-checklist, changelog-timeline, cookie-banner, newsletter-footer; then changelog-trace (the rail as a circuit trace that steps aside between releases, a bead riding it on scroll, re-routing every frame of a filter fold) and changelog-scrubber (releases on a ruler of days: drag the playhead, ticks swell like a lens via one CSS custom property, play runs the history at shipping pace), placed right after changelog-timeline.
 
 **Dashboard (2026-10-09, inspired by BoardUI's chart cards, built from scratch, no chart library):** earnings-chart, steps-chart, revenue-chart, area-chart, combo-chart, stage-bars, activity-rings. Rules learned: one axis only (combo = bars + rolling average on the same scale), solid hairline gridlines, bars max 24px with a 4px rounded top and square base, series colours from --chart-1..5 in fixed order (site palette validated with the dataviz skill's validator), legends always for 2+ series, sr-only tables, round scale steps that roll. Every card is a CSS container: below ~450px it steps down (16px padding, 22px headline, h-6 switches, shorter plot via a measured --plot height, --gutter var); stats are a compact strip under a hairline, never chunky boxed tiles. Headers keep the switch on the title row and wrap only when needed.
 
 **Agent pieces added the same day:** agent-composer (composer-panel job: status tab with branch/folder/context ring, permission + model pills via ModelPicker's new `label` prop), usage-limits (context window split + plan limits with rolling reset countdown), task-log (grouped steps on a hairline trail with file chips, past-tense titles). web-research gained a trail view: ResearchQuery objects ({ text, site, results, resultLabel }) and sources grouped by `query` index.
+
+**Curated batch (2026-10-09, the owner's "crazy, curated" list):** code-input (one real one-time-code input over the boxes; paste cascades, wrong shakes and clears right to left, right closes into one emerald pill; resend countdown rolls), live-activity (one pill for background work that grows into a panel by measuring both faces; hidden face gets pointer-events none), date-range-picker (one band per week row eased with left/width in calc(var(--cell)) units, start/end dots that glide, sliding preset highlight, months slide in from the side; the popover narrows and nudges itself inside any overflow-clipping ancestor, not just the viewport). Still to build, in order: inline rewrite, voice note player, live cursors, scroll story, world of users (dotted map with pings), sortable list, steps form.
 
 **Playback:** agent-playback (the product components playing a believable session on their own, for heroes).
 
@@ -234,5 +236,6 @@ Latest commits: the motion pass `7ab99fd` (code block, message edit, web researc
 - After changing a template, rebuild its demo into `public/demos/<folder>` (influence → `influence-hero`, fourteen → `quick-14-studio`): templates with `scripts/export-demo.mjs` use that; the others need a temporary export config (`output: "export"`, `basePath: "/demos/<folder>"`, `images.unoptimized`) for the build, put back afterwards. Don't copy the templates' own `public/*-full-page.png` screenshots into the demo.
 
 ### Next job
+- Finish the curated batch (section 8): inline rewrite next, then voice note player, live cursors, scroll story, world of users, sortable list, steps form. Each one: registry + item + demo with practical tabs, register, check at 1280 and 375 widths, build, push (the owner reviews the deploy from a phone).
 - More templates using components where a real interaction exists: FAQ accordions, waitlist fields, toast confirmations, theme toggles; then patch once its rework lands.
 - Site/business loose ends: the site moved to Cloudflare Workers (2026-10-09): attach `hairlineui.com` to the `hairline-ui` Worker, connect its Git build, then switch Vercel off; add a license (MIT recommended) and submit `@hairline` to the shadcn registry directory; real checkout links in `src/data/pricing.ts`; 260 unused files in `public/` (~131MB) await the owner's approval to delete.
