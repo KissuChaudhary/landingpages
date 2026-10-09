@@ -18,6 +18,7 @@ import LogoMarqueeDemo from './logo-marquee-demo';
 import CommandPaletteDemo from './command-palette-demo';
 import ToastStackDemo from './toast-stack-demo';
 import LiveActivityDemo from './live-activity-demo';
+import LiveCursorsDemo from './live-cursors-demo';
 import ThemeToggleDemo from './theme-toggle-demo';
 import PricingCalculatorDemo from './pricing-calculator-demo';
 import ComparisonTableDemo from './comparison-table-demo';
@@ -87,6 +88,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'command-palette': CommandPaletteDemo,
   'toast-stack': ToastStackDemo,
   'live-activity': LiveActivityDemo,
+  'live-cursors': LiveCursorsDemo,
   'theme-toggle': ThemeToggleDemo,
   'pricing-calculator': PricingCalculatorDemo,
   'comparison-table': ComparisonTableDemo,
