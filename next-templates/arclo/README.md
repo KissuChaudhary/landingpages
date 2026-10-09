@@ -46,10 +46,8 @@ site.config.ts           White-label brand, plans and destinations
 public/images/           Original optimized team photograph
 ```
 
-## Catalog export
-
-Inside the Hairline UI repository, `npm run export:demo` builds with `/demos/arclo` as the base path and copies only this project’s output into `public/demos/arclo`. Stop this template’s dev server before exporting because both use `.next`. Other projects use separate build directories.
+## Static export
 
 For your own static deployment, set `output: 'export'` in `next.config.ts`. If you use the built-in base-path convention, the route helper targets `.html` files. Adapt it to your host for static export at the domain root. Forms need a separate endpoint.
 
-See `DESIGN.md`, `ASSETS.md`, `QA.md` and `LICENSE.md` for design, image provenance, verification and usage.
+See `ASSETS.md` for image provenance and `LICENSE.md` for usage rights.

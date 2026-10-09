@@ -8,8 +8,6 @@ Included WebP images have 1200 × 1200 main files and 480 × 480 `-small` thumbn
 
 Files: `public/images/ribbon.webp`, `public/images/ribbon-small.webp`.
 
-Original source: `C:\Users\harva\.codex\generated_images\01a10f01-f469-7f51-8e3f-47d84642025b\exec-5a6cc761-f922-4590-92af-af02b8feb583.png`.
-
 Exact generation prompt:
 
 > Use case: original example output art for a premium AI creative-app landing template.
@@ -21,8 +19,6 @@ Transparent background: false.
 ## headphones
 
 Files: `public/images/headphones.webp`, `public/images/headphones-small.webp`.
-
-Original source: `C:\Users\harva\.codex\generated_images\01a10f01-f469-7f51-8e3f-47d84642025b\exec-4bbda917-4cd5-46b5-a65d-4fad446bb3c1.png`.
 
 Exact generation prompt:
 
@@ -36,8 +32,6 @@ Transparent background: false.
 
 Files: `public/images/chair.webp`, `public/images/chair-small.webp`.
 
-Original source: `C:\Users\harva\.codex\generated_images\01a10f01-f469-7f51-8e3f-47d84642025b\exec-8be1388c-b65b-48f8-8440-84312731b217.png`.
-
 Exact generation prompt:
 
 > Use case: original example output art for a premium AI creative-app landing template.
@@ -49,8 +43,6 @@ Transparent background: false.
 ## botanical
 
 Files: `public/images/botanical.webp`, `public/images/botanical-small.webp`.
-
-Original source: `C:\Users\harva\.codex\generated_images\01a10f01-f469-7f51-8e3f-47d84642025b\exec-ad8e11a2-040c-4655-89ed-0ca7d115bb87.png`.
 
 Exact generation prompt:
 
@@ -64,8 +56,6 @@ Transparent background: false.
 
 Files: `public/images/portrait.webp`, `public/images/portrait-small.webp`.
 
-Original source: `C:\Users\harva\.codex\generated_images\01a10f01-f469-7f51-8e3f-47d84642025b\exec-4e92cd3d-fbaf-4235-a0a3-9cd4e4fbe5fb.png`.
-
 Exact generation prompt:
 
 > Use case: original example output art for a premium AI creative-app landing template.
@@ -78,8 +68,6 @@ Transparent background: false.
 
 Files: `public/images/landscape.webp`, `public/images/landscape-small.webp`.
 
-Original source: `C:\Users\harva\.codex\generated_images\01a10f01-f469-7f51-8e3f-47d84642025b\exec-48d989dd-5c7a-46e2-b8a9-4a6f39ad4ebe.png`.
-
 Exact generation prompt:
 
 > Use case: original example output art for a premium AI creative-app landing template.
@@ -90,4 +78,4 @@ Transparent background: false.
 
 ## Other assets
 
-The prism logo is an original SVG component. UI panels and diagrams are HTML/CSS/SVG. Manrope, Geist and Geist Mono are loaded and self-hosted through `next/font/google`, under the SIL Open Font License. Interface icons come from Lucide (ISC). Browser screenshots in the marketplace preview folders are captures of this implementation.
+The prism logo is an original SVG component. UI panels and diagrams are HTML/CSS/SVG. Manrope, Geist and Geist Mono are loaded and self-hosted through `next/font/google`, under the SIL Open Font License. Interface icons come from Lucide (ISC).

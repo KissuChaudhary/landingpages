@@ -1,6 +1,6 @@
 # Original assets
 
-The three images were created for this template with the built-in imagegen tool on October 9, 2026. No image, logo, code or text was copied from Agentlab. The reference informed layout, typography, contrast and pacing.
+The three images were created for this template with the built-in imagegen tool on October 9, 2026. No image, logo, code or text was copied from any other site.
 
 Final shipped assets:
 
@@ -8,7 +8,7 @@ Final shipped assets:
 - `public/images/portrait.webp` — editorial photograph of a fictional engineer, 1024 × 1536.
 - `public/images/mesh.webp` — cobalt point-cloud waves, 1536 × 1024.
 
-The generated PNGs were encoded to WebP without compositional edits. The original PNGs are retained in the development workspace at `work/conduit-art/`; only the optimized files are needed to run the template. Alt text identifies the artwork and person without implying a real customer endorsement.
+The generated PNGs were encoded to WebP without compositional edits. Only the optimized files are needed to run the template. Alt text identifies the artwork and person without implying a real customer endorsement.
 
 ## Final prompts
 

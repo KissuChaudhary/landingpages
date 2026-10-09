@@ -83,37 +83,8 @@ lib/                    assets, quote arithmetic, brief serialization
 styles/                 base styles and focused section stylesheets
 public/images/          local product studies
 site.config.ts          editable content
-scripts/export-demo.mjs marketplace export helper
 ```
 
 ## Accessibility and motion
 
 The page includes a skip link, visible focus rings, labelled form controls, fieldsets, native HTML constraints, a polite estimate announcement and reduced-motion support. The project detail opens in place and closes with Escape or its close control, returning focus to the card; the mobile menu uses native focus trapping and Escape behaviour. Perspective tabs support Left/Right, Home and End. FAQ answers work without JavaScript. Scroll reveals enhance already-visible content; unvisited sections are not hidden.
-
-## Marketplace export
-
-When this project is inside the Hairline UI repository:
-
-```sh
-npm run export:demo
-```
-
-This creates a production static export with `/demos/stillform` as the base path and copies it to the marketplace's `public/demos/stillform`. The helper stops before copying if the build fails. For a normal standalone deployment, use `npm run build` without the export variables.
-
-The catalogue entry is `stillform`. The old `/demo/unreal-shot`, `/preview/unreal-shot` and `/template/unreal-shot` routes are preserved as compatibility aliases.
-
-## Motion components
-
-Labels morph letter by letter instead of jumping. That's Text morph, a free component from the Hairline UI library,
-kept in `components/hairline/text-morph.tsx` and used here in the shot selector. It needs only React and Tailwind. Use
-it for any other text that changes:
-
-```tsx
-<TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
-```
-
-## Deploy
-
-Deploy the standalone project to any host supporting Next.js, such as Vercel. No environment variables are needed for normal deployment. For a static host, build with `STILLFORM_EXPORT=1`; omit `NEXT_PUBLIC_BASE_PATH` when deploying at the root of a domain.
-
-See `LICENSE.md` for the template licence.

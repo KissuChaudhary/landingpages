@@ -86,6 +86,4 @@ Deploy this directory as an independent Next.js project. Use `npm run build`; le
 
 For a static host, set `PATCH_EXPORT=1` when building and publish `out/`. Set `NEXT_PUBLIC_BASE_PATH` only when hosting under a subdirectory. Restart the development server after changing these variables.
 
-`npm run export:demo` is a maintainer helper for this marketplace. It builds under `/demos/patch`, then copies `out/` into the marketplace's `public/demos/patch`. Stop the template dev server before building. Buyers do not need the marketplace or that helper.
-
-See `DESIGN.md`, `ASSETS.md`, `LICENSE.md` and `QA.md` for design decisions, asset provenance, license and verification notes.
+See `ASSETS.md` for asset provenance and `LICENSE.md` for the license.

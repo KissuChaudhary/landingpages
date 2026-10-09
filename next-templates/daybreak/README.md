@@ -58,8 +58,6 @@ Four runtime dependencies: Next.js, React, React DOM and Lucide. Native CSS and 
 
 ## Static export
 
-Within the Hairline UI repository, `npm run export:demo` builds the standalone site with `/demos/daybreak` as its base path and copies it to `public/demos/daybreak`. Stop the development server first, as development and export use the same `.next` directory. The export script verifies every replacement path stays inside this template's demo directory.
-
 For your own static deployment, set `output: 'export'` in `next.config.ts` and deploy `out/`. `lib/urls.ts` uses `.html` route destinations when a base path is configured; adapt it to your host if exporting at the domain root. Contact submission requires a separate endpoint.
 
-See `DESIGN.md`, `QA.md`, `ASSETS.md` and `LICENSE.md` for design decisions, validation, asset provenance and usage rights.
+See `ASSETS.md` for asset provenance and `LICENSE.md` for usage rights.

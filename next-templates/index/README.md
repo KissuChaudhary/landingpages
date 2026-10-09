@@ -15,7 +15,7 @@ npm run build
 npm start
 ```
 
-Deploy this folder as its own Next.js project. Leave `NEXT_PUBLIC_BASE_PATH` unset for a normal domain. `INDEX_EXPORT=1 npm run build` creates a static `out/` directory; set `NEXT_PUBLIC_BASE_PATH` only if hosting under a subdirectory. `npm run export:demo` is the Hairline UI repository's internal export helper.
+Deploy this folder as its own Next.js project. Leave `NEXT_PUBLIC_BASE_PATH` unset for a normal domain. `INDEX_EXPORT=1 npm run build` creates a static `out/` directory; set `NEXT_PUBLIC_BASE_PATH` only if hosting under a subdirectory.
 
 ## Make it yours
 
@@ -48,6 +48,6 @@ No account, AI service, document import, payment or email submission is implemen
 
 ## Assets and motion
 
-All artwork is editable HTML/CSS/SVG. There are no reference-site images or stock assets. Next/font hosts the included font subsets with the build. Headline text stays visible during the segmented accent animation. Labels decode briefly, never whole paragraphs. Ambient loops pause out of view and in hidden tabs. Operating-system reduced motion takes precedence over the footer control.
+All artwork is editable HTML/CSS/SVG. There are no stock assets. Next/font hosts the included font subsets with the build. Headline text stays visible during the segmented accent animation. Labels decode briefly, never whole paragraphs. Ambient loops pause out of view and in hidden tabs. Operating-system reduced motion takes precedence over the footer control.
 
-See `DESIGN.md`, `QA.md`, `ASSETS.md` and `LICENSE`.
+See `ASSETS.md` and `LICENSE`.

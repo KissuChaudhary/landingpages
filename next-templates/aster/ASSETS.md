@@ -4,7 +4,7 @@ Generated using the built-in imagegen tool on 9 October 2026. Portraits depict f
 
 ## blossom
 
-Saved asset: `public/images/blossom.webp`. Original: `work/aster-art/blossom.png` in the marketplace workspace.
+Saved asset: `public/images/blossom.webp`.
 
 Prompt:
 
@@ -12,7 +12,7 @@ Use case: stylized-concept. Asset type: original botanical oil painting backdrop
 
 ## grass
 
-Saved asset: `public/images/grass.webp`. Original: `work/aster-art/grass.png` in the marketplace workspace.
+Saved asset: `public/images/grass.webp`.
 
 Prompt:
 
@@ -20,7 +20,7 @@ Use case: stylized-concept. Asset type: original botanical oil painting backdrop
 
 ## petal
 
-Saved asset: `public/images/petal.webp`. Original: `work/aster-art/petal.png` in the marketplace workspace.
+Saved asset: `public/images/petal.webp`.
 
 Prompt:
 
@@ -28,7 +28,7 @@ Use case: stylized-concept. Asset type: original fine art background for a premi
 
 ## nina
 
-Saved asset: `public/images/nina.webp`. Original: `work/aster-art/nina.png` in the marketplace workspace.
+Saved asset: `public/images/nina.webp`.
 
 Prompt:
 
@@ -36,7 +36,7 @@ Use case: photorealistic-natural. Asset type: editorial portrait of a fictional 
 
 ## owen
 
-Saved asset: `public/images/owen.webp`. Original: `work/aster-art/owen.png` in the marketplace workspace.
+Saved asset: `public/images/owen.webp`.
 
 Prompt:
 
@@ -44,7 +44,7 @@ Use case: photorealistic-natural. Asset type: original fictional team member por
 
 ## mei
 
-Saved asset: `public/images/mei.webp`. Original: `work/aster-art/mei.png` in the marketplace workspace.
+Saved asset: `public/images/mei.webp`.
 
 Prompt:
 
@@ -52,7 +52,7 @@ Use case: photorealistic-natural. Asset type: original fictional customer succes
 
 ## ari
 
-Saved asset: `public/images/ari.webp`. Original: `work/aster-art/ari.png` in the marketplace workspace.
+Saved asset: `public/images/ari.webp`.
 
 Prompt:
 

@@ -22,7 +22,7 @@ Open http://localhost:3000. For a production server, run `npm run build`, then `
 5. Replace images in `public/images/` if needed. The three included images are original generated assets, shipped locally as optimized WebP. See `ASSETS.md` for provenance and prompts.
 6. Adjust palette, typography, gutters and control sizes in `styles/base.css`. Section styles are separated by purpose. Fonts and metadata live in `app/layout.tsx`; section order lives in `app/page.tsx`.
 
-Use a short wordmark (roughly 5–12 characters) for the large pixel footer treatment. Its text comes from the same brand config. Navigation destinations are centralized in `lib/urls.ts` for both normal Next.js routes and the marketplace static export.
+Use a short wordmark (roughly 5–12 characters) for the large pixel footer treatment. Its text comes from the same brand config. Navigation destinations are centralized in `lib/urls.ts` for both normal Next.js routes and a static export.
 
 ## Included interactions
 
@@ -56,8 +56,6 @@ The template has four runtime dependencies: Next.js, React, React DOM and Lucide
 
 ## Static export
 
-Inside the Hairline UI repository, `npm run export:demo` builds and copies the site to `public/demos/conduit`, using `/demos/conduit` as its base path. Stop the development server before exporting because the build uses the same `.next` directory. This command only replaces files inside the Conduit demo destination.
-
 For your own static deployment, enable `output: 'export'` in `next.config.ts`, set the appropriate base path if needed, and deploy the generated `out/` directory. `lib/urls.ts` uses `.html` routes when a base path is set. For a root-level static export, adapt that helper to your host's route handling. Contact submission requires your separately hosted endpoint.
 
-See `DESIGN.md`, `QA.md`, `ASSETS.md` and `LICENSE.md` for design decisions, validation, asset provenance and usage rights.
+See `ASSETS.md` for asset provenance and `LICENSE.md` for usage rights.

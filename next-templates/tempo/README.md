@@ -75,12 +75,4 @@ anything else that changes:
 
 For a standalone static host, build with `TEMPO_EXPORT=1`. Set `NEXT_PUBLIC_BASE_PATH` at build time when hosting under a subdirectory. Normal Next.js deployment uses neither variable.
 
-Inside the Hairline UI repository:
-
-```bash
-npm run export:demo
-```
-
-This successfully builds before copying the static result to `public/demos/tempo`. Stop any previous standalone dev server before exporting, then restart without the export variables for normal development.
-
-See DESIGN.md for positioning and interaction decisions; ASSETS.md for visual provenance and licenses.
+See ASSETS.md for visual provenance and licenses.

@@ -7,4 +7,4 @@
 - Lucide icons retain their ISC license. Other packages retain their upstream licenses.
 - Patch, Collected, Studio Notes, prices and product features are fictional sample content.
 
-Marketplace screenshots are captured from the actual running template. Buyers can replace product visuals with their own screenshots through the documented config slots.
+Buyers can replace product visuals with their own screenshots through the documented config slots.

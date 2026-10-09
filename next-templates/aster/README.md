@@ -67,8 +67,8 @@ npm run verify:content
 npm run build
 ```
 
-The content verifier checks billing, project metrics, combined filters, immutable decisions, revision validation, CSV escaping, brief references, article routes and assets. See `QA.md` for completed checks and `DESIGN.md` for decisions.
+The content verifier checks billing, project metrics, combined filters, immutable decisions, revision validation, CSV escaping, brief references, article routes and assets.
 
-Inside Hairline UI, `npm run export:demo` builds `/demos/aster` and copies it into the marketplace public directory. Export URLs retain query strings and anchors. For your own deployment, use the normal build or configure static export for your host. Exclude `.next`, `out`, `node_modules` and local environment files from the source package.
+Export URLs retain query strings and anchors. For your own deployment, use the normal build or configure static export for your host. Exclude `.next`, `out`, `node_modules` and local environment files from the source package.
 
 All seven generated images ship locally; prompts and provenance are in `ASSETS.md`. Font licenses come from their upstream Google Fonts packages. Template usage terms are in `LICENSE.md`.

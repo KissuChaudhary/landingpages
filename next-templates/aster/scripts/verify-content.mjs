@@ -68,15 +68,15 @@ assert.equal(briefs.length, 4);
 assert(searchBriefs("safe area").some((b) => b.id === "tandem"));
 assert.equal(new Set(integrations.map((i) => i.id)).size, integrations.length);
 articles.forEach((a) => assert(pages[a.slug]));
-const { href, asset } = source("lib/urls.ts", "/demos/aster");
-assert.equal(href("/"), "/demos/aster/index.html");
+const { href, asset } = source("lib/urls.ts", "/example");
+assert.equal(href("/"), "/example/index.html");
 assert.equal(
   href("/workspace?view=board"),
-  "/demos/aster/workspace.html?view=board",
+  "/example/workspace.html?view=board",
 );
-assert.equal(href("/#faq"), "/demos/aster/index.html#faq");
+assert.equal(href("/#faq"), "/example/index.html#faq");
 assert.equal(href("https://example.com/path"), "https://example.com/path");
-assert.equal(asset("/images/blossom.webp"), "/demos/aster/images/blossom.webp");
+assert.equal(asset("/images/blossom.webp"), "/example/images/blossom.webp");
 for (const name of ["blossom", "grass", "petal", "nina", "owen", "mei", "ari"])
   assert(existsSync(new URL(`../public/images/${name}.webp`, import.meta.url)));
 console.log("Verified billing, creative review metrics, project filters, immutable decisions, revision validation, edited exports, briefs, routes and seven original assets.");

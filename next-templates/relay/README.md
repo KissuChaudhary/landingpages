@@ -77,8 +77,4 @@ that changes:
 <TextMorph>{saved ? "Saved" : "Save"}</TextMorph>
 ```
 
-## Marketplace export
-
-Inside the Hairline UI repository, `npm run export:demo` builds a static export with `/demos/relay` as its base path and copies it to `public/demos/relay`. It only replaces files inside that demo directory. Use the normal `build` command for your own deployment. Do not run a dev server and build against the same `.next` directory at the same time.
-
-See `DESIGN.md` for the visual decisions, `ASSETS.md` for provenance, `QA.md` for checks, and `LICENSE.md` for the commercial license.
+See `ASSETS.md` for provenance and `LICENSE.md` for the commercial license.

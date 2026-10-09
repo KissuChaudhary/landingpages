@@ -1,6 +1,6 @@
 # Original assets
 
-All six raster images were generated with the built-in imagegen tool for this template. Generated PNG originals remain in `work/daybreak-art/` in the development workspace; the reusable template ships optimized WebP files in `public/images/`.
+All six raster images were generated with the built-in imagegen tool for this template. The template ships optimized WebP files in `public/images/`.
 
 Landscape illustrations are 1536 × 1024. Portraits are optimized to 640 × 960. Encoding and resizing use Sharp; scene contents were not composited or altered. The portraits depict fictional people.
 

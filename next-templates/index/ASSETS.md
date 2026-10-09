@@ -6,4 +6,4 @@
 - Geist Mono: Google Fonts / Vercel, SIL Open Font License 1.1. https://github.com/google/fonts/tree/main/ofl/geistmono
 - Interface icons: Lucide, ISC license. https://github.com/lucide-icons/lucide
 
-Fonts are bundled locally by Next/font at build time. Keep upstream font and icon licenses with redistributed dependencies. There are no assets downloaded from Infisical.
+Fonts are bundled locally by Next/font at build time. Keep upstream font and icon licenses with redistributed dependencies. No assets were downloaded from other sites.

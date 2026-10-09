@@ -51,7 +51,7 @@ Set `appUrl` to your real application URL. Primary CTAs then navigate there inst
 
 The workspace accepts custom text and shows preset artwork. It **does not generate new images**. Replace the `preview` handler in `components/product/Workspace.tsx` with your product integration to perform generation. Keep secret API keys on the server. Current prompt and collection state are local to the mounted component; there is no database or account persistence.
 
-The refine slider compares the same artwork with two CSS colour treatments. The export panel crops the original example in a browser canvas and downloads a real PNG/JPEG at the displayed dimensions. Inside the embedded marketplace demo, “Open export preview” opens the full page with the chosen crop and format; “Save example” there starts the download. It does not perform AI upscaling. These small components can be replaced by your app screenshots or adapted independently.
+The refine slider compares the same artwork with two CSS colour treatments. The export panel crops the original example in a browser canvas and downloads a real PNG/JPEG at the displayed dimensions. When the page is shown inside an iframe, “Open export preview” opens the full page with the chosen crop and format, and “Save example” there starts the download. It does not perform AI upscaling. These small components can be replaced by your app screenshots or adapted independently.
 
 ### Replace the demo content
 
@@ -84,12 +84,4 @@ that changes:
 
 The default build works on a Next.js host such as Vercel or a Node server. For a static host, build with `PRISM_EXPORT=1`. Set `NEXT_PUBLIC_BASE_PATH` at build time only when hosting below a subdirectory. The `asset()` helper prefixes local images consistently; fonts and Next.js assets use the framework’s base path.
 
-Inside the Hairline UI repository only:
-
-```bash
-npm run export:demo
-```
-
-This produces a static export at `/demos/prism` and copies it to the marketplace after a successful build. It is independent of the root marketplace’s styles and dependencies. To return to standalone development after exporting, stop the previous server and run `npm run dev` without the export variables.
-
-[DESIGN.md](DESIGN.md) records the product positioning, art direction, interaction contract and acceptance checks. [LICENSE.md](LICENSE.md) contains the commercial terms.
+[ASSETS.md](ASSETS.md) records artwork provenance and font licenses. [LICENSE.md](LICENSE.md) contains the commercial terms.
