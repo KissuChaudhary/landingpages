@@ -3,7 +3,7 @@ import type { UiItem } from '../registry';
 export const webResearch: UiItem = {
   name: 'web-research',
   title: 'Web research',
-  description: 'Watch the agent search: the query types in, page icons stack up as it reads, then it folds into a source list.',
+  description: 'Watch the agent search: the query types in, page icons stack up as it reads, then it folds into a trail of searches and the pages each one found.',
   summary:
     'A spinner during web search hides the most reassuring part: what the agent is actually reading. "Searching" carries a sweep of light next to the live query as it types in, then morphs to "Reading" as the page count rolls up. Each page drops its icon into an overlapping stack, pushing the oldest to fold away, and its title rises in underneath while the last one lifts off. When the work is done, the same line rearranges itself into "3 searches · 9 sources": counts roll, words morph, the title row folds shut and a chevron opens in. It opens into the queries and every page, each a link.',
   file: 'web-research.tsx',
@@ -17,6 +17,7 @@ export const webResearch: UiItem = {
     { name: 'done', description: 'The same line rearranges into "3 searches · 9 sources": pieces open and fold over 460ms, counts roll, "sites" morphs to "sources", the title row folds shut and a chevron opens in. It opens into the queries and the page list.' },
     { name: 'error', description: 'The label morphs to "Search failed" in red, still counting and listing anything found before it failed.' },
     { name: 'cancelled', description: '"Stopped after 2 searches", with what was found.' },
+    { name: 'trail', description: 'Opened, each search is a row on a hairline trail with its count ("12 threads"). A search on one site wears that site’s mark and reads "Searched Reddit for …" with the query in mono. Pages that say which search found them sit under it as up to five overlapping marks on a branch; the chevron folds them open into links (380ms). Pages without a search are listed after the trail.' },
   ],
   usage: `import { WebResearch } from "@/components/web-research";
 
@@ -45,8 +46,8 @@ function Research({ message, streaming }: { message: UIMessage; streaming: boole
 }`,
   props: [
     { name: 'status', type: '"searching" | "reading" | "done" | "error" | "cancelled"', description: 'Where the run is.' },
-    { name: 'queries', type: 'string[]', description: 'Searches so far; the last one types in while searching.' },
-    { name: 'sources', type: '{ url; title?; favicon? }[]', description: 'Pages read, in order. Without a favicon, a monogram tinted from the site name.' },
+    { name: 'queries', type: '(string | ResearchQuery)[]', description: 'Searches so far; the last one types in while searching. As { text, site?, siteIcon?, results?, resultLabel? } a search shows its site’s mark and its count on the trail.' },
+    { name: 'sources', type: '{ url; title?; favicon?; query? }[]', description: 'Pages read, in order. Without a favicon, a monogram tinted from the site name; query (the index of the search that found it) groups it on the trail.' },
     { name: 'open / defaultOpen / onOpenChange', type: 'boolean / boolean / (open) => void', description: 'Whether the finished run shows its list.' },
   ],
   notes: [

@@ -38,6 +38,7 @@ import { plan } from './plan';
 import { webResearch } from './web-research';
 import { commandOutput } from './command-output';
 import { taskProgress } from './task-progress';
+import { taskLog } from './task-log';
 import { streamingAnswer } from './streaming-answer';
 import { codeBlock } from './code-block';
 import { citation } from './citation';
@@ -61,4 +62,4 @@ import { activityRings } from './activity-rings';
 import { agentPlayback } from './agent-playback';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, agentComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, usageLimits, chatScroll, messageEdit, chatHistory, earningsChart, stepsChart, revenueChart, areaChart, comboChart, stageBars, activityRings, agentPlayback];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, agentComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, taskLog, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, usageLimits, chatScroll, messageEdit, chatHistory, earningsChart, stepsChart, revenueChart, areaChart, comboChart, stageBars, activityRings, agentPlayback];

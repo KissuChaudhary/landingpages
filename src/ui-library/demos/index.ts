@@ -40,6 +40,7 @@ import PlanDemo from './plan-demo';
 import WebResearchDemo from './web-research-demo';
 import CommandOutputDemo from './command-output-demo';
 import TaskProgressDemo from './task-progress-demo';
+import TaskLogDemo from './task-log-demo';
 import StreamingAnswerDemo from './streaming-answer-demo';
 import CodeBlockDemo from './code-block-demo';
 import CitationDemo from './citation-demo';
@@ -103,6 +104,7 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'web-research': WebResearchDemo,
   'command-output': CommandOutputDemo,
   'task-progress': TaskProgressDemo,
+  'task-log': TaskLogDemo,
   'streaming-answer': StreamingAnswerDemo,
   'code-block': CodeBlockDemo,
   'citation': CitationDemo,

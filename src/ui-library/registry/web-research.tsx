@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronRight, Search } from "lucide-react";
+import { ChevronDown, ChevronRight, Search } from "lucide-react";
 import { NumberRoll } from "./number-roll";
 import { TextMorph } from "./text-morph";
 
@@ -18,6 +18,10 @@ import { TextMorph } from "./text-morph";
  *              shut and a chevron opens in; open it for the list
  *   error      "Search failed", keeping whatever was found
  *   cancelled  "Stopped after 2 searches"
+ *   trail      opened, each search is a row on a hairline trail
+ *              with its count; a search on one site wears that
+ *              site's mark, and the pages it found sit under it
+ *              as overlapping marks that fold open into links
  *
  * Feed it the queries and sources as they arrive (tool calls
  * and source parts from the AI SDK); it animates the rest.
@@ -30,12 +34,26 @@ export interface ResearchSource {
   title?: string;
   /** An icon URL; without one, a tinted monogram of the site. */
   favicon?: string;
+  /** Which search found it (its index in queries), so the trail can group pages under their search. */
+  query?: number;
+}
+
+export interface ResearchQuery {
+  text: string;
+  /** A search on one site, e.g. "reddit.com": the row wears that site's mark and reads "Searched Reddit for ...". */
+  site?: string;
+  /** An icon URL for that site. */
+  siteIcon?: string;
+  /** How many it found. */
+  results?: number;
+  /** The word after the count, e.g. "posts". Defaults to "results". */
+  resultLabel?: string;
 }
 
 export interface WebResearchProps extends React.HTMLAttributes<HTMLDivElement> {
   status: ResearchStatus;
-  /** Queries so far; the last one is live while searching. */
-  queries: string[];
+  /** Queries so far, as text or with their site and count; the last one is live while searching. */
+  queries: (string | ResearchQuery)[];
   /** Pages read so far, in order. */
   sources: ResearchSource[];
   open?: boolean;
@@ -76,6 +94,13 @@ function hue(text: string) {
   for (let i = 0; i < text.length; i++) h = (h * 31 + text.charCodeAt(i)) % 360;
   return h;
 }
+
+const asQuery = (q: string | ResearchQuery): ResearchQuery => (typeof q === "string" ? { text: q } : q);
+const siteName = (site: string) => {
+  const parts = hostname(`https://${site}`).split(".");
+  const name = parts.length > 1 ? parts[parts.length - 2] : parts[0];
+  return name.length <= 2 ? name.toUpperCase() : name.charAt(0).toUpperCase() + name.slice(1);
+};
 
 const plural = (n: number, word: string) => `${word}${n === 1 ? "" : /(s|sh|ch|x)$/.test(word) ? "es" : "s"}`;
 
@@ -222,6 +247,70 @@ function Tick({ id, out = false, enter = false, onDone, children }: { id: string
   );
 }
 
+function SourceLink({ source }: { source: ResearchSource }) {
+  return (
+    <a
+      href={source.url}
+      target="_blank"
+      rel="noreferrer"
+      className="flex h-7 items-center gap-2.5 rounded-lg px-1.5 outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
+    >
+      <Favicon source={source} className="size-4 shrink-0" />
+      <span className="min-w-0 flex-1 truncate text-[12.5px] text-foreground">{source.title ?? hostname(source.url)}</span>
+      <span className="shrink-0 text-[11.5px] text-muted-foreground">{hostname(source.url)}</span>
+    </a>
+  );
+}
+
+/** The pages one search found: overlapping marks on a branch of the trail, folding open into links. */
+function SourceGroup({ sources, reduced }: { sources: ResearchSource[]; reduced: boolean }) {
+  const [open, setOpen] = React.useState(false);
+  const listId = React.useId();
+  const shown = sources.slice(0, 5);
+  return (
+    <div className="relative mb-1 ml-6">
+      <span aria-hidden="true" className="absolute -left-3.5 -top-1 h-[13px] w-2.5 rounded-bl-[5px] border-b border-l border-border" />
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={listId}
+        onClick={() => setOpen((o) => !o)}
+        className="group flex h-6 items-center gap-2 rounded-md text-[12px] text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40"
+      >
+        Sources
+        <span className="flex items-center">
+          {shown.map((src, i) => (
+            <span key={src.url} className="flex size-4 overflow-hidden rounded-full ring-2 ring-background" style={{ marginLeft: i ? -5 : 0, zIndex: shown.length - i }}>
+              <Favicon source={src} className="size-full" />
+            </span>
+          ))}
+          {sources.length > shown.length && <span className="ml-1 font-mono text-[10px]">+{sources.length - shown.length}</span>}
+        </span>
+        <ChevronDown
+          aria-hidden="true"
+          className="size-3.5"
+          style={{ transform: open ? "rotate(180deg)" : "none", transition: reduced ? "none" : `transform 320ms ${EASE}` }}
+        />
+        <span className="sr-only">({sources.length})</span>
+      </button>
+      <div
+        id={listId}
+        inert={!open}
+        className="grid"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0, transition: reduced ? "none" : `grid-template-rows 380ms ${EASE}, opacity ${open ? "280ms" : "140ms"} ${EASE}` }}
+      >
+        <ul className="-mx-1.5 min-h-0 overflow-hidden">
+          {sources.map((src) => (
+            <li key={src.url}>
+              <SourceLink source={src} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 export function WebResearch({ status, queries, sources, open: openProp, defaultOpen = false, onOpenChange, className = "", ...props }: WebResearchProps) {
   const reduced = useReducedMotion();
   const [ownOpen, setOwnOpen] = React.useState(defaultOpen);
@@ -232,10 +321,12 @@ export function WebResearch({ status, queries, sources, open: openProp, defaultO
   };
 
   const working = status === "searching" || status === "reading";
-  const query = queries[queries.length - 1] ?? "";
+  const query = queries.length ? asQuery(queries[queries.length - 1]).text : "";
   const typed = useTyped(query, status === "searching", reduced);
   const latest = sources[sources.length - 1];
   const extra = Math.max(0, sources.length - STACK);
+  // Pages that don't say which search found them are listed after the trail.
+  const ungrouped = sources.filter((src) => src.query === undefined || src.query < 0 || src.query >= queries.length);
   const listId = React.useId();
 
   // Icons that arrive after the first paint drop in; the ones already there just sit.
@@ -367,32 +458,53 @@ export function WebResearch({ status, queries, sources, open: openProp, defaultO
         }}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="ml-[9px] mt-1 border-l border-border pl-[19px]">
+          <div className="ml-[9px] mt-1 pl-[19px]">
             {queries.length > 0 && (
-              <ul className="pb-1.5">
-                {queries.map((q, i) => (
-                  <li key={i} className="flex h-7 items-center gap-2 text-[12px] text-muted-foreground">
-                    <Search aria-hidden="true" className="size-3 shrink-0" strokeWidth={2.2} />
-                    <span className="truncate">{q}</span>
-                  </li>
-                ))}
+              <ul className="pb-1">
+                {queries.map((raw, i) => {
+                  const q = asQuery(raw);
+                  const found = sources.filter((src) => src.query === i);
+                  const last = i === queries.length - 1 && ungrouped.length === 0;
+                  return (
+                    <li key={i} className="relative">
+                      {/* The trail: a hairline down the left, a short branch to each search. */}
+                      <span aria-hidden="true" className="absolute -left-[19px] top-0 w-px bg-border" style={last ? { height: 15 } : { bottom: 0 }} />
+                      <span aria-hidden="true" className="absolute -left-[19px] top-[15px] h-px w-3 bg-border" />
+                      <div className="flex items-start gap-2 py-1.5 text-[12.5px] leading-[18px] text-muted-foreground">
+                        <span className="mt-px flex size-4 shrink-0 items-center justify-center">
+                          {q.site ? (
+                            <Favicon source={{ url: `https://${q.site}`, favicon: q.siteIcon }} className="size-4" />
+                          ) : (
+                            <Search aria-hidden="true" className="size-3.5" strokeWidth={2.1} />
+                          )}
+                        </span>
+                        <span className="min-w-0 flex-1 text-foreground/85">
+                          {q.site ? (
+                            <>
+                              Searched {siteName(q.site)} for <span className="font-mono text-[11.5px] text-muted-foreground">{q.text}</span>
+                            </>
+                          ) : (
+                            q.text
+                          )}
+                        </span>
+                        {q.results != null && (
+                          <span className="shrink-0 whitespace-nowrap tabular-nums">
+                            {q.results} {q.resultLabel ?? plural(q.results, "result")}
+                          </span>
+                        )}
+                      </div>
+                      {found.length > 0 && <SourceGroup sources={found} reduced={reduced} />}
+                    </li>
+                  );
+                })}
               </ul>
             )}
-            {sources.length > 0 && (
-              <div className="border-t border-border/60 pb-1 pt-1.5">
+            {ungrouped.length > 0 && (
+              <div className={queries.length ? "border-t border-border/60 pb-1 pt-1.5" : "pb-1"}>
                 <ul className="-mx-1.5 max-h-80 overflow-y-auto overflow-x-hidden px-1.5 [scrollbar-color:var(--border)_transparent] [scrollbar-width:thin]">
-                  {sources.map((s) => (
-                    <li key={s.url}>
-                      <a
-                        href={s.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex h-8 items-center gap-2.5 rounded-lg px-1.5 outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
-                      >
-                        <Favicon source={s} className="size-4 shrink-0" />
-                        <span className="min-w-0 flex-1 truncate text-[12.5px] text-foreground">{s.title ?? hostname(s.url)}</span>
-                        <span className="shrink-0 text-[11.5px] text-muted-foreground">{hostname(s.url)}</span>
-                      </a>
+                  {ungrouped.map((src) => (
+                    <li key={src.url}>
+                      <SourceLink source={src} />
                     </li>
                   ))}
                 </ul>

@@ -21,7 +21,7 @@ const ORDER = [
   'prompt-composer', 'agent-composer', 'mention-menu', 'attachment-chip', 'mode-switcher', 'model-picker', 'voice-input',
   // Product UI: while the agent works
   'thinking-indicator', 'thinking-trace', 'tool-call', 'clarifying-question', 'approval-card', 'plan',
-  'web-research', 'command-output', 'task-progress',
+  'web-research', 'command-output', 'task-progress', 'task-log',
   // Product UI: the answer and after
   'streaming-answer', 'code-block', 'citation', 'response-versions', 'selection-actions', 'diff-review',
   'action-receipt', 'chat-notice', 'usage-meter', 'usage-limits',
