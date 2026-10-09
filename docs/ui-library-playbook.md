@@ -45,7 +45,7 @@ Signed off explicitly; violations were called "filthy":
 - Concentric geometry: e.g. a 36px pill with 28px controls inset 4px; rounded-full pills, `rounded-[14px]`–`rounded-[22px]` panels.
 - **Floating surfaces never cover the thing they belong to.** Dropdowns from a composer open *clear of the composer* (an `anchorRef` prop), lined up with its edge, and fit narrow screens (`collisionPadding`, shrink/shift to viewport).
 - The model pill sits on the right beside Send (`align="end"`), stays visible (pressed, chevron up) while its panel is open.
-- Never the "Claude default" look (cream/serif/orange). The site keeps: blue primary, frosted pill navbar, Geist font. The frosted navbar is the *site's* brand, not a library pattern.
+- Never the "Claude default" look (cream/serif/orange). The site keeps: blue primary, Geist font, and (since 2026-10-09, BoardUI-inspired, replacing the frosted pill) a full-width white header (`src/components/site/SiteHeader.tsx`): links with a gliding hover highlight, search that is our own Command palette growing from its pill (⌘K, results open with the router), the All-Access Pass button, and on phones the bar opens downward into the menu.
 
 ---
 
@@ -153,7 +153,9 @@ The owner's words after seeing it live: **"this is the level I want in each inte
 4. **Keyframes** (if new): `node scripts/ui-library/add-keyframes.mjs ui-<name> "<from>" "<to>"` (writes UI_CSS in `src/ui-library/registry.ts` and `src/app/globals.css`), then list it in the item's `css`.
 5. **Register**: add the name to `ORDER` in `scripts/ui-library/register.mjs`, run `node scripts/ui-library/register.mjs`.
 
-The `/ui` index, `/ui/<name>` page (States, Usage, example, Props, Accessibility and motion, Requirements, Source, More) and `/r/<name>.json` registry item are generated from these. Registry dependencies install automatically with the CLI.
+The `/ui` index, `/ui/<name>` page (Preview, Overview, States, Usage, Works with, example, Props, Accessibility and motion, Requirements, Source, previous/next) and `/r/<name>.json` registry item are generated from these. Registry dependencies install automatically with the CLI.
+
+The docs shell is `src/app/ui/layout.tsx`: the sidebar (`DocsSidebar`: filter with "/", every component in /ui order, a highlight that glides to the current page, "New" badges from `NEW_COMPONENTS` in `src/components/site/nav-data.ts`) persists across client navigation; phones get `DocsMobileBar` (current name morphs, ‹ › to neighbours, the list in a drawer); wide screens get `OnThisPage` (scroll-spy with a gliding hairline). "Works with" is derived: what it installs, what builds on it, same-prefix siblings (changelog-*, chat-*…) and the templates using it. The homepage hero (`Hero.tsx`) cycles its headline word with TextMorph and shows a wall of live demos (`HeroWall.tsx`, each a client-only chunk).
 
 ---
 

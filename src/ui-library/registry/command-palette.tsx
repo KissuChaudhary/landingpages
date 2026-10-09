@@ -319,7 +319,8 @@ export function CommandPalette({
     const el = triggerRef.current;
     if (!el || !showTrigger) return null;
     const r = el.getBoundingClientRect();
-    if (r.bottom < 0 || r.top > window.innerHeight) return null;
+    // Off screen, or hidden (a pill tucked away on narrow screens has no box): open in place instead.
+    if (!r.width || r.bottom < 0 || r.top > window.innerHeight) return null;
     return { left: r.left, top: r.top, width: r.width, height: r.height, radius: r.height / 2 };
   };
 
