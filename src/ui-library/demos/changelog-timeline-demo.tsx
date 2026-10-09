@@ -3,7 +3,7 @@
 import React from 'react';
 import { ChangelogTimeline, type ChangelogEntry } from '../registry/changelog-timeline';
 
-const ENTRIES: ChangelogEntry[] = [
+export const ENTRIES: ChangelogEntry[] = [
   {
     id: 'shift-planner',
     date: '2026-10-06',

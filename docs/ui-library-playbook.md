@@ -170,9 +170,9 @@ The `/ui` index, `/ui/<name>` page (States, Usage, example, Props, Accessibility
 
 ---
 
-## 8. Where the library stands (49 components, in /ui order)
+## 8. Where the library stands (51 components, in /ui order)
 
-**Landing interactions (built to the benchmark):** text-morph, status-button, number-roll, pricing-toggle, waitlist-field, morphing-nav, feature-tabs, stats-band, announcement-pill, testimonials, faq-accordion, logo-marquee, then (2026-10-09) command-palette, toast-stack, theme-toggle, pricing-calculator, comparison-table, onboarding-checklist, changelog-timeline, cookie-banner, newsletter-footer.
+**Landing interactions (built to the benchmark):** text-morph, status-button, number-roll, pricing-toggle, waitlist-field, morphing-nav, feature-tabs, stats-band, announcement-pill, testimonials, faq-accordion, logo-marquee, then (2026-10-09) command-palette, toast-stack, theme-toggle, pricing-calculator, comparison-table, onboarding-checklist, changelog-timeline, cookie-banner, newsletter-footer; then changelog-trace (the rail as a circuit trace that steps aside between releases, a bead riding it on scroll, re-routing every frame of a filter fold) and changelog-scrubber (releases on a ruler of days: drag the playhead, ticks swell like a lens via one CSS custom property, play runs the history at shipping pace), placed right after changelog-timeline.
 
 **Playback:** agent-playback (the product components playing a believable session on their own, for heroes).
 

@@ -20,6 +20,8 @@ import PricingCalculatorDemo from './pricing-calculator-demo';
 import ComparisonTableDemo from './comparison-table-demo';
 import OnboardingChecklistDemo from './onboarding-checklist-demo';
 import ChangelogTimelineDemo from './changelog-timeline-demo';
+import ChangelogTraceDemo from './changelog-trace-demo';
+import ChangelogScrubberDemo from './changelog-scrubber-demo';
 import CookieBannerDemo from './cookie-banner-demo';
 import NewsletterFooterDemo from './newsletter-footer-demo';
 import PromptComposerDemo from './prompt-composer-demo';
@@ -72,6 +74,8 @@ export const UI_DEMOS: Record<string, React.ComponentType<{ tab?: string }>> = {
   'comparison-table': ComparisonTableDemo,
   'onboarding-checklist': OnboardingChecklistDemo,
   'changelog-timeline': ChangelogTimelineDemo,
+  'changelog-trace': ChangelogTraceDemo,
+  'changelog-scrubber': ChangelogScrubberDemo,
   'cookie-banner': CookieBannerDemo,
   'newsletter-footer': NewsletterFooterDemo,
   'prompt-composer': PromptComposerDemo,

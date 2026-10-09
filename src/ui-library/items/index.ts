@@ -18,6 +18,8 @@ import { pricingCalculator } from './pricing-calculator';
 import { comparisonTable } from './comparison-table';
 import { onboardingChecklist } from './onboarding-checklist';
 import { changelogTimeline } from './changelog-timeline';
+import { changelogTrace } from './changelog-trace';
+import { changelogScrubber } from './changelog-scrubber';
 import { cookieBanner } from './cookie-banner';
 import { newsletterFooter } from './newsletter-footer';
 import { promptComposer } from './prompt-composer';
@@ -50,4 +52,4 @@ import { chatHistory } from './chat-history';
 import { agentPlayback } from './agent-playback';
 
 /** Order within each group is the order on /ui. */
-export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, cookieBanner, newsletterFooter, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory, agentPlayback];
+export const items: UiItem[] = [textMorph, statusButton, numberRoll, pricingToggle, waitlistField, morphingNav, featureTabs, statsBand, announcementPill, testimonials, faqAccordion, logoMarquee, commandPalette, toastStack, themeToggle, pricingCalculator, comparisonTable, onboardingChecklist, changelogTimeline, changelogTrace, changelogScrubber, cookieBanner, newsletterFooter, promptComposer, mentionMenu, attachmentChip, modeSwitcher, modelPicker, voiceInput, thinkingIndicator, thinkingTrace, toolCall, clarifyingQuestion, approvalCard, plan, webResearch, commandOutput, taskProgress, streamingAnswer, codeBlock, citation, responseVersions, selectionActions, diffReview, actionReceipt, chatNotice, usageMeter, chatScroll, messageEdit, chatHistory, agentPlayback];
