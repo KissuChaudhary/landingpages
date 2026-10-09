@@ -1,0 +1,170 @@
+/* Hero, the light curtain and the logo strip. */
+
+.hero { position: relative; isolation: isolate; padding-top: 148px; }
+
+/* ---------- Light curtain ---------- */
+
+.curtain { position: absolute; inset: 0 0 auto; z-index: -1; overflow: hidden; pointer-events: none; }
+.curtain-hero {
+  height: min(1240px, calc(100vh + 400px));
+  -webkit-mask-image: linear-gradient(#000 76%, transparent);
+  mask-image: linear-gradient(#000 76%, transparent);
+}
+.curtain-bars { position: absolute; inset: 0; display: flex; }
+
+.bar {
+  position: relative;
+  flex: 1;
+  margin-inline: -0.75px; /* overlap so fractional widths never leave hairline seams */
+  transform-origin: 50% 100%;
+  background: linear-gradient(to top, var(--blue-deep) 0%, var(--blue) 26%, #3d5aff 46%, #8598ff 66%, #cdd5ff 82%, rgb(255 255 255 / 0) 96%);
+  -webkit-mask-image: linear-gradient(to top, #000 62%, transparent 97%);
+  mask-image: linear-gradient(to top, #000 62%, transparent 97%);
+}
+/* Fluted glass: a lit left edge and a shaded right edge, only where the light is strong. */
+.bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(255 255 255 / 0) 0%, rgb(255 255 255 / 0.2) 16%, rgb(255 255 255 / 0) 46%, rgb(4 12 110 / 0) 56%, rgb(4 12 110 / 0.2) 100%);
+  -webkit-mask-image: linear-gradient(to top, #000 28%, transparent 66%);
+  mask-image: linear-gradient(to top, #000 28%, transparent 66%);
+}
+/* Light caught under the pointer. */
+.bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(255 255 255 / 0) 6%, rgb(255 255 255 / 0.55) 38%, rgb(255 255 255 / 0) 78%);
+  opacity: var(--lit, 0);
+  transition: opacity 0.9s var(--ease);
+}
+
+.curtain-bowl {
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  width: max(124%, 1040px);
+  aspect-ratio: 1.42;
+  translate: -50% -50%;
+  background: radial-gradient(closest-side, #fff 0%, #fff 52%, rgb(255 255 255 / 0.78) 66%, rgb(255 255 255 / 0) 88%);
+}
+
+/* Load: the bars rise from the edges inward while the white bowl opens over them. */
+html[data-motion="on"] .curtain-hero .bar { animation: bar-rise 1.4s var(--ease) both; animation-delay: calc(var(--edge) * 34ms); }
+html[data-motion="on"] .curtain-bowl { animation: bowl-open 1.9s var(--ease) 0.1s both; }
+@keyframes bar-rise { from { transform: scaleY(0.3); opacity: 0; } }
+@keyframes bowl-open { from { scale: 0.4; } }
+
+/* ---------- Copy ---------- */
+
+.hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.tally {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 19px;
+  background: linear-gradient(160deg, #4b66ff, var(--blue) 45%, var(--blue-deep));
+  box-shadow: inset 0 1px 1px rgb(255 255 255 / 0.55), inset 0 -3px 6px rgb(2 8 80 / 0.35), 0 0 0 1px rgb(16 35 201 / 0.25);
+}
+.tally path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+html[data-motion="on"] .tally { animation: tally-in 1s var(--spring) 0.2s both; }
+html[data-motion="on"] .tally path { animation: draw 0.34s var(--ease) both; animation-delay: calc(0.6s + var(--i) * 110ms); }
+html[data-motion="on"] .tally .tally-cross { animation-duration: 0.5s; }
+@keyframes tally-in { from { opacity: 0; transform: translateY(16px) scale(0.55) rotate(-12deg); } }
+@keyframes draw { from { stroke-dashoffset: 1; } }
+
+.hero-title {
+  margin-top: 36px;
+  font-size: clamp(42px, 6.25vw, 92px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.052em;
+}
+.hero-line { display: block; }
+.hero-word {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.02em 0.05em 0.13em;
+  margin: -0.02em -0.05em -0.13em;
+  vertical-align: top;
+}
+.hero-word > span { display: inline-block; }
+html[data-motion="on"] .hero-word > span { animation: word-rise 1.15s var(--ease) both; animation-delay: calc(0.32s + var(--w) * 65ms); }
+@keyframes word-rise { from { transform: translateY(108%) rotate(5deg); } }
+
+.hero-text { max-width: 610px; margin-top: 26px; font-size: 19px; line-height: 1.55; letter-spacing: -0.012em; color: var(--muted); text-wrap: balance; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
+.hero-note { margin-top: 18px; font-size: 13.5px; color: var(--faint); }
+
+html[data-motion="on"] :is(.hero-text, .hero-actions, .hero-note) { animation: fade-up 1.1s var(--ease) both; }
+html[data-motion="on"] .hero-text { animation-delay: 0.72s; }
+html[data-motion="on"] .hero-actions { animation-delay: 0.84s; }
+html[data-motion="on"] .hero-note { animation-delay: 0.96s; }
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); filter: blur(6px); } }
+
+/* ---------- Product shot: tilted back, settles flat with scroll ---------- */
+
+.hero-shot { --p: 0; margin-top: 72px; perspective: 1900px; }
+.hero-frame {
+  padding: 8px;
+  border-radius: 24px;
+  background: linear-gradient(rgb(255 255 255 / 0.82), rgb(255 255 255 / 0.5));
+  box-shadow: 0 0 0 1px rgb(16 24 90 / 0.08);
+  transform-origin: 50% 0;
+  transform: rotateX(calc((1 - var(--p)) * 20deg)) scale(calc(0.9 + var(--p) * 0.1)) translateY(calc((1 - var(--p)) * 20px));
+  -webkit-mask-image: linear-gradient(#000 64%, transparent 97%);
+  mask-image: linear-gradient(#000 64%, transparent 97%);
+  will-change: transform;
+}
+.hero-frame img { width: 100%; border-radius: 17px; }
+html[data-motion="on"] .hero-frame { animation: shot-in 1.5s var(--ease) 0.95s both; }
+@keyframes shot-in { from { opacity: 0; translate: 0 80px; } }
+html[data-motion="off"] .hero-frame { transform: none; }
+
+/* ---------- Logo strip ---------- */
+
+.logos { padding: 40px 0 8px; text-align: center; }
+.logos-label { font-size: 15px; color: var(--muted); letter-spacing: -0.01em; }
+.marquee {
+  margin-top: 30px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 46s linear infinite; }
+.marquee-set { display: flex; align-items: center; gap: 76px; padding-right: 76px; }
+.marquee:hover .marquee-track, html[data-paused="true"] .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+html[data-motion="off"] .marquee { -webkit-mask-image: none; mask-image: none; }
+html[data-motion="off"] .marquee-track { width: auto; justify-content: center; animation: none; }
+html[data-motion="off"] .marquee-set { flex-wrap: wrap; justify-content: center; gap: 28px 48px; padding: 0 var(--gutter); }
+html[data-motion="off"] .marquee-set[aria-hidden] { display: none; }
+
+.logo { display: inline-flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 600; letter-spacing: -0.045em; color: #5d606b; white-space: nowrap; }
+
+@media (max-width: 767px) {
+  .hero { padding-top: 112px; }
+  .tally { width: 54px; height: 54px; border-radius: 16px; }
+  .tally svg { width: 28px; height: 28px; }
+  .hero-title { margin-top: 28px; font-size: clamp(36px, 10.4vw, 44px); letter-spacing: -0.05em; }
+  .hero-text { margin-top: 18px; font-size: 16.5px; }
+  .hero-actions { margin-top: 28px; gap: 10px; }
+  .hero-shot { margin-top: 48px; perspective: 1100px; }
+  .hero-frame { padding: 5px; border-radius: 22px; }
+  .hero-frame img { border-radius: 18px; }
+  .curtain-hero {
+    height: 100%;
+    -webkit-mask-image: linear-gradient(#000 58%, transparent 94%);
+    mask-image: linear-gradient(#000 58%, transparent 94%);
+  }
+  .curtain-bowl { top: 30%; width: 230%; }
+  .bar:nth-child(2n) { display: none; }
+  .logos { padding-top: 24px; }
+  .logos-label { font-size: 14px; padding: 0 var(--gutter); }
+  .marquee-set { gap: 48px; padding-right: 48px; }
+  .logo { font-size: 20px; }
+  .logo svg { width: 22px; height: 22px; }
+}

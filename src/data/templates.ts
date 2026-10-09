@@ -1,5 +1,6 @@
 import { arcloTemplate } from './template-catalog/arclo';
 import { asterTemplate } from './template-catalog/aster';
+import { notchTemplate } from './template-catalog/notch';
 
 export interface TemplateItem {
   slug: string;
@@ -31,6 +32,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    notchTemplate,
     asterTemplate,
     arcloTemplate,
     {

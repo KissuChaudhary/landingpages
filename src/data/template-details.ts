@@ -1,5 +1,6 @@
 import { arcloDetails } from './template-catalog/arclo';
 import { asterDetails } from './template-catalog/aster';
+import { notchDetails } from './template-catalog/notch';
 
 /**
  * Long-form content for each template's detail page. Everything here is taken from the template's own
@@ -41,6 +42,7 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  notch: notchDetails,
   aster: asterDetails,
   arclo: arcloDetails,
   daybreak: {

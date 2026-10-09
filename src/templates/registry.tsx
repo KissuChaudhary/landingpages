@@ -12,6 +12,7 @@ const Loading = () => (
 );
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  'notch': dynamic(() => import('@/templates/notch'), { ssr: false, loading: Loading }),
   'aster': dynamic(() => import('@/templates/aster'), { ssr: false, loading: Loading }),
   'arclo': dynamic(() => import('@/templates/arclo'), { ssr: false, loading: Loading }),
   'daybreak': dynamic(() => import('@/templates/daybreak'), { ssr: false, loading: Loading }),

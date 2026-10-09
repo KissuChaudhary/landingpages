@@ -1,0 +1,52 @@
+import type { TemplateItem } from "../templates";
+import type { TemplateDetails } from "../template-details";
+export const notchTemplate: TemplateItem = {
+  slug: "notch", title: "Notch: Motion SaaS Landing Page",
+  category: "Landing Pages", defaultTheme: "light", badge: "SaaS & Operations",
+  description: "A motion-led launch for B2B software. A cobalt light curtain opens on load, the product shot straightens as you scroll, and every section moves with intent: rolling labels, odometer numbers, an auto-advancing workflow and a deck of screens you can shuffle.",
+  tags: ["SaaS", "Motion", "Bento Grid", "Cobalt", "Next.js 15"],
+  features: [
+    "Fluted light-curtain hero with pointer light, word-by-word headline and a scroll-straightening product shot",
+    "Four-card bento, auto-advancing workflow over photography and a five-screen feature deck",
+    "Odometer stats, a sliding billing toggle with correct yearly totals and a self-fitting wordmark footer",
+    "Product visuals ship as images, not coded mockups; journal, legal pages and 404 included",
+  ],
+  accentColor: "from-blue-500 to-indigo-700",
+  previewUrl: "/preview/notch", standaloneUrl: "/demos/notch/index.html",
+  demoUrl: "/demo/notch", detailUrl: "/template/notch", thumbnailUrl: "/previews/card/notch.webp",
+};
+export const notchDetails: TemplateDetails = {
+  name: "Notch", kind: "Motion SaaS landing page template",
+  summary: "A complete landing page for B2B software, written for a time, capacity and invoicing product. A cobalt light curtain, crisp Geist type and considered motion in every section, with product screens as fast-loading images you swap for your own.",
+  bestFor: ["SaaS and B2B software launches", "Time tracking, operations and finance tools", "Agency, studio and professional-services products"],
+  design: "Geist with tight display tracking, white and ink with a single cobalt accent, and a light curtain of fluted blue bars. A centered hero over a tilted product shot, a logo strip, a four-card bento, a grey workflow band, a feature deck, a dark customer band, a dark-plus-panel pricing block, journal cards, a closing panel and a giant wordmark.",
+  sections: [
+    { name: "Hero", detail: "The curtain opens on load as bars rise from the edges; the tally badge draws itself, headline words rise in, and the product shot settles flat with scroll. Phones get a dedicated product image." },
+    { name: "Logo strip", detail: "A slow marquee of fictional customer marks that pauses on hover and with the footer's motion control." },
+    { name: "Bento", detail: "Four product moments slide in from alternating sides, with their screens rising a beat later." },
+    { name: "Workflow", detail: "Three steps advance on a progress line while in view, cross-fading photographs and floating product cards. Keyboard-accessible tabs." },
+    { name: "Feature deck", detail: "Five pills drop the front screen away and bring the chosen one forward over quiet tinted sheets, with a caption that morphs." },
+    { name: "Customers", detail: "A dark band of three stories with odometer stats, portraits and a rating row." },
+    { name: "Pricing", detail: "Monthly and yearly billing with a sliding thumb, rolling prices, exact yearly totals and savings, and configurable checkout links." },
+    { name: "Journal, closing and footer", detail: "Two article cards, a closing panel with the curtain rising behind it, and a wordmark that fits its container for any brand name." },
+    { name: "Pages", detail: "A journal index, three articles, privacy and terms placeholders and a custom 404." },
+  ],
+  customizeIntro: "Start in site.config.ts: brand, links, every heading, plans, stories and the footer. Articles and policy placeholders live in data/.",
+  customize: [
+    { what: "Brand, links, copy, plans and stories", where: "site.config.ts" },
+    { what: "Journal articles", where: "data/articles.ts" },
+    { what: "Customer logos and brand mark", where: "components/ui/Logos.tsx and components/ui/Brand.tsx" },
+    { what: "Palette, type scale and buttons", where: "styles/base.css" },
+    { what: "Section order", where: "app/page.tsx" },
+    { what: "Product screens and photographs", where: "public/images/ and ASSETS.md" },
+  ],
+  fonts: ["Geist", "Geist Mono"],
+  dependencies: ["next", "react", "react-dom", "lucide-react"],
+  styling: "CSS",
+  images: "Fourteen product screens rendered for the template and nine generated photographs and portraits of fictional people, all optimized WebP. The brand mark, customer marks and icons are SVG.",
+  node: "20.9",
+  files: 72,
+  lines: 3017,
+  beforeLaunch: "Replace the fictional brand, customers, stories and numbers, swap the product screens for your own, set the sign-up, sign-in, sales and checkout links, and replace the privacy and terms placeholders.",
+  updated: "2026-10-10",
+};
