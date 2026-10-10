@@ -1,0 +1,83 @@
+.backdrop {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 850px;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 30% 44% at 94% 13%, rgb(95 121 247 / 0.09), transparent 76%),
+    radial-gradient(ellipse 22% 25% at 0% 52%, rgb(255 156 138 / 0.07), transparent 76%);
+}
+
+.ribbon {
+  --ribbon-opacity: 1;
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  width: max(100%, 1200px);
+  transform: translateX(-50%);
+  opacity: var(--ribbon-opacity);
+  animation: arrive 2.4s cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+
+.ribbon svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: drift 20s ease-in-out 2.4s infinite;
+}
+
+.edgeSweep {
+  opacity: 0;
+  animation: light-sweep 4.8s cubic-bezier(0.25, 0.5, 0.4, 1) 0.5s both;
+}
+
+.fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 62%, rgb(255 255 255 / 0.7) 83%, #fff 100%);
+}
+
+@keyframes arrive {
+  from { opacity: 0; transform: translateX(-50%) translateY(18px) scale(1.025); }
+  to { opacity: var(--ribbon-opacity); transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes light-sweep {
+  0% { opacity: 0; stroke-dashoffset: 100; }
+  20% { opacity: 0.9; }
+  75% { opacity: 0.6; }
+  100% { opacity: 0; stroke-dashoffset: -1000; }
+}
+
+@media (min-width: 1600px) {
+  .ribbon { top: -80px; }
+}
+
+@media (max-width: 1023px) {
+  .ribbon { left: calc(50% - 36px); --ribbon-opacity: 0.85; }
+}
+
+@media (max-width: 640px) {
+  .backdrop { height: 740px; }
+  .ribbon { top: -36px; left: calc(50% - 95px); width: 980px; }
+  .atmosphere {
+    background: radial-gradient(ellipse 55% 40% at 100% 6%, rgb(95 121 247 / 0.09), transparent 80%);
+  }
+  .fade { background: linear-gradient(to bottom, transparent 38%, rgb(255 255 255 / 0.82) 70%, #fff 94%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon, .ribbon svg, .edgeSweep { animation: none; }
+}
