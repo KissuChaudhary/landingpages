@@ -45,7 +45,7 @@ export const bounceDetails: TemplateDetails = {
   styling: "CSS",
   images: "Thirteen generated photographs and portraits of fictional people and two rendered course-platform screens, all optimized WebP. Covers, waveforms, the mark and the beat pad sounds are code.",
   node: "20.9",
-  files: 62,
+  files: 63,
   lines: 3252,
   beforeLaunch: "Replace the fictional course, teacher, students, numbers and quotes; set the cohort date and seats, the enroll and checkout links, and replace the privacy and terms placeholders. Swap the beat pad for your own hero visual if your course isn't about music.",
   updated: "2026-10-10",
