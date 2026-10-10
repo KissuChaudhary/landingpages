@@ -14,7 +14,7 @@ import { useInView } from "@/components/motion/useInView";
  *   swap     the next quote rises in out of a light blur, from below when you
  *            move down the list and from above when you move up
  *   autoplay advances when the line is full, only while the section is on
- *            screen and nobody is pointing at it; pause and reduced motion stop it
+ *            screen and nobody is pointing at it; reduced motion stops it
  */
 
 const AUTOPLAY = 7000;

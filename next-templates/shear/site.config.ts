@@ -502,11 +502,6 @@ export const site = {
       { label: "Terms", href: "" },
     ] as Link[],
   },
-
-  motion: {
-    /** Where the visitor's "pause motion" choice is remembered. */
-    storageKey: "shear-motion",
-  },
 };
 
 export type Site = typeof site;

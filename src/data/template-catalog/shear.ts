@@ -14,7 +14,7 @@ export const shearTemplate: TemplateItem = {
     "Live glyph-field canvas that reacts to the cursor and pulses on every headline change",
     "Scroll-driven proof grid, drag-and-snap feature carousel and hover-to-open steps",
     "Hero email field that posts to your endpoint or opens your sign-up page",
-    "Rolling prices, morphing labels, a pause control and full reduced-motion support",
+    "Rolling prices, morphing labels and full reduced-motion support",
   ],
   accentColor: "from-emerald-200 to-teal-500",
   previewUrl: "/preview/shear",
@@ -40,7 +40,7 @@ export const shearDetails: TemplateDetails = {
     {
       name: "Hero",
       detail:
-        "Dark inset frame with a live glyph-field canvas (a river of figures falling along a cost curve), a headline whose last word morphs between five words, an email field wired to your endpoint or sign-up page, and a customer logo strip with a pause control.",
+        "Dark inset frame with a live glyph-field canvas (a river of figures falling along a cost curve), a headline whose last word morphs between five words, an email field wired to your endpoint or sign-up page, and a customer logo strip that eases to a stop on hover.",
     },
     { name: "Navigation", detail: "Full bar in the hero, a compact floating bar that marks the section you're reading, and a phone menu that grows out of the bar." },
     {

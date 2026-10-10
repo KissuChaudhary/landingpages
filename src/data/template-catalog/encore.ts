@@ -14,7 +14,7 @@ export const encoreTemplate: TemplateItem = {
     "Self-shuffling email deck with a chip that morphs the flow name and rolls its revenue",
     "Services index with a sticky preview that wipes by direction, and a scroll-filled 90-day timeline",
     "Case ledger with a pointer-following email preview, plus a featured case with rolling metrics",
-    "Every button goes to your booking or audit link; pause control and full reduced-motion support",
+    "Every button goes to your booking or audit link; loops hold under the pointer and respect reduced motion",
   ],
   accentColor: "from-rose-300 to-pink-600",
   previewUrl: "/preview/encore",

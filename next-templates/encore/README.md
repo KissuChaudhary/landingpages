@@ -75,7 +75,7 @@ Nothing on the page opens a mock dialog or pretends something happened.
 - **Integrations**: two rings of tools turn slowly in opposite directions while every name stays upright.
 - **Testimonials**: a hairline under the active client fills, then the next quote rises in.
 - **Footer**: the wordmark narrows from the font's widest cut to its condensed one as you reach it.
-- **Pause**: the button in the header (in the menu on phones) stops every loop on the page: the deck, the client strip, the rings, the testimonial autoplay and the closing marquee. The choice is remembered.
+- **Holding still**: every loop (the deck, the client strip, the rings, the testimonial autoplay, the closing marquee) holds while the pointer rests on it, and the deck and the quotes wait while they're off screen or the tab is hidden.
 - **Reduced motion**: with the system setting on, nothing moves on its own and all text is visible immediately. The deck still steps when clicked.
 
 No animation library is used: CSS transitions and keyframes, and the Web Animations API.
@@ -106,7 +106,7 @@ For a static host, build with `ENCORE_EXPORT=1 npm run build` and publish the `o
 ```
 app/                 layout (fonts, metadata), page (section order), globals.css (palette, motion)
 components/sections/ one file per section
-components/motion/   reveals, in-view and scroll progress, pause and reduced motion
+components/motion/   reveals, in-view and scroll progress, reduced motion
 components/hairline/ Hairline UI components, shipped verbatim
 components/ui/       brand, buttons, labels, screens
 public/images/       emails, dashboards and service previews (WebP, 2×)

@@ -5,7 +5,7 @@ import { Star } from "lucide-react";
 import { site } from "@/site.config";
 import { GlyphField } from "@/components/motion/GlyphField";
 import { RotatingWord } from "@/components/motion/RotatingWord";
-import { PauseButton, useMotion, usePausedAnimations } from "@/components/motion/MotionProvider";
+import { useMotion, usePausedAnimations } from "@/components/motion/MotionProvider";
 import { LogoMarquee } from "@/components/hairline/logo-marquee";
 import { CompanyLogo } from "@/components/ui/CompanyLogo";
 import { HeroNav, FloatingNav } from "./Navigation";
@@ -18,8 +18,8 @@ import { SignupForm } from "./SignupForm";
  *            and each change sends a wave along the glyph river behind it
  *   river    the glyph field (GlyphField) falls behind the copy and fades
  *            under it so the words stay readable
- *   logos    a slow strip of customer logos; the pause button beside its
- *            label stops every loop on the page
+ *   logos    a slow strip of customer logos that eases to a stop under the
+ *            pointer
  */
 
 const DESKTOP_MASK = { x: 0.5, y: 0.4, rx: 0.44, ry: 0.36 };
@@ -139,7 +139,6 @@ export function Hero() {
             <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-transparent to-white/15" />
             <span>{hero.trustedLabel}</span>
             <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-l from-transparent to-white/15" />
-            <PauseButton className="shrink-0" />
           </div>
           <div ref={marqueeRef} className="mt-4">
             <LogoMarquee

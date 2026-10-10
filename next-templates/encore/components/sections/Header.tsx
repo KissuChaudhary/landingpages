@@ -5,7 +5,7 @@ import { site } from "@/site.config";
 import { bookingHref } from "@/lib/links";
 import { Brand } from "@/components/ui/Brand";
 import { Button } from "@/components/ui/Button";
-import { PauseButton, useMotion } from "@/components/motion/MotionProvider";
+import { useMotion } from "@/components/motion/MotionProvider";
 
 /*
  * HEADER: one bar for the whole page.
@@ -15,7 +15,6 @@ import { PauseButton, useMotion } from "@/components/motion/MotionProvider";
  *   links    an underline glides to the link under the pointer, then back
  *   phones   the bar grows down into the menu (no overlay); Escape or a link
  *            closes it and gives focus back
- * The pause button stops every loop on the page and stays within reach.
  */
 
 const EASE = "cubic-bezier(0.16,1,0.3,1)";
@@ -108,7 +107,6 @@ export function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-2">
-          <PauseButton className="max-[899px]:hidden" />
           <Button href={bookingHref()} size="sm" className="max-[379px]:hidden">
             {site.nav.cta}
           </Button>
@@ -156,11 +154,10 @@ export function Header() {
                 </a>
               </li>
             ))}
-            <li className="flex items-center justify-between gap-3 pt-5">
-              <Button href={bookingHref()} className="flex-1">
+            <li className="pt-5">
+              <Button href={bookingHref()} className="w-full">
                 {site.nav.cta}
               </Button>
-              <PauseButton />
             </li>
           </ul>
         </div>

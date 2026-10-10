@@ -304,11 +304,7 @@ p {
   }
 }
 
-/* Paused motion and reduced motion stop every loop on the page. */
-html[data-motion="paused"] .loop,
-html[data-motion="paused"] .loop * {
-  animation-play-state: paused !important;
-}
+/* Reduced motion stops every loop on the page. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

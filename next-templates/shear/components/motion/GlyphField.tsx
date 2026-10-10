@@ -16,7 +16,7 @@ import { useInView, usePageVisible } from "./useInView";
  *   pointer   characters near the cursor brighten and scramble, and faint
  *             figures surface around it even off the river
  *   pulse     change `pulse` and a bright mint wave runs along the river
- *   rest      paused, reduced motion or off screen: one still frame
+ *   rest      reduced motion or off screen: one still frame
  *
  * Everything is drawn on one canvas at up to 30fps, only while visible.
  */

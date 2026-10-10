@@ -8,7 +8,7 @@ import { RevealText, Reveal } from "@/components/motion/Reveal";
 /*
  * STACK: the tools we connect, in orbit around the studio.
  * Two rings turn slowly in opposite directions while each name stays upright.
- * The rings stop with the pause button and with reduced motion.
+ * They hold while the pointer rests on them and stay still with reduced motion.
  */
 
 function Ring({ tools, size, duration, reverse = false }: { tools: string[]; size: number; duration: number; reverse?: boolean }) {
@@ -56,7 +56,7 @@ export function Stack() {
         </ul>
       </div>
       <Reveal delay={100}>
-        <div aria-hidden="true" className="relative mx-auto aspect-square w-full max-w-[560px] [container-type:inline-size]">
+        <div aria-hidden="true" className="hold relative mx-auto aspect-square w-full max-w-[560px] [container-type:inline-size]">
           <div className="absolute inset-[6%] rounded-full bg-[radial-gradient(closest-side,var(--berry-wash),transparent)]" />
           <div className="absolute inset-[8%] [container-type:inline-size]">
             <Ring tools={stack.tools.slice(0, half)} size={92} duration={70} />

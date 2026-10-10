@@ -18,9 +18,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#ffffff" };
 
-// Marks JavaScript as running (reveals hide until then) and restores a
-// visitor's "pause motion" choice before the first paint.
-const bootstrap = `document.documentElement.classList.add("js");try{if(localStorage.getItem(${JSON.stringify(site.motion.storageKey)})==="paused")document.documentElement.dataset.motion="paused"}catch(e){}`;
+// Marks JavaScript as running before the first paint; reveals stay visible without it.
+const bootstrap = `document.documentElement.classList.add("js")`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

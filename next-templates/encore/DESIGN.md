@@ -39,4 +39,4 @@ Owner rule: product UI ships as images. The emails (600 × 880) and app screens 
 
 ## Motion rules followed
 
-No animation library. Loops carry `.loop` (paused by the pause button and reduced motion); the deck and the testimonial autoplay read the motion context and only run in view and in a visible tab. Every changing number uses NumberRoll, every changing label TextMorph. Reduced motion: everything visible, nothing moves on its own.
+No animation library. Loops carry `.loop` (held under the pointer via `.hold`, stopped by reduced motion). No visible pause button: the owner ruled on 2026-10-10 that a play/pause control has no place in a ready-made template's UI. The deck and the testimonial autoplay read the motion context and only run in view and in a visible tab. Every changing number uses NumberRoll, every changing label TextMorph. Reduced motion: everything visible, nothing moves on its own.

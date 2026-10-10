@@ -395,10 +395,6 @@ export const site = {
     ] as Link[],
     partner: "Klaviyo partner · Shopify partner",
   },
-
-  motion: {
-    storageKey: "encore-motion",
-  },
 };
 
 export type Site = typeof site;

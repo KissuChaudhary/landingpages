@@ -70,7 +70,7 @@ Nothing on the page opens a mock dialog or pretends something happened.
 - **Section reveals** (`components/motion/Reveal.tsx`): headings rise word by word out of a light blur while the type breathes in from a wider cut.
 - **Scroll-driven moments** (`components/motion/useScrollProgress.ts`): the proof grid spreads out from the middle as you scroll, the bill's line wipes in over its card, and the footer wordmark's two halves slide back into line.
 - **Product screens** (`components/ui/Screen.tsx`): each arrives out of a light blur, settling from slightly larger; team cards slide over from the side you moved toward.
-- **Pause**: the button beside the logo strip stops every loop on the page (glyph fields, moving word, logo strip, ambient light). The choice is remembered.
+- **Resting**: the glyph fields and the moving word only run while on screen and in a visible tab; the logo strip eases to a stop under the pointer.
 - **Reduced motion**: with the system setting on, nothing moves on its own, all text is visible immediately and the glyph fields show a still frame.
 
 No animation library is used: CSS transitions and keyframes, the Web Animations API and one canvas.
@@ -102,7 +102,7 @@ For a static host, build with `SHEAR_EXPORT=1 npm run build` and publish the `ou
 ```
 app/                 layout (fonts, metadata), page (section order), globals.css (palette, motion)
 components/sections/ one file per section
-components/motion/   glyph field, moving word, reveals, scroll progress, pause and reduced motion
+components/motion/   glyph field, moving word, reveals, scroll progress, reduced motion
 components/hairline/ Hairline UI components, shipped verbatim
 components/ui/       brand, buttons, badges, section intros, customer logos, product screens
 public/images/       product screens (WebP, 2×)

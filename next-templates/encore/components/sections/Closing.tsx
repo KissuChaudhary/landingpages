@@ -8,7 +8,8 @@ import { RevealText, Reveal } from "@/components/motion/Reveal";
 
 /*
  * CLOSING: one berry block. Along its bottom edge, the orders still to come
- * drift past in outline; the strip stops with the pause button and reduced motion.
+ * drift past in outline; the strip holds under the pointer and stays still with
+ * reduced motion.
  */
 
 export function Closing() {
@@ -16,7 +17,7 @@ export function Closing() {
   const words = [...closing.marquee, ...closing.marquee];
   return (
     <section id="start" className="px-2 md:px-3" aria-labelledby="closing-title">
-      <div className="tone-dark relative isolate overflow-hidden rounded-[28px] bg-berry px-4 pb-36 pt-24 text-center md:rounded-[40px] md:pb-56 md:pt-32">
+      <div className="tone-dark hold relative isolate overflow-hidden rounded-[28px] bg-berry px-4 pb-36 pt-24 text-center md:rounded-[40px] md:pb-56 md:pt-32">
         <div aria-hidden="true" className="absolute inset-x-0 -bottom-6 -z-10 overflow-hidden md:-bottom-10">
           <div className="loop flex w-max animate-[en-marquee_48s_linear_infinite]">
             {words.map((word, i) => (

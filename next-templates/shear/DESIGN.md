@@ -19,7 +19,7 @@ Shear: cloud cost control. It finds idle and oversized cloud resources and ships
 | Reference | Shear | Improvement |
 | --- | --- | --- |
 | Hero over an ASCII video, word swap | Hero over a live glyph canvas ("the bill, falling"), word morph through the width axis | Canvas reacts to the cursor, pulses on each word change, fades under the copy, sleeps off screen |
-| Logo pills | Logo marquee tiles (Hairline UI) + pause control | Pause for everything that loops |
+| Logo pills | Logo marquee tiles (Hairline UI) | Eases to a stop on hover |
 | Bento with photo, scroll spread | Bento with a live bill chart, scroll spread | Figures roll once the grid lands; chart draws and the bill rolls down |
 | Comparison table | Raised dark Shear column with a light sweep, row hover across columns | Phones get a switch between the two alternatives instead of a long stacked list |
 | Feature slider with videos | Feature carousel with six coded product scenes | Drag, snap, counter and progress hairline; scenes play only while visible |
@@ -37,4 +37,4 @@ The owner's standing rule (Notch brief, 2026-10-09): product UI in templates shi
 
 ## Motion rules followed
 
-No animation library. Loops carry `.loop` (paused by the pause button and by reduced motion). Canvas loops run only in view and in a visible tab. Every changing number uses NumberRoll, every changing label TextMorph. Reduced motion: still frames, all text visible.
+No animation library. Loops carry `.loop` (stopped by reduced motion). The pause button was removed on 2026-10-10: the owner ruled that a play/pause control has no place in a ready-made template's UI. Canvas loops run only in view and in a visible tab. Every changing number uses NumberRoll, every changing label TextMorph. Reduced motion: still frames, all text visible.

@@ -12,7 +12,7 @@ import { useInView, usePageVisible } from "./useInView";
  *             back, and settle to normal width one after another
  *   width     the space for the word eases to the next word's measured
  *             width, so the line re-centres in the same motion
- * It waits while off screen, in a background tab, paused or with reduced
+ * It waits while off screen, in a background tab or with reduced
  * motion. Screen readers get the sentence once, with the first word.
  */
 
