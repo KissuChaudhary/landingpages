@@ -1,0 +1,31 @@
+/* ── Pricing ────────────────────────────────────────────────────────────── */
+.bill { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 4px; margin-top: 8px; border-radius: 99px; background: var(--surface); }
+.bill button { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 20px; border-radius: 99px; font-size: 14.5px; font-weight: 600; color: var(--muted); transition: color 0.3s var(--ease); }
+.bill button[aria-pressed="true"] { color: var(--ink); }
+.bill-save { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 6px; background: var(--ultra); color: #fff; font-size: 11.5px; font-weight: 700; }
+.bill-thumb { position: absolute; left: 4px; top: 4px; bottom: 4px; width: calc(50% - 4px); border-radius: 99px; background: var(--card); box-shadow: 0 0 0 1px var(--line); transition: transform 0.6s var(--throw); }
+.bill[data-billing="yearly"] .bill-thumb { transform: translateX(100%); }
+
+.plans { display: grid; grid-template-columns: 1fr 1fr; max-width: 920px; margin-inline: auto; padding: 8px; border-radius: clamp(28px, 3vw, 40px); background: var(--surface); }
+.plan { display: flex; flex-direction: column; gap: 18px; padding: clamp(24px, 3vw, 40px); border-radius: clamp(22px, 2.4vw, 32px); }
+.plan.is-featured { background: var(--card); box-shadow: 0 0 0 1px var(--line); }
+.plan-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 38px; }
+.plan-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--surface); }
+.plan-note { margin-left: auto; font-size: 13px; color: var(--muted); }
+.plan-price { display: flex; align-items: baseline; gap: 10px; }
+.plan-amount { font-size: clamp(52px, 5.4vw, 76px); font-weight: 680; font-stretch: 110%; letter-spacing: -0.05em; line-height: 1; }
+.plan-per { font-size: 16px; color: var(--muted); }
+.plan-bill { min-height: 22px; margin-top: -8px; font-size: 14px; color: var(--body); }
+.plan-bill.from-left { animation: from-left 0.6s var(--ease) both; }
+.plan-bill.from-right { animation: from-right 0.6s var(--ease) both; }
+@keyframes from-left { from { opacity: 0; transform: translateX(-18px); filter: blur(3px); } }
+@keyframes from-right { from { opacity: 0; transform: translateX(18px); filter: blur(3px); } }
+.plan-list { display: grid; gap: 11px; padding-top: 18px; border-top: 1px solid var(--line); }
+.plan-list li { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.plan-list svg { flex: none; color: var(--ultra); }
+.plan-cta { margin-top: auto; align-self: stretch; }
+.pricing-foot { margin-top: 20px; text-align: center; }
+@media (max-width: 760px) {
+  .plans { grid-template-columns: 1fr; }
+  .plan.is-featured { order: -1; }
+}

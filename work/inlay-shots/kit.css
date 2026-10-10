@@ -1,0 +1,57 @@
+/* Shared tokens for every Inlay render: UI cards use the site's palette and Mona Sans,
+ * artworks use the poster palette. Rendered at 2x by render.cjs. */
+:root {
+  --ink: #0d0e12;
+  --body: #4a4c55;
+  --muted: #868893;
+  --line: rgb(13 14 18 / 0.1);
+  --line-2: rgb(13 14 18 / 0.16);
+  --surface: #f3f4f6;
+  --ultra: #2b3bff;
+  --ultra-deep: #1a27c9;
+  --ultra-tint: #eef0ff;
+  --paid: #0f9f5a;
+  --paid-tint: #e7f7ee;
+
+  /* poster palette */
+  --bone: #eceae3;
+  --red: #ff3d2e;
+  --citrine: #f3d33c;
+  --mint: #a9e5cb;
+  --lilac: #d2cbff;
+  --sky: #c3d9ff;
+
+  --mona: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: transparent; }
+body { font-family: var(--mona); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.shot { position: relative; overflow: hidden; }
+.shot.round { border-radius: 0; }
+svg { display: block; }
+
+/* UI primitives used inside product shots */
+.card { background: #fff; border-radius: 22px; box-shadow: 0 0 0 1px var(--line); }
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.grow { flex: 1; min-width: 0; }
+.t-xs { font-size: 11px; }
+.t-s { font-size: 12.5px; }
+.t-m { font-size: 14px; }
+.t-l { font-size: 17px; }
+.t-xl { font-size: 22px; }
+.w5 { font-weight: 500; }
+.w6 { font-weight: 600; }
+.w7 { font-weight: 700; }
+.mut { color: var(--muted); }
+.bod { color: var(--body); }
+.num { font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.pill { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 99px; font-size: 12px; font-weight: 600; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 99px; font-size: 14px; font-weight: 600; }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ultra { background: var(--ultra); color: #fff; }
+.btn-line { box-shadow: inset 0 0 0 1px var(--line-2); color: var(--ink); background: #fff; }
+.field { display: flex; align-items: center; height: 42px; padding: 0 14px; border-radius: 12px; background: var(--surface); color: var(--muted); font-size: 13.5px; }
+.hair { height: 1px; background: var(--line); }
+.dot { width: 7px; height: 7px; border-radius: 9px; display: inline-block; }
+.av { border-radius: 99px; overflow: hidden; flex: none; }

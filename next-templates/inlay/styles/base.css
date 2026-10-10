@@ -1,0 +1,244 @@
+/* ── Palette and type ──────────────────────────────────────────────────────
+ * Change the brand here. `--ultra` is the accent (tile words, buttons, links, live dots).
+ * The poster colours (red, citrine, bone) only appear inside artwork and the panels
+ * behind product pictures. */
+:root {
+  --page: #ffffff;
+  --surface: #f4f5f7;
+  --surface-2: #eceef2;
+  --card: #ffffff;
+  --ink: #0d0e12;
+  --ink-2: #17181e;
+  --text: #0d0e12;
+  --body: #4a4c55;
+  --muted: #80838d;
+  --line: rgb(13 14 18 / 0.1);
+  --line-strong: rgb(13 14 18 / 0.18);
+
+  --ultra: #2b3bff;
+  --ultra-deep: #1a27c9;
+  --ultra-tint: #eef0ff;
+  --citrine: #f3d33c;
+  --bone: #eceae3;
+  --red: #ff3d2e;
+  --paid: #0f9f5a;
+  --paid-tint: #e7f7ee;
+  --error: #d92d20;
+
+  --sans: var(--font-mona), ui-sans-serif, system-ui, sans-serif;
+
+  --gutter: clamp(16px, 3vw, 40px);
+  --max: 1280px;
+  --nav-h: 60px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --throw: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --glide: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Panels behind product pictures take their colour from the config (`tone`). */
+[data-tone="ultra"] { --tone: var(--ultra); --tone-ink: #fff; }
+[data-tone="ink"] { --tone: var(--ink); --tone-ink: #fff; }
+[data-tone="paper"] { --tone: var(--surface); --tone-ink: var(--ink); }
+[data-tone="citrine"] { --tone: var(--citrine); --tone-ink: var(--ink); }
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+input { border: 0; background: none; outline: none; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+::selection { background: var(--ultra); color: #fff; }
+
+:focus-visible { outline: 2px solid var(--ultra); outline-offset: 3px; border-radius: 10px; }
+.on-dark :focus-visible { outline-color: #fff; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed; left: 16px; top: 12px; z-index: 100; padding: 10px 16px; border-radius: 999px;
+  background: var(--ink); color: #fff; font-weight: 600; transform: translateY(-160%);
+  transition: transform 0.3s var(--ease);
+}
+.skip-link:focus { transform: none; }
+
+/* ── Layout ────────────────────────────────────────────────────────────── */
+.container { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.section { position: relative; padding-block: clamp(88px, 11vw, 168px); }
+.head { display: grid; justify-items: center; text-align: center; gap: 18px; max-width: 760px; margin: 0 auto clamp(40px, 5vw, 72px); }
+.head.start { justify-items: start; text-align: left; margin-inline: 0; }
+
+/* ── Type ──────────────────────────────────────────────────────────────── */
+/* Mona Sans is variable in width and weight: headings run a little wide and heavy. */
+.h1, .h2, .h3, .h4 {
+  font-stretch: 112%;
+  font-weight: 640;
+  letter-spacing: -0.042em;
+  line-height: 0.98;
+  color: var(--text);
+  text-wrap: balance;
+}
+.h1 { font-size: clamp(44px, 6.4vw, 100px); line-height: 0.95; letter-spacing: -0.048em; }
+.h2 { font-size: clamp(36px, 4.6vw, 68px); }
+.h3 { font-size: clamp(28px, 2.9vw, 44px); letter-spacing: -0.038em; line-height: 1; }
+.h4 { font-size: clamp(20px, 1.6vw, 24px); letter-spacing: -0.025em; line-height: 1.12; font-weight: 600; font-stretch: 106%; }
+.lead { font-size: clamp(16.5px, 1.3vw, 19px); line-height: 1.5; color: var(--body); text-wrap: pretty; }
+.body { font-size: clamp(15px, 1.1vw, 16.5px); line-height: 1.6; color: var(--body); text-wrap: pretty; }
+.small { font-size: 13.5px; color: var(--muted); }
+
+/* ── The tile word ─────────────────────────────────────────────────────────
+ * One phrase per heading sits in a tile. When the heading scrolls in, the tile drops
+ * into the line from a tilt, like a tile snapping into a page. */
+.tw {
+  display: inline-block; position: relative;
+  padding: 0.02em 0.16em 0.07em; margin-inline: 0.03em; border-radius: 0.17em;
+  background: var(--ultra); color: #fff; line-height: 1;
+  transform-origin: 18% 90%;
+}
+[data-tw="ink"] .tw { background: var(--ink); color: #fff; }
+[data-tw="line"] .tw { background: #fff; color: var(--ultra); box-shadow: 0 0 0 1px var(--line-strong); }
+[data-tw="citrine"] .tw { background: var(--citrine); color: var(--ink); }
+.on-dark .tw, [data-tw="white"] .tw { background: #fff; color: var(--ink); }
+html[data-motion="on"] .tw-host .tw { transition: transform 1s var(--throw) var(--tw-d, 260ms), opacity 0.4s var(--ease) var(--tw-d, 260ms); }
+html[data-motion="on"] .tw-host:not(.is-in) .tw { transform: translate(0.22em, -0.62em) rotate(-10deg); opacity: 0; }
+
+/* The small pill above a heading. */
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 13px 0 11px; border-radius: 999px;
+  background: var(--card); box-shadow: 0 0 0 1px var(--line);
+  font-size: 13px; font-weight: 550; color: var(--body); line-height: 1;
+}
+.chip svg { color: var(--ultra); }
+.chip-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 7px; border-radius: 6px; background: var(--ultra); color: #fff; font-size: 11.5px; font-weight: 650; }
+
+/* ── Reveal on scroll ──────────────────────────────────────────────────────
+ * Anything with data-reveal starts hidden only when JavaScript and motion are on,
+ * so the page is complete without either. Delay with style="--d: 120ms". */
+html[data-motion="on"] [data-reveal] {
+  transition: opacity 0.9s var(--ease) var(--d, 0ms), transform 1.1s var(--ease) var(--d, 0ms), filter 0.9s var(--ease) var(--d, 0ms);
+}
+html[data-motion="on"] [data-reveal]:not([data-reveal="none"]):not(.is-in) { opacity: 0; transform: translateY(26px); }
+html[data-motion="on"] [data-reveal="fade"]:not(.is-in) { transform: none; filter: blur(6px); }
+html[data-motion="on"] [data-reveal="scale"]:not(.is-in) { transform: scale(0.95); }
+
+/* Lines that rise out of their own mask. */
+.line { display: block; overflow: clip; overflow-clip-margin: 0.3em; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.line > span { display: inline-block; }
+html[data-motion="on"] .lines .line > span { transition: transform 1.1s var(--ease) calc(var(--d, 0ms) + var(--i, 0) * 90ms); }
+html[data-motion="on"] .lines:not(.is-in) .line > span { transform: translateY(108%); }
+
+/* Strokes that draw themselves (a path with pathLength="1"). */
+.draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+html[data-motion="on"] .draw { transition: stroke-dashoffset 0.8s var(--ease) var(--dd, 0ms); }
+html[data-motion="on"] :is([data-reveal], .js-draw):not(.is-in) .draw { stroke-dashoffset: 1; }
+
+/* A list of points with checks that draw in turn. */
+.points { display: grid; gap: 12px; }
+.points li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.45; color: var(--ink); }
+.points .tick { flex: none; display: grid; place-items: center; width: 22px; height: 22px; margin-top: -0.5px; border-radius: 99px; background: var(--ultra-tint); color: var(--ultra); }
+.on-dark .points li { color: #fff; }
+.on-dark .points .tick { background: rgb(255 255 255 / 0.12); color: #fff; }
+
+/* ── Text morph ─────────────────────────────────────────────────────────── */
+.tm { position: relative; display: inline-block; }
+.tm-w { display: inline-block; white-space: pre; }
+.tm-g { display: inline-block; }
+.tm-out { position: absolute; pointer-events: none; white-space: pre; }
+
+/* ── Number roll ────────────────────────────────────────────────────────── */
+.nr { display: inline-flex; font-variant-numeric: tabular-nums; }
+.nr-v { display: inline-flex; align-items: baseline; white-space: pre; }
+.nr-p { display: inline-block; }
+.nr-d { position: relative; display: inline-block; clip-path: inset(0); }
+.nr-ghost { visibility: hidden; }
+.nr-strip { position: absolute; inset: 0 0 auto 0; display: flex; flex-direction: column; text-align: center; }
+.nr-strip > span { display: block; }
+.nr-in { clip-path: inset(0); animation: nr-in 500ms var(--ease) both; }
+.nr-out { clip-path: inset(0); animation: nr-out 400ms var(--ease) forwards; }
+@keyframes nr-in { from { max-width: 0; opacity: 0; } to { max-width: 1em; opacity: 1; } }
+@keyframes nr-out { from { max-width: 1em; opacity: 1; } to { max-width: 0; opacity: 0; } }
+
+/* ── Rolling labels and thrown arrows (hover) ─────────────────────────────── */
+.roll { display: inline-flex; white-space: pre; }
+.roll-c { position: relative; display: inline-flex; flex-direction: column; height: 1.2em; line-height: 1.2em; overflow: hidden; }
+.roll-c > span { display: block; transition: transform 0.5s var(--ease) calc(var(--i) * 14ms); }
+:is(a, button):hover .roll-c > span, :is(a, button):focus-visible .roll-c > span { transform: translateY(-100%); }
+
+.throw { position: relative; display: grid; place-items: center; overflow: hidden; }
+.throw > svg { grid-area: 1 / 1; transition: transform 0.55s var(--ease); }
+.throw > svg:last-child { transform: translateX(-140%); }
+:is(a, button):hover .throw > svg:first-child, :is(a, button):focus-visible .throw > svg:first-child { transform: translateX(140%); }
+:is(a, button):hover .throw > svg:last-child, :is(a, button):focus-visible .throw > svg:last-child { transform: none; }
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 48px; padding: 0 22px; border-radius: 999px;
+  font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease), transform 0.4s var(--throw);
+}
+.btn:active { transform: scale(0.97); }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ink:hover { background: var(--ultra); }
+.btn-ultra { background: var(--ultra); color: #fff; }
+.btn-ultra:hover { background: var(--ultra-deep); }
+.btn-line { background: var(--card); color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong); }
+.btn-line:hover { box-shadow: 0 0 0 1px var(--ink); }
+.btn-white { background: #fff; color: var(--ink); }
+.btn-white:hover { background: var(--citrine); }
+.btn-sm { height: 38px; padding: 0 16px; font-size: 14px; }
+.btn-lg { height: 56px; padding: 0 26px; font-size: 16.5px; }
+.btn .throw { width: 16px; height: 16px; }
+
+/* A status button: its label morphs and its width eases between idle, busy and done. */
+.status-btn .status-icon { position: relative; display: inline-grid; place-items: center; width: 16px; height: 16px; overflow: visible; transition: width 0.45s var(--ease), margin 0.45s var(--ease), opacity 0.3s var(--ease); }
+.status-btn[data-state="idle"] .status-icon { width: 0; margin-right: -10px; opacity: 0; }
+.status-icon > * { grid-area: 1 / 1; transition: opacity 0.3s var(--ease), transform 0.45s var(--throw), filter 0.3s var(--ease); }
+.status-icon > [data-on="false"] { opacity: 0; transform: scale(0.4); filter: blur(3px); }
+.spinner { width: 16px; height: 16px; border-radius: 99px; border: 2px solid currentColor; border-right-color: transparent; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.status-btn[data-state="done"] { background: var(--paid); color: #fff; }
+
+/* A plain text link with a growing underline. */
+.text-link { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.5s var(--ease); }
+.text-link:hover { background-size: 100% 1px; }
+
+/* Geometric avatars. */
+.avatar { flex: none; border-radius: 99px; overflow: hidden; }
+
+/* ── Brand ─────────────────────────────────────────────────────────────── */
+.brand { display: inline-flex; align-items: center; gap: 9px; }
+.brand-name { font-stretch: 116%; font-weight: 700; font-size: 21px; letter-spacing: -0.045em; line-height: 1; }
+/* The mark: four tiles, one still tilted. Pointing at the brand snaps it in. */
+.mark .mark-free { transform-box: fill-box; transform-origin: 50% 50%; transform: translate(1.2px, -1.4px) rotate(14deg); transition: transform 0.7s var(--throw); }
+a:hover .mark .mark-free, .mark.is-set .mark-free { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Icon swap: one icon blurs out as the other scales in. */
+.swap { position: relative; display: inline-grid; place-items: center; width: 14px; height: 14px; }
+.swap > * { grid-area: 1 / 1; display: grid; transition: opacity 0.3s var(--ease), transform 0.45s var(--throw), filter 0.3s var(--ease); }
+.swap > [data-on="false"] { opacity: 0; transform: scale(0.5); filter: blur(3px); }

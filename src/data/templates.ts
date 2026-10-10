@@ -1,3 +1,4 @@
+import { inlayTemplate } from './template-catalog/inlay';
 import { aveniqTemplate } from './template-catalog/aveniq';
 import { turnoutTemplate } from './template-catalog/turnout';
 import { goodfolkTemplate } from './template-catalog/goodfolk';
@@ -44,6 +45,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    inlayTemplate,
     aveniqTemplate,
     turnoutTemplate,
     bounceTemplate,

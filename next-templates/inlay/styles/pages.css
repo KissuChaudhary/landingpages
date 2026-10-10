@@ -1,0 +1,19 @@
+/* ── Legal pages ────────────────────────────────────────────────────────── */
+.legal { max-width: 860px; padding-top: calc(var(--nav-h) + 12px + clamp(56px, 8vw, 110px)); padding-bottom: clamp(80px, 10vw, 140px); }
+.legal-head { display: grid; justify-items: start; gap: 16px; padding-bottom: clamp(32px, 4vw, 56px); border-bottom: 1px solid var(--line); }
+.legal-head .h1 { font-size: clamp(40px, 6vw, 80px); }
+.legal-body { display: grid; gap: 36px; padding-top: clamp(32px, 4vw, 56px); }
+.legal-body section { display: grid; grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr); gap: 24px; }
+@media (max-width: 700px) { .legal-body section { grid-template-columns: 1fr; gap: 10px; } }
+
+/* ── 404 ────────────────────────────────────────────────────────────────── */
+.nf { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 22px; text-align: center; padding-top: calc(var(--nav-h) + 40px); padding-bottom: 80px; }
+.nf .lead { max-width: 440px; }
+.nf-board { display: grid; grid-template-columns: repeat(2, 88px); grid-auto-rows: 88px; gap: 10px; margin-bottom: 16px; padding: 12px; border-radius: 26px; box-shadow: 0 0 0 1px var(--line); }
+.nf-slot { border-radius: 16px; outline: 1.5px dashed var(--line-strong); outline-offset: -1.5px; }
+.nf-tile {
+  display: grid; place-items: center; border-radius: 16px; background: var(--ultra); color: #fff;
+  font-size: 26px; font-weight: 700; font-stretch: 112%; letter-spacing: -0.04em;
+  transform: translate(10px, -14px) rotate(12deg); animation: nf-wobble 3.2s var(--ease) infinite alternate;
+}
+@keyframes nf-wobble { to { transform: translate(6px, -10px) rotate(7deg); } }
