@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a7bff"/><stop offset="1" stop-color="#2343c4"/></linearGradient>
-    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity=".14"/></linearGradient>
-    <linearGradient id="stem" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#dce5ff"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b7cff"/><stop offset="1" stop-color="#1f3fbf"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".45" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d6e1ff"/></linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#9fb5f5" stop-opacity=".6"/></linearGradient>
   </defs>
-  <path d="M32 1.5c13.6 0 21.4 0 25.9 4.6 4.6 4.5 4.6 12.3 4.6 25.9s0 21.4-4.6 25.9c-4.5 4.6-12.3 4.6-25.9 4.6s-21.4 0-25.9-4.6C1.5 53.4 1.5 45.6 1.5 32S1.5 10.6 6.1 6.1C10.6 1.5 18.4 1.5 32 1.5Z" fill="url(#bg)"/><path d="M32 1.5c13.6 0 21.4 0 25.9 4.6 4.6 4.5 4.6 12.3 4.6 25.9s0 21.4-4.6 25.9c-4.5 4.6-12.3 4.6-25.9 4.6s-21.4 0-25.9-4.6C1.5 53.4 1.5 45.6 1.5 32S1.5 10.6 6.1 6.1C10.6 1.5 18.4 1.5 32 1.5Z" transform="translate(32 32) scale(.975) translate(-32 -32)" fill="none" stroke="url(#rim)" stroke-width="1.5"/>
-  <rect x="16" y="15" width="10" height="34" rx="5" fill="url(#stem)"/>
-  <rect x="38" y="15" width="10" height="34" rx="5" fill="url(#stem)"/>
-  <rect x="25" y="30.4" width="14" height="3.2" rx="1.6" fill="#fff"/>
+  <path d="M32 1.5c13.6 0 21.4 0 25.9 4.6 4.6 4.5 4.6 12.3 4.6 25.9s0 21.4-4.6 25.9c-4.5 4.6-12.3 4.6-25.9 4.6s-21.4 0-25.9-4.6C1.5 53.4 1.5 45.6 1.5 32S1.5 10.6 6.1 6.1C10.6 1.5 18.4 1.5 32 1.5Z" fill="url(#bg)"/><path d="M32 1.5c13.6 0 21.4 0 25.9 4.6 4.6 4.5 4.6 12.3 4.6 25.9s0 21.4-4.6 25.9c-4.5 4.6-12.3 4.6-25.9 4.6s-21.4 0-25.9-4.6C1.5 53.4 1.5 45.6 1.5 32S1.5 10.6 6.1 6.1C10.6 1.5 18.4 1.5 32 1.5Z" transform="translate(32 32) scale(.975) translate(-32 -32)" fill="none" stroke="url(#rim)" stroke-width="1.4"/>
+  <path d="M16.5 7.5H21.2Q22.4 7.5 22.4 8.7V55.3Q22.4 56.5 21.2 56.5H16.5Q7.5 56.5 7.5 47.5V16.5Q7.5 7.5 16.5 7.5Z" fill="url(#tile)" stroke="url(#edge)" stroke-width=".5"/>
+  <path d="M42.800000000000004 7.5H47.5Q56.5 7.5 56.5 16.5V47.5Q56.5 56.5 47.5 56.5H42.800000000000004Q41.6 56.5 41.6 55.3V8.7Q41.6 7.5 42.800000000000004 7.5Z" fill="url(#tile)" stroke="url(#edge)" stroke-width=".5"/>
+  <path d="M26.2 7.5H37.8Q39 7.5 39 8.7V29.5Q39 30.7 37.8 30.7H26.2Q25 30.7 25 29.5V8.7Q25 7.5 26.2 7.5Z" fill="url(#tile)" stroke="url(#edge)" stroke-width=".5"/>
+  <path d="M26.2 33.3H37.8Q39 33.3 39 34.5V55.3Q39 56.5 37.8 56.5H26.2Q25 56.5 25 55.3V34.5Q25 33.3 26.2 33.3Z" fill="url(#tile)" stroke="url(#edge)" stroke-width=".5"/>
 </svg>
