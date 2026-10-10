@@ -1,3 +1,4 @@
+import { offscriptTemplate } from './template-catalog/offscript';
 import { plumbTemplate } from './template-catalog/plumb';
 import { inlayTemplate } from './template-catalog/inlay';
 import { aveniqTemplate } from './template-catalog/aveniq';
@@ -47,6 +48,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    offscriptTemplate,
     plumbTemplate,
     inlayTemplate,
     tesseraTemplate,

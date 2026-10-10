@@ -12,6 +12,7 @@ const Loading = () => (
 );
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  'offscript': dynamic(() => import('@/templates/offscript'), { ssr: false, loading: Loading }),
   'plumb': dynamic(() => import('@/templates/plumb'), { ssr: false, loading: Loading }),
   'inlay': dynamic(() => import('@/templates/inlay'), { ssr: false, loading: Loading }),
   'tessera': dynamic(() => import('@/templates/tessera'), { ssr: false, loading: Loading }),

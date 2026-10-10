@@ -1,0 +1,81 @@
+[data-reveal] {
+  opacity: 1;
+}
+[data-enhanced] [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+[data-enhanced] [data-reveal] {
+  transition:
+    opacity 0.85s ease,
+    transform 0.85s var(--ease);
+}
+[data-enhanced] .project-2[data-reveal] {
+  transition-delay: 0.1s;
+}
+.hero h1 > span {
+  animation: headline-in 0.95s var(--ease) both;
+}
+.hero h1 > span:last-child {
+  animation-delay: 0.1s;
+}
+.hero h1 > span:last-child::before {
+  animation: highlight-in 1s 0.5s var(--ease) both;
+}
+.hero-aside {
+  animation: caption-in 0.9s 0.3s var(--ease) both;
+}
+.contact-sheet {
+  animation: sheet-in 1.15s 0.2s var(--ease) both;
+}
+@keyframes headline-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes highlight-in {
+  from {
+    transform: rotate(-1.7deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-1.7deg) scaleX(1);
+  }
+}
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    clip-path: inset(0 0 12%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .question-ring,
+  .closing-pencil path {
+    stroke-dashoffset: 0;
+  }
+}

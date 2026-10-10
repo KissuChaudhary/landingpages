@@ -1,0 +1,218 @@
+.site-header {
+  height: 108px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding-right: 132px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+.brand > svg {
+  width: 27px;
+  height: 27px;
+  transform: rotate(-9deg);
+  transition: transform 0.4s var(--ease);
+}
+.brand:hover > svg {
+  transform: rotate(0);
+}
+.brand > span {
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -0.075em;
+  line-height: 1;
+}
+.brand i {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 9px;
+  font-style: normal;
+  margin: 1px 0 0 4px;
+  letter-spacing: 0;
+}
+.masthead-note {
+  font-size: 9px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.nav-contact {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 12px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.nav-contact svg {
+  transition: transform 0.3s;
+}
+.nav-contact:hover svg {
+  transform: translate(3px, -3px);
+}
+.index-navigation {
+  position: fixed;
+  top: 32px;
+  right: max(var(--gutter), calc((100vw - var(--max)) / 2));
+  z-index: 80;
+}
+.index-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 102px;
+  min-height: 44px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  padding: 10px 15px;
+  font-size: 11px;
+  position: relative;
+  z-index: 2;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.index-trigger span {
+  font-size: 21px;
+  line-height: 0.8;
+}
+.index-trigger[aria-expanded="true"],
+.index-trigger:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+.index-panel {
+  position: absolute;
+  top: 58px;
+  right: 0;
+  width: min(510px, calc(100vw - var(--gutter) * 2));
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 25px 30px;
+  animation: index-in 0.45s var(--ease) both;
+  transform-origin: top right;
+  box-shadow: 0 16px 50px #22241f15;
+  max-height: calc(100svh - 110px);
+  overflow: auto;
+}
+.index-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 25px;
+  font-size: 9px;
+  color: var(--muted);
+}
+.index-heading > span:last-child {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+.index-panel > a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-block: 19px;
+  border-top: 1px solid var(--line);
+}
+.index-number {
+  font-size: 10px;
+  color: var(--muted);
+  align-self: flex-start;
+  padding-top: 5px;
+}
+.index-panel strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  transition: transform 0.35s var(--ease);
+}
+.index-panel small {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.index-panel > a > svg {
+  margin-left: auto;
+  transition: transform 0.35s var(--ease);
+}
+.index-panel > a:hover strong {
+  transform: translateX(6px);
+}
+.index-panel > a:hover > svg {
+  transform: rotate(45deg);
+}
+.index-end {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid var(--line);
+  padding-top: 23px;
+  margin-top: 6px;
+}
+.index-end img {
+  width: 50px;
+  height: 63px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.index-end p {
+  font-size: 11px;
+  line-height: 1.6;
+}
+.index-end a {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  font-size: 10px;
+  align-items: center;
+}
+@keyframes index-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.96);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+@media (max-width: 760px) {
+  .site-header {
+    height: 91px;
+    padding-right: 115px;
+    gap: 15px;
+  }
+  .brand > span {
+    font-size: 27px;
+  }
+  .brand > svg {
+    width: 24px;
+  }
+  .masthead-note,
+  .nav-contact {
+    display: none;
+  }
+  .index-navigation {
+    top: 24px;
+  }
+  .index-trigger {
+    width: 92px;
+  }
+  .index-panel {
+    padding: 22px;
+  }
+  .index-panel strong {
+    font-size: 25px;
+  }
+}

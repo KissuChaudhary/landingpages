@@ -1,0 +1,237 @@
+.back-link {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--muted);
+  padding-block: 15px;
+}
+.back-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.case-intro {
+  padding-block: 18px 60px;
+}
+.case-intro .eyebrow {
+  margin-top: 43px;
+}
+.case-intro h1 {
+  font-size: clamp(64px, 13vw, 180px);
+  font-weight: 650;
+}
+.case-deck {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 36px;
+}
+.case-deck h2 {
+  font-size: clamp(29px, 3.3vw, 47px);
+  line-height: 1.12;
+  max-width: 560px;
+}
+.case-deck p {
+  max-width: 470px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 35px;
+}
+.case-tags li {
+  border: 1px solid var(--line);
+  padding: 8px 11px;
+  font-size: 9px;
+}
+.case-image {
+  margin-block: 0;
+}
+.case-image img {
+  width: 100%;
+  max-height: 690px;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 3px;
+}
+.case-image figcaption {
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 15px;
+}
+.case-story {
+  padding-block: 70px;
+}
+.case-story section {
+  display: grid;
+  grid-template-columns: 35px 1fr 1.5fr;
+  gap: 35px;
+  padding-block: 39px;
+  border-top: 1px solid var(--line);
+}
+.case-story section > span {
+  color: var(--muted);
+  font-size: 9px;
+  padding-top: 8px;
+}
+.case-story h2 {
+  font-size: 29px;
+}
+.case-story p {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 600px;
+}
+.case-outro {
+  display: flex;
+  justify-content: space-between;
+  gap: 35px;
+  padding-block: 30px 65px;
+  font-size: 16px;
+}
+.next-project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+  border-block: 1px solid var(--line);
+  padding-block: 40px;
+}
+.next-project > span {
+  font-size: 10px;
+  color: var(--muted);
+  width: 100%;
+}
+.next-project strong {
+  font-size: clamp(44px, 7vw, 90px);
+  font-weight: 550;
+  letter-spacing: -0.07em;
+}
+.note-page {
+  padding-block: 18px 70px;
+}
+.note-page > header {
+  padding-block: 45px 60px;
+  max-width: 880px;
+}
+.note-page h1 {
+  font-size: clamp(44px, 6.4vw, 87px);
+  line-height: 1.06;
+  letter-spacing: -0.065em;
+}
+.note-page header > p {
+  font-size: 20px;
+  color: var(--muted);
+  margin-top: 35px;
+  max-width: 650px;
+}
+.note-page header > span {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 28px;
+}
+.note-page > article {
+  max-width: 650px;
+  margin-left: 24%;
+  padding-top: 20px;
+}
+.note-page article section {
+  margin-bottom: 50px;
+}
+.note-page article h2 {
+  font-size: 30px;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+.note-page article p {
+  font-size: 15px;
+  color: #53564b;
+  line-height: 1.9;
+  margin-top: 19px;
+}
+.next-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 23px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 38px;
+  margin-top: 75px;
+}
+.next-note span {
+  font-size: 10px;
+  color: var(--muted);
+  width: 100%;
+}
+.next-note strong {
+  font-size: clamp(27px, 3.8vw, 47px);
+  letter-spacing: -0.05em;
+  font-weight: 550;
+  max-width: 750px;
+}
+.next-note svg {
+  margin-left: auto;
+}
+@media (max-width: 760px) {
+  .case-intro {
+    padding-bottom: 37px;
+  }
+  .case-intro .eyebrow {
+    margin-top: 27px;
+  }
+  .case-intro h1 {
+    font-size: clamp(42px, 11.7vw, 86px);
+  }
+  .case-deck {
+    grid-template-columns: 1fr;
+    gap: 23px;
+    margin-top: 27px;
+  }
+  .case-deck p {
+    font-size: 13px;
+  }
+  .case-image img {
+    height: 460px;
+  }
+  .case-story {
+    padding-block: 44px;
+  }
+  .case-story section {
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+    padding-block: 28px;
+  }
+  .case-story p {
+    grid-column: 2;
+    font-size: 13px;
+  }
+  .case-story h2 {
+    font-size: 27px;
+  }
+  .case-outro {
+    display: block;
+    padding-bottom: 40px;
+  }
+  .case-outro a {
+    margin-top: 20px;
+  }
+  .note-page > header {
+    padding-block: 28px 38px;
+  }
+  .note-page header > p {
+    font-size: 17px;
+    margin-top: 26px;
+  }
+  .note-page > article {
+    margin-left: 0;
+  }
+  .note-page article h2 {
+    font-size: 28px;
+  }
+  .note-page article p {
+    font-size: 14px;
+  }
+}

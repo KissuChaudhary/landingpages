@@ -1,0 +1,352 @@
+.hero {
+  padding-top: 31px;
+}
+.hero > .eyebrow {
+  margin-bottom: 24px;
+}
+.hero-intro {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr;
+  gap: 35px;
+  align-items: end;
+  padding-bottom: 45px;
+}
+.hero h1 {
+  font-size: clamp(58px, 7.85vw, 119px);
+  font-weight: 650;
+  letter-spacing: -0.063em;
+  word-spacing: 0.035em;
+}
+.hero h1 > span {
+  display: block;
+}
+.hero h1 > span:last-child {
+  position: relative;
+  z-index: 1;
+  width: max-content;
+}
+.hero h1 > span:last-child::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 20%;
+  bottom: -2%;
+  width: 77%;
+  height: 13%;
+  background: var(--accent);
+  transform: rotate(-1.7deg);
+  transform-origin: left;
+}
+.hero-aside {
+  padding: 0 0 5px 3px;
+}
+.hero-aside p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.hero-aside a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 11px;
+}
+.hero-aside a:hover svg {
+  transform: translate(3px, -3px);
+}
+.hero-aside svg {
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.contact-sheet {
+  padding: 13px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 5px;
+}
+.sheet-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 3px 5px 15px;
+  font-size: 9px;
+}
+.sheet-topline > span:last-child {
+  font-size: 7px;
+  letter-spacing: 0.13em;
+  color: #f5f4f0a6;
+}
+.sheet-frames {
+  display: flex;
+  gap: 10px;
+  height: clamp(325px, 28vw, 420px);
+}
+.sheet-frame {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 2px;
+  background: var(--lilac);
+  color: white;
+  text-align: left;
+  transition: flex 0.85s var(--ease);
+}
+.sheet-frame[data-active="true"] {
+  flex: 1.8;
+}
+.sheet-frame:focus-visible {
+  outline-color: var(--accent);
+  outline-offset: 3px;
+}
+.sheet-frame > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 43%;
+  transition:
+    transform 1s var(--ease),
+    filter 0.8s;
+}
+.sheet-frame:not([data-active="true"]) > img {
+  filter: saturate(0.75);
+}
+.sheet-mint > img {
+  object-position: 50% 21%;
+}
+.sheet-frame[data-active="true"] > img {
+  transform: scale(1.035);
+}
+.sheet-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#0001, transparent 45%, #0006);
+  pointer-events: none;
+}
+.sheet-frame-top {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+.sheet-frame-top > span:last-child {
+  font-size: 7px;
+}
+.sheet-frame-title {
+  position: absolute;
+  bottom: 23px;
+  left: 22px;
+  right: 22px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: clamp(24px, 3.6vw, 54px);
+  letter-spacing: -0.07em;
+  font-weight: 650;
+}
+.sheet-frame-title svg {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translate(-5px, 5px);
+  transition:
+    transform 0.5s,
+    opacity 0.5s;
+}
+.sheet-frame[data-active="true"] .sheet-frame-title svg {
+  opacity: 1;
+  transform: none;
+}
+.crop-corner {
+  position: absolute;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  border-style: solid;
+  border-color: #fff9;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.crop-tl {
+  left: 15px;
+  top: 42px;
+  border-width: 1px 0 0 1px;
+}
+.crop-br {
+  right: 15px;
+  bottom: 83px;
+  border-width: 0 1px 1px 0;
+}
+.sheet-frame[data-active="true"] .crop-corner {
+  opacity: 1;
+}
+.sheet-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 5px 3px;
+  font-size: 9px;
+}
+.sheet-caption > span {
+  animation: caption-in 0.45s var(--ease);
+}
+.sheet-caption > a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 8px;
+  color: #f5f4f0c6;
+}
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 24px;
+  color: var(--muted);
+  font-size: 9px;
+}
+.hero-bottom > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+@keyframes caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 1050px) {
+  .hero-intro {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(60px, 9vw, 98px);
+  }
+  .hero-aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .hero-aside p {
+    max-width: 380px;
+  }
+  .hero-aside a {
+    min-width: 220px;
+    margin-top: 0;
+  }
+  .sheet-frame-title {
+    font-size: 34px;
+  }
+}
+@media (max-width: 760px) {
+  .hero {
+    padding-top: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 9.55vw, 72px);
+    letter-spacing: -0.062em;
+    line-height: 1.04;
+  }
+  .hero-intro {
+    padding-bottom: 31px;
+    gap: 25px;
+  }
+  .hero-aside {
+    display: block;
+    padding: 0;
+  }
+  .hero-aside p {
+    max-width: 410px;
+    font-size: 12px;
+  }
+  .hero-aside a {
+    margin-top: 19px;
+    max-width: 245px;
+  }
+  .contact-sheet {
+    padding: 9px;
+  }
+  .sheet-topline {
+    font-size: 8px;
+    padding-bottom: 12px;
+  }
+  .sheet-topline > span:last-child {
+    display: none;
+  }
+  .sheet-frames {
+    height: 290px;
+    gap: 6px;
+  }
+  .sheet-frame {
+    flex: 0.65;
+  }
+  .sheet-frame[data-active="true"] {
+    flex: 2.2;
+  }
+  .sheet-frame-title {
+    left: 11px;
+    right: 10px;
+    bottom: 17px;
+    font-size: 27px;
+  }
+  .sheet-frame-title svg {
+    width: 18px;
+  }
+  .sheet-frame:not([data-active="true"]) .sheet-frame-title {
+    opacity: 0;
+  }
+  .sheet-frame-top {
+    left: 11px;
+    right: 10px;
+    top: 12px;
+  }
+  .sheet-frame-top > span:last-child {
+    display: none;
+  }
+  .crop-tl {
+    top: 32px;
+    left: 10px;
+  }
+  .crop-br {
+    bottom: 60px;
+    right: 10px;
+  }
+  .sheet-caption {
+    min-height: 42px;
+    padding-top: 12px;
+    font-size: 8px;
+  }
+  .sheet-caption > a {
+    font-size: 0;
+    gap: 0;
+  }
+  .hero-bottom {
+    font-size: 8px;
+    padding-block: 18px;
+  }
+  .hero-bottom > span:last-child {
+    display: none;
+  }
+}
