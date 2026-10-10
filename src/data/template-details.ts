@@ -1,4 +1,5 @@
 import { goodfolkDetails } from './template-catalog/goodfolk';
+import { encoreDetails } from './template-catalog/encore';
 import { shearDetails } from './template-catalog/shear';
 import { daymarkDetails } from './template-catalog/daymark';
 import { arcloDetails } from './template-catalog/arclo';
@@ -55,6 +56,7 @@ export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
   oddline: oddlineDetails,
   goodfolk: goodfolkDetails,
   daymark: daymarkDetails,
+  encore: encoreDetails,
   shear: shearDetails,
   notch: notchDetails,
   serein: sereinDetails,

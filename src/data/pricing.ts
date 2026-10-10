@@ -46,6 +46,7 @@ export const TEMPLATE_CHECKOUT: Record<string, string> = {
   oddline: '',
   goodfolk: '',
   notch: '',
+  encore: '',
   shear: '',
   sylva: '',
   arclo: '',

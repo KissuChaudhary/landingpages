@@ -1,0 +1,30 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3565,["974","static/chunks/app/page-e30a1916380c44ac.js"],"MotionProvider"]
+5:I[8686,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Header"]
+6:I[7073,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Hero"]
+7:I[8840,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Statement"]
+8:I[9646,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Services"]
+9:I[2580,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Process"]
+a:I[7015,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Results"]
+b:I[3533,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Why"]
+c:I[8639,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Stack"]
+d:I[9957,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Testimonials"]
+e:I[5449,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Pricing"]
+f:I[6375,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Faq"]
+10:I[7514,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Closing"]
+11:I[8314,["974","static/chunks/app/page-e30a1916380c44ac.js"],"Footer"]
+12:I[4431,[],"OutletBoundary"]
+14:I[5278,[],"AsyncMetadataOutlet"]
+16:I[4431,[],"ViewportBoundary"]
+18:I[4431,[],"MetadataBoundary"]
+19:"$Sreact.suspense"
+1b:I[7150,[],""]
+:HL["/demos/encore/_next/static/css/e318e8a158f62485.css","style"]
+0:{"P":null,"b":"3drGdQmDF95nOToCu_s6l","p":"/demos/encore","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/demos/encore/_next/static/css/e318e8a158f62485.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_fdc47f __variable_6dd542","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"document.documentElement.classList.add(\"js\");try{if(localStorage.getItem(\"encore-motion\")===\"paused\")document.documentElement.dataset.motion=\"paused\"}catch(e){}"}}]}],["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L4",null,{"children":[["$","a",null,{"href":"#main","className":"sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white","children":"Skip to content"}],["$","$L5",null,{}],["$","main",null,{"id":"main","children":[["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}],["$","$La",null,{}],["$","$Lb",null,{}],["$","$Lc",null,{}],["$","$Ld",null,{}],["$","$Le",null,{}],["$","$Lf",null,{}],["$","$L10",null,{}]]}],["$","$L11",null,{}]]}],null,["$","$L12",null,{"children":["$L13",["$","$L14",null,{"promise":"$@15"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L16",null,{"children":"$L17"}],null],["$","$L18",null,{"children":["$","div",null,{"hidden":true,"children":["$","$19",null,{"fallback":null,"children":"$L1a"}]}]}]]}],false]],"m":"$undefined","G":["$1b",[]],"s":false,"S":true}
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff"}]]
+13:null
+1c:I[622,[],"IconMark"]
+15:{"metadata":[["$","title","0",{"children":"Encore | Email & SMS retention for e-commerce brands"}],["$","meta","1",{"name":"description","content":"Encore designs, writes and runs the email and SMS flows that turn first-time buyers into regulars. Book a strategy call or claim a free audit."}],["$","meta","2",{"property":"og:title","content":"Encore | Email & SMS retention for e-commerce brands"}],["$","meta","3",{"property":"og:description","content":"Encore designs, writes and runs the email and SMS flows that turn first-time buyers into regulars. Book a strategy call or claim a free audit."}],["$","meta","4",{"property":"og:site_name","content":"Encore"}],["$","meta","5",{"property":"og:type","content":"website"}],["$","meta","6",{"name":"twitter:card","content":"summary"}],["$","meta","7",{"name":"twitter:title","content":"Encore | Email & SMS retention for e-commerce brands"}],["$","meta","8",{"name":"twitter:description","content":"Encore designs, writes and runs the email and SMS flows that turn first-time buyers into regulars. Book a strategy call or claim a free audit."}],["$","link","9",{"rel":"icon","href":"/demos/encore/icon.svg"}],["$","$L1c","10",{}]],"error":null,"digest":"$undefined"}
+1a:"$15:metadata"

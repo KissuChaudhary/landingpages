@@ -1,4 +1,5 @@
 import { goodfolkTemplate } from './template-catalog/goodfolk';
+import { encoreTemplate } from './template-catalog/encore';
 import { shearTemplate } from './template-catalog/shear';
 import { daymarkTemplate } from './template-catalog/daymark';
 import { arcloTemplate } from './template-catalog/arclo';
@@ -45,6 +46,7 @@ export const TEMPLATES: TemplateItem[] = [
     oddlineTemplate,
     goodfolkTemplate,
     daymarkTemplate,
+    encoreTemplate,
     shearTemplate,
     notchTemplate,
     sereinTemplate,

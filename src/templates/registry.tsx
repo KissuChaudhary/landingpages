@@ -16,6 +16,7 @@ export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'oddline': dynamic(() => import('@/templates/oddline'), { ssr: false, loading: Loading }),
   'goodfolk': dynamic(() => import('@/templates/goodfolk'), { ssr: false, loading: Loading }),
   'daymark': dynamic(() => import('@/templates/daymark'), { ssr: false, loading: Loading }),
+  'encore': dynamic(() => import('@/templates/encore'), { ssr: false, loading: Loading }),
   'shear': dynamic(() => import('@/templates/shear'), { ssr: false, loading: Loading }),
   'notch': dynamic(() => import('@/templates/notch'), { ssr: false, loading: Loading }),
   'serein': dynamic(() => import('@/templates/serein'), { ssr: false, loading: Loading }),

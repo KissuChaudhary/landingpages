@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* ── Palette ────────────────────────────────────────────────────────────────
+ * Change the brand here. `--berry` is the accent; `--ink` is the text and the
+ * dark surfaces. The shadcn-style names below (background, foreground,
+ * primary…) are what the Hairline UI components in components/hairline read.
+ */
+:root {
+  --paper: #ffffff;
+  --mist: #f5f4f7;
+  --mist-2: #ecebf1;
+  --line: #e5e3ea;
+  --ink: #110f17;
+  --ink-2: #1c1924;
+  --muted-text: #5f5b6b;
+  --subtle: #8f8b9a;
+  --berry: #e0195c;
+  --berry-ink: #b8134a;
+  --berry-wash: #fde9f0;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted: var(--mist);
+  --muted-foreground: var(--muted-text);
+  --border: var(--line);
+  --primary: var(--berry);
+  --primary-foreground: #ffffff;
+  --ring: var(--ink);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --throw: cubic-bezier(0.34, 1.36, 0.64, 1);
+}
+
+/* Sections on ink or berry. */
+.tone-dark {
+  --background: var(--ink-2);
+  --foreground: #f6f4f9;
+  --muted: #221e2b;
+  --muted-foreground: #a7a2b3;
+  --border: rgb(255 255 255 / 0.1);
+  --ring: #ffffff;
+  color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-mist-2: var(--mist-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-subtle: var(--subtle);
+  --color-berry: var(--berry);
+  --color-berry-ink: var(--berry-ink);
+  --color-berry-wash: var(--berry-wash);
+  --font-sans: var(--font-hubot), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-azeret), ui-monospace, monospace;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p {
+  text-wrap: pretty;
+}
+::selection {
+  background: var(--berry);
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Display type: Hubot Sans, condensed through its width axis. Set --wdth on
+   an element to change how narrow its headings are. */
+.display {
+  --wdth: 80;
+  font-variation-settings: "wdth" var(--wdth);
+  font-weight: 640;
+  letter-spacing: -0.025em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Section text that arrives when you do ────────────────────────────────
+ * Words rise out of a light blur while the type narrows into place from a
+ * wider cut. Hidden only once JavaScript is running (html.js).
+ */
+.reveal-word {
+  display: inline-block;
+  font-variation-settings: "wdth" var(--wdth, 100);
+}
+.js [data-reveal="wait"] .reveal-word {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(0.3em);
+  font-variation-settings: "wdth" calc(var(--wdth, 100) + 28);
+}
+[data-reveal="in"] .reveal-word {
+  --at: calc(var(--base, 0ms) + var(--i) * 34ms);
+  transition:
+    opacity 520ms var(--ease) var(--at),
+    filter 640ms var(--ease) var(--at),
+    transform 800ms var(--ease) var(--at),
+    font-variation-settings 1000ms var(--ease) var(--at);
+}
+.fade-up {
+  transition:
+    opacity 700ms var(--ease) var(--delay, 0ms),
+    transform 900ms var(--ease) var(--delay, 0ms),
+    filter 700ms var(--ease) var(--delay, 0ms);
+}
+.js .fade-up[data-reveal="wait"] {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(6px);
+}
+
+/* Screens (images of product and email designs) arrive out of a light blur. */
+.screen {
+  transition:
+    opacity 700ms var(--ease),
+    transform 1100ms var(--ease),
+    filter 800ms var(--ease),
+    clip-path 900ms var(--ease);
+}
+.js .screen[data-show="false"] {
+  opacity: 0;
+  transform: scale(1.04) translateY(10px);
+  filter: blur(10px);
+}
+
+/* The statement: each word's ink follows the scroll (--lit from JS). */
+.lit-word {
+  color: color-mix(in oklab, var(--ink) calc(18% + var(--lit, 0) * 82%), transparent);
+  transition: color 160ms linear;
+}
+
+/* The process line fills with --p: down on phones, across on wide screens. */
+.timeline-fill {
+  transform: scaleY(var(--p, 0));
+}
+@media (min-width: 1024px) {
+  .timeline-fill {
+    transform: scaleX(var(--p, 0));
+  }
+}
+
+/* Buttons: the arrow slides out and a new one slides in on hover. */
+.btn-arrow {
+  position: relative;
+  display: inline-grid;
+  overflow: hidden;
+}
+.btn-arrow > svg {
+  grid-area: 1 / 1;
+  transition: transform 460ms var(--ease);
+}
+.btn-arrow > svg:last-child {
+  transform: translate(-130%, 130%);
+}
+.btn:hover .btn-arrow > svg:first-child {
+  transform: translate(130%, -130%);
+}
+.btn:hover .btn-arrow > svg:last-child {
+  transform: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ── Hairline UI motion primitives (components/hairline) ───────────────── */
+@keyframes ui-col-in {
+  from {
+    max-width: 0;
+    opacity: 0;
+  }
+  to {
+    max-width: 1em;
+    opacity: 1;
+  }
+}
+@keyframes ui-col-out {
+  from {
+    max-width: 1em;
+    opacity: 1;
+  }
+  to {
+    max-width: 0;
+    opacity: 0;
+  }
+}
+
+/* ── Loops ─────────────────────────────────────────────────────────────── */
+@keyframes en-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes en-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes en-counter {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes en-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes en-wipe-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes en-wipe-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes en-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--from, 18px));
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Paused motion and reduced motion stop every loop on the page. */
+html[data-motion="paused"] .loop,
+html[data-motion="paused"] .loop * {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .loop,
+  .loop * {
+    animation: none !important;
+  }
+  .js [data-reveal="wait"] .reveal-word,
+  .js .fade-up[data-reveal="wait"],
+  .js .screen[data-show="false"] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    font-variation-settings: "wdth" var(--wdth, 100);
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+  }
+}

@@ -5,6 +5,9 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
   'number-roll': [
     { template: 'cutroom', where: 'Pricing calculator' },
     { template: 'emberline', where: 'Pricing' },
+    { template: 'encore', where: 'Hero' },
+    { template: 'encore', where: 'Results' },
+    { template: 'encore', where: 'Why' },
     { template: 'halftone', where: 'Pricing' },
     { template: 'influence', where: 'Pricing' },
     { template: 'prism', where: 'Pricing' },
@@ -18,6 +21,7 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
   'text-morph': [
     { template: 'cutroom', where: 'Pricing calculator' },
     { template: 'emberline', where: 'Pricing' },
+    { template: 'encore', where: 'Hero' },
     { template: 'footnote', where: 'Sign-up' },
     { template: 'halftone', where: 'Pricing' },
     { template: 'influence', where: 'Pricing' },
@@ -30,9 +34,11 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
     { template: 'tempo', where: 'Pricing' },
   ],
   'faq-accordion': [
+    { template: 'encore', where: 'Faq' },
     { template: 'shear', where: 'Faq' },
   ],
   'logo-marquee': [
+    { template: 'encore', where: 'Hero' },
     { template: 'shear', where: 'Hero' },
   ],
   'pricing-toggle': [

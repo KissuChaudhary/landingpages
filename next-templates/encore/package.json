@@ -1,0 +1,29 @@
+{
+  "name": "encore",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A motion-led landing page for an email and SMS retention studio.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "export:demo": "node scripts/export-demo.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.27",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "engines": { "node": ">=20.9.0" },
+  "overrides": { "postcss": "^8.5.29" }
+}
