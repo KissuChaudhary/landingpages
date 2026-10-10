@@ -2,9 +2,7 @@
 
 Internal design record. This file is excluded from the buyer package.
 
-Reference studied: https://overtake-wbs.framer.website/ . Live desktop inspection covered the hero, manifesto/services, service-image transitions and results sections. The page content and lower section hierarchy were also inspected through the page snapshot.
-
-Retained the reference's confident sans typography, clean white/green contrast, generous rounded campaign surfaces and restrained directional interaction. No reference image, brand mark, client name, metric, testimonial or copy was reused.
+Design system reference: a confident growth-marketing system with sans typography, clean white/green contrast, generous rounded campaign surfaces and restrained directional interaction. The form and rhythm are retained while the brand, image language, metrics, testimonials and copy are rebuilt around an independent growth and retention studio.
 
 Changed the positioning to an independent growth and retention studio. The new identity uses a slotted geometric mark, Figtree, forest green, lime, lilac and coral. Original product artwork gives the campaign concepts a coherent physical material language.
 

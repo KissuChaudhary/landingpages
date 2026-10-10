@@ -1,6 +1,6 @@
 # Tessera design direction
 
-Reference study: https://mahadeva.framer.ai/. Observed on desktop: dark centered opening with drifting pastel rectangular forms; block wipe headlines; a light mission statement; horizontally moving voxel service cards; dark wide case-study rows; staggered pastel metrics; a tool grid; testimonial movement; comparison panels; animated pricing selection and FAQ.
+Design system reference: an AI-systems studio aesthetic with a dark centered opening, drifting pastel rectangular forms, block-wipe headlines, a light mission statement, horizontally moving voxel service cards, dark wide case-study rows, staggered pastel metrics, a tool grid, testimonial movement, comparison panels and animated pricing selection. The broad motion vocabulary is retained while the brand, positioning, copy, geometry, hero composition, section hierarchy and interactions are rebuilt.
 
 The new work adopts only the broad motion vocabulary: modular forms, block-shaped reveals, distinct dark/light chapters and transforming controls. It changes the brand, positioning, copy, geometry, hero composition, section hierarchy and detailed interactions. No reference text, logo, image or script is reused.
 

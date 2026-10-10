@@ -47,6 +47,116 @@
         "NEXT_DIST_DIR": ".next-verify"
       },
       "port": 3200
+    },
+    {
+      "name": "notch-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/notch/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/notch",
+        "-p",
+        "3417"
+      ],
+      "port": 3417
+    },
+    {
+      "name": "turnout-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/turnout/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/turnout",
+        "-p",
+        "3460"
+      ],
+      "port": 3460
+    },
+    {
+      "name": "bounce-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/bounce/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/bounce",
+        "-p",
+        "3427"
+      ],
+      "port": 3427
+    },
+    {
+      "name": "turnout-site-check",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "node_modules/next/dist/bin/next",
+        "start",
+        "-p",
+        "3480"
+      ],
+      "env": {
+        "NEXT_DIST_DIR": ".next-verify-turnout"
+      },
+      "port": 3480
+    },
+    {
+      "name": "inlay-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/inlay/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/inlay",
+        "-p",
+        "3470"
+      ],
+      "port": 3470
+    },
+    {
+      "name": "plumb-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/plumb/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/plumb",
+        "-p",
+        "3488"
+      ],
+      "port": 3488
+    },
+    {
+      "name": "tessera-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/tessera/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/tessera",
+        "-p",
+        "3490"
+      ],
+      "port": 3490
+    },
+    {
+      "name": "rivet-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/rivet/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/rivet",
+        "-p",
+        "3496"
+      ],
+      "port": 3496
+    },
+    {
+      "name": "conduit-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "next-templates/conduit/node_modules/next/dist/bin/next",
+        "dev",
+        "next-templates/conduit",
+        "-p",
+        "3497"
+      ],
+      "port": 3497
     }
   ]
 }

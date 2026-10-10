@@ -2,7 +2,7 @@
 
 ## Brief
 
-The owner asked for a template close to optivio.framer.website (an SEO-audit Framer template): same section rhythm and motion vocabulary, a new name, product, positioning and copy, nothing that reads as a clone, and better than the reference wherever possible. No mock popups; buyers plug in and run.
+The owner asked for a template with the same section rhythm and motion vocabulary as a high-performing SEO-audit SaaS pattern, but with a new name, product, positioning and copy, and a clearer identity so it does not read as a clone. No mock popups; buyers plug in and run.
 
 ## Positioning
 
@@ -10,13 +10,13 @@ Shear: cloud cost control. It finds idle and oversized cloud resources and ships
 
 ## Visual system
 
-- Near-black frames (`#08090b`) inset from the page edge open and close the page (hero, footer). White page, cool grey containers (`#f2f4f3`) instead of the reference's cream. One accent: mint (`#7cf0b5`), mint-ink (`#0a8552`) for text on light. No orange.
+- Near-black frames (`#08090b`) inset from the page edge open and close the page (hero, footer). White page, cool grey containers (`#f2f4f3`) with a soft, airy neutral base. One accent: mint (`#7cf0b5`), mint-ink (`#0a8552`) for text on light. No orange.
 - Mona Sans (variable, with its width axis) for everything; Fragment Mono for figures in scenes and the glyph canvas. Headings at weight 430–460, tracking −0.035 to −0.045em.
 - Pill buttons with a dark disc holding the mark; the mark's halves slide along their cut on hover.
 
-## Section map (reference → Shear)
+## Section map
 
-| Reference | Shear | Improvement |
+| Structure | Shear | Improvement |
 | --- | --- | --- |
 | Hero over an ASCII video, word swap | Hero over a live glyph canvas ("the bill, falling"), word morph through the width axis | Canvas reacts to the cursor, pulses on each word change, fades under the copy, sleeps off screen |
 | Logo pills | Logo marquee tiles (Hairline UI) | Eases to a stop on hover |

@@ -1,6 +1,6 @@
 # Offscript design direction
 
-Reference studied: https://shinta.framer.media/. Its pill navigation, stacked portrait, curved marquee and pink accents supplied a quality benchmark. Offscript uses no reference media, copy, compositions or interaction systems.
+Design system reference: a quality benchmark for pill navigation, stacked portrait composition, curved marquee motion and pink accents. Offscript uses no reference media, copy, compositions or interaction systems.
 
 The unfinished folder had been mixed with an Oddline draft. It was archived in `work/offscript/draft-backup` before implementation. The dark olive split hero, orbit artwork, service tabs, selectable pricing card and starbursts were replaced.
 

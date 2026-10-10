@@ -1,8 +1,6 @@
 # Bounce design direction
 
-Reference: https://tokko.framer.website/ (a content-creator growth course), inspected on 10 October 2026 with headless Chromium: full-page captures and load frames.
-
-What Tokko does: white, airy pages in Geist; a centred pill nav; a centred hero title with floating metric chips and a fanned row of tilted portrait cards; six colour-lit portrait cards with text overlays; platform icons with notification badges; a cloud of icon pills; an instructor photo card plus a story card with follower counts and logos; three saturated module cards (purple, orange, red) with lesson lists; a big statement with floating chips over a video card; scattered, rotated testimonial cards; eight blue "included" tiles; tilted bonus cards; three saturated price cards; a centred FAQ; a grey closing panel with fanned photos. Motion is mostly blur-and-fade entrances and fanning cards.
+Design system reference: a bright, playful, course-marketing system with white space, Geist typography, a centred pill nav, a centred hero title with floating metric chips and a fanned row of tilted portrait cards, six colour-lit portrait cards with text overlays, platform icons with notification badges, a cloud of icon pills, an instructor photo card plus a story card with follower counts and logos, three saturated module cards (purple, orange, red) with lesson lists, a big statement with floating chips over a video card, scattered rotated testimonial cards, eight blue "included" tiles, tilted bonus cards, three saturated price cards, a centred FAQ and a grey closing panel with fanned photos. Motion is mostly blur-and-fade entrances and fanning cards.
 
 The owner asked for a full white label: keep the bright, playful, colourful vibe and quality, but change the subject, content, layouts and section hierarchy so it doesn't read as a clone, and beat the reference wherever possible.
 

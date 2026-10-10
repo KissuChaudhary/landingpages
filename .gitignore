@@ -50,6 +50,11 @@ Thumbs.db
 # second dev server build dir (see next.config.ts)
 .next-hv/
 .next-verify/
+/.next-*/
+
+# Local development work
+/work/
+/works/
 
 # Template zips are no longer offered for download
 public/downloads/
