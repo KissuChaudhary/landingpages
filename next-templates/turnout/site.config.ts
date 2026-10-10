@@ -41,7 +41,6 @@ export const site = {
   cta: "Plan an event",
 
   /** Visitors can pause the looping parts (photo deck, ribbon, logo strip). Remembered on their device. */
-  motion: { storageKey: "turnout-motion" },
 
   hero: {
     // Each string is one line of the headline. `highlight` gets the lime marker.

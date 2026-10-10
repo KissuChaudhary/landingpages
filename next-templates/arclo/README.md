@@ -30,7 +30,7 @@ npm run dev
 
 Three keyboard-accessible close steps: match bank lines, explain variances and route approvals. A finite four-step local run with source rows, a live log, a configurable dollar tolerance, matched and exception lines, clipboard output and a JSON record. “Source and rules” opens the rows and the tolerance control in place, and every “Run a sample close” button scrolls to the canvas and opens them. Nothing is posted to a ledger and no one is contacted.
 
-Monthly/yearly pricing with each plan linking to its checkout. Four keyboard-accessible onboarding steps. Two illustrative reconciliation views. An editable variance note with a tighten action; its explore button opens the variance step. Team story controls. Native FAQ and navigation disclosures. Mobile navigation. No popups: every button is a link or works in place. Motion preference remembers only its on/off value in local storage; system reduced motion is respected.
+Monthly/yearly pricing with each plan linking to its checkout. Four keyboard-accessible onboarding steps. Two illustrative reconciliation views. An editable variance note with a tighten action; its explore button opens the variance step. Team story controls. Native FAQ and navigation disclosures. Mobile navigation. No popups: every button is a link or works in place. Motion follows the system reduced-motion setting without storing a separate preference.
 
 ## Project map
 

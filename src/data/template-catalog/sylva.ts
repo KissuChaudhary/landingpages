@@ -23,7 +23,7 @@ export const sylvaDetails: TemplateDetails = {
     { name: "Plant detail pages", detail: "Each plant has its own character, light and scale guidance, three care notes and an enquiry link that carries the chosen plant into the form." },
     { name: "Approach and care", detail: "Native process disclosures, a central specimen with four care principles, an about page and a plant-care library." },
     { name: "Spaces", detail: "Original home, workspace and café images in an asymmetric gallery. Dedicated space pages carry the selected context into the enquiry." },
-    { name: "FAQ, closing and footer", detail: "Five native FAQ disclosures, a considered closing, a large wordmark and a remembered pause-motion control." },
+    { name: "FAQ, closing and footer", detail: "Five native FAQ disclosures, a considered closing, a large wordmark." },
     { name: "Project enquiries", detail: "Validated details, inline review, editable briefs, matching plain-text downloads and an optional JSON POST endpoint with retained input on failure. An email hand-off appears when configured." },
   ],
   customizeIntro: "Start in site.config.ts for brand, copy, imagery, links and contact delivery. Plant and space content each live in a focused data file.",
@@ -37,7 +37,7 @@ export const sylvaDetails: TemplateDetails = {
   ],
   fonts: ["Instrument Serif", "DM Sans"], dependencies: ["next", "react", "react-dom", "lucide-react"], styling: "CSS",
   images: "Eight original images generated with the built-in imagegen tool: three transparent plant cutouts and five interior/nursery photographs. Optimized WebP files ship locally; prompt provenance is included.",
-  node: "20.9", files: 48, lines: 4709,
+  node: "20.9", files: 64, lines: 4625,
   beforeLaunch: "Replace fictional studio branding, service descriptions and generated portfolio images as appropriate. Add your booking link, email or contact endpoint, and replace the included privacy notice. The template saves project briefs locally by default; it does not claim to send enquiries, sell plants or collect payments without your configured service.",
   updated: "2026-10-09",
 };

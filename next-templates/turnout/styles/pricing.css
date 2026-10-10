@@ -18,7 +18,7 @@
 .custom-photo img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; background: var(--iris); }
 .custom-online { position: absolute; top: -3px; right: -3px; width: 14px; height: 14px; border-radius: 99px; background: #3ccf6e; box-shadow: 0 0 0 3px var(--card); }
 .custom-online::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: #3ccf6e; animation: online 2.4s var(--ease) infinite; }
-html[data-paused="true"] .custom-online::after, html:not([data-motion="on"]) .custom-online::after { animation: none; }
+html:not([data-motion="on"]) .custom-online::after { animation: none; }
 @keyframes online { 0% { transform: scale(1); opacity: 0.6; } 70%, 100% { transform: scale(2.4); opacity: 0; } }
 .custom-copy { display: grid; gap: 2px; }
 .custom-copy strong { font-size: 15.5px; font-weight: 600; line-height: 1.25; }

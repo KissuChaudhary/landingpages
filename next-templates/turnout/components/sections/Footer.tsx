@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { site } from "@/site.config";
-import { useInView, useMotion } from "@/components/Motion";
+import { useInView } from "@/components/Motion";
 import { Mark } from "@/components/ui/Brand";
 import { SmartLink } from "@/components/ui/Action";
 import { TextMorph } from "@/components/ui/TextMorph";
-import { ArrowUp, Check, Instagram, LinkedIn, Pause, Play, TikTok } from "@/components/ui/Icons";
+import { ArrowUp, Check, Instagram, LinkedIn, TikTok } from "@/components/ui/Icons";
 
 // The page lifts away to reveal the footer underneath (on screens tall enough to show all
 // of it). The newsletter form posts to links.newsletterEndpoint, or opens an email when
@@ -88,7 +88,6 @@ function Newsletter() {
 
 export function Footer() {
   const { footer, links } = site;
-  const { paused, setPaused } = useMotion();
   const [markRef, markIn] = useInView<HTMLDivElement>({ threshold: 0.4 });
   const year = new Date().getFullYear();
 
@@ -168,13 +167,6 @@ export function Footer() {
             </SmartLink>
           ))}
         </span>
-        <button type="button" className="footer-motion" onClick={() => setPaused(!paused)} aria-pressed={paused}>
-          <span className="swap">
-            <Pause data-on={!paused} size={12} />
-            <Play data-on={paused} size={12} />
-          </span>
-          <TextMorph>{paused ? "Play motion" : "Pause motion"}</TextMorph>
-        </button>
         <a className="footer-top" href="#main">
           Back to top <ArrowUp size={14} />
         </a>

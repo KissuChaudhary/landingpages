@@ -174,12 +174,6 @@
   text-align: center;
   margin-top: 3px;
 }
-.hero-motion {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: var(--muted);
-}
 @keyframes journey-orbit {
   from {
     offset-distance: 0%;
@@ -469,9 +463,6 @@
   }
   .journey-stages {
     font-size: 12px;
-  }
-  .hero-motion {
-    right: 12px;
   }
   .campaign-grid {
     grid-template-columns: 1fr;

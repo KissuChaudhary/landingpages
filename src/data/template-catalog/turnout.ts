@@ -14,7 +14,7 @@ export const turnoutTemplate: TemplateItem = {
     "Ribbon of words that drifts on its own and speeds up with your scroll",
     "Self-shuffling photo deck, a pinned problem scene and folder-stacked services",
     "Five case studies, a filterable work index, journal and a working contact form",
-    "Rolling prices, morphing labels, a pause control and full reduced-motion support",
+    "Rolling prices, morphing labels and full reduced-motion support",
   ],
   accentColor: "from-lime-200 to-indigo-300",
   previewUrl: "/preview/turnout",
@@ -40,10 +40,10 @@ export const turnoutDetails: TemplateDetails = {
     {
       name: "Hero",
       detail:
-        "A three-line headline with a lime marker that draws in, a photo deck that shuffles itself on a CSS timer (tap, swipe or the arrow to advance, pause to hold), a lime ribbon of words that drifts behind it and speeds up with scroll, a latest-project card and the main call to action.",
+        "A three-line headline with a lime marker that draws in, a photo deck that shuffles itself on a CSS timer (tap, swipe or the arrow to advance, hover or focus to hold), a lime ribbon of words that drifts behind it and speeds up with scroll, a latest-project card and the main call to action.",
     },
     { name: "Navigation", detail: "A dark pill bar that narrows as you scroll, a highlight that glides between links and rests on the section you're reading, and a phone menu that grows out of the bar." },
-    { name: "Client strip", detail: "An endless strip of fictional client wordmarks that pauses on hover and with the motion control." },
+    { name: "Client strip", detail: "An endless strip of fictional client wordmarks that pauses on hover." },
     {
       name: "Problem scene",
       detail:
@@ -79,7 +79,7 @@ export const turnoutDetails: TemplateDetails = {
     "Twenty-six original photographs generated for the template and shipped as WebP, about 1.8 MB in all. The mark, client wordmarks and icons are SVG.",
   node: "20.9",
   files: 95,
-  lines: 5227,
+  lines: 5199,
   beforeLaunch:
     "Replace the fictional studio, clients, people, figures and case studies. Set `links.booking`, `links.contactEndpoint` and `links.newsletterEndpoint` (or keep the email fallbacks), plan links and `site.url` in `site.config.ts`, and swap in your own photography.",
   updated: "2026-10-10",

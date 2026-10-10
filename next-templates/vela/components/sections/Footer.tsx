@@ -1,12 +1,9 @@
 "use client";
-import { Pause, Play, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { path, bookingHref } from "@/lib/urls";
 import { Brand } from "@/components/ui/Brand";
-import { useMotion } from "@/components/Motion";
-import { TextMorph } from "@/components/ui/TextMorph";
 export function Footer() {
-  const { paused, reduced, toggle } = useMotion();
   return (
     <footer className="footer frame">
       <div className="footer-top">
@@ -41,21 +38,6 @@ export function Footer() {
           © {new Date().getUTCFullYear()} {site.footer.copyright}
         </span>
         <span>{site.footer.note}</span>
-        <button
-          type="button"
-          onClick={toggle}
-          aria-pressed={paused}
-          disabled={reduced}
-        >
-          {paused || reduced ? <Play size={12} /> : <Pause size={12} />}
-          <TextMorph>
-            {reduced
-              ? "Reduced motion"
-              : paused
-                ? "Resume motion"
-                : "Pause motion"}
-          </TextMorph>
-        </button>
       </div>
     </footer>
   );

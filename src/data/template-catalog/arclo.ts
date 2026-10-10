@@ -74,7 +74,7 @@ export const arcloDetails: TemplateDetails = {
     {
       name: "Questions and closing",
       detail:
-        "Native disclosures, gradient closing action, useful footer navigation and remembered motion preference.",
+        "Native disclosures, gradient closing action, useful footer navigation.",
     },
     {
       name: "Supporting pages",
@@ -113,8 +113,8 @@ export const arcloDetails: TemplateDetails = {
   images:
     "One original generated WebP team photograph, with CSS crops for illustrative portraits. Original SVG mark, grain texture, close canvas, feature scenes, framework and three journal cover studies.",
   node: "20.9",
-  files: 66,
-  lines: 6625,
+  files: 63,
+  lines: 6430,
   beforeLaunch:
     "Replace the fictional brand, sample close data, stories and prices. Configure your app URL, each plan’s monthly/yearly checkout and contact/waitlist endpoints. Replace policy placeholders. Local runs and downloads work; connect your ledger, bank feeds, authentication and posting in your application.",
   updated: "2026-10-09",

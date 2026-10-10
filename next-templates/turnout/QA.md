@@ -29,3 +29,9 @@ Checked 10 October 2026 with headless Chromium (Playwright from the npx cache) a
 ## Images
 
 26 fal generations (`openai/gpt-image-2.5/flare/text-to-image`, quality low). Raw files in `work/turnout-art/`, converted by `work/turnout-assets.cjs`; 1.8 MB of WebP in all, largest 155 KB.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

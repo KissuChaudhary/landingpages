@@ -2,7 +2,6 @@ import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
 import { href } from "@/lib/urls";
 import { Brand } from "../ui/Brand";
-import { MotionToggle } from "../Motion";
 export function Footer() {
   return (
     <footer className="footer">
@@ -49,7 +48,6 @@ export function Footer() {
             © {site.copyrightYear} {site.brand} Botanical Interiors
           </span>
           <a href={href("/privacy")}>Privacy</a>
-          <MotionToggle />
         </div>
       </div>
     </footer>

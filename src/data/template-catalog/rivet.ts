@@ -89,7 +89,7 @@ export const rivetDetails: TemplateDetails = {
     {
       name: "Supporting pages and footer",
       detail:
-        "Studio, contact, four case studies, journal and three articles, privacy holding page, custom 404, large brand footer, optional social destinations, and remembered motion preference.",
+        "Studio, contact, four case studies, journal and three articles, privacy holding page, custom 404, large brand footer, optional social destinations.",
     },
   ],
   customizeIntro:
@@ -131,7 +131,7 @@ export const rivetDetails: TemplateDetails = {
     "Two original monochrome photographs generated with the built-in imagegen tool and shipped as optimized WebP. Fictional project imagery, diagrams, and marks are editable HTML, CSS, React, and SVG.",
   node: "20.9",
   files: 75,
-  lines: 5811,
+  lines: 5710,
   beforeLaunch:
     "Replace illustrative projects, brand, fees, copy, and studio imagery. Set your canonical URL, business email, scheduling destination, and inquiry endpoint. Publish your own reviewed privacy notice. The local brief flow works without a backend; live submission needs your own validated endpoint and delivery service.",
   updated: "2026-10-10",

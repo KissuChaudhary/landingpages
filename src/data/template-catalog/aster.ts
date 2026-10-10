@@ -94,7 +94,7 @@ export const asterDetails: TemplateDetails = {
     {
       name: "Closing and footer",
       detail:
-        "An illustrated review-space closing, complete resource links and a remembered motion preference.",
+        "An illustrated review-space closing, complete resource links.",
     },
     {
       name: "Contact and resources",
@@ -136,8 +136,8 @@ export const asterDetails: TemplateDetails = {
   images:
     "Three original botanical paintings and four fictional editorial portraits generated with the built-in imagegen tool. Optimized WebP assets ship locally. Marks and interfaces are original editable SVG, CSS and React.",
   node: "20.9",
-  files: 61,
-  lines: 7708,
+  files: 74,
+  lines: 6742,
   beforeLaunch:
     "Replace fictional studios, quotes, projects and allowances. Configure app, checkout and contact destinations and replace policy placeholders. Local approvals, revision requests, briefs, reports and exports work; connect storage, file uploads, client permissions, notifications and billing for your production service.",
   updated: "2026-10-09",

@@ -3,18 +3,13 @@ import { createContext, useContext, useEffect, useState, useRef } from "react";
 const MotionContext = createContext({
   paused: false,
   system: false,
-  toggle: () => {},
 });
 export const useMotion = () => useContext(MotionContext);
 export function MotionProvider({ children }: { children: React.ReactNode }) {
-  const [manual, setManual] = useState(false);
   const [system, setSystem] = useState(false);
-  const paused = manual || system;
+  const paused = system;
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    try {
-      setManual(localStorage.getItem("daybreak-motion") === "paused");
-    } catch {}
     const sync = () => setSystem(media.matches);
     sync();
     media.addEventListener("change", sync);
@@ -39,15 +34,8 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.dataset.ready = "true";
     return () => observer.disconnect();
   }, [paused]);
-  function toggle() {
-    const next = !manual;
-    setManual(next);
-    try {
-      localStorage.setItem("daybreak-motion", next ? "paused" : "on");
-    } catch {}
-  }
   return (
-    <MotionContext.Provider value={{ paused, system, toggle }}>
+    <MotionContext.Provider value={{ paused, system }}>
       {children}
     </MotionContext.Provider>
   );

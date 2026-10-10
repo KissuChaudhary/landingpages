@@ -21,3 +21,9 @@ The repository's lint command could not run because ESLint has not been configur
 No booking service or JSON submission endpoint is configured. Direct delivery must be checked against the buyer's service before launch. Policy text, campaign concepts and indicative fees remain editable sample content.
 
 No commit, push, publication or paid service connection was performed. Other sessions' work was preserved.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

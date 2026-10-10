@@ -1,7 +1,6 @@
 import { site } from "@/site.config";
 import { href } from "@/lib/urls";
 import { Brand } from "../ui/Brand";
-import { MotionControl } from "../Motion";
 export function Footer() {
   return (
     <footer className="footer wrap">
@@ -39,7 +38,6 @@ export function Footer() {
           <a href={href("/privacy")}>Privacy</a>
           <a href={href("/terms")}>Terms</a>
         </div>
-        <MotionControl />
       </div>
     </footer>
   );

@@ -26,3 +26,9 @@ Reviewed October 10, 2026. This file is for template maintenance and is excluded
 ## Evidence
 
 Local captures are in `work/vela-desktop.jpg`, `work/vela-mobile.jpg` and `work/vela-contact-mobile.jpg`. Published catalog assets are in `public/previews/` and `public/og/`.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

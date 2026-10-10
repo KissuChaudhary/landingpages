@@ -26,7 +26,7 @@ export const velaDetails: TemplateDetails = {
     { name: "Principles and setup", detail: "Four benefits and three keyboard-accessible steps with coordinated illustrations." },
     { name: "Connections and stories", detail: "An editable six-tool diagram and two fictional team perspectives." },
     { name: "Pricing and questions", detail: "Three plans, monthly/yearly selection, exact annual totals and savings, configurable checkout links and native disclosures." },
-    { name: "Closing and footer", detail: "A coral closing, complete navigation and a remembered motion pause control." },
+    { name: "Closing and footer", detail: "A coral closing, complete navigation." },
     { name: "Contact", detail: "Validated request builder with selected plan and billing, configured JSON submission, mail draft or an explicit local-file fallback." },
   ],
   customizeIntro: "Start in site.config.ts for your brand, copy and destinations. Example records and coded scenes live in focused files.",
@@ -40,7 +40,7 @@ export const velaDetails: TemplateDetails = {
   ],
   fonts: ["Manrope"], dependencies: ["next", "react", "react-dom", "lucide-react"], styling: "CSS",
   images: "Original editable React, SVG and CSS artwork and initial-based avatars. No remote images or stock photography.",
-  node: "20.9", files: 57, lines: 2919,
+  node: "20.9", files: 57, lines: 2888,
   beforeLaunch: "Replace fictional teams, stories, figures, plans and connections. Configure signup, booking, checkout and contact. Connect your own CRM, accounts, storage and billing; product views use illustrative local records.",
   updated: "2026-10-10",
 };

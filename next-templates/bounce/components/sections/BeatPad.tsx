@@ -85,7 +85,7 @@ type Engine = ReturnType<typeof createEngine>;
 
 export function BeatPad() {
   const { pad } = site;
-  const { reduced, paused } = useMotion();
+  const { reduced } = useMotion();
   const [preset, setPreset] = useState(0);
   const [grid, setGrid] = useState<boolean[][]>(() => pad.presets[0].pattern.map(parse));
   const [bpm, setBpm] = useState(pad.presets[0].bpm);
@@ -134,8 +134,8 @@ export function BeatPad() {
     anchor(pos);
   }, [bpm, anchor, position]);
 
-  // Keep running while sound is on; otherwise only while visible and motion isn't paused.
-  const running = playing && (sound || (inView && !paused));
+  // Keep running while sound is on; otherwise only while visible.
+  const running = playing && (sound || inView);
 
   useEffect(() => {
     if (!running) return;

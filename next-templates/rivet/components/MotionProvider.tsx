@@ -3,21 +3,16 @@ import { createContext, useContext, useEffect, useState } from "react";
 const Context = createContext({
   enabled: true,
   systemReduced: false,
-  toggle: () => {},
 });
 export const useMotion = () => useContext(Context);
 export function MotionProvider({ children }: { children: React.ReactNode }) {
-  const [preference, setPreference] = useState(true);
   const [systemReduced, setSystemReduced] = useState(false);
-  const enabled = preference && !systemReduced;
+  const enabled = !systemReduced;
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setSystemReduced(media.matches);
     update();
     media.addEventListener("change", update);
-    try {
-      setPreference(localStorage.getItem("rivet-motion") !== "off");
-    } catch {}
     return () => media.removeEventListener("change", update);
   }, []);
   useEffect(() => {
@@ -67,17 +62,8 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       cancelAnimationFrame(frame);
     };
   }, [enabled]);
-  function toggle() {
-    if (systemReduced) return;
-    setPreference((current) => {
-      try {
-        localStorage.setItem("rivet-motion", current ? "off" : "on");
-      } catch {}
-      return !current;
-    });
-  }
   return (
-    <Context.Provider value={{ enabled, systemReduced, toggle }}>
+    <Context.Provider value={{ enabled, systemReduced }}>
       {children}
     </Context.Provider>
   );

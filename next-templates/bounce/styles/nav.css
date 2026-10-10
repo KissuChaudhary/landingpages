@@ -18,7 +18,7 @@
 .nav-cohort i, .status i { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
 .nav-cohort i::after, .status i::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--pink); opacity: 0; animation: ping 2.4s var(--ease) infinite; }
 @keyframes ping { 0% { transform: scale(0.4); opacity: 0.7; } 80%, 100% { transform: scale(1.4); opacity: 0; } }
-html[data-motion="off"] :is(.nav-cohort, .status) i::after, html[data-paused="true"] :is(.nav-cohort, .status) i::after { animation: none; }
+html[data-motion="off"] :is(.nav-cohort, .status) i::after { animation: none; }
 .nav-signin { font-size: 15px; font-weight: 600; }
 
 .nav-toggle { display: none; position: relative; width: 44px; height: 44px; border-radius: 50%; background: #f2f2f6; }

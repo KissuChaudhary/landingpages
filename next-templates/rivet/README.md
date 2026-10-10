@@ -42,7 +42,7 @@ Set `links.contactEndpoint` to your HTTPS endpoint or a same-origin route such a
 
 Return a successful HTTP status only when your server accepts the inquiry. Errors preserve all fields and provide a downloadable copy. Configure CORS for cross-origin endpoints. Validate server-side, rate-limit submissions, and add your own spam protection and delivery service. The included honeypot is a small client-side precaution, not a complete defense. The template doesn't include a server or send email by itself.
 
-Publish your own reviewed privacy notice in `app/privacy/page.tsx` before accepting live inquiries. No analytics or tracking service is installed. The motion preference stores only `on`/`off` in local storage.
+Publish your own reviewed privacy notice in `app/privacy/page.tsx` before accepting live inquiries. No analytics or tracking service is installed. Motion follows the operating system setting without storing a separate preference.
 
 ## Structure
 
@@ -61,7 +61,7 @@ public/images/           Optimized original architectural and studio imagery
 
 ## Motion and accessibility
 
-Motion uses native CSS, one IntersectionObserver, and one passive scroll listener with requestAnimationFrame. Text enters once, images drift gently, and project details react to hover and keyboard focus. The full-screen navigation supports Escape, focus containment, scroll locking, and an inert background. Services and FAQ use native disclosures. The footer motion switch remembers the visitor's choice; a system reduced-motion preference always takes priority. There are no animation-library dependencies or endlessly looping decorations.
+Motion uses native CSS, one IntersectionObserver, and one passive scroll listener with requestAnimationFrame. Text enters once, images drift gently, and project details react to hover and keyboard focus. The full-screen navigation supports Escape, focus containment, scroll locking, and an inert background. Services and FAQ use native disclosures. A system reduced-motion preference disables decorative motion. There are no animation-library dependencies or endlessly looping decorations.
 
 ## Deploy
 

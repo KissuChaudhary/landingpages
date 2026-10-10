@@ -74,7 +74,7 @@ export const pages = {
       },
       {
         title: "Preference storage",
-        body: "The motion preference is stored in localStorage under conduit-motion. The template does not include tracking scripts or analytics cookies.",
+        body: "Motion follows your device's reduced-motion setting without storing a separate preference. The template does not include tracking scripts or analytics cookies.",
       },
       {
         title: "Your production policy",
@@ -114,7 +114,7 @@ export const pages = {
       },
       {
         title: "Choose the amount of motion",
-        body: "Your system preference for reduced motion is respected. A footer control lets you pause ambient effects and remembers your preference in this browser.",
+        body: "Your system preference for reduced motion is respected. Decorative motion follows that setting automatically.",
       },
       {
         title: "Make the template your own",

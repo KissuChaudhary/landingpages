@@ -51,7 +51,7 @@ Optional `booking`, `linkedin` and `instagram` destinations are hidden when empt
 
 ## Motion and accessibility
 
-The first hero heading rises into view, lower sections reveal once, campaign images move gently on hover, service panels transition together, and process nodes move to the stage the visitor selects. The customer-journey marker and closing rings are the only ambient loops. A remembered pause control stops them; offscreen elements and hidden tabs also stop. Device reduced-motion preferences disable animation and smooth scrolling.
+The first hero heading rises into view, lower sections reveal once, campaign images move gently on hover, service panels transition together, and process nodes move to the stage the visitor selects. The customer-journey marker and closing rings are the only ambient loops. Offscreen elements and hidden tabs stop ambient loops. Device reduced-motion preferences disable animation and smooth scrolling.
 
 The challenge tabs support Left/Right, Home and End keys. The process controls are ordinary buttons. FAQs use native disclosures. Mobile navigation supports Escape and keyboard focus. Content stays readable without JavaScript; the form provides an email fallback.
 

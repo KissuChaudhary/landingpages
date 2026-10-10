@@ -38,3 +38,9 @@ Validated on 9 October 2026 in the Codex in-app Chromium browser, against both t
 The template ships with functional local examples. Production AI, account authentication, attribution, integration providers, contact submission and checkout require the buyer's own services and configuration. Network contact failure handling was reviewed in code; an external contact service and payment provider were not connected or tested. Fictional teams, sample performance data, original generated portraits and placeholder policies are clearly identified and should be replaced for a real launch.
 
 The whole marketplace was not rebuilt or linted as part of this template-only change. Its new Daybreak entry was checked with focused TypeScript validation and a separate development server; unrelated component-library work was left alone.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

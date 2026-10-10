@@ -34,7 +34,7 @@ Use a short wordmark (roughly 5–12 characters) for the large pixel footer trea
 - Native FAQ disclosures; company and mobile menus. No popups: every button is a link or works in place.
 - Three pricing plans and monthly/annual selection. Until a checkout destination is set, the plan button opens an accurate local review. Annual totals are calculated by the shared billing helper.
 - A contact form that prepares a downloadable local brief until an endpoint is configured. Editing a prepared brief retains its fields.
-- A remembered footer motion control and system reduced-motion support.
+- System reduced-motion support.
 
 These examples run locally. Connect your own accounts, AI, document processing, integrations, approvals and payment provider in your product. No account is created or payment collected by the unconfigured preview.
 

@@ -71,7 +71,7 @@ export const daymarkDetails: TemplateDetails = {
     {
       name: "FAQ and closing",
       detail:
-        "Native disclosures, a large lime call to action, a slow ring study and a compact resource footer with a remembered motion preference.",
+        "Native disclosures, a large lime call to action, a slow ring study and a compact resource footer.",
     },
     {
       name: "Case studies",
@@ -120,7 +120,7 @@ export const daymarkDetails: TemplateDetails = {
     "Three original AI-generated campaign concepts: lime skincare on steel against lilac, coffee pouches with a turquoise cup, and running shoes on a silver cube. Optimized WebP assets ship locally; the brand mark, editorial graphics and process diagrams are native SVG and CSS.",
   node: "20.9",
   files: 58,
-  lines: 4846,
+  lines: 4769,
   beforeLaunch:
     "Replace the fictional studio, campaign concepts, articles and indicative fees. Set the email, optional booking URL and contact endpoint; update the policy pages. The default form prepares a complete email draft or brief download. Direct submission confirms acceptance only after the configured service returns a successful response.",
   updated: "2026-10-10",

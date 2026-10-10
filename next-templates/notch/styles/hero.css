@@ -136,7 +136,7 @@ html[data-motion="off"] .hero-frame { transform: none; }
 }
 .marquee-track { display: flex; width: max-content; animation: marquee 46s linear infinite; }
 .marquee-set { display: flex; align-items: center; gap: 76px; padding-right: 76px; }
-.marquee:hover .marquee-track, html[data-paused="true"] .marquee-track { animation-play-state: paused; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 html[data-motion="off"] .marquee { -webkit-mask-image: none; mask-image: none; }
 html[data-motion="off"] .marquee-track { width: auto; justify-content: center; animation: none; }

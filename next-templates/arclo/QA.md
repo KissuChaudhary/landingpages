@@ -8,3 +8,8 @@
 - All three close steps verified in the browser, including the tolerance control and the saved JSON run.
 
 Live ledger and bank connections, checkout, contact submission and mailing-list endpoints require owner configuration and were not exercised against external services. Fictional stories and policy placeholders are identified in source and setup documentation.
+
+## 2026-10-10 — global motion-control removal
+
+- Corrected stale privacy and catalog copy describing a manual motion preference; the template follows system reduced motion.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.

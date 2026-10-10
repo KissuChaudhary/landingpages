@@ -2,7 +2,6 @@ import { site } from "@/site.config";
 import { href } from "@/lib/urls";
 import { Brand, Spark } from "../ui/Brand";
 import { Arrow } from "../ui/Arrow";
-import { MotionControl } from "../Motion";
 export function Footer() {
   return (
     <footer className="footer dark-section">
@@ -62,7 +61,6 @@ export function Footer() {
           <div>
             <a href={href("/privacy")}>Privacy</a>
             <a href={href("/terms")}>Terms</a>
-            <MotionControl />
           </div>
         </div>
       </div>

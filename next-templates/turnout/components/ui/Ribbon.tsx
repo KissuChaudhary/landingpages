@@ -18,7 +18,7 @@ const SPEED = 0.05; // px per ms at rest
 
 export function Ribbon({ words, d = DEFAULT_PATH, className = "" }: RibbonProps) {
   const id = useId().replace(/:/g, "");
-  const { reduced, paused } = useMotion();
+  const { reduced } = useMotion();
   const velocity = useScrollVelocity();
   const textPath = useRef<SVGTextPathElement>(null);
   const measure = useRef<SVGTextElement>(null);
@@ -43,7 +43,7 @@ export function Ribbon({ words, d = DEFAULT_PATH, className = "" }: RibbonProps)
     offset.current = (offset.current - (SPEED + boost * SPEED * 6) * dt) % unit.current;
     if (offset.current > 0) offset.current -= unit.current;
     el.setAttribute("startOffset", offset.current.toFixed(1));
-  }, !reduced && !paused);
+  }, !reduced);
 
   return (
     <svg ref={loop} className={`ribbon ${className}`} viewBox="0 0 2200 700" aria-hidden="true" focusable="false">

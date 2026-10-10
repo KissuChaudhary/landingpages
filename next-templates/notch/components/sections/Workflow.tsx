@@ -8,17 +8,17 @@ import { Icon, SectionTitle } from "../ui/Primitives";
 
 // Three steps that advance on their own while the section is on screen. The progress
 // line under the active step is a CSS animation; when it ends, the next step opens.
-// Hovering, the footer's pause control or choosing a step stops the rotation.
+// Hovering or choosing a step stops the rotation.
 export function Workflow() {
   const { workflow } = site;
-  const { reduced, paused } = useMotion();
+  const { reduced } = useMotion();
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [ref, inView] = useInView<HTMLDivElement>({ once: false, threshold: 0.35 });
   const id = useId();
   const running = auto && !reduced;
-  const playing = running && inView && !paused && !hovered;
+  const playing = running && inView && !hovered;
 
   const choose = (i: number) => {
     setActive(i);

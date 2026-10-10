@@ -3,7 +3,6 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -15,9 +14,7 @@ const subscribe = (callback: () => void) => {
   return () => media.removeEventListener("change", callback);
 };
 const MotionContext = createContext({
-  paused: false,
   reduced: false,
-  toggle: () => {},
 });
 export const useMotion = () => useContext(MotionContext);
 export function MotionProvider({ children }: { children: ReactNode }) {
@@ -26,21 +23,8 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     () => window.matchMedia(query).matches,
     () => false,
   );
-  const [paused, setPaused] = useState(false);
   useEffect(() => {
-    try {
-      setPaused(localStorage.getItem("vela-motion-paused") === "true");
-    } catch {}
-  }, []);
-  const toggle = () =>
-    setPaused((value) => {
-      try {
-        localStorage.setItem("vela-motion-paused", String(!value));
-      } catch {}
-      return !value;
-    });
-  useEffect(() => {
-    const enabled = !paused && !reduced;
+    const enabled = !reduced;
     document.documentElement.dataset.motion = enabled ? "on" : "off";
     const elements = document.querySelectorAll<HTMLElement>(".reveal");
     if (!enabled) {
@@ -94,9 +78,9 @@ export function MotionProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("scroll", scroll);
       window.removeEventListener("resize", scroll);
     };
-  }, [paused, reduced]);
+  }, [reduced]);
   return (
-    <MotionContext.Provider value={{ paused, reduced, toggle }}>
+    <MotionContext.Provider value={{ reduced }}>
       {children}
     </MotionContext.Provider>
   );

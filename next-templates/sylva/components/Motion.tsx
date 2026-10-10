@@ -1,10 +1,8 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-const MotionContext = createContext({ paused: false, toggle: () => {} });
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 export function MotionProvider({ children }: { children: React.ReactNode }) {
-  const [paused, setPaused] = useState(false);
   const [systemReduced, setSystemReduced] = useState(false);
   const pathname = usePathname();
   useEffect(() => {
@@ -12,14 +10,9 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     const sync = () => setSystemReduced(media.matches);
     sync();
     media.addEventListener("change", sync);
-    try {
-      setPaused(localStorage.getItem("sylva-motion") === "off");
-    } catch {
-      /* Storage is optional. */
-    }
     return () => media.removeEventListener("change", sync);
   }, []);
-  const reduced = paused || systemReduced;
+  const reduced = systemReduced;
   useEffect(() => {
     const root = document.documentElement;
     root.dataset.motion = reduced ? "off" : "on";
@@ -86,27 +79,5 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       delete root.dataset.enhanced;
     };
   }, [reduced, pathname]);
-  const toggle = () => {
-    const next = !paused;
-    setPaused(next);
-    try {
-      localStorage.setItem("sylva-motion", next ? "off" : "on");
-    } catch {
-      /* Storage is optional. */
-    }
-  };
-  return (
-    <MotionContext.Provider value={{ paused: reduced, toggle }}>
-      {children}
-    </MotionContext.Provider>
-  );
-}
-export function MotionToggle() {
-  const { paused, toggle } = useContext(MotionContext);
-  return (
-    <button className="motion-toggle" onClick={toggle} aria-pressed={paused}>
-      <span className={paused ? "" : "motion-dot"} />
-      {paused ? "Motion paused" : "Pause motion"}
-    </button>
-  );
+  return <>{children}</>;
 }

@@ -20,8 +20,8 @@ export default function PrivacyPage() {
         </p>
         <h2>Your preferences</h2>
         <p>
-          The motion control remembers your choice in your browser's local
-          storage. The template includes no analytics or advertising trackers.
+          Motion follows your device's reduced-motion setting without storing
+          a separate preference. The template includes no analytics or advertising trackers.
         </p>
         <h2>Before a studio publishes this page</h2>
         <p>

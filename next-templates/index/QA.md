@@ -21,3 +21,9 @@ Reviewed October 9, 2026. Use `npm run typecheck`, `npm run verify:content`, and
 Readable server-rendered content, focus moves into an opened passage and back, focus-visible feedback, keyboard example tabs and an OS reduced-motion media query are included. The operating-system preference path was implemented and reviewed; this session did not provide an OS preference override. Its equivalent static presentation was exercised with the footer control.
 
 The product, plans and source passages are fictional. AI inference, account creation, importing documents and checkout are buyer integrations. Configure the independent destinations and replace the illustrative claims before launch. No real customer endorsements or network AI requests are used.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

@@ -6,7 +6,7 @@ One brand, one site (`hairlineui.com` via `NEXT_PUBLIC_SITE_URL`, formerly Found
 
 ## Rules that always apply
 
-- **Templates (`next-templates/`) are landing pages, not apps:** no popups or modals for marketing interactions (links go somewhere, demos run in place; mobile nav menus and app-UI confirmations inside a product demo are fine). A pause-motion control only where something loops on its own. Maintainer notes (marketplace export, QA, design briefs, reference sites) go in `QA.md` / `DESIGN.md`, never in a template's README or `ASSETS.md`: those ship to buyers, and `scripts/package-template.mjs` refuses internal mentions.
+- **Templates (`next-templates/`) are landing pages, not apps:** no popups or modals for marketing interactions (links go somewhere, demos run in place; mobile nav menus and app-UI confirmations inside a product demo are fine). Keep page and scroll animations intact without global motion play/pause controls in templates. Respect system reduced motion; product playback controls may remain. Maintainer notes (marketplace export, QA, design briefs, reference sites) go in `QA.md` / `DESIGN.md`, never in a template's README or `ASSETS.md`: those ship to buyers, and `scripts/package-template.mjs` refuses internal mentions.
 
 - **Hairline only:** 1px borders (`border-border`) or a 1px ring on animating surfaces. No drop shadows, no glow, no backdrop blur in library components. shadcn theme tokens only; red/emerald/amber only for status.
 - **The motion bar:** every text, icon, number or size change morphs. Labels through `TextMorph`, numbers through `NumberRoll`, actions in the `StatusButton` style, one surface that changes shape instead of popping new ones. No animation library; reduced motion respected.

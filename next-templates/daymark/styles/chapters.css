@@ -576,7 +576,4 @@ details[open] .faq-answer {
     flex-wrap: wrap;
     gap: 18px;
   }
-  .footer-bottom .motion-control {
-    margin-left: auto;
-  }
 }

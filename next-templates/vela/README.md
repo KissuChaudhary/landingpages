@@ -55,7 +55,7 @@ There is no pretend booking, fabricated submission or payment interface. Account
 
 ### Motion and accessibility
 
-Scroll reveals, dashboard tilt, stacking chapters, hover labels, changing numbers and the connection pulse respect reduced-motion preferences. Stacking returns to normal flow below 900px. The footer’s pause control remembers the preference locally. There is no scroll hijacking or automatically changing product tab.
+Scroll reveals, dashboard tilt, stacking chapters, hover labels, changing numbers and the connection pulse respect reduced-motion preferences. Stacking returns to normal flow below 900px. There is no scroll hijacking or automatically changing product tab.
 
 Controls have accessible names. Setup tabs support arrows, Home and End. FAQ uses native disclosures. Mobile navigation closes with Escape and returns focus to its toggle. A skip link, visible focus indicators and assistive text for animated figures are included.
 

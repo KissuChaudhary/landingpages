@@ -37,7 +37,7 @@ export const pages: Record<string,{
   privacy: {
     label: "The details",title: "Privacy, in plain language.",intro: "Policy placeholder for the Aster template. Replace this page with the policy that applies to your own service before launch.",
     sections: [
-      { title: "The local demonstration",text: "Projects, studios and reviews are fictional. Decisions remain in browser memory and reset on reload. A motion preference may be stored in this browser. Downloads are prepared locally." },
+      { title: "The local demonstration",text: "Projects, studios and reviews are fictional. Decisions remain in browser memory and reset on reload. Motion follows the system setting without storing a separate preference. Downloads are prepared locally." },
       { title: "Your production service",text: "Document the project information you collect, its purpose, processors, retention, user rights and contact route. Explain client access to files and feedback. If you configure a contact endpoint, describe how submitted details are handled." }
     ]
   },
@@ -52,7 +52,7 @@ export const pages: Record<string,{
     label: "Room for everyone",title: "A considered experience.",intro: "Clear controls, readable type and a useful path through the page are part of the product experience.",
     sections: [
       { title: "Keyboard navigation",text: "Navigate links and controls with Tab. Product tabs support arrow keys, Home and End. Dialogs close on Escape and return focus to their invoking control. The page includes a skip link." },
-      { title: "Motion and readability",text: "System reduced motion disables decorative movement. The footer includes a remembered manual motion control. Product tours and the full review workspace provide readable versions of the compact marketing scenes." }
+      { title: "Motion and readability",text: "System reduced motion disables decorative movement. Product tours and the full review workspace provide readable versions of the compact marketing scenes." }
     ]
   },
   "feedback-with-direction": {

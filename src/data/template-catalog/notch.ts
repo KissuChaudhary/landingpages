@@ -22,7 +22,7 @@ export const notchDetails: TemplateDetails = {
   design: "Geist with tight display tracking, white and ink with a single cobalt accent, and a light curtain of fluted blue bars. A centered hero over a tilted product shot, a logo strip, a four-card bento, a grey workflow band, a feature deck, a dark customer band, a dark-plus-panel pricing block, journal cards, a closing panel and a giant wordmark.",
   sections: [
     { name: "Hero", detail: "The curtain opens on load as bars rise from the edges; the tally badge draws itself, headline words rise in, and the product shot settles flat with scroll. Phones get a dedicated product image." },
-    { name: "Logo strip", detail: "A slow marquee of fictional customer marks that pauses on hover and with the footer's motion control." },
+    { name: "Logo strip", detail: "A slow marquee of fictional customer marks that pauses on hover." },
     { name: "Bento", detail: "Four product moments slide in from alternating sides, with their screens rising a beat later." },
     { name: "Workflow", detail: "Three steps advance on a progress line while in view, cross-fading photographs and floating product cards. Keyboard-accessible tabs." },
     { name: "Feature deck", detail: "Five pills drop the front screen away and bring the chosen one forward over quiet tinted sheets, with a caption that morphs." },
@@ -45,8 +45,8 @@ export const notchDetails: TemplateDetails = {
   styling: "CSS",
   images: "Fourteen product screens rendered for the template and nine generated photographs and portraits of fictional people, all optimized WebP. The brand mark, customer marks and icons are SVG.",
   node: "20.9",
-  files: 74,
-  lines: 3048,
+  files: 78,
+  lines: 3005,
   beforeLaunch: "Replace the fictional brand, customers, stories and numbers, swap the product screens for your own, set the sign-up, sign-in, sales and checkout links, and replace the privacy and terms placeholders.",
   updated: "2026-10-10",
 };

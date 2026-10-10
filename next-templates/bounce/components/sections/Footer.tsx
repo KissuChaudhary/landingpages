@@ -1,14 +1,11 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
 import { site } from "@/site.config";
 import { href } from "@/lib/urls";
-import { useMotion } from "../Motion";
 import { Brand } from "../ui/Brand";
 
 export function Footer() {
   const { footer, social, links } = site;
-  const { paused, setPaused, reduced } = useMotion();
   const socials = social.filter((s) => s.href);
   return (
     <footer className="footer">
@@ -49,22 +46,6 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            )}
-            {!reduced && (
-              <button type="button" className="motion-toggle" aria-pressed={paused} onClick={() => setPaused(!paused)}>
-                <span className="motion-icon" aria-hidden="true">
-                  <Pause size={12} strokeWidth={2.4} className={paused ? "" : "is-active"} />
-                  <Play size={12} strokeWidth={2.4} className={paused ? "is-active" : ""} />
-                </span>
-                <span className="morph">
-                  <span className={paused ? "" : "is-active"} aria-hidden={paused}>
-                    Pause motion
-                  </span>
-                  <span className={paused ? "is-active" : ""} aria-hidden={!paused}>
-                    Play motion
-                  </span>
-                </span>
-              </button>
             )}
           </div>
         </div>

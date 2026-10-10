@@ -1,10 +1,8 @@
 "use client";
 import { site } from "@/site.config";
 import { route } from "@/lib/urls";
-import { useMotion } from "../MotionProvider";
 import { Mark, Arrow } from "../ui/Mark";
 export function Footer() {
-  const { enabled, systemReduced, toggle } = useMotion();
   return (
     <footer className="footer section-wrap">
       <div className="footer-top">
@@ -52,16 +50,6 @@ export function Footer() {
         </span>
         <span>Thoughtfully made. Together.</span>
         <a href={route("/privacy")}>Privacy</a>
-        <button
-          onClick={toggle}
-          disabled={systemReduced}
-          aria-pressed={enabled}
-        >
-          {systemReduced
-            ? "Reduced motion"
-            : `Motion ${enabled ? "on" : "off"}`}
-          <span className={`motion-switch ${enabled ? "on" : ""}`} />
-        </button>
         <a href="#main" aria-label="Back to top">
           Back to top ↑
         </a>

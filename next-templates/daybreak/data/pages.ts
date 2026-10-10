@@ -93,7 +93,7 @@ export const pages: Record<
     sections: [
       {
         title: "What the preview stores",
-        text: "The preview remembers only the motion preference in local browser storage. Its campaign examples run on your device. A locally prepared contact brief is not sent to a server.",
+        text: "The preview does not store a separate motion preference. Its campaign examples run on your device. A locally prepared contact brief is not sent to a server.",
       },
       {
         title: "Your production services",
@@ -137,7 +137,7 @@ export const pages: Record<
       },
       {
         title: "Motion preferences",
-        text: "The site respects the operating system's reduced-motion setting. The footer pause control also remembers a preference on this device. Pausing motion keeps every example interaction available.",
+        text: "The site respects the operating system's reduced-motion setting automatically. Reduced motion keeps every example interaction available.",
       },
       {
         title: "A continuing practice",

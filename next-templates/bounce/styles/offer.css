@@ -129,10 +129,6 @@ html[data-motion="on"] .closing-panel.is-in .closing-word span { animation: lett
 .footer-end { display: flex; align-items: center; gap: 22px; }
 .footer-social { display: flex; gap: 16px; margin: 0 !important; }
 .footer-social a { color: var(--muted); }
-.motion-toggle { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 14px 0 12px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); background: #f2f2f6; }
-.motion-icon { display: inline-grid; }
-.motion-icon svg { grid-area: 1 / 1; opacity: 0; scale: 0.4; transition: opacity 0.3s var(--ease), scale 0.45s var(--spring); }
-.motion-icon svg.is-active { opacity: 1; scale: 1; }
 
 @media (max-width: 1023px) {
   .included-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }

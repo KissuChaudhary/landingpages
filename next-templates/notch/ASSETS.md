@@ -37,4 +37,4 @@ Every prompt asked for editorial documentary photography, natural daylight, a co
 
 - Logo mark, favicon and customer marks: SVG in `components/ui/Brand.tsx`, `components/ui/Logos.tsx` and `public/icon.svg`. The customer names are fictional.
 - Icons: [Lucide](https://lucide.dev), ISC license.
-- Fonts: Geist and Geist Mono, SIL Open Font License, served locally by Next.js.
+- Fonts: Geist and Geist Mono Latin variable WOFF2 files, bundled in `public/fonts/` and loaded through `next/font/local`. The files are the Google Fonts versions used by this design; their upstream SIL Open Font Licenses are included beside them. Builds require no font downloads. For other writing systems, add appropriately licensed subsets and update `app/layout.tsx`.

@@ -1,8 +1,7 @@
 import { site } from "@/site.config";
 import { LogoMark, logos } from "@/components/ui/Logos";
 
-// A slow, endless strip of client logos. It's a CSS animation, so "pause motion" and
-// reduced motion stop it without any script.
+// A slow strip of client logos. Reduced motion stops the CSS animation.
 
 export function LogoStrip() {
   return (

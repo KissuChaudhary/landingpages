@@ -23,8 +23,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           A project brief prepared without submitting an inquiry stays on your
-          device. The motion control remembers your display preference in this
-          browser.
+          device. Motion follows your device's reduced-motion setting without
+          storing a separate preference.
         </p>
         <Action href="/contact" quiet>
           Contact the studio

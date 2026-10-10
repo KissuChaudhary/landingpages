@@ -1,8 +1,7 @@
 import { site } from "@/site.config";
 import { CustomerLogo } from "../ui/Logos";
 
-// A slow marquee of customer marks. It pauses on hover, with the footer's
-// "Pause motion" control, and stands still with reduced motion.
+// A slow marquee of customer marks. It pauses on hover and stands still with reduced motion.
 export function LogoStrip() {
   const { logos } = site;
   return (

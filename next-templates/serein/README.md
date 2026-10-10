@@ -49,9 +49,9 @@ The service and pricing links pass the selected service or engagement to the con
 
 ## Motion and accessibility
 
-The silk study uses a small WebGL displacement shader at a capped pixel density and frame rate. Its render loop stops when paused, outside the viewport or in a hidden tab. If WebGL is unavailable or its context is lost, the local image remains visible. There is no background video download.
+The silk study uses a small WebGL displacement shader at a capped pixel density and frame rate. Its render loop stops with system reduced motion, outside the viewport or in a hidden tab. If WebGL is unavailable or its context is lost, the local image remains visible. There is no background video download.
 
-Ambient movement can be paused using the hero or footer control; the preference stays in the browser. System reduced-motion preferences are respected, and phones use a normal project flow instead of the desktop stack. Content remains readable without JavaScript. Menus and service panels expose their open state, closed navigation is inert, Escape closes the menu, native FAQ disclosures support the keyboard, and a skip link reaches the main content.
+System reduced-motion preferences are respected, and phones use a normal project flow instead of the desktop stack. Content remains readable without JavaScript. Menus and service panels expose their open state, closed navigation is inert, Escape closes the menu, native FAQ disclosures support the keyboard, and a skip link reaches the main content.
 
 ## Images
 

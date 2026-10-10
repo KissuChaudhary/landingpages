@@ -42,12 +42,12 @@ The main action explores the local example while `links.app` is empty. Each plan
 - Example rows support Up/Down, Home/End and click. Copy and download include the selected answer and its original sources.
 - Clipboard failure opens a selectable text fallback. Download links are actual UTF-8 text files.
 - Monthly/yearly pricing and each plan's review use the same calculation.
-- Native FAQ, mobile navigation, useful anchors and a remembered motion pause control are included.
+- Native FAQ, mobile navigation and useful anchors are included.
 
 No account, AI service, document import, payment or email submission is implemented. Connect those to your own application. The sample feature allowances are illustrative product copy, not functional limits in this landing page. Replace the fictional brand, prices, passages and claims before launch.
 
 ## Assets and motion
 
-All artwork is editable HTML/CSS/SVG. There are no stock assets. Next/font hosts the included font subsets with the build. Headline text stays visible during the segmented accent animation. Labels decode briefly, never whole paragraphs. Ambient loops pause out of view and in hidden tabs. Operating-system reduced motion takes precedence over the footer control.
+All artwork is editable HTML/CSS/SVG. There are no stock assets. Next/font hosts the included font subsets with the build. Headline text stays visible during the segmented accent animation. Labels decode briefly, never whole paragraphs. Ambient loops pause out of view and in hidden tabs. Operating-system reduced motion disables decorative movement.
 
 See `ASSETS.md` and `LICENSE`.

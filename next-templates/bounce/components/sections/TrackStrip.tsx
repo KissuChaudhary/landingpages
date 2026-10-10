@@ -2,8 +2,7 @@ import type { CSSProperties } from "react";
 import { site } from "@/site.config";
 import { Cover, Waveform } from "../ui/Art";
 
-// A slow strip of tracks students finished. It pauses on hover, with the footer's
-// "Pause motion" control, and stands still with reduced motion.
+// A slow strip of tracks students finished. It pauses on hover and stands still with reduced motion.
 export function TrackStrip() {
   const { tracks } = site;
   return (

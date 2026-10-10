@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. For production, run `npm run build` and `npm start`. Geist and Geist Mono are downloaded at build time and served locally by Next.js.
+Open http://localhost:3000. For production, run `npm run build` and `npm start`. Geist and Geist Mono are bundled locally; builds require no font downloads.
 
 ## Make it yours
 
@@ -68,7 +68,7 @@ Prices are per person per month. The yearly price is the monthly equivalent when
 - **Numbers:** stats and prices roll like an odometer.
 - **Footer:** the wordmark sizes itself to the container and its letters rise in.
 
-Everything respects the system "reduce motion" setting: content appears in place, the product shot is flat, and nothing loops. The logo strip and the workflow steps are the only things that move on their own; the footer's "Pause motion" control stops them, and the choice is remembered on that device.
+Everything respects the system "reduce motion" setting: content appears in place, the product shot is flat, and nothing loops. The logo strip and the workflow steps are the only things that move on their own. They stop with system reduced motion.
 
 ## Accessibility
 

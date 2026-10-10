@@ -1,15 +1,13 @@
 "use client";
 
 import { useEffect, type CSSProperties } from "react";
-import { Pause, Play } from "lucide-react";
 import { site } from "@/site.config";
 import { href } from "@/lib/urls";
-import { useInView, useMotion } from "../Motion";
+import { useInView } from "../Motion";
 import { Mark } from "../ui/Brand";
 
 export function Footer() {
   const { footer, social, links } = site;
-  const { paused, setPaused, reduced } = useMotion();
   const [mark, inView] = useInView<HTMLDivElement>({ threshold: 0.4 });
   const socials = social.filter((s) => s.href);
 
@@ -78,18 +76,6 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            )}
-            {!reduced && (
-              <button type="button" className="motion-toggle" aria-pressed={paused} onClick={() => setPaused(!paused)}>
-                <span className="motion-icon" aria-hidden="true">
-                  <Pause size={13} strokeWidth={2.2} className={paused ? "" : "is-active"} />
-                  <Play size={13} strokeWidth={2.2} className={paused ? "is-active" : ""} />
-                </span>
-                <span className="morph">
-                  <span className={paused ? "" : "is-active"} aria-hidden={paused}>Pause motion</span>
-                  <span className={paused ? "is-active" : ""} aria-hidden={!paused}>Play motion</span>
-                </span>
-              </button>
             )}
           </div>
         </div>

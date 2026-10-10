@@ -71,7 +71,7 @@ There is no cart, simulated checkout, fake booking confirmation or mock product 
 
 The desktop hero plant travels into the approach chapter. Collection cards unfold as the visitor scrolls, and a care specimen grows gently into place. The scroll handler is passive and schedules a single animation-frame update; offscreen headings reveal once. Hover effects are restrained.
 
-Phones use normal vertical flow, with all cards readable. The system reduced-motion setting and the remembered footer pause control disable decorative motion and the sticky fan sequence. Content is visible if JavaScript is unavailable. Keyboard focus expands the collection deck immediately so every plant link remains reachable.
+Phones use normal vertical flow, with all cards readable. The system reduced-motion setting disables decorative motion and the sticky fan sequence. Content is visible if JavaScript is unavailable. Keyboard focus expands the collection deck immediately so every plant link remains reachable.
 
 Navigation has an accessible phone menu that closes on Escape and restores trigger focus. Native process and FAQ disclosures work with keyboard input. The enquiry moves focus to its inline review, announces results, and uses standard labeled controls.
 

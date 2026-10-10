@@ -77,7 +77,7 @@ Keep each file under 600 KB (the content check warns above that). WebP at qualit
 ## Motion and accessibility
 
 - Everything that changes moves: labels morph letter by letter, numbers roll like an odometer, buttons roll their labels and throw their arrows, the billing note slides in from the side you chose.
-- Three things loop on their own: the photo deck, the ribbon and the logo strip. The pause button on the deck (and "Pause motion" in the footer) stops all of them; the choice is remembered on the device. The deck also holds while you hover, focus or scroll it out of view.
+- Three things loop on their own: the photo deck, the ribbon and the logo strip. System reduced motion stops the loops. The deck holds while you hover, focus or scroll it out of view.
 - With the system "reduce motion" setting on, nothing pins, slides or loops: the problem section becomes a plain list, the services stack in normal flow and every element is visible from the start.
 - The menu, deck controls, filters, FAQ and forms work with a keyboard. The phone menu closes on Escape and returns focus to its button. Form errors are announced and move focus to the first field that needs attention.
 - Without JavaScript the page still renders completely.

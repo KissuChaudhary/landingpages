@@ -14,3 +14,9 @@ Verified October 10, 2026. Reference observations and the visual direction are i
 - Browser warning/error logs were empty during the final local review. Desktop and mobile catalog captures include the loaded project images.
 
 The buyer source contains focused section components and scoped CSS files. The largest component is 261 lines; the largest stylesheet is 470 lines. Generated type references are removed from next-env.d.ts so a fresh source copy can be typechecked before its first build. No commit or push was made.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

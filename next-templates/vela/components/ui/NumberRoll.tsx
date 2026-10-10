@@ -16,13 +16,13 @@ export function NumberRoll({
   decimals?: number;
   countIn?: boolean;
 }) {
-  const { paused, reduced } = useMotion();
+  const { reduced } = useMotion();
   const root = useRef<HTMLSpanElement>(null);
   const [entered, setEntered] = useState(!countIn);
   useEffect(() => {
     const element = root.current;
     if (!element || !countIn) return;
-    if (reduced || paused) {
+    if (reduced) {
       setEntered(true);
       return;
     }
@@ -37,7 +37,7 @@ export function NumberRoll({
     );
     observer.observe(element);
     return () => observer.disconnect();
-  }, [countIn, reduced, paused]);
+  }, [countIn, reduced]);
   const formatted = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,

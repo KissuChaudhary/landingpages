@@ -11,7 +11,7 @@ const policies = {
       },
       {
         heading: "The included preview",
-        text: "Close examples process sample financial data locally in the browser. The motion preference uses local storage. Forms keep entered details in current-page state unless a destination endpoint is configured. Downloads are created locally. The template doesn’t include tracking scripts.",
+        text: "Close examples process sample financial data locally in the browser. Motion follows the system setting without storing a separate preference. Forms keep entered details in current-page state unless a destination endpoint is configured. Downloads are created locally. The template doesn’t include tracking scripts.",
       },
       {
         heading: "Your production service",

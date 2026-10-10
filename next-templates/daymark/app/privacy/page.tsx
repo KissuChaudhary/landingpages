@@ -20,9 +20,8 @@ export default function PrivacyPage() {
       </p>
       <h2>Browser preferences</h2>
       <p>
-        This website remembers your ambient-motion preference in local browser
-        storage. You can change it using the motion control. The site also
-        respects your device's reduced-motion setting. No advertising analytics
+        This website respects your device's reduced-motion setting without
+        storing a separate motion preference. No advertising analytics
         or tracking cookies are included in this website.
       </p>
       <h2>Questions and requests</h2>

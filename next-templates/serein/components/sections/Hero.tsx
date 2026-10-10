@@ -3,7 +3,6 @@ import { Brand } from "../ui/Brand";
 import { Eyebrow } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
 import { Ribbon } from "../visuals/Ribbon";
-import { MotionControl } from "../Motion";
 import { HeroReel } from "./HeroReel";
 
 export function Hero() {
@@ -36,7 +35,6 @@ export function Hero() {
         <div className="hero-bottom">
           <span>{site.hero.descriptor}</span>
           <span className="hero-footnote">{site.hero.footnote}</span>
-          <MotionControl compact />
         </div>
       </div>
     </section>

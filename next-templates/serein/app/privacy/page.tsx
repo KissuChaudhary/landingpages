@@ -19,9 +19,8 @@ export default function PrivacyPage() {
         </p>
         <h2>Local preferences</h2>
         <p>
-          Your motion preference is saved in your browser's local storage. It is
-          not sent to a server. You can change it using the motion control in
-          the footer.
+          Motion follows your device's reduced-motion setting. No separate
+          motion preference is stored in your browser or sent to a server.
         </p>
         <h2>Questions</h2>
         <p>

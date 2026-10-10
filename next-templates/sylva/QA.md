@@ -37,3 +37,9 @@ The included site runs without service credentials. Its default enquiry prepares
 No live third-party endpoint is configured or was contacted during verification. Verify delivery, CORS, spam handling and your privacy notice after connecting your service. The component retains the brief on failed or timed-out requests and only reports delivery after a successful HTTP response.
 
 Generated imagery is illustrative. Replace it with your own projects before making client-portfolio claims. Care guidance links to the RHS; adapt it to the plants and services you actually provide.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

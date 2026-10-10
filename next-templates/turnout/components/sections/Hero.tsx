@@ -8,7 +8,7 @@ import { useInView, useMotion } from "@/components/Motion";
 import { Ribbon } from "@/components/ui/Ribbon";
 import { TextMorph } from "@/components/ui/TextMorph";
 import { Action, ArrowDot, SmartLink, planHref } from "@/components/ui/Action";
-import { ArrowUpRight, Pause, Play, Spark } from "@/components/ui/Icons";
+import { ArrowUpRight, Spark } from "@/components/ui/Icons";
 
 type Moment = (typeof site.hero.moments)[number];
 
@@ -38,7 +38,7 @@ function Line({ text, highlight, index }: { text: string; highlight: string; ind
  * Hovering, focusing or scrolling the deck out of view holds it.
  */
 function Deck({ moments }: { moments: Moment[] }) {
-  const { reduced, paused, setPaused } = useMotion();
+  const { reduced } = useMotion();
   const [front, setFront] = useState(0);
   const [leaving, setLeaving] = useState<number | null>(null);
   const [held, setHeld] = useState(false);
@@ -51,7 +51,7 @@ function Deck({ moments }: { moments: Moment[] }) {
     setFront((f) => (f + 1) % n);
   };
 
-  const running = !reduced && !paused && !held && inView;
+  const running = !reduced && !held && inView;
 
   return (
     <div
@@ -95,12 +95,6 @@ function Deck({ moments }: { moments: Moment[] }) {
             <span key={front} className="deck-progress-fill" onAnimationEnd={() => running && next()} />
           </span>
         </span>
-        <button type="button" className="deck-button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play motion" : "Pause motion"} aria-pressed={paused}>
-          <span className="swap">
-            <Pause data-on={!paused} />
-            <Play data-on={paused} />
-          </span>
-        </button>
         <button type="button" className="deck-button" onClick={next} aria-label="Next moment">
           <ArrowUpRight size={15} />
         </button>

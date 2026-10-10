@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-const MotionContext = createContext({ paused: true, toggle: () => {} });
+const MotionContext = createContext({ paused: true });
 export const useMotion = () => useContext(MotionContext);
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
@@ -10,11 +10,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let preference: string | null = null;
-    try {
-      preference = localStorage.getItem("serein-motion");
-    } catch {}
-    setPaused(media.matches || preference === "paused");
+    setPaused(media.matches);
     const sync = () => setPaused(media.matches);
     media.addEventListener("change", sync);
     return () => media.removeEventListener("change", sync);
@@ -39,32 +35,9 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [paused, pathname]);
-  const toggle = () =>
-    setPaused((value) => {
-      try {
-        localStorage.setItem("serein-motion", value ? "playing" : "paused");
-      } catch {}
-      return !value;
-    });
   return (
-    <MotionContext.Provider value={{ paused, toggle }}>
+    <MotionContext.Provider value={{ paused }}>
       {children}
     </MotionContext.Provider>
-  );
-}
-
-export function MotionControl({ compact = false }: { compact?: boolean }) {
-  const { paused, toggle } = useMotion();
-  return (
-    <button
-      className={`motion-control ${compact ? "compact" : ""}`}
-      type="button"
-      onClick={toggle}
-      aria-label={paused ? "Play ambient motion" : "Pause ambient motion"}
-      aria-pressed={paused}
-    >
-      <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
-      {!compact && (paused ? "Motion paused" : "Pause motion")}
-    </button>
   );
 }

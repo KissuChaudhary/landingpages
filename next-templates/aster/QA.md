@@ -14,3 +14,8 @@ Recheck the new copy and scenes on desktop and phone: hero wrapping, illustratio
 Review workflow checks: combine Pending + Digital + Identity + Alex; approve AR-2042 and verify approval share becomes 67%; request a revision with an owner and reason; verify the edited response and full brief in JSON; check decision history, filtered CSV, brief search, Studio annual total of $312, custom Collective review, contact validation and keyboard focus restoration.
 
 Production destinations are empty by default. Local review changes reset on reload. Storage, file uploads, client access, notifications, billing and contact delivery require the buyer’s services. Fictional studio stories and policy placeholders need replacement.
+
+## 2026-10-10 — global motion-control removal
+
+- Corrected stale privacy and catalog copy describing a manual motion preference; the template follows system reduced motion.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.

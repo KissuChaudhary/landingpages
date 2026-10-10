@@ -30,3 +30,9 @@ Reviewed 10 October 2026.
 The portfolio, studio identities, and engagements are fictional examples. Buyers replace these, configure their URL and destinations, connect and validate their own inquiry endpoint, and publish a reviewed privacy notice. Endpoint delivery has not been tested against a live business service. The local brief flow works without a backend.
 
 No changes were committed or pushed. The standard buyer zip can be produced after these new source files are tracked; the independently installed copy verifies the source that will ship.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

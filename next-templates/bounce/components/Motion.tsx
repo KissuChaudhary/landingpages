@@ -1,26 +1,21 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-// Motion follows the system "reduce motion" setting. Visitors can also pause the
-// looping parts (the logo strip and the workflow steps) from the footer; that choice
-// is remembered on this device.
+// Motion follows the system reduced-motion setting.
 
-type MotionState = { reduced: boolean; paused: boolean; setPaused: (paused: boolean) => void };
+type MotionState = { reduced: boolean };
 
-const MotionContext = createContext<MotionState>({ reduced: false, paused: false, setPaused: () => {} });
+const MotionContext = createContext<MotionState>({ reduced: false });
 
 export const useMotion = () => useContext(MotionContext);
 
-const STORAGE_KEY = "bounce-motion";
-
 /** Runs before first paint so reveals and the hero intro never flash. */
-export const motionBootScript = `(function(){try{var d=document.documentElement;var r=window.matchMedia("(prefers-reduced-motion: reduce)").matches;d.dataset.motion=r?"off":"on";d.dataset.paused=localStorage.getItem("${STORAGE_KEY}")==="paused"?"true":"false"}catch(e){}})();`;
+export const motionBootScript = `(function(){try{document.documentElement.dataset.motion=window.matchMedia("(prefers-reduced-motion: reduce)").matches?"off":"on"}catch(e){}})();`;
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
   const [reduced, setReduced] = useState(false);
-  const [paused, setPausedState] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,17 +23,13 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     const sync = () => setReduced(media.matches);
     sync();
     media.addEventListener("change", sync);
-    try {
-      setPausedState(localStorage.getItem(STORAGE_KEY) === "paused");
-    } catch {}
     return () => media.removeEventListener("change", sync);
   }, []);
 
   useEffect(() => {
     const root = document.documentElement;
     root.dataset.motion = reduced ? "off" : "on";
-    root.dataset.paused = paused ? "true" : "false";
-  }, [reduced, paused]);
+  }, [reduced]);
 
   // Reveal anything marked with data-reveal as it enters the viewport.
   useEffect(() => {
@@ -60,14 +51,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     return () => observer.disconnect();
   }, [reduced, pathname]);
 
-  const setPaused = useCallback((next: boolean) => {
-    setPausedState(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, next ? "paused" : "playing");
-    } catch {}
-  }, []);
-
-  return <MotionContext.Provider value={{ reduced, paused, setPaused }}>{children}</MotionContext.Provider>;
+  return <MotionContext.Provider value={{ reduced }}>{children}</MotionContext.Provider>;
 }
 
 /** True once the element has been in view (or always, with `once` off, while it is). */

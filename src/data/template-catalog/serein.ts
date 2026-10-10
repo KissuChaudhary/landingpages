@@ -35,7 +35,7 @@ export const sereinDetails: TemplateDetails = {
     { name: "Services", detail: "Four numbered service surfaces expand in place with coordinated imagery, deliverables and contact links that preselect the relevant service." },
     { name: "Process and partnership", detail: "Four original process icons and steps, a CSS orbit study and a focused statement of the studio's working principles." },
     { name: "Engagements and FAQ", detail: "Two clearly scoped engagement options, preselected contact destinations and native keyboard-accessible disclosures." },
-    { name: "Closing and footer", detail: "A second silk study, useful contact and resource destinations, an oversized brand signature and a remembered motion control." },
+    { name: "Closing and footer", detail: "A second silk study, useful contact and resource destinations, an oversized brand signature." },
     { name: "Portfolio", detail: "A filterable project directory, three full case studies, editable brand specimens and linked next projects." },
     { name: "Contact and journal", detail: "Validated project briefs with configured JSON submission or complete email drafts and text downloads. Three original journal articles, editable policies and a missing-page state." },
   ],
@@ -55,7 +55,7 @@ export const sereinDetails: TemplateDetails = {
   images: "Four original AI-generated studies: silver audio hardware, an olive-glass fragrance campaign, sculptural architecture and translucent charcoal silk. All optimized WebP assets ship locally; marks, icons and the orbit are editable SVG and CSS.",
   node: "20.9",
   files: 67,
-  lines: 4903,
+  lines: 4848,
   beforeLaunch: "Replace the fictional studio, projects, stories and fees. Set the email address, booking URL and optional contact endpoint; update your policies. The default contact flow prepares an email draft or downloads the visitor's complete brief, without claiming it was sent. Direct submission displays success only after the configured endpoint accepts the request.",
   updated: "2026-10-10",
 };

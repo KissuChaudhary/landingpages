@@ -32,3 +32,9 @@ The in-app browser did not expose a download event for the nested marketplace if
 The development workspace contains `work/conduit-desktop.png`, `work/conduit-mobile.png`, `work/conduit-preview.jpg`, full-page review sheets and an embedded phone-dialog capture. Marketplace preview assets live under `public/previews/` and `public/og/`.
 
 The source is separated into 46 focused TypeScript, TSX and CSS files. The largest file is approximately 520 lines; no section is implemented as a multi-thousand-line component.
+
+## 2026-10-10 — global motion-control removal
+
+- Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
+- Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
+- Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.

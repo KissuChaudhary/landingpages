@@ -1,12 +1,9 @@
 "use client";
-import { Pause, Play } from "lucide-react";
 import { site } from "@/site.config";
 import { href, route } from "@/lib/urls";
-import { useSite } from "../SiteShell";
 import { Brand } from "../ui/Brand";
 import { Button, Frame, Label } from "../ui/Primitives";
 export function Footer() {
-  const { motion, toggleMotion } = useSite();
   return (
     <footer className="footer dark">
       <Frame className="closing">
@@ -48,10 +45,6 @@ export function Footer() {
       </div>
       <div className="footer-bottom">
         <span>Built for the possibilities ahead.</span>
-        <button aria-pressed={!motion} onClick={toggleMotion}>
-          {motion ? <Pause size={13} /> : <Play size={13} />}
-          {motion ? "Pause motion" : "Resume motion"}
-        </button>
       </div>
       <div className="pixel-wordmark" aria-hidden="true">
         <svg viewBox="0 0 1200 240">

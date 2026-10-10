@@ -298,25 +298,6 @@ p {
 .tone-blue {
   background: #d8e6f6;
 }
-.motion-control {
-  background: none;
-  border: 0;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  padding: 5px 0;
-}
-.motion-control > span {
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  display: grid;
-  place-items: center;
-  font-size: 10px;
-}
 .reveal-wait {
   opacity: 0;
   transform: translateY(32px);

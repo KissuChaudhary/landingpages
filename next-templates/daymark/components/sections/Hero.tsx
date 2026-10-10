@@ -2,7 +2,6 @@ import { site } from "@/site.config";
 import { asset } from "@/lib/urls";
 import { Button } from "../ui/Button";
 import { Arrow } from "../ui/Arrow";
-import { MotionControl } from "../Motion";
 export function Hero() {
   return (
     <section className="hero wrap">
@@ -80,9 +79,6 @@ export function Hero() {
             <circle className="journey-dot" r="3.5" fill="currentColor" />
           </svg>
           <p>Build the relationship. Keep it moving.</p>
-        </div>
-        <div className="hero-motion">
-          <MotionControl />
         </div>
       </div>
     </section>

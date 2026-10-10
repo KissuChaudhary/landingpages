@@ -70,12 +70,12 @@ Track and credit covers are drawn in CSS from two colours each, so there is noth
 ## Motion
 
 - **Hero:** headline words rise in, the full stop drops in as a ball and bounces to rest, the beat pad slides up, and milestone chips pop in and drift with the pointer.
-- **Beat pad:** the playhead runs while the pad is on screen. It stops off-screen unless sound is on, and the play button, the footer's "Pause motion" control and reduced motion all stop it.
+- **Beat pad:** the playhead runs while the pad is on screen. It stops off-screen unless sound is on, and the play button and reduced motion stop it.
 - **Statement:** on scroll, its words light up and the scattered project files are pulled into one finished master.
 - **Weeks:** on wide screens the section pins and scrolling moves the playhead across the weeks, recording each week's clip. On phones and with reduced motion, the week buttons choose what's shown.
 - **Elsewhere:** the outcomes rail can be dragged, scrolled or stepped with the arrows. Stats, prices and the countdown roll like an odometer. Buttons roll their letters on hover.
 
-Everything respects the system "reduce motion" setting: content appears in place, nothing pins and nothing loops. The track strip and the beat pad are the only things that move on their own; the footer's "Pause motion" control stops both and is remembered on that device.
+Everything respects the system "reduce motion" setting: content appears in place, nothing pins and nothing loops. The track strip and the beat pad are the only things that move on their own. Both respect system reduced motion.
 
 ## Accessibility
 

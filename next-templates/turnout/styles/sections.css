@@ -8,7 +8,7 @@
 }
 .logos-track { display: flex; width: max-content; animation: logos 42s linear infinite; }
 .logos-track li { flex: none; padding-inline: clamp(22px, 3vw, 40px); }
-html[data-paused="true"] .logos-track, html:not([data-motion="on"]) .logos-track { animation-play-state: paused; }
+html:not([data-motion="on"]) .logos-track { animation-play-state: paused; }
 .logos-viewport:hover .logos-track { animation-play-state: paused; }
 @keyframes logos { to { transform: translateX(-50%); } }
 
