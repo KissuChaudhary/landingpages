@@ -12,7 +12,7 @@
   inset: 0;
   background: url('/hero-grain.svg') repeat;
   background-size: 320px 320px;
-  opacity: 0.56;
+  opacity: 0.72;
   -webkit-mask-image: radial-gradient(ellipse 47% 58% at 50% 35%, transparent 27%, rgb(0 0 0 / 0.16) 57%, #000 100%);
   mask-image: radial-gradient(ellipse 47% 58% at 50% 35%, transparent 27%, rgb(0 0 0 / 0.16) 57%, #000 100%);
 }
@@ -27,8 +27,18 @@
 @media (max-width: 640px) {
   .backdrop { height: 880px; }
   .grain {
-    opacity: 0.4;
-    -webkit-mask-image: radial-gradient(ellipse 75% 49% at 50% 37%, transparent 20%, rgb(0 0 0 / 0.12) 58%, #000 100%);
-    mask-image: radial-gradient(ellipse 75% 49% at 50% 37%, transparent 20%, rgb(0 0 0 / 0.12) 58%, #000 100%);
+    opacity: 0.78;
+    background-position: -48px 24px;
+    /* Narrow screens get asymmetric pockets, leaving the heading's center quiet. */
+    -webkit-mask-image:
+      radial-gradient(ellipse 72% 28% at 0% 4%, #000 12%, transparent 100%),
+      radial-gradient(ellipse 58% 32% at 100% 18%, #000 8%, transparent 100%),
+      radial-gradient(ellipse 28% 30% at 0% 58%, rgb(0 0 0 / 0.7), transparent 100%),
+      radial-gradient(ellipse 32% 28% at 100% 66%, rgb(0 0 0 / 0.7), transparent 100%);
+    mask-image:
+      radial-gradient(ellipse 72% 28% at 0% 4%, #000 12%, transparent 100%),
+      radial-gradient(ellipse 58% 32% at 100% 18%, #000 8%, transparent 100%),
+      radial-gradient(ellipse 28% 30% at 0% 58%, rgb(0 0 0 / 0.7), transparent 100%),
+      radial-gradient(ellipse 32% 28% at 100% 66%, rgb(0 0 0 / 0.7), transparent 100%);
   }
 }
