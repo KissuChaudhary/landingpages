@@ -1,3 +1,4 @@
+import { turnoutTemplate } from './template-catalog/turnout';
 import { goodfolkTemplate } from './template-catalog/goodfolk';
 import { encoreTemplate } from './template-catalog/encore';
 import { shearTemplate } from './template-catalog/shear';
@@ -42,6 +43,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    turnoutTemplate,
     bounceTemplate,
     oddlineTemplate,
     goodfolkTemplate,
