@@ -1,0 +1,350 @@
+.faq {
+  display: grid;
+  grid-template-columns: 1fr 1.16fr;
+  gap: 75px;
+  padding-bottom: 110px;
+}
+.faq-intro .section-title {
+  margin-top: 25px;
+}
+.faq-intro > p:not(.eyebrow) {
+  font-size: 12px;
+  color: #8d859a;
+  margin-top: 28px;
+}
+.faq-intro .button {
+  font-size: 11px;
+  margin-top: 9px;
+}
+.faq-list {
+  border-top: 1px solid #36313f;
+}
+.faq-list details {
+  border-bottom: 1px solid #36313f;
+}
+.faq-list summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 23px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.faq-plus {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  flex-shrink: 0;
+}
+.faq-plus::before,
+.faq-plus::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 1px;
+  background: #9b8aaa;
+  left: 3px;
+  top: 8px;
+  transition: transform 0.3s;
+}
+.faq-plus::after {
+  transform: rotate(90deg);
+}
+.faq-list details[open] .faq-plus::after {
+  transform: rotate(0);
+}
+.faq-list details[open] summary {
+  color: #d1c0e4;
+}
+.faq-answer {
+  padding: 0 32px 24px 0;
+}
+.faq-answer p {
+  color: #92869c;
+  line-height: 1.85;
+  font-size: 12px;
+}
+.closing-panel {
+  border-radius: 15px;
+  overflow: hidden;
+  background: #c7c5e1;
+  position: relative;
+  padding: 70px 60px;
+  min-height: 380px;
+  isolation: isolate;
+  color: #2a263f;
+}
+.closing-image {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+.closing-panel::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #d1d0eb 0%,
+    #d1d0ebeb 28%,
+    #d1d0ebc9 47%,
+    #d1d0eb00 82%
+  );
+}
+.closing-copy {
+  position: relative;
+  z-index: 2;
+}
+.closing-copy .eyebrow {
+  color: #6c6280;
+  font-size: 10px;
+}
+.closing-copy h2 {
+  margin-top: 25px;
+  font-size: clamp(35px, 3.7vw, 54px);
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+}
+.closing-copy h2 span {
+  display: block;
+}
+.closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.closing-actions .button-primary {
+  background: #2e293d;
+  color: #f0edf5;
+}
+.closing-actions .button-primary:hover {
+  background: #484055;
+}
+.closing-actions .button-secondary {
+  border-color: #9a92b0;
+  color: #504560;
+}
+.closing-actions .button-secondary:hover {
+  background: #d8d4ec;
+}
+.closing-mark {
+  position: absolute;
+  bottom: 28px;
+  right: 30px;
+  width: 35px;
+  height: 35px;
+  color: #514960;
+}
+.footer {
+  padding-top: 77px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.1fr;
+  gap: 65px;
+}
+.footer-brand > p {
+  max-width: 260px;
+  font-size: 11px;
+  line-height: 1.9;
+  color: #827889;
+  margin-top: 21px;
+}
+.footer-top nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 26px;
+  align-content: start;
+  padding-top: 10px;
+}
+.footer-top nav a {
+  font-size: 10px;
+  color: #a294b0;
+  transition: color 0.2s;
+}
+.footer-top nav a:hover {
+  color: white;
+}
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 10px;
+}
+.footer-contact span {
+  color: #7f708a;
+  font-size: 9px;
+}
+.footer-contact a {
+  color: #c2b0ce;
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: -0.035em;
+  width: fit-content;
+  border-bottom: 1px solid #504159;
+  padding-bottom: 7px;
+}
+.footer-wordmark {
+  font-family: var(--display);
+  color: #b9a8c6;
+  font-size: clamp(130px, 23.5vw, 344px);
+  letter-spacing: -0.075em;
+  line-height: 1.03;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 35px 25px;
+}
+.footer-wordmark > span {
+  font-size: 0.55em;
+  color: #766681;
+  letter-spacing: -0.1em;
+  line-height: 1;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #302633;
+  padding-block: 24px;
+  font-size: 9px;
+  color: #807086;
+}
+@media (max-width: 1100px) {
+  .faq {
+    gap: 45px;
+  }
+  .closing-panel {
+    padding: 60px 40px;
+  }
+  .footer-top {
+    gap: 35px;
+  }
+  .footer-contact a {
+    font-size: 17px;
+  }
+}
+@media (max-width: 900px) {
+  .faq {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 35px;
+  }
+  .faq-list summary {
+    font-size: 14px;
+  }
+  .closing-panel {
+    padding: 45px 32px;
+  }
+  .closing-copy h2 {
+    font-size: 36px;
+  }
+  .footer-top {
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .footer-contact {
+    grid-column: 1 / -1;
+    padding-top: 0;
+  }
+}
+@media (max-width: 740px) {
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-bottom: 75px;
+  }
+  .faq-list summary {
+    font-size: 16px;
+    padding-block: 22px;
+  }
+  .closing-panel {
+    padding: 38px 27px 190px;
+  }
+  .closing-panel::after {
+    background: linear-gradient(
+      #d1d0eb 0%,
+      #d1d0ebeb 35%,
+      #d1d0eb55 76%,
+      transparent
+    );
+  }
+  .closing-image {
+    object-position: 65% bottom;
+  }
+  .closing-copy h2 {
+    font-size: 34px;
+  }
+  .closing-copy h2 span {
+    display: inline;
+  }
+  .closing-copy h2 span + span::before {
+    content: " ";
+  }
+  .closing-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 26px;
+  }
+  .closing-actions .button {
+    font-size: 10px;
+  }
+  .closing-actions .button-secondary {
+    border-color: #8b819d;
+    background: #e8e3f52b;
+  }
+  .closing-copy .eyebrow {
+    max-width: 230px;
+    font-size: 9px;
+  }
+  .footer {
+    padding-top: 58px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-top nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+  }
+  .footer-contact {
+    grid-column: 1 / -1;
+    font-size: 9px;
+    padding-top: 0;
+  }
+  .footer-contact a {
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+  .footer-wordmark {
+    font-size: 23vw;
+    margin-top: 36px;
+    margin-bottom: 23px;
+  }
+  .footer-bottom {
+    flex-wrap: wrap;
+    font-size: 8px;
+    gap: 13px;
+  }
+  .footer-bottom span:nth-child(2) {
+    display: none;
+  }
+}

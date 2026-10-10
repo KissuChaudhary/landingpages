@@ -1,0 +1,254 @@
+.pricing-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.pricing-heading .section-title {
+  max-width: 720px;
+  margin-top: 23px;
+}
+.pricing-heading .section-description {
+  max-width: 490px;
+  margin-top: 20px;
+}
+.billing {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 32px;
+}
+.billing-toggle {
+  display: inline-flex;
+  position: relative;
+  gap: 4px;
+  background: #17161e;
+  border: 1px solid #35313f;
+  border-radius: 7px;
+  padding: 4px;
+}
+.billing-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 6px);
+  border-radius: 4px;
+  background: #cac2e2;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.billing-indicator.yearly {
+  transform: translateX(calc(100% + 4px));
+}
+.billing-toggle button {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 0;
+  width: 86px;
+  padding: 9px 8px;
+  color: #8b849b;
+  font-size: 10px;
+  transition: color 0.3s;
+}
+.billing-toggle button[aria-pressed="true"] {
+  color: #332a42;
+}
+.billing-note {
+  color: #9484a7;
+  font-size: 9px;
+}
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 50px;
+}
+.plan {
+  position: relative;
+  border: 1px solid #2c2b34;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #19181f, #111116);
+  padding: 35px 30px;
+}
+.plan-featured {
+  background: linear-gradient(145deg, #2e263a, #1b1824);
+  border-color: #827191;
+}
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  color: #393047;
+  background: #cfc2e1;
+  border: 1px solid #e8d9fa;
+  padding: 5px 9px;
+  border-radius: 4px;
+  font-size: 8px;
+}
+.plan-heading h3 {
+  font-size: 23px;
+  letter-spacing: -0.035em;
+}
+.plan-heading p {
+  font-size: 11px;
+  color: #8f879c;
+  line-height: 1.7;
+  margin-top: 12px;
+  min-height: 38px;
+}
+.plan-price {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 34px;
+}
+.price-value {
+  font-family: var(--display);
+  font-size: 54px;
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+}
+.plan:last-child .price-value {
+  font-size: 47px;
+  line-height: 1.26;
+}
+.price-unit {
+  font-size: 10px;
+  color: #9a91a6;
+}
+.plan-billing-note {
+  font-size: 8px;
+  display: block;
+  min-height: 14px;
+  margin-top: 13px;
+  color: #6f667e;
+}
+.plan > .button {
+  display: flex;
+  width: 100%;
+  margin-top: 28px;
+  min-height: 44px;
+  font-size: 10px;
+  padding: 12px 14px;
+  gap: 10px;
+}
+.plan-featured .button-primary {
+  background: #d2c4e4;
+  color: #31243e;
+}
+.plan-featured .button-primary:hover {
+  background: #e7d8fc;
+}
+.plan-divider {
+  height: 1px;
+  background: #312d39;
+  margin-block: 27px;
+}
+.plan ul {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.plan li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #aba1b7;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.plan li svg {
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  color: #93819f;
+}
+.pricing-note {
+  text-align: center;
+  color: #777080;
+  font-size: 9px;
+  margin-top: 27px;
+}
+@media (max-width: 1100px) {
+  .plan {
+    padding: 30px 23px;
+  }
+  .plan-heading p {
+    min-height: 38px;
+  }
+  .plan .button {
+    font-size: 9px;
+  }
+}
+@media (max-width: 900px) {
+  .plan-grid {
+    gap: 12px;
+  }
+  .plan {
+    padding: 28px 19px;
+  }
+  .plan-heading h3 {
+    font-size: 20px;
+  }
+  .plan .button {
+    gap: 5px;
+    font-size: 8px;
+    padding-inline: 10px;
+  }
+  .plan .button .arrow {
+    width: 14px;
+  }
+  .plan:last-child .price-value {
+    font-size: 40px;
+    line-height: 1.485;
+  }
+  .plan li {
+    font-size: 9px;
+  }
+}
+@media (max-width: 740px) {
+  .plan-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 500px;
+    margin: 42px auto 0;
+  }
+  .plan {
+    padding: 30px;
+  }
+  .plan-heading h3 {
+    font-size: 26px;
+  }
+  .plan-heading p {
+    font-size: 12px;
+    min-height: auto;
+  }
+  .plan .button {
+    font-size: 11px;
+    gap: 20px;
+    padding: 14px 17px;
+  }
+  .plan .button .arrow {
+    width: 18px;
+  }
+  .plan li {
+    font-size: 12px;
+  }
+  .plan:last-child .price-value {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+  .billing {
+    gap: 12px;
+  }
+  .billing-note {
+    font-size: 8px;
+  }
+  .pricing-note {
+    line-height: 1.7;
+  }
+}

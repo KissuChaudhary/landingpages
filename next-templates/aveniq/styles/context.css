@@ -1,0 +1,176 @@
+.context {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 65px;
+  align-items: center;
+}
+.context-copy .section-title {
+  margin-top: 24px;
+}
+.context-copy .eyebrow {
+  font-size: 10px;
+}
+.context-footnote {
+  font-size: 10px;
+  color: #706d80;
+  margin-top: 30px;
+}
+.context-visual {
+  height: 390px;
+  position: relative;
+  border: 1px solid #2c2b38;
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at center, #30283e55, transparent 70%), #111118;
+  overflow: hidden;
+}
+.context-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#393541 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(ellipse, black, transparent 80%);
+}
+.context-core {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 83px;
+  border: 1px solid #8b789e;
+  border-radius: 11px;
+  background: linear-gradient(130deg, #807092, #322d42);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.context-core span {
+  font-size: 10px;
+  letter-spacing: -0.03em;
+}
+.context-paths {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.context-input {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid #454151;
+  background: #1d1a27;
+  padding: 12px;
+  color: #b1a6c0;
+  font-size: 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    transform 0.35s,
+    border-color 0.35s;
+}
+.context-input i {
+  font-style: normal;
+  color: #d2bfdc;
+  font-size: 13px;
+}
+.input-0 {
+  top: 40px;
+  left: 6%;
+  transform: rotate(-5deg);
+}
+.input-1 {
+  top: 40px;
+  right: 5%;
+  transform: rotate(4deg);
+}
+.input-2 {
+  top: 173px;
+  left: 3%;
+}
+.input-3 {
+  top: 173px;
+  right: 3%;
+}
+.input-4 {
+  bottom: 45px;
+  left: 6%;
+  transform: rotate(5deg);
+}
+.input-5 {
+  bottom: 45px;
+  right: 5%;
+  transform: rotate(-5deg);
+}
+.context-visual:hover .context-input {
+  transform: rotate(0) translateY(-3px);
+  border-color: #7b668b;
+}
+@media (max-width: 1100px) {
+  .context {
+    gap: 40px;
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .context-visual {
+    height: 360px;
+  }
+  .context-input {
+    padding: 10px;
+    font-size: 7px;
+  }
+  .input-2,
+  .input-3 {
+    top: 159px;
+  }
+}
+@media (max-width: 900px) {
+  .context {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .context-copy {
+    grid-row: 1;
+  }
+  .context-visual {
+    max-width: 650px;
+    width: 100%;
+  }
+  .context-input {
+    font-size: 9px;
+    padding: 13px;
+  }
+}
+@media (max-width: 440px) {
+  .context-visual {
+    height: 310px;
+  }
+  .context-input {
+    padding: 9px;
+    font-size: 6px;
+    gap: 4px;
+  }
+  .context-input i {
+    font-size: 11px;
+  }
+  .input-0,
+  .input-4 {
+    left: 4%;
+  }
+  .input-1,
+  .input-5 {
+    right: 4%;
+  }
+  .input-2,
+  .input-3 {
+    top: 139px;
+  }
+  .context-core {
+    width: 74px;
+    height: 74px;
+  }
+}

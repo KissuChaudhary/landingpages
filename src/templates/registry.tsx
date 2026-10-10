@@ -12,6 +12,7 @@ const Loading = () => (
 );
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  'aveniq': dynamic(() => import('@/templates/aveniq'), { ssr: false, loading: Loading }),
   'turnout': dynamic(() => import('@/templates/turnout'), { ssr: false, loading: Loading }),
   'bounce': dynamic(() => import('@/templates/bounce'), { ssr: false, loading: Loading }),
   'oddline': dynamic(() => import('@/templates/oddline'), { ssr: false, loading: Loading }),
