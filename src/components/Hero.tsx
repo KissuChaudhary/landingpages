@@ -4,7 +4,6 @@ import { ArrowRight, Blocks, Check } from 'lucide-react';
 import HeroWord from '@/components/HeroWord';
 import HeroWall from '@/components/HeroWall';
 import HeroBackdrop from '@/components/home/HeroBackdrop';
-import MeasuredHeading from '@/components/home/MeasuredHeading';
 import { NextIcon, ReactIcon, ShadcnIcon, TailwindIcon, TypeScriptIcon } from '@/components/home/BrandIcons';
 import { TEMPLATES } from '@/data/templates';
 import { TEMPLATE_DETAILS } from '@/data/template-details';
@@ -44,13 +43,14 @@ export default function Hero() {
         )}
 
         <div className="mt-9 sm:mt-11">
-          <MeasuredHeading>
-            <h1 className="text-[38px] font-medium leading-[1.04] tracking-[-0.05em] text-[#181925] sm:text-[64px] lg:text-[80px]">
+          <h1 className="text-[clamp(30px,9.5vw,38px)] font-medium leading-[1.04] tracking-[-0.05em] text-[#181925] sm:text-[64px] lg:text-[80px]">
+            <span className="block">
               Landing pages for <HeroWord words={WORDS} />
-              <br />
+            </span>
+            <span className="mt-8 block">
               that <span className="text-primary">look expensive.</span>
-            </h1>
-          </MeasuredHeading>
+            </span>
+          </h1>
         </div>
 
         <p className="mx-auto mt-8 max-w-[34rem] text-pretty text-[17px] leading-relaxed text-[#666] sm:mt-9 sm:text-lg">

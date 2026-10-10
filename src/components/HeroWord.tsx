@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { TextMorph } from '@/ui-library/registry/text-morph';
+import MeasuredText from '@/components/home/MeasuredText';
 
 /* The headline's changing word: Text morph keeps the letters two words share and eases the width, so the line re-centres
  * in the same motion. It only cycles while the headline is on screen, and holds still with reduced motion. */
@@ -37,9 +38,13 @@ export default function HeroWord({ words, interval = 2600 }: { words: string[]; 
   return (
     <span
       ref={ref}
-      className="inline-block bg-[radial-gradient(circle,rgba(24,25,37,0.22)_1.4px,transparent_1.9px)] bg-[length:11px_7px] bg-bottom bg-repeat-x pb-[0.1em]"
+      className="mx-auto mt-6 block w-fit lg:mx-0 lg:mt-0 lg:inline-block"
     >
-      <TextMorph duration={520}>{words[index]}</TextMorph>
+      <MeasuredText>
+        <span className="inline-block bg-[radial-gradient(circle,rgba(24,25,37,0.22)_1.4px,transparent_1.9px)] bg-[length:11px_7px] bg-bottom bg-repeat-x pb-[0.1em]">
+          <TextMorph duration={520}>{words[index]}</TextMorph>
+        </span>
+      </MeasuredText>
     </span>
   );
 }
