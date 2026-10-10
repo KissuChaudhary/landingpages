@@ -42,16 +42,16 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 
   // Reveal anything marked with data-reveal as it enters the viewport.
   useEffect(() => {
-    const items = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-in)"));
+    const items = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-shown])"));
     if (reduced) {
-      items.forEach((el) => el.classList.add("is-in"));
+      items.forEach((el) => el.setAttribute("data-shown", ""));
       return;
     }
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
+          entry.target.setAttribute("data-shown", "");
           observer.unobserve(entry.target);
         }),
       { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },

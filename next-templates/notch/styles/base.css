@@ -170,7 +170,7 @@ html[data-motion="on"] [data-reveal] {
     transform 1.15s var(--ease) var(--rd, 0ms),
     filter 0.9s var(--ease) var(--rd, 0ms);
 }
-html[data-motion="on"] [data-reveal].is-in { opacity: 1; transform: none; }
+html[data-motion="on"] [data-reveal][data-shown] { opacity: 1; transform: none; }
 
 /* ---------- Sections and headings ---------- */
 
@@ -189,7 +189,7 @@ html[data-motion="on"] [data-reveal].is-in { opacity: 1; transform: none; }
 .section-line { display: block; }
 .section-line + .section-line { color: #4b4d57; }
 html[data-motion="on"] .section-line[data-reveal] { filter: blur(8px); }
-html[data-motion="on"] .section-line[data-reveal].is-in { filter: none; }
+html[data-motion="on"] .section-line[data-reveal][data-shown] { filter: none; }
 
 .icon-tile {
   display: inline-grid; place-items: center; flex: none;

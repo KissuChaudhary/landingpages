@@ -9,6 +9,7 @@ import { velaDetails } from './template-catalog/vela';
 import { sylvaDetails } from './template-catalog/sylva';
 import { notchDetails } from './template-catalog/notch';
 import { oddlineDetails } from './template-catalog/oddline';
+import { bounceDetails } from './template-catalog/bounce';
 
 /**
  * Long-form content for each template's detail page. Everything here is taken from the template's own
@@ -50,6 +51,7 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  bounce: bounceDetails,
   oddline: oddlineDetails,
   goodfolk: goodfolkDetails,
   daymark: daymarkDetails,

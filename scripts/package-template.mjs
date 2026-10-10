@@ -55,7 +55,7 @@ const forbidden = [
   [/in-app browser/i, "an internal QA note"],
   [/\b(QA|DESIGN)\.md\b/, "a document that is not in the zip"],
   [/hairline ui repository|inside hairline/i, "our repository"],
-  [/agentlab|skyagent|codeforge|infisical|herospark/i, "a reference site"],
+  [/agentlab|skyagent|codeforge|infisical|herospark|tokko/i, "a reference site"],
 ];
 
 const requiredFiles = [

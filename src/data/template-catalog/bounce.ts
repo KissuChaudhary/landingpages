@@ -1,0 +1,52 @@
+import type { TemplateItem } from "../templates";
+import type { TemplateDetails } from "../template-details";
+export const bounceTemplate: TemplateItem = {
+  slug: "bounce", title: "Bounce: Online Course Landing Page",
+  category: "Landing Pages", defaultTheme: "light", badge: "Courses & Cohorts",
+  description: "A bright, playful course launch with a playable beat pad in the hero, a curriculum laid out as a song arrangement that records itself as you scroll, a pricing card that reshapes around each plan and a countdown to the next cohort.",
+  tags: ["Online Course", "Cohort", "Interactive", "Colourful", "Next.js 15"],
+  features: [
+    "Playable 16-step beat pad with presets, tempo and optional synthesized sound",
+    "Pinned scroll statement and a six-week curriculum shown as a recording arrangement",
+    "Draggable outcomes rail, teacher credits, story wall and rolling stats",
+    "Reshaping pricing card with payment plans, seats left and a live cohort countdown",
+  ],
+  accentColor: "from-pink-500 to-violet-500",
+  previewUrl: "/preview/bounce", standaloneUrl: "/demos/bounce/index.html",
+  demoUrl: "/demo/bounce", detailUrl: "/template/bounce", thumbnailUrl: "/previews/card/bounce.webp",
+};
+export const bounceDetails: TemplateDetails = {
+  name: "Bounce", kind: "Online course and cohort landing page template",
+  summary: "A complete landing page for an online course, written for a six-week music production cohort. Bright and playful, with vivid colour-lit photography, six named colours and an interactive moment in every section.",
+  bestFor: ["Online courses and cohort programmes", "Creative and music education", "Workshops, bootcamps and memberships"],
+  design: "Bricolage Grotesque headlines, Figtree text and Geist Mono labels on white, with six colours (pink, violet, blue, lime, cyan, amber) carried by weeks, pads, stories and plans. An asymmetric hero with a beat pad, a pinned statement, a photo rail, an arrangement-style curriculum, a teacher portrait with credits, a platform screen, a story wall, a spec list, a reshaping pricing card, a split FAQ and a violet closing panel.",
+  sections: [
+    { name: "Hero", detail: "Cohort status, a headline whose full stop bounces in, and a playable beat pad with presets, tempo, keyboard support and optional Web Audio sound. Milestone chips drift with the pointer." },
+    { name: "Finished tracks", detail: "A slow strip of student tracks with CSS cover art and waveforms." },
+    { name: "Statement", detail: "A pinned sentence that lights up word by word while loose project files are pulled into one finished master." },
+    { name: "Outcomes", detail: "A draggable, snapping rail of colour-lit photo cards with arrows and a progress line." },
+    { name: "Six weeks", detail: "Each week is a lane whose clip starts that week and runs to the end. On desktop the section pins and a scroll-driven playhead records the clips; on phones, week tabs." },
+    { name: "Teacher and platform", detail: "A portrait with rolling stats and a credits list, then the course platform as a rendered screen that straightens on scroll." },
+    { name: "Stories and included", detail: "A masonry wall of student stories with waveforms and results, and a typographic spec list with rolling numbers." },
+    { name: "Pricing, FAQ and closing", detail: "A plan selector beside a card that changes colour, price, payment plan, seats and features in place; a split FAQ; a fitted bouncing wordmark with a countdown to the cohort start." },
+    { name: "Pages", detail: "A printable syllabus, privacy and terms placeholders and a custom 404." },
+  ],
+  customizeIntro: "Start in site.config.ts: brand, cohort date and seats, links, beat pad presets, weeks, teacher, stories, plans and questions.",
+  customize: [
+    { what: "Brand, cohort, links, copy, weeks, plans, FAQ", where: "site.config.ts" },
+    { what: "Beat pad presets and instruments", where: "site.config.ts (pad)" },
+    { what: "Colours, type scale and buttons", where: "styles/base.css" },
+    { what: "Section order", where: "app/page.tsx" },
+    { what: "Photos and platform screens", where: "public/images/ and ASSETS.md" },
+    { what: "Privacy and terms placeholders", where: "data/legal.ts" },
+  ],
+  fonts: ["Bricolage Grotesque", "Figtree", "Geist Mono"],
+  dependencies: ["next", "react", "react-dom", "lucide-react"],
+  styling: "CSS",
+  images: "Thirteen generated photographs and portraits of fictional people and two rendered course-platform screens, all optimized WebP. Covers, waveforms, the mark and the beat pad sounds are code.",
+  node: "20.9",
+  files: 62,
+  lines: 3252,
+  beforeLaunch: "Replace the fictional course, teacher, students, numbers and quotes; set the cohort date and seats, the enroll and checkout links, and replace the privacy and terms placeholders. Swap the beat pad for your own hero visual if your course isn't about music.",
+  updated: "2026-10-10",
+};

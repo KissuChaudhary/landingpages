@@ -9,6 +9,7 @@ import { velaTemplate } from './template-catalog/vela';
 import { sylvaTemplate } from './template-catalog/sylva';
 import { notchTemplate } from './template-catalog/notch';
 import { oddlineTemplate } from './template-catalog/oddline';
+import { bounceTemplate } from './template-catalog/bounce';
 
 export interface TemplateItem {
   slug: string;
@@ -40,6 +41,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    bounceTemplate,
     oddlineTemplate,
     goodfolkTemplate,
     daymarkTemplate,
