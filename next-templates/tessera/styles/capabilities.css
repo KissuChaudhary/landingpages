@@ -1,0 +1,225 @@
+.manifesto {
+  padding-top: 110px;
+  padding-bottom: 110px;
+  border-bottom: 1px solid var(--line);
+}
+.manifesto-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.manifesto-top > .mono {
+  color: var(--muted);
+}
+.manifesto-title {
+  font-size: clamp(38px, 5.2vw, 88px);
+  margin: 28px 0 64px;
+}
+.manifesto-title .wipe-line:last-child {
+  color: #6c67a1;
+}
+.manifesto-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.manifesto-bottom > p {
+  max-width: 470px;
+  color: var(--muted);
+  font-size: 18px;
+}
+.principle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.principle-list > span {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 15px;
+}
+.principle-list small {
+  color: var(--muted);
+}
+.capabilities {
+  padding-bottom: 130px;
+}
+.capability-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.capability-tabs {
+  padding: 24px 0;
+}
+.capability-tabs button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  text-align: left;
+  background: transparent;
+  padding: 27px 28px 27px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 22px;
+  letter-spacing: -0.035em;
+  transition:
+    padding 0.45s var(--ease),
+    background 0.45s var(--ease);
+}
+.capability-tabs button:last-child {
+  border: 0;
+}
+.capability-tabs .mono {
+  font-size: 10px;
+  color: var(--muted);
+}
+.tab-plus {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 300;
+  transition: transform 0.5s var(--ease);
+}
+.capability-tabs [aria-selected="true"] {
+  padding-left: 18px;
+  background: var(--mint);
+}
+.capability-tabs [aria-selected="true"] .tab-plus {
+  transform: rotate(45deg);
+}
+.capability-panel {
+  background: var(--tone);
+  border-left: 1px solid var(--line);
+  transition: background 0.65s var(--ease);
+  min-width: 0;
+}
+.capability-text {
+  padding: 24px 36px 30px;
+}
+.capability-text h3 {
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+.capability-text p {
+  font-size: 15px;
+  max-width: 520px;
+}
+.deliverables {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 0;
+}
+.deliverables li {
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  font-size: 11px;
+}
+.system-diagram {
+  position: relative;
+  padding: 24px 28px;
+  min-height: 300px;
+  background: var(--tone);
+  overflow: hidden;
+  color: var(--ink);
+}
+.diagram-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(16, 27, 42, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 27, 42, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(transparent, #000, transparent);
+}
+.diagram-caption {
+  position: relative;
+  color: #46555b;
+  font-size: 9px;
+}
+.diagram-nodes {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin: 60px 0 50px;
+  gap: 0;
+}
+.diagram-step {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+.diagram-step:last-child {
+  flex: 0 0 22%;
+}
+.diagram-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  min-height: 115px;
+  background: var(--paper);
+  border: 1px solid rgba(16, 27, 42, 0.4);
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  padding: 16px 6px;
+}
+.diagram-node small {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  font-size: 8px;
+  color: var(--muted);
+}
+.node-symbol {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+.node-symbol > span {
+  display: block;
+  background: var(--ink);
+  width: 14px;
+  height: 14px;
+}
+.diagram-step:nth-child(2) .node-symbol > span {
+  transform: rotate(45deg);
+}
+.diagram-step:nth-child(3) .node-symbol > span {
+  border-radius: 50%;
+}
+.diagram-connector {
+  width: 20px;
+  flex-shrink: 0;
+}
+.diagram-connector .arrow {
+  width: 20px;
+}
+.diagram-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #46555b;
+}
+.diagram-footer span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.diagram-footer i {
+  width: 5px;
+  height: 5px;
+  background: var(--ink);
+}

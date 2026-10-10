@@ -1,0 +1,449 @@
+.contact-page {
+  padding-top: 180px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 100px;
+}
+.contact-intro {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+.contact-intro .section-title {
+  font-size: clamp(50px, 5.8vw, 96px);
+}
+.contact-intro > p:not(.eyebrow) {
+  max-width: 370px;
+  color: var(--muted);
+  font-size: 17px;
+  margin-top: 30px;
+}
+.contact-email {
+  display: block;
+  font-size: 22px;
+  margin-top: 50px;
+  letter-spacing: -0.03em;
+}
+.contact-intro > .mono {
+  display: block;
+  margin-top: 16px;
+  color: var(--muted);
+}
+.contact-form {
+  padding-top: 2px;
+}
+.contact-form label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 0;
+  color: var(--ink);
+  padding: 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  outline-offset: 3px;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: var(--ink);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #89919c;
+}
+.contact-form textarea {
+  min-height: 150px;
+}
+.optional {
+  color: var(--muted);
+  font-size: 10px;
+  margin-left: 8px;
+}
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.form-privacy {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 12px 0 26px;
+}
+.form-privacy a,
+.form-status a {
+  border-bottom: 1px solid currentColor;
+}
+.form-submit {
+  width: 100%;
+  text-align: left;
+}
+.form-submit:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+.form-status {
+  font-size: 13px;
+  color: var(--muted);
+}
+.form-status > p,
+.draft-ready {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--line);
+}
+.draft-ready {
+  background: var(--mint);
+  color: var(--ink);
+}
+.draft-ready .text-link {
+  margin-top: 10px;
+}
+.contact-mode-note {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.story-header {
+  padding-top: 160px;
+  padding-bottom: 40px;
+}
+.back-link {
+  display: block;
+  margin-bottom: 45px;
+  color: var(--muted);
+}
+.story-header > .section-title {
+  max-width: 1000px;
+  font-size: clamp(48px, 6vw, 100px);
+}
+.story-header > p:not(.eyebrow) {
+  margin-top: 28px;
+  max-width: 550px;
+  color: var(--muted);
+  font-size: 19px;
+}
+.story-header .system-diagram {
+  margin-top: 60px;
+  padding: 40px;
+  min-height: 450px;
+  border: 1px solid var(--line);
+}
+.story-header .diagram-nodes {
+  margin: 90px 0 80px;
+}
+.story-header .diagram-node {
+  min-height: 150px;
+  font-size: 17px;
+}
+.story-header .diagram-connector {
+  width: 55px;
+}
+.story-header .diagram-connector .arrow {
+  width: 55px;
+}
+.story-body {
+  padding-top: 45px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+}
+.story-body aside {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+.story-body aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+.story-body aside li {
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+  max-width: 250px;
+}
+.story-example {
+  font-size: 11px;
+  color: var(--muted);
+  max-width: 250px;
+}
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line);
+  margin-bottom: 64px;
+}
+.before-after article {
+  padding: 30px;
+  background: #e9edf0;
+}
+.before-after article:last-child {
+  background: var(--tone);
+}
+.before-after .mono {
+  font-size: 9px;
+}
+.before-after p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 24px;
+  letter-spacing: -0.02em;
+}
+.prose-section {
+  margin-bottom: 45px;
+}
+.prose-section h2 {
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+.prose-section p {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.prose-section a {
+  border-bottom: 1px solid currentColor;
+}
+.next-story {
+  display: block;
+  background: var(--lilac);
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+.next-story h2 {
+  font-size: clamp(32px, 4vw, 65px);
+  margin-top: 25px;
+}
+.next-story h2 span {
+  float: right;
+  font-size: 0.65em;
+}
+.next-story:hover h2 span {
+  transform: translate(5px, -5px);
+  transition: transform 0.5s;
+}
+.note-page,
+.policy-page {
+  padding-top: 170px;
+  max-width: 1100px;
+}
+.note-page .section-title,
+.policy-page .section-title {
+  font-size: clamp(44px, 5vw, 80px);
+  max-width: 850px;
+}
+.note-intro {
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 35px 0 55px;
+  max-width: 750px;
+}
+.note-page-art {
+  min-height: 360px;
+  margin: 45px 0 65px;
+  gap: 32px;
+}
+.note-page-art span {
+  width: 60px;
+  height: 120px;
+}
+.note-page-art span:nth-child(2n) {
+  height: 200px;
+}
+.note-page-art span:nth-child(3n) {
+  height: 70px;
+}
+.note-prose {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.policy-placeholder {
+  padding: 24px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--muted);
+  margin: 40px 0 60px;
+}
+.missing-page {
+  padding-top: 190px;
+  min-height: 600px;
+}
+.missing-page > p:not(.eyebrow) {
+  margin: 25px 0 35px;
+  color: var(--muted);
+}
+@media (max-width: 1000px) {
+  .contact-page {
+    gap: 45px;
+  }
+  .story-body {
+    gap: 45px;
+  }
+  .story-header .diagram-node {
+    font-size: 14px;
+  }
+  .story-header .diagram-connector {
+    width: 30px;
+  }
+  .story-header .diagram-connector .arrow {
+    width: 30px;
+  }
+}
+@media (max-width: 800px) {
+  .contact-page {
+    padding-top: 130px;
+    display: block;
+  }
+  .contact-intro {
+    position: static;
+    margin-bottom: 55px;
+  }
+  .contact-email {
+    margin-top: 28px;
+  }
+  .contact-intro .section-title {
+    font-size: 58px;
+  }
+  .story-header,
+  .note-page,
+  .policy-page {
+    padding-top: 130px;
+  }
+  .story-header .system-diagram {
+    padding: 24px;
+    min-height: 340px;
+  }
+  .story-header .diagram-nodes {
+    margin: 65px 0 55px;
+  }
+  .story-header .diagram-node {
+    min-height: 125px;
+    font-size: 12px;
+  }
+  .story-body {
+    grid-template-columns: 1fr;
+  }
+  .story-body aside {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .story-body aside ul {
+    margin: 0;
+    grid-row: 1/3;
+    grid-column: 2;
+  }
+  .before-after {
+    margin-bottom: 45px;
+  }
+  .before-after article {
+    padding: 25px;
+  }
+  .note-intro {
+    font-size: 20px;
+  }
+  .note-page-art {
+    min-height: 280px;
+    gap: 20px;
+  }
+  .note-page-art span {
+    width: 40px;
+  }
+  .prose-section p {
+    font-size: 16px;
+  }
+  .prose-section h2 {
+    font-size: 27px;
+  }
+}
+@media (max-width: 540px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .story-header > .section-title {
+    font-size: 44px;
+  }
+  .story-header > p:not(.eyebrow) {
+    font-size: 17px;
+  }
+  .story-header .system-diagram {
+    padding: 20px 14px;
+    min-height: 310px;
+  }
+  .story-header .diagram-node {
+    font-size: 10px;
+    padding: 15px 5px;
+    min-height: 110px;
+  }
+  .story-header .diagram-connector,
+  .story-header .diagram-connector .arrow {
+    width: 12px;
+  }
+  .before-after {
+    grid-template-columns: 1fr;
+  }
+  .before-after article {
+    padding: 24px;
+  }
+  .before-after p {
+    margin-top: 18px;
+    font-size: 17px;
+  }
+  .story-body aside {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .story-body aside ul {
+    grid-column: auto;
+    grid-row: auto;
+    margin: 20px 0;
+  }
+  .story-body aside li,
+  .story-example {
+    max-width: none;
+  }
+  .note-page-art {
+    gap: 15px;
+    min-height: 250px;
+  }
+  .note-page-art span {
+    width: 30px;
+  }
+  .note-page-art span:nth-child(2n) {
+    height: 160px;
+  }
+  .note-intro {
+    font-size: 19px;
+    margin-bottom: 30px;
+  }
+  .next-story {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+}

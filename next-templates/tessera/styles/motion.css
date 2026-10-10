@@ -1,0 +1,150 @@
+html[data-motion="on"] [data-reveal]:not(.wipe-line) {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s var(--ease) var(--delay, 0ms),
+    transform 1s var(--ease) var(--delay, 0ms);
+}
+html[data-motion="on"] [data-reveal][data-visible="true"]:not(.wipe-line) {
+  opacity: 1;
+  transform: none;
+}
+html[data-motion="on"] .wipe-line > span {
+  opacity: 0;
+  transition: opacity 0.1s 0.25s;
+}
+html[data-motion="on"] .wipe-line::after {
+  content: "";
+  position: absolute;
+  inset: 6% 0 2%;
+  background: var(--ink);
+  transform-origin: left;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+html[data-motion="on"] .dark .wipe-line::after {
+  background: var(--mint);
+}
+html[data-motion="on"] .wipe-line[data-visible="true"]::after {
+  animation: block-wipe 1s var(--ease) var(--delay, 0ms) both;
+}
+html[data-motion="on"] .wipe-line[data-visible="true"] > span {
+  opacity: 1;
+  transition-delay: calc(var(--delay, 0ms) + 0.4s);
+}
+@keyframes block-wipe {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  45% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  46% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+.sculpture-tile {
+  animation: tile-breathe 7s ease-in-out var(--tile-delay, 0s) infinite;
+  will-change: transform;
+}
+html[data-motion="on"] [data-scene]:not([data-active="true"]) .sculpture-tile {
+  animation-play-state: paused;
+}
+@keyframes tile-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--tile-lift, 12px) * -1));
+  }
+}
+.hero-art .sculpture-svg {
+  transform: translateY(calc(var(--progress, 0) * -20px));
+  transition: transform 0.2s linear;
+}
+.panel-morph {
+  animation: panel-in 0.6s var(--ease) both;
+}
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.diagram-connector {
+  position: relative;
+}
+.diagram-connector::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  background: var(--ink);
+  animation: signal-pass 3s ease-in-out infinite;
+}
+.diagram-step:nth-child(2) .diagram-connector::after {
+  animation-delay: 0.7s;
+}
+.diagram-step:nth-child(3) .diagram-connector::after {
+  animation-delay: 1.4s;
+}
+@keyframes signal-pass {
+  0%,
+  30% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  45% {
+    opacity: 1;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+}
+html[data-motion="off"] *,
+html[data-motion="off"] *::before,
+html[data-motion="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .wipe-line > span,
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .wipe-line::after {
+    display: none !important;
+  }
+  .hero-art .sculpture-svg,
+  .approach-symbol,
+  .footer-wordmark {
+    transform: none;
+  }
+}

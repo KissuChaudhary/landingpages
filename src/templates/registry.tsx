@@ -13,6 +13,7 @@ const Loading = () => (
 
 export const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'inlay': dynamic(() => import('@/templates/inlay'), { ssr: false, loading: Loading }),
+  'tessera': dynamic(() => import('@/templates/tessera'), { ssr: false, loading: Loading }),
   'aveniq': dynamic(() => import('@/templates/aveniq'), { ssr: false, loading: Loading }),
   'turnout': dynamic(() => import('@/templates/turnout'), { ssr: false, loading: Loading }),
   'bounce': dynamic(() => import('@/templates/bounce'), { ssr: false, loading: Loading }),

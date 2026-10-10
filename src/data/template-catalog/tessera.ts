@@ -1,0 +1,62 @@
+import type { TemplateItem } from "../templates";
+import type { TemplateDetails } from "../template-details";
+
+export const tesseraTemplate: TemplateItem = {
+  slug: "tessera",
+  title: "Tessera: AI Systems Studio",
+  category: "Landing Pages",
+  defaultTheme: "dark",
+  badge: "AI Agency & Motion",
+  description: "A considered AI studio site with an original kinetic isometric sculpture, block-shaped text reveals, a working capability explorer and distinct system-study pages. Deep navy, mint and lilac give the engineering story a precise, editorial presence.",
+  tags: ["AI Agency", "Automation", "Motion", "Original SVG", "Next.js 15"],
+  features: [
+    "Original isometric geometry, breathing tiles and scroll-linked details",
+    "Keyboard-accessible capability tabs and connected workflow diagrams",
+    "Three full system studies, two journal articles and a validated contact brief",
+    "Rolling offer prices, animated FAQ and system reduced-motion support",
+  ],
+  accentColor: "from-emerald-200 to-violet-300",
+  previewUrl: "/preview/tessera",
+  standaloneUrl: "/demos/tessera/index.html",
+  demoUrl: "/demo/tessera",
+  detailUrl: "/template/tessera",
+  thumbnailUrl: "/previews/card/tessera.webp",
+};
+
+export const tesseraDetails: TemplateDetails = {
+  name: "Tessera",
+  kind: "Motion-led AI systems and automation studio template",
+  summary: "A complete independent studio site positioned around practical operations and human judgment. A kinetic isometric sculpture introduces the brand, an in-place explorer makes the services concrete, and original example architectures explain the work without fabricated client results.",
+  bestFor: ["AI implementation and automation studios", "Operations consultancies and integration partners", "Technical agencies that value clear explanations and a strong motion identity"],
+  design: "Deep navy and cool white with mint, lilac and pale blue. Locally served Geist and Geist Mono, large asymmetric typography, square surfaces and fine borders. Original SVG sculptures, workflow diagrams and CSS article artwork form one visual system. No remote imagery or animation library.",
+  sections: [
+    { name: "Hero and navigation", detail: "An asymmetric two-line headline reveals through drawing blocks beside a 49-tile isometric sculpture. Individual tiles breathe on CSS timelines, the sculpture shifts with scroll, and the fixed header contracts into a compact bar. On phones the menu grows from that same header." },
+    { name: "Studio statement", detail: "Three editorial lines reveal independently, followed by the studio’s principles and positioning." },
+    { name: "Capability explorer", detail: "Four keyboard-accessible tabs change the background, workflow nodes, description and deliverables inside one panel. Animated signals move between the diagram’s steps." },
+    { name: "System studies", detail: "Three distinct isometric objects introduce example architectures. Each card opens a full story with a workflow map, scope, friction and intended change, three narrative sections and a next-study link." },
+    { name: "Approach and foundations", detail: "A sticky narrative and scroll-rotating modular mark sit beside four process steps. A dark chapter explains visible decisions, handover and evaluation, followed by a connected-tool strip." },
+    { name: "Engagements", detail: "Two offers with project and ongoing modes, a sliding selector and rolling digit prices. Offer buttons prefill the contact page’s engagement field." },
+    { name: "FAQ and field notes", detail: "A smoothly resizing accordion and two original journal notes, each with a full article page and geometric artwork." },
+    { name: "Closing and footer", detail: "A large mint-accented invitation, useful contact and section links, and a wordmark that rises slightly with scroll." },
+    { name: "Contact and legal pages", detail: "A validated brief that prepares a reviewable email draft by default or submits JSON to a configured HTTPS endpoint. Clear pending, received and retry states, plus editable privacy and terms pages and a custom 404." },
+  ],
+  customizeIntro: "Brand, copy, offers, capabilities, links and form integration live in one config. System studies and notes are plain content files. The geometry is code-native and every section has its own component.",
+  customize: [
+    { what: "Brand, page copy, offers, FAQ and links", where: "site.config.ts" },
+    { what: "System study cards and full story pages", where: "data/systems.ts" },
+    { what: "Journal notes and article pages", where: "data/notes.ts" },
+    { what: "Booking destination, email and JSON form endpoint", where: "site.config.ts → links and email" },
+    { what: "Palette, spacing and typography", where: "styles/base.css and app/layout.tsx" },
+    { what: "Isometric forms and workflow diagrams", where: "components/art/" },
+    { what: "Section order", where: "app/page.tsx" },
+  ],
+  fonts: ["Geist", "Geist Mono"],
+  dependencies: ["next", "react", "react-dom"],
+  styling: "CSS",
+  images: "Original SVG geometry and CSS compositions, including four isometric formations, a workflow diagram system, article art, brand mark and favicon. All artwork is local code; no stock images or external media accounts are required. Font licenses are bundled.",
+  node: "20.9",
+  files: 57,
+  lines: 4541,
+  beforeLaunch: "Replace the fictional studio identity, example URL and email, illustrative offers and system stories. Set the booking destination or HTTPS form endpoint, replace the legal starter copy and test delivery with your own service.",
+  updated: "2026-10-10",
+};

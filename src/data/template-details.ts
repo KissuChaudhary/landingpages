@@ -1,5 +1,6 @@
 import { inlayDetails } from './template-catalog/inlay';
 import { aveniqDetails } from './template-catalog/aveniq';
+import { tesseraDetails } from './template-catalog/tessera';
 import { turnoutDetails } from './template-catalog/turnout';
 import { goodfolkDetails } from './template-catalog/goodfolk';
 import { encoreDetails } from './template-catalog/encore';
@@ -56,6 +57,7 @@ const PLACEHOLDERS =
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
   inlay: inlayDetails,
+  tessera: tesseraDetails,
   aveniq: aveniqDetails,
   turnout: turnoutDetails,
   bounce: bounceDetails,

@@ -1,0 +1,228 @@
+.systems {
+  padding-top: 110px;
+  padding-bottom: 85px;
+}
+.system-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.system-card {
+  display: block;
+  border: 1px solid var(--line);
+  min-width: 0;
+  transition: border-color 0.5s;
+}
+.system-card:hover {
+  border-color: var(--tone);
+}
+.system-card-art {
+  height: 300px;
+  background: var(--tone);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.system-card-art > .mono {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+.system-card-art .sculpture {
+  width: 120%;
+  position: absolute;
+  top: -70px;
+  left: -10%;
+  transition: transform 0.8s var(--ease);
+}
+.system-card:hover .sculpture {
+  transform: translateY(-10px) scale(1.04);
+}
+.system-card-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--ink);
+  transition:
+    background 0.4s,
+    color 0.4s;
+}
+.system-card:hover .system-card-arrow {
+  background: var(--ink);
+  color: var(--tone);
+}
+.system-card-copy {
+  padding: 30px 25px;
+}
+.system-card-copy > .mono {
+  font-size: 9px;
+  color: var(--muted);
+}
+.system-card h3 {
+  font-size: 28px;
+  line-height: 1.15;
+  margin: 20px 0;
+}
+.system-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+.case-link {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 28px;
+  font-size: 12px;
+}
+.case-link .arrow {
+  width: 18px;
+  margin-left: auto;
+  transition: transform 0.5s var(--ease);
+}
+a:hover .case-link .arrow {
+  transform: translateX(5px);
+}
+.example-note {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 9px;
+}
+.approach {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+}
+.approach-intro {
+  position: sticky;
+  top: 120px;
+}
+.approach-intro > p:not(.eyebrow) {
+  max-width: 380px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.approach-symbol {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  transform: rotate(calc(var(--progress, 0) * 80deg - 20deg));
+}
+.approach-symbol i {
+  background: var(--mint);
+  border: 1px solid var(--ink);
+}
+.approach-symbol i:nth-child(2),
+.approach-symbol i:nth-child(3) {
+  background: var(--lilac);
+}
+.process-step {
+  position: relative;
+  padding: 28px 0 36px;
+  border-top: 1px solid var(--line);
+}
+.process-step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.step-meta {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.process-step h3 {
+  font-size: 33px;
+}
+.process-step > p {
+  margin-top: 20px;
+  color: var(--muted);
+  max-width: 450px;
+  font-size: 16px;
+}
+.step-output {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  font-size: 12px;
+}
+.step-output span {
+  color: #697c73;
+}
+.foundation-intro {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 100px;
+  margin: 10px 0 70px;
+}
+.foundation-intro > p {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 440px;
+}
+.foundation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.foundation-grid article {
+  padding: 32px 34px 40px 0;
+}
+.foundation-grid article + article {
+  border-left: 1px solid var(--line);
+  padding-left: 34px;
+}
+.foundation-number {
+  display: block;
+  color: var(--lilac);
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07em;
+  margin-bottom: 44px;
+}
+.foundation-grid h3 {
+  font-size: 26px;
+}
+.foundation-grid p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 20px;
+  max-width: 280px;
+}
+.tools-row {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.tools-row > .mono {
+  color: var(--muted);
+  margin-right: 20px;
+}
+.tools-row > span:not(.mono) {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 13px;
+}
+.tools-row i {
+  width: 4px;
+  height: 4px;
+  background: var(--mint);
+}
+.tools-row > span:last-child i {
+  display: none;
+}
