@@ -8,7 +8,7 @@ Fonts: Bricolage Grotesque and Geist, both under the SIL Open Font License, load
 
 Every photo prompt shared one direction: contemporary lifestyle campaign photography, candid, direct on-camera flash mixed with natural light, saturated true-to-life colour, accents of chartreuse lime and periwinkle blue in clothing or set design, no text, logos or watermarks.
 
-## Hero deck
+## Headline capsules and filmstrip
 
 | File | Size | Prompt |
 | --- | --- | --- |
@@ -16,7 +16,7 @@ Every photo prompt shared one direction: contemporary lifestyle campaign photogr
 | `hero-supper.webp` | 608 × 1088 | A long-table supper club in a glass greenhouse at night under string lights; a woman in a chartreuse silk shirt raises a glass toward the camera. |
 | `hero-runclub.webp` | 608 × 1088 | A dawn run club crossing a city footbridge, a young man at the front in a periwinkle running jacket glancing back toward the camera. |
 
-## Proof rows
+## Season of content
 
 | File | Size | Prompt |
 | --- | --- | --- |

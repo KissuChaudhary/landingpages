@@ -169,7 +169,11 @@ export function TextMorph({ children: text, duration = 460, direction = "up", an
   return (
     <span ref={rootRef} className={`tm ${className}`} {...props}>
       <span className="sr-only">{text}</span>
-      {words.map((word, w) => (
+      {words.map((word, w) =>
+        // Spaces stay plain text, so a wrapped line never starts with one.
+        word.length === 1 && word[0].char === " " ? (
+          <React.Fragment key={w}> </React.Fragment>
+        ) : (
         <span key={w} aria-hidden="true" className="tm-w">
           {word.map((g) => (
             <span
@@ -184,7 +188,8 @@ export function TextMorph({ children: text, duration = 460, direction = "up", an
             </span>
           ))}
         </span>
-      ))}
+        ),
+      )}
       {leaving.map((g) => (
         <LeavingGlyph key={`out-${g.key}`} glyph={g} lift={-rise} duration={duration} onDone={done} />
       ))}

@@ -1,5 +1,17 @@
 # Turnout QA (maintainers only, not shipped)
 
+## 2026-10-10 — revised Turnout release
+
+- Preserved the owner's photo-capsule hero, filmstrip, drifting work grid, attention chart, season, comparison ledger, spotlight and revised closing/footer.
+- Mobile folder tabs use the actual card width; the last tab's outward corner is removed. Narrow work grids no longer overflow.
+- Process details reserve their natural space and fade in; the active card stays level and the list reveals without a vertical shift.
+- Reduced-motion service and season statistics display their final values instead of waiting at zero.
+- Source typecheck, 137 content checks and the 17-page production/static export passed.
+- Clean buyer ZIP: 95 files, 1.8 MB; extraction, npm install, typecheck and production build passed. Largest source file remains site.config.ts at 474 lines.
+- Chromium checks at 320, 375, 390, 430, 768, 860, 1280 and 1440 px: no document overflow, all four folder tabs fit, process card heights and document-relative bottom edges stay constant through timeline transitions.
+- No runtime errors or failed asset responses. Work, case study, journal, article, contact and policy routes return 200.
+- Fresh desktop/mobile screenshots, catalog thumbnail, full previews and social artwork generated from the final export. Long captures use the reduced-motion layout so pinned scenes read continuously.
+
 Checked 10 October 2026 with headless Chromium (Playwright from the npx cache) against `next dev` on :3460 and the static export served from `public/demos/turnout`.
 
 ## Builds and checks

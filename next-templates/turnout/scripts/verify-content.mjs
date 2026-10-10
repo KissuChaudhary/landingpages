@@ -71,7 +71,23 @@ for (const p of paths) {
   check(statSync(new URL(`../public${p}`, import.meta.url)).size < 600 * 1024, `${p} is over 600 KB; compress it`);
 }
 
-// The deck needs at least three moments to shuffle.
-check(site.hero.moments.length >= 3, "hero.moments needs at least three photos");
+// The hero: every capsule slot in the title has three photos, and the filmstrip is long enough to loop.
+const slots = site.hero.title.join(" ").match(/\[(\d+)\]/g) ?? [];
+for (const slot of slots) {
+  const photos = site.hero.capsules[Number(slot.slice(1, -1))];
+  check(Array.isArray(photos) && photos.length === 3, `hero title uses ${slot}, which needs three photos in hero.capsules`);
+}
+check(site.hero.reel.length >= 6, "hero.reel needs at least six frames to fill the strip");
+
+// The season ends on its report card, and every photo card has alt text.
+check(site.season.steps.at(-1).shape === "report", "the last season step should be the report card");
+for (const step of site.season.steps) if (step.image) check(Boolean(step.alt), `season step "${step.when}" needs alt text`);
+
+// Process spans stay inside the run of show and run in order.
+for (const step of site.process.steps) check(step.span[0] <= step.span[1] && step.span[1] <= site.process.weeks, `process step "${step.title}" span is outside ${site.process.weeks} weeks`);
+
+// The comparison pairs each usual way with ours.
+check(site.compare.them.items.length === site.compare.us.items.length, "compare.them and compare.us need the same number of rows");
+check(site.problem.pains.length === 5, "the attention chart pins exactly five problems");
 
 console.log(`Content OK: ${checks} checks passed.`);

@@ -1,105 +1,41 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { site } from "@/site.config";
 import { getWork } from "@/data/work";
 import { asset } from "@/lib/urls";
-import { useInView, useMotion } from "@/components/Motion";
-import { Ribbon } from "@/components/ui/Ribbon";
-import { TextMorph } from "@/components/ui/TextMorph";
+import { Filmstrip } from "@/components/ui/Filmstrip";
 import { Action, ArrowDot, SmartLink, planHref } from "@/components/ui/Action";
-import { ArrowUpRight, Spark } from "@/components/ui/Icons";
+import { Spark } from "@/components/ui/Icons";
 
-type Moment = (typeof site.hero.moments)[number];
-
-/** One headline line, with the configured word wrapped in the lime marker. */
-function Line({ text, highlight, index }: { text: string; highlight: string; index: number }) {
-  const at = highlight ? text.indexOf(highlight) : -1;
+/**
+ * A photo capsule set into the headline. It opens once the lines have risen, cycles
+ * through its photos on a CSS timer and widens when you point at it.
+ */
+function Capsule({ images, offset }: { images: readonly string[]; offset: number }) {
   return (
-    <span className="line" style={{ "--i": index } as React.CSSProperties}>
-      <span>
-        {at < 0 ? (
-          text
-        ) : (
-          <>
-            {text.slice(0, at)}
-            <span className="hl">{highlight}</span>
-            {text.slice(at + highlight.length)}
-          </>
-        )}
-      </span>
+    <span className="capsule" aria-hidden="true" style={{ "--o": offset } as React.CSSProperties}>
+      {images.map((src, k) => (
+        <img key={src} src={asset(src)} alt="" width={240} height={120} style={{ "--k": k } as React.CSSProperties} />
+      ))}
     </span>
   );
 }
 
-/**
- * The photo deck. The front card shuffles to the back on a timer that is a CSS animation
- * (so pausing it is just animation-play-state), on tap, on swipe or with the arrow button.
- * Hovering, focusing or scrolling the deck out of view holds it.
- */
-function Deck({ moments }: { moments: Moment[] }) {
-  const { reduced } = useMotion();
-  const [front, setFront] = useState(0);
-  const [leaving, setLeaving] = useState<number | null>(null);
-  const [held, setHeld] = useState(false);
-  const [ref, inView] = useInView<HTMLDivElement>({ once: false, threshold: 0.2 });
-  const swipe = useRef<number | null>(null);
-  const n = moments.length;
-
-  const next = () => {
-    setLeaving(front);
-    setFront((f) => (f + 1) % n);
-  };
-
-  const running = !reduced && !held && inView;
-
+/** One headline line: words, with `[0]`, `[1]`… replaced by photo capsules. */
+function Line({ text, index }: { text: string; index: number }) {
+  const parts = text.split(/(\[\d+\])/).filter(Boolean);
   return (
-    <div
-      ref={ref}
-      className={`deck ${running ? "is-running" : ""}`}
-      role="group"
-      aria-roledescription="carousel"
-      aria-label="Moments from recent events"
-      onMouseEnter={() => setHeld(true)}
-      onMouseLeave={() => setHeld(false)}
-      onFocus={() => setHeld(true)}
-      onBlur={() => setHeld(false)}
-    >
-      <div
-        className="deck-stack"
-        onPointerDown={(e) => (swipe.current = e.clientX)}
-        onPointerUp={(e) => {
-          if (swipe.current !== null && Math.abs(e.clientX - swipe.current) > 36) next();
-          swipe.current = null;
-        }}
-      >
-        {moments.map((m, i) => {
-          const slot = (i - front + n) % n;
-          return (
-            <figure
-              key={m.image}
-              className={`deck-card ${leaving === i ? "is-leaving" : ""}`}
-              data-slot={Math.min(slot, 2)}
-              aria-hidden={slot !== 0}
-              onAnimationEnd={(e) => e.target === e.currentTarget && setLeaving((l) => (l === i ? null : l))}
-            >
-              <img src={asset(m.image)} alt={m.alt} width={608} height={1088} loading={i === 0 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} draggable={false} />
-            </figure>
-          );
+    <span className="line" style={{ "--i": index } as React.CSSProperties}>
+      <span>
+        {parts.map((part, i) => {
+          const slot = part.match(/^\[(\d+)\]$/);
+          if (!slot) return <span key={i}>{part}</span>;
+          const images = site.hero.capsules[Number(slot[1])];
+          return images ? <Capsule key={i} images={images} offset={Number(slot[1])} /> : null;
         })}
-      </div>
-      <div className="deck-bar">
-        <span className="deck-caption">
-          <TextMorph>{moments[front].caption}</TextMorph>
-          <span className="deck-progress" aria-hidden="true">
-            <span key={front} className="deck-progress-fill" onAnimationEnd={() => running && next()} />
-          </span>
-        </span>
-        <button type="button" className="deck-button" onClick={next} aria-label="Next moment">
-          <ArrowUpRight size={15} />
-        </button>
-      </div>
-    </div>
+      </span>
+    </span>
   );
 }
 
@@ -107,6 +43,7 @@ export function Hero() {
   const { hero } = site;
   const latest = getWork(hero.latest.work);
   const [ready, setReady] = useState(false);
+  const plain = hero.title.map((line) => line.replace(/\s*\[\d+\]\s*/g, " ").trim()).join(" ");
 
   // One frame after mount, so the hidden start state is painted before the intro plays.
   useEffect(() => {
@@ -116,52 +53,49 @@ export function Hero() {
 
   return (
     <section className={`hero ${ready ? "is-in" : ""}`} aria-labelledby="hero-title">
-      <div className="hero-grid container">
-        <div className="hero-copy">
-          <h1 id="hero-title" className={`display hero-title lines ${ready ? "is-in" : ""}`}>
-            {hero.title.map((line, i) => (
-              <span key={line}>
-                <Line text={line} highlight={hero.highlight} index={i} />
-                {i < hero.title.length - 1 ? " " : null}
-              </span>
-            ))}
-          </h1>
-          <ul className="hero-services">
-            {hero.services.map((service, i) => (
-              <li key={service} style={{ "--i": i } as React.CSSProperties}>
-                <Spark size={13} />
-                {service}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="container hero-top">
+        <span className="hero-status">
+          <span className="hero-status-dot" aria-hidden="true" />
+          {hero.status}
+        </span>
+        {latest ? (
+          <SmartLink to={`/work/${latest.slug}`} className="latest">
+            <span className="latest-thumb">
+              <img src={asset(latest.image)} alt="" width={96} height={96} />
+            </span>
+            <span className="latest-copy">
+              <span className="latest-label">{hero.latest.label}</span>
+              <span className="latest-title">{latest.client}</span>
+            </span>
+            <ArrowDot tone="ink" size={30} />
+          </SmartLink>
+        ) : null}
+      </div>
 
-        <div className="hero-deck">
-          <div className="hero-ribbon">
-            <Ribbon words={hero.ribbon} className="ribbon-wide" />
-            <Ribbon words={hero.ribbon} className="ribbon-narrow" d="M0 610C400 650 700 570 900 485S1250 330 1450 300S1900 250 2200 190" />
-          </div>
-          <Deck moments={hero.moments} />
-        </div>
+      <h1 id="hero-title" className={`container display hero-title lines ${ready ? "is-in" : ""}`}>
+        <span className="sr-only">{plain}</span>
+        <span aria-hidden="true">
+          {hero.title.map((line, i) => (
+            <Line key={line} text={line} index={i} />
+          ))}
+        </span>
+      </h1>
 
-        <div className="hero-side">
-          {latest ? (
-            <SmartLink to={`/work/${latest.slug}`} className="latest">
-              <span className="latest-thumb">
-                <img src={asset(latest.image)} alt="" width={160} height={160} />
-              </span>
-              <span className="latest-copy">
-                <span className="latest-label">{hero.latest.label}</span>
-                <span className="latest-title">{latest.title}</span>
-              </span>
-              <ArrowDot tone="light" size={30} />
-            </SmartLink>
-          ) : null}
-          <div className="hero-pitch">
-            <p className="lead">{hero.description}</p>
-            <Action to={planHref()} label={site.cta} size="lg" />
-          </div>
-        </div>
+      <div className="container hero-row">
+        <ul className="hero-services">
+          {hero.services.map((service, i) => (
+            <li key={service} style={{ "--i": i } as React.CSSProperties}>
+              <Spark size={13} />
+              {service}
+            </li>
+          ))}
+        </ul>
+        <p className="lead hero-lead">{hero.description}</p>
+        <Action to={planHref()} label={site.cta} size="lg" className="hero-action" />
+      </div>
+
+      <div className="hero-reel">
+        <Filmstrip frames={hero.reel} />
       </div>
     </section>
   );

@@ -193,7 +193,7 @@ export function StatRoll({ value, decimals, compact, ...props }: Omit<NumberRoll
     : { minimumFractionDigits: decimals ?? 0, maximumFractionDigits: decimals ?? 0 };
   return (
     <span ref={ref}>
-      {phase === "static" ? (
+      {reduced || phase === "static" ? (
         <NumberRoll value={value} format={format} {...props} />
       ) : (
         <NumberRoll key="live" value={phase === "rolling" ? value : 0} from={0} format={format} {...props} />

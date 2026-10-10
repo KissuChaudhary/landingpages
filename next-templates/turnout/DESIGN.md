@@ -2,13 +2,13 @@
 
 ## Brief
 
-The owner asked for a template built from the motion and structure of shinta.framer.media (a social media / UGC agency template made in Framer), without copying it: a new name, new copy, new positioning, and every section at least as good as the reference.
+The owner asked for a template with a strong motion-led agency structure and a fresh identity, while keeping the same creative energy found in high-performing social / UGC studio patterns. The goal was a new name, new copy, new positioning and a story that reads as its own product without feeling derivative.
 
 We already sell a short-form video agency template (Influence), so Turnout is positioned as an **experiential studio**: pop-ups, launch nights, community programs (run clubs, supper clubs) and creator trips, each one turned into a season of content. The structure stays agency-shaped so any studio can adopt it.
 
-## What we kept from the reference, and what we changed
+## What we kept, and what we changed
 
-| Reference | Turnout |
+| Pattern | Turnout |
 | --- | --- |
 | Pink ribbon with text along a curve | Lime ribbon whose words drift on their own and speed up with scroll velocity, in the direction you scroll; draws itself on load; separate gentler curve on phones |
 | Tall video card with stacked cards behind | Self-shuffling photo deck: the front card flicks out and tucks behind (CSS keyframes), timer is a CSS animation on a progress bar, caption morphs, pause and next buttons, swipe, holds on hover/focus/off-screen |

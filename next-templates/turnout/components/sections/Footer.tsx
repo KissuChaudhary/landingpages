@@ -92,8 +92,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="footer">
-      <div className="container footer-grid">
+    <footer className="footer on-dark">
+      <div className="container footer-head">
         <p className="h2 footer-headline">
           {footer.headline.map((line, i) => (
             <span key={line} className="footer-line">
@@ -102,13 +102,16 @@ export function Footer() {
             </span>
           ))}
         </p>
+        <Newsletter />
+      </div>
 
-        <nav className="footer-col footer-nav" aria-label="Footer">
+      <div className="container footer-grid">
+        <nav className="footer-col" aria-label="Footer">
           <p className="footer-label label">Explore</p>
-          <ul className="footer-pills">
+          <ul className="footer-links">
             {[...site.nav, { label: "Contact", href: "/contact" }].map((l) => (
               <li key={l.href}>
-                <SmartLink to={l.href} className="footer-pill">
+                <SmartLink to={l.href} className="footer-link">
                   {l.label}
                 </SmartLink>
               </li>
@@ -129,6 +132,10 @@ export function Footer() {
               <span key={line}>{line}</span>
             ))}
           </address>
+        </div>
+
+        <div className="footer-col">
+          <p className="footer-label label">Follow</p>
           <ul className="footer-social">
             {socials
               .filter((s) => links.social[s.key])
@@ -141,8 +148,6 @@ export function Footer() {
               ))}
           </ul>
         </div>
-
-        <Newsletter />
       </div>
 
       <div ref={markRef} className={`container footer-mark ${markIn ? "is-in" : ""}`} aria-hidden="true">

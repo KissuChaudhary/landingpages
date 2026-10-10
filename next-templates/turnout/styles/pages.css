@@ -160,8 +160,8 @@
 .legal-body .h3 { font-size: clamp(24px, 2.4vw, 32px); }
 
 /* ── 404 ────────────────────────────────────────────────────────────────── */
-.not-found { position: relative; min-height: 100svh; display: grid; align-items: center; overflow: hidden; padding-block: calc(var(--nav-h) + 40px) 80px; }
-.not-found-ribbon { position: absolute; left: 50%; top: 58%; width: 2200px; transform: translate(-50%, -50%); pointer-events: none; }
+.not-found { position: relative; min-height: 100svh; display: grid; align-content: center; gap: clamp(40px, 7vh, 72px); overflow: hidden; padding-block: calc(var(--nav-h) + 40px) 64px; }
+.not-found-reel { opacity: 0.9; }
+.not-found-reel .frame-caption { display: none; }
 .not-found-copy { position: relative; z-index: 1; display: grid; justify-items: start; gap: 22px; }
 .not-found-copy .lead { max-width: 36ch; }
-@media (max-width: 720px) { .not-found-ribbon { width: 1400px; top: 70%; } }

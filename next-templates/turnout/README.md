@@ -1,6 +1,6 @@
 # Turnout
 
-A motion-led landing page for an experiential studio: pop-ups, launch nights, community programs and creator trips. A lime ribbon of words drifts behind a photo deck that shuffles itself, the page turns dark while the usual problems float past and get crossed out, services stack like folders, photos orbit a single link, and the page lifts away at the end to reveal the footer.
+A motion-led landing page for an experiential studio: pop-ups, launch nights, community programs and creator trips. Photo capsules cycle inside the headline, a filmstrip drifts beneath it, an attention chart draws as you scroll, services stack like folders and a ten-week timeline guides the process.
 
 It works for any agency or studio that sells in-person work: events, hospitality, brand experiences, community, retail. Swap the copy in one file and the photos in one folder.
 
@@ -19,7 +19,7 @@ Open http://localhost:3000. For production, run `npm run build` and `npm start`.
 
 ## Make it yours
 
-Almost everything a visitor reads lives in `site.config.ts`: brand, links, menu, every heading and paragraph, the photo deck, services, steps, client notes, team, plans, FAQ and footer.
+Almost everything a visitor reads lives in `site.config.ts`: brand, links, menu, every heading and paragraph, photo capsules, filmstrip frames, services, steps, client notes, team, plans, FAQ and footer.
 
 | What | Where |
 | --- | --- |
@@ -37,11 +37,11 @@ Each section is its own component in `components/sections/`, with styles grouped
 
 ### Colours
 
-The palette is five variables at the top of `styles/base.css`. `--lime` is the brand accent (ribbon, buttons, footer, highlights); `--iris`, `--stone` and `--blush` colour the service, process and result cards. Each card picks its colour with an `accent` field in the config (`"lime" | "iris" | "stone" | "blush"`).
+The palette is five variables at the top of `styles/base.css`. `--lime` is the brand accent (buttons, footer, highlights); `--iris`, `--stone` and `--blush` colour the service, process and result cards. Each card picks its colour with an `accent` field in the config (`"lime" | "iris" | "stone" | "blush"`).
 
-### The headline marker and ribbon
+### The headline and filmstrip
 
-`hero.title` is one string per line. The word in `hero.highlight` gets the lime marker. `hero.ribbon` lists the words that run along the ribbon. The ribbon's curve is an SVG path in `components/ui/Ribbon.tsx` if you want a different shape.
+`hero.title` is one string per line. Slots such as `[0]` select the three-photo sets in `hero.capsules`. `hero.reel` lists the photos, captions and landscape frames in the filmstrip; its component is `components/ui/Filmstrip.tsx`.
 
 ## Links, forms and plans
 
@@ -63,8 +63,8 @@ The photos are original, generated for this template (see `ASSETS.md`). Replace 
 
 | Image | Used in | Shape |
 | --- | --- | --- |
-| `hero-*.webp` | Hero photo deck | 9:16 portrait |
-| `feature-line.webp`, `feature-creator.webp` | Proof rows under the mission | 3:4 and 4:3 |
+| `hero-*.webp` | Headline capsules and filmstrip | Cropped portrait and landscape frames |
+| `feature-line.webp`, `feature-creator.webp` | Season of content | 3:4 and 4:3 |
 | `work-*.webp` | Case study cards and pages | Square; the first featured one is shown 16:9 |
 | `svc-*.webp` | Service cards | 8:9 |
 | `team-*.webp` | Team row | 3:4 portrait on a solid backdrop |
@@ -77,9 +77,9 @@ Keep each file under 600 KB (the content check warns above that). WebP at qualit
 ## Motion and accessibility
 
 - Everything that changes moves: labels morph letter by letter, numbers roll like an odometer, buttons roll their labels and throw their arrows, the billing note slides in from the side you chose.
-- Three things loop on their own: the photo deck, the ribbon and the logo strip. System reduced motion stops the loops. The deck holds while you hover, focus or scroll it out of view.
-- With the system "reduce motion" setting on, nothing pins, slides or loops: the problem section becomes a plain list, the services stack in normal flow and every element is visible from the start.
-- The menu, deck controls, filters, FAQ and forms work with a keyboard. The phone menu closes on Escape and returns focus to its button. Form errors are announced and move focus to the first field that needs attention.
+- Headline capsules, filmstrip, logo strip and client notes loop on their own. System reduced motion stops the loops; the case study spotlight holds while you hover or focus it.
+- With the system "reduce motion" setting on, nothing pins, slides or loops: both attention curves are drawn, the services stack in normal flow and every element is visible from the start.
+- The menu, project tabs, filters, FAQ and forms work with a keyboard. The phone menu closes on Escape and returns focus to its button. Form errors are announced and move focus to the first field that needs attention.
 - Without JavaScript the page still renders completely.
 
 ## Pages

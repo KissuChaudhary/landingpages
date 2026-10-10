@@ -43,20 +43,29 @@ export const site = {
   /** Visitors can pause the looping parts (photo deck, ribbon, logo strip). Remembered on their device. */
 
   hero: {
-    // Each string is one line of the headline. `highlight` gets the lime marker.
-    title: ["Moments", "people show", "up for."],
-    highlight: "show",
+    status: "Now booking spring 2027",
+    // Each string is one line of the headline. `[0]` and `[1]` are photo capsules, set
+    // from `capsules` below (three photos each; they take turns).
+    title: ["Moments [0] people", "show up [1] for."],
+    capsules: [
+      ["/images/hero-popup.webp", "/images/hero-supper.webp", "/images/hero-runclub.webp"],
+      ["/images/svc-launch.webp", "/images/svc-creators.webp", "/images/svc-community.webp"],
+    ],
     services: ["Pop-ups & launches", "Community programs", "Creator trips"],
-    ribbon: ["Pop-ups", "Launch nights", "Run clubs", "Supper clubs", "Creator trips"],
     description:
       "We design, build and film brand experiences, then turn every one into a season of content your team can post for weeks.",
     /** The small card in the corner. Point it at any case study slug in data/work.ts. */
     latest: { label: "Just wrapped", work: "halfmoon" },
-    // The photo deck. Portrait images (9:16) look best.
-    moments: [
+    // The filmstrip along the bottom of the hero. `wide` frames are landscape.
+    reel: [
       { image: "/images/hero-popup.webp", alt: "A guest laughing as she films a brand pop-up on her phone", caption: "Pop-up · Brooklyn" },
+      { image: "/images/work-halfmoon.webp", alt: "A model in a black puffer jacket on a lime platform while guests film her", caption: "Halfmoon · The Cold Room", wide: true },
       { image: "/images/hero-supper.webp", alt: "A guest raising a glass at a long-table supper club in a greenhouse", caption: "Supper club · Lisbon" },
+      { image: "/images/svc-launch.webp", alt: "Guests cheering as confetti falls over a launch stage", caption: "Launch night · Austin", wide: true },
       { image: "/images/hero-runclub.webp", alt: "A run club crossing a city bridge at sunrise", caption: "Run club · London" },
+      { image: "/images/work-fernway.webp", alt: "Hands reaching across a long table of colourful dishes", caption: "Fernway · 12 dinners", wide: true },
+      { image: "/images/svc-creators.webp", alt: "A creator filming a friend jumping into a motel pool", caption: "Creator trip · Palm Springs" },
+      { image: "/images/work-northpaw.webp", alt: "A golden retriever in a periwinkle bandana leaping ahead of a group of runners", caption: "Northpaw · Sunday club", wide: true },
     ],
   },
 
@@ -65,47 +74,102 @@ export const site = {
   },
 
   problem: {
-    // The headline stays put while the problems drift past; once they're all crossed
-    // out it turns into `answer`.
+    // A week of attention, drawn as you scroll: a typical launch first, with each problem
+    // pinned where it happens, then ours, which crosses them out. The headline then turns
+    // into `answer`. Keep five problems; they pin from the launch night to Monday.
     title: "Most launches are forgotten by Monday.",
     answer: "Ours are still posting by Friday.",
+    legend: { typical: "A typical launch", launch: "Launch night", end: "Still posting · day 9" },
     pains: [
       "Guest lists full of no-shows",
-      "A launch post nobody saves",
       "Pop-ups that photograph badly",
+      "A launch post nobody saves",
       "Creators who post once and vanish",
       "Nothing left to post the morning after",
     ],
   },
 
-  mission: {
+  season: {
     label: "What we do",
     statement:
       "We design the moments people show up for, then turn each one into a season of content.",
+    // The season slides past sideways. `shape` sets the card: wide, tall or report (the
+    // closing card, no photo). `stat` rolls up when it appears.
+    steps: [
+      {
+        when: "Doors open",
+        title: "Built for the line around the block.",
+        body: "The invite, the room and the reason to arrive early are planned together, from the waitlist drop to the doors opening.",
+        image: "/images/feature-line.webp",
+        alt: "A line of guests with tote bags queuing outside a white storefront pop-up",
+        stat: { value: 18400, suffix: "", label: "RSVPs in nine days" },
+        accent: "lime" as Accent,
+        shape: "wide",
+      },
+      {
+        when: "Nine o'clock",
+        title: "A moment worth filming.",
+        body: "Staging, light and one reason to pull out a phone, written into the run of show.",
+        image: "/images/hero-popup.webp",
+        alt: "A guest laughing as she films a brand pop-up on her phone",
+        accent: "blush" as Accent,
+        shape: "tall",
+      },
+      {
+        when: "Day two",
+        title: "Every guest leaves with something to post.",
+        body: "Creators who belong in the room and a crew on the floor, so the night keeps travelling after the doors close.",
+        image: "/images/feature-creator.webp",
+        alt: "A creator filming herself on a tripod while friends dance behind her",
+        stat: { value: 2.1, suffix: "M", label: "organic views from one weekend" },
+        accent: "iris" as Accent,
+        shape: "wide",
+      },
+      {
+        when: "Week one",
+        title: "The 48-hour edit.",
+        body: "Recaps, cutdowns and creator posts land while people are still talking about the night.",
+        image: "/images/journal-edit.webp",
+        alt: "An editor cutting event footage on two monitors late at night",
+        stat: { value: 340, suffix: "+", label: "assets from an average event" },
+        accent: "stone" as Accent,
+        shape: "tall",
+      },
+      {
+        when: "Week four",
+        title: "The room becomes a ritual.",
+        body: "Run clubs and supper series bring the same faces back every week, with hosts and routes your brand keeps.",
+        image: "/images/svc-community.webp",
+        alt: "A run club in matching lime caps stretching in a city plaza",
+        stat: { value: 900, suffix: "", label: "members every Sunday" },
+        accent: "lime" as Accent,
+        shape: "wide",
+      },
+      {
+        when: "Week ten",
+        title: "The turnout report.",
+        body: "Guests, reach, saves and sales on one page, with what we'd change next time. Then we plan the next night.",
+        accent: "lime" as Accent,
+        shape: "report",
+        cta: true,
+      },
+    ] as {
+      when: string;
+      title: string;
+      body: string;
+      image?: string;
+      alt?: string;
+      stat?: { value: number; suffix: string; label: string };
+      accent: Accent;
+      shape: "wide" | "tall" | "report";
+      cta?: boolean;
+    }[],
   },
-
-  proof: [
-    {
-      title: "Built for the line around the block.",
-      body: "The invite, the room and the reason to arrive early are planned together. Every touchpoint is designed for turnout, from the waitlist drop to the doors opening.",
-      image: "/images/feature-line.webp",
-      alt: "A line of guests with tote bags queuing outside a white storefront pop-up",
-      stat: { value: 18400, suffix: "", label: "RSVPs in nine days" },
-      accent: "lime" as Accent,
-    },
-    {
-      title: "Every guest leaves with something to post.",
-      body: "We cast creators who belong in the room, build moments worth filming and keep a crew on the floor, so the content lives long after the doors close.",
-      image: "/images/feature-creator.webp",
-      alt: "A creator filming herself on a tripod while friends dance behind her",
-      stat: { value: 2.1, suffix: "M", label: "organic views from one weekend" },
-      accent: "iris" as Accent,
-    },
-  ],
 
   work: {
     label: "Recent turnouts",
     title: "Rooms we filled this year.",
+    intro: "From a three-day puffer pop-up to a run club that outlived its campaign. Every one of them is still posting.",
     // Slugs from data/work.ts, in order. The first one gets the wide card.
     featured: ["halfmoon", "northpaw", "saltwork", "fernway", "orbit"],
     more: "See every turnout",
@@ -163,6 +227,7 @@ export const site = {
   },
 
   compare: {
+    label: "The difference",
     title: "Not another event vendor.",
     them: {
       label: "A typical event agency",
@@ -185,12 +250,25 @@ export const site = {
     },
   },
 
+  spotlight: {
+    label: "Inside the work",
+    title: "What a turnout leaves behind.",
+    intro: "The night is the start. Here's what each one was still doing weeks later.",
+    // Slugs from data/work.ts, in order. Each card shows the case study's first three results.
+    featured: ["halfmoon", "northpaw", "saltwork", "fernway", "orbit"],
+    read: "Read the case study",
+  },
+
   process: {
     label: "How it runs",
     title: "From first idea to afterglow.",
+    intro: "Ten weeks from the first call to the last post, with the night itself somewhere around week seven.",
+    /** Length of the run of show in weeks. Each step's `span` is [from, to] in weeks; a single week ([6, 6]) is drawn as a marker. */
+    weeks: 10,
     steps: [
       {
         title: "Concept",
+        span: [0, 2] as [number, number],
         body: "We find the reason people would cross town for you.",
         when: "Weeks 1–2",
         details: ["Audience and city research", "Three concepts, one direction", "Budget and site shortlist"],
@@ -199,6 +277,7 @@ export const site = {
       },
       {
         title: "Build",
+        span: [2, 6] as [number, number],
         body: "Space, guest list and run of show, built side by side.",
         when: "Weeks 3–6",
         details: ["Fabrication and vendors", "Waitlist and RSVPs", "Creator casting"],
@@ -207,6 +286,7 @@ export const site = {
       },
       {
         title: "Show day",
+        span: [6, 6] as [number, number],
         body: "We run the floor so you can host your guests.",
         when: "On the day",
         details: ["Producers on site", "Crew on every angle", "Live posting"],
@@ -215,6 +295,7 @@ export const site = {
       },
       {
         title: "Afterglow",
+        span: [6, 10] as [number, number],
         body: "The night keeps posting for weeks afterwards.",
         when: "Weeks 7–10",
         details: ["48-hour edit", "Recaps and cutdowns", "Turnout report"],
