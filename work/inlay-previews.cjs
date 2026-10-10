@@ -1,5 +1,5 @@
 // Catalog previews for Inlay from the exported demo (serve public/ on :3481 first).
-// Writes next-templates/inlay/screenshots/*, public/previews/* and public/og/inlay.jpg.
+// Writes public/previews/*, public/og/inlay.jpg and the template's og.jpg; raw captures go to the system temp folder.
 // Run from the repository root: node work/inlay-previews.cjs
 const path = require("node:path");
 const fs = require("node:fs");
@@ -7,7 +7,7 @@ const { chromium } = require(path.join(process.env.USERPROFILE, "AppData/Local/n
 const sharp = require("../next-templates/turnout/node_modules/sharp");
 const root = path.resolve(__dirname, "..");
 const url = "http://localhost:3481/demos/inlay/index.html";
-const shots = path.join(root, "next-templates/inlay/screenshots");
+const shots = path.join(require("node:os").tmpdir(), "inlay-captures");
 fs.mkdirSync(shots, { recursive: true });
 
 async function capture(browser, { width, height, reduced, full, mobile, file, wait = 2200 }) {
@@ -56,7 +56,6 @@ async function main() {
     ["public/previews/mobile/inlay.jpg", sharp(mobile).resize({ width: 390 }).jpeg({ quality: 88 })],
     ["public/og/inlay.jpg", sharp(hero).extract({ left: 0, top: 70, width: 1440, height: 756 }).resize(1200, 630).jpeg({ quality: 88 })],
     ["next-templates/inlay/public/images/og.jpg", sharp(hero).extract({ left: 0, top: 70, width: 1440, height: 756 }).resize(1200, 630).jpeg({ quality: 84 })],
-    ["next-templates/inlay/screenshots/preview.jpg", sharp(hero).resize({ width: 1100 }).jpeg({ quality: 90 })],
   ];
   for (const [file, pipeline] of outputs) {
     const target = path.join(root, file);
