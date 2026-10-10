@@ -7,8 +7,8 @@ export function Services() {
     <section className="services section-wrap" id="services">
       <div className="section-heading">
         <Label>{site.services.eyebrow}</Label>
-        <div>
-          <h2 data-reveal>{site.services.heading}</h2>
+        <h2 data-reveal>{site.services.heading}</h2>
+        <div className="section-aside">
           <p data-reveal>{site.services.text}</p>
           <Action href="/contact" quiet>
             Find your starting point

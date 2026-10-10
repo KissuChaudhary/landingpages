@@ -4,8 +4,8 @@ All visual assets ship locally. No reference-site images or third-party stock ph
 
 | Asset | Origin | Usage |
 | --- | --- | --- |
-| `public/images/hero.webp` | Original image generated with OpenAI's built-in imagegen tool, 9 October 2026 | Homepage hero, closing, and Forma composition |
-| `public/images/studio.webp` | Original image generated with OpenAI's built-in imagegen tool, 9 October 2026 | Studio, about page, and introductory note |
+| `public/images/hero.webp` | Original image generated with OpenAI's built-in imagegen tool, 9 October 2026 | Homepage hero image, the steel lettering texture in the hero and closing, and the Forma composition |
+| `public/images/studio.webp` | Original image generated with OpenAI's built-in imagegen tool, 9 October 2026 | Studio section and about page |
 | Four portfolio compositions | Original editable React, HTML, and CSS | Project cards, case studies, and field-note covers |
 | Studio mark, arrows, and service diagrams | Original SVG and CSS | Navigation, actions, and capabilities |
 | Geist and Geist Mono Latin-subset WOFF2 | Vercel; SIL Open Font License 1.1 | Included in `public/fonts/`, served via `next/font/local` |

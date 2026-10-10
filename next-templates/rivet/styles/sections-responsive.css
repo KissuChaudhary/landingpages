@@ -25,9 +25,6 @@
   .footer-bottom {
     gap: 20px;
   }
-  .closing-frame {
-    padding: 40px;
-  }
 }
 @media (max-width: 760px) {
   .services {
@@ -164,36 +161,26 @@
     padding-left: 24px;
   }
   .closing {
-    margin-inline: 10px;
-    min-height: 580px;
+    padding-bottom: 80px;
   }
-  .closing-frame {
-    margin: 14px;
-    padding: 32px 23px;
-    min-height: 552px;
-    border-radius: 12px;
+  .closing-coordinate {
+    display: none;
   }
-  .closing .label {
-    font-size: 7px;
-    max-width: 210px;
+  .closing-title {
+    font-size: 15.4vw;
+    line-height: 0.88;
+    margin-block: 44px 30px;
   }
-  .closing h2 {
-    font-size: clamp(45px, 10.5vw, 72px);
-    margin-block: 48px 30px;
+  .closing-line .steel {
+    --steel-size: 300% auto;
   }
   .closing-bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 28px;
+    gap: 26px;
   }
   .closing-bottom p {
-    font-size: 14px;
-    max-width: 270px;
-  }
-  .closing-coordinate {
-    font-size: 6px;
-    right: 20px;
-    bottom: 22px;
+    font-size: 15px;
   }
   .footer {
     padding-top: 50px;

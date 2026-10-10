@@ -1,39 +1,36 @@
 import { site } from "@/site.config";
 import { asset } from "@/lib/urls";
 import { Action } from "../ui/Action";
-import { Mark } from "../ui/Mark";
 export function Hero() {
   const [before, after] = site.hero.lineTwo.split(site.hero.highlight);
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-image" data-drift>
-        <img
-          src={asset("/images/hero.webp")}
-          alt="A brushed metal ribbon rising through a concrete space"
-          fetchPriority="high"
-        />
-      </div>
-      <div className="hero-frame">
-        <div className="hero-rail">
-          <span className="barcode" />
-          <span>Independent by design</span>
-          <span>Est. with intention</span>
-        </div>
-        <div className="hero-content">
-          <p className="label-type hero-eyebrow">
+      <div className="hero-head section-wrap">
+        <div className="hero-meta label-type">
+          <span>
             <span className="status-dot" />
-            {site.hero.eyebrow}
-          </p>
-          <h1 id="hero-title">
-            <span className="hero-line">{site.hero.lineOne}</span>
-            <span className="hero-line">
+            {site.availability}
+          </span>
+          <span>{site.descriptor}</span>
+          <span>{site.location}</span>
+        </div>
+        <h1 id="hero-title" className="hero-title" data-sheen="scroll">
+          <span className="hero-line">
+            <span className="hero-cut steel">{site.hero.lineOne}</span>
+          </span>
+          <span className="hero-line">
+            <span className="hero-cut steel">
               {before}
-              <mark>{site.hero.highlight}</mark>
+              <em>{site.hero.highlight}</em>
               {after}
             </span>
-          </h1>
+          </span>
+        </h1>
+        <div className="hero-grid">
+          <i className="rivet" aria-hidden="true" />
           <p className="hero-text">{site.hero.text}</p>
           <div className="hero-actions">
+            <i className="rivet" aria-hidden="true" />
             <Action href={site.links.booking || "/contact"}>
               {site.hero.primary}
             </Action>
@@ -41,24 +38,27 @@ export function Hero() {
               {site.hero.secondary}
             </Action>
           </div>
+          <p className="hero-note">
+            <i className="rivet" aria-hidden="true" />
+            {site.hero.note}
+          </p>
+          <i className="rivet" aria-hidden="true" />
         </div>
-        <span className="hero-index label-type">Studio notes / 001</span>
-        <div className="hero-note">
-          <div>
-            <Mark />
-            <span className="label-type">{site.brand} studio</span>
-            <p>{site.hero.note}</p>
-            <span className="label-type">Design × Engineering</span>
-          </div>
+      </div>
+      <div className="hero-plate" data-open>
+        <div className="hero-plate-image" data-drift>
           <img
-            src={asset("/images/studio.webp")}
-            alt="Two designers considering a prototype"
+            src={asset("/images/hero.webp")}
+            alt="A brushed metal ribbon rising through a concrete space"
+            fetchPriority="high"
           />
         </div>
-        <a className="hero-scroll label-type" href="#intro">
-          <span>Scroll to discover</span>
-          <span>↓</span>
-        </a>
+        <div className="hero-caption label-type">
+          <span>{site.hero.eyebrow}</span>
+          <a href="#intro">
+            Scroll <span aria-hidden="true">↓</span>
+          </a>
+        </div>
       </div>
     </section>
   );

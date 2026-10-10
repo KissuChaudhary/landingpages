@@ -9,8 +9,8 @@ export function Journal({ full = false }: { full?: boolean }) {
       {!full && (
         <div className="section-heading">
           <Label>Thoughts from the studio</Label>
-          <div>
-            <h2 data-reveal>In the making.</h2>
+          <h2 data-reveal>In the making.</h2>
+          <div className="section-aside">
             <p>
               A few observations on products, practice, and making things with
               care.

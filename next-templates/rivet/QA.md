@@ -36,3 +36,11 @@ No changes were committed or pushed. The standard buyer zip can be produced afte
 - Removed every global motion play/pause control and manual stored-pause gate. Existing scroll motion, keyframes, hover behavior and functional product playback controls remain; system reduced motion still applies.
 - Passed source typecheck, content verification, standalone demo export and clean buyer-ZIP install, typecheck and production build.
 - Browser desktop checks: global controls absent and motion enabled. Mobile removal checked on Daymark, Serein and Turnout. Confirmed the Turnout deck/ribbon, Daymark journey loop and Vela scroll tilt still animate.
+
+## 2026-10-10 — white-label redesign
+
+- New hero (steel headline, anodized highlight word, riveted seam, scroll-opening image plate), rivet-head buttons, inline desktop navigation, riveted client strip, left-set section headings, philosophy strip, steel closing, new section order. No framed photo hero, rail, barcode, floating card, circular badges or highlight box remain.
+- Reviewed at 1440×900 and 390×844, full page on both: no horizontal overflow; headline stays on two lines on desktop and four on phone; descenders clear of the steel clip.
+- Motion sampled in headless Chromium: lines rise (0–1.2s), rivets set with overshoot, sheen sweeps once and rests off-canvas; on hover the light follows the pointer and glides off on leave; plate `--open` reaches ~0.95 after 500px of scroll. Reduced motion: `data-motion="off"`, zero running animations, all content visible.
+- Buyer zip: the standalone build (Next's default PostCSS with autoprefixer) crashed on `@supports … and selector(::details-content)`; local builds hid it because the repository's PostCSS config applies inside the monorepo. The condition is now `@supports (interpolate-size: allow-keywords)`; browsers without `::details-content` drop those selectors. `package-template.mjs rivet --verify` passes (clean install, typecheck, build).
+- Template typecheck, `verify:content`, static export to the demo, and catalog previews (card, full, mobile, OG) regenerated from the export. Largest source file now `styles/base.css`, 504 lines.

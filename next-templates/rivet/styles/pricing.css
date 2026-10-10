@@ -73,7 +73,6 @@
 }
 .price-card .action > span:first-child {
   flex: 1;
-  padding-inline: 14px;
 }
 .price-featured {
   background: var(--accent);

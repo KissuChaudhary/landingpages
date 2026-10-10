@@ -20,12 +20,15 @@ export function Trust() {
             key={p.slug}
             aria-label={`Explore ${p.name}`}
           >
-            <span className={`client-${p.slug}`}>
+            <i className="rivet" aria-hidden="true" />
+            <span className={`client-name client-${p.slug}`}>
               {p.name}
               {p.slug === "counter" ? "↗" : p.slug === "goodwell" ? "✳" : "."}
             </span>
+            <span className="label-type">{p.sector}</span>
           </a>
         ))}
+        <i className="rivet" aria-hidden="true" />
       </div>
     </section>
   );

@@ -7,6 +7,14 @@ export function Navigation() {
   const [open, setOpen] = useState(false);
   const button = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
+  const links = site.navigation.slice(0, -1);
+  const cta = site.navigation.at(-1);
+  useEffect(() => {
+    const wide = matchMedia("(min-width: 1025px)");
+    const close = () => wide.matches && setOpen(false);
+    wide.addEventListener("change", close);
+    return () => wide.removeEventListener("change", close);
+  }, []);
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
@@ -56,11 +64,19 @@ export function Navigation() {
             <sup>®</sup>
           </span>
         </a>
-        <span className="nav-descriptor label-type">{site.descriptor}</span>
-        <div className="nav-availability label-type">
-          <span />
-          {site.availability}
-        </div>
+        <nav className="nav-links" aria-label="Primary navigation">
+          {links.map((item) => (
+            <a key={item.label} href={route(item.href)}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        {cta && (
+          <a className="nav-cta" href={route(cta.href)}>
+            <span>{cta.label}</span>
+            <Arrow diagonal />
+          </a>
+        )}
         <button
           ref={button}
           className="menu-toggle label-type"

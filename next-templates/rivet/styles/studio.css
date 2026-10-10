@@ -19,93 +19,123 @@
   color: var(--muted);
 }
 .client-marks {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  border-block: 1px solid var(--line);
 }
 .client-marks a {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1;
-  max-height: 130px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  transition:
-    color 0.4s,
-    border-color 0.4s,
-    background 0.4s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 34px;
+  min-width: 0;
+  min-height: 150px;
+  padding: 24px 22px 20px;
+  border-left: 1px solid var(--line);
 }
-.client-marks a:hover {
-  background: #b9f77c08;
+.client-marks > a > .rivet {
+  transition:
+    border-color 0.4s,
+    transform 0.5s var(--ease);
+}
+.client-marks > .rivet {
+  left: auto;
+  right: -5px;
+}
+.client-marks .label-type {
+  color: var(--muted);
+  font-size: 9px;
+  transition: color 0.4s;
+}
+.client-marks a:hover > .rivet {
   border-color: var(--accent);
+  transform: scale(1.35);
+}
+.client-marks a:hover .client-name,
+.client-marks a:hover .label-type {
   color: var(--accent);
 }
-.client-marks a > span {
-  font-size: 20px;
+.client-name {
+  font-size: 24px;
   letter-spacing: -0.06em;
+  line-height: 1;
+  transition: color 0.4s;
 }
 .client-marks .client-orra {
   letter-spacing: -0.05em;
   font-weight: 500;
 }
 .client-marks .client-counter {
-  font-size: 17px;
+  font-size: 0.86em;
   font-weight: 600;
 }
 .client-marks .client-forma {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 23px;
+  letter-spacing: -0.04em;
 }
 .client-marks .client-goodwell {
-  font-size: 15px;
+  font-size: 0.8em;
   font-weight: 500;
 }
 .philosophy {
-  padding-block: 135px 120px;
-  text-align: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  column-gap: 8%;
+  align-items: end;
+  padding-block: 130px 120px;
 }
 .philosophy > .label {
-  justify-content: center;
+  grid-column: 1 / -1;
 }
 .philosophy h2 {
-  margin: 32px auto;
-  font-size: clamp(44px, 6.2vw, 91px);
-  max-width: 1180px;
+  grid-column: 1 / -1;
+  margin-top: 34px;
+  font-size: clamp(44px, 5.8vw, 92px);
 }
 .philosophy h2 > span {
   color: var(--muted);
 }
 .philosophy > p:not(.label) {
-  max-width: 460px;
-  margin: 0 auto;
+  grid-column: 2;
+  max-width: 400px;
+  margin-top: 40px;
   color: var(--muted);
   font-size: 16px;
 }
 .philosophy-steps {
-  margin: 55px auto 0;
-  display: flex;
-  width: min(870px, 100%);
-  gap: 0;
-  border-block: 1px solid var(--line);
+  grid-column: 1 / -1;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 84px;
+  border-top: 1px solid var(--line);
 }
 .philosophy-steps li {
-  flex: 1;
-  padding: 18px 22px;
-  border-right: 1px solid var(--line);
-  text-align: left;
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 14px;
+  flex-direction: column;
+  gap: 52px;
+  padding: 22px 22px 0;
+  border-left: 1px solid var(--line);
+  font-size: clamp(22px, 2.1vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.045em;
 }
-.philosophy-steps li:last-child {
-  border-right: 0;
+.philosophy-steps li:first-child {
+  padding-left: 0;
+  border-left: 0;
 }
 .philosophy-steps li > span {
   color: var(--muted);
-  font-size: 8px;
-  padding-top: 3px;
+  font-size: 9px;
+  letter-spacing: 0.045em;
+}
+.philosophy-steps::after {
+  left: auto;
+  right: -5px;
 }
 .studio {
   display: grid;
@@ -195,11 +225,8 @@
     gap: 10px;
     margin-block: 38px;
   }
-  .philosophy-steps li {
-    padding: 15px;
-  }
-  .client-marks a > span {
-    font-size: 16px;
+  .client-name {
+    font-size: 20px;
   }
 }
 @media (max-width: 760px) {
@@ -212,42 +239,64 @@
     font-size: 22px;
   }
   .client-marks {
-    max-width: 500px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .client-marks a > span {
-    font-size: 17px;
+  .client-marks a {
+    min-height: 112px;
+    padding: 18px 16px 16px;
   }
-  .client-marks .client-counter {
-    font-size: 14px;
+  .client-marks a:nth-child(odd) {
+    border-left: 0;
   }
-  .client-marks .client-goodwell {
-    font-size: 11px;
+  .client-marks a:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+  .client-marks a:nth-child(odd) > .rivet {
+    left: 0;
+  }
+  .client-marks > .rivet {
+    right: 0;
+  }
+  .client-name {
+    font-size: 21px;
   }
   .philosophy {
+    grid-template-columns: 1fr;
     padding-block: 85px 75px;
   }
   .philosophy h2 {
-    font-size: clamp(42px, 9vw, 68px);
-    margin-block: 26px;
+    font-size: clamp(40px, 9.6vw, 68px);
+    margin-block: 26px 22px;
   }
   .philosophy > p:not(.label) {
-    font-size: 14px;
+    grid-column: 1;
+    margin-top: 0;
+    font-size: 15px;
   }
   .philosophy-steps {
-    flex-wrap: wrap;
-    margin-top: 35px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 44px;
   }
   .philosophy-steps li {
-    padding: 12px;
-    font-size: 11px;
-    min-width: 30%;
-    border-bottom: 1px solid var(--line);
+    gap: 26px;
+    padding: 16px 16px 22px;
+    font-size: 22px;
   }
-  .philosophy-steps li:nth-child(3) {
-    border-right: 0;
+  .philosophy-steps li:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
   }
-  .philosophy-steps li:nth-child(n + 4) {
-    border-bottom: 0;
+  .philosophy-steps li:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+  .philosophy-steps li:nth-child(odd)::before {
+    left: 0;
+  }
+  .philosophy-steps li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .philosophy-steps::after {
+    right: 0;
   }
   .studio {
     grid-template-columns: 1fr;

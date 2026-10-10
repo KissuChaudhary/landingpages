@@ -7,7 +7,7 @@ export const rivetTemplate: TemplateItem = {
   defaultTheme: "dark",
   badge: "Studio & Motion",
   description:
-    "A monochrome studio website with original architectural imagery, acid-green accents, precise frame rails, and expressive Geist typography. Thoughtful scroll motion, four distinct project art directions, complete case studies, field notes, and a useful inquiry flow.",
+    "A studio website set in brushed-steel type on a riveted hairline grid, with original architectural imagery and acid-green accents. Light that follows the cursor, a hero image that opens as you scroll, four distinct project art directions, complete case studies, field notes, and a useful inquiry flow.",
   tags: [
     "Digital Studio",
     "Motion",
@@ -16,7 +16,7 @@ export const rivetTemplate: TemplateItem = {
     "Next.js 15",
   ],
   features: [
-    "Photographic framed hero and deliberate typography motion",
+    "Brushed-steel headline with a cursor-following light sweep",
     "Four editable project compositions and complete case-study pages",
     "Full-screen accessible navigation and inline capability disclosures",
     "Configured inquiry delivery or downloadable local briefs",
@@ -32,24 +32,24 @@ export const rivetDetails: TemplateDetails = {
   name: "Rivet",
   kind: "Design and engineering studio landing page template",
   summary:
-    "A complete independent studio website for ambitious digital projects. Original monochrome imagery, acid-green accents, large Geist typography, and careful motion frame a product design and engineering practice with a clear point of view.",
+    "A complete independent studio website for ambitious digital projects. Brushed-steel typography, a riveted hairline grid, original monochrome imagery, and careful motion present a product design and engineering practice with a clear point of view.",
   bestFor: [
     "Product design and engineering studios",
     "Digital agencies and independent practices",
     "Creative development teams and consultancies",
   ],
   design:
-    "A near-black canvas, warm white typography, and acid-green accents. An original architectural photograph sits inside an inset hairline frame with technical rails. Right-aligned section introductions, circular client marks, a two-column portfolio, numbered services, and a large typographic footer create an editorial rhythm.",
+    "A near-black canvas, warm white typography, and acid-green accents. The headline is cut from brushed steel with one anodized-lime word, and hairline rules are fastened by small rivet heads at every joint. Left-set section headlines, a riveted client strip, a two-column portfolio, numbered services, a steel-type closing, and a large typographic footer create an editorial rhythm.",
   sections: [
     {
       name: "Navigation and hero",
       detail:
-        "Framed architectural hero, finite staggered typography, original studio image, and full-screen clip-reveal navigation with focus containment, Escape, inert background, and scroll locking.",
+        "Steel headline that rises, catches one sweep of light, and follows the cursor; a riveted seam with actions; an architectural image plate that opens to full bleed on scroll. Inline navigation on wide screens and a full-screen clip-reveal menu with focus containment, Escape, inert background, and scroll locking on smaller ones.",
     },
     {
       name: "Studio and philosophy",
       detail:
-        "Circular project marks, a five-part working rhythm, a monochrome studio photograph, and three structural facts about the practice.",
+        "A riveted strip of project marks, a five-part working rhythm, a monochrome studio photograph, and three structural facts about the practice.",
     },
     {
       name: "Selected work",
@@ -79,7 +79,7 @@ export const rivetDetails: TemplateDetails = {
     {
       name: "FAQ and closing",
       detail:
-        "Native accessible disclosures, an architectural closing composition, and direct conversation links.",
+        "Native accessible disclosures, a brushed-steel closing statement, and direct conversation links.",
     },
     {
       name: "Project inquiry",
@@ -131,7 +131,7 @@ export const rivetDetails: TemplateDetails = {
     "Two original monochrome photographs generated with the built-in imagegen tool and shipped as optimized WebP. Fictional project imagery, diagrams, and marks are editable HTML, CSS, React, and SVG.",
   node: "20.9",
   files: 75,
-  lines: 5710,
+  lines: 5924,
   beforeLaunch:
     "Replace illustrative projects, brand, fees, copy, and studio imagery. Set your canonical URL, business email, scheduling destination, and inquiry endpoint. Publish your own reviewed privacy notice. The local brief flow works without a backend; live submission needs your own validated endpoint and delivery service.",
   updated: "2026-10-10",

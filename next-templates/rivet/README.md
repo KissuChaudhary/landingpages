@@ -1,6 +1,6 @@
 # Rivet
 
-A complete design and engineering studio website. Monochrome architectural imagery, acid-green accents, precise technical framing, expressive typography, and considered motion. Includes four portfolio pages, a studio page, three field notes, an inquiry page, privacy holding page, and a custom missing-page state.
+A complete design and engineering studio website. Brushed-steel headline type, a riveted hairline grid, monochrome architectural imagery, acid-green accents, and considered motion. Includes four portfolio pages, a studio page, three field notes, an inquiry page, privacy holding page, and a custom missing-page state.
 
 ## Start
 
@@ -15,11 +15,13 @@ Open the URL printed in your terminal. `npm run build` creates your production w
 
 ## Make it yours
 
-Start with `site.config.ts`. Set your studio name, descriptor, location, metadata, headline, copy, navigation, FAQ, and footer. The highlighted hero word must appear in `hero.lineTwo`. Set `url` to your canonical origin, such as `https://yourstudio.com`.
+Start with `site.config.ts`. Set your studio name, descriptor, location, metadata, headline, copy, navigation, FAQ, and footer. The highlighted hero word must appear in `hero.lineTwo`. The last navigation item becomes the header button on wide screens. Set `url` to your canonical origin, such as `https://yourstudio.com`.
 
 Set `links.booking` to your scheduling URL. When empty, the main actions open the included inquiry page. Set `email` to your public inbox to show an email link in the footer and enable the prepared brief's email-draft action. Social links are rendered only when configured.
 
 Replace the illustrative projects in `data/projects.ts` with your own evidence. Each entry generates its portfolio card, case-study route, metadata, scope, narrative, and next-project navigation. The four included artwork compositions are editable DOM/CSS in `components/art/ProjectArt.tsx` and `styles/project-art.css`. To use photography instead, render your image in that component and keep the existing card wrapper.
+
+The steel lettering in the hero and closing is filled from `public/images/hero.webp`. Replace that image and the texture follows; adjust the crop with `--steel-size` and `--steel-at` in `styles/hero.css` and `styles/closing.css`. Remove the `steel` class from a line for solid type.
 
 Services, process, engagement prices, deliverables, and timelines live in `data/services.ts`. Prices are descriptive starting fees; no checkout or payment is implied. Engagement actions preselect their corresponding option on the inquiry page. Edit studio principles in `app/about/page.tsx` and field notes in `data/articles.ts`. The portfolio names, project narratives, people in the imagery, and engagements are fictional examples. Replace them before presenting the site as your own business.
 
@@ -61,7 +63,7 @@ public/images/           Optimized original architectural and studio imagery
 
 ## Motion and accessibility
 
-Motion uses native CSS, one IntersectionObserver, and one passive scroll listener with requestAnimationFrame. Text enters once, images drift gently, and project details react to hover and keyboard focus. The full-screen navigation supports Escape, focus containment, scroll locking, and an inert background. Services and FAQ use native disclosures. A system reduced-motion preference disables decorative motion. There are no animation-library dependencies or endlessly looping decorations.
+Motion uses native CSS, one IntersectionObserver, and one passive scroll listener with requestAnimationFrame. The steel headline rises once and catches a single sweep of light; on desktop the light follows the pointer, and on touch screens it travels with the first scroll. The hairline seam draws in, its rivets set, and the hero image opens to full width as it scrolls up. Text enters once, images drift gently, and project details react to hover and keyboard focus. The full-screen navigation supports Escape, focus containment, scroll locking, and an inert background. Services and FAQ use native disclosures. A system reduced-motion preference disables decorative motion. There are no animation-library dependencies or endlessly looping decorations.
 
 ## Deploy
 

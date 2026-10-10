@@ -9,8 +9,8 @@ export function Work() {
     <section className="work section-wrap" id="work">
       <div className="section-heading">
         <Label>{site.work.eyebrow}</Label>
-        <div>
-          <h2 data-reveal>{site.work.heading}</h2>
+        <h2 data-reveal>{site.work.heading}</h2>
+        <div className="section-aside">
           <p data-reveal>{site.work.text}</p>
         </div>
       </div>

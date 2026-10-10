@@ -6,9 +6,7 @@ export function Pricing() {
     <section className="pricing section-wrap" id="engagements">
       <div className="section-heading">
         <Label>{site.pricing.eyebrow}</Label>
-        <div>
-          <h2 data-reveal>{site.pricing.heading}</h2>
-        </div>
+        <h2 data-reveal>{site.pricing.heading}</h2>
       </div>
       <div className="pricing-grid">
         {engagements.map((e, i) => (

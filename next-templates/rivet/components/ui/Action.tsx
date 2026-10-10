@@ -19,6 +19,7 @@ export function Action({
       <span>{children}</span>
       <span className="action-arrow">
         <Arrow diagonal={quiet} />
+        <Arrow diagonal={quiet} />
       </span>
     </a>
   );

@@ -14,13 +14,13 @@ export default function Home() {
       <Hero />
       <Trust />
       <Philosophy />
-      <Studio />
       <Work />
       <Services />
+      <Studio />
       <Process />
       <Pricing />
-      <Journal />
       <Faq />
+      <Journal />
       <Closing />
       <Contact />
     </main>
