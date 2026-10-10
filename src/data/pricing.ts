@@ -13,7 +13,7 @@ export const PRICING = {
     price: 39,
     name: 'Single template',
     includes: [
-      'The complete Next.js 15 project, ready to run',
+      'The complete Next.js project, ready to run',
       'Every word, link and price in one config file',
       'README with setup, customisation and copy guide',
       'Commercial license for unlimited projects',

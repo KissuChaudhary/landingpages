@@ -24,7 +24,7 @@ export function SectionHeader({
       <h2 className="text-3xl sm:text-4xl tracking-tighter text-[#181925] leading-tight font-medium text-balance max-w-xl">
         {title}
       </h2>
-      <p className="w-full max-w-lg font-medium text-base sm:text-lg/6 text-[#666]">
+      <p className="w-full max-w-lg text-balance font-medium text-base sm:text-lg/6 text-[#666]">
         {description}
       </p>
     </div>

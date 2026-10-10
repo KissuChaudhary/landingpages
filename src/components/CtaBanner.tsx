@@ -2,64 +2,100 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { DitherGradient } from '@/components/theirs/dither-gradient';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { TEMPLATES } from '@/data/templates';
-import { PRICING, formatPrice } from '@/data/pricing';
+import { primaryButton, secondaryButton } from '@/components/home/buttons';
+
+/* The closing call: real template previews in three tilted rows that drift in opposite directions as you scroll, fading
+ * into a calm centre where the headline sits. Nothing moves on its own; with reduced motion the rows stay put. */
+
+const PER_ROW = 8;
 
 export function CtaBanner() {
+  const card = React.useRef<HTMLDivElement>(null);
+  const slugs = TEMPLATES.map((t) => t.slug);
+  const rows = [0, 1, 2].map((r) => {
+    const start = (r * PER_ROW) % Math.max(1, slugs.length);
+    return Array.from({ length: PER_ROW }, (_, i) => slugs[(start + i) % slugs.length]);
+  });
+
+  React.useEffect(() => {
+    const el = card.current;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      el.style.setProperty('--p', p.toFixed(4));
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
+  }, []);
+
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 overflow-hidden bg-white">
-      <div className="max-w-5xl mx-auto relative">
-        {/* Dark Charcoal CTA Card */}
-        <div className="relative z-10 overflow-hidden rounded-[28px] sm:rounded-[36px] bg-[#1a1a1f] p-10 sm:p-20 text-center text-white shadow-2xl flex flex-col items-center justify-center">
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute inset-0 bg-radial from-white/[0.04] via-transparent to-transparent pointer-events-none" />
-
-          {/* Dither Pattern Background Cover */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 overflow-hidden select-none opacity-60 z-0"
-          >
-            <DitherGradient from="#305dde" bloom="aura" direction="down" />
-          </div>
-
-          {/* Brand Sparkle Emblem */}
-          <div className="relative z-10 flex items-center justify-center mb-6 select-none">
-            <div className="size-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-primary shadow-lg">
-              <Sparkles className="size-7 text-primary" />
+    <section className="px-4 pb-20 pt-4 sm:px-6 sm:pb-24 sm:pt-6">
+      <div ref={card} className="relative mx-auto max-w-6xl overflow-hidden rounded-[32px] border border-black/[0.07] bg-[#fafafa]">
+        <div aria-hidden="true" className="absolute inset-[-20%] flex flex-col justify-center gap-4 [transform:rotate(-7deg)]">
+          {rows.map((row, r) => (
+            <div
+              key={r}
+              className="flex w-max gap-4"
+              style={{
+                transform: `translateX(calc(${r % 2 ? -18 : -8}% + (var(--p, 0.5) - 0.5) * ${r % 2 ? 260 : -260}px))`,
+              }}
+            >
+              {[...row, ...row].map((slug, i) => (
+                <div key={`${slug}-${i}`} className="h-[150px] w-[240px] shrink-0 overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)] sm:h-[175px] sm:w-[280px]">
+                  <img src={`/previews/card/${slug}.webp`} alt="" loading="lazy" decoding="async" draggable={false} className="size-full object-cover object-top" />
+                </div>
+              ))}
             </div>
-          </div>
+          ))}
+        </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 58% 64% at 50% 50%, #fafafa 40%, rgb(250 250 250 / 0.88) 58%, rgb(250 250 250 / 0.2) 88%)' }}
+        />
 
-          {/* Headline */}
-          <h2 className="relative z-10 text-balance text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-[1.15] max-w-3xl mx-auto mb-3.5">
-            Start with {TEMPLATES.length} production templates.{' '}
-            <span className="text-neutral-400 font-normal block mt-1 sm:mt-1.5">
-              Ship your SaaS before the week ends.
-            </span>
+        <div className="relative flex flex-col items-center px-6 py-24 text-center sm:py-32">
+          <span className="flex size-11 items-center justify-center rounded-full bg-primary text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
+            <Sparkles className="size-5" aria-hidden="true" />
+          </span>
+          <h2 className="mt-7 max-w-2xl text-balance text-[34px] font-medium leading-[1.05] tracking-[-0.045em] text-[#181925] sm:text-[52px]">
+            Your next launch, <span className="text-primary">already finished.</span>
           </h2>
-
-          <p className="relative z-10 text-sm sm:text-base text-neutral-300 max-w-xl mx-auto mb-8 leading-relaxed">
-            You don't need to spend weeks designing from scratch. Pick a layout, test the responsive demo, and launch with clean Next.js 15 & Tailwind code.
+          <p className="mt-5 max-w-md text-pretty text-[16px] leading-relaxed text-[#666] sm:text-[17px]">
+            Pick a template tonight, make it yours in one file, and ship it by the weekend.
           </p>
-
-          {/* Action Button Pill */}
-          <div className="relative z-10 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#catalog"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer bg-white text-[#181925] hover:bg-neutral-100 active:scale-[0.98] h-11 px-6 text-sm group shrink-0 select-none shadow-sm"
-            >
-              <span>Explore All {TEMPLATES.length} Templates</span>
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          <div className="mt-8 flex flex-col gap-2.5 sm:flex-row">
+            <a href="#catalog" className={primaryButton}>
+              Browse templates
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </a>
-
-            <a
-              href="#pricing"
-              className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap !rounded-full font-medium transition-all cursor-pointer border border-white/20 bg-white/10 text-white hover:bg-white/20 active:scale-[0.98] h-11 px-6 text-sm select-none"
-            >
-              <span>Get all-access ({formatPrice(PRICING.allAccess.price)})</span>
-            </a>
+            <Link href="/#pricing" className={secondaryButton}>
+              See pricing
+            </Link>
           </div>
+          <ul className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-[13px] text-[#888]">
+            {['One-time payment', 'Commercial license', 'Free updates'].map((t) => (
+              <li key={t} className="flex items-center gap-1.5">
+                <Check className="size-3.5 text-primary" strokeWidth={2.4} aria-hidden="true" />
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

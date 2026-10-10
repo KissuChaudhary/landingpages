@@ -11,7 +11,7 @@ export default function TemplateCatalog() {
     <section id="catalog" aria-labelledby="catalog-label" className="mx-auto max-w-6xl scroll-mt-20 px-5 pb-20 sm:px-6 sm:pb-28">
       <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-black/[0.08] pt-5">
         <h2 id="catalog-label" className="text-sm font-medium text-[#181925]">
-          {TEMPLATES.length} templates
+          Templates <span className="ml-1 font-normal tabular-nums text-[#999]">{TEMPLATES.length}</span>
         </h2>
         <p className="text-sm text-[#888]">
           <span className="hidden [@media(hover:hover)]:inline">Hover a template to scroll the whole page</span>

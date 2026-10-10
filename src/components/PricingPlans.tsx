@@ -1,118 +1,111 @@
 import React from 'react';
+import { ArrowRight, Check, Clock, FileCheck2, Infinity as InfinityIcon, ShieldCheck } from 'lucide-react';
 import { SectionHeader } from './theirs/section-header';
-import { ShieldCheck } from 'lucide-react';
 import { TEMPLATES } from '@/data/templates';
 import { ALL_ACCESS_CHECKOUT, PRICING, formatPrice } from '@/data/pricing';
-import BuyButton from '@/components/template/BuyButton';
+import { primaryButton, secondaryButton } from '@/components/home/buttons';
 
-function Checklist({ items, strong = false }: { items: readonly string[]; strong?: boolean }) {
+/* Two plans side by side, one-time prices, and the all-access price set against buying every template on its own.
+ * Until checkout is connected, the all-access button says so plainly instead of looking broken. */
+
+function Features({ items, strong = false }: { items: readonly string[]; strong?: boolean }) {
   return (
-    <ul className="mt-5 flex flex-1 list-none flex-col gap-2 border-t border-dashed border-black/[0.1] p-0 pt-4">
+    <ul className="m-0 flex list-none flex-col gap-3 p-0">
       {items.map((text) => (
-        <li key={text} className={`flex items-start gap-2 text-xs leading-5 ${strong ? 'font-medium text-[#181925]' : 'text-[#444]'}`}>
-          <span aria-hidden="true" className={`mt-1.5 block size-2 shrink-0 ${strong ? 'text-primary' : 'text-muted-foreground/60'}`}>
-            <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 8 8">
-              <path d="M4 0v8M0 4h8" />
-            </svg>
+        <li key={text} className={`flex items-start gap-2.5 text-[14.5px] leading-[1.45] ${strong ? 'text-[#181925]' : 'text-[#555]'}`}>
+          <span className={`mt-[1px] grid size-[18px] shrink-0 place-items-center rounded-full ${strong ? 'bg-primary text-white' : 'bg-black/[0.05] text-[#666]'}`}>
+            <Check className="size-[11px]" strokeWidth={3} aria-hidden="true" />
           </span>
-          <span>{text}</span>
+          {text}
         </li>
       ))}
     </ul>
   );
 }
 
-function Specs({ rows }: { rows: [string, string][] }) {
+function Price({ value, note }: { value: string; note: string }) {
   return (
-    <dl className="mt-5 flex flex-col gap-2 border-t border-dashed border-black/[0.1] pt-4 font-mono text-xs">
-      {rows.map(([label, value]) => (
-        <div key={label} className="flex items-baseline justify-between gap-3">
-          <dt className="text-muted-foreground">{label}</dt>
-          <dd className="font-medium tabular-nums text-primary">{value}</dd>
-        </div>
-      ))}
-    </dl>
+    <p className="flex items-baseline gap-2">
+      <span className="text-[52px] font-medium leading-none tracking-[-0.045em] text-[#181925] tabular-nums">{value}</span>
+      <span className="text-[14px] text-[#888]">{note}</span>
+    </p>
   );
 }
 
-const outlineButton =
-  'mt-6 inline-flex h-10 select-none items-center justify-center whitespace-nowrap rounded-full border border-black/[0.1] bg-white px-5 text-sm font-medium text-[#181925] shadow-2xs transition-all hover:bg-neutral-50';
+const ASSURANCES = [
+  { Icon: ShieldCheck, text: `${PRICING.refundDays}-day money-back guarantee` },
+  { Icon: InfinityIcon, text: 'No subscription, ever' },
+  { Icon: FileCheck2, text: 'Commercial license included' },
+];
 
 export default function PricingPlans() {
-  const count = TEMPLATES.length;
-  const single = formatPrice(PRICING.single.price);
-  const allAccess = formatPrice(PRICING.allAccess.price);
+  const separately = TEMPLATES.length * PRICING.single.price;
+  const separatelyText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(separately);
 
   return (
-    <section id="pricing" className="relative flex scroll-mt-20 flex-col gap-12 overflow-hidden border-t border-black/[0.04] bg-[#fafafa] py-16 sm:py-24">
+    <section id="pricing" className="relative scroll-mt-20 border-t border-black/[0.05] bg-[#fafafa] py-20 sm:py-28">
       <SectionHeader
         badge="Pricing"
-        title="Buy one template, or own the whole library."
-        description={
-          <>
-            Every demo is free to explore. Pay once when you want the source code,{' '}
-            <span className="box-decoration-clone rounded-md bg-primary/10 px-1 py-0.5 font-medium text-primary">never a subscription</span>.
-          </>
-        }
+        title="Pay once. Keep it forever."
+        description="Every demo is free to explore. Buy the source when you’re ready."
         className="mx-auto max-w-3xl px-5"
       />
 
-      <div className="mx-auto w-full max-w-5xl px-5">
-        <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:gap-5 md:grid-cols-3">
-          {/* Preview */}
-          <li className="flex flex-col rounded-2xl border border-black/[0.04] bg-[#f6f6f6] p-6 sm:p-7">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[#181925]">Preview</p>
-            <p className="mt-4 flex items-baseline text-4xl font-medium tabular-nums tracking-tight text-[#181925]">
-              $0
-              <span className="ml-1.5 text-base font-normal text-muted-foreground">to explore</span>
+      <div className="mx-auto mt-12 grid w-full max-w-[920px] gap-4 px-5 sm:mt-14 md:grid-cols-2">
+        {/* Single template */}
+        <article className="flex flex-col rounded-[24px] bg-white p-7 shadow-[0_0_0_1px_rgba(0,0,0,0.07)] sm:p-8">
+          <header className="flex items-baseline justify-between gap-3">
+            <h3 className="text-[15px] font-medium text-[#181925]">{PRICING.single.name}</h3>
+            <span className="text-[13px] text-[#999]">One complete project</span>
+          </header>
+          <div className="mt-6">
+            <Price value={formatPrice(PRICING.single.price)} note="one-time" />
+            <p className="mt-2.5 h-5 text-[13px] text-[#999]">Pick any template in the catalog.</p>
+          </div>
+          <div className="my-6 h-px bg-black/[0.06]" />
+          <Features items={PRICING.single.includes} />
+          <a href="#catalog" className={`${secondaryButton} mt-8 w-full`}>
+            Choose a template
+            <ArrowRight className="size-4 text-[#999] transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+          </a>
+        </article>
+
+        {/* All-access */}
+        <article className="relative order-first flex flex-col rounded-[24px] bg-white p-7 shadow-[0_0_0_1.5px_var(--primary)] sm:p-8 md:order-none">
+          <header className="flex items-baseline justify-between gap-3">
+            <h3 className="text-[15px] font-medium text-primary">{PRICING.allAccess.name}</h3>
+            <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[12px] font-medium text-primary">Best value</span>
+          </header>
+          <div className="mt-6">
+            <Price value={formatPrice(PRICING.allAccess.price)} note="one-time" />
+            <p className="mt-2.5 h-5 text-[13px] text-[#999]">
+              <span className="text-[#777] line-through decoration-[#bbb]">{separatelyText}</span> if you bought every template on its own
             </p>
-            <Specs rows={[['Live demos', `All ${count}`], ['Device sizes', '4 viewports']]} />
-            <Checklist
-              items={[`Click through all ${count} templates live`, 'Desktop, laptop, tablet and phone views', 'Full-page screenshots and specs for each']}
-            />
-            <a href="#catalog" className={outlineButton}>
-              Browse the demos
+          </div>
+          <div className="my-6 h-px bg-black/[0.06]" />
+          <Features items={PRICING.allAccess.includes} strong />
+          {ALL_ACCESS_CHECKOUT ? (
+            <a href={ALL_ACCESS_CHECKOUT} className={`${primaryButton} mt-8 w-full`}>
+              Get All-Access
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </a>
-          </li>
-
-          {/* Single template */}
-          <li className="flex flex-col rounded-2xl border border-black/[0.08] bg-white p-6 sm:p-7">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[#181925]">{PRICING.single.name}</p>
-            <p className="mt-4 flex items-baseline text-4xl font-medium tabular-nums tracking-tight text-[#181925]">
-              {single}
-              <span className="ml-1.5 text-base font-normal text-muted-foreground">per template</span>
+          ) : (
+            <p className="mt-8 flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary/[0.07] text-sm font-medium text-primary">
+              <Clock className="size-4" aria-hidden="true" />
+              Checkout opens soon
             </p>
-            <Specs rows={[['Source code', '1 template'], ['Projects', 'Unlimited']]} />
-            <Checklist items={PRICING.single.includes} />
-            <a href="#catalog" className={outlineButton}>
-              Choose a template
-            </a>
-          </li>
-
-          {/* All-access */}
-          <li className="relative flex flex-col rounded-2xl border-2 border-primary/50 bg-white p-6 sm:p-7">
-            <div className="flex items-baseline justify-between gap-3">
-              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary">{PRICING.allAccess.name}</p>
-              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary">Best value</p>
-            </div>
-            <p className="mt-4 flex items-baseline text-4xl font-medium tabular-nums tracking-tight text-[#181925]">
-              {allAccess}
-              <span className="ml-1.5 text-base font-normal text-muted-foreground">one-time</span>
-            </p>
-            <Specs rows={[['Source code', `All ${count} templates`], ['Future templates', 'Included']]} />
-            <Checklist items={PRICING.allAccess.includes} strong />
-            <BuyButton href={ALL_ACCESS_CHECKOUT} variant="brand" className="mt-6 h-10">
-              Get all-access for {allAccess}
-            </BuyButton>
-            {!ALL_ACCESS_CHECKOUT && <p className="mt-2 text-center text-xs text-[#888]">Checkout opens soon</p>}
-          </li>
-        </ul>
-
-        <div className="mt-8 flex items-center justify-center gap-2 text-center text-xs text-[#777]">
-          <ShieldCheck className="size-4 shrink-0 text-primary" />
-          <span>{PRICING.refundDays}-day money-back guarantee · No subscriptions · Keep the code forever.</span>
-        </div>
+          )}
+        </article>
       </div>
+
+      <ul className="mx-auto mt-10 flex max-w-[920px] flex-col items-center justify-center gap-3 px-5 text-[13px] text-[#777] sm:flex-row sm:gap-0">
+        {ASSURANCES.map(({ Icon, text }, i) => (
+          <li key={text} className={`flex items-center gap-2 sm:px-5 ${i ? 'sm:border-l sm:border-black/[0.08]' : ''}`}>
+            <Icon className="size-4 text-[#999]" aria-hidden="true" />
+            {text}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

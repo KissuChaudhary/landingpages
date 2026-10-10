@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { SectionHeader } from './theirs/section-header';
+import { ArrowRight, Plus } from 'lucide-react';
 import { TEMPLATES } from '@/data/templates';
 import { PRICING, formatPrice } from '@/data/pricing';
+
+/* Questions beside a title that stays put. One answer is open at a time; it opens by growing its row (no measuring, no
+ * animation library) and the plus turns into a cross. */
 
 const single = formatPrice(PRICING.single.price);
 const allAccess = formatPrice(PRICING.allAccess.price);
@@ -13,119 +14,93 @@ const allAccess = formatPrice(PRICING.allAccess.price);
 const FAQS = [
   {
     q: 'What does a template cost?',
-    a: `${single} for one template, or ${allAccess} for all ${TEMPLATES.length} plus every template added later. Both are one-time payments with a ${PRICING.refundDays}-day money-back guarantee.`,
+    a: `${single} for one template, or ${allAccess} for every template in the library plus each one added later. Both are one-time payments with a ${PRICING.refundDays}-day money-back guarantee.`,
   },
   {
-    q: 'Can I use these templates for commercial SaaS and client projects?',
-    a: 'Yes. Every purchase includes a commercial license: use the template for your own products and any number of client projects. You just can’t resell the template files themselves as a template or UI kit.',
+    q: 'Can I use them for commercial and client projects?',
+    a: 'Yes. Every purchase includes a commercial license: use a template for your own products and any number of client projects. You just can’t resell the template files themselves as a template or UI kit.',
   },
   {
-    q: 'How does the interactive demo viewer work?',
-    a: 'Every template runs as a real, isolated build. The demo viewer lets you switch between desktop, 1024px laptop, 768px tablet and 375px phone widths in your browser before you buy.',
+    q: 'How does the live demo work?',
+    a: 'Every template runs as a real, isolated build. The demo viewer lets you switch between desktop, laptop, tablet and phone widths in your browser before you buy.',
   },
   {
-    q: `What stack is used across the ${TEMPLATES.length} templates?`,
-    a: 'Every template is a standalone Next.js 15 project built with React 19, TypeScript and Lucide icons. Styling uses Tailwind CSS v4 or modular CSS, listed on each template’s detail page. No API keys or environment variables.',
+    q: 'What stack do the templates use?',
+    a: 'Each template is a standalone Next.js project with React and TypeScript. Styling uses Tailwind CSS or plain CSS, listed on each template’s page. No API keys or environment variables needed to run it.',
   },
   {
     q: 'How do I get the source code?',
-    a: 'Buy a template from its page, or get all-access. Checkout sends a download link straight away: unzip the project, run npm install and npm run dev.',
+    a: 'Buy a template from its page, or get All-Access. Checkout sends a download link straight away: unzip the project, run npm install and npm run dev.',
+  },
+  {
+    q: 'Are the components really free?',
+    a: 'Yes. Every component in the library is free to install from our shadcn registry, with its source, states and motion included. Templates are the paid part.',
   },
   {
     q: 'Will new templates be added?',
-    a: 'Yes. All-access holders get every new template at no extra charge.',
+    a: `Yes, regularly. All-Access holders get every new template at no extra charge. There are ${TEMPLATES.length} today.`,
   },
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (idx: number) => {
-    setOpenIndex((prev) => (prev === idx ? null : idx));
-  };
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white border-t border-black/[0.04]">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        {/* Section Header */}
-        <SectionHeader
-          badge="FAQs"
-          title="Fair questions, straight answers."
-          description={
-            <>
-              Everything you need to know about licensing, frameworks, and downloads,{' '}
-              <span className="rounded-md bg-primary/10 box-decoration-clone px-1 py-0.5 text-primary font-medium">
-                without the fine print
-              </span>
-              .
-            </>
-          }
-        />
+    <section id="faq" className="scroll-mt-20 border-t border-black/[0.05] bg-white py-20 sm:py-28">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <span className="inline-flex h-6 items-center rounded-md bg-neutral-100 px-2.5 text-xs font-medium text-[#666]">FAQ</span>
+          <h2 className="mt-5 text-balance text-3xl font-medium leading-tight tracking-tighter text-[#181925] sm:text-4xl">Questions, answered.</h2>
+          <p className="mt-4 max-w-sm text-balance text-[15px] leading-relaxed text-[#666]">Licensing, the stack and downloads, without the fine print.</p>
+          <a href="#catalog" className="group mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-primary">
+            Still deciding? Try any demo
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+          </a>
+        </div>
 
-        {/* Dynamic Morphing Accordion Stack */}
-        <div className="mx-auto mt-12 w-full max-w-2xl">
-          <div className="flex flex-col">
-            {FAQS.map((item, index) => {
-              const isOpen = openIndex === index;
-              const total = FAQS.length;
-
-              const prevIsOpen = index > 0 && index - 1 === openIndex;
-              const nextIsOpen = index < total - 1 && index + 1 === openIndex;
-
-              const isStartOfClosedGroup = index === 0 || prevIsOpen;
-              const isEndOfClosedGroup = index === total - 1 || nextIsOpen;
-
-              let borderRadius = '0px';
-              if (isOpen) {
-                borderRadius = '24px';
-              } else if (isStartOfClosedGroup && isEndOfClosedGroup) {
-                borderRadius = '24px';
-              } else if (isStartOfClosedGroup) {
-                borderRadius = '24px 24px 0px 0px';
-              } else if (isEndOfClosedGroup) {
-                borderRadius = '0px 0px 24px 24px';
-              }
-
-              return (
-                <div
-                  key={item.q}
-                  style={{ borderRadius }}
-                  className={`transition-all duration-200 overflow-hidden ${
-                    isOpen
-                      ? 'my-2.5 bg-white border border-black/[0.08] shadow-md'
-                      : 'my-0 bg-[#f6f6f6] border-b border-black/[0.04]'
-                  }`}
-                >
+        <div className="border-t border-black/[0.08]">
+          {FAQS.map((item, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={item.q} className="border-b border-black/[0.08]">
+                <h3>
                   <button
-                    onClick={() => toggle(index)}
-                    className="flex w-full items-center justify-between p-5 text-left text-sm font-medium text-[#181925] hover:text-primary transition-colors cursor-pointer select-none"
+                    type="button"
+                    id={`faq-q-${i}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-a-${i}`}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="group flex w-full items-center justify-between gap-6 py-5 text-left text-[16px] font-medium tracking-[-0.01em] text-[#181925]"
                   >
-                    <span>{item.q}</span>
-                    <ChevronDown
-                      className={`size-4 text-[#777] transition-transform duration-200 shrink-0 ml-4 ${
-                        isOpen ? 'rotate-180 text-primary' : ''
+                    {item.q}
+                    <span
+                      className={`grid size-7 shrink-0 place-items-center rounded-full transition-all duration-500 ease-[cubic-bezier(0.34,1.4,0.64,1)] ${
+                        isOpen ? 'rotate-45 bg-[#181925] text-white' : 'text-[#777] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.12)] group-hover:text-[#181925] group-hover:shadow-[inset_0_0_0_1px_rgba(0,0,0,0.22)]'
                       }`}
-                    />
+                    >
+                      <Plus className="size-3.5" strokeWidth={2.2} aria-hidden="true" />
+                    </span>
                   </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="px-5 pb-5 pt-1 text-xs text-[#666] leading-relaxed border-t border-black/[0.04]">
-                          {item.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                </h3>
+                <div
+                  id={`faq-a-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <p
+                      className={`pb-6 pr-12 text-[15px] leading-relaxed text-[#666] transition-[opacity,transform] duration-500 ${
+                        isOpen ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0'
+                      }`}
+                    >
+                      {item.a}
+                    </p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
