@@ -10,6 +10,10 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
     { template: 'encore', where: 'Why' },
     { template: 'halftone', where: 'Pricing' },
     { template: 'influence', where: 'Pricing' },
+    { template: 'plumb', where: 'Footer' },
+    { template: 'plumb', where: 'Scale' },
+    { template: 'plumb', where: 'Tour' },
+    { template: 'plumb', where: 'Voices' },
     { template: 'prism', where: 'Pricing' },
     { template: 'relay', where: 'Pricing' },
     { template: 'shear', where: 'Features' },
@@ -27,6 +31,8 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
     { template: 'influence', where: 'Pricing' },
     { template: 'kept', where: 'Sign-up' },
     { template: 'parley', where: 'Sign-up' },
+    { template: 'plumb', where: 'Closing' },
+    { template: 'plumb', where: 'Tour' },
     { template: 'prism', where: 'Pricing' },
     { template: 'relay', where: 'Pricing' },
     { template: 'shear', where: 'Signup form' },
@@ -35,11 +41,24 @@ export const USED_IN: Record<string, { template: string; where: string }[]> = {
   ],
   'faq-accordion': [
     { template: 'encore', where: 'Faq' },
+    { template: 'plumb', where: 'Faq' },
     { template: 'shear', where: 'Faq' },
   ],
   'logo-marquee': [
     { template: 'encore', where: 'Hero' },
     { template: 'shear', where: 'Hero' },
+  ],
+  'changelog-trace': [
+    { template: 'plumb', where: 'Changelog view' },
+  ],
+  'pricing-calculator': [
+    { template: 'plumb', where: 'Pricing' },
+  ],
+  'changelog-scrubber': [
+    { template: 'plumb', where: 'Shipped' },
+  ],
+  'testimonials': [
+    { template: 'plumb', where: 'Voices' },
   ],
   'pricing-toggle': [
     { template: 'shear', where: 'Pricing' },

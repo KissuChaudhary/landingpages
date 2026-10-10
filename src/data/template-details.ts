@@ -1,3 +1,4 @@
+import { plumbDetails } from './template-catalog/plumb';
 import { inlayDetails } from './template-catalog/inlay';
 import { aveniqDetails } from './template-catalog/aveniq';
 import { tesseraDetails } from './template-catalog/tessera';
@@ -56,6 +57,7 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  plumb: plumbDetails,
   inlay: inlayDetails,
   tessera: tesseraDetails,
   aveniq: aveniqDetails,

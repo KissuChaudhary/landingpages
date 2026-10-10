@@ -1,3 +1,4 @@
+import { plumbTemplate } from './template-catalog/plumb';
 import { inlayTemplate } from './template-catalog/inlay';
 import { aveniqTemplate } from './template-catalog/aveniq';
 import { tesseraTemplate } from './template-catalog/tessera';
@@ -46,6 +47,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    plumbTemplate,
     inlayTemplate,
     tesseraTemplate,
     aveniqTemplate,

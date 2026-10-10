@@ -65,6 +65,7 @@ export function Pricing() {
     { name: 'marks', type: '{ value; label }[]', description: 'Ticks and labels along the track, e.g. where tiers change; clicking a label throws the thumb there.' },
     { name: 'scale', type: '"linear" | "log"', default: '"linear"', description: 'Log spaces orders of magnitude evenly, so 1K, 10K and 100K get the same room.' },
     { name: 'unit / valueFormat / currency', type: 'string / Intl.NumberFormatOptions / string', default: '— / — / "USD"', description: 'How the value and price read.' },
+    { name: 'locales', type: 'string | string[]', default: 'the browser’s', description: 'Locale for every figure. Set it when the page renders on a server, so the server and the browser format prices alike.' },
     { name: 'contactFrom', type: 'number', description: 'From this value, "Let’s talk" replaces the price.' },
     { name: 'yearlyDiscount', type: 'number', description: 'e.g. 0.2 adds a Monthly/Yearly switch with "Save 20%".' },
     { name: 'cta', type: '{ label(plan); contactLabel?; onClick?(value, plan, billing) }', description: 'The button under the price; its words follow the plan.' },

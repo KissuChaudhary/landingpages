@@ -1,0 +1,364 @@
+/*
+ * Everything a visitor reads, and every place a button goes.
+ * Change the copy here; the sections in components/sections only lay it out.
+ * The brand, people, sites, quotes and figures are fictional.
+ */
+
+/** Where the live counter sits on a product screen, as fractions of the image. */
+export type LiveSlot = {
+  /** The number's left edge and vertical centre, as shares of the image's width and height. */
+  x: number;
+  y: number;
+  /** The number's font size as a share of the image's width. */
+  size: number;
+};
+
+export type Chapter = {
+  id: string;
+  kicker: string;
+  title: string;
+  body: string;
+  /**
+   * The shape the surface takes for this chapter:
+   *   line    a pill with one line of `code` and a Copy button
+   *   screen  a window the size of `image` (give its `aspect`)
+   *   phone   the surface becomes the bezel around `image`, a phone screen
+   */
+  frame: "line" | "screen" | "phone";
+  /** For a line: the code to show and copy. */
+  code?: string;
+  /** Small pills under the text, e.g. the platforms it works with. */
+  tags?: string[];
+  /** The image inside the shape (product screens are images, not coded UI). */
+  image?: string;
+  /** The image's width divided by its height. */
+  aspect?: number;
+  /** A separate, narrower crop for phones, and its width ÷ height. */
+  phoneImage?: string;
+  phoneAspect?: number;
+  /** The widest the shape gets on large screens, in px. */
+  maxWidth?: number;
+  alt?: string;
+  /** Where the live counter lands on this screen; leave it out and the counter fades away. */
+  live?: LiveSlot;
+  /** Same, for phoneImage. */
+  phoneLive?: LiveSlot;
+};
+
+export const site = {
+  brand: {
+    name: "Plumb",
+    legal: "Plumb Analytics, Lda.",
+    city: "Lisbon",
+  },
+
+  meta: {
+    title: "Plumb · Analytics that count people, not cookies",
+    description: "Privacy-first web analytics for independent products. One line to install, one page to read and no consent banner.",
+    /** Your domain, e.g. "https://plumb.so". Social previews use it for absolute image links. */
+    url: "",
+  },
+
+  /** Number formatting for every figure on the page. */
+  locale: "en-US",
+
+  links: {
+    /** Your sign-up page. Every "Start free" button goes here (with ?email= from the forms). Empty: the pricing section. */
+    signup: "",
+    login: "",
+    /** Sales or support address for custom plans and questions. */
+    email: "hello@plumb.so",
+    /** A status page; the footer shows it with a green dot when set. */
+    status: "",
+    x: "",
+    github: "",
+  },
+
+  /**
+   * The closing form. Set `endpoint` to POST { email } as JSON (a waitlist, CRM or your
+   * own API), or leave it empty and the form sends visitors to links.signup with the email
+   * filled in (?email=…). With neither, it opens an email to links.email.
+   */
+  signup: {
+    endpoint: "",
+    param: "email",
+  },
+
+  nav: [
+    { label: "Product", href: "/#tour" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Changelog", href: "/#shipped" },
+    { label: "FAQ", href: "/#faq" },
+  ],
+  cta: "Start free",
+
+  /**
+   * The live counter that rides through the tour. Without an endpoint it drifts gently
+   * inside `range`, as a demonstration. Point `endpoint` at a URL that returns
+   * { "value": 38 } and it shows your real figure, refreshed every `every` ms.
+   */
+  live: {
+    value: 38,
+    range: [31, 46] as [number, number],
+    every: 3200,
+    endpoint: "",
+  },
+
+  hero: {
+    announcement: { tag: "New", label: "Funnels are here", href: "/changelog#funnels" },
+    /** The headline: `before`, the live counter, then `after`. A "\n" breaks the line on wide screens. */
+    headline: { before: "Count people", after: ",\nnot cookies." },
+    /** The small word inside the counter. */
+    tokenLabel: "now",
+    description: "Plumb is the analytics script your visitors never notice. One line to install, one page to read, and no consent banner. Ever.",
+    primary: "Start free trial",
+    secondary: { label: "Take the tour", href: "/#tour-install" },
+    note: "30 days free · No card needed",
+    trusted: "Counting quietly for 9,400 independent sites",
+    logos: ["tidyform", "Lumen Notes", "OKAY", "parcel/", "Fieldday", "orbit.fm"],
+  },
+
+  tour: {
+    label: "The tour",
+    chapters: [
+      {
+        id: "install",
+        kicker: "Install",
+        title: "One line. That's the setup.",
+        body: "Paste it into your site's head and numbers start arriving within a minute. It works with any stack that serves HTML.",
+        frame: "line",
+        code: '<script defer data-site="tidyform.app" src="https://plumb.so/p.js"></script>',
+        tags: ["Next.js", "WordPress", "Webflow", "Shopify", "Framer", "Ghost"],
+      },
+      {
+        id: "dashboard",
+        kicker: "Dashboard",
+        title: "Every number on one page.",
+        body: "Visitors, pages, sources, countries and devices on a single screen. No reports to build, no menus to learn.",
+        frame: "screen",
+        image: "/images/dashboard.webp",
+        aspect: 1040 / 650,
+        phoneImage: "/images/dashboard-phone.webp",
+        phoneAspect: 358 / 500,
+        alt: "The Plumb dashboard: five headline figures, a 30-day visitors chart with a launch-day spike, and top sources, pages and countries.",
+        live: { x: 0.759, y: 0.0408, size: 0.01202 },
+        phoneLive: { x: 0.8191, y: 0.052, size: 0.0335 },
+      },
+      {
+        id: "live",
+        kicker: "Live view",
+        title: "Watch it happen.",
+        body: "See people arrive by the second, the page they landed on and where they came from. Launch days have never been more fun.",
+        frame: "screen",
+        image: "/images/live.webp",
+        aspect: 420 / 560,
+        alt: "The live view: visitors on the site right now, a bar for every 45 seconds, active pages and where people are arriving from.",
+        live: { x: 0.0524, y: 0.1768, size: 0.138 },
+      },
+      {
+        id: "reports",
+        kicker: "Reports",
+        title: "Monday's numbers, delivered.",
+        body: "A short email every week with what changed, your best day and where people came from. Read it in thirty seconds.",
+        frame: "screen",
+        image: "/images/report.webp",
+        aspect: 460 / 600,
+        alt: "The weekly email report: 11,482 unique visitors, up 18%, a bar for each day and the top page, source and goal.",
+      },
+      {
+        id: "mobile",
+        kicker: "Mobile",
+        title: "Check in from anywhere.",
+        body: "Add Plumb to your home screen for the same single page on your phone. No app store, no second login.",
+        frame: "phone",
+        image: "/images/app.webp",
+        aspect: 272 / 606,
+        alt: "Plumb on a phone: visitors now, 48.2k unique visitors this month, a chart and the top pages.",
+        live: { x: 0.1066, y: 0.1642, size: 0.0441 },
+      },
+    ] as Chapter[],
+    outro: { title: "That's the whole product.", body: "Every plan gets all of it." },
+  },
+
+  scale: {
+    tag: "Weight",
+    title: "Ours is the hairline.",
+    body: "Each pair of bars is drawn to scale against a typical analytics setup. The thin one is Plumb.",
+    legend: { them: "Typical setup", us: "Plumb" },
+    rows: [
+      { label: "Script size", them: 112, us: 0.9, unit: "KB" },
+      { label: "Cookies set", them: 6, us: 0, unit: "" },
+      { label: "Load time added", them: 380, us: 4, unit: "ms" },
+      { label: "Minutes to set up", them: 90, us: 2, unit: "min" },
+    ],
+    footnote: "Typical setup: a popular free analytics tag with its consent manager, measured on a blank page. Sample figures; measure your own before you publish them.",
+  },
+
+  spec: {
+    tag: "And the rest",
+    title: "Everything you'd expect. Nothing you wouldn't.",
+    items: [
+      { icon: "funnel", title: "Goals and funnels", body: "Count signups and purchases, and see where people drop off between steps." },
+      { icon: "tag", title: "Campaigns", body: "UTM tags are read and grouped for you. No spreadsheet required." },
+      { icon: "share", title: "Public dashboards", body: "Share a live, read-only link with your team, investors or the world." },
+      { icon: "team", title: "Unlimited seats", body: "Invite everyone who should see the numbers. Seats are free on every plan." },
+      { icon: "export", title: "API and exports", body: "Pull any table into your own tools, or export the whole site as CSV." },
+      { icon: "shield", title: "Ad-blocker safe", body: "Serve the script from your own domain and every visit is counted." },
+      { icon: "bot", title: "Bot filtering", body: "Crawlers, scrapers and uptime checks never reach your chart." },
+      { icon: "search", title: "Search keywords", body: "Connect Search Console and see the queries next to the pages they found." },
+      { icon: "globe", title: "Hosted in the EU", body: "Stored in Frankfurt, owned by you and deleted the day you ask." },
+    ],
+  },
+
+  voices: {
+    tag: "Switchers",
+    title: "People switched. Nobody went back.",
+    rating: { score: 4.9, count: 312, label: "average from 312 reviews" },
+    items: [
+      { quote: "I deleted our cookie banner the same afternoon. Signups went up, and I finally understand my own numbers.", name: "Maya Lindqvist", role: "Founder, Tidyform" },
+      { quote: "It loads faster than our favicon. We put it on every client site we ship now.", name: "Tomás Ferreira", role: "Studio lead, Fieldday" },
+      { quote: "The Monday email is the only report I actually read. Thirty seconds and I know whether the week worked.", name: "Priya Raman", role: "Maker, Lumen Notes" },
+      { quote: "We watched our launch come in live from Hacker News. My cofounder and I just sat there, not refreshing anything.", name: "Jonah Weiss", role: "Cofounder, Parcel" },
+      { quote: "Setup took less time than reading the docs of the last tool. That's the whole review.", name: "Aiko Mori", role: "Indie developer, Okay Habit" },
+    ],
+  },
+
+  pricing: {
+    tag: "Pricing",
+    title: "Pay for pageviews. Nothing else.",
+    body: "Every plan has every feature, unlimited sites and unlimited seats. Slide to your traffic.",
+    unit: "pageviews a month",
+    min: 10_000,
+    max: 10_000_000,
+    start: 100_000,
+    /** Monthly price at each tier's top. Between tiers the price follows the nearest tier above. */
+    tiers: [
+      { upTo: 10_000, price: 9, plan: "Starter" },
+      { upTo: 50_000, price: 14, plan: "Starter" },
+      { upTo: 100_000, price: 19, plan: "Starter" },
+      { upTo: 200_000, price: 29, plan: "Growth" },
+      { upTo: 500_000, price: 49, plan: "Growth" },
+      { upTo: 1_000_000, price: 69, plan: "Growth" },
+      { upTo: 2_000_000, price: 99, plan: "Business" },
+      { upTo: 5_000_000, price: 149, plan: "Business" },
+      { upTo: 10_000_000, price: 199, plan: "Business" },
+    ],
+    marks: [
+      { value: 10_000, label: "10K" },
+      { value: 100_000, label: "100K" },
+      { value: 1_000_000, label: "1M" },
+      { value: 10_000_000, label: "10M+" },
+    ],
+    /** At or above this many pageviews, the card says "Let's talk" and emails links.email. */
+    contactFrom: 10_000_000,
+    yearlyDiscount: 0.2,
+    includes: [
+      "Unlimited sites and team seats",
+      "Every feature on every plan",
+      "Three years of data retention",
+      "Weekly email reports",
+      "API access and CSV export",
+      "EU hosting, no cookies",
+    ],
+    trial: "30 days free. No card needed.",
+    note: { label: "Free for open source and non-profits.", action: "Ask us", subject: "Plumb for a non-profit" },
+  },
+
+  letter: {
+    tag: "A note from the maker",
+    greeting: "Hi, I'm Ines.",
+    paragraphs: [
+      "I built Plumb in 2023, after adding a cookie banner to my own side project and watching a third of my visitors leave before the page had loaded. The analytics I used knew more about my readers than I did, and I still couldn't tell which post had brought anyone in.",
+      "So I wrote the smallest script I could that answers the questions I actually ask: how many people came, where from, and what they read. No cookies, no fingerprinting, nothing to consent to. It fits on one page because the answer should.",
+      "Plumb is paid for by the people who use it. We'll never sell data, run ads or ask your visitors for anything. If you ever want to leave, export everything in one click. I'd rather earn the renewal.",
+    ],
+    name: "Ines Duarte",
+    role: "Founder, Plumb",
+    facts: [
+      { value: "Bootstrapped", label: "since day one" },
+      { value: "Three people", label: "in Lisbon" },
+      { value: "Profitable", label: "since 2024" },
+      { value: "Your data", label: "stays in the EU" },
+    ],
+  },
+
+  shipped: {
+    tag: "Changelog",
+    title: "Shipped lately.",
+    body: "Something new most weeks. Drag along the ruler to go back in time.",
+    more: "Full changelog",
+    /** How many of the newest releases the home page shows. All of them are on /changelog. */
+    count: 8,
+  },
+
+  faq: {
+    tag: "Questions",
+    title: "Asked and answered.",
+    body: "Something else on your mind?",
+    action: "Email Ines",
+    items: [
+      {
+        question: "Do I still need a cookie banner?",
+        answer: "No. Plumb sets no cookies, stores nothing on your visitors' devices and never collects personal data, so there's nothing for them to consent to.",
+      },
+      {
+        question: "How do you count unique visitors without cookies?",
+        answer: "Each day we hash the visitor's IP address and browser with a salt that changes every 24 hours, then throw the salt away. We can tell two visits apart within a day and never after it.",
+      },
+      {
+        question: "Will it slow my site down?",
+        answer: "The script is under 1 KB, loads with defer and sends one small request per page. Most visitors have finished loading your page before Plumb even starts.",
+      },
+      {
+        question: "What happens if I go over my plan?",
+        answer: "Nothing breaks. We keep counting, send you a friendly note and only suggest a bigger plan if it happens two months in a row.",
+      },
+      {
+        question: "Can I bring my old analytics with me?",
+        answer: "Yes. Import a Google Analytics export or any CSV and your history appears on the same chart, marked as imported.",
+      },
+      {
+        question: "Does it work with ad blockers?",
+        answer: "Serve the script from your own domain with the one-line proxy setup and it's counted like any other part of your site.",
+      },
+      {
+        question: "Can I cancel any time?",
+        answer: "Yes, in one click from your settings. Export your data first if you like; we delete everything 30 days after you leave.",
+      },
+    ],
+  },
+
+  closing: {
+    title: ["Your first visitor", "is one line away."],
+    body: "Start a free trial, paste the line, and watch the first person arrive.",
+    labels: {
+      idle: "Start free trial",
+      placeholder: "you@yoursite.com",
+      submit: "Continue",
+      pending: "Setting up",
+      success: "Check your inbox",
+      /** Shown when the form falls back to opening an email (no endpoint, no sign-up page). */
+      mailto: "Opening your email",
+      error: "That didn't go through. Try again.",
+      invalid: "Enter a full email address",
+    },
+    note: "30 days free · No card needed · Cancel in one click",
+  },
+
+  footer: {
+    clock: {
+      label: "Time on this page",
+      before: "You've been here for",
+      after: "We counted you once, without a cookie, and we'll forget you when you leave.",
+    },
+    columns: [
+      { title: "Product", links: [{ label: "Tour", href: "/#tour" }, { label: "Pricing", href: "/#pricing" }, { label: "Changelog", href: "/changelog" }, { label: "FAQ", href: "/#faq" }] },
+      { title: "Company", links: [{ label: "Contact", href: "mailto:hello@plumb.so" }, { label: "Status", href: "" }, { label: "X", href: "" }, { label: "GitHub", href: "" }] },
+      { title: "Legal", links: [{ label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }] },
+    ],
+    status: "All systems normal",
+  },
+};
+
+/** The tier a number of pageviews falls in. */
+export const tierFor = (views: number) => site.pricing.tiers.find((t) => views <= t.upTo) ?? site.pricing.tiers[site.pricing.tiers.length - 1];
