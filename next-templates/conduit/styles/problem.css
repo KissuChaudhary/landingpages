@@ -1,0 +1,179 @@
+.problem {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 56px;
+  align-items: center;
+}
+.problem .section-head {
+  margin-bottom: 40px;
+}
+.problem-list li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 8px;
+  padding: 22px 0;
+  border-top: 1px dashed var(--line);
+}
+.problem-list li:last-child {
+  border-bottom: 1px dashed var(--line);
+}
+.problem-list .mono {
+  color: var(--signal-ink);
+  padding-top: 5px;
+}
+.problem-list h3 {
+  margin-bottom: 6px;
+}
+.problem-list p {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 440px;
+}
+.problem-map {
+  --p: 0;
+  --q: 0;
+  margin: 0;
+  padding: 28px 24px 22px;
+  border: 1px dashed var(--line);
+  background:
+    radial-gradient(circle, #d7dade 1px, transparent 1.2px) 0 0 / 16px 16px,
+    var(--tint);
+}
+.problem-map svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.map-broken {
+  opacity: calc(1 - var(--p) * 1.7);
+}
+.map-handoff {
+  stroke: #b3b7be;
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+.map-gap {
+  fill: var(--tint);
+}
+.map-cross {
+  stroke: #d0574c;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.map-route {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--q) * 100);
+}
+.map-signal {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 2.4;
+  stroke-dasharray: 9 91;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+.is-joined .map-signal {
+  opacity: 1;
+}
+.map-hub {
+  opacity: var(--q);
+  transform: scale(calc(0.86 + var(--q) * 0.14));
+  transform-origin: 300px 240px;
+  transform-box: view-box;
+}
+.map-hub > rect:first-child {
+  fill: var(--ink);
+}
+.hub-port {
+  fill: white;
+}
+.hub-route {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 1.6;
+}
+.map-hub text {
+  fill: white;
+  font: 600 15px var(--sans);
+  font-variation-settings: "wdth" 92;
+  letter-spacing: -0.02em;
+}
+.map-node rect:first-child {
+  fill: white;
+  stroke: #c9cdd3;
+  stroke-width: 1;
+}
+.node-port {
+  fill: white;
+  stroke: #b3b7be;
+  stroke-width: 1;
+  transition:
+    fill 0.4s,
+    stroke 0.4s;
+}
+.is-joined .node-port {
+  fill: var(--signal);
+  stroke: var(--signal);
+}
+.map-node text {
+  text-anchor: middle;
+  fill: var(--ink);
+  font: 500 12px var(--mono);
+  letter-spacing: 0.02em;
+}
+.problem-map figcaption {
+  position: relative;
+  height: 16px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.problem-map figcaption span {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity 0.4s,
+    translate 0.4s var(--ease);
+}
+.caption-after {
+  opacity: 0;
+  translate: 0 6px;
+  color: var(--signal-ink);
+}
+.is-joined .caption-before {
+  opacity: 0;
+  translate: 0 -6px;
+}
+.is-joined .caption-after {
+  opacity: 1;
+  translate: none;
+}
+html[data-motion="on"] .is-joined .map-signal {
+  animation: map-signal 2.4s linear infinite;
+}
+@keyframes map-signal {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .problem {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+@media (max-width: 639px) {
+  .problem-map {
+    padding: 16px 10px 14px;
+  }
+  .problem-list li {
+    grid-template-columns: 34px minmax(0, 1fr);
+    padding: 18px 0;
+  }
+  .problem-list p {
+    font-size: 14px;
+  }
+}

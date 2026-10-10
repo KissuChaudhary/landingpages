@@ -1,5 +1,6 @@
 import { site } from "@/site.config";
 import { Frame, SectionHead } from "../ui/Primitives";
+import { RunLog } from "../product/RunLog";
 import {
   BuilderDiagram,
   DataDiagram,
@@ -7,51 +8,45 @@ import {
   ToolsDiagram,
   WorkflowDiagram,
 } from "../product/CapabilityDiagrams";
-const diagrams = [
-  DataDiagram,
-  BuilderDiagram,
-  WorkflowDiagram,
-  ModelDiagram,
-  ToolsDiagram,
+const layers = [
+  { Diagram: DataDiagram, tag: "context.layer" },
+  { Diagram: BuilderDiagram, tag: "logic.canvas" },
+  { Diagram: WorkflowDiagram, tag: "flow.runtime" },
+  { Diagram: ModelDiagram, tag: "model.router" },
+  { Diagram: ToolsDiagram, tag: "tool.connect" },
 ];
 export function Capabilities() {
   return (
     <Frame className="section capabilities dark" id="capabilities">
-      <SectionHead
-        label={site.capabilities.label}
-        title={site.capabilities.title}
-      />
-      <div className="capability-grid">
+      <div className="cap-head">
+        <SectionHead label={site.capabilities.label} title={site.capabilities.title} />
+        <RunLog />
+      </div>
+      <ol className="cap-stack">
+        <span className="cap-rail" aria-hidden="true">
+          <span />
+        </span>
         {site.capabilities.items.map((item, i) => {
-          const Diagram = diagrams[i];
+          const { Diagram, tag } = layers[i];
           return (
-            <article
-              className={`capability capability-${item.key}`}
+            <li
+              className="cap-layer"
               key={item.key}
               data-reveal
+              style={{ "--i": i } as React.CSSProperties}
             >
-              <Diagram />
-              <div className="capability-copy">
+              <span className="cap-node" aria-hidden="true" />
+              <span className="mono cap-index">0{i + 1}</span>
+              <div className="cap-copy">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </div>
-            </article>
+              <Diagram />
+              <span className="mono cap-tag">{tag}</span>
+            </li>
           );
         })}
-      </div>
-      <div className="task-field" aria-hidden="true">
-        {[0, 1].map((row) => (
-          <div className={`task-rail rail-${row}`} key={row}>
-            <div>
-              {[...site.capabilities.tasks, ...site.capabilities.tasks].map(
-                (task, i) => (
-                  <span key={i}>{task}</span>
-                ),
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+      </ol>
     </Frame>
   );
 }

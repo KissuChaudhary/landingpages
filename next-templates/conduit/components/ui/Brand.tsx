@@ -1,11 +1,21 @@
 import { site } from "@/site.config";
+/** Two ports joined by one route: the conduit. */
 export function Mark({ className = "" }: { className?: string }) {
   return (
-    <span className={`brand-mark ${className}`} aria-hidden="true">
-      {Array.from({ length: 9 }, (_, i) => (
-        <i key={i} />
-      ))}
-    </span>
+    <svg
+      className={`brand-mark ${className}`}
+      viewBox="0 0 22 22"
+      aria-hidden="true"
+    >
+      <rect x="1" y="1" width="7" height="7" fill="currentColor" />
+      <rect x="14" y="14" width="7" height="7" fill="currentColor" />
+      <path
+        d="M8 4.5h8.5a1 1 0 0 1 1 1V14"
+        fill="none"
+        stroke="var(--signal)"
+        strokeWidth="2"
+      />
+    </svg>
   );
 }
 export function Brand() {

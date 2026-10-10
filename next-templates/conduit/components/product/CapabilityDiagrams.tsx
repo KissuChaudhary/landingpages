@@ -1,155 +1,70 @@
-"use client";
-import { useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Database,
-  FileText,
-  Layers3,
-  MessageSquare,
-  Sparkles,
-  Webhook,
-} from "lucide-react";
-import { Mark } from "../ui/Brand";
+// Small line diagrams for each layer of the stack. Plain SVG, no data.
+const box = (x: number, y: number, w: number, h: number, label: string, on = false) => (
+  <g key={`${x}-${y}`}>
+    <rect x={x} y={y} width={w} height={h} className={on ? "d-box is-on" : "d-box"} />
+    <text x={x + w / 2} y={y + h / 2 + 3.5} className="d-text">
+      {label}
+    </text>
+  </g>
+);
+
 export function DataDiagram() {
   return (
-    <div className="cap-diagram data-diagram" aria-hidden="true">
-      <div className="data-stack">
-        {["Documents", "Database", "API", "Team notes"].map((name, i) => (
-          <div
-            className="glass-layer"
-            style={{ "--layer": i } as React.CSSProperties}
-            key={name}
-          >
-            {name}
-          </div>
-        ))}
-      </div>
-      <span className="diagram-wire" />
-      <span className="data-hub">Context</span>
-      <span className="diagram-wire" />
-      <div className="data-output">
-        <Mark />
-      </div>
-    </div>
+    <svg viewBox="0 0 240 72" className="layer-visual" aria-hidden="true">
+      {["Docs", "DB", "API", "Mail"].map((s, i) => box(0, i * 18, 42, 14, s))}
+      <path d="M42 7H86V36M42 25H78Q86 25 86 33M42 43H78Q86 43 86 39M42 61H86V36H128" className="d-line" />
+      {box(128, 26, 112, 20, "One context", true)}
+    </svg>
   );
 }
 export function BuilderDiagram() {
   return (
-    <div className="cap-diagram builder-diagram" aria-hidden="true">
-      {[
-        { label: "Trigger", text: "A new request", Icon: Webhook },
-        { label: "Understand", text: "Read the context", Icon: Sparkles },
-        { label: "Act", text: "Prepare a response", Icon: MessageSquare },
-      ].map(({ label, text, Icon }) => (
-        <div className="diagram-node" key={label}>
-          <Icon size={17} />
-          <div>
-            <span>{label}</span>
-            <strong>{text}</strong>
-          </div>
-        </div>
-      ))}
-      <span className="diagram-ready">
-        <i />
-        Ready when you are
-      </span>
-    </div>
+    <svg viewBox="0 0 240 72" className="layer-visual" aria-hidden="true">
+      {box(0, 26, 54, 20, "Trigger")}
+      <path d="M54 36H86" className="d-line" />
+      <path d="M100 22L114 36L100 50L86 36Z" className="d-box is-on" />
+      <path d="M114 36H136V14H164M136 36V58H164" className="d-line" />
+      {box(164, 4, 76, 20, "Reply")}
+      {box(164, 48, 76, 20, "Escalate")}
+    </svg>
   );
 }
 export function WorkflowDiagram() {
   return (
-    <div className="cap-diagram orchestration-diagram" aria-hidden="true">
-      <div className="orbit-path" />
-      {[
-        "Request received",
-        "Context connected",
-        "Decision prepared",
-        "Human approved",
-      ].map((name, i) => (
-        <span className={`orbit-task orbit-${i}`} key={name}>
-          <Check size={13} />
-          {name}
-        </span>
+    <svg viewBox="0 0 240 72" className="layer-visual" aria-hidden="true">
+      <path d="M0 36H240" className="d-line" />
+      {[0, 1, 2, 4].map((n) => (
+        <rect key={n} x={n * 48 + 10} y={28} width="16" height="16" className="d-box is-on" />
       ))}
-      <span className="orbit-core">
-        <Mark />
-      </span>
-    </div>
+      <rect x={154} y={24} width="24" height="24" className="d-box d-person" />
+      <text x={166} y={62} className="d-text">
+        Person
+      </text>
+    </svg>
   );
 }
 export function ModelDiagram() {
-  const [model, setModel] = useState(0);
-  const models = ["Reasoning", "Language", "Vision", "Voice"];
   return (
-    <div className="cap-diagram model-diagram">
-      <span className="model-input">Your task</span>
-      <i className="router-wire" />
-      <span className="model-router">
-        <Sparkles size={17} />
-        Intelligent routing
-      </span>
-      <div className="model-branches" aria-hidden="true" />
-      <div
-        className="model-options"
-        role="group"
-        aria-label="Example model type"
-      >
-        {models.map((name, i) => (
-          <button
-            aria-pressed={model === i}
-            key={name}
-            onClick={() => setModel(i)}
-          >
-            {name}
-          </button>
-        ))}
-      </div>
-      <p className="model-selection">
-        Route: {models[model].toLowerCase()} model
-      </p>
-    </div>
+    <svg viewBox="0 0 240 72" className="layer-visual" aria-hidden="true">
+      {box(0, 26, 54, 20, "Task")}
+      <path d="M54 36H96M96 36V10H140M96 36H140M96 36V62H140" className="d-line" />
+      <rect x="92" y="32" width="8" height="8" className="d-box is-on" />
+      {box(140, 1, 100, 18, "Fast")}
+      {box(140, 27, 100, 18, "Reasoning", true)}
+      {box(140, 53, 100, 18, "Vision")}
+    </svg>
   );
 }
-const tools = [
-  { name: "Documents", Icon: FileText },
-  { name: "Messaging", Icon: MessageSquare },
-  { name: "Database", Icon: Database },
-  { name: "Webhooks", Icon: Webhook },
-  { name: "Knowledge", Icon: Layers3 },
-];
 export function ToolsDiagram() {
-  const [start, setStart] = useState(0);
   return (
-    <div className="cap-diagram tools-diagram">
-      <div className="tool-orbit">
-        {[0, 1, 2].map((offset) => {
-          const tool = tools[(start + offset) % tools.length];
-          const Icon = tool.Icon;
-          return (
-            <div className="tool-object" key={`${start}-${offset}`}>
-              <Icon size={28} strokeWidth={1.2} />
-              <span>{tool.name}</span>
-            </div>
-          );
-        })}
-      </div>
-      <div className="tool-controls">
-        <button
-          aria-label="Previous tool connections"
-          onClick={() => setStart((start + tools.length - 1) % tools.length)}
-        >
-          <ArrowLeft size={16} />
-        </button>
-        <span aria-live="polite">{tools[start].name} and your toolkit</span>
-        <button
-          aria-label="Next tool connections"
-          onClick={() => setStart((start + 1) % tools.length)}
-        >
-          <ArrowRight size={16} />
-        </button>
-      </div>
-    </div>
+    <svg viewBox="0 0 240 72" className="layer-visual" aria-hidden="true">
+      <path d="M0 58H240" className="d-line" />
+      {["CRM", "Desk", "Sheets", "Chat", "Cal"].map((t, i) => (
+        <g key={t}>
+          <path d={`M${i * 49 + 20} 30V58`} className="d-line" />
+          {box(i * 49, 6, 40, 24, t, i === 1)}
+        </g>
+      ))}
+    </svg>
   );
 }

@@ -13,7 +13,7 @@ async function module(path) {
   );
 }
 const { site } = await module("site.config.ts");
-const { blueprints, workflowReceipt } = await module("data/blueprints.ts");
+const { blueprints } = await module("data/blueprints.ts");
 const { stories } = await module("data/stories.ts");
 const { planQuote } = await module("lib/billing.ts");
 assert.deepEqual(planQuote(site.pricing.plans[1], true), {
@@ -35,18 +35,21 @@ assert.equal(new Set(site.pricing.plans.map((p) => p.id)).size, 3);
 assert.equal(Object.keys(blueprints).length, 4);
 for (const blueprint of Object.values(blueprints)) {
   assert.equal(blueprint.steps.length, 4);
+  assert.equal(blueprint.tools.length, 3);
+  assert.ok(blueprint.short && blueprint.source && blueprint.prompt);
   assert.ok(blueprint.rule);
   assert.ok(blueprint.result);
 }
 for (const story of stories) assert.ok(blueprints[story.blueprint]);
 for (const industry of site.industries.items)
   assert.ok(blueprints[industry.blueprint]);
-assert.equal(workflowReceipt.example, true);
-assert.equal(workflowReceipt.actions.length, 4);
-assert.match(workflowReceipt.externalActions, /None/);
-for (const image of ["glass", "portrait", "mesh"])
-  assert.ok(existsSync(`${root}public/images/${image}.webp`));
+assert.equal(site.capabilities.items.length, 5);
+assert.equal(site.security.items.length, site.security.seals.length);
+assert.equal(site.impact.stats.length, 3);
+for (const stage of ["build", "orchestrate", "observe"])
+  for (const suffix of ["", "-phone"])
+    assert.ok(existsSync(`${root}public/images/stage-${stage}${suffix}.webp`));
 assert.ok(site.faq.items.length >= 6);
 console.log(
-  "Conduit billing totals, agent boundaries, story mappings, run receipt and shipped assets verified.",
+  "Conduit billing totals, blueprints, story and team mappings, and product screens verified.",
 );

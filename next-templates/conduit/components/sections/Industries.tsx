@@ -1,61 +1,35 @@
 "use client";
-import {
-  ArrowUpRight,
-  Building2,
-  GraduationCap,
-  HeartPulse,
-  Landmark,
-  ShoppingCart,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "@/site.config";
-import type { BlueprintKey } from "@/data/blueprints";
-import { asset } from "@/lib/urls";
+import { blueprints, type BlueprintKey } from "@/data/blueprints";
 import { showBlueprint } from "@/lib/blueprint";
 import { Frame, SectionHead } from "../ui/Primitives";
-const icons = [
-  Landmark,
-  HeartPulse,
-  ShoppingCart,
-  GraduationCap,
-  Building2,
-  TrendingUp,
-];
 export function Industries() {
   return (
-    <Frame className="section industries" id="industries">
-      <SectionHead
-        label={site.industries.label}
-        title={site.industries.title}
-      />
-      <div className="industry-grid">
+    <Frame className="section usecases" id="use-cases">
+      <div className="usecase-intro">
+        <SectionHead label={site.industries.label} title={site.industries.title}>
+          <p>{site.industries.intro}</p>
+        </SectionHead>
+      </div>
+      <ul className="usecase-list">
         {site.industries.items.map((item, i) => {
-          const Icon = icons[i];
+          const bp = blueprints[item.blueprint as BlueprintKey];
           return (
-            <article key={item.title} data-reveal>
-              <div
-                className="industry-icon"
-                style={{
-                  backgroundImage: `url(${asset("/images/glass.webp")})`,
-                }}
-              >
-                <Icon size={32} strokeWidth={1.4} />
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <button
-                className="text-action"
-                onClick={() =>
-                  showBlueprint(item.blueprint as BlueprintKey)
-                }
-              >
-                See an example
-                <ArrowUpRight size={14} />
+            <li key={item.title} data-reveal>
+              <button onClick={() => showBlueprint(item.blueprint as BlueprintKey)}>
+                <span className="mono usecase-index">0{i + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <span className="mono usecase-bp">
+                  {bp.short}
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
               </button>
-            </article>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </Frame>
   );
 }

@@ -19,10 +19,10 @@ export function Button({
 }) {
   const content = (
     <>
-      <ArrowRight size={17} className="button-arrow" aria-hidden="true" />
-      <span className="button-text">
-        <span>{children}</span>
-        <span aria-hidden="true">{children}</span>
+      <span className="button-label">{children}</span>
+      <span className="button-port" aria-hidden="true">
+        <ArrowRight size={16} />
+        <ArrowRight size={16} />
       </span>
     </>
   );
@@ -56,16 +56,21 @@ export function SectionHead({
   centered = false,
   children,
   level = 2,
+  className = "",
 }: {
   label: string;
   title: string;
   centered?: boolean;
   children?: ReactNode;
   level?: 1 | 2;
+  className?: string;
 }) {
   const Heading = level === 1 ? "h1" : "h2";
   return (
-    <div className={`section-head ${centered ? "centered" : ""}`} data-reveal>
+    <div
+      className={`section-head ${centered ? "centered" : ""} ${className}`}
+      data-reveal
+    >
       <Label>{label}</Label>
       <Heading>{title}</Heading>
       {children}

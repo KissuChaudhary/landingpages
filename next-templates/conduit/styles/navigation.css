@@ -1,45 +1,54 @@
-.announcement {
-  background: #08090b;
-  color: #dfe0e3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 12px;
-  height: 28px;
-}
-.announcement:hover {
-  color: white;
-}
 .site-header {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.97);
-  border-bottom: 1px dashed var(--line);
   z-index: 30;
+  background: #ffffffee;
+  border-bottom: 1px dashed var(--line);
 }
 .nav-inner {
   display: flex;
   align-items: center;
-  height: 72px;
-  gap: 54px;
+  height: 64px;
+  gap: 44px;
+  width: calc(100% - var(--gutter) * 2);
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: 32px;
+  padding-inline: 24px;
+  border-inline: 1px dashed var(--line);
 }
 .brand-link {
   display: flex;
 }
 .main-nav {
   display: flex;
-  gap: 32px;
+  gap: 28px;
   align-items: center;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.4;
+}
+.main-nav > a,
+.company > button {
+  position: relative;
+  color: #3b3e44;
+  transition: color 0.2s;
 }
 .main-nav > a:hover,
 .company > button:hover {
-  color: var(--blue);
+  color: var(--ink);
+}
+.main-nav > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  border-top: 1px dashed var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.main-nav > a:hover::after {
+  transform: scaleX(1);
 }
 .company {
   position: relative;
@@ -51,7 +60,10 @@
   border: 0;
   background: transparent;
   padding: 10px 0;
-  font-size: 15px;
+  font-size: 14px;
+}
+.company > button svg {
+  transition: transform 0.3s var(--ease);
 }
 .company > button[aria-expanded="true"] svg {
   transform: rotate(180deg);
@@ -59,70 +71,81 @@
 .company-menu {
   position: absolute;
   top: 44px;
-  left: -18px;
-  width: 278px;
-  padding: 10px;
+  left: -14px;
+  width: 270px;
+  padding: 6px;
   border: 1px solid var(--line);
-  box-shadow: 0 12px 35px #08090b0c;
   background: white;
 }
 .company-menu a {
   display: block;
-  padding: 12px;
+  padding: 11px 12px;
+  transition: background 0.2s;
 }
 .company-menu a:hover {
-  background: #f4f7ff;
+  background: var(--tint);
 }
 .company-menu strong {
   font-weight: 500;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
 }
 .company-menu span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   display: block;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 .nav-actions {
   display: flex;
-  gap: 10px;
+  gap: 18px;
   align-items: center;
   margin-left: auto;
 }
+.nav-talk {
+  font-size: 14px;
+  color: #3b3e44;
+  transition: color 0.2s;
+}
+.nav-talk:hover {
+  color: var(--ink);
+}
 .nav-actions .button {
   min-height: 36px;
-  padding: 7px 15px;
+  font-size: 13px;
 }
-.nav-actions .button-arrow {
-  display: none;
+.nav-actions .button-label {
+  padding: 0 14px;
+}
+.nav-actions .button-port {
+  width: 34px;
 }
 .menu-toggle {
   display: none;
-  border: 1px solid var(--line);
+  border: 1px dashed #b9bdc4;
   background: white;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
 @media (max-width: 1023px) {
   .nav-inner {
-    gap: 32px;
-    padding-inline: 26px;
+    gap: 28px;
   }
   .main-nav {
-    gap: 22px;
+    gap: 20px;
+  }
+  .nav-talk {
+    display: none;
   }
 }
 @media (max-width: 767px) {
   .nav-inner {
-    height: 64px;
-    padding-inline: 24px;
-  }
-  .brand {
-    font-size: 23px;
+    height: 58px;
+    padding-inline: 14px;
+    gap: 12px;
   }
   .menu-toggle {
     display: flex;
@@ -130,12 +153,12 @@
   .main-nav {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 58px;
     left: 0;
     right: 0;
     background: white;
-    border-bottom: 1px solid var(--line);
-    padding: 18px 24px;
+    border-bottom: 1px dashed var(--line);
+    padding: 10px 24px 18px;
     gap: 0;
   }
   .main-nav.is-open {
@@ -147,29 +170,25 @@
     width: 100%;
     padding: 12px 0;
     font-size: 16px;
+    border-bottom: 1px dashed var(--line-soft);
+  }
+  .main-nav > a::after {
+    display: none;
   }
   .company-menu {
     position: static;
     width: 100%;
-    box-shadow: none;
-    margin-bottom: 12px;
+    border: 0;
+    padding: 4px 0 8px;
   }
-  .nav-actions .button {
-    padding: 7px 11px;
-    font-size: 10px;
+  .nav-actions {
+    gap: 8px;
   }
-  .announcement {
-    font-size: 10px;
-    height: 26px;
-  }
-  .nav-inner {
-    gap: 12px;
+  .nav-actions .button-port {
+    display: none;
   }
 }
 @media (max-width: 359px) {
-  .nav-inner {
-    padding-inline: 16px;
-  }
   .nav-actions .button {
     display: none;
   }

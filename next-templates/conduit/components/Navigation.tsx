@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { site } from "@/site.config";
 import { href, route } from "@/lib/urls";
 import { Brand } from "./ui/Brand";
@@ -43,10 +43,6 @@ export function Navigation() {
   };
   return (
     <>
-      <a className="announcement" href={route("/changelog")}>
-        {site.announcement}
-        <ArrowRight size={14} aria-hidden="true" />
-      </a>
       <header className="site-header" ref={root}>
         <div className="nav-inner">
           <a
@@ -62,11 +58,14 @@ export function Navigation() {
             aria-label="Main navigation"
             id="main-navigation"
           >
-            <a href={href("/#solution")} onClick={close}>
+            <a href={href("/#product")} onClick={close}>
               Product
             </a>
+            <a href={href("/#use-cases")} onClick={close}>
+              Use cases
+            </a>
             <a href={href("/#stories")} onClick={close}>
-              Workflow stories
+              Stories
             </a>
             <a href={route("/pricing")} onClick={close}>
               Pricing
@@ -115,7 +114,10 @@ export function Navigation() {
             </div>
           </nav>
           <div className="nav-actions">
-            <Button href={site.links.app || href("/#solution")}>
+            <a className="nav-talk" href={route("/contact")}>
+              Talk to us
+            </a>
+            <Button href={site.links.app || href("/#product")}>
               Get started
             </Button>
             <button

@@ -1,35 +1,24 @@
-import { Layers3, Repeat2, ScanLine } from "lucide-react";
 import { site } from "@/site.config";
-import { Frame, Label } from "../ui/Primitives";
-const icons = [Layers3, Repeat2, ScanLine];
+import { Frame, SectionHead } from "../ui/Primitives";
+import { ProblemMap } from "../product/ProblemMap";
 export function Problem() {
   return (
-    <Frame className="problem dark">
-      <div className="section-head centered" data-reveal>
-        <Label>{site.problem.label}</Label>
-        <h2 className="reveal-statement">
-          {site.problem.title.split(" ").map((word, i) => (
-            <span key={i} style={{ "--word": i } as React.CSSProperties}>
-              {word}{" "}
-            </span>
-          ))}
-        </h2>
-      </div>
-      <div className="problem-grid">
-        {site.problem.items.map((item, i) => {
-          const Icon = icons[i];
-          return (
-            <article key={item.title} data-reveal>
-              <div className="problem-symbol">
-                <Icon size={32} strokeWidth={1.2} />
-                <span aria-hidden="true" />
+    <Frame className="section problem" id="problem">
+      <div className="problem-copy">
+        <SectionHead label={site.problem.label} title={site.problem.title} />
+        <ol className="problem-list">
+          {site.problem.items.map((item, i) => (
+            <li key={item.title} data-reveal>
+              <span className="mono">0{i + 1}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          );
-        })}
+            </li>
+          ))}
+        </ol>
       </div>
+      <ProblemMap />
     </Frame>
   );
 }

@@ -1,181 +1,210 @@
 .page-description {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
-  line-height: 1.8;
-  max-width: 650px;
-  margin-top: 25px;
+  line-height: 1.65;
+  max-width: 620px;
+  margin-top: 22px;
 }
 .centered .page-description {
   margin-inline: auto;
 }
+
+/* Pricing */
 .pricing-page .section-head {
   max-width: 800px;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 .billing-toggle {
   display: flex;
-  justify-content: center;
-  gap: 0;
-  margin: 0 auto 50px;
+  margin: 0 auto 48px;
   width: max-content;
-  border: 1px solid var(--line);
-  padding: 4px;
+  border: 1px dashed #b9bdc4;
+  padding: 3px;
 }
 .billing-toggle button {
-  font-size: 12px;
+  font-size: 13px;
   border: 0;
-  background: white;
-  color: #737987;
-  padding: 11px 17px;
+  background: transparent;
+  color: var(--muted);
+  padding: 9px 16px;
+  transition:
+    background 0.25s,
+    color 0.25s;
 }
 .billing-toggle button[aria-pressed="true"] {
-  background: #08090b;
+  background: var(--ink);
   color: white;
 }
 .billing-toggle button > span {
-  font-size: 9px;
-  display: inline-block;
+  font: 500 10px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin-left: 8px;
-  color: #6485d8;
+  color: var(--signal-ink);
 }
 .billing-toggle button[aria-pressed="true"] > span {
-  color: #a8c2ff;
+  color: var(--signal);
 }
 .pricing-grid {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--line);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px dashed var(--line);
+  border-left: 1px dashed var(--line);
 }
 .pricing-grid article {
-  padding: 34px 30px;
-  border-right: 1px solid var(--line);
+  position: relative;
+  padding: 30px 28px;
+  border-right: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.pricing-grid article:last-child {
-  border-right: 0;
-}
 .featured-plan {
-  background: #f2f5fc;
+  background: var(--tint);
+}
+.featured-plan::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: -1px;
+  height: 2px;
+  background: var(--signal);
 }
 .plan-top {
-  min-height: 130px;
+  min-height: 128px;
 }
 .plan-top > .micro {
-  color: #79849b;
-  font-size: 9px;
+  color: var(--faint);
+  font-size: 10px;
+}
+.featured-plan .plan-top > .micro {
+  color: var(--signal-ink);
 }
 .plan-top h3 {
   font-size: 28px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 .plan-top > p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
-  margin-top: 11px;
-  line-height: 1.75;
+  margin-top: 8px;
 }
 .plan-price {
   display: flex;
   align-items: baseline;
-  gap: 9px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 18px;
 }
 .plan-price strong {
-  font: 300 50px/1 var(--serif);
-  letter-spacing: -0.055em;
+  font: 500 56px/1 var(--sans);
+  font-variation-settings: "wdth" 85;
+  letter-spacing: -0.045em;
 }
 .plan-price > span {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
 }
 .plan-billing {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
-  margin: 16px 0 25px;
+  margin: 12px 0 24px;
 }
 .pricing-grid .button {
   width: 100%;
-  padding-inline: 12px;
   justify-content: space-between;
 }
 .pricing-grid ul {
-  margin-top: 26px;
+  margin-top: 24px;
+  width: 100%;
 }
 .pricing-grid li {
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 12px;
-  color: #687181;
-  padding: 8px 0;
+  font-size: 13.5px;
+  color: #42464d;
+  padding: 9px 0;
+  border-top: 1px dashed var(--line-soft);
 }
 .pricing-grid li svg {
-  color: #315d93;
+  color: var(--signal-ink);
   flex-shrink: 0;
 }
 .pricing-note {
-  font-size: 11px;
-  color: #8b929e;
-  margin-top: 25px;
+  font-size: 12px;
+  color: var(--faint);
+  margin-top: 22px;
 }
+
+/* Contact */
 .contact-page {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 96px;
 }
 .contact-page .section-head {
-  margin-bottom: 25px;
-  max-width: 500px;
+  margin-bottom: 0;
+  max-width: 520px;
 }
 .contact-expectations {
-  margin-top: 40px;
-  display: grid;
-  gap: 15px;
+  margin-top: 36px;
+  border-top: 1px dashed var(--line);
 }
 .contact-expectations p {
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 13px;
-  color: #7c8594;
+  font-size: 14px;
+  color: var(--muted);
+  padding: 13px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.contact-expectations svg {
+  color: var(--signal-ink);
+  flex-shrink: 0;
 }
 .contact-form {
   display: grid;
-  gap: 21px;
+  gap: 20px;
 }
 .contact-form label {
   display: block;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.6;
+  font: 500 11px/1.5 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
 }
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid #dfe3ec;
-  background: #fafbfd;
+  border: 1px dashed #c3c7cd;
+  background: white;
   border-radius: 0;
   padding: 12px 13px;
-  font-size: 14px;
-  color: #08090b;
+  font: 400 15px/1.5 var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
   display: block;
-  margin-top: 9px;
+  margin-top: 8px;
+  transition: border-color 0.2s;
 }
 .contact-form textarea {
   resize: vertical;
-  min-height: 145px;
+  min-height: 150px;
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
-  background: white;
+  border-style: solid;
+  border-color: var(--ink);
+  outline: none;
 }
 .optional {
-  font-size: 10px;
-  color: #9299a5;
+  color: var(--faint);
   margin-left: 8px;
-  font-weight: 400;
 }
 .contact-form .button {
   justify-self: start;
@@ -184,88 +213,93 @@
   max-width: 450px;
 }
 .form-error {
-  font-size: 12px;
-  color: #ab3342;
+  font-size: 13px;
+  color: #b23a3a;
 }
 .contact-success {
-  padding: 35px;
-  background: #f4f7fe;
-  border: 1px solid #dce5f7;
+  padding: 32px;
+  background: var(--tint);
+  border: 1px dashed var(--line);
 }
 .contact-success > svg {
-  color: #315dba;
-  margin-bottom: 24px;
+  color: var(--signal-ink);
+  margin-bottom: 22px;
 }
 .contact-success h3 {
   font-size: 28px;
 }
 .contact-success p {
   font-size: 14px;
-  color: #768194;
-  margin: 20px 0 26px;
+  color: var(--muted);
+  margin: 16px 0 24px;
 }
 .contact-success .text-action {
   display: block;
-  margin-top: 15px;
+  margin-top: 14px;
 }
+
+/* Content pages */
 .content-page {
-  max-width: 1000px;
-  padding: 100px 60px;
+  padding: 104px 64px;
+}
+.content-page .section-head,
+.content-intro,
+.content-chapters {
+  max-width: 720px;
 }
 .content-page .section-head {
-  max-width: 770px;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 .content-intro {
-  max-width: 710px;
-  font-size: 17px;
-  line-height: 1.85;
-  color: #727b8b;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--muted);
 }
 .content-chapters {
-  margin: 52px 0;
-  max-width: 710px;
-  display: grid;
-  gap: 35px;
+  margin: 48px 0;
 }
 .content-chapters article {
-  border-top: 1px solid var(--line);
-  padding-top: 29px;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 24px;
+  padding: 26px 0;
+  border-top: 1px dashed var(--line);
 }
 .content-chapters h3 {
-  font-size: 25px;
-  margin-bottom: 16px;
+  font-size: 20px;
 }
 .content-chapters p {
   font-size: 15px;
-  line-height: 1.9;
-  color: #6f7886;
+  line-height: 1.75;
+  color: var(--muted);
 }
 .about-image {
-  height: 290px;
-  margin-top: 40px;
+  position: relative;
+  max-width: 980px;
+  aspect-ratio: 16 / 8;
+  margin-top: 44px;
   overflow: hidden;
+  border: 1px dashed var(--line);
+  background:
+    radial-gradient(circle, #d4d7dc 1px, transparent 1.2px) 0 0 / 18px 18px,
+    var(--tint);
 }
 .about-image img {
+  position: absolute;
+  left: 6%;
+  top: 10%;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: none;
 }
 @media (max-width: 1023px) {
   .pricing-grid article {
-    padding: 29px 22px;
+    padding: 28px 22px;
   }
   .plan-top {
-    min-height: 145px;
-  }
-  .pricing-grid li {
-    font-size: 11px;
-  }
-  .pricing-grid .button {
-    font-size: 10px;
+    min-height: 140px;
   }
   .contact-page {
-    gap: 55px;
+    gap: 56px;
   }
   .content-page {
     padding: 80px 40px;
@@ -273,95 +307,53 @@
 }
 @media (max-width: 767px) {
   .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-  .pricing-grid article {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-    padding: 34px;
-  }
-  .pricing-grid article:last-child {
-    border-bottom: 0;
+    grid-template-columns: minmax(0, 1fr);
   }
   .plan-top {
     min-height: 0;
   }
   .plan-price {
-    margin-top: 34px;
-  }
-  .pricing-grid .button {
-    max-width: 320px;
-    font-size: 12px;
-  }
-  .pricing-grid li {
-    font-size: 13px;
+    margin-top: 28px;
   }
   .contact-page {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
-  }
-  .contact-expectations {
-    margin-top: 28px;
   }
   .content-page {
     padding: 72px 28px;
   }
+  .content-chapters article {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
 @media (max-width: 639px) {
   .page-description {
-    font-size: 14px;
+    font-size: 15px;
   }
   .billing-toggle {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
   .billing-toggle button {
-    font-size: 11px;
-    padding: 10px 12px;
-  }
-  .billing-toggle button > span {
-    font-size: 8px;
+    font-size: 12px;
+    padding: 9px 12px;
   }
   .pricing-grid article {
-    padding: 29px 24px;
-  }
-  .plan-top h3 {
-    font-size: 27px;
+    padding: 26px 18px;
   }
   .plan-price strong {
     font-size: 46px;
   }
-  .pricing-grid .button {
-    font-size: 11px;
-  }
-  .pricing-note {
-    font-size: 10px;
-  }
   .contact-success {
-    padding: 27px 23px;
-  }
-  .contact-success h3 {
-    font-size: 25px;
-  }
-  .contact-expectations p {
-    font-size: 12px;
+    padding: 26px 20px;
   }
   .content-page {
-    padding: 64px 22px;
+    padding: 60px 18px;
   }
   .content-intro {
-    font-size: 15px;
+    font-size: 16px;
   }
   .content-chapters {
-    margin: 37px 0;
-    gap: 28px;
-  }
-  .content-chapters h3 {
-    font-size: 24px;
-  }
-  .content-chapters p {
-    font-size: 14px;
-  }
-  .about-image {
-    height: 210px;
+    margin: 36px 0;
   }
 }

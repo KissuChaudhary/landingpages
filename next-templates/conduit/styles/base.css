@@ -1,27 +1,31 @@
 :root {
   --paper: #fff;
-  --ink: #08090b;
-  --muted: #62656b;
-  --line: #e4e5e8;
-  --blue: #1746ff;
-  --blue-light: #a8c8ff;
+  --tint: #f6f7f8;
+  --ink: #0b0c0f;
+  --muted: #5d6168;
+  --faint: #9a9da4;
+  --line: #dfe1e5;
+  --line-soft: #eceef1;
+  --signal: #00b386;
+  --signal-ink: #00795d;
+  --signal-soft: #e5f7f1;
   --gutter: 24px;
-  --content: 1360px;
-  --serif: var(--font-serif), Georgia, serif;
-  --sans: var(--font-sans), Arial, sans-serif;
+  --sans: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  --mono: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 * {
   box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 88px;
 }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 400 16px/1.7 var(--sans);
+  font: 400 16px/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 button,
@@ -36,6 +40,7 @@ a {
 }
 button {
   cursor: pointer;
+  color: inherit;
 }
 button:disabled {
   cursor: wait;
@@ -43,9 +48,6 @@ button:disabled {
 a {
   color: inherit;
   text-decoration: none;
-}
-button {
-  color: inherit;
 }
 img,
 svg {
@@ -63,21 +65,24 @@ p {
 h1,
 h2,
 h3 {
-  font-family: var(--serif);
-  font-weight: 300;
-  letter-spacing: -0.045em;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-variation-settings: "wdth" 90;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 h1 {
-  font-size: 56px;
-  line-height: 1.15;
+  font-size: 68px;
+  line-height: 1.02;
 }
 h2 {
-  font-size: 44px;
-  line-height: 1.24;
+  font-size: 48px;
+  line-height: 1.06;
 }
 h3 {
-  font-size: 28px;
-  line-height: 1.36;
+  font-size: 22px;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
 }
 p {
   text-wrap: pretty;
@@ -95,12 +100,12 @@ select:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 5px;
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
 }
 ::selection {
-  background: #dbe6ff;
-  color: #08090b;
+  background: #c9f2e3;
+  color: #0b0c0f;
 }
 .sr-only {
   position: absolute;
@@ -126,6 +131,8 @@ textarea:focus-visible,
 .skip-link:focus {
   transform: none;
 }
+
+/* The frame: one dashed rule each side, square junctions where rules meet. */
 .frame {
   width: calc(100% - var(--gutter) * 2);
   max-width: 1440px;
@@ -134,7 +141,8 @@ textarea:focus-visible,
   border-bottom: 1px dashed var(--line);
   position: relative;
 }
-.frame-corner {
+.frame-corner,
+.junction {
   width: 9px;
   height: 9px;
   border: 1px solid var(--line);
@@ -143,6 +151,9 @@ textarea:focus-visible,
   top: -5px;
   z-index: 2;
   pointer-events: none;
+  transition:
+    background 0.4s,
+    border-color 0.4s;
 }
 .top-left {
   left: -5px;
@@ -150,95 +161,129 @@ textarea:focus-visible,
 .top-right {
   right: -5px;
 }
+.junction.is-live,
+.is-live > .junction {
+  background: var(--signal);
+  border-color: var(--signal);
+}
 .section {
-  padding: 100px 32px;
+  padding: 112px 40px;
 }
 .section-head {
   margin-bottom: 56px;
-  max-width: 850px;
-}
-.section-head h2 {
-  text-wrap: balance;
+  max-width: 880px;
 }
 .section-head.centered {
   margin-inline: auto;
   text-align: center;
 }
+.section-head h2 + p,
+.section-head h1 + p {
+  margin-top: 20px;
+  max-width: 520px;
+  color: var(--muted);
+}
 .section-label {
-  font: 500 12px/1.4 var(--sans);
+  font: 500 11px/1.4 var(--mono);
   text-transform: uppercase;
-  letter-spacing: 0.045em;
+  letter-spacing: 0.06em;
+  color: var(--muted);
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 22px;
 }
 .section-label > span {
-  width: 15px;
+  position: relative;
+  width: 7px;
   height: 7px;
-  background: linear-gradient(125deg, #b8e0ff, #1746ff 65%, #0727a5);
-  transform: skew(-13deg);
+  background: var(--signal);
   flex-shrink: 0;
+  margin-right: 16px;
+}
+.section-label > span::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 3px;
+  width: 12px;
+  border-top: 1px dashed currentColor;
+  opacity: 0.6;
 }
 .centered .section-label {
   justify-content: center;
 }
+
+/* Buttons: a label and a port. The port takes the signal on hover. */
 .button {
   min-height: 44px;
   display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 19px;
-  border: 1px solid transparent;
+  align-items: stretch;
+  padding: 0;
+  border: 1px solid var(--ink);
   background: var(--ink);
   color: white;
-  font: 500 13px/20px var(--sans);
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
+  font: 500 14px/1 var(--sans);
+  letter-spacing: -0.005em;
   white-space: nowrap;
   border-radius: 0;
   transition:
-    background 0.2s,
-    border-color 0.2s;
+    background 0.25s,
+    border-color 0.25s,
+    color 0.25s;
 }
-.button-text {
-  height: 20px;
+.button-label {
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+.button-port {
+  position: relative;
+  width: 42px;
+  display: grid;
+  place-items: center;
+  border-left: 1px solid #ffffff2e;
   overflow: hidden;
-  display: block;
+  transition:
+    background 0.3s var(--ease),
+    color 0.3s;
 }
-.button-text > span {
-  display: block;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+.button-port svg {
+  grid-area: 1 / 1;
+  transition: transform 0.45s var(--ease);
 }
-.button:hover .button-text > span {
-  transform: translateY(-100%);
+.button-port svg + svg {
+  transform: translateX(-160%);
 }
-.button:hover .button-arrow {
-  transform: translateX(3px);
+.button:hover .button-port {
+  background: var(--signal);
+  color: var(--ink);
 }
-.button-arrow {
-  transition: transform 0.3s;
-  flex-shrink: 0;
+.button:hover .button-port svg:first-child:not(:last-child) {
+  transform: translateX(160%);
 }
-.button-solid:hover {
-  background: #1746ff;
+.button:hover .button-port svg + svg {
+  transform: none;
 }
 .button-outline {
   background: transparent;
   color: inherit;
-  border-color: var(--line);
+  border: 1px dashed #b9bdc4;
+}
+.button-outline .button-port {
+  border-left: 1px dashed #b9bdc4;
 }
 .button-outline:hover {
-  background: #f5f7fa;
-  border-color: #aab4c6;
+  border-style: solid;
+  border-color: var(--ink);
 }
 .button-light {
   background: white;
-  color: #08090b;
+  color: #0b0c0f;
+  border-color: white;
 }
-.button-light:hover {
-  background: #dce7ff;
+.button-light .button-port {
+  border-left-color: #0b0c0f1f;
 }
 .button-row {
   display: flex;
@@ -247,28 +292,40 @@ textarea:focus-visible,
   align-items: center;
 }
 .dark {
-  --paper: #08090b;
-  --ink: #fff;
-  --muted: #a3a5ab;
-  --line: #24262b;
-  color: white;
-  background: #08090b;
+  --paper: #0a0b0d;
+  --tint: #111317;
+  --ink: #f4f5f6;
+  --muted: #9a9ea6;
+  --faint: #60646b;
+  --line: #262a30;
+  --line-soft: #1a1d22;
+  --signal: #2ee6a8;
+  --signal-ink: #2ee6a8;
+  --signal-soft: #0f2a22;
+  color: var(--ink);
+  background: #0a0b0d;
 }
 .dark.frame {
-  box-shadow: 0 0 0 100vmax #08090b;
+  box-shadow: 0 0 0 100vmax #0a0b0d;
   clip-path: inset(0 -100vmax);
 }
-.dark .button-outline:hover {
-  background: #111722;
-  border-color: #506388;
+.dark .button-outline {
+  border-color: #3a3f47;
 }
-.micro {
-  font: 500 10px/1.4 var(--sans);
+.dark .button-outline .button-port {
+  border-left-color: #3a3f47;
+}
+.dark .button-outline:hover {
+  border-color: #f4f5f6;
+}
+.micro,
+.mono {
+  font: 500 11px/1.4 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 .fine-print {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--muted);
 }
@@ -279,88 +336,66 @@ textarea:focus-visible,
   padding: 5px 0;
   border: 0;
   background: transparent;
-  font-size: 12px;
-  line-height: 1.5;
+  font: 500 13px/1.5 var(--sans);
   transition: color 0.2s;
 }
 .text-action:hover {
-  color: var(--blue);
+  color: var(--signal-ink);
 }
 .status-dot {
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #30b58b;
+  background: var(--signal);
   flex-shrink: 0;
 }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
-  font: 300 25px/1 var(--serif);
+  gap: 10px;
+  font: 600 21px/1 var(--sans);
+  font-variation-settings: "wdth" 92;
   letter-spacing: -0.035em;
 }
 .brand-mark {
-  display: grid;
-  grid-template-columns: repeat(3, 5px);
-  gap: 3px;
-  width: 21px;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
-}
-.brand-mark i {
-  display: block;
-  width: 5px;
-  height: 5px;
-  background: var(--blue);
-}
-.brand-mark i:nth-child(2),
-.brand-mark i:nth-child(4),
-.brand-mark i:nth-child(8) {
-  background: currentColor;
-}
-.brand-mark i:nth-child(5) {
-  opacity: 0;
-}
-.brand-mark i:nth-child(3),
-.brand-mark i:nth-child(7) {
-  opacity: 0.45;
 }
 .sample-logo {
   display: flex;
   align-items: center;
   gap: 8px;
-  font: 600 27px/1 var(--sans);
-  letter-spacing: -1px;
+  font: 600 24px/1 var(--sans);
+  letter-spacing: -0.04em;
   white-space: nowrap;
 }
 .sample-logo > span {
-  font-size: 35px;
+  font-size: 28px;
   line-height: 1;
 }
 .logo-1 {
-  font-weight: 600;
-  letter-spacing: -1.5px;
+  font-variation-settings: "wdth" 75;
+  letter-spacing: -0.02em;
 }
 .logo-2 {
-  font-family: var(--serif);
   font-weight: 400;
+  letter-spacing: -0.06em;
 }
 .logo-3 {
   font-style: italic;
+  font-weight: 500;
 }
 @media (max-width: 1023px) {
   h1 {
-    font-size: 52px;
+    font-size: 54px;
   }
   h2 {
-    font-size: 38px;
-  }
-  h3 {
-    font-size: 26px;
+    font-size: 40px;
   }
   .section {
-    padding: 80px 26px;
+    padding: 88px 28px;
   }
   .section-head {
     margin-bottom: 44px;
@@ -372,36 +407,36 @@ textarea:focus-visible,
   }
   body {
     font-size: 15px;
-    line-height: 1.7;
   }
   h1 {
-    font-size: 36px;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
+    font-size: 40px;
+    line-height: 1.04;
   }
   h2 {
-    font-size: 30px;
-    line-height: 1.3;
+    font-size: 32px;
+    line-height: 1.08;
   }
   h3 {
-    font-size: 24px;
+    font-size: 20px;
   }
   .section {
     padding: 64px 16px;
   }
   .section-head {
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
   .section-label {
     font-size: 10px;
-    margin-bottom: 19px;
+    margin-bottom: 16px;
   }
   .button {
-    font-size: 11px;
-    padding: 11px 15px;
-    min-height: 44px;
+    font-size: 13px;
   }
-  .frame-corner {
+  .button-label {
+    padding: 0 15px;
+  }
+  .frame-corner,
+  .junction {
     width: 7px;
     height: 7px;
     top: -4px;

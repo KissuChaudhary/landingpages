@@ -1,260 +1,242 @@
-.security .section-head {
-  max-width: 750px;
-}
-.security-seals {
-  display: flex;
-  justify-content: center;
+/* Control: principles beside the policy they produce. */
+.control {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 64px;
-  margin: 12px 0 64px;
-}
-.security-seal {
-  width: 175px;
-  height: 175px;
-  border: 1px solid #ccd7eb;
-  outline: 1px solid #eef1f7;
-  outline-offset: 7px;
-  border-radius: 50%;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
-  background: radial-gradient(#f5f8ff, white 75%);
 }
-.security-seal:before {
+.control .section-head {
+  margin-bottom: 36px;
+}
+.control-list {
+  border-top: 1px dashed var(--line);
+}
+.control-list li {
+  border-bottom: 1px dashed var(--line);
+}
+.control-list button {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 4px 16px;
+  padding: 20px 0 20px 18px;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+.control-list button::before {
   content: "";
   position: absolute;
-  inset: 6px;
-  border: 1px dashed #cad3e3;
-  border-radius: 50%;
+  left: 0;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--signal);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s var(--ease);
 }
-.seal-code {
-  font-size: 8px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: #7b91b8;
-  margin-bottom: 10px;
+.control-list li.is-focus button::before {
+  transform: scaleY(1);
 }
-.security-seal svg {
-  color: #244d91;
-  margin-bottom: 7px;
+.control-list .mono {
+  grid-row: span 2;
+  color: var(--faint);
+  padding-top: 5px;
+  transition: color 0.3s;
 }
-.security-seal strong {
-  font: 300 21px/1.2 var(--serif);
-  letter-spacing: -0.03em;
+.control-list li.is-focus .mono {
+  color: var(--signal-ink);
 }
-.security-seal > span:last-child {
-  font-size: 8px;
-  color: #7084a5;
-  margin-top: 9px;
+.control-list h3 {
+  font-size: 20px;
 }
-.security-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--line);
-}
-.security-grid article {
-  padding: 30px 28px;
-  border-right: 1px solid var(--line);
-}
-.security-grid article:last-child {
-  border: 0;
-}
-.security-grid h3 {
-  font-size: 24px;
-  margin-bottom: 14px;
-}
-.security-grid p {
+.control-list p {
   font-size: 14px;
   color: var(--muted);
-  line-height: 1.8;
 }
-.faq {
-  display: grid;
-  grid-template-columns: 0.85fr 1.3fr;
-  gap: 90px;
+.policy {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid #1d2026;
+  background: #0b0d10;
+  color: #c9ccd1;
 }
-.faq .section-head {
-  margin-bottom: 28px;
-  max-width: 340px;
-}
-.faq-intro {
-  font-size: 14px;
-  max-width: 300px;
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-.faq-list {
-  border-top: 1px solid var(--line);
-}
-.faq-list details {
-  border-bottom: 1px solid var(--line);
-}
-.faq-list summary {
+.policy-head {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px dashed #262a30;
+  color: #8d929a;
+  font-size: 10px;
+}
+.policy-state {
+  display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
+  color: #2ee6a8;
+}
+.policy-state .status-dot {
+  background: #2ee6a8;
+}
+.policy pre {
+  margin: 0;
+  padding: 14px 0;
+  font: 400 13.5px/1.9 var(--mono);
+  overflow-x: auto;
+}
+.policy code {
+  display: block;
+  padding: 0 18px 0 0;
+  white-space: pre;
+  border-left: 2px solid transparent;
+  transition:
+    background 0.35s,
+    border-color 0.35s,
+    color 0.35s;
+}
+.policy code.is-key {
+  color: #f4f5f6;
+}
+.policy code.is-focus {
+  background: #10261f;
+  border-left-color: #2ee6a8;
+  color: #d9fbef;
+}
+.policy-n {
+  display: inline-block;
+  width: 46px;
+  padding-left: 16px;
+  color: #4a4f57;
+  user-select: none;
+}
+.policy figcaption {
+  padding: 12px 16px;
+  border-top: 1px dashed #262a30;
+  color: #8d929a;
+  font-size: 10px;
+}
+
+/* FAQ: two columns of quiet rows. */
+.faq-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.faq-head .section-head {
+  margin-bottom: 0;
+}
+.faq-aside p {
+  color: var(--muted);
+  margin-bottom: 20px;
+  max-width: 380px;
+}
+.faq-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px dashed var(--line);
+}
+.faq-list + .faq-list {
+  border-left: 1px dashed var(--line);
+}
+.faq-list details {
+  border-bottom: 1px dashed var(--line);
+}
+.faq-list summary {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 20px;
+  gap: 8px;
+  align-items: center;
+  padding: 20px 24px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.6;
-  padding: 23px 0;
+  letter-spacing: -0.01em;
   list-style: none;
 }
 .faq-list summary::-webkit-details-marker {
   display: none;
 }
+.faq-list summary .mono {
+  color: var(--faint);
+  font-size: 10px;
+}
 .faq-list summary svg {
-  flex-shrink: 0;
-  transition: transform 0.2s;
+  transition: transform 0.3s var(--ease);
 }
 .faq-list details[open] summary svg {
   transform: rotate(45deg);
-  color: var(--blue);
+}
+.faq-list details[open] summary .mono {
+  color: var(--signal-ink);
 }
 .faq-list details > div {
-  padding: 0 35px 24px 0;
-}
-.faq-list p {
-  font-size: 14px;
-  line-height: 1.8;
+  padding: 0 52px 22px 68px;
   color: var(--muted);
+  font-size: 14.5px;
 }
-@media (max-width: 1199px) {
-  .faq {
-    gap: 64px;
+@supports (interpolate-size: allow-keywords) {
+  .faq-list details {
+    interpolate-size: allow-keywords;
+  }
+  .faq-list details::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.4s var(--ease),
+      content-visibility 0.4s allow-discrete;
+  }
+  .faq-list details[open]::details-content {
+    height: auto;
   }
 }
 @media (max-width: 1023px) {
-  .security-seals {
+  .control {
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
-  .security-seal {
-    width: 150px;
-    height: 150px;
-  }
-  .security-grid article {
-    padding: 26px 22px;
-  }
-  .security-grid h3 {
-    font-size: 22px;
-  }
-  .security-grid p {
-    font-size: 13px;
-  }
-  .faq {
-    gap: 40px;
-    grid-template-columns: 0.85fr 1.3fr;
-  }
-  .faq-list summary {
-    font-size: 13px;
-  }
-}
-@media (max-width: 767px) {
-  .security-grid {
+  .faq-head {
     grid-template-columns: 1fr;
-  }
-  .security-grid article {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .faq {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .faq .section-head {
-    max-width: 450px;
-  }
-  .security-seals {
     gap: 24px;
   }
-  .security-seal {
-    width: 130px;
-    height: 130px;
+  .faq-cols {
+    grid-template-columns: 1fr;
   }
-  .seal-code {
-    font-size: 7px;
-  }
-  .security-seal strong {
-    font-size: 18px;
-  }
-  .security-seal > span:last-child {
-    font-size: 7px;
-  }
-  .security-seal svg {
-    width: 19px;
-    height: 19px;
+  .faq-list + .faq-list {
+    border-left: 0;
   }
 }
 @media (max-width: 639px) {
-  .security-seals {
-    gap: 0;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-bottom: 44px;
+  .control-list button {
+    grid-template-columns: 1fr;
+    padding-left: 14px;
   }
-  .security-seal {
-    width: 94px;
-    height: 94px;
-    outline-offset: 3px;
+  .control-list .mono {
+    grid-row: auto;
+    padding-top: 0;
   }
-  .seal-code {
-    display: none;
+  .policy pre {
+    font-size: 11.5px;
   }
-  .security-seal svg {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 7px;
+  .policy-n {
+    width: 34px;
+    padding-left: 10px;
   }
-  .security-seal strong {
-    font-size: 16px;
-  }
-  .security-seal > span:last-child {
-    font-size: 7px;
-    margin-top: 5px;
-  }
-  .security-seal:before {
-    inset: 4px;
-  }
-  .security-grid h3 {
-    font-size: 23px;
-  }
-  .security-grid p {
-    font-size: 14px;
-  }
-  .security-grid article {
-    padding: 25px 22px;
+  .policy-head {
+    flex-direction: column;
+    gap: 6px;
   }
   .faq-list summary {
-    font-size: 14px;
-    padding: 21px 0;
-  }
-  .faq-list p {
-    font-size: 13px;
+    grid-template-columns: 28px minmax(0, 1fr) 18px;
+    padding: 18px 0;
+    font-size: 15px;
   }
   .faq-list details > div {
-    padding-right: 16px;
-  }
-  .faq-intro {
+    padding: 0 28px 18px 36px;
     font-size: 14px;
-  }
-  .faq .section-head {
-    margin-bottom: 22px;
-  }
-}
-@media (max-width: 359px) {
-  .security-seal {
-    width: 80px;
-    height: 80px;
-  }
-  .security-seal strong {
-    font-size: 14px;
-  }
-  .seal-code {
-    font-size: 4px;
-  }
-  .security-seal > span:last-child {
-    font-size: 6px;
   }
 }

@@ -1,6 +1,8 @@
 export const blueprints = {
   report: {
     name: "Weekly digest agent",
+    short: "Weekly digest",
+    source: "Project board",
     prompt: "Turn project updates into a useful weekly digest.",
     tools: ["Project board", "Team notes", "Draft workspace"],
     steps: [
@@ -15,6 +17,8 @@ export const blueprints = {
   },
   support: {
     name: "Customer care agent",
+    short: "Customer care",
+    source: "Support inbox",
     prompt: "Help customers with order updates and returns.",
     tools: ["Order database", "Knowledge base", "Help desk"],
     steps: [
@@ -29,6 +33,8 @@ export const blueprints = {
   },
   leads: {
     name: "Lead routing agent",
+    short: "Lead routing",
+    source: "Intake form",
     prompt: "Enrich new leads and send the right context to sales.",
     tools: ["Intake form", "Company directory", "CRM"],
     steps: [
@@ -43,6 +49,8 @@ export const blueprints = {
   },
   review: {
     name: "Document review agent",
+    short: "Document review",
+    source: "Document library",
     prompt: "Check a new document and prepare a review summary.",
     tools: ["Document library", "Review checklist", "Approval queue"],
     steps: [
@@ -57,19 +65,3 @@ export const blueprints = {
   },
 } as const;
 export type BlueprintKey = keyof typeof blueprints;
-export const workflowSteps = [
-  "Receive new lead",
-  "Gather company context",
-  "Evaluate the fit",
-  "Prepare sales handoff",
-] as const;
-export const workflowReceipt = {
-  example: true,
-  name: "Lead routing",
-  lead: "Aster Studio",
-  teamSize: 24,
-  fit: "Strong",
-  status: "Ready for review",
-  actions: [...workflowSteps],
-  externalActions: "None. Local demonstration only.",
-};

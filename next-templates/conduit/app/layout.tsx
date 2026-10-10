@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Merriweather, Inter } from "next/font/google";
+import { Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/site.config";
 import { SiteShell } from "@/components/SiteShell";
 import "./globals.css";
-const serif = Merriweather({
+const sans = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["300", "400"],
-  variable: "--font-serif",
+  weight: "variable",
+  axes: ["wdth"],
+  variable: "--font-sans",
   display: "swap",
 });
-const sans = Inter({
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${sans.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <body>

@@ -5,7 +5,6 @@ export const site = {
     description:
       "A clearer way to build, orchestrate and understand AI workflows. Bring your tools, data and agents into one connected system.",
   },
-  announcement: "A new way to put your agents to work",
   links: { app: "", contactEndpoint: "", email: "hello@example.com", docs: "" },
   hero: {
     badge: "Intelligence, put to work",
@@ -80,11 +79,12 @@ export const site = {
     ],
   },
   impact: {
-    label: "The difference",
     title: "Less busywork. More possibility.",
-    subtitle: "A small improvement, multiplied across every workflow.",
-    description:
-      "Explore what changes when routine steps become a connected flow. These figures describe the included example run, so you can inspect the result for yourself.",
+    stats: [
+      { value: 4, unit: "steps", note: "One connected example workflow" },
+      { value: 100, unit: "%", note: "Visible from intake to handoff" },
+      { value: 1, unit: "", note: "Final decision. Still yours." },
+    ],
   },
   capabilities: {
     label: "Built to connect",
@@ -135,6 +135,8 @@ export const site = {
   industries: {
     label: "Made for your world",
     title: "Different teams. A shared possibility.",
+    intro:
+      "Pick a team to watch the blueprint behind it run on the board above.",
     items: [
       {
         icon: "finance",
@@ -183,11 +185,15 @@ export const site = {
   stories: {
     label: "Workflow stories",
     title: "Small changes. A different working day.",
-    action: "Explore the examples",
+    intro:
+      "Four teams, four routes. Each one keeps a person where judgment matters.",
+    action: "Run it",
   },
   security: {
     label: "Control by design",
     title: "Your agents. Your boundaries.",
+    intro:
+      "Every agent runs inside a policy you can read: what it may touch, what it may know, and when it must ask.",
     seals: [
       { title: "Access", code: "01", detail: "Scoped permissions" },
       { title: "Data", code: "02", detail: "Defined context" },
@@ -220,7 +226,7 @@ export const site = {
       {
         question: "What can I try on this page?",
         answer:
-          "Choose an agent in the hero, create an agent from a blueprint, run the lead-routing workflow, explore analytics, and switch between workflow stories. The examples run locally in your browser and do not connect to your accounts.",
+          "Pick a blueprint on the board at the top and watch it run from intent to action. Scroll the broken handoffs back into one route, open any story or team to run its blueprint, and step through the example policy. Everything runs locally in your browser and connects to nothing.",
       },
       {
         question: "How is an agent different from a chatbot?",
@@ -230,22 +236,22 @@ export const site = {
       {
         question: "Can I use my own models and tools?",
         answer:
-          "Yes. The template is built to present your own agent platform. The model router and tool diagrams are editable visual components; connect your actual integrations in your application.",
+          "Yes. The template is built to present your own agent platform. The layer diagrams, the route board and the policy are editable components; connect your actual integrations in your application.",
       },
       {
         question: "Can I keep a human in the loop?",
         answer:
-          "The example document-review agent includes a human approval step. Production permissions, approvals and audit records belong in your application; this template gives you a clear way to explain them.",
+          "Every example blueprint ends with a person: refunds, reviews and handoffs wait for approval. Production permissions, approvals and audit records belong in your application; this template gives you a clear way to explain them.",
       },
       {
         question: "What happens when I select a plan?",
         answer:
-          "With a configured checkout URL, the button opens that destination. Until then, it opens a local plan review with the exact monthly or annual price. Nothing is charged and no account is created.",
+          "With a configured checkout URL, the button opens that destination. Until then, it opens the contact page. Nothing is charged and no account is created.",
       },
       {
         question: "Can I customize the entire page?",
         answer:
-          "The brand, copy, navigation, plans, FAQs and destinations live in site.config.ts. Blueprints and example stories have their own small data files. The styles and sections are modular, so you can adapt the design without untangling one large component.",
+          "The brand, copy, plans, FAQs and destinations live in site.config.ts. Blueprints and stories have their own small data files, and product screens are plain images you can replace. The styles and sections are modular, so you can adapt the design without untangling one large component.",
       },
     ],
   },
@@ -323,10 +329,11 @@ export const site = {
       {
         title: "Platform",
         links: [
-          { label: "Product", href: "/#solution" },
+          { label: "Product", href: "/#product" },
           { label: "Capabilities", href: "/#capabilities" },
           { label: "Pricing", href: "/pricing" },
           { label: "Workflow stories", href: "/#stories" },
+          { label: "Use cases", href: "/#use-cases" },
         ],
       },
       {

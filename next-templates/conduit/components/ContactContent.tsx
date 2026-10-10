@@ -100,8 +100,10 @@ export function ContactContent() {
               href={download || undefined}
               download="conduit-workflow-brief.txt"
             >
-              <Download size={16} />
-              Save the brief
+              <span className="button-label">Save the brief</span>
+              <span className="button-port" aria-hidden="true">
+                <Download size={16} />
+              </span>
             </a>
             <button className="text-action" onClick={() => setBrief(null)}>
               Edit your brief

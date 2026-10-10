@@ -30,10 +30,10 @@ export default async function ContentPage({
       {slug === "about" && (
         <div className="about-image">
           <img
-            src={asset("/images/glass.webp")}
-            alt="Original connected cobalt glass architecture"
-            width={1536}
-            height={1024}
+            src={asset("/images/stage-orchestrate.webp")}
+            alt="The workflow canvas: a lead routes through enrichment, a fit check, human review and a CRM handoff"
+            width={2240}
+            height={1440}
           />
         </div>
       )}
