@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import { TEMPLATES } from '@/data/templates';
 import { SITE_NAME, SITE_URL } from '@/data/site';
 import './globals.css';
@@ -23,6 +24,13 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${mono.variable} scroll-smooth`}>
       <body className="min-h-screen bg-white text-[#666666] selection:bg-primary/10 selection:text-primary antialiased">
         {children}
+        <Script
+          async
+          src="https://c.ecompin.com/oa.js"
+          strategy="afterInteractive"
+          data-key="oa_pk_8CG3CPI9bfgRZqxTgtSgewO5B74zWoqG"
+          data-collector="https://c.ecompin.com"
+        />
       </body>
     </html>
   );
