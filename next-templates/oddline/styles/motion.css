@@ -1,0 +1,59 @@
+[data-reveal] {
+  opacity: 1;
+}
+[data-enhanced] [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+[data-enhanced] [data-reveal] {
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+.studio-note[data-reveal] {
+  transform: rotate(4deg);
+}
+[data-enhanced] .studio-note[data-reveal]:not(.is-visible) {
+  transform: translateY(20px) rotate(4deg);
+}
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-main {
+    transform: rotate(-6deg) !important;
+  }
+  .hero-cut-coffee {
+    transform: rotate(9deg) !important;
+  }
+  .hero-cut-skincare {
+    transform: rotate(8deg) !important;
+  }
+  .studio-statement h2 span {
+    color: var(--ink) !important;
+  }
+  .process-steps::after {
+    transform: none;
+    opacity: 0.4;
+  }
+}

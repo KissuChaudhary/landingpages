@@ -1,0 +1,49 @@
+.faq {
+  padding-block: 80px 125px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+}
+.faq h2 {
+  margin-block: 30px;
+}
+.faq > div > p:not(.label) {
+  color: var(--muted);
+  font-size: 14px;
+}
+.faq > div > .action {
+  margin-top: 24px;
+}
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+.faq-list summary {
+  display: flex;
+  gap: 17px;
+  align-items: baseline;
+  padding: 25px 0;
+}
+.faq-list summary > .label-type {
+  font-size: 8px;
+  color: var(--muted);
+}
+.faq-list h3 {
+  flex: 1;
+  font-size: 18px;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+.faq-list summary:hover h3 {
+  color: var(--accent);
+}
+.faq-list .disclosure-sign {
+  align-self: center;
+}
+.faq-list details > div {
+  padding: 0 28px 26px;
+  color: var(--muted);
+  font-size: 14px;
+}

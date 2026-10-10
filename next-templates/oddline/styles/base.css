@@ -1,0 +1,240 @@
+:root {
+  --bg: #11130f;
+  --surface: #1b1e17;
+  --surface-light: #24281e;
+  --ink: #f3f4ec;
+  --muted: #a2a698;
+  --accent: #d7fc70;
+  --line: #fafbe51c;
+  --gutter: clamp(22px, 4.5vw, 80px);
+  --max: 1360px;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+  background: var(--bg);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(58px, 7vw, 108px);
+  line-height: 0.98;
+  letter-spacing: -0.068em;
+}
+h2 {
+  font-size: clamp(42px, 4.65vw, 70px);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+h3 {
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+p {
+  line-height: 1.8;
+}
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+.wrap {
+  width: calc(100% - var(--gutter) * 2);
+  max-width: var(--max);
+  margin-inline: auto;
+}
+.section-pad {
+  padding-block: 112px;
+}
+.muted-line {
+  color: var(--muted);
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.115em;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.eyebrow > span {
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.button {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  padding: 9px 12px 9px 22px;
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  transition:
+    background 0.25s,
+    gap 0.25s;
+}
+.button:hover {
+  gap: 34px;
+  background: #e7ff9f;
+}
+.button-arrow {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #11130f38;
+  border-radius: 50%;
+}
+.button svg {
+  transition: transform 0.25s;
+}
+.button:hover svg {
+  transform: rotate(45deg);
+}
+.button-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.button-outline:hover {
+  color: var(--bg);
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s;
+}
+.text-link:hover {
+  color: var(--accent);
+}
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 50px;
+}
+.section-heading > p {
+  max-width: 315px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.skip-link {
+  position: fixed;
+  z-index: 120;
+  top: 15px;
+  left: 15px;
+  transform: translateY(-150%);
+  padding: 12px 20px;
+  border-radius: 4px;
+  color: var(--bg);
+  background: var(--accent);
+}
+.skip-link:focus {
+  transform: none;
+}
+.not-found {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 35px;
+}
+.not-found > svg {
+  width: 75px;
+  color: var(--accent);
+}
+.not-found h1 {
+  font-size: clamp(44px, 6vw, 80px);
+}
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 88px;
+  }
+  .section-pad {
+    padding-block: 74px;
+  }
+  .section-heading {
+    display: block;
+    margin-bottom: 32px;
+  }
+  .section-heading > p {
+    margin-top: 25px;
+    max-width: 360px;
+  }
+  .eyebrow {
+    font-size: 9px;
+    margin-bottom: 22px;
+  }
+}

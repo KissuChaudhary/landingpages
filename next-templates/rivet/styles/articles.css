@@ -1,0 +1,43 @@
+.article-header h1 {
+  max-width: 950px;
+}
+.article-cover {
+  height: 530px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+.article-cover .art-wordmark {
+  font-size: 44px;
+}
+.article-cover .counter-app {
+  width: 55%;
+  left: 33%;
+}
+.article-cover .counter-chart {
+  height: 170px;
+}
+.article-cover .counter-balance strong {
+  font-size: 55px;
+}
+.article-cover .forma-title {
+  font-size: 105px;
+}
+.article-body {
+  width: calc(100% - 44px);
+  max-width: 680px;
+  margin: 70px auto 100px;
+}
+.article-body p {
+  font-size: 18px;
+  line-height: 1.75;
+  color: #c6c9bf;
+  margin-bottom: 30px;
+}
+.article-body > h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.article-body > .action {
+  margin-top: 20px;
+}

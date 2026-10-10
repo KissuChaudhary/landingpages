@@ -1,0 +1,111 @@
+
+.journal {
+  border-top: 1px solid var(--line);
+}
+.journal > .eyebrow {
+  margin-bottom: 26px;
+}
+.note-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 42px;
+}
+.note-art {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.note-lilac .note-art,
+.note-lilac.article-banner {
+  background: var(--lilac);
+}
+.note-lime .note-art,
+.note-lime.article-banner {
+  background: var(--lime);
+}
+.note-faces {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  font-size: 205px;
+  font-weight: 600;
+  letter-spacing: -0.17em;
+  line-height: 0.7;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 0.65s var(--ease);
+}
+.note-card:hover .note-faces {
+  transform: translate(-50%, -50%) rotate(100deg);
+}
+.note-art-caption {
+  position: absolute;
+  left: 23px;
+  bottom: 21px;
+  font-size: 14px;
+  letter-spacing: -0.025em;
+}
+.note-art-word {
+  position: absolute;
+  left: 33px;
+  top: 27px;
+  font-size: 110px;
+  line-height: 0.87;
+  letter-spacing: -0.08em;
+  font-weight: 750;
+}
+.note-art-word > span {
+  display: inline-block;
+  transform: rotate(12deg);
+}
+.note-art > svg {
+  position: absolute;
+  right: 30px;
+  bottom: 22px;
+  width: 70px;
+  height: 70px;
+  transform: rotate(-8deg);
+  transition: transform 0.65s var(--ease);
+}
+.note-card:hover .note-art > svg {
+  transform: rotate(12deg);
+}
+.note-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.note-card-meta svg {
+  width: 18px;
+  height: 18px;
+  color: var(--ink);
+}
+.note-card h3 {
+  font-size: 29px;
+  line-height: 1.2;
+  letter-spacing: -0.055em;
+  margin-top: 13px;
+}
+.note-card > p {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+@media (max-width: 760px) {
+  .note-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin-top: 30px;
+  }
+  .note-art {
+    height: 275px;
+  }
+  .note-card h3 {
+    font-size: 27px;
+  }
+}

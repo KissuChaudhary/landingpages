@@ -1,0 +1,283 @@
+.faq {
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 0.83fr 1.17fr;
+  gap: 70px;
+}
+.faq-list {
+  padding-top: 9px;
+}
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq details:first-child {
+  border-top: 1px solid var(--line);
+}
+.faq summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 26px;
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary > span {
+  font-size: 8px;
+  color: var(--muted);
+}
+.faq summary h3 {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.faq summary > i {
+  width: 13px;
+  height: 13px;
+  margin-left: auto;
+  flex-shrink: 0;
+  position: relative;
+}
+.faq summary > i::before,
+.faq summary > i::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 6px;
+  width: 11px;
+  height: 1px;
+  background: var(--muted);
+  transition: transform 0.25s;
+}
+.faq summary > i::after {
+  transform: rotate(90deg);
+}
+.faq details[open] summary > i::after {
+  transform: rotate(0deg);
+}
+.faq details[open] summary {
+  color: var(--accent);
+}
+.faq details > p {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 0 28px 26px;
+  animation: panel-in 0.3s;
+}
+.closing {
+  position: relative;
+  overflow: hidden;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 13px;
+  padding: 68px;
+  display: flex;
+  align-items: center;
+}
+.closing .eyebrow {
+  color: #3b4622;
+}
+.closing .eyebrow > span {
+  background: var(--bg);
+}
+.closing h2 {
+  font-size: clamp(48px, 6.5vw, 94px);
+  line-height: 1;
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+}
+.closing-actions {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 33px;
+  position: relative;
+  z-index: 1;
+}
+.closing .button {
+  background: var(--bg);
+  color: var(--accent);
+  border-color: var(--bg);
+}
+.closing .button-arrow {
+  border-color: #d7fc7045;
+}
+.closing-actions > p {
+  max-width: 200px;
+  font-size: 11px;
+  color: #49562c;
+}
+.closing-star {
+  position: absolute;
+  width: 380px;
+  right: -57px;
+  top: 24px;
+  color: #a9c951;
+  transform: rotate(8deg);
+}
+.footer {
+  padding-top: 90px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr 1fr;
+  gap: 45px;
+}
+.footer .brand > span {
+  font-size: 28px;
+}
+.footer-top p {
+  white-space: pre-line;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+  margin-top: 22px;
+}
+.footer-top nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 10px;
+  color: #c3c8b9;
+}
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 10px;
+}
+.footer-contact > a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.footer-contact > span {
+  font-size: 9px;
+  color: var(--muted);
+}
+.footer a:hover {
+  color: var(--accent);
+}
+.footer-wordmark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(88px, 16.35vw, 250px);
+  font-weight: 600;
+  letter-spacing: -0.09em;
+  line-height: 1.2;
+  color: #383f2e;
+  margin-top: 42px;
+  user-select: none;
+}
+.footer-wordmark > svg {
+  width: 10%;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-right: 1%;
+  transform: rotate(11deg);
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 26px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 8px;
+}
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+@media (max-width: 1000px) {
+  .closing {
+    padding: 55px 42px;
+  }
+  .closing-star {
+    width: 300px;
+    right: -70px;
+    top: 40px;
+  }
+  .closing-actions {
+    gap: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .faq {
+    display: block;
+  }
+  .faq-list {
+    margin-top: 32px;
+  }
+  .faq summary {
+    gap: 12px;
+    padding-block: 23px;
+  }
+  .faq summary h3 {
+    font-size: 11px;
+  }
+  .faq details > p {
+    font-size: 11px;
+  }
+  .closing {
+    padding: 38px 25px 44px;
+  }
+  .closing h2 {
+    font-size: clamp(34px, 8.8vw, 55px);
+  }
+  .closing .eyebrow {
+    font-size: 7px;
+  }
+  .closing-star {
+    width: 155px;
+    right: -50px;
+    top: -20px;
+    opacity: 0.5;
+  }
+  .closing-actions {
+    display: block;
+    margin-top: 25px;
+  }
+  .closing-actions > p {
+    margin-top: 17px;
+    font-size: 10px;
+  }
+  .closing .button {
+    min-height: 49px;
+    font-size: 10px;
+  }
+  .footer {
+    padding-top: 63px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 25px;
+  }
+  .footer-contact {
+    grid-column: 1/-1;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .footer-wordmark {
+    font-size: 17.3vw;
+    margin-top: 35px;
+  }
+  .footer-bottom {
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 7px;
+  }
+  .footer-bottom > span:nth-child(2) {
+    display: none;
+  }
+}

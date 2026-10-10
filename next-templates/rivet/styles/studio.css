@@ -1,0 +1,277 @@
+.trust {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
+  align-items: center;
+  padding-block: 65px;
+  border-bottom: 1px solid var(--line);
+}
+.trust > div > p:not(.label) {
+  font-size: 24px;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+  margin-top: 22px;
+}
+.trust > div {
+  min-width: 0;
+}
+.trust > div > p > span {
+  color: var(--muted);
+}
+.client-marks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.client-marks a {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  max-height: 130px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transition:
+    color 0.4s,
+    border-color 0.4s,
+    background 0.4s;
+}
+.client-marks a:hover {
+  background: #b9f77c08;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.client-marks a > span {
+  font-size: 20px;
+  letter-spacing: -0.06em;
+}
+.client-marks .client-orra {
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+.client-marks .client-counter {
+  font-size: 17px;
+  font-weight: 600;
+}
+.client-marks .client-forma {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 23px;
+}
+.client-marks .client-goodwell {
+  font-size: 15px;
+  font-weight: 500;
+}
+.philosophy {
+  padding-block: 135px 120px;
+  text-align: center;
+}
+.philosophy > .label {
+  justify-content: center;
+}
+.philosophy h2 {
+  margin: 32px auto;
+  font-size: clamp(44px, 6.2vw, 91px);
+  max-width: 1180px;
+}
+.philosophy h2 > span {
+  color: var(--muted);
+}
+.philosophy > p:not(.label) {
+  max-width: 460px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+}
+.philosophy-steps {
+  margin: 55px auto 0;
+  display: flex;
+  width: min(870px, 100%);
+  gap: 0;
+  border-block: 1px solid var(--line);
+}
+.philosophy-steps li {
+  flex: 1;
+  padding: 18px 22px;
+  border-right: 1px solid var(--line);
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+.philosophy-steps li:last-child {
+  border-right: 0;
+}
+.philosophy-steps li > span {
+  color: var(--muted);
+  font-size: 8px;
+  padding-top: 3px;
+}
+.studio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7%;
+  padding-bottom: 100px;
+  align-items: start;
+}
+.studio-photo {
+  position: relative;
+  height: 635px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.studio-photo img {
+  width: 100%;
+  height: calc(100% + 65px);
+  object-fit: cover;
+  object-position: 45% center;
+  transform: translateY(calc(var(--drift, 0px) - 32px));
+}
+.studio-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #0b0c0a99, transparent 40%);
+}
+.studio-photo > span {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  z-index: 1;
+  font-size: 8px;
+}
+.studio-copy > .label {
+  margin: 14px 0 38px;
+}
+.studio-copy h2 {
+  font-size: clamp(38px, 4.15vw, 62px);
+}
+.studio-copy h2 > span {
+  color: var(--muted);
+}
+.studio-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-block: 50px 42px;
+}
+.studio-facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.studio-facts strong {
+  font-weight: 400;
+  font-size: clamp(36px, 4.8vw, 66px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+.studio-facts strong > span {
+  font-size: 22px;
+  color: var(--accent);
+  margin-left: 5px;
+}
+.studio-facts .label-type {
+  font-size: 8px;
+  color: var(--muted);
+  max-width: 105px;
+}
+.studio-copy > p:not(.label) {
+  max-width: 370px;
+  color: var(--muted);
+  font-size: 16px;
+}
+.studio-copy > .action {
+  margin-top: 30px;
+}
+@media (max-width: 1050px) {
+  .studio-photo {
+    height: 575px;
+  }
+  .studio {
+    gap: 5%;
+  }
+  .studio-facts {
+    gap: 10px;
+    margin-block: 38px;
+  }
+  .philosophy-steps li {
+    padding: 15px;
+  }
+  .client-marks a > span {
+    font-size: 16px;
+  }
+}
+@media (max-width: 760px) {
+  .trust {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-block: 42px;
+  }
+  .trust > div > p:not(.label) {
+    font-size: 22px;
+  }
+  .client-marks {
+    max-width: 500px;
+  }
+  .client-marks a > span {
+    font-size: 17px;
+  }
+  .client-marks .client-counter {
+    font-size: 14px;
+  }
+  .client-marks .client-goodwell {
+    font-size: 11px;
+  }
+  .philosophy {
+    padding-block: 85px 75px;
+  }
+  .philosophy h2 {
+    font-size: clamp(42px, 9vw, 68px);
+    margin-block: 26px;
+  }
+  .philosophy > p:not(.label) {
+    font-size: 14px;
+  }
+  .philosophy-steps {
+    flex-wrap: wrap;
+    margin-top: 35px;
+  }
+  .philosophy-steps li {
+    padding: 12px;
+    font-size: 11px;
+    min-width: 30%;
+    border-bottom: 1px solid var(--line);
+  }
+  .philosophy-steps li:nth-child(3) {
+    border-right: 0;
+  }
+  .philosophy-steps li:nth-child(n + 4) {
+    border-bottom: 0;
+  }
+  .studio {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 70px;
+  }
+  .studio-photo {
+    height: 400px;
+  }
+  .studio-copy > .label {
+    margin: 0 0 24px;
+  }
+  .studio-copy h2 {
+    font-size: 42px;
+    max-width: 500px;
+  }
+  .studio-facts {
+    max-width: 470px;
+    margin-block: 30px;
+  }
+  .studio-facts strong {
+    font-size: 52px;
+  }
+  .studio-copy > p:not(.label) {
+    font-size: 15px;
+  }
+}

@@ -1,7 +1,14 @@
+import { goodfolkTemplate } from './template-catalog/goodfolk';
 import { shearTemplate } from './template-catalog/shear';
+import { daymarkTemplate } from './template-catalog/daymark';
 import { arcloTemplate } from './template-catalog/arclo';
+import { rivetTemplate } from './template-catalog/rivet';
 import { asterTemplate } from './template-catalog/aster';
+import { sereinTemplate } from './template-catalog/serein';
+import { velaTemplate } from './template-catalog/vela';
+import { sylvaTemplate } from './template-catalog/sylva';
 import { notchTemplate } from './template-catalog/notch';
+import { oddlineTemplate } from './template-catalog/oddline';
 
 export interface TemplateItem {
   slug: string;
@@ -33,8 +40,15 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    oddlineTemplate,
+    goodfolkTemplate,
+    daymarkTemplate,
     shearTemplate,
     notchTemplate,
+    sereinTemplate,
+    rivetTemplate,
+    velaTemplate,
+    sylvaTemplate,
     asterTemplate,
     arcloTemplate,
     {

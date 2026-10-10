@@ -1,0 +1,100 @@
+export interface Project {
+  slug: string;
+  number: string;
+  name: string;
+  headline: string;
+  category: string;
+  year: string;
+  image: string;
+  alt: string;
+  color: string;
+  light: boolean;
+  summary: string;
+  challenge: string;
+  approach: string;
+  outcome: string;
+  deliverables: string[];
+}
+
+export const projects: Project[] = [
+  {
+    slug: "vela",
+    number: "01",
+    name: "Vela",
+    headline: "A quieter kind of\nstatement.",
+    category: "Brand & digital",
+    year: "2026",
+    image: "/images/vela.webp",
+    alt: "Sculptural brushed silver Vela headphones suspended above a pale blue plinth",
+    color: "#c8d8e4",
+    light: true,
+    summary: "A new identity and digital world for sound, thoughtfully made.",
+    challenge:
+      "Vela set out to make personal audio feel more considered. In a category full of specifications and noise, the brand needed to speak to the experience of listening: the space, the focus, the feeling.",
+    approach:
+      "We built the identity around a quieter confidence. Precise type, a restrained silver-and-blue palette, and sculptural product imagery give the hardware room to speak. The website follows the same rhythm: generous space, clear information, and motion that guides your attention.",
+    outcome:
+      "One coherent world, from the first product impression to the final buying decision. An identity system, an adaptable website, and a campaign toolkit designed to grow alongside the product.",
+    deliverables: [
+      "Brand positioning",
+      "Visual identity",
+      "Art direction",
+      "E-commerce design",
+      "Motion system",
+    ],
+  },
+  {
+    slug: "aevum",
+    number: "02",
+    name: "Aevum",
+    headline: "An impression\nthat stays.",
+    category: "Identity & art direction",
+    year: "2026",
+    image: "/images/aevum.webp",
+    alt: "Olive glass Aevum fragrance bottle on moss stone in warm afternoon sunlight",
+    color: "#68613a",
+    light: false,
+    summary:
+      "A sensory identity for a fragrance house with a different sense of time.",
+    challenge:
+      "For Aevum, fragrance is a way of keeping a moment. The challenge was to turn something intangible into a visual identity that felt tactile, intimate, and quietly contemporary.",
+    approach:
+      "We began with material and light: olive glass, textured paper, and shadows that move through a scene. A delicate wordmark and an editorial visual language connect the packaging, photography, and digital experience without overwhelming the product.",
+    outcome:
+      "A complete brand system with a distinctive material palette, considered packaging direction, and a collection of launch imagery. Every touchpoint is built around the same idea: a lasting impression, softly made.",
+    deliverables: [
+      "Brand strategy",
+      "Visual identity",
+      "Packaging direction",
+      "Campaign concept",
+      "Image direction",
+    ],
+  },
+  {
+    slug: "forma",
+    number: "03",
+    name: "Forma",
+    headline: "Space for a\nnew perspective.",
+    category: "Strategy & website",
+    year: "2025",
+    image: "/images/forma.webp",
+    alt: "Curved concrete architecture, a circular facade opening and an olive tree in afternoon light",
+    color: "#c1ad8f",
+    light: true,
+    summary:
+      "A digital home for an architecture practice that sees possibility in space.",
+    challenge:
+      "Forma's practice sits between architecture, landscape and everyday life. The studio needed a digital presence that communicated that breadth while keeping the work, and its material detail, at the center.",
+    approach:
+      "We translated their approach into a simple editorial system. Large project photography, a clear information hierarchy, and a flexible grid make room for different scales of work. Deliberate transitions connect the projects without distracting from the architecture.",
+    outcome:
+      "A portfolio designed for a growing practice: straightforward to maintain, expressive at every scale, and grounded in the studio's own point of view. The content system gives the team a clear way to tell each new project's story.",
+    deliverables: [
+      "Positioning",
+      "Digital strategy",
+      "Website design",
+      "Development",
+      "Content system",
+    ],
+  },
+];

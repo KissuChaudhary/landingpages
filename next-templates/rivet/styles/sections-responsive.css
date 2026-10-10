@@ -1,0 +1,232 @@
+@media (max-width: 1100px) {
+  .service-body {
+    margin-left: 0;
+    grid-template-columns: 1fr 1fr;
+    padding-left: calc(25% + 12px);
+  }
+  .service-number {
+    font-size: 48px;
+  }
+  .dot-field {
+    width: 70px;
+  }
+  .price-card {
+    padding: 20px;
+  }
+  .price-card h3 {
+    font-size: 25px;
+  }
+  .price-card li {
+    font-size: 11px;
+  }
+  .price-badge {
+    font-size: 6px;
+  }
+  .footer-bottom {
+    gap: 20px;
+  }
+  .closing-frame {
+    padding: 40px;
+  }
+}
+@media (max-width: 760px) {
+  .services {
+    padding-block: 35px 70px;
+  }
+  .service-row summary {
+    grid-template-columns: 52px 1fr 18px;
+    gap: 17px;
+    padding-block: 25px;
+  }
+  .service-number {
+    font-size: 30px;
+  }
+  .dot-field {
+    display: none;
+  }
+  .service-title {
+    gap: 8px;
+  }
+  .service-title > span:last-child {
+    font-size: 23px;
+  }
+  .service-title > .label-type {
+    font-size: 7px;
+  }
+  .service-body {
+    margin-left: 0;
+    padding: 0 0 26px 69px;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .service-art {
+    min-height: 220px;
+  }
+  .service-body p {
+    font-size: 13px;
+  }
+  .service-body .tags {
+    margin-top: 20px;
+  }
+  .process {
+    grid-template-columns: 1fr;
+    gap: 46px;
+    padding-block: 45px 80px;
+  }
+  .process-intro {
+    position: static;
+  }
+  .process h2 {
+    font-size: 46px;
+  }
+  .process-intro > p:not(.label) {
+    font-size: 14px;
+    margin-top: 25px;
+  }
+  .process-seal {
+    display: none;
+  }
+  .process-steps {
+    margin-left: 5px;
+    padding-left: 26px;
+  }
+  .process-dot {
+    left: -31px;
+  }
+  .process-steps h3 {
+    font-size: 27px;
+  }
+  .process-steps li {
+    padding-bottom: 35px;
+  }
+  .process-steps p {
+    font-size: 13px;
+  }
+  .pricing {
+    padding-block: 35px 65px;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .price-card {
+    padding: 25px;
+  }
+  .price-top {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .price-card h3 {
+    min-height: 0;
+    max-width: 260px;
+    font-size: 30px;
+  }
+  .price-card > p {
+    min-height: 0;
+    max-width: 300px;
+  }
+  .price-amount {
+    padding-block: 25px;
+  }
+  .price-amount strong {
+    font-size: 53px;
+  }
+  .price-card ul {
+    padding-block: 23px 30px;
+  }
+  .price-card li {
+    font-size: 12px;
+  }
+  .price-badge {
+    position: static;
+    align-self: flex-start;
+    margin: -6px 0 18px;
+    font-size: 7px;
+  }
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-block: 45px 80px;
+  }
+  .faq h2 {
+    margin-block: 26px 20px;
+  }
+  .faq-list summary {
+    gap: 12px;
+    padding-block: 23px;
+  }
+  .faq-list h3 {
+    font-size: 16px;
+  }
+  .faq-list details > div {
+    font-size: 13px;
+    padding-left: 24px;
+  }
+  .closing {
+    margin-inline: 10px;
+    min-height: 580px;
+  }
+  .closing-frame {
+    margin: 14px;
+    padding: 32px 23px;
+    min-height: 552px;
+    border-radius: 12px;
+  }
+  .closing .label {
+    font-size: 7px;
+    max-width: 210px;
+  }
+  .closing h2 {
+    font-size: clamp(45px, 10.5vw, 72px);
+    margin-block: 48px 30px;
+  }
+  .closing-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .closing-bottom p {
+    font-size: 14px;
+    max-width: 270px;
+  }
+  .closing-coordinate {
+    font-size: 6px;
+    right: 20px;
+    bottom: 22px;
+  }
+  .footer {
+    padding-top: 50px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .footer-invite {
+    font-size: 42px;
+  }
+  .footer-invite svg {
+    right: 10%;
+    top: 10px;
+  }
+  .footer-nav {
+    gap: 30px;
+  }
+  .footer-wordmark {
+    gap: 4vw;
+    padding-top: 42px;
+  }
+  .footer-wordmark > span {
+    font-size: 25.5vw;
+  }
+  .footer-bottom {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 17px 22px;
+    padding-block: 19px 25px;
+    font-size: 7px;
+  }
+  .footer-bottom > span:nth-child(2) {
+    display: none;
+  }
+}

@@ -1,0 +1,241 @@
+.services {
+  padding-block: 65px 110px;
+}
+.services-list {
+  border-bottom: 1px solid var(--line);
+}
+.service-row {
+  border-top: 1px solid var(--line);
+}
+.service-row summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 24px;
+  gap: 24px;
+  align-items: center;
+  padding: 35px 0;
+}
+.service-number {
+  font-size: 57px;
+  letter-spacing: -0.07em;
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+.dot-field {
+  width: 110px;
+  height: 50px;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+.service-title {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.service-title > .label-type {
+  color: var(--muted);
+  font-size: 9px;
+}
+.service-title > span:last-child {
+  font-size: clamp(24px, 2.65vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+}
+.service-row summary:hover .service-title > span:last-child,
+.service-row[open] .disclosure-sign {
+  color: var(--accent);
+}
+.service-body {
+  padding: 0 0 40px;
+  margin-left: calc(50% + 12px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.service-body p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.service-body .service-output {
+  font-size: 12px;
+  color: var(--paper);
+  margin-top: 18px;
+}
+.service-body .tags {
+  margin-top: 25px;
+  font-size: 7px;
+  color: var(--muted);
+}
+.service-art {
+  min-height: 225px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #171a14;
+  position: relative;
+  color: var(--accent);
+}
+.service-art-label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font:
+    7px var(--font-mono),
+    monospace;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.direction-art {
+  position: absolute;
+  inset: 40px 15px 15px;
+  display: grid;
+  place-items: center;
+}
+.direction-art > i {
+  width: 115px;
+  height: 115px;
+  position: absolute;
+  border: 1px solid #b9f77c44;
+  border-radius: 50%;
+  transform: translateX(-24px);
+}
+.direction-art > i:nth-child(2) {
+  transform: translateX(24px);
+}
+.direction-art > i:nth-child(3) {
+  width: 66px;
+  height: 66px;
+  border-color: var(--accent);
+}
+.direction-art > span {
+  font-size: 67px;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  padding-bottom: 15px;
+}
+.direction-art > span > span {
+  font-size: 13px;
+  vertical-align: top;
+  padding-top: 15px;
+  display: inline-block;
+}
+.direction-art > div {
+  position: absolute;
+  bottom: 3px;
+  font:
+    7px var(--font-mono),
+    monospace;
+  color: var(--muted);
+}
+.product-art {
+  position: absolute;
+  inset: 48px 25px 18px;
+  display: grid;
+  grid-template-columns: 1fr 34px;
+  gap: 6px;
+}
+.product-art > div {
+  background: var(--accent);
+  color: var(--ink);
+  border-radius: 7px;
+  padding: 16px;
+}
+.product-art div > span {
+  font-size: 7px;
+}
+.product-art strong {
+  display: block;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 10px 0;
+}
+.product-art i {
+  display: inline-block;
+  width: 18%;
+  height: 4px;
+  border-radius: 2px;
+  background: #60744a;
+  margin-right: 4px;
+}
+.product-art > span {
+  display: grid;
+  place-items: center;
+  background: #b9f77c22;
+  border-radius: 7px;
+}
+.build-art {
+  position: absolute;
+  inset: 43px 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.build-art > div {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.build-art i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.build-art div > span {
+  color: var(--muted);
+  font-size: 7px;
+  margin-left: 7px;
+}
+.build-art pre {
+  font:
+    8px/1.75 var(--font-mono),
+    monospace;
+  padding: 10px 15px;
+  margin: 0;
+  color: var(--paper);
+}
+.build-art pre > span {
+  color: #b9f77c;
+}
+.build-art pre > b {
+  font-weight: 400;
+  color: #c4a5df;
+}
+.build-status {
+  display: block;
+  font:
+    7px var(--font-mono),
+    monospace;
+  padding-left: 15px;
+}
+.partner-art {
+  position: absolute;
+  inset: 65px 20px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 4px;
+  align-items: center;
+  text-align: center;
+}
+.partner-art > span {
+  font:
+    7px var(--font-mono),
+    monospace;
+  border: 1px solid #b9f77c44;
+  padding: 8px 3px;
+  border-radius: 30px;
+}
+.partner-art > i {
+  font-style: normal;
+}
+.partner-art b {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+  padding-top: 14px;
+}

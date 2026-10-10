@@ -1,0 +1,90 @@
+.process {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  padding-block: 80px 140px;
+}
+.process-intro {
+  position: sticky;
+  top: 130px;
+  align-self: start;
+}
+.process-intro > .label {
+  margin-bottom: 30px;
+}
+.process h2 {
+  font-size: clamp(40px, 4.7vw, 70px);
+}
+.process-intro > p:not(.label) {
+  color: var(--muted);
+  max-width: 340px;
+  font-size: 15px;
+  margin-top: 32px;
+}
+.process-seal {
+  width: 140px;
+  height: 140px;
+  margin-top: 38px;
+  position: relative;
+}
+.process-seal svg {
+  color: var(--line);
+  width: 140px;
+  height: 140px;
+}
+.process-seal span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  line-height: 1.1;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--ink);
+  margin: 38px;
+}
+.process-steps {
+  padding-left: 35px;
+  border-left: 1px solid var(--line);
+}
+.process-steps li {
+  padding: 0 0 48px;
+  position: relative;
+}
+.process-steps li + li {
+  padding-top: 35px;
+  border-top: 1px solid var(--line);
+}
+.process-steps li:last-child {
+  padding-bottom: 0;
+}
+.process-steps .label-type {
+  font-size: 8px;
+  color: var(--muted);
+}
+.process-steps h3 {
+  font-size: 30px;
+  margin-block: 18px 16px;
+}
+.process-steps p {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 400px;
+}
+.process-dot {
+  position: absolute;
+  left: -40px;
+  top: 1px;
+  width: 9px;
+  height: 9px;
+  background: var(--ink);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+}
+.process-steps li + li .process-dot {
+  top: 36px;
+}
+.process-steps li.revealed .process-dot {
+  background: var(--accent);
+}

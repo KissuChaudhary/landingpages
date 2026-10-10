@@ -1,0 +1,470 @@
+.page-intro {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+.page-intro .section-heading :is(h1, h2) {
+  font-size: clamp(42px, 5.7vw, 78px);
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.back-link svg {
+  width: 16px;
+  height: 16px;
+}
+.work-page {
+  padding-bottom: 110px;
+}
+.project-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+.project-filters button {
+  padding: 8px 17px;
+  font-size: 11px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 25px;
+}
+.project-filters button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.project-directory {
+  display: grid;
+  gap: 25px;
+}
+.project-page-intro {
+  padding-top: 50px;
+  padding-bottom: 55px;
+}
+.project-page-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 58px;
+}
+.project-page-title h1 {
+  font-size: clamp(70px, 10vw, 140px);
+  margin-top: 24px;
+}
+.project-page-title > p {
+  max-width: 350px;
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.project-page-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.project-story {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 70px;
+  padding-top: 90px;
+  padding-bottom: 60px;
+}
+.project-story aside ul {
+  margin-top: 27px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.project-story aside li {
+  margin-bottom: 12px;
+}
+.project-story article {
+  margin-bottom: 45px;
+}
+.project-story h2 {
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+.project-story p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 680px;
+}
+.brand-study {
+  height: 450px;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  color: #1c292f;
+}
+.brand-study-dark {
+  color: #f5efd6;
+}
+.study-label,
+.study-baseline {
+  font-size: 10px;
+}
+.study-wordmark {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  font-size: clamp(80px, 14vw, 200px);
+  letter-spacing: -0.08em;
+  font-weight: 500;
+}
+.wordmark-aevum {
+  font-family: Georgia, serif;
+  letter-spacing: 0.18em;
+  font-size: clamp(60px, 9vw, 125px);
+  text-transform: uppercase;
+}
+.wordmark-forma {
+  font-weight: 650;
+  letter-spacing: -0.075em;
+}
+.study-baseline {
+  display: flex;
+  justify-content: space-between;
+}
+.next-project {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.next-project .eyebrow {
+  margin-bottom: 28px;
+}
+.contact-page {
+  display: grid;
+  grid-template-columns: 0.85fr 1.3fr;
+  gap: clamp(50px, 8vw, 130px);
+  padding-block: 100px 120px;
+}
+.contact-intro .section-heading {
+  margin-bottom: 30px;
+}
+.contact-intro .section-heading :is(h1, h2) {
+  font-size: clamp(46px, 5.7vw, 78px);
+}
+.contact-intro > p {
+  color: var(--muted);
+  max-width: 310px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.contact-availability {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 40px;
+}
+.contact-form > label,
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.contact-form label > span {
+  color: var(--muted);
+  display: contents;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid #cfcfc6;
+  background: transparent;
+  border-radius: 5px;
+  padding: 13px 15px;
+  font-size: 12px;
+  color: var(--ink);
+}
+.contact-form select {
+  min-height: 47px;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #939389;
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.7;
+}
+.form-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 32px;
+}
+.form-foot > p {
+  max-width: 260px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.form-foot > p a {
+  border-bottom: 1px solid var(--line);
+}
+.form-foot .button {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.form-status {
+  border: 1px solid var(--line);
+  padding: 24px;
+  margin-top: 30px;
+  border-radius: 6px;
+}
+.form-status.empty {
+  display: none;
+}
+.form-status h3 {
+  font-size: 22px;
+}
+.form-status p {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.form-status > div {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 22px;
+}
+.form-status .text-link {
+  font-size: 11px;
+}
+.download-link {
+  font-size: 11px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: none;
+  padding: 0 0 5px;
+}
+.journal-page {
+  padding-bottom: 110px;
+}
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+.journal-card figure {
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 1.4;
+}
+.journal-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.journal-card:hover img {
+  transform: scale(1.04);
+}
+.journal-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 23px;
+}
+.journal-card h2 {
+  font-size: 28px;
+  margin-top: 19px;
+}
+.journal-card p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 18px 0 23px;
+}
+.journal-card .text-link {
+  font-size: 10px;
+}
+.article-page {
+  padding-block: 50px 110px;
+}
+.article-heading {
+  max-width: 800px;
+  margin: 60px auto 55px;
+}
+.article-heading h1 {
+  font-size: clamp(40px, 5.4vw, 76px);
+  margin-top: 25px;
+}
+.article-heading > p {
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 28px;
+  max-width: 600px;
+}
+.article-image {
+  width: 100%;
+  max-height: 680px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.article-copy {
+  max-width: 650px;
+  margin: 65px auto 0;
+  font-size: 16px;
+  line-height: 1.95;
+  color: #66665e;
+}
+.article-copy p {
+  margin-bottom: 28px;
+}
+.article-copy .text-link {
+  margin-top: 16px;
+  color: var(--ink);
+}
+.policy-page {
+  padding-block: 100px 120px;
+  max-width: 1000px;
+}
+.policy-copy {
+  max-width: 650px;
+}
+.policy-copy h2 {
+  font-size: 24px;
+  margin: 35px 0 17px;
+}
+.policy-copy p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.policy-copy a {
+  text-decoration: underline;
+}
+.missing-page {
+  padding-block: 120px;
+}
+@media (max-width: 760px) {
+  .page-intro {
+    padding-top: 60px;
+  }
+  .page-intro .section-heading :is(h1, h2) {
+    font-size: 40px;
+  }
+  .project-page-intro {
+    padding-top: 30px;
+    padding-bottom: 35px;
+  }
+  .project-page-title {
+    display: block;
+    margin-top: 40px;
+  }
+  .project-page-title h1 {
+    font-size: 83px;
+  }
+  .project-page-title > p {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+  .project-story {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-top: 45px;
+    padding-bottom: 25px;
+  }
+  .project-story aside ul {
+    display: flex;
+    gap: 5px 18px;
+    flex-wrap: wrap;
+  }
+  .project-story article {
+    margin-bottom: 34px;
+  }
+  .project-story h2 {
+    font-size: 27px;
+  }
+  .project-story p {
+    font-size: 13px;
+  }
+  .brand-study {
+    height: 280px;
+    padding: 22px;
+  }
+  .study-wordmark {
+    font-size: 22vw;
+  }
+  .wordmark-aevum {
+    font-size: 13vw;
+  }
+  .study-label,
+  .study-baseline {
+    font-size: 8px;
+  }
+  .next-project {
+    padding-block: 70px;
+  }
+  .contact-page {
+    grid-template-columns: 1fr;
+    padding-block: 60px 80px;
+    gap: 50px;
+  }
+  .contact-intro .section-heading :is(h1, h2) {
+    font-size: 50px;
+  }
+  .form-row {
+    gap: 14px;
+  }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    font-size: 16px;
+    padding-inline: 12px;
+  }
+  .contact-form label {
+    font-size: 10px;
+  }
+  .form-foot {
+    display: block;
+  }
+  .form-foot .button {
+    margin-top: 22px;
+  }
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+  .journal-card h2 {
+    font-size: 30px;
+  }
+  .article-heading {
+    margin-top: 40px;
+    margin-bottom: 33px;
+  }
+  .article-heading h1 {
+    font-size: 44px;
+  }
+  .article-heading > p {
+    font-size: 15px;
+  }
+  .article-copy {
+    margin-top: 35px;
+    font-size: 14px;
+  }
+  .policy-page {
+    padding-block: 60px 80px;
+  }
+}

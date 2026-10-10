@@ -1,0 +1,6 @@
+.not-found {
+  min-height: 70vh;
+}
+.not-found > .action {
+  margin-top: 32px;
+}

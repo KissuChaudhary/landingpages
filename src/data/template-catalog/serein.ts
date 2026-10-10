@@ -1,0 +1,61 @@
+import type { TemplateItem } from "../templates";
+import type { TemplateDetails } from "../template-details";
+
+export const sereinTemplate: TemplateItem = {
+  slug: "serein",
+  title: "Serein: Brand & Digital Studio",
+  category: "Landing Pages",
+  defaultTheme: "dark",
+  badge: "Creative Studio & Motion",
+  description: "Oversized monochrome typography, a softly moving silk backdrop and original campaign imagery for an independent studio. Stacked projects, expanding services and considered dark-to-light chapters lead to complete case studies, a journal and a working contact flow.",
+  tags: ["Creative Studio", "Brand Agency", "Scroll Motion", "Original Imagery", "Next.js 15"],
+  features: [
+    "Oversized Manrope wordmark and a locally shipped silk backdrop with WebGL material motion",
+    "A rotating project reel, three stacked portfolio cards and complete case study routes",
+    "Expanding service surfaces, four process steps, an orbit study and two engagement options",
+    "Configurable booking and form endpoints, complete email briefs, a journal and accessible disclosures",
+  ],
+  accentColor: "from-neutral-800 to-lime-200",
+  previewUrl: "/preview/serein",
+  standaloneUrl: "/demos/serein/index.html",
+  demoUrl: "/demo/serein",
+  detailUrl: "/template/serein",
+  thumbnailUrl: "/previews/card/serein.webp",
+};
+
+export const sereinDetails: TemplateDetails = {
+  name: "Serein",
+  kind: "Brand agency and creative studio landing page template",
+  summary: "A complete independent studio website with original positioning and campaign imagery. Large monochrome type, a softly moving silk study and stacked projects create a considered introduction to brand strategy, digital design and creative partnerships.",
+  bestFor: ["Independent brand and digital studios", "Creative agencies and art direction practices", "Designers with a carefully curated portfolio"],
+  design: "Manrope typography, near-black and neutral paper, a soft citron accent and fine structural rules. An oversized lowercase wordmark sits over original silk; a project reel leads into a framed studio statement, stacked project cards, dark service surfaces, a four-step process, a dimensional orbit, two engagement cards and a large closing wordmark.",
+  sections: [
+    { name: "Navigation and hero", detail: "A sticky black header, accessible expanding navigation, wordmark entrance, original silk with slow WebGL displacement and a controllable featured project reel." },
+    { name: "Studio and work", detail: "A framed studio statement, three principles and three project cards that stack and subtly shrink on desktop. Phones use normal document flow." },
+    { name: "Services", detail: "Four numbered service surfaces expand in place with coordinated imagery, deliverables and contact links that preselect the relevant service." },
+    { name: "Process and partnership", detail: "Four original process icons and steps, a CSS orbit study and a focused statement of the studio's working principles." },
+    { name: "Engagements and FAQ", detail: "Two clearly scoped engagement options, preselected contact destinations and native keyboard-accessible disclosures." },
+    { name: "Closing and footer", detail: "A second silk study, useful contact and resource destinations, an oversized brand signature and a remembered motion control." },
+    { name: "Portfolio", detail: "A filterable project directory, three full case studies, editable brand specimens and linked next projects." },
+    { name: "Contact and journal", detail: "Validated project briefs with configured JSON submission or complete email drafts and text downloads. Three original journal articles, editable policies and a missing-page state." },
+  ],
+  customizeIntro: "Start with site.config.ts for the brand, copy, services, fees, FAQs and destinations. Projects and articles live in their own small typed files.",
+  customize: [
+    { what: "Brand, metadata, services, process, plans and destinations", where: "site.config.ts" },
+    { what: "Portfolio images, case studies and deliverables", where: "data/projects.ts" },
+    { what: "Journal articles", where: "data/journal.ts" },
+    { what: "Palette, shared type and spacing", where: "styles/base.css" },
+    { what: "Section order and typography", where: "app/page.tsx and app/layout.tsx" },
+    { what: "Contact submission and email briefs", where: "components/ContactForm.tsx and lib/contact.ts" },
+    { what: "Silk motion and local original imagery", where: "lib/ribbon-shaders.ts, public/images/ and ASSETS.md" },
+  ],
+  fonts: ["Manrope"],
+  dependencies: ["next", "react", "react-dom"],
+  styling: "CSS",
+  images: "Four original AI-generated studies: silver audio hardware, an olive-glass fragrance campaign, sculptural architecture and translucent charcoal silk. All optimized WebP assets ship locally; marks, icons and the orbit are editable SVG and CSS.",
+  node: "20.9",
+  files: 67,
+  lines: 4903,
+  beforeLaunch: "Replace the fictional studio, projects, stories and fees. Set the email address, booking URL and optional contact endpoint; update your policies. The default contact flow prepares an email draft or downloads the visitor's complete brief, without claiming it was sent. Direct submission displays success only after the configured endpoint accepts the request.",
+  updated: "2026-10-10",
+};

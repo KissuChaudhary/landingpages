@@ -1,0 +1,109 @@
+.pricing {
+  padding-block: 50px 105px;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.price-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.price-top {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-size: 8px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.price-top > span:last-child {
+  color: var(--paper);
+}
+.price-card h3 {
+  font-size: 29px;
+  max-width: 230px;
+  min-height: 70px;
+}
+.price-card > p {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 240px;
+  min-height: 60px;
+  margin-top: 14px;
+}
+.price-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 33px 27px;
+  border-bottom: 1px solid var(--line);
+}
+.price-amount strong {
+  font-size: clamp(38px, 4.4vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.065em;
+}
+.price-amount .label-type {
+  color: var(--muted);
+  font-size: 8px;
+}
+.price-card ul {
+  padding-block: 25px 35px;
+  font-size: 12px;
+  display: grid;
+  gap: 14px;
+}
+.price-card li {
+  display: flex;
+  gap: 12px;
+}
+.price-card li > span {
+  color: var(--accent);
+}
+.price-card > .action {
+  margin-top: auto;
+  justify-content: stretch;
+}
+.price-card .action > span:first-child {
+  flex: 1;
+  padding-inline: 14px;
+}
+.price-featured {
+  background: var(--accent);
+  color: var(--ink);
+  border-color: var(--accent);
+}
+.price-featured .price-top,
+.price-featured > p,
+.price-featured .price-amount .label-type {
+  color: #3f532e;
+}
+.price-featured .price-top > span:last-child {
+  color: var(--ink);
+}
+.price-featured .price-amount {
+  border-color: #0b0c0a30;
+}
+.price-featured li > span {
+  color: var(--ink);
+}
+.price-badge {
+  position: absolute;
+  right: 20px;
+  top: 64px;
+  font-size: 7px;
+}
+.pricing-note {
+  color: var(--muted);
+  font-size: 8px;
+  line-height: 1.8;
+  max-width: 550px;
+  margin-top: 26px;
+}

@@ -1,0 +1,343 @@
+.partnership {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(40px, 7vw, 110px);
+  align-items: center;
+}
+.partnership-visual {
+  position: relative;
+  aspect-ratio: 1;
+  background: #e7e8e1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.orbit {
+  position: absolute;
+  inset: 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.orbit-core {
+  position: absolute;
+  width: 36%;
+  height: 36%;
+  left: 32%;
+  top: 31%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 33% 25%,
+    #c7c9b5 0,
+    #989b80 29%,
+    #494d3d 66%,
+    #22251e 100%
+  );
+}
+.orbit-ring {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  left: 12.5%;
+  top: 11.5%;
+  border: 1px solid #727762;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+.ring-one {
+  transform: rotateX(64deg) rotateY(15deg) rotateZ(-28deg);
+  animation: orbit-one 28s linear infinite;
+}
+.ring-two {
+  transform: rotateY(65deg) rotateZ(30deg);
+  animation: orbit-two 34s linear infinite;
+}
+.ring-three {
+  transform: rotateX(60deg) rotateY(-35deg) rotateZ(80deg);
+  animation: orbit-three 38s linear infinite;
+}
+.orbit-point {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  border: 1px solid #b3c753;
+  border-radius: 50%;
+  top: 29%;
+  left: 75%;
+}
+.orbit-caption {
+  position: absolute;
+  left: 30px;
+  bottom: 48px;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+.visual-coordinates {
+  position: absolute;
+  inset: auto 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #71736a;
+}
+.partnership-copy .section-heading {
+  margin-bottom: 27px;
+}
+.partnership-copy > p {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 400px;
+}
+.partnership-copy ul {
+  margin-top: 28px;
+}
+.partnership-copy li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+.partnership-copy li svg {
+  width: 14px;
+  height: 14px;
+  color: #778444;
+}
+.partnership-signature {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+.signature-mark {
+  width: 42px;
+  height: 42px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  padding-bottom: 5px;
+}
+.partnership-signature strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+}
+.partnership-signature > div > span {
+  font-size: 10px;
+  color: var(--muted);
+}
+@keyframes orbit-one {
+  to {
+    transform: rotateX(64deg) rotateY(15deg) rotateZ(332deg);
+  }
+}
+@keyframes orbit-two {
+  to {
+    transform: rotateY(65deg) rotateZ(390deg);
+  }
+}
+@keyframes orbit-three {
+  to {
+    transform: rotateX(60deg) rotateY(-35deg) rotateZ(440deg);
+  }
+}
+.pricing {
+  padding-top: 50px;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.pricing-card {
+  background: #eaeae4;
+  border: 1px solid #ddddd5;
+  border-radius: 12px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-dark {
+  background: #171717;
+  border-color: #171717;
+}
+.pricing-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pricing-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+}
+.pricing-card h3 {
+  font-size: clamp(32px, 3.3vw, 47px);
+  margin: 42px 0 21px;
+}
+.plan-description {
+  color: var(--muted);
+  max-width: 365px;
+  font-size: 13px;
+}
+.plan-price {
+  margin-top: 43px;
+  font-size: 29px;
+  letter-spacing: -0.04em;
+}
+.plan-cadence {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 7px;
+}
+.pricing-card ul {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.pricing-card li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.pricing-card li svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.6;
+}
+.pricing-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+.pricing-note {
+  text-align: center;
+  font-size: 10px;
+  color: var(--muted);
+  margin: 25px auto 0;
+  max-width: 600px;
+}
+.faq {
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(40px, 8vw, 130px);
+}
+.faq-heading .section-heading {
+  margin-bottom: 23px;
+}
+.faq-heading > p {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 280px;
+}
+.faq-heading .button {
+  font-size: 10px;
+  margin-top: 28px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--line);
+}
+.faq-item summary {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  padding-block: 23px;
+  font-size: 13px;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-number {
+  color: #95958d;
+  font-size: 9px;
+}
+.faq-item .plus {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+}
+.faq-item .plus::before,
+.faq-item .plus::after {
+  left: 6px;
+  right: 6px;
+  top: 11px;
+}
+.faq-item[open] .plus::after {
+  transform: rotate(0deg);
+}
+.faq-answer {
+  padding: 0 32px 25px 28px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.85;
+}
+.faq-answer p {
+  animation: answer-in 0.4s var(--ease);
+}
+@keyframes answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 760px) {
+  .partnership {
+    grid-template-columns: 1fr;
+    gap: 43px;
+    padding-top: 5px;
+  }
+  .partnership-visual {
+    aspect-ratio: 1.06;
+  }
+  .orbit-caption {
+    font-size: 17px;
+  }
+  .partnership-copy > p {
+    font-size: 13px;
+  }
+  .pricing {
+    padding-top: 0;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .pricing-card {
+    padding: 27px;
+  }
+  .pricing-card h3 {
+    font-size: 34px;
+    margin-top: 33px;
+  }
+  .plan-price {
+    margin-top: 33px;
+  }
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+  .faq-item summary {
+    font-size: 12px;
+  }
+}

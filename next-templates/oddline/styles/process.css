@@ -1,0 +1,139 @@
+.process {
+  background: #171a13;
+  border-block: 1px solid var(--line);
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 90px;
+  align-items: start;
+}
+.process-intro {
+  position: sticky;
+  top: 155px;
+}
+.process-intro > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 12px;
+  max-width: 350px;
+  margin-top: 28px;
+}
+.process-note {
+  display: inline-block;
+  margin-top: 48px;
+  color: var(--muted);
+  font-size: 9px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+.process-steps {
+  padding: 0 0 0 43px;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+.process-steps::before,
+.process-steps::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 17px;
+  bottom: 54px;
+  width: 1px;
+  background: var(--line);
+}
+.process-steps::after {
+  background: var(--accent);
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+}
+.process-steps > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 16px;
+  padding-block: 30px 54px;
+}
+.process-steps > li:first-child {
+  padding-top: 0;
+}
+.process-steps > li + li {
+  border-top: 1px solid var(--line);
+}
+.process-steps > li::before {
+  content: "";
+  position: absolute;
+  top: 42px;
+  left: -40px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #788261;
+  background: var(--bg);
+  border-radius: 50%;
+  z-index: 1;
+}
+.process-steps > li:first-child::before {
+  top: 11px;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.process-index {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--accent);
+  padding-top: 3px;
+}
+.process-steps h3 {
+  font-size: 28px;
+}
+.process-steps p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 18px;
+}
+.process-output {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 22px;
+  font-size: 9px;
+  color: #ced5bc;
+}
+.process-output svg {
+  color: var(--accent);
+}
+@media (max-width: 1000px) {
+  .process-grid {
+    gap: 45px;
+  }
+}
+@media (max-width: 760px) {
+  .process-grid {
+    display: block;
+  }
+  .process-intro {
+    position: static;
+  }
+  .process-note {
+    margin-top: 25px;
+  }
+  .process-steps {
+    margin-top: 55px;
+    padding-left: 34px;
+  }
+  .process-steps > li {
+    gap: 8px;
+    grid-template-columns: 25px 1fr;
+    padding-bottom: 40px;
+  }
+  .process-steps > li::before {
+    left: -31px;
+  }
+  .process-steps h3 {
+    font-size: 25px;
+  }
+  .process-steps::after {
+    transform: none;
+    opacity: 0.4;
+  }
+}

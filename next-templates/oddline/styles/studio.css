@@ -1,0 +1,144 @@
+.studio {
+  background: #191c14;
+  border-block: 1px solid var(--line);
+}
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: clamp(50px, 9vw, 150px);
+  align-items: center;
+}
+.studio-statement h2 {
+  font-size: clamp(38px, 4.8vw, 73px);
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+.studio-statement h2 span {
+  color: var(--ink);
+}
+[data-enhanced] .studio-statement h2 span {
+  color: color-mix(
+    in srgb,
+    var(--accent)
+      calc(clamp(0, (var(--read, 0) - var(--word, 0)) * 500, 1) * 100%),
+    #7b846c
+  );
+  transition: color 0.18s linear;
+}
+.studio-bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  margin-top: 40px;
+}
+.studio-bottom > p {
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 450px;
+}
+.studio-bottom > a {
+  justify-self: start;
+}
+.studio-note {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 27px;
+  border-radius: 3px;
+  transform: rotate(4deg);
+  aspect-ratio: 0.84;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.studio-note > span:first-child {
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+.studio-note > svg {
+  width: 65px;
+  margin-block: 34px 22px;
+}
+.studio-note > p {
+  font-family: var(--font-display);
+  font-size: 27px;
+  line-height: 1.13;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+.studio-note-signature {
+  margin-top: auto;
+  padding-top: 30px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: -0.04em;
+}
+.studio-principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 80px;
+}
+.studio-principles > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  padding-right: 28px;
+}
+.studio-principles > div + div {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+.studio-principles span {
+  font-size: 8px;
+  color: var(--accent);
+}
+.studio-principles p {
+  font-size: 11px;
+  line-height: 1.5;
+  max-width: 250px;
+}
+.studio-principles svg {
+  margin-left: auto;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+@media (max-width: 1000px) {
+  .studio-grid {
+    grid-template-columns: 1fr 225px;
+    gap: 45px;
+  }
+  .studio-note {
+    padding: 23px;
+  }
+  .studio-note > p {
+    font-size: 24px;
+  }
+}
+@media (max-width: 760px) {
+  .studio-grid {
+    display: block;
+  }
+  .studio-statement h2 {
+    font-size: clamp(35px, 8.5vw, 56px);
+  }
+  .studio-note {
+    width: 240px;
+    margin: 50px auto 0;
+  }
+  .studio-note > svg {
+    margin-block: 30px 20px;
+    width: 55px;
+  }
+  .studio-principles {
+    display: block;
+    margin-top: 60px;
+  }
+  .studio-principles > div {
+    padding: 19px 0;
+    border-left: 0 !important;
+  }
+  .studio-principles > div + div {
+    padding-left: 0;
+  }
+}

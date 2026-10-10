@@ -1,0 +1,160 @@
+.approach {
+  background: var(--ink);
+  color: var(--paper);
+}
+.approach > .wrapper > .eyebrow {
+  color: var(--lime);
+}
+.manifesto {
+  display: grid;
+  grid-template-columns: 2.3fr 1fr;
+  align-items: flex-end;
+  gap: 65px;
+  margin-top: 35px;
+  margin-bottom: 70px;
+}
+.manifesto h2 {
+  font-size: clamp(40px, 4.8vw, 68px);
+  max-width: 920px;
+  line-height: 1.12;
+}
+.manifesto [data-word] {
+  display: inline;
+}
+html[data-motion="on"] .manifesto [data-word] {
+  opacity: var(--word-opacity, 0.24);
+}
+.manifesto-aside > svg {
+  width: 68px;
+  height: 68px;
+  color: var(--lime);
+  margin-bottom: 25px;
+  transform: rotate(8deg);
+}
+.manifesto-aside p {
+  font-size: 14px;
+  color: #b5bcb2;
+  max-width: 280px;
+}
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #454b42;
+  gap: 50px;
+  padding-top: 32px;
+}
+.capability-number {
+  display: block;
+  color: var(--lime);
+  font-size: 11px;
+  margin-bottom: 32px;
+}
+.capabilities h3 {
+  font-size: 30px;
+  letter-spacing: -0.055em;
+  margin-bottom: 15px;
+}
+.capabilities article > p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #b5bcb2;
+  max-width: 290px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 26px;
+}
+.tags span {
+  font-size: 9px;
+  border: 1px solid #4c5348;
+  border-radius: 100px;
+  padding: 7px 12px;
+}
+.approach-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 55px;
+  padding-top: 22px;
+  border-top: 1px solid #454b42;
+  color: #b5bcb2;
+  font-size: 10px;
+}
+.approach-bottom span:first-child {
+  color: var(--lime);
+}
+@media (max-width: 1050px) {
+  .manifesto {
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+  }
+  .capabilities {
+    gap: 28px;
+  }
+  .capabilities h3 {
+    font-size: 26px;
+  }
+}
+@media (max-width: 760px) {
+  .manifesto {
+    display: block;
+    margin-top: 28px;
+    margin-bottom: 40px;
+  }
+  .manifesto h2 {
+    font-size: 39px;
+  }
+  .manifesto-aside {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 28px;
+  }
+  .manifesto-aside > svg {
+    width: 45px;
+    height: 45px;
+    margin: 4px 0 0;
+  }
+  .manifesto-aside p {
+    max-width: none;
+    font-size: 12px;
+  }
+  .capabilities {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 27px;
+  }
+  .capabilities article {
+    position: relative;
+    padding-left: 38px;
+  }
+  .capability-number {
+    position: absolute;
+    left: 0;
+    top: 7px;
+    font-size: 10px;
+  }
+  .capabilities h3 {
+    font-size: 29px;
+    margin-bottom: 10px;
+  }
+  .capabilities article > p {
+    max-width: 350px;
+    font-size: 12px;
+  }
+  .tags {
+    margin-top: 17px;
+  }
+  .approach-bottom {
+    margin-top: 36px;
+    font-size: 9px;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .approach-bottom > span:last-child {
+    max-width: 150px;
+    text-align: right;
+  }
+}

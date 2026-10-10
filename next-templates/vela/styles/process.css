@@ -1,0 +1,52 @@
+.process-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: center; }
+.process-tabs > button { width: 100%; display: flex; align-items: flex-start; gap: 18px; text-align: left; padding: 24px 18px; border: 1px solid transparent; border-bottom-color: var(--line); background: transparent; border-radius: 7px; transition: background .4s, border-color .4s; }
+.process-tabs > button[aria-selected="true"] { background: #f4f1eb; border-color: #e8e0d6; }
+.step-number { color: var(--subtle); font-size: 9px; padding-top: 3px; transition: color .3s; }
+.process-tabs > button[aria-selected="true"] .step-number { color: var(--coral); }
+.step-copy { display: flex; flex-direction: column; gap: 10px; max-width: 260px; }
+.step-copy b { font-size: 15px; font-weight: 500; letter-spacing: -.35px; }
+.step-copy > span { font-size: 12px; color: var(--muted); line-height: 1.9; }
+.process-tabs > button > svg { margin-left: auto; margin-top: 4px; color: var(--subtle); transition: transform .35s; }
+.process-tabs > button[aria-selected="true"] > svg { transform: rotate(45deg); color: var(--coral); }
+.process-preview { background: #f4f1eb; padding: 28px; border: 1px solid var(--line); border-radius: 10px; }
+.process-scene { border: 1px solid #e2d9cf; border-radius: 7px; overflow: hidden; background: #fff; }
+.process-scene-caption { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px; border-bottom: 1px solid var(--line); font-size: 8px; }
+.process-scene-caption > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+.process-scene-caption > span:last-child { font-size: 7px; color: var(--subtle); }
+.process-stage { display: flex; align-items: center; justify-content: center; flex-direction: column; min-height: 325px; padding: 30px 20px; }
+.source-tiles { display: flex; gap: 12px; width: 100%; justify-content: center; }
+.source-tiles > span { display: flex; align-items: center; flex-direction: column; gap: 12px; font-size: 6px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 13px 8px; flex: 1; max-width: 90px; }
+.source-tiles svg { color: #958171; }
+.process-connector { display: grid; place-items: center; height: 44px; color: #baab9f; }
+.process-account { width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
+.process-account .small-ui-title { padding-bottom: 10px; color: var(--muted); }
+.process-account > div { display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-block: 8px; }
+.process-account .avatar { height: 21px; width: 21px; font-size: 7px; }
+.process-account b { font-size: 8px; font-weight: 500; }
+.process-account > div > span:last-of-type { color: var(--subtle); font-size: 6px; margin-left: auto; }
+.process-account > div > svg { color: #8f9e81; }
+.stage-rail { display: flex; align-items: center; width: 100%; font-size: 7px; gap: 5px; margin-bottom: 25px; }
+.stage-rail > span { padding: 7px 9px; border: 1px solid var(--line); border-radius: 5px; white-space: nowrap; }
+.stage-rail > i { flex: 1; height: 1px; background: #d9cabb; }
+.stage-rail .selected-stage { background: #f6e6d6; border-color: #eed7c6; }
+.workflow-card { width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+.workflow-card > .small-ui-title { justify-content: flex-start; }
+.workflow-action { display: flex; flex-direction: column; gap: 11px; padding-left: 23px; position: relative; margin: 24px 0 21px; }
+.workflow-line { position: absolute; top: 0; bottom: 0; left: 5px; width: 1px; background: var(--line); }
+.workflow-action > span:not(.workflow-line) { display: flex; align-items: center; gap: 7px; padding: 8px; background: #f8f7f2; border: 1px solid #eeebe4; border-radius: 4px; font-size: 7px; }
+.workflow-action svg { color: #ad9685; }
+.workflow-card > small { color: var(--subtle); font-size: 7px; }
+.next-step-card { width: 100%; border: 1px solid var(--line); border-radius: 7px; padding: 18px; }
+.next-step-person { display: flex; gap: 9px; align-items: center; margin-top: 28px; }
+.next-step-person > div { display: flex; flex-direction: column; gap: 4px; }
+.next-step-person b { font-size: 10px; font-weight: 500; }
+.next-step-person small { font-size: 7px; color: var(--subtle); }
+.next-step-card > p { font-size: 10px; margin-top: 21px; line-height: 1.8; }
+.next-step-context { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 15px; }
+.next-step-context > span { display: flex; align-items: center; gap: 3px; font-size: 6px; padding: 4px; background: #f3f1e9; border-radius: 3px; color: #8d8479; }
+.next-step-footer { display: flex; align-items: center; justify-content: space-between; font-size: 7px; color: #8d9880; border-top: 1px solid var(--line); margin-top: 22px; padding-top: 13px; }
+.process-progress { height: 3px; background: #f4f1e8; }
+.process-progress > i { display: block; height: 100%; background: var(--coral); transition: width .6s var(--ease); }
+@media (max-width: 1100px) { .process-layout { gap: 24px; } .process-preview { padding: 18px; } .process-tabs > button { gap: 13px; padding-inline: 12px; } .step-copy b { font-size: 14px; } .process-stage { padding-inline: 15px; } }
+@media (max-width: 899px) { .process-layout { grid-template-columns: 1fr; } .process-tabs { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; } .process-tabs > button { flex-direction: column; } .process-tabs > button > svg { display: none; } .step-copy b { font-size: 12px; } .step-copy > span { font-size: 9px; } .process-preview { max-width: 570px; width: 100%; margin-inline: auto; padding: 24px; } .process-stage { min-height: 342px; padding-inline: 30px; } }
+@media (max-width: 640px) { .process-tabs { grid-template-columns: 1fr; gap: 4px; } .process-tabs > button { flex-direction: row; padding: 17px 12px; } .step-copy { max-width: 240px; } .step-copy > span { font-size: 10px; } .step-copy b { font-size: 14px; } .process-preview { padding: 15px; } .process-stage { padding: 23px 13px; min-height: 315px; } .process-scene-caption { padding: 12px; } .stage-rail { font-size: 6px; } .stage-rail > span { padding: 6px; } .process-account > div > span:last-of-type { font-size: 5px; } }

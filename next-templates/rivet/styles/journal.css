@@ -1,0 +1,102 @@
+.journal {
+  padding-block: 70px 110px;
+}
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.journal-art {
+  height: 245px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+.journal-art .art-wordmark {
+  font-size: 22px;
+  top: 22px;
+  left: 25px;
+}
+.journal-art .art-caption {
+  font-size: 25px;
+  left: 25px;
+  bottom: 45px;
+}
+.journal-art .art-corner {
+  font-size: 5px;
+}
+.journal-art .counter-app {
+  width: 85%;
+  top: 29%;
+  left: 18%;
+}
+.journal-art .counter-main {
+  padding: 14px;
+}
+.journal-art .counter-balance {
+  margin-top: 12px;
+}
+.journal-art .counter-balance strong {
+  font-size: 26px;
+}
+.journal-art .counter-chart {
+  height: 60px;
+  margin-top: 9px;
+}
+.journal-art .counter-transaction {
+  display: none;
+}
+.journal-art .orra-disc > span {
+  font-size: 6px;
+}
+.journal-art .orra-disc .orra-time {
+  font-size: 24px;
+}
+.journal-art .forma-title {
+  font-size: 52px;
+  left: 25px;
+  bottom: 60px;
+}
+.journal-art .forma-footer {
+  font-size: 5px;
+  left: 25px;
+  bottom: 22px;
+}
+.journal-card:hover .project-art {
+  transform: scale(1.045);
+}
+.journal-meta {
+  margin: 20px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 7px;
+}
+.journal h3 {
+  font-size: 25px;
+  max-width: 290px;
+}
+.journal-card > p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 15px;
+  max-width: 300px;
+}
+.journal-read {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 23px;
+  font-size: 8px;
+  color: var(--paper);
+}
+.journal-read svg {
+  width: 12px;
+  height: 12px;
+  color: var(--accent);
+  transition: transform 0.4s;
+}
+.journal-card:hover .journal-read svg {
+  transform: translate(3px, -3px);
+}

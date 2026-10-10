@@ -1,0 +1,276 @@
+@media (max-width: 1100px) {
+  .journal-art {
+    height: 210px;
+  }
+  .journal-meta {
+    flex-direction: column;
+    gap: 7px;
+  }
+  .case-art {
+    height: 600px;
+  }
+  .case-art .goodwell-circle > span {
+    font-size: 75px;
+  }
+  .case-art .counter-main {
+    padding: 25px;
+  }
+  .case-art .counter-balance strong {
+    font-size: 50px;
+  }
+}
+@media (max-width: 760px) {
+  .page-header {
+    padding-block: 65px 45px;
+  }
+  .page-header .label {
+    font-size: 8px;
+    margin-bottom: 30px;
+  }
+  .page-header h1 {
+    font-size: clamp(44px, 10.4vw, 70px);
+  }
+  .page-header > p {
+    font-size: 15px;
+    margin-top: 25px;
+  }
+  .about-photo {
+    height: 400px;
+  }
+  .about-photo > span {
+    left: 18px;
+    right: 18px;
+    bottom: 20px;
+    font-size: 7px;
+  }
+  .about-principles {
+    padding-block: 55px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .about-principles article {
+    gap: 20px;
+  }
+  .about-principles h2 {
+    font-size: 30px;
+  }
+  .about-principles p {
+    font-size: 14px;
+  }
+  .project-header-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    margin-top: 25px;
+  }
+  .project-header-bottom > p {
+    font-size: 14px;
+  }
+  .case-art {
+    height: 420px;
+  }
+  .case-art .art-wordmark {
+    font-size: 29px;
+  }
+  .case-art .art-corner {
+    font-size: 6px;
+  }
+  .case-art .art-caption {
+    font-size: 31px;
+    bottom: 55px;
+  }
+  .case-art .orra-orbit {
+    width: 65%;
+    top: 23%;
+    left: 24%;
+  }
+  .case-art .orra-disc .orra-time {
+    font-size: 32px;
+  }
+  .case-art .orra-disc > span {
+    font-size: 7px;
+  }
+  .case-art .counter-app {
+    width: 85%;
+    top: 27%;
+    left: 18%;
+    grid-template-columns: 35px 1fr;
+  }
+  .case-art .counter-main {
+    padding: 20px;
+  }
+  .case-art .counter-greeting {
+    font-size: 14px;
+  }
+  .case-art .counter-balance strong {
+    font-size: 31px;
+  }
+  .case-art .counter-balance small {
+    font-size: 8px;
+  }
+  .case-art .counter-chart {
+    height: 105px;
+  }
+  .case-art .counter-row,
+  .case-art .counter-transaction {
+    font-size: 7px;
+  }
+  .case-art .counter-transaction small {
+    font-size: 6px;
+  }
+  .case-art .forma-title {
+    font-size: clamp(48px, 16.9vw, 76px);
+  }
+  .case-art .forma-footer {
+    font-size: 6px;
+  }
+  .case-art .goodwell-circle {
+    top: 12%;
+    width: 78%;
+    right: -12%;
+  }
+  .case-art .goodwell-circle > span {
+    font-size: 50px;
+  }
+  .case-art .goodwell-card {
+    left: 8%;
+    right: 8%;
+    padding: 16px;
+    bottom: 13%;
+  }
+  .case-art .goodwell-card b {
+    font-size: 13px;
+  }
+  .case-art .goodwell-card > div > span {
+    font-size: 9px;
+  }
+  .case-art .goodwell-icon {
+    font-size: 23px;
+    padding: 12px;
+  }
+  .case-body {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-block: 55px;
+  }
+  .case-body h2 {
+    margin-top: 30px;
+    font-size: 65px;
+  }
+  .case-body article {
+    padding-block: 25px;
+  }
+  .case-body article p {
+    font-size: 14px;
+  }
+  .case-next {
+    padding-bottom: 65px;
+    gap: 22px;
+  }
+  .case-next h2 {
+    width: 100%;
+  }
+  .journal {
+    padding-block: 40px 70px;
+  }
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .journal-art {
+    height: 280px;
+  }
+  .journal-meta {
+    flex-direction: row;
+    font-size: 7px;
+  }
+  .journal h3 {
+    max-width: 340px;
+    font-size: 28px;
+  }
+  .journal-card > p {
+    max-width: 400px;
+    font-size: 13px;
+  }
+  .journal-art .counter-app {
+    width: 75%;
+  }
+  .journal-art .counter-chart {
+    height: 85px;
+  }
+  .journal-art .art-caption {
+    font-size: 30px;
+  }
+  .journal-art .forma-title {
+    font-size: 58px;
+  }
+  .article-cover {
+    height: 340px;
+  }
+  .article-cover .counter-app {
+    width: 85%;
+    left: 17%;
+    top: 30%;
+  }
+  .article-cover .counter-balance strong {
+    font-size: 31px;
+  }
+  .article-cover .counter-chart {
+    height: 90px;
+  }
+  .article-cover .forma-title {
+    font-size: 66px;
+  }
+  .article-cover .art-wordmark {
+    font-size: 27px;
+  }
+  .article-body {
+    margin-block: 40px 70px;
+  }
+  .article-body p {
+    font-size: 16px;
+  }
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding-block: 70px;
+  }
+  .contact h2 {
+    font-size: 42px;
+  }
+  .contact h1 {
+    font-size: 57px;
+  }
+  .contact-intro > p:not(.label) {
+    font-size: 14px;
+    margin-top: 24px;
+  }
+  .contact-availability {
+    margin-top: 26px;
+  }
+  .contact-location {
+    margin-top: 15px;
+  }
+  .form-row {
+    gap: 18px;
+  }
+  .inquiry-form label {
+    font-size: 7px;
+  }
+  .inquiry-form input,
+  .inquiry-form textarea {
+    font-size: 13px;
+  }
+  .inquiry-form select {
+    font-size: 11px;
+  }
+  .brief-result {
+    padding: 20px;
+  }
+}
+@media (max-width: 360px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

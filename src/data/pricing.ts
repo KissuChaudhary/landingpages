@@ -38,8 +38,15 @@ export const ALL_ACCESS_CHECKOUT = '';
 
 /** Hosted checkout link for each template, by catalog slug. */
 export const TEMPLATE_CHECKOUT: Record<string, string> = {
+  daymark: '',
+  serein: '',
+  rivet: '',
+  vela: '',
+  oddline: '',
+  goodfolk: '',
   notch: '',
   shear: '',
+  sylva: '',
   arclo: '',
   aster: '',
   daybreak: '',

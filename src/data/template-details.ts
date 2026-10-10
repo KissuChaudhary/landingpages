@@ -1,7 +1,14 @@
+import { goodfolkDetails } from './template-catalog/goodfolk';
 import { shearDetails } from './template-catalog/shear';
+import { daymarkDetails } from './template-catalog/daymark';
 import { arcloDetails } from './template-catalog/arclo';
+import { rivetDetails } from './template-catalog/rivet';
 import { asterDetails } from './template-catalog/aster';
+import { sereinDetails } from './template-catalog/serein';
+import { velaDetails } from './template-catalog/vela';
+import { sylvaDetails } from './template-catalog/sylva';
 import { notchDetails } from './template-catalog/notch';
+import { oddlineDetails } from './template-catalog/oddline';
 
 /**
  * Long-form content for each template's detail page. Everything here is taken from the template's own
@@ -43,8 +50,15 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  oddline: oddlineDetails,
+  goodfolk: goodfolkDetails,
+  daymark: daymarkDetails,
   shear: shearDetails,
   notch: notchDetails,
+  serein: sereinDetails,
+  rivet: rivetDetails,
+  vela: velaDetails,
+  sylva: sylvaDetails,
   aster: asterDetails,
   arclo: arcloDetails,
   daybreak: {

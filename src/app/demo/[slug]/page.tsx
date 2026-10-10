@@ -112,7 +112,7 @@ export default function DemoPage({ params }: DemoPageProps) {
             onLoad={() => setIsLoading(false)}
             className="h-full w-full border-0 bg-white"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            sandbox={`allow-scripts allow-same-origin allow-forms allow-popups allow-modals${['stillform', 'prism', 'patch', 'relay', 'index', 'conduit', 'daybreak', 'arclo', 'aster'].includes(template.slug) ? ' allow-downloads' : ''}`}
+            sandbox={`allow-scripts allow-same-origin allow-forms allow-popups allow-modals${['stillform', 'prism', 'patch', 'relay', 'index', 'conduit', 'daybreak', 'arclo', 'aster', 'sylva', 'vela', 'rivet', 'serein', 'daymark'].includes(template.slug) ? ' allow-downloads' : ''}`}
           />
         </div>
       </main>

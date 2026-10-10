@@ -1,0 +1,144 @@
+.project-header-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+.project-header-bottom > p {
+  max-width: 430px;
+  font-size: 16px;
+  color: var(--muted);
+}
+.project-header-bottom .tags {
+  color: var(--muted);
+}
+.case-art {
+  position: relative;
+  height: 700px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.case-art .art-wordmark {
+  font-size: 48px;
+}
+.case-art .art-corner {
+  font-size: 10px;
+}
+.case-art .art-caption {
+  font-size: 67px;
+  bottom: 80px;
+}
+.case-art .orra-orbit {
+  width: 46%;
+  left: 40%;
+  top: 7%;
+}
+.case-art .orra-disc .orra-time {
+  font-size: 68px;
+}
+.case-art .orra-disc > span {
+  font-size: 14px;
+}
+.case-art .counter-app {
+  width: 58%;
+  left: 31%;
+  grid-template-columns: 75px 1fr;
+  top: 16%;
+}
+.case-art .counter-main {
+  padding: 40px;
+}
+.case-art .counter-greeting {
+  font-size: 26px;
+}
+.case-art .counter-balance strong {
+  font-size: 64px;
+}
+.case-art .counter-balance small {
+  font-size: 12px;
+}
+.case-art .counter-chart {
+  height: 210px;
+}
+.case-art .counter-row,
+.case-art .counter-transaction {
+  font-size: 12px;
+}
+.case-art .counter-transaction small {
+  font-size: 10px;
+}
+.case-art .forma-title {
+  font-size: 130px;
+}
+.case-art .forma-footer {
+  font-size: 11px;
+}
+.case-art .goodwell-circle {
+  width: 53%;
+  top: -14%;
+}
+.case-art .goodwell-circle > span {
+  font-size: 96px;
+}
+.case-art .goodwell-card {
+  left: 18%;
+  right: 18%;
+  padding: 36px;
+}
+.case-art .goodwell-card b {
+  font-size: 26px;
+}
+.case-art .goodwell-card > div > span {
+  font-size: 16px;
+}
+.case-art .goodwell-icon {
+  font-size: 50px;
+  padding: 22px;
+}
+.case-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  padding-block: 90px;
+}
+.case-body h2 {
+  margin-block: 40px 30px;
+  font-size: 80px;
+}
+.case-body h2 > span {
+  font-size: 25px;
+  vertical-align: top;
+}
+.case-body ul {
+  font-size: 12px;
+  color: var(--muted);
+  display: grid;
+  gap: 14px;
+}
+.case-body article {
+  border-top: 1px solid var(--line);
+  padding-block: 30px;
+}
+.case-body article h3 {
+  font-size: 27px;
+  margin-bottom: 20px;
+}
+.case-body article p {
+  color: var(--muted);
+  font-size: 16px;
+}
+.case-next {
+  padding-block: 35px 90px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+.case-next > .label {
+  width: 100%;
+}
+.case-next h2 {
+  margin-right: auto;
+}

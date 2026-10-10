@@ -1,0 +1,29 @@
+.navigation { position: absolute; z-index: 30; top: 0; inset-inline: 0; height: 86px; color: #fff; }
+.nav-inner { width: calc(100% - 112px); max-width: 1184px; margin-inline: auto; height: 100%; display: flex; justify-content: space-between; align-items: center; }
+.desktop-nav { display: flex; align-items: center; gap: 29px; font-size: 13px; font-weight: 600; }
+.desktop-nav > a { position: relative; padding-block: 10px; }
+.desktop-nav > a::after { content: ""; position: absolute; bottom: 4px; left: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+.desktop-nav > a:hover::after { transform: scaleX(1); }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-actions .button { min-height: 41px; font-size: 11px; gap: 15px; }
+.nav-actions .button-icon { width: 24px; height: 24px; }
+.menu-toggle { display: none; width: 36px; height: 36px; padding: 7px; background: transparent; color: inherit; }
+.mobile-nav[hidden] { display: none; }
+.mobile-nav { background: var(--paper); color: var(--ink); border-block: 1px solid var(--line); padding: 18px 24px; }
+.mobile-nav > a { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.mobile-nav > a:last-child { border-bottom: 0; }
+.navigation.is-scrolled { position: fixed; height: 68px; color: var(--ink); background: var(--paper); border-bottom: 1px solid var(--line); animation: nav-enter .4s var(--ease); --mark-cut: var(--paper); }
+.navigation.is-scrolled .brand-mark { color: var(--coral); }
+@keyframes nav-enter { from { transform: translateY(-100%); } to { transform: none; } }
+@media (max-width: 1000px) { .nav-inner { width: calc(100% - 72px); } .desktop-nav { gap: 20px; } }
+@media (max-width: 740px) {
+  .navigation { height: 74px; }
+  .nav-inner { width: calc(100% - 48px); }
+  .brand { font-size: 25px; }
+  .brand-mark { width: 27px; height: 27px; }
+  .desktop-nav { display: none; }
+  .menu-toggle { display: block; }
+  .navigation.is-open { color: var(--ink); background: var(--paper); --mark-cut: var(--paper); }
+  .navigation.is-open .brand-mark { color: var(--coral); }
+  .nav-actions .button { display: none; }
+}

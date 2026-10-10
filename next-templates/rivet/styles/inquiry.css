@@ -1,0 +1,206 @@
+.contact {
+  padding-block: 110px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+}
+.contact-intro > .label {
+  margin-bottom: 30px;
+}
+.contact h2 {
+  font-size: clamp(40px, 4.5vw, 66px);
+}
+.contact h1 {
+  font-size: clamp(50px, 6.5vw, 94px);
+}
+.contact-intro > p:not(.label) {
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 30px;
+  max-width: 340px;
+}
+.contact-availability {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 8px;
+}
+.contact-availability > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.contact-location {
+  display: block;
+  color: var(--muted);
+  margin-top: 24px;
+  font-size: 8px;
+}
+.contact-intro > .action {
+  margin-top: 25px;
+}
+.inquiry-form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.inquiry-form fieldset:disabled {
+  opacity: 0.6;
+}
+.inquiry-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font:
+    8px var(--font-mono),
+    monospace;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+.inquiry-form input,
+.inquiry-form textarea,
+.inquiry-form select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--paper);
+  width: 100%;
+  min-width: 0;
+  padding: 8px 0 15px;
+  border-radius: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: -0.015em;
+}
+.inquiry-form input::placeholder,
+.inquiry-form textarea::placeholder {
+  color: #72776a;
+  opacity: 1;
+}
+.inquiry-form textarea {
+  resize: vertical;
+}
+.inquiry-form select {
+  padding-right: 20px;
+  appearance: auto;
+  font-size: 12px;
+}
+.inquiry-form select option {
+  background: var(--panel);
+}
+.inquiry-form :is(input, textarea, select):focus {
+  border-bottom-color: var(--accent);
+}
+.form-honey {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 16px 20px;
+  font-size: 13px;
+  transition:
+    color 0.3s,
+    background 0.3s;
+}
+.form-submit svg {
+  width: 17px;
+  height: 17px;
+  color: var(--accent);
+}
+.form-submit:hover {
+  color: var(--ink);
+  background: var(--accent);
+}
+.form-submit:hover svg {
+  color: var(--ink);
+}
+.form-privacy {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+.form-privacy a {
+  color: var(--paper);
+  white-space: nowrap;
+}
+.form-status:not(:empty) {
+  padding-top: 22px;
+  color: var(--accent);
+  font-size: 13px;
+}
+.form-status .form-error {
+  color: #f9c3ad;
+}
+.brief-result {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 25px;
+}
+.brief-result > .label-type {
+  color: var(--muted);
+  font-size: 8px;
+}
+.brief-result h3 {
+  margin-block: 15px;
+}
+.brief-result p {
+  color: var(--muted);
+  font-size: 12px;
+}
+.brief-result pre {
+  font:
+    10px/1.7 var(--font-mono),
+    monospace;
+  padding: 20px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border-block: 1px solid var(--line);
+  margin-block: 20px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.brief-result > div {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.brief-result :is(button, a) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 11px;
+}
+.brief-result svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+.brief-result .brief-note {
+  font-size: 10px;
+  margin-top: 15px;
+}

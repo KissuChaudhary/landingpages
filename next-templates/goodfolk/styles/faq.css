@@ -1,0 +1,96 @@
+
+.faq {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 80px;
+  padding-top: 0;
+}
+.faq .eyebrow {
+  margin-bottom: 26px;
+}
+.faq > div:first-child > p:last-child {
+  margin-top: 30px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.faq a {
+  display: inline-block;
+  color: var(--ink);
+  margin-top: 4px;
+  border-bottom: 1px solid var(--ink);
+}
+.faq details {
+  border-top: 1px solid var(--line);
+}
+.faq details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  cursor: pointer;
+  list-style: none;
+  padding-block: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary > span {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.faq summary > span::before,
+.faq summary > span::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 11px;
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+}
+.faq summary > span::after {
+  transform: rotate(90deg);
+  transition: transform 0.3s;
+}
+.faq details[open] summary > span::after {
+  transform: rotate(0);
+}
+.faq details > p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+  padding: 0 40px 24px 0;
+  max-width: 570px;
+}
+.faq details[open] > p {
+  animation: menu-in 0.3s var(--ease);
+}
+@media (max-width: 1050px) {
+  .faq {
+    gap: 50px;
+  }
+}
+@media (max-width: 760px) {
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .faq > div:first-child > p:last-child {
+    margin-top: 20px;
+  }
+  .faq summary {
+    font-size: 13px;
+    padding-block: 20px;
+  }
+  .faq details > p {
+    font-size: 12px;
+  }
+}

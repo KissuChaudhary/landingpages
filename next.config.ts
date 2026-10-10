@@ -31,6 +31,12 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async rewrites() {
+    return [
+      { source: '/demos/vela', destination: '/demos/vela/index.html' },
+      { source: '/demos/vela/contact', destination: '/demos/vela/contact.html' },
+    ];
+  },
   async redirects() {
     return Object.entries(RENAMED_TEMPLATES).flatMap(([from, to]) =>
       ['template', 'demo', 'preview'].map((route) => ({
