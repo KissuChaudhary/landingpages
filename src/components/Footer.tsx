@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react';
+import { LogoMark } from '@/components/site/Logo';
 import { TEMPLATES } from '@/data/templates';
 import { TEMPLATE_DETAILS } from '@/data/template-details';
 import { SITE_NAME } from '@/data/site';
@@ -46,9 +46,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div className="col-span-2 md:col-span-1">
           <Link href="/" className="inline-flex items-center" aria-label={`${SITE_NAME} home`}>
-            <span className="mr-2 flex size-6 items-center justify-center rounded-full bg-primary text-white">
-              <Sparkles className="size-3.5" aria-hidden="true" />
-            </span>
+            <LogoMark size={26} className="mr-2" />
             <span className="text-[16px] font-semibold tracking-tight text-[#181925]">
               {SITE_NAME}
               <span className="text-primary">.</span>

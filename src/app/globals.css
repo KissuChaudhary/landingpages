@@ -114,44 +114,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Home: the hero canvas ──────────────────────────────────────────────────
- * A hairline grid whose vertical lines run through the page's centre, rulers with zero at the centre, and two guides
- * that follow the pointer (HeroCanvas). */
-.hero-grid {
-  background-image:
-    linear-gradient(to right, rgb(24 25 37 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(24 25 37 / 0.05) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-position: calc(50% + 32px) 24px;
-  -webkit-mask-image: radial-gradient(ellipse 58% 64% at 50% 30%, #000 22%, transparent 76%);
-  mask-image: radial-gradient(ellipse 58% 64% at 50% 30%, #000 22%, transparent 76%);
+/* ── Home: the hero backdrop ───────────────────────────────────────────────
+ * A soft wash from the top and concentric hairline squircles (the logo's shape) that open out from the headline. */
+.hero-wash {
+  background:
+    radial-gradient(ellipse 52% 46% at 50% 0%, rgb(48 93 222 / 0.11), transparent 72%),
+    radial-gradient(ellipse 34% 30% at 50% 36%, rgb(48 93 222 / 0.05), transparent 70%);
 }
-.hero-ruler-x {
-  background-color: rgb(255 255 255 / 0.9);
-  border-bottom: 1px solid rgb(0 0 0 / 0.06);
-  background-image:
-    linear-gradient(to right, rgb(24 25 37 / 0.2) 1px, transparent 1px),
-    linear-gradient(to right, rgb(24 25 37 / 0.11) 1px, transparent 1px);
-  background-size: 64px 9px, 8px 4px;
-  background-repeat: repeat-x;
-  background-position: calc(50% + 32px) 100%, calc(50% + 4px) 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+.hero-rings {
+  -webkit-mask-image: radial-gradient(ellipse 60% 62% at 50% 34%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 60% 62% at 50% 34%, #000 30%, transparent 78%);
 }
-.hero-ruler-y {
-  background-color: rgb(255 255 255 / 0.9);
-  border-right: 1px solid rgb(0 0 0 / 0.06);
-  background-image:
-    linear-gradient(to bottom, rgb(24 25 37 / 0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(24 25 37 / 0.11) 1px, transparent 1px);
-  background-size: 9px 64px, 4px 8px;
-  background-repeat: repeat-y;
-  background-position: 100% 0, 100% 0;
-  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
-  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+.hero-ring {
+  position: absolute; left: 50%; top: 318px;
+  border: 1px solid rgb(48 93 222 / calc(0.2 - var(--i) * 0.022));
+  transform: translate(-50%, -50%);
+  animation: hero-ring 9s cubic-bezier(0.45, 0, 0.55, 1) calc(var(--i) * -1.1s) infinite;
 }
-.hero-guide { opacity: 0; transition: opacity 0.25s ease; will-change: transform; }
-.hero-canvas[data-guides="on"] .hero-guide { opacity: 1; }
+@keyframes hero-ring {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.035); }
+}
+@media (prefers-reduced-motion: reduce) { .hero-ring { animation: none; } }
+@media (max-width: 640px) { .hero-ring { top: 250px; } }
 
 /* The stack strip: one quiet ink at rest, each mark in its own colour on hover. */
 .stack-item svg { color: #52525b; transition: color 0.3s ease; }

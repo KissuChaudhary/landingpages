@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Check, Sparkles } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
+import { LogoMark } from '@/components/site/Logo';
 import { TEMPLATES } from '@/data/templates';
 import { primaryButton, secondaryButton } from '@/components/home/buttons';
 
@@ -70,9 +71,7 @@ export function CtaBanner() {
         />
 
         <div className="relative flex flex-col items-center px-6 py-24 text-center sm:py-32">
-          <span className="flex size-11 items-center justify-center rounded-full bg-primary text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
-            <Sparkles className="size-5" aria-hidden="true" />
-          </span>
+          <LogoMark size={52} />
           <h2 className="mt-7 max-w-2xl text-balance text-[34px] font-medium leading-[1.05] tracking-[-0.045em] text-[#181925] sm:text-[52px]">
             Your next launch, <span className="text-primary">already finished.</span>
           </h2>

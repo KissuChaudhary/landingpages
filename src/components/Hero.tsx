@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, Blocks, Check } from 'lucide-react';
 import HeroWord from '@/components/HeroWord';
 import HeroWall from '@/components/HeroWall';
-import HeroCanvas from '@/components/home/HeroCanvas';
+import HeroBackdrop from '@/components/home/HeroBackdrop';
 import MeasuredHeading from '@/components/home/MeasuredHeading';
 import { NextIcon, ReactIcon, ShadcnIcon, TailwindIcon, TypeScriptIcon } from '@/components/home/BrandIcons';
 import { TEMPLATES } from '@/data/templates';
@@ -29,7 +29,7 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden pb-6 pt-16 sm:pt-24">
-      <HeroCanvas />
+      <HeroBackdrop />
 
       <div className="relative mx-auto max-w-5xl px-5 text-center sm:px-6">
         {newest && newestName && (

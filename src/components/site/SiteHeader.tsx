@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { ArrowRight, Search, Sparkles } from 'lucide-react';
+import { ArrowRight, Search } from 'lucide-react';
+import { LogoMark } from '@/components/site/Logo';
 import { CommandPalette, type CommandItem } from '@/ui-library/registry/command-palette';
 import { SITE_NAME } from '@/data/site';
 import type { SearchEntry } from './nav-data';
@@ -64,9 +65,7 @@ export default function SiteHeader({ search }: { search: SearchEntry[] }) {
     >
       <div className="mx-auto flex h-14 w-full max-w-[1440px] items-center gap-6 px-4 sm:px-6">
         <Link href="/" className={`flex shrink-0 items-center rounded-md ${FOCUS}`} aria-label={`${SITE_NAME} home`}>
-          <span className="mr-2 flex size-6 items-center justify-center rounded-full bg-primary text-white">
-            <Sparkles className="size-3.5" aria-hidden="true" />
-          </span>
+          <LogoMark size={26} className="mr-2" />
           <span className="text-[16px] font-semibold tracking-tight text-[#181925]">
             {SITE_NAME}
             <span className="text-primary">.</span>
