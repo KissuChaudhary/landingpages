@@ -1,0 +1,242 @@
+.closing {
+  position: relative;
+  overflow: hidden;
+  padding-block: 110px 85px;
+  background: #edf2ff;
+}
+.closing-copy {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.closing-copy .eyebrow {
+  justify-content: center;
+}
+.closing-title {
+  font-size: clamp(40px, 5vw, 74px);
+  margin-top: 26px;
+}
+.closing-copy > div > p:not(.eyebrow) {
+  margin-top: 23px;
+  color: var(--quiet);
+  font-size: 16px;
+}
+.closing-sculpture {
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  right: -400px;
+  top: -50px;
+  opacity: 0.25;
+}
+.closing-coordinate {
+  display: block;
+  position: relative;
+  font-family: var(--font-mono);
+  color: #8e9dc0;
+  font-size: 7px;
+  text-align: center;
+  margin-top: 60px;
+}
+.signup {
+  width: min(100%, 490px);
+  margin: 34px auto 0;
+}
+.signup-form {
+  display: flex;
+  gap: 8px;
+  border: 1px solid #cbd6ee;
+  border-radius: 99px;
+  background: white;
+  padding: 7px;
+}
+.signup-form input {
+  border: 0;
+  outline: none;
+  min-width: 0;
+  width: 100%;
+  background: transparent;
+  padding-left: 17px;
+  font-size: 12px;
+  color: var(--ink);
+}
+.signup-form input::placeholder {
+  color: #8a96aa;
+}
+.signup-form:focus-within {
+  border-color: var(--blue);
+}
+.signup-form button {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--blue);
+  color: white;
+  border-radius: 99px;
+  padding: 12px 15px;
+  font-size: 11px;
+}
+.signup-icon {
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+}
+.signup-hint {
+  font-size: 10px;
+  color: var(--quiet);
+  min-height: 17px;
+  margin-top: 13px;
+}
+.signup-error {
+  border-color: #cf5866;
+}
+.signup-success button {
+  background: var(--blue-dark);
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+.draw-check path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: check-draw 500ms var(--ease) forwards;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.footer {
+  padding-block: 65px 23px;
+  overflow: hidden;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.footer-top > div > p {
+  font-size: 11px;
+  color: var(--quiet);
+  margin-top: 9px;
+}
+.footer-top nav {
+  display: flex;
+  gap: 31px;
+  font-size: 11px;
+  color: var(--quiet);
+  padding-top: 11px;
+}
+.footer-top nav a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer-top nav a:hover {
+  color: var(--blue);
+}
+.footer-word {
+  display: flex;
+  align-items: baseline;
+  font-size: clamp(100px, 21.3vw, 315px);
+  color: var(--blue);
+  font-weight: 530;
+  letter-spacing: -0.075em;
+  line-height: 1.1;
+  padding-top: 43px;
+}
+.footer-word > span {
+  display: inline-block;
+  transform: translateY(calc((1 - var(--e, 0)) * (80px + var(--i) * 20px)))
+    skewY(calc((1 - var(--e, 0)) * -8deg));
+  opacity: calc(0.3 + var(--e, 0) * 0.7);
+}
+.footer-word .footer-period {
+  font-size: 0.6em;
+  margin-left: 0.2em;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 8px;
+  color: var(--quiet);
+}
+.footer-bottom > span:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: 6px;
+}
+.footer-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+@media (max-width: 900px) {
+  .footer-top nav {
+    gap: 18px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .closing {
+    padding-block: 75px 55px;
+  }
+  .closing-title {
+    font-size: 39px;
+  }
+  .closing-copy > div > p:not(.eyebrow) {
+    font-size: 13px;
+  }
+  .closing-coordinate {
+    font-size: 6px;
+    margin-top: 43px;
+  }
+  .signup-form {
+    padding: 5px;
+  }
+  .signup-form input {
+    padding-left: 12px;
+    font-size: 10px;
+  }
+  .signup-form button {
+    font-size: 9px;
+    gap: 10px;
+    padding: 12px;
+  }
+  .signup-hint {
+    font-size: 9px;
+  }
+  .footer {
+    padding-top: 40px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .footer-top nav {
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 9px;
+    padding-top: 0;
+  }
+  .footer-word {
+    font-size: 22vw;
+    padding-top: 30px;
+  }
+  .footer-bottom > span:nth-child(2) {
+    display: none;
+  }
+}

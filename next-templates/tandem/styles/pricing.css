@@ -1,0 +1,148 @@
+.pricing {
+  background: var(--cloud);
+}
+.pricing-switch {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  margin-top: 48px;
+}
+.plan {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: white;
+}
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+.plan h3 {
+  font-size: 25px;
+  letter-spacing: -0.035em;
+}
+.plan-header > span {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  border: 1px solid #ffffff5c;
+  padding: 5px 7px;
+  border-radius: 99px;
+}
+.plan-description {
+  font-size: 12px;
+  margin-top: 9px;
+  color: var(--quiet);
+  min-height: 38px;
+}
+.plan-price {
+  margin-top: 26px;
+  min-height: 100px;
+}
+.plan-price > strong {
+  font-size: 44px;
+  font-weight: 440;
+  letter-spacing: -0.045em;
+}
+.plan-price > p {
+  font-size: 12px;
+  color: var(--quiet);
+  margin-top: 5px;
+}
+.plan .button {
+  margin-top: 22px;
+  width: 100%;
+}
+.plan ul {
+  list-style: none;
+  margin: 25px 0 0;
+  padding: 26px 0 0;
+  border-top: 1px solid var(--line);
+}
+.plan li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 13px;
+}
+.plan li svg {
+  color: var(--blue);
+}
+.plan-bottom {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  color: var(--quiet);
+  margin-top: auto;
+  padding-top: 25px;
+}
+.plan-featured {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+  --muted-foreground: #ffffffa8;
+  --foreground: white;
+}
+.plan-featured .plan-description,
+.plan-featured .plan-bottom {
+  color: #ffffffa8;
+}
+.plan-featured li svg {
+  color: #fff;
+}
+.plan-featured ul {
+  border-color: #ffffff3d;
+}
+.pricing-note {
+  text-align: center;
+  color: var(--quiet);
+  font-size: 9px;
+  margin-top: 26px;
+}
+@media (max-width: 1000px) {
+  .plan {
+    padding: 24px;
+  }
+  .plan-header > span {
+    font-size: 5px;
+  }
+  .plan li {
+    font-size: 10px;
+  }
+}
+@media (max-width: 800px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  .plan {
+    padding: 30px;
+  }
+  .plan li {
+    font-size: 12px;
+  }
+  .plan-description {
+    min-height: 0;
+  }
+}
+@media (max-width: 600px) {
+  .pricing-grid {
+    margin-top: 30px;
+  }
+  .plan {
+    padding: 26px;
+  }
+  .pricing-note {
+    font-size: 8px;
+  }
+}

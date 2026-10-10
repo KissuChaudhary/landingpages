@@ -1,0 +1,121 @@
+/* Entrances are opt-in after JS boots; the full page is readable without it. */
+html:not(.js) .js-stat { display: none; }
+html:not(.js) .integration-tool { opacity: 1; transform: translate(-50%, -50%); }
+html:not(.js) .integration-wires path { stroke-dashoffset: 0; }
+.reveal-word {
+  display: inline-block;
+  font-variation-settings: "wdth" 100;
+}
+.js [data-reveal="wait"] .reveal-word {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateY(0.3em);
+  font-variation-settings: "wdth" 120;
+}
+[data-reveal="in"] .reveal-word {
+  transition:
+    opacity 650ms var(--ease) calc(var(--base, 0ms) + var(--i) * 30ms),
+    filter 650ms var(--ease) calc(var(--base, 0ms) + var(--i) * 30ms),
+    transform 700ms var(--ease) calc(var(--base, 0ms) + var(--i) * 30ms),
+    font-variation-settings 800ms var(--ease)
+      calc(var(--base, 0ms) + var(--i) * 30ms);
+}
+.js .fade-up[data-reveal="wait"] {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.fade-up[data-reveal="in"] {
+  transition:
+    opacity 700ms var(--ease) var(--delay, 0ms),
+    transform 900ms var(--ease) var(--delay, 0ms);
+}
+.hero-line {
+  animation: hero-line-in 1100ms var(--ease) both;
+}
+.hero-line:nth-child(2) {
+  animation-delay: 100ms;
+}
+.hero-art {
+  animation: hero-art-in 1400ms var(--ease) 180ms both;
+}
+@keyframes hero-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.2em);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes hero-art-in {
+  from {
+    opacity: 0;
+    transform: scale(0.87) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes ui-col-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+    filter: none;
+  }
+}
+@keyframes ui-col-out {
+  from {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .js [data-reveal="wait"] .reveal-word,
+  .js .fade-up[data-reveal="wait"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    font-variation-settings: "wdth" 100;
+  }
+  .workspace-frame,
+  .footer-word > span {
+    transform: none;
+    opacity: 1;
+  }
+  .integration-wires path {
+    stroke-dashoffset: 0;
+  }
+  .integration-wires circle {
+    display: none;
+  }
+  .integration-tool {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  .draw-check path {
+    stroke-dashoffset: 0;
+  }
+}

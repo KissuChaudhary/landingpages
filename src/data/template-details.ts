@@ -1,3 +1,4 @@
+import { tandemDetails } from './template-catalog/tandem';
 import { offscriptDetails } from './template-catalog/offscript';
 import { plumbDetails } from './template-catalog/plumb';
 import { inlayDetails } from './template-catalog/inlay';
@@ -58,6 +59,7 @@ const PLACEHOLDERS =
   'The brand, customers, numbers and quotes in the demo are placeholders. Replace them in `site.config.ts`, and point the buttons at your own sign-up or booking link.';
 
 export const TEMPLATE_DETAILS: Record<string, TemplateDetails> = {
+  tandem: tandemDetails,
   offscript: offscriptDetails,
   plumb: plumbDetails,
   inlay: inlayDetails,

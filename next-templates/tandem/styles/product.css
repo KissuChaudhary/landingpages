@@ -1,0 +1,532 @@
+.workspace {
+  padding-top: 85px;
+  background: linear-gradient(#fff, #f6f8fc);
+  overflow: hidden;
+}
+.workspace .section-description {
+  max-width: 50ch;
+}
+.workspace-stage {
+  position: relative;
+  perspective: 1600px;
+  margin-top: 65px;
+}
+.workspace-frame {
+  position: relative;
+  border: 1px solid #cad5e7;
+  border-radius: 18px;
+  background: #fff;
+  transform: translateY(calc((1 - var(--e, 0)) * 42px))
+    rotateX(calc((1 - var(--e, 0)) * 8deg))
+    scale(calc(0.93 + var(--e, 0) * 0.07));
+  transform-origin: center 80%;
+  overflow: hidden;
+}
+.workspace-frame-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 23px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--quiet);
+}
+.workspace-frame-top > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.workspace-frame img {
+  width: 100%;
+  height: auto;
+}
+.workspace-frame-bottom {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+  border-top: 1px solid var(--line);
+}
+.workspace-frame-bottom span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--quiet);
+  font-size: 10px;
+}
+.workspace-frame-bottom svg {
+  color: var(--blue);
+}
+.workspace-side-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--quiet);
+  text-align: center;
+  margin-top: 24px;
+}
+.agents {
+  overflow: hidden;
+}
+.agents .section-description {
+  max-width: 42ch;
+}
+.carousel-navigation {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 5px;
+}
+.carousel-navigation > span {
+  margin-right: 15px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--quiet);
+}
+.carousel-navigation button {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: white;
+  color: var(--ink);
+  transition:
+    background 250ms,
+    color 250ms;
+}
+.carousel-navigation button:hover {
+  background: var(--blue);
+  color: white;
+}
+.carousel-navigation button:disabled {
+  opacity: 0.3;
+}
+.agent-track {
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  gap: 18px;
+  margin-top: 45px;
+  padding-inline: max(48px, calc((100vw - 1280px) / 2));
+  padding-bottom: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.agent-track::-webkit-scrollbar {
+  display: none;
+}
+.agent-card {
+  flex: 0 0 380px;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: var(--cloud);
+}
+.agent-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px 23px 0;
+}
+.agent-card-top .mono {
+  font-size: 8px;
+}
+.agent-card-top .agent-symbol {
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #dae3f5;
+}
+.agent-card-art {
+  overflow: hidden;
+  margin-top: 10px;
+}
+.agent-card-art img {
+  width: 100%;
+  height: auto;
+  transition: transform 800ms var(--ease);
+}
+.agent-card:hover .agent-card-art img {
+  transform: translateY(-6px) rotate(-1deg);
+}
+.agent-card-copy {
+  padding: 23px;
+  background: white;
+}
+.agent-card-copy h3 {
+  font-size: 25px;
+}
+.agent-role {
+  font-size: 13px;
+  margin-top: 6px;
+  color: var(--ink);
+}
+.agent-card-copy > p:last-of-type {
+  font-size: 12px;
+  color: var(--quiet);
+  line-height: 1.7;
+  margin-top: 14px;
+  min-height: 62px;
+}
+.agent-example {
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--blue);
+  font-size: 10px;
+}
+.carousel-rule {
+  height: 2px;
+  margin-top: 25px;
+  background: var(--line);
+  overflow: hidden;
+}
+.carousel-rule span {
+  display: block;
+  width: 16.666%;
+  height: 100%;
+  background: var(--blue);
+  transition: transform 500ms var(--ease);
+}
+.carousel-hint {
+  color: var(--quiet);
+  margin-top: 14px;
+  font-size: 10px;
+}
+.workflow {
+  background: var(--cloud);
+}
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  margin-top: 55px;
+  align-items: center;
+}
+.workflow-step {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 35px 1fr 20px;
+  gap: 16px;
+  text-align: left;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  padding: 26px 0;
+  color: var(--quiet);
+  transition: color 300ms;
+}
+.workflow-step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.step-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding-top: 5px;
+}
+.workflow-step h3 {
+  font-size: 23px;
+  font-weight: 460;
+  letter-spacing: -0.03em;
+}
+.step-description {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 600ms var(--ease),
+    opacity 400ms;
+  opacity: 0;
+}
+.step-description p {
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--quiet);
+}
+.step-active {
+  color: var(--blue);
+}
+.step-active .step-description {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.step-active .step-description p {
+  padding-top: 15px;
+}
+.workflow-step > svg {
+  transition: transform 500ms var(--ease);
+  margin-top: 3px;
+}
+.step-active > svg {
+  transform: rotate(45deg);
+}
+.workflow-panel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #edf2fc;
+  overflow: hidden;
+}
+.scene-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--quiet);
+}
+.workflow-images {
+  position: relative;
+  aspect-ratio: 1000 / 780;
+}
+.workflow-images img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(22px) scale(0.97);
+  transition:
+    opacity 450ms var(--ease),
+    transform 700ms var(--ease);
+}
+.workflow-images .scene-active {
+  opacity: 1;
+  transform: none;
+}
+.workflow-footnote {
+  display: block;
+  font-family: var(--font-mono);
+  text-align: center;
+  font-size: 8px;
+  color: var(--quiet);
+  padding-bottom: 20px;
+}
+.team-tabs {
+  display: flex;
+  position: relative;
+  width: 490px;
+  max-width: 100%;
+  margin: 36px auto 0;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--cloud);
+}
+.team-thumb {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc((100% - 10px) / 3);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  transition: transform 600ms var(--throw);
+}
+.team-tabs button {
+  position: relative;
+  border: 0;
+  background: none;
+  flex: 1;
+  padding: 12px 6px;
+  color: var(--quiet);
+  font-size: 12px;
+  transition: color 300ms;
+}
+.team-tabs button[aria-selected="true"] {
+  color: var(--blue);
+}
+.team-panel {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 60px;
+  padding-top: 55px;
+}
+.team-copy {
+  animation: team-enter 600ms var(--ease) both;
+}
+.team-copy .eyebrow {
+  font-size: 8px;
+  color: var(--blue);
+}
+.team-copy h3 {
+  font-size: 41px;
+  margin-top: 20px;
+  max-width: 15ch;
+}
+.team-copy > p {
+  margin-top: 21px;
+  color: var(--quiet);
+  font-size: 14px;
+  max-width: 44ch;
+}
+.team-copy ul {
+  list-style: none;
+  padding: 0;
+  margin-block: 26px;
+}
+.team-copy li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  margin-top: 12px;
+}
+.team-copy li svg {
+  color: var(--blue);
+}
+.team-art {
+  position: relative;
+  aspect-ratio: 960 / 780;
+  background: var(--cloud);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.team-art img {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(calc(var(--direction) * 25px));
+  transition:
+    opacity 450ms var(--ease),
+    transform 650ms var(--ease);
+}
+.team-art .scene-active {
+  opacity: 1;
+  transform: none;
+}
+@keyframes team-enter {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--direction) * 15px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 1000px) {
+  .agent-track {
+    padding-inline: 28px;
+  }
+  .agent-card {
+    flex-basis: 335px;
+  }
+  .workflow-grid {
+    gap: 35px;
+  }
+  .workflow-step h3 {
+    font-size: 20px;
+  }
+  .team-panel {
+    gap: 30px;
+  }
+  .team-copy h3 {
+    font-size: 33px;
+  }
+}
+@media (max-width: 800px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+  .workflow-panel {
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+  .team-panel {
+    grid-template-columns: 1fr;
+  }
+  .team-copy {
+    max-width: 520px;
+    margin: auto;
+  }
+  .team-art {
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+}
+@media (max-width: 600px) {
+  .workspace-stage {
+    margin-top: 36px;
+    width: calc(100% - 24px);
+  }
+  .workspace-frame {
+    border-radius: 10px;
+  }
+  .workspace-frame-top {
+    padding: 12px;
+    font-size: 5px;
+  }
+  .workspace-frame-bottom {
+    gap: 15px;
+    padding: 13px 8px;
+  }
+  .workspace-frame-bottom span {
+    font-size: 7px;
+    gap: 4px;
+  }
+  .workspace-frame-bottom svg {
+    width: 10px;
+  }
+  .workspace-side-label {
+    font-size: 6px;
+    margin-top: 17px;
+  }
+  .carousel-navigation {
+    margin-top: 27px;
+  }
+  .agent-track {
+    margin-top: 28px;
+    padding-inline: 20px;
+  }
+  .agent-card {
+    flex-basis: 300px;
+  }
+  .agent-card-top {
+    padding-inline: 18px;
+  }
+  .agent-card-copy {
+    padding: 20px;
+  }
+  .workflow-grid {
+    margin-top: 32px;
+    gap: 30px;
+  }
+  .workflow-step {
+    grid-template-columns: 24px 1fr 18px;
+    gap: 12px;
+    padding-block: 23px;
+  }
+  .workflow-step h3 {
+    font-size: 19px;
+  }
+  .step-description p {
+    font-size: 12px;
+  }
+  .team-tabs button {
+    font-size: 10px;
+    padding: 11px 3px;
+  }
+  .team-panel {
+    padding-top: 32px;
+  }
+  .team-copy h3 {
+    font-size: 32px;
+    max-width: 18ch;
+  }
+  .team-copy > p {
+    font-size: 13px;
+  }
+}

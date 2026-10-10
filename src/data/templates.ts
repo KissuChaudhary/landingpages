@@ -1,3 +1,4 @@
+import { tandemTemplate } from './template-catalog/tandem';
 import { offscriptTemplate } from './template-catalog/offscript';
 import { plumbTemplate } from './template-catalog/plumb';
 import { inlayTemplate } from './template-catalog/inlay';
@@ -48,6 +49,7 @@ export const CATEGORIES = [
 export type CategoryType = (typeof CATEGORIES)[number];
 
 export const TEMPLATES: TemplateItem[] = [
+    tandemTemplate,
     offscriptTemplate,
     plumbTemplate,
     inlayTemplate,
